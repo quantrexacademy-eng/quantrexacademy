@@ -715,8 +715,8 @@ const AllenTestUI = (() => {
             ${partsSafe.diagramSlot || ""}
             ${stemHtml || (String(qBody).includes("qx-question-body") ? qBody : `<div class="mtk-q-text qx-content" data-qx-qid="${q.id}">${qBody}</div>`)}
             ${/* qxmd175/176 Marks-way: solution replaces stem slot; no off-canvas stem */""}
-            <div id="qaSolReveal" class="${solOpen ? "eg-sol-marks-way eg-qxmd176-sol" : ""}">${partsSafe.solReveal || ""}</div>
-            <div id="qaResult" class="${solOpen ? "eg-sol-marks-way eg-qxmd176-sol" : ""}">${partsSafe.resultHtml || ""}</div>
+            <div id="qaSolReveal" class="${solOpen ? "eg-sol-marks-way eg-qxmd176-sol eg-qxmd177-sol" : ""}">${partsSafe.solReveal || ""}</div>
+            <div id="qaResult" class="${solOpen ? "eg-sol-marks-way eg-qxmd176-sol eg-qxmd177-sol" : ""}">${partsSafe.resultHtml || ""}</div>
             <div class="${optsClass}" id="qaOpts">${opts}</div>
             <div class="eg-action-row">
               <div class="eg-check-wrap">${done || incomplete ? "" : `<button type="button" class="eg-check" id="qxPracSubmit" ${canSubmit ? "" : "disabled"}>Check Answer</button>`}</div>
@@ -794,8 +794,8 @@ const AllenTestUI = (() => {
         ${String(qBody).includes("qx-question-body")
           ? qBody
           : (stemHtml || `<div class="mtk-q-text qx-content mq-stem" data-qx-qid="${q.id}">${qBody}</div>`)}
-        <div id="qaSolReveal" class="${solOpen ? "eg-sol-marks-way eg-qxmd176-sol" : ""}">${partsSafe.solReveal || ""}</div>
-        <div id="qaResult" class="${solOpen ? "eg-sol-marks-way eg-qxmd176-sol" : ""}">${partsSafe.resultHtml || ""}</div>
+        <div id="qaSolReveal" class="${solOpen ? "eg-sol-marks-way eg-qxmd176-sol eg-qxmd177-sol" : ""}">${partsSafe.solReveal || ""}</div>
+        <div id="qaResult" class="${solOpen ? "eg-sol-marks-way eg-qxmd176-sol eg-qxmd177-sol" : ""}">${partsSafe.resultHtml || ""}</div>
         <div class="${optsClass} mq-opts egmq-opts" id="qaOpts">${opts}</div>
         ${partsSafe.solActions || ""}
         <button type="button" class="qx-best-note" id="qxPracNote">Add a Note</button>

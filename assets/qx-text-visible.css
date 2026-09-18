@@ -979,3 +979,25 @@ html .eg-test-root.eg-qxmd176 .qx-stem-sol-hidden {
   -webkit-text-fill-color: transparent !important;
   color: transparent !important;
 }
+
+
+/* qxmd177: stem-hide + no scroll-anchoring jump (pairs with examgoal qxmd177) */
+html .eg-test-root.eg-sol-showing.eg-qxmd177 .eg-q-stem,
+html .eg-test-root.eg-sol-showing.eg-qxmd177 #egQArea,
+html .eg-test-root.eg-qxmd177 .eg-stem-sol-hidden,
+html .eg-test-root.eg-qxmd177 .qx-stem-sol-hidden {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+  position: static !important;
+  left: auto !important;
+  clip: auto !important;
+  clip-path: none !important;
+  pointer-events: none !important;
+}
+html .eg-test-root.eg-qxmd177,
+html .eg-test-root.eg-qxmd177 .eg-body {
+  overflow-anchor: none !important;
+}

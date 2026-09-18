@@ -615,7 +615,7 @@
     return '<div class="eg-test-root mtk-test-root' +
       (sideOpen ? " eg-side-open" : " eg-side-collapsed") +
       (stripOpen ? " eg-strip-open" : " eg-strip-collapsed") +
-      " eg-tools-closed eg-compact eg-qxmd167 eg-qxmd170 eg-qxmd171 eg-qxmd173 eg-qxmd175 eg-qxmd176 eg-qxtool8 eg-qxeg1 eg-qxeg2 eg-qxeg3 eg-qxeg4 eg-qxeg5 eg-qxeg6 eg-qxeg7" +
+      " eg-tools-closed eg-compact eg-qxmd167 eg-qxmd170 eg-qxmd171 eg-qxmd173 eg-qxmd175 eg-qxmd176 eg-qxmd177 eg-qxtool8 eg-qxeg1 eg-qxeg2 eg-qxeg3 eg-qxeg4 eg-qxeg5 eg-qxeg6 eg-qxeg7" +
       (previewOpen ? " eg-preview-open" : " eg-preview-collapsed") +
       (desktopMode ? " eg-desktop-mode" : " eg-mobile") +
       (!desktopMode && isMobileEg ? " eg-mobile-vp" : "") +
@@ -693,8 +693,10 @@
           '</div>';
       })() : "") +
       (ctx.sectionInstr || "") +
-      '<div class="' + (ctx.optsClass || "mtk-options mtk-options-grid") + ' eg-opts" id="qxOpts">' + (ctx.opts || "") + "</div>" +
-      checkRow +
+      '<div class="' + (ctx.optsClass || "mtk-options mtk-options-grid") + ' eg-opts' + (showSol ? " eg-opts-sol-hidden" : "") + '" id="qxOpts"' +
+      (showSol ? ' hidden aria-hidden="true" style="display:none!important"' : "") + ">" +
+      (showSol ? "" : (ctx.opts || "")) + "</div>" +
+      (showSol ? "" : checkRow) +
       '</div>' +
       "</div>" +
       '<aside class="eg-side" id="egSide"' + (sideOpen ? ' aria-hidden="false"' : ' hidden aria-hidden="true"') + '>' +
@@ -840,11 +842,101 @@
    * qxmd162: Immediate DOM Solution reveal for Practice Check/Show Answer.
    * Does not rely on api.refresh() — inserts/replaces #egSolPanel even if refresh fails.
    */
+
+  /* qxmd177: Marks-like — capture/restore scroll; NEVER force scrollTop=0 on sol open */
+  function egCaptureScroll(root) {
+    var snap = { root: root || null, items: [] };
+    try {
+      var nodes = [];
+      if (root) nodes.push({ el: root, key: "root" });
+      try {
+        var sels = [".eg-body", ".eg-main", ".eg-scroll", ".eg-q-card"];
+        for (var si = 0; si < sels.length; si++) {
+          var el = root && root.querySelector ? root.querySelector(sels[si]) : null;
+          if (el) nodes.push({ el: el, key: sels[si] });
+        }
+      } catch (_) { /* */ }
+      try {
+        var appMain = document.getElementById("app-main");
+        if (appMain) nodes.push({ el: appMain, key: "#app-main" });
+      } catch (_) { /* */ }
+      try {
+        if (document.scrollingElement) nodes.push({ el: document.scrollingElement, key: "scrollingElement" });
+        nodes.push({ el: document.documentElement, key: "documentElement" });
+        nodes.push({ el: document.body, key: "body" });
+      } catch (_) { /* */ }
+      var seen = [];
+      nodes.forEach(function (n) {
+        if (!n || !n.el || seen.indexOf(n.el) >= 0) return;
+        seen.push(n.el);
+        try {
+          if (typeof n.el.scrollTop === "number") {
+            snap.items.push({ el: n.el, key: n.key, top: n.el.scrollTop, left: n.el.scrollLeft || 0 });
+          }
+        } catch (_) { /* */ }
+      });
+    } catch (_) { /* */ }
+    return snap;
+  }
+  function egRestoreScroll(snap) {
+    if (!snap) return;
+    var items = snap.items || snap; // tolerate legacy array
+    if (!items || !items.length) return;
+    function resolve(s) {
+      try {
+        if (s.el && s.el.isConnected !== false) return s.el;
+      } catch (_) { /* */ }
+      try {
+        if (!s.key) return null;
+        if (s.key === "root") return snap.root && snap.root.isConnected !== false ? snap.root : (document.querySelector(".eg-test-root") || null);
+        if (s.key === "#app-main") return document.getElementById("app-main");
+        if (s.key === "scrollingElement") return document.scrollingElement;
+        if (s.key === "documentElement") return document.documentElement;
+        if (s.key === "body") return document.body;
+        var host = (snap.root && snap.root.isConnected !== false) ? snap.root : document.querySelector(".eg-test-root");
+        if (host && host.querySelector) return host.querySelector(s.key);
+        return document.querySelector(s.key);
+      } catch (_) { return null; }
+    }
+    function apply() {
+      items.forEach(function (s) {
+        try {
+          var el = resolve(s);
+          if (!el) return;
+          el.scrollTop = s.top;
+          if (typeof s.left === "number") el.scrollLeft = s.left;
+          // refresh el ref for subsequent applies after remount
+          s.el = el;
+        } catch (_) { /* */ }
+      });
+    }
+    apply();
+    try {
+      requestAnimationFrame(function () {
+        apply();
+        requestAnimationFrame(apply);
+      });
+    } catch (_) {
+      try { setTimeout(apply, 0); } catch (__) { /* */ }
+    }
+    try { setTimeout(apply, 40); setTimeout(apply, 120); setTimeout(apply, 280); } catch (_) { /* */ }
+  }
+  function egLockScrollJump(root, on) {
+    try {
+      if (!root || !root.classList) return;
+      if (on) root.classList.add("eg-qxmd177-scroll-lock", "eg-qxmd177");
+      else root.classList.remove("eg-qxmd177-scroll-lock");
+    } catch (_) { /* */ }
+  }
+
   function revealPracticeSolution(root, api) {
     if (!root || !api || !api.session) return false;
     const session = api.session;
     if (!session.practiceMode) return false;
     if (!wantShowSol(session, session.idx)) return false;
+    /* qxmd177: lock scroll position — Marks Practice never jumps Q to top on Check Answer */
+    var _egScrollSnap = egCaptureScroll(root);
+    egLockScrollJump(root, true);
     let q = null;
     try { q = api.getQ ? api.getQ(session.ids[session.idx]) : null; } catch (_) { q = null; }
     let solInner = "";
@@ -889,9 +981,9 @@
     }
 
     try {
-      root.classList.add("eg-sol-showing", "eg-qxmd175", "eg-qxmd176");
+      root.classList.add("eg-sol-showing", "eg-qxmd175", "eg-qxmd176", "eg-qxmd177");
       const egRoot = root.classList.contains("eg-test-root") ? root : (root.closest && root.closest(".eg-test-root"));
-      if (egRoot) egRoot.classList.add("eg-sol-showing", "eg-qxmd175", "eg-qxmd176");
+      if (egRoot) egRoot.classList.add("eg-sol-showing", "eg-qxmd175", "eg-qxmd176", "eg-qxmd177");
       /* qxmd176: sync Show Answer toggle with solution visibility */
       try {
         session._egShowAnswer = true;
@@ -923,20 +1015,30 @@
         qArea.style.setProperty("line-height", "0", "important");
       } catch (_) { /* */ }
     }
-    /* qxmd176 Marks-like: hide options while Solution open (restore on close/refresh) */
+    /* qxmd177 Marks-like: hide options AFTER sol is in DOM (avoid reflow jump / broken stack) */
+    function egHideOptsAfterSol() {
+      try {
+        const optsEl = root.querySelector("#qxOpts, .eg-opts");
+        if (optsEl) {
+          optsEl.classList.add("eg-opts-sol-hidden");
+          optsEl.setAttribute("aria-hidden", "true");
+          optsEl.style.setProperty("display", "none", "important");
+        }
+        const checkRow = root.querySelector(".eg-action-row, #egCheckRow");
+        if (checkRow) {
+          checkRow.classList.add("eg-opts-sol-hidden");
+          checkRow.style.setProperty("display", "none", "important");
+        }
+      } catch (_) { /* */ }
+    }
     try {
-      const optsEl = root.querySelector("#qxOpts, .eg-opts");
-      if (optsEl) {
-        optsEl.classList.add("eg-opts-sol-hidden");
-        optsEl.setAttribute("aria-hidden", "true");
-        optsEl.style.setProperty("display", "none", "important");
-      }
-      const checkRow = root.querySelector(".eg-action-row, #egCheckRow");
-      if (checkRow) {
-        checkRow.classList.add("eg-opts-sol-hidden");
-        checkRow.style.setProperty("display", "none", "important");
-      }
-    } catch (_) { /* */ }
+      requestAnimationFrame(function () {
+        egHideOptsAfterSol();
+        egRestoreScroll(_egScrollSnap);
+      });
+    } catch (_) {
+      egHideOptsAfterSol();
+    }
 
     const panel = root.querySelector("#egSolPanel");
     const solClose = root.querySelector("#egSolClose");
@@ -1014,11 +1116,16 @@
     try {
       if (root && typeof root._egForceFoot === "function") root._egForceFoot(true);
     } catch (_) { /* */ }
-    /* qxmd176: scroll main body to top — NEVER use scrollIntoView on sol panel; it pulls ghost stem above header */
+    /* qxmd177: NO scrollTop=0 / NO scrollIntoView — restore prior scroll (Marks-like, no Q jump to top) */
     try {
-      const bodyScroll = root.querySelector(".eg-body, .eg-main, .eg-scroll") || root;
-      if (bodyScroll && typeof bodyScroll.scrollTop === "number") bodyScroll.scrollTop = 0;
-      try { if (root.scrollTop) root.scrollTop = 0; } catch (_) { /* */ }
+      egHideOptsAfterSol();
+      egRestoreScroll(_egScrollSnap);
+      setTimeout(function () {
+        try {
+          egRestoreScroll(_egScrollSnap);
+          egLockScrollJump(root, false);
+        } catch (_) { /* */ }
+      }, 160);
     } catch (_) { /* */ }
     return !!panel;
   }
@@ -1102,8 +1209,11 @@
       if (e) { e.preventDefault(); e.stopPropagation(); }
       var ok = false;
       try { ok = !!checkAnswer(session, api.getQ); } catch (_) { ok = false; }
+      /* qxmd177: freeze scroll across Check Answer + refresh (no Q→top jump) */
+      var _chkSnap = egCaptureScroll(root);
+      egLockScrollJump(root, true);
       if (ok) {
-        /* qxmd176: Marks-like — Check Answer turns Show Answer ON (sol open ↔ toggle sync) */
+        /* qxmd176/177: Marks-like — Check Answer turns Show Answer ON (sol open ↔ toggle sync) */
         try {
           session._egShowAnswer = true;
           var seOn = root.querySelector("#egShowAns");
@@ -1114,19 +1224,36 @@
         }
       }
       if (typeof api.refresh === "function") {
-        try { api.refresh(); } catch (_) { /* */ }
+        try {
+          var _refRet = api.refresh();
+          var _restore = function () {
+            try { egRestoreScroll(_chkSnap); egLockScrollJump(root, false); } catch (_) { /* */ }
+          };
+          if (_refRet && typeof _refRet.then === "function") {
+            _refRet.then(_restore).catch(_restore);
+          } else {
+            setTimeout(_restore, 0);
+            setTimeout(_restore, 80);
+            setTimeout(_restore, 200);
+          }
+        } catch (_) { egRestoreScroll(_chkSnap); }
+      } else {
+        egRestoreScroll(_chkSnap);
+        egLockScrollJump(root, false);
       }
       try { if (typeof forceFootVisible === "function") forceFootVisible(true); } catch (_) { /* */ }
     };
     const show = root.querySelector("#egShowAns");
     if (show) show.onchange = function () {
       session._egShowAnswer = !!show.checked;
+      var _showSnap = egCaptureScroll(root);
+      egLockScrollJump(root, true);
       if (session._egShowAnswer) {
         try { revealPracticeSolution(root, api); } catch (_rev) {
           try { console.warn("[egShowAns reveal]", _rev); } catch (_) { /* */ }
         }
       } else {
-        /* qxmd176: toggle OFF = close solution fully (clear Check Answer lock too) */
+        /* qxmd176/177: toggle OFF = close solution fully (clear Check Answer lock too) */
         if (session._egChecked) {
           try { delete session._egChecked[session.idx]; } catch (_) { /* */ }
           try { delete session._egChecked[String(session.idx)]; } catch (_) { /* */ }
@@ -1134,12 +1261,28 @@
         hidePracticeSolutionDom(root);
       }
       if (typeof api.refresh === "function") {
-        try { api.refresh(); } catch (_) { /* */ }
+        try {
+          var _refRet2 = api.refresh();
+          var _restore2 = function () {
+            try { egRestoreScroll(_showSnap); egLockScrollJump(root, false); } catch (_) { /* */ }
+          };
+          if (_refRet2 && typeof _refRet2.then === "function") {
+            _refRet2.then(_restore2).catch(_restore2);
+          } else {
+            setTimeout(_restore2, 0);
+            setTimeout(_restore2, 80);
+            setTimeout(_restore2, 200);
+          }
+        } catch (_) { egRestoreScroll(_showSnap); }
+      } else {
+        egRestoreScroll(_showSnap);
+        egLockScrollJump(root, false);
       }
     };
     const solClose = root.querySelector("#egSolClose");
     if (solClose) solClose.onclick = function (e) {
       if (e) { e.preventDefault(); e.stopPropagation(); }
+      var _closeSnap = egCaptureScroll(root);
       session._egShowAnswer = false;
       if (session._egChecked) {
         try { delete session._egChecked[session.idx]; } catch (_) { /* */ }
@@ -1148,7 +1291,14 @@
       if (show) show.checked = false;
       hidePracticeSolutionDom(root);
       if (typeof api.refresh === "function") {
-        try { api.refresh(); } catch (_) { /* */ }
+        try {
+          var _refRet3 = api.refresh();
+          var _restore3 = function () { try { egRestoreScroll(_closeSnap); } catch (_) { /* */ } };
+          if (_refRet3 && typeof _refRet3.then === "function") _refRet3.then(_restore3).catch(_restore3);
+          else { setTimeout(_restore3, 0); setTimeout(_restore3, 80); }
+        } catch (_) { egRestoreScroll(_closeSnap); }
+      } else {
+        egRestoreScroll(_closeSnap);
       }
     };
     // Typeset inline bottom solution panel math
@@ -1159,10 +1309,11 @@
         if (Mx.afterRender) Mx.afterRender(solRoot);
         else if (Mx.afterRenderLight) Mx.afterRenderLight(solRoot);
       }
-      /* qxmd176: no scrollIntoView — keep chrome stable; scroll body top only */
+      /* qxmd177: never scroll on sol typeset/bind — preserve viewport (Marks-like) */
       try {
-        var bs = root.querySelector(".eg-body, .eg-main, .eg-scroll");
-        if (bs) bs.scrollTop = 0;
+        if (root.classList.contains("eg-sol-showing")) {
+          /* keep current scroll; overflow-anchor disabled via eg-qxmd177 CSS */
+        }
       } catch (_) { /* */ }
     } catch (_) { /* */ }
     /* qxeg7: foot already in DOM from render — CSS nuclear visibility; debounce thrash */
@@ -1193,7 +1344,7 @@
           foot.classList.add("eg-foot");
         } catch (_) { /* */ }
         foot.removeAttribute("hidden");
-        root.classList.add("eg-foot-ready", "eg-qxeg7", "eg-qxmd173", "eg-qxmd175", "eg-qxmd176");
+        root.classList.add("eg-foot-ready", "eg-qxeg7", "eg-qxmd173", "eg-qxmd175", "eg-qxmd176", "eg-qxmd177");
         /* Skip heavy inline cssText once CSS has painted foot (unless force) */
         if (_egFootPainted && !force && foot.querySelector("#qxPrevBtn") && (foot.querySelector("#qxNextBtn") || foot.querySelector("#qxSaveBtn"))) {
           var p0 = foot.querySelector("#qxPrevBtn");
@@ -1325,7 +1476,7 @@
         root.classList.toggle("eg-preview-open", previewOpen);
         root.classList.toggle("eg-preview-collapsed", !previewOpen);
         root.classList.remove("eg-tools-open");
-        root.classList.add("eg-tools-closed", "eg-qxmd167", "eg-qxmd170", "eg-qxmd171", "eg-qxmd173", "eg-qxmd175", "eg-qxmd176", "eg-qxtool8", "eg-qxeg1", "eg-qxeg2", "eg-qxeg3", "eg-qxeg4", "eg-qxeg5", "eg-qxeg6", "eg-qxeg7", "eg-foot-ready");
+        root.classList.add("eg-tools-closed", "eg-qxmd167", "eg-qxmd170", "eg-qxmd171", "eg-qxmd173", "eg-qxmd175", "eg-qxmd176", "eg-qxmd177", "eg-qxtool8", "eg-qxeg1", "eg-qxeg2", "eg-qxeg3", "eg-qxeg4", "eg-qxeg5", "eg-qxeg6", "eg-qxeg7", "eg-foot-ready");
         root.setAttribute("data-eg-cycle", bothOpen ? "1" : "0");
         const strip = root.querySelector("#egQBar");
         if (strip) {

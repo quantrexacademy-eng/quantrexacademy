@@ -2514,7 +2514,7 @@ function qxHidePracticeStem(scope) {
       } catch (_) { /* */ }
     });
     const wrap = root.querySelector(".mtk-test-root, .allen-practice, .qx-practice-page, .eg-test-root");
-    if (wrap) wrap.classList.add("eg-sol-showing", "qx-sol-showing", "eg-qxmd176");
+    if (wrap) wrap.classList.add("eg-sol-showing", "qx-sol-showing", "eg-qxmd176", "eg-qxmd177");
   } catch (_) { /* */ }
 }
 

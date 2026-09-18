@@ -5977,3 +5977,132 @@ html .eg-test-root.eg-sol-showing .eg-opts-sol-hidden {
     padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px)) !important;
   }
 }
+
+
+/* ========== qxmd177: Marks-like Check Answer — NO top jump; stable in-flow sol ========== */
+/* Root cause of "pura question top mein": reveal/bind set scrollTop=0 after sol open.
+   Keep metadata + content column stable; sol replaces stem in-flow; opts hide after paint. */
+.eg-test-root.eg-qxmd177,
+.eg-test-root.eg-qxmd177.eg-sol-showing,
+.eg-test-root.eg-qxmd177-scroll-lock {
+  overflow-anchor: none !important;
+}
+.eg-test-root.eg-qxmd177 .eg-body,
+.eg-test-root.eg-qxmd177.eg-sol-showing .eg-body,
+.eg-test-root.eg-qxmd177-scroll-lock .eg-body,
+.eg-test-root.eg-qxmd177 .eg-main,
+.eg-test-root.eg-qxmd177.eg-sol-showing .eg-main {
+  overflow-anchor: none !important;
+  scroll-behavior: auto !important;
+  overscroll-behavior: contain !important;
+}
+
+/* Marks-like: metadata strip stays put (never absolute / never reordered above chrome) */
+.eg-test-root.eg-qxmd177.eg-sol-showing .eg-info-strip,
+.eg-test-root.eg-qxmd177.eg-sol-showing #egInfoStrip,
+.eg-test-root.eg-qxmd177.eg-sol-showing .eg-top {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: relative !important;
+  left: auto !important;
+  top: auto !important;
+  transform: none !important;
+  order: unset !important;
+}
+
+/* Stem collapses in-flow (inherit qxmd176 static hide; gate on qxmd177 too) */
+html .eg-test-root.eg-sol-showing.eg-qxmd177 .eg-q-stem,
+html .eg-test-root.eg-sol-showing.eg-qxmd177 #egQArea,
+html .eg-test-root.eg-qxmd177 .eg-stem-sol-hidden,
+html .eg-test-root.eg-qxmd177 .qx-stem-sol-hidden {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: static !important;
+  left: auto !important;
+  clip: auto !important;
+  clip-path: none !important;
+  pointer-events: none !important;
+}
+
+/* Options + check row hide while sol open — no broken stack under Solution */
+html .eg-test-root.eg-sol-showing.eg-qxmd177 #qxOpts,
+html .eg-test-root.eg-sol-showing.eg-qxmd177 .eg-opts,
+html .eg-test-root.eg-sol-showing.eg-qxmd177 .eg-opts-sol-hidden,
+html .eg-test-root.eg-sol-showing.eg-qxmd177 .eg-action-row,
+html .eg-test-root.eg-sol-showing.eg-qxmd177 #egCheckRow {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  pointer-events: none !important;
+  order: unset !important;
+}
+
+/* Solution panel in question body under metadata — relative in-flow, not viewport-top */
+.eg-test-root.eg-qxmd177.eg-sol-showing .eg-sol-panel.eg-sol-marks-way,
+.eg-test-root.eg-qxmd177 .eg-sol-panel.eg-sol-marks-way {
+  display: block !important;
+  position: relative !important;
+  left: auto !important;
+  top: auto !important;
+  float: none !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 0 12px !important;
+  z-index: 1 !important;
+  order: unset !important;
+}
+
+.eg-test-root.eg-qxmd177 .eg-q-card,
+.eg-test-root.eg-qxmd177.eg-sol-showing .eg-q-card {
+  display: block !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* Retain mobile Clear-hide + Prev/Next under qxmd177 */
+@media (max-width: 768px) {
+  .eg-test-root.eg-qxmd177 .eg-foot,
+  .eg-test-root.eg-qxmd177 .eg-foot-practice,
+  .eg-test-root.eg-qxmd177 #egFoot,
+  .eg-test-root.eg-sol-showing.eg-qxmd177 .eg-foot,
+  .eg-test-root.eg-sol-showing.eg-qxmd177 #egFoot {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    position: fixed !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    z-index: 2147483000 !important;
+    transform: none !important;
+    padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px)) !important;
+    min-height: 64px !important;
+  }
+  .eg-test-root.eg-qxmd177 .eg-foot-practice #qxPrevBtn,
+  .eg-test-root.eg-qxmd177 .eg-foot-practice #qxNextBtn {
+    display: inline-flex !important;
+    visibility: visible !important;
+    min-height: 52px !important;
+  }
+  .eg-test-root.eg-qxmd177 .eg-foot-practice .eg-btn-clear,
+  .eg-test-root.eg-qxmd177 .eg-foot-practice #qxClearBtn {
+    display: none !important;
+  }
+  .eg-test-root.eg-qxmd177.eg-sol-showing .eg-sol-panel,
+  .eg-test-root.eg-qxmd177.eg-sol-showing .eg-main,
+  .eg-test-root.eg-qxmd177.eg-sol-showing .eg-q-card,
+  .eg-test-root.eg-qxmd177.eg-sol-showing .eg-body {
+    padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+}
