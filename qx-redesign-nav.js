@@ -261,7 +261,6 @@
       examKey,
       subject,
       questionCount,
-      totalMarks,
       practicePayload,
       pyqPayload,
       formulaPayload,
@@ -272,21 +271,15 @@
     } = ctx || {};
 
     const gradAttr = examKey || "jee";
+    /* qxmd172-no-video */
     const nQ = questionCount != null ? String(questionCount) : "";
+    /* qxmd172: videos excluded — Quantrex ships Q/practice/notes/formula only */
     const modules = [
-      {
-        id: "video",
-        icon: "▶️",
-        title: "Concept Video(s)",
-        sub: videoPayload ? "Chapter explanation videos" : "Coming soon",
-        soon: !videoPayload,
-        payload: videoPayload
-      },
       {
         id: "notes",
         icon: "📄",
         title: "Notes (PDF)",
-        sub: notesPayload ? "Downloadable chapter notes" : "Coming soon",
+        sub: "Downloadable chapter notes",
         soon: !notesPayload,
         payload: notesPayload
       },
@@ -294,15 +287,23 @@
         id: "formula",
         icon: "∑",
         title: "Formula Sheet (PDF)",
-        sub: formulaPayload ? "Quick-reference formulas" : "Coming soon",
+        sub: "Quick-reference formulas",
         soon: !formulaPayload,
         payload: formulaPayload
+      },
+      {
+        id: "practice",
+        icon: "✏️",
+        title: "Practice Questions",
+        sub: nQ ? `${nQ} questions` : "Chapter-wise question bank",
+        soon: !practicePayload,
+        payload: practicePayload
       },
       {
         id: "revision",
         icon: "⚡",
         title: "Revision Notes / Quick Revision",
-        sub: revisionPayload ? "Condensed last-minute revision" : "Coming soon",
+        sub: "Condensed last-minute revision",
         soon: !revisionPayload,
         payload: revisionPayload
       },
@@ -310,7 +311,7 @@
         id: "pyq",
         icon: "🎯",
         title: "Previous Year Questions",
-        sub: pyqPayload && nQ ? `${nQ} PYQs${totalMarks ? ` · ${totalMarks} marks` : ""}` : (pyqPayload ? "PYQs for this chapter" : "Coming soon"),
+        sub: "PYQs for this chapter",
         soon: !pyqPayload,
         payload: pyqPayload
       }
@@ -319,7 +320,7 @@
     const cards = modules.map(m => {
       const soon = m.soon;
       const click = soon
-        ? `onclick="typeof showToast==='function'&&showToast('${esc(m.title)} — Coming soon')"`
+        ? `onclick="typeof showToast==='function'&&showToast('${esc(m.title)} — Coming Soon')"`
         : m.payload || "";
       const ic = realIc(m.title, subject) || m.icon;
       return `<button type="button" class="qx-module-card${soon ? " soon" : ""}" style="--folder-grad:var(--grad-${gradAttr === "academy" ? "academy" : gradAttr === "neet" ? "neet" : "jee"})" ${click}>

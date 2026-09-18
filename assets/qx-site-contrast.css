@@ -1156,3 +1156,42 @@ html .dash-greet-bar .dash-greet-left h1 {
   background: #0b57d0 !important;
   color: #fff !important;
 }
+
+
+/* ========== qxmd171 Settings sections (desktop + mobile) ========== */
+html[data-theme="light"] .qx-settings-page .qx-set-sec-h,
+html[data-theme="light"] .qx-settings-page .qx-set-brand {
+  color: #2563eb !important;
+  -webkit-text-fill-color: #2563eb !important;
+}
+html[data-theme="dark"] .qx-settings-page .qx-set-sec-h,
+html[data-theme="dark"] .qx-settings-page .qx-set-brand {
+  color: #60a5fa !important;
+  -webkit-text-fill-color: #60a5fa !important;
+}
+html[data-theme="light"] .qx-settings-page .qx-set-hint,
+html[data-theme="light"] .qx-settings-page .qx-set-sec-sub {
+  color: #64748b !important;
+}
+html[data-theme="dark"] .qx-settings-page .qx-set-hint,
+html[data-theme="dark"] .qx-settings-page .qx-set-sec-sub {
+  color: #94a3b8 !important;
+}
+html[data-theme="light"] .qx-set-seg button.on,
+html[data-theme="dark"] .qx-set-seg button.on {
+  background: #2563eb !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+html[data-theme="light"] .qx-set-exam-card.on {
+  border-color: #2563eb !important;
+}
+html[data-theme="dark"] .qx-settings-page .qx-set-sec {
+  background: #111827 !important;
+  border-color: #1e293b !important;
+}
+html[data-theme="light"] .qx-settings-page .qx-set-sec {
+  background: #ffffff !important;
+  border-color: #e2e8f0 !important;
+}
+

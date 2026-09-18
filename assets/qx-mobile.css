@@ -870,3 +870,21 @@ html { -webkit-text-size-adjust: 100%; }
   opacity: 0 !important;
   pointer-events: none !important;
 }
+
+
+/* ========== qxmd171: Marks mobile Practice + Report/Group ========== */
+@media (max-width: 720px) {
+  .eg-test-root.eg-qxmd171[data-eg-mode="practice"] .eg-top-tools .eg-tool-pri {
+    display: inline-flex !important;
+    visibility: visible !important;
+  }
+  .eg-test-root.eg-qxmd171[data-eg-mode="practice"] .eg-top-tools .eg-tool-reach,
+  .eg-test-root.eg-qxmd171[data-eg-mode="practice"] .eg-top-tools #egPlusBtn,
+  .eg-test-root.eg-qxmd171[data-eg-mode="practice"] .eg-top-tools #mtkReportBtn {
+    display: inline-flex !important;
+    visibility: visible !important;
+  }
+  .eg-test-root.eg-qxmd171 .eg-foot-practice .eg-btn-short { display: inline !important; }
+  .eg-test-root.eg-qxmd171 .eg-foot-practice .eg-btn-full { display: none !important; }
+}
+

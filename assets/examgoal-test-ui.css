@@ -5313,3 +5313,174 @@ html .eg-test-root[data-test-theme="light"] .eg-sol .katex {
   position: relative;
   z-index: 1;
 }
+
+
+/* ========== qxmd171: Marks-like mobile Practice foot ========== */
+/* Mark | Clear on top row; Previous | Save & Next on bottom — clean, not stacked clutter */
+@media (max-width: 720px) {
+  .eg-test-root.eg-qxmd171 .eg-foot-practice.eg-marks-foot,
+  .eg-test-root.eg-qxmd171 .eg-foot-practice {
+    display: flex !important;
+    flex-direction: column !important;
+    flex-wrap: nowrap !important;
+    gap: 8px !important;
+    padding: 10px 12px max(12px, env(safe-area-inset-bottom, 0px)) !important;
+    align-items: stretch !important;
+  }
+  .eg-test-root.eg-qxmd171 .eg-foot-practice .eg-foot-extra,
+  .eg-test-root.eg-qxmd171 .eg-foot-practice .eg-foot-left {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+    width: 100% !important;
+    order: 1 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    margin: 0 !important;
+  }
+  /* Show Answer spans full width above Mark/Clear when present */
+  .eg-test-root.eg-qxmd171 .eg-foot-practice .eg-foot-extra .eg-show,
+  .eg-test-root.eg-qxmd171 .eg-foot-practice .eg-foot-left .eg-show {
+    grid-column: 1 / -1 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 10px !important;
+    min-height: 36px !important;
+    padding: 4px 2px !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    color: inherit !important;
+  }
+  .eg-test-root.eg-qxmd171 .eg-foot-practice .eg-btn-review,
+  .eg-test-root.eg-qxmd171 .eg-foot-practice .eg-btn-clear {
+    display: inline-flex !important;
+    width: 100% !important;
+    min-height: 44px !important;
+    font-size: 14px !important;
+    font-weight: 800 !important;
+    border-radius: 10px !important;
+  }
+  .eg-test-root.eg-qxmd171 .eg-foot-practice .eg-foot-nav,
+  .eg-test-root.eg-qxmd171 .eg-foot-practice .eg-foot-right {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+    width: 100% !important;
+    order: 2 !important;
+    flex: 0 0 auto !important;
+  }
+  .eg-test-root.eg-qxmd171 .eg-foot-practice #egFootMore,
+  .eg-test-root.eg-qxmd171 .eg-foot-practice .eg-btn-close-pal,
+  .eg-test-root.eg-qxmd171 .eg-foot-sheet-scrim {
+    display: none !important;
+  }
+  .eg-test-root.eg-qxmd171 .eg-foot-practice #qxPrevBtn,
+  .eg-test-root.eg-qxmd171 .eg-foot-practice #qxNextBtn {
+    display: inline-flex !important;
+    min-height: 48px !important;
+    font-size: 15px !important;
+    font-weight: 800 !important;
+    width: 100% !important;
+    border-radius: 10px !important;
+  }
+  /* Short labels on phone; full labels desktop */
+  .eg-test-root.eg-qxmd171 .eg-btn-full { display: none !important; }
+  .eg-test-root.eg-qxmd171 .eg-btn-short { display: inline !important; }
+  /* Override qxmd170 hide-until-more rules when qxmd171 present */
+  .eg-test-root.eg-qxmd171.eg-qxmd170:not(.eg-foot-more-open) .eg-foot-practice .eg-foot-extra,
+  .eg-test-root.eg-qxmd171.eg-qxmd170:not(.eg-foot-more-open) .eg-foot-practice .eg-foot-left {
+    display: grid !important;
+  }
+  /* Compact meta strip — Marks clean */
+  .eg-test-root.eg-qxmd171 .eg-info-strip {
+    padding: 6px 10px !important;
+    gap: 6px !important;
+    font-size: 12px !important;
+  }
+  .eg-test-root.eg-qxmd171 .eg-info-strip .eg-q-num {
+    font-weight: 800 !important;
+    font-size: 13px !important;
+  }
+  /* Options spacing clean */
+  .eg-test-root.eg-qxmd171 .mtk-opts,
+  .eg-test-root.eg-qxmd171 .eg-opts,
+  .eg-test-root.eg-qxmd171 .qx-prac-opts {
+    gap: 8px !important;
+  }
+  .eg-test-root.eg-qxmd171 .mtk-opt,
+  .eg-test-root.eg-qxmd171 .qx-prac-opt {
+    min-height: 48px !important;
+    padding: 10px 12px !important;
+    border-radius: 12px !important;
+  }
+  /* Report + Group reachable */
+  .eg-test-root.eg-qxmd171[data-eg-mode="practice"] .eg-top-tools .eg-tool-reach,
+  .eg-test-root.eg-qxmd171[data-eg-mode="practice"] .eg-top-tools #egPlusBtn,
+  .eg-test-root.eg-qxmd171[data-eg-mode="practice"] .eg-top-tools #mtkReportBtn {
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  /* Test mode mobile: same Marks 2×2 feel */
+  .eg-test-root.eg-qxmd171[data-eg-mode="test"] .eg-foot:not(.eg-foot-practice) {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    padding: 10px 12px max(12px, env(safe-area-inset-bottom, 0px)) !important;
+  }
+  .eg-test-root.eg-qxmd171[data-eg-mode="test"] .eg-foot .eg-foot-left,
+  .eg-test-root.eg-qxmd171[data-eg-mode="test"] .eg-foot .eg-foot-right {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+  .eg-test-root.eg-qxmd171[data-eg-mode="test"] .eg-foot .eg-submit-always {
+    width: 100% !important;
+    order: 3 !important;
+  }
+}
+
+@media (min-width: 721px) {
+  .eg-test-root.eg-qxmd171 .eg-btn-full { display: inline !important; }
+  .eg-test-root.eg-qxmd171 .eg-btn-short { display: none !important; }
+  .eg-test-root.eg-qxmd171 .eg-foot-practice #egFootMore,
+  .eg-test-root.eg-qxmd171 .eg-foot-sheet-scrim {
+    display: none !important;
+  }
+  .eg-test-root.eg-qxmd171 .eg-foot-practice {
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+  }
+  .eg-test-root.eg-qxmd171 .eg-foot-practice .eg-foot-extra,
+  .eg-test-root.eg-qxmd171 .eg-foot-practice .eg-foot-left {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    width: auto !important;
+    grid-template-columns: none !important;
+  }
+  .eg-test-root.eg-qxmd171 .eg-foot-practice .eg-foot-nav,
+  .eg-test-root.eg-qxmd171 .eg-foot-practice .eg-foot-right {
+    display: flex !important;
+    grid-template-columns: none !important;
+    margin-left: auto;
+    gap: 8px !important;
+    width: auto !important;
+  }
+}
+
+/* Palette still CSS-instant */
+.eg-test-root.eg-qxmd171 {
+  --eg-chrome-ms: 120ms;
+}
+.eg-test-root.eg-qxmd171 #egSide,
+.eg-test-root.eg-qxmd171 .eg-side,
+.eg-test-root.eg-qxmd171.eg-side-open #egSide,
+.eg-test-root.eg-qxmd171.eg-side-open .eg-side {
+  transition: transform var(--eg-chrome-ms, 120ms) cubic-bezier(.2,.8,.2,1),
+              opacity var(--eg-chrome-ms, 120ms) ease !important;
+}
+

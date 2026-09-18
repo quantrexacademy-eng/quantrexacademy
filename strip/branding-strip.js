@@ -3,25 +3,23 @@ const QuantrexStrip = (() => {
   const TEXT_RULES = [
     [/\bALLEN\s*Digital\b/gi, "Quantrex Academy"],
     [/\bALLEN\b/g, "Quantrex Academy"],
-    [/\bExamGOAL\b/gi, "Quantrex"],
-    [/\bExamGoal\b/gi, "Quantrex"],
-    [/\bQuizrr\b/gi, "Quantrex"],
+    [/\bQuizrr\b/gi, "Quantrex Academy"],
     [/\bMOG\s*Premium\b/gi, "Quantrex Academy PYQ"],
     [/\bMOG\b/g, "PYQ"],
     [/\bMARKS\s*Premium\b/gi, "Quantrex Academy Premium"],
     [/\bMARKS\s*Selected\b/gi, "Quantrex Academy Selected"],
     [/\bMARKS\s*App\b/gi, "Quantrex Academy"],
     [/\bMARKS\s*web\b/gi, "Quantrex Academy"],
-    [/Get\s*Marks(?:\s*App)?/gi, "Quantrex Academy"],
+    [/Get\s*Marks\s*App/gi, "Quantrex Academy"],
     [/Powered\s+by\s+MARKS/gi, ""],
     [/Scoremarks\s+Technologies/gi, "Quantrex Academy"],
-    [/Mathongo/gi, "Quantrex Academy"],
-    [/\bVedantu\b/gi, "Quantrex Academy"],
-    [/\bUnacademy\b/gi, "Quantrex Academy"],
-    [/\bAakash\b/gi, "Quantrex Academy"],
-    [/\bFIITJEE\b/gi, "Quantrex Academy"],
-    [/\bResonance\b/gi, "Quantrex Academy"],
-    [/\bPhysics\s*Wallah\b/gi, "Quantrex Academy"],
+    [/Mathongo/gi, ""],
+    [/\bVedantu\b/gi, ""],
+    [/\bUnacademy\b/gi, ""],
+    [/\bAakash\b/gi, ""],
+    [/\bFIITJEE\b/gi, ""],
+    [/\bResonance\b/gi, ""],
+    [/\bPhysics\s*Wallah\b/gi, ""],
     [/\bfrom\s+MARKS\b/gi, ""],
     [/\bMARKS\s+live\b/gi, "Quantrex Academy"],
     [/\bMARKS\b/g, "Quantrex Academy"]
@@ -79,6 +77,9 @@ const QuantrexStrip = (() => {
   }
 
   function cleanUiLabel(s) {
+    /* qxmd172 strip Marks brand words from user-facing labels */
+    s = String(s == null ? "" : s).replace(/\b(?:Get\s*)?Marks(?:\s*App)?\b/gi, "").replace(/getmarks\.app/gi, "").replace(/\s{2,}/g, " ").trim();
+
     const t = displayText(s);
     if (!t || isRawId(t)) return "";
     // Drop pure id-like tokens inside multi-part labels
@@ -87,34 +88,12 @@ const QuantrexStrip = (() => {
     return parts.join(" · ");
   }
 
-  const CHAPTER_DISPLAY_ALIASES = {
-    "Motion in One Dimension": "Motion in One Dimension",
-    "Motion in Two Dimensions": "Motion in Two Dimensions",
-    "Work, Power and Energy": "Work, Power and Energy",
-    "Center of Mass, Momentum and Collision": "Center of Mass, Momentum and Collision",
-    "Basics of Mathematics": "Basics of Mathematics",
-    "Permutation and Combination": "Permutation and Combination",
-    "Sequences and Series": "Sequences and Series",
-    "Quadratic Equation": "Quadratic Equation"
-  };
-
-  function niceChapterLabel(s) {
-    const raw = String(s || "").trim();
-    if (!raw) return "";
-    if (CHAPTER_DISPLAY_ALIASES[raw]) return CHAPTER_DISPLAY_ALIASES[raw];
-    // soft title-case fix: "In"/"Of" mid-title → "in"/"of" for Motion In ...
-    return raw
-      .replace(/\bIn\b/g, "in")
-      .replace(/\bOf\b(?!$)/g, "of")
-      .replace(/\bAnd\b/g, "and");
-  }
-
   function humanChapter(q) {
     if (!q) return "";
     const cands = [q.chapterName, q.chapterTitle, q.topicName, q.topic, q.chapter];
     for (let i = 0; i < cands.length; i++) {
       const c = cleanUiLabel(cands[i]);
-      if (c) return niceChapterLabel(c);
+      if (c) return c;
     }
     return "";
   }
@@ -259,9 +238,9 @@ const QuantrexStrip = (() => {
     // (08 Apr Shift 2) | 08 April Shift 1 | 08-Apr-2024 Shift-2
     if (!out.date || !out.shift) {
       let m = s.match(
-        /\(?\s*(\d{1,2})(?:st|nd|rd|th)?[\s\-/]+([A-Za-z]{3,9})\.?(?:[\s\-/]+(\d{4}))?[\s,]+Shift\s*[-–]?\s*([12])\s*\)?/i
+        /\(?\s*(\d{1,2})(?:st|nd|rd|th)?[\s\-/]+([A-Za-z]{3,9})\.?(?:[\s\-/]+(\d{4}))?\s*[,\s]+Shift\s*[-–]?\s*([12])\s*\)?/i
       ) || s.match(
-        /\b(\d{1,2})(?:st|nd|rd|th)?\s+([A-Za-z]{3,9})\.?(?:\s+(\d{4}))?\s*(?:Online|Offline)?\s*Shift\s*[-–]?\s*([12])\b/i
+        /\b(\d{1,2})(?:st|nd|rd|th)?\s+([A-Za-z]{3,9})\.?\s+(\d{4})?\s*(?:Online|Offline)?\s*Shift\s*[-–]?\s*([12])\b/i
       );
       if (m) {
         if (!out.date) out.date = formatPaperDate(m[1], m[2], m[3] || out.year);
@@ -459,27 +438,36 @@ const QuantrexStrip = (() => {
     if (yearTxt && dateTxt) {
       dateTxt = dateTxt.replace(new RegExp("(^|\\s)" + yearTxt + "(?=\\s|$)", "g"), " ").replace(/\s+/g, " ").trim();
     }
-    const dateShiftOnly = !!(opts.dateShiftOnly || opts.pyqMock);
+    if (examName) {
+      const examTxt = yearTxt ? examName + " " + yearTxt : examName;
+      chips.push(`<span class="qx-paper-chip qx-paper-exam">${logo}<span class="qx-paper-exam-txt">${escHtml(examTxt)}</span></span>`);
+      logo = "";
+    } else if (yearTxt) {
+      chips.push(`<span class="qx-paper-chip qx-paper-exam">${logo}<span class="qx-paper-exam-txt">${escHtml(yearTxt)}</span></span>`);
+      logo = "";
+    }
     if (dateTxt) {
       chips.push(`<span class="qx-paper-chip qx-paper-date">📅 ${escHtml(dateTxt)}</span>`);
     }
+    // Morning / Evening Shift
     if (meta && meta.shift) {
       chips.push(`<span class="qx-paper-chip qx-paper-shift">${escHtml(meta.shift)}</span>`);
     }
-    if (!dateShiftOnly) {
-      if (examName) {
-        const examTxt = yearTxt ? examName + " " + yearTxt : examName;
-        chips.unshift(`<span class="qx-paper-chip qx-paper-exam">${logo}<span class="qx-paper-exam-txt">${escHtml(examTxt)}</span></span>`);
-        logo = "";
-      } else if (yearTxt) {
-        chips.unshift(`<span class="qx-paper-chip qx-paper-exam">${logo}<span class="qx-paper-exam-txt">${escHtml(yearTxt)}</span></span>`);
-        logo = "";
-      }
-      if (meta && meta.mode && !isRawId(meta.mode)) {
-        chips.push(`<span class="qx-paper-chip qx-paper-mode">${escHtml(meta.mode)}</span>`);
-      }
-      if (meta && meta.paper && !isRawId(meta.paper)) {
-        chips.push(`<span class="qx-paper-chip qx-paper-paper">${escHtml(meta.paper)}</span>`);
+    if (meta && meta.mode && !isRawId(meta.mode)) {
+      chips.push(`<span class="qx-paper-chip qx-paper-mode">${escHtml(meta.mode)}</span>`);
+    }
+    if (meta && meta.paper && !isRawId(meta.paper)) {
+      chips.push(`<span class="qx-paper-chip qx-paper-paper">${escHtml(meta.paper)}</span>`);
+    }
+
+    // Difficulty: OFF by default on question chrome (solution panel shows it)
+    if (opts.includeDifficulty === true) {
+      const diff = (typeof qxQuestionDifficulty === "function")
+        ? qxQuestionDifficulty(q)
+        : String((q && (q.difficulty || q.difficultyLevel || q.level)) || "").trim();
+      if (diff) {
+        const dcls = String(diff).toLowerCase().replace(/[^a-z]/g, "") || "medium";
+        chips.push(`<span class="qx-paper-chip qx-paper-diff qx-paper-diff-${escHtml(dcls)}">${escHtml(diff)}</span>`);
       }
     }
 

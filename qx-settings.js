@@ -1,12 +1,13 @@
 /**
- * Quantrex Academy — dedicated mobile Settings screen.
+ * Quantrex Academy — Marks-like Settings (mobile sheet + desktop polish).
+ * qxmd171: sectioned Theme / Text size / Palette / Notifications; Quantrex blue.
  * Additive UX: prefs in localStorage; uses QuantrexTheme + setTestFontScale when present.
  * Does not touch payments, question bank, or book covers.
  */
 (function (global) {
   "use strict";
 
-  var PARITY = "qxeg1";
+  var PARITY = "qxmd172";
   var PREF = {
     push: "qx_pref_push_notif",
     email: "qx_pref_email_notif",
@@ -131,28 +132,41 @@
     if (cssEl) cssEl.remove();
     var css = document.createElement("style");
     css.id = "qxSettingsCss";
-    /* Marks mobile Settings: clean sheet — Push / Email / Edit Profile */
+    /* qxmd171: Marks-like Settings — clear sections, large taps, Quantrex blue; desktop polished */
     css.textContent = [
-      ".qx-settings-page{max-width:480px;margin:0 auto;padding:8px 0 110px;background:var(--card,#fff);min-height:100%}",
-      "html[data-theme=dark] .qx-settings-page{background:#111827}",
-      ".qx-settings-page .qx-set-head{display:flex;align-items:center;justify-content:space-between;padding:16px 18px 12px;border-bottom:1px solid #e5e7eb}",
-      "html[data-theme=dark] .qx-settings-page .qx-set-head{border-bottom-color:#1f2937}",
-      ".qx-settings-page .qx-set-head h1{font-size:22px;font-weight:800;margin:0;color:#0f172a;font-family:inherit}",
+      ".qx-settings-page{max-width:520px;margin:0 auto;padding:0 0 110px;background:var(--bg,#f8fafc);min-height:100%;font-family:inherit}",
+      "html[data-theme=dark] .qx-settings-page{background:#0b1220}",
+      ".qx-settings-page .qx-set-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 18px 14px;border-bottom:1px solid #e2e8f0;background:var(--card,#fff);position:sticky;top:0;z-index:5}",
+      "html[data-theme=dark] .qx-settings-page .qx-set-head{border-bottom-color:#1e293b;background:#111827}",
+      ".qx-settings-page .qx-set-head-text{display:flex;flex-direction:column;gap:2px;min-width:0}",
+      ".qx-settings-page .qx-set-head h1{font-size:22px;font-weight:800;margin:0;color:#0f172a;letter-spacing:-.02em}",
       "html[data-theme=dark] .qx-settings-page .qx-set-head h1{color:#f8fafc}",
-      ".qx-settings-page .qx-set-close{appearance:none;border:0;background:#0f172a;color:#fff;width:36px;height:36px;border-radius:999px;font-size:18px;cursor:pointer;line-height:1}",
+      ".qx-settings-page .qx-set-brand{font-size:11px;font-weight:700;color:#2563eb;letter-spacing:.04em;text-transform:uppercase}",
+      "html[data-theme=dark] .qx-settings-page .qx-set-brand{color:#60a5fa}",
+      ".qx-settings-page .qx-set-close{appearance:none;border:0;background:#0f172a;color:#fff;width:36px;height:36px;border-radius:999px;font-size:18px;cursor:pointer;line-height:1;flex-shrink:0}",
       "html[data-theme=dark] .qx-settings-page .qx-set-close{background:#e5e7eb;color:#111}",
-      ".qx-settings-page .qx-set-list{padding:8px 0}",
-      ".qx-settings-page .qx-set-row{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 18px;background:transparent;border:0;width:100%;text-align:left;min-height:56px}",
+      ".qx-set-sec{margin:14px 14px 0;background:var(--card,#fff);border:1px solid #e2e8f0;border-radius:16px;overflow:hidden;box-shadow:0 1px 3px rgba(15,23,42,.04)}",
+      "html[data-theme=dark] .qx-set-sec{background:#111827;border-color:#1e293b;box-shadow:none}",
+      ".qx-set-sec-h{padding:12px 16px 4px;font-size:12px;font-weight:800;color:#2563eb;letter-spacing:.04em;text-transform:uppercase}",
+      "html[data-theme=dark] .qx-set-sec-h{color:#60a5fa}",
+      ".qx-set-sec-sub{padding:0 16px 8px;font-size:12px;color:#64748b;line-height:1.35;margin:0}",
+      "html[data-theme=dark] .qx-set-sec-sub{color:#94a3b8}",
+      ".qx-settings-page .qx-set-list{padding:0}",
+      ".qx-settings-page .qx-set-row{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 16px;background:transparent;border:0;border-top:1px solid #f1f5f9;width:100%;text-align:left;min-height:56px;-webkit-tap-highlight-color:transparent;touch-action:manipulation}",
+      ".qx-settings-page .qx-set-sec > .qx-set-row:first-of-type,.qx-settings-page .qx-set-sec .qx-set-list > .qx-set-row:first-child{border-top:0}",
+      "html[data-theme=dark] .qx-settings-page .qx-set-row{border-top-color:#1e293b}",
       ".qx-settings-page .qx-set-lab{font-size:16px;font-weight:600;color:#0f172a}",
       "html[data-theme=dark] .qx-settings-page .qx-set-lab{color:#f1f5f9}",
-      ".qx-settings-page .qx-set-hint{display:none}",
-      ".qx-set-toggle{appearance:none;-webkit-appearance:none;width:48px;height:28px;border-radius:999px;background:#cbd5e1;border:0;position:relative;cursor:pointer;flex-shrink:0;transition:background .2s}",
-      ".qx-set-toggle::after{content:'';position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.2);transition:transform .2s}",
+      ".qx-settings-page .qx-set-hint{display:block;font-size:12px;font-weight:500;color:#64748b;margin-top:2px}",
+      "html[data-theme=dark] .qx-settings-page .qx-set-hint{color:#94a3b8}",
+      ".qx-set-lab-wrap{display:flex;flex-direction:column;gap:2px;min-width:0}",
+      ".qx-set-toggle{appearance:none;-webkit-appearance:none;width:52px;height:30px;border-radius:999px;background:#cbd5e1;border:0;position:relative;cursor:pointer;flex-shrink:0;transition:background .2s}",
+      ".qx-set-toggle::after{content:'';position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.2);transition:transform .2s}",
       ".qx-set-toggle.on{background:#2563eb}",
-      ".qx-set-toggle.on::after{transform:translateX(20px)}",
+      ".qx-set-toggle.on::after{transform:translateX(22px)}",
       ".qx-set-edit-ico{width:22px;height:22px;color:#64748b;flex-shrink:0}",
       ".qx-set-profile-panel{display:none;padding:8px 18px 24px}",
-      ".qx-settings-page.is-editing .qx-set-list{display:none}",
+      ".qx-settings-page.is-editing .qx-set-body{display:none}",
       ".qx-settings-page.is-editing .qx-set-profile-panel{display:block}",
       ".qx-set-profile-panel h2{font-size:18px;margin:8px 0 14px;color:#0f172a}",
       "html[data-theme=dark] .qx-set-profile-panel h2{color:#f8fafc}",
@@ -162,30 +176,40 @@
       "html[data-theme=dark] .qx-set-form input,html[data-theme=dark] .qx-set-form select{background:#0f172a;border-color:#334155;color:#e2e8f0}",
       ".qx-set-actions{display:flex;gap:8px;margin-top:8px}",
       ".qx-set-actions .btn-primary,.qx-set-actions .btn-soft{flex:1;min-width:120px}",
-      ".qx-set-extra{margin-top:8px;padding:0 18px 8px;border-top:1px solid #f1f5f9}",
-      "html[data-theme=dark] .qx-set-extra{border-top-color:#1f2937}",
-      ".qx-set-extra .qx-set-row{padding:14px 0}",
-      ".qx-set-seg{display:inline-flex;background:#f1f5f9;border-radius:10px;padding:3px;gap:2px}",
+      ".qx-set-actions .btn-primary{background:#2563eb;border-color:#2563eb}",
+      ".qx-set-seg{display:inline-flex;background:#f1f5f9;border-radius:12px;padding:3px;gap:2px;flex-shrink:0}",
       "html[data-theme=dark] .qx-set-seg{background:#0f172a}",
-      ".qx-set-seg button{border:0;background:transparent;padding:7px 10px;border-radius:8px;font-size:12px;font-weight:700;color:#64748b;cursor:pointer;min-width:0}","@media (max-width:420px){.qx-set-seg button{padding:6px 8px;font-size:11px}}",
-      ".qx-set-seg button.on{background:#fff;color:#0f172a;box-shadow:0 1px 2px rgba(0,0,0,.08)}",
-      "html[data-theme=dark] .qx-set-seg button.on{background:#1e293b;color:#f1f5f9}",
-      ".qx-set-exam-sec{padding:14px 18px 18px;border-bottom:1px solid #e5e7eb}",
-      "html[data-theme=dark] .qx-set-exam-sec{border-bottom-color:#1f2937}",
-      ".qx-set-exam-sec h2{font-size:15px;font-weight:800;margin:0 0 4px;color:#0f172a;letter-spacing:-.01em}",
-      "html[data-theme=dark] .qx-set-exam-sec h2{color:#f8fafc}",
-      ".qx-set-exam-sec .qx-set-exam-sub{font-size:12px;color:#64748b;margin:0 0 12px;line-height:1.35}",
-      ".qx-set-exam-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}",
-      ".qx-set-exam-card{appearance:none;border:2px solid #e2e8f0;background:#f8fafc;border-radius:16px;padding:16px 12px;min-height:88px;cursor:pointer;text-align:left;font:inherit;display:flex;flex-direction:column;gap:4px;transition:border-color .12s,box-shadow .12s,background .12s;-webkit-tap-highlight-color:transparent;touch-action:manipulation}",
+      ".qx-set-seg button{border:0;background:transparent;padding:8px 12px;border-radius:10px;font-size:13px;font-weight:700;color:#64748b;cursor:pointer;min-width:0;min-height:36px;-webkit-tap-highlight-color:transparent}",
+      "@media (max-width:420px){.qx-set-seg button{padding:7px 9px;font-size:12px}}",
+      ".qx-set-seg button.on{background:#2563eb;color:#fff;box-shadow:0 1px 3px rgba(37,99,235,.35)}",
+      "html[data-theme=dark] .qx-set-seg button.on{background:#2563eb;color:#fff}",
+      ".qx-set-exam-sec{padding:4px 0 12px}",
+      ".qx-set-exam-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:4px 16px 14px}",
+      ".qx-set-exam-card{appearance:none;border:2px solid #e2e8f0;background:#f8fafc;border-radius:14px;padding:14px 12px;min-height:84px;cursor:pointer;text-align:left;font:inherit;display:flex;flex-direction:column;gap:4px;transition:border-color .12s,box-shadow .12s,background .12s;-webkit-tap-highlight-color:transparent;touch-action:manipulation}",
       "html[data-theme=dark] .qx-set-exam-card{background:#0f172a;border-color:#334155;color:#e2e8f0}",
       ".qx-set-exam-card:active{transform:scale(.98)}",
-      ".qx-set-exam-card.on{border-color:#0d9488;background:linear-gradient(135deg,rgba(13,148,136,.12),rgba(99,102,241,.1));box-shadow:0 4px 14px rgba(13,148,136,.18)}",
-      ".qx-set-exam-card .qx-set-exam-ic{font-size:22px;line-height:1}",
-      ".qx-set-exam-card strong{font-size:14px;font-weight:800;color:#0f172a}",
+      ".qx-set-exam-card.on{border-color:#2563eb;background:linear-gradient(135deg,rgba(37,99,235,.1),rgba(37,99,235,.04));box-shadow:0 4px 14px rgba(37,99,235,.16)}",
+      ".qx-set-exam-card .qx-set-exam-ic{font-size:20px;line-height:1}",
+      ".qx-set-exam-card strong{font-size:13px;font-weight:800;color:#0f172a}",
       "html[data-theme=dark] .qx-set-exam-card strong{color:#f1f5f9}",
       ".qx-set-exam-card small{font-size:11px;font-weight:600;color:#64748b}",
-      ".qx-settings-page.is-editing .qx-set-exam-sec{display:none}",
-      "@media (max-width:720px){.qx-settings-page{padding-bottom:120px}.qx-set-exam-card{min-height:96px;padding:18px 14px}}"
+      ".qx-settings-page.is-editing .qx-set-exam-wrap{display:none}",
+      ".qx-set-foot-note{padding:16px 18px 8px;font-size:11px;color:#94a3b8;text-align:center}",
+      /* Desktop / website polish */
+      "@media (min-width:721px){",
+      ".qx-settings-page{max-width:720px;padding:24px 20px 80px;background:transparent}",
+      ".qx-settings-page .qx-set-head{border-radius:16px 16px 0 0;border:1px solid #e2e8f0;border-bottom:1px solid #e2e8f0;position:static}",
+      "html[data-theme=dark] .qx-settings-page .qx-set-head{border-color:#1e293b}",
+      ".qx-set-body{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}",
+      ".qx-set-exam-wrap,.qx-set-sec.qx-set-span{grid-column:1/-1}",
+      ".qx-set-sec{margin:0;border-radius:16px}",
+      ".qx-settings-page .qx-set-row{min-height:60px;padding:18px 18px}",
+      ".qx-set-exam-grid{grid-template-columns:repeat(4,1fr);gap:12px}",
+      ".qx-set-exam-card{min-height:100px;padding:18px 14px}",
+      ".qx-set-profile-panel{max-width:480px;margin:0 auto;padding:24px;background:var(--card,#fff);border:1px solid #e2e8f0;border-radius:16px}",
+      "html[data-theme=dark] .qx-set-profile-panel{background:#111827;border-color:#1e293b}",
+      "}",
+      "@media (max-width:720px){.qx-settings-page{padding-bottom:120px}.qx-set-exam-card{min-height:92px;padding:16px 12px}.qx-set-sec{margin:12px 12px 0}}"
     ].join("");
     document.head.appendChild(css);
   }
@@ -232,10 +256,10 @@
       );
     }).join("");
     return (
-      '<div class="qx-set-exam-sec" id="qxSetExamSec">' +
-      "<h2>Choose exam track</h2>" +
-      '<p class="qx-set-exam-sub">Pick your track — Engineering · Medical · Defence · Academic. Changes home, PYQ &amp; tests.</p>' +
-      '<div class="qx-set-exam-grid" role="group" aria-label="Choose exam track">' + cards + "</div></div>"
+      '<div class="qx-set-sec qx-set-exam-wrap qx-set-span" id="qxSetExamSec">' +
+      '<div class="qx-set-sec-h">Exam track</div>' +
+      '<p class="qx-set-sec-sub">Pick your track — changes home, PYQ &amp; tests.</p>' +
+      '<div class="qx-set-exam-sec"><div class="qx-set-exam-grid" role="group" aria-label="Choose exam track">' + cards + "</div></div></div>"
     );
   }
 
@@ -250,34 +274,63 @@
     var cls = p.className || lsGet("qx_student_class", "") || "";
 
     return (
-      '<div class="qx-settings-page qx-marks-settings" id="qxSettingsRoot">' +
-      '<div class="qx-set-head"><h1>Settings</h1>' +
+      '<div class="qx-settings-page qx-qxmd-settings qx-qxmd171-settings" id="qxSettingsRoot">' +
+      '<div class="qx-set-head"><div class="qx-set-head-text">' +
+      '<span class="qx-set-brand">Quantrex Academy</span>' +
+      "<h1>Settings</h1></div>" +
       '<button type="button" class="qx-set-close" id="qxSetBack" title="Close" aria-label="Close">×</button></div>' +
 
-      /* Choose exam track — impossible to miss on phone */
+      '<div class="qx-set-body" id="qxSetBody">' +
       examTrackHtml() +
 
-      /* Marks-exact primary list */
-      '<div class="qx-set-list" id="qxSetMainList">' +
-      '<div class="qx-set-row"><span class="qx-set-lab">Push Notifications</span>' +
+      /* Notifications — Marks primary list */
+      '<div class="qx-set-sec">' +
+      '<div class="qx-set-sec-h">Notifications</div>' +
+      '<div class="qx-set-list">' +
+      '<div class="qx-set-row"><div class="qx-set-lab-wrap"><span class="qx-set-lab">Push Notifications</span>' +
+      '<span class="qx-set-hint">Practice reminders &amp; updates</span></div>' +
       toggleHtml("qxSetPush", getPush()) + "</div>" +
-      '<div class="qx-set-row"><span class="qx-set-lab">Email Notifications</span>' +
+      '<div class="qx-set-row"><div class="qx-set-lab-wrap"><span class="qx-set-lab">Email Notifications</span>' +
+      '<span class="qx-set-hint">Digest &amp; important alerts</span></div>' +
       toggleHtml("qxSetEmail", getEmail()) + "</div>" +
-      '<button type="button" class="qx-set-row" id="qxSetEditProfile">' +
-      '<span class="qx-set-lab">Edit Profile</span>' + pencilSvg() +
-      "</button>" +
+      "</div></div>" +
 
-      /* compact extras (ExamGoal-like readability) under same sheet */
-      '<div class="qx-set-extra">' +
-      '<div class="qx-set-row"><span class="qx-set-lab">Theme</span>' +
+      /* Appearance */
+      '<div class="qx-set-sec">' +
+      '<div class="qx-set-sec-h">Appearance</div>' +
+      '<div class="qx-set-list">' +
+      '<div class="qx-set-row"><div class="qx-set-lab-wrap"><span class="qx-set-lab">Theme</span>' +
+      '<span class="qx-set-hint">Light or dark app theme</span></div>' +
       segHtml("qxSetTheme", theme, [{ v: "light", l: "Light" }, { v: "dark", l: "Dark" }]) +
       "</div>" +
-      '<div class="qx-set-row"><span class="qx-set-lab">Question font</span>' +
+      '<div class="qx-set-row"><div class="qx-set-lab-wrap"><span class="qx-set-lab">Text size</span>' +
+      '<span class="qx-set-hint">Question &amp; solution font</span></div>' +
       segHtml("qxSetFont", font, [{ v: "small", l: "S" }, { v: "medium", l: "M" }, { v: "large", l: "L" }]) +
       "</div>" +
-      '<div class="qx-set-row"><span class="qx-set-lab">Practice palette</span>' +
+      "</div></div>" +
+
+      /* Practice */
+      '<div class="qx-set-sec">' +
+      '<div class="qx-set-sec-h">Practice</div>' +
+      '<div class="qx-set-list">' +
+      '<div class="qx-set-row"><div class="qx-set-lab-wrap"><span class="qx-set-lab">Question palette</span>' +
+      '<span class="qx-set-hint">Right sidebar, top bar, or both</span></div>' +
       segHtml("qxSetPalette", getPaletteMode(), [{ v: "side", l: "Right" }, { v: "strip", l: "Top" }, { v: "both", l: "Both" }]) +
-      "</div></div></div>" +
+      "</div>" +
+      "</div></div>" +
+
+      /* Account */
+      '<div class="qx-set-sec qx-set-span">' +
+      '<div class="qx-set-sec-h">Account</div>' +
+      '<div class="qx-set-list">' +
+      '<button type="button" class="qx-set-row" id="qxSetEditProfile">' +
+      '<div class="qx-set-lab-wrap"><span class="qx-set-lab">Edit Profile</span>' +
+      '<span class="qx-set-hint">Name, exam, class, target year</span></div>' + pencilSvg() +
+      "</button>" +
+      "</div></div>" +
+
+      '<p class="qx-set-foot-note qx-set-span">Quantrex Academy · English UI · Free access</p>' +
+      "</div>" +
 
       /* Edit Profile panel (Marks Edit >) */
       '<div class="qx-set-profile-panel" id="qxSetProfilePanel">' +

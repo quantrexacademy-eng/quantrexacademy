@@ -2057,7 +2057,7 @@ async function ensureCpyqbChapterQuestions(examSlug, subject, chapter, meta, opt
         }
       }
     } catch (e) {
-      console.warn("Marks chapter list fail", e);
+      console.warn("Chapter list fail", e);
     }
   }
 
@@ -2368,8 +2368,8 @@ function renderChapterHubPage(exam, p, meta, qs, stats) {
     const notesPayload = mg("quickconcepts", { step: "subjects" });
     const videoPayload = mg("quickconcepts", { step: "subjects" });
     const revisionPayload = mg("quickconcepts", { step: "subjects" });
+    /* qxmd172: no Concept Videos — Quantrex practice/notes/formula/revision only */
     const resourceMods = [
-      { id: "video", title: "Concept Video(s)", sub: "Chapter explanation videos", payload: videoPayload, soon: false },
       { id: "notes", title: "Notes (PDF)", sub: "Downloadable chapter notes", payload: notesPayload, soon: false },
       { id: "formula", title: "Formula Sheet (PDF)", sub: "Quick-reference formulas", payload: formulaPayload, soon: false },
       { id: "revision", title: "Revision / Quick Concepts", sub: "Last-minute revision notes", payload: revisionPayload, soon: false }
@@ -2415,7 +2415,7 @@ function renderChapterHubPage(exam, p, meta, qs, stats) {
           <p>JEE (Advanced) · ${p.subject} · ${pyqCount} PYQs</p>
         </div></div>
 
-        <h3 class="qx-all-topics-label">Study Resources <small style="font-weight:600;opacity:.75">· Video · PDF · Formula</small></h3>
+        <h3 class="qx-all-topics-label">Study Resources <small style="font-weight:600;opacity:.75">· Notes · PDF · Formula</small></h3>
         <div class="qx-module-grid qx-adv-resource-grid">${resourceCards}</div>
 
         ${renderJeeAdvTypeLevelCards(p, typeBuckets)}
@@ -2442,7 +2442,7 @@ function renderChapterHubPage(exam, p, meta, qs, stats) {
     const revisionPayload = mg("quickconcepts", { step: "subjects" });
     const formulaPayload = mg("formula", { step: "chapters", subject: p.subject });
     const notesPayload = mg("quickconcepts", { step: "subjects" });
-    const videoPayload = mg("quickconcepts", { step: "subjects" });
+    const videoPayload = null; /* qxmd172: videos excluded */
     const hub = QxRedesign.renderChapterHub({
       title: p.chapter,
       subtitle: `${exam.title} · ${p.subject}${pyqCount ? ` · ${pyqCount} PYQs` : ""}${topicCount ? ` · ${topicCount} Topics` : ""}`,
@@ -2738,7 +2738,7 @@ async function viewCpyqb(payload) {
       const qsN = s.count || 0;
       const subMeta = qsN
         ? `${chN} chapters · ${qsN.toLocaleString()} qs`
-        : `${chN} chapters · Marks syllabus`;
+        : `${chN} chapters · Quantrex syllabus`;
       const logoIc = typeof QuantrexExamLogos !== "undefined" && QuantrexExamLogos.subjectHtml
         ? QuantrexExamLogos.subjectHtml(s.name, 36)
         : "";
@@ -3162,7 +3162,7 @@ async function viewCpyqb(payload) {
   };
   return `${topbar(p.chapter, `${exam.title === "JEE Advanced" || p.exam === "jee_advanced" ? "JEE (Advanced)" : exam.title} · ${modeLabel}`)}${bc}
     ${filterNote}
-    ${p.levelId === "multipleCorrect" ? `<p class="result-count" style="color:#b45309;font-weight:600">Multi Correct — select one or more options (A–D), Marks style.</p>` : ""}
+    ${p.levelId === "multipleCorrect" ? `<p class="result-count" style="color:#b45309;font-weight:600">Multi Correct — select one or more options (A–D).</p>` : ""}
     ${p.levelId === "columnMatch" ? `<p class="result-count">Column Matching — choose the correct List-I ↔ List-II option.</p>` : ""}
     ${qs.length ? renderQList(qs, _listPage, testMeta) : `<div class="empty">No questions in this type for this chapter.</div>`}`;
 }
@@ -6535,7 +6535,7 @@ function pyqSubjectWiseHint(slug) {
     mht_cet: "Subject-wise · Mathematics → Physics → Chemistry",
     bitsat: "Subject-wise · Mathematics → Physics → Chemistry → English"
   };
-  return hints[slug] || "Subject-wise · as in Marks paper";
+  return hints[slug] || "Subject-wise · as in the real paper";
 }
 
 /** Paper title from Marks source string — never force "JEE Main" on other exams */
@@ -7351,32 +7351,32 @@ function tryIrodovGate() {
 }
 
 const QX_BOOKS_CATALOG = {
-  title: "Most Imp Digital Books for IIT-JEE",
-  subtitle: "No need to buy bulky physical books. Get them all in one place!",
+  title: "Quantrex Digital Books — Engineering",
+  subtitle: "Expert-picked question banks — practice on Quantrex Academy",
   engineering: [
     { id: "6a91185f41ab5aba084f4d30", title: "Most Important PYQ Based Questions", cover: "assets/book-covers/qx-pyq-important.jpg", subject: "PCM", badge: "Quantrex PYQ", exam: "JEE Main 2027", isComingSoon: false, bankSlug: "jee_main", redirectType: "subject", moduleId: "6a916235cb18ffc9d00d5aa1", count: 4289, type: "exam", tag: "PYQ 2022–2026" },
     { id: "6a0addba4b032b031e049a36", title: "Concepts Of Physics MCQ Edition [Volume 2]", cover: "assets/book-covers/hc-verma-v2.jpg", subject: "Physics", badge: "HC Verma", exam: "Physics", isComingSoon: false, bankSlug: "jee_main", redirectType: "module", moduleId: null, count: 1854, type: "exam" },
     { id: "69f9cc23681eab6d6021a4d1", title: "Concepts Of Physics MCQ Edition [Volume 1]", cover: "assets/book-covers/hc-verma-v1.jpg", subject: "Physics", badge: "HC Verma", exam: "Physics", isComingSoon: false, bankSlug: "jee_main", redirectType: "module", moduleId: null, count: 1853, type: "exam" },
     { id: "6a4ce383c59a7b462185330f", title: "Fundamentals of Organic Chemistry", cover: "assets/book-covers/organic-chemistry.jpg", subject: "Chemistry", badge: "Organic", exam: "JEE Main", isComingSoon: false, bankSlug: "jee_main", redirectType: "subject", moduleId: "6a4e21aea2f0a1af5a74e192", count: 1151, type: "exam" },
-    { id: "69736c8362b916d85e52cd1b", title: "BITSAT English and Logical Reasoning Prep Guide", cover: "assets/book-covers/bitsat-english-lr.jpg", subject: "English + LR", badge: "BITSAT", exam: "BITSAT", isComingSoon: false, bankSlug: "jee_main", redirectType: "subject", moduleId: "69736e5def12da848f4c24f2", count: 1749, type: "exam" },
+    { id: "69736c8362b916d85e52cd1b", title: "English & Reasoning Practice Guide (BITSAT)", cover: "assets/book-covers/bitsat-english-lr.jpg", subject: "English + LR", badge: "BITSAT", exam: "BITSAT", isComingSoon: false, bankSlug: "jee_main", redirectType: "subject", moduleId: "69736e5def12da848f4c24f2", count: 1749, type: "exam" },
     { id: "69cfb5366ecf5579037d96a4", title: "Top IE IRODOV Physics Problems", cover: "assets/book-covers/irodov.jpg", subject: "Physics", badge: "Irodov", exam: "Advanced Physics", isComingSoon: false, bankSlug: "jee_main", redirectType: "subject", moduleId: "69d34798097639b3bf3ea47a", count: 158, type: "exam" },
-    { id: "68f1ce4cc729e5251bd00430", title: "Most Important Selected Qs for JEE Advanced", cover: "assets/book-covers/rank-booster.jpg", subject: "PCM", badge: "Rank Booster", exam: "JEE Advanced", isComingSoon: false, bankSlug: "jee_advanced", redirectType: "module", moduleId: null, count: 2793, type: "exam" },
+    { id: "68f1ce4cc729e5251bd00430", title: "IIT-JEE Rank Booster — Advanced Questions", cover: "assets/book-covers/rank-booster.jpg", subject: "PCM", badge: "Rank Booster", exam: "JEE Advanced", isComingSoon: false, bankSlug: "jee_advanced", redirectType: "module", moduleId: null, count: 2793, type: "exam" },
     { id: "68946f70ebd145663de38728", title: "99 Percentile Qs Bank for JEE Main", cover: "assets/book-covers/99-percentile.jpg", subject: "PCM", badge: "99 Percentile", exam: "High Yield", isComingSoon: false, bankSlug: "jee_main", redirectType: "subject", moduleId: "689470b46cc631f0fbe63f08", count: 3139, type: "exam" },
-    { id: "6894d29d3156b1f3ca5ad0be", title: "Highly selective Backlog Qs for JEE Main", cover: "assets/book-covers/backlog-booster.jpg", subject: "PCM", badge: "Backlog Booster", exam: "Selective PYQs", isComingSoon: false, bankSlug: "jee_main", redirectType: "subject", moduleId: "6894d2f5d0af19a8bc64156f", count: 760, type: "exam" },
-    { id: "69048808ef55966cf1d71f1d", title: "Olympiad workbook", cover: "assets/book-covers/olympiad.jpg", subject: "PCM", badge: "Olympiad", exam: "Olympiad", isComingSoon: false, bankSlug: "jee_main", redirectType: "module", moduleId: null, count: 1512, type: "exam" },
+    { id: "6894d29d3156b1f3ca5ad0be", title: "JEE Main Backlog Booster", cover: "assets/book-covers/backlog-booster.jpg", subject: "PCM", badge: "Backlog Booster", exam: "Selective PYQs", isComingSoon: false, bankSlug: "jee_main", redirectType: "subject", moduleId: "6894d2f5d0af19a8bc64156f", count: 760, type: "exam" },
+    { id: "69048808ef55966cf1d71f1d", title: "Olympiad Workbook", cover: "assets/book-covers/olympiad.jpg", subject: "PCM", badge: "Olympiad", exam: "Olympiad", isComingSoon: false, bankSlug: "jee_main", redirectType: "module", moduleId: null, count: 1512, type: "exam" },
     { id: "a1b2c3d4e5f6010203040508", title: "Black Book Advanced Problems in Mathematics", cover: "assets/book-covers/black-book-math.png", subject: "Mathematics", badge: "Black Book", exam: "JEE Advanced", isComingSoon: false, bankSlug: "jee_advanced", redirectType: "module", moduleId: null, count: 1512, type: "exam", tag: "Maths" },
     { id: "a1b2c3d4e5f6010203040506", title: "Skills in Mathematics — Differential Calculus", cover: "assets/book-covers/skills-diff-calculus.png", subject: "Mathematics", badge: "Amit M Agarwal", exam: "JEE", isComingSoon: true, count: 0, type: "exam" },
     { id: "a1b2c3d4e5f6010203040507", title: "Skills in Mathematics — Integral Calculus", cover: "assets/book-covers/skills-integral-calculus.png", subject: "Mathematics", badge: "Amit M Agarwal", exam: "JEE", isComingSoon: true, count: 0, type: "exam" }
   ],
   medical: [
     { id: "6a91185f41ab5aba084f4d30", title: "Most Important PYQ NEET 2027", cover: "assets/book-covers/qx-pyq-important.jpg", description: "Most Important PYQ Based Questions for NEET 2027", isComingSoon: false, subject: "PCB", badge: "Quantrex PYQ", exam: "NEET", type: "exam", tag: "PYQ 2022–2026", bankSlug: "jee_main", redirectType: "subject", moduleId: "6a916235cb18ffc9d00d5aa1", count: 4289 },
-    { id: "6a507da9107f81233d9985c1", title: "Fundamentals of Organic Chemistry", cover: "assets/book-covers/organic-chemistry.jpg", description: "for NEET 2027", isComingSoon: false, subject: "Chemistry", badge: "Organic", exam: "NEET", type: "exam", count: 1151 },
-    { id: "6a0adb714b032b031e049a34", title: "Concepts Of Physics MCQ Edition [Volume 2]", cover: "assets/book-covers/hc-verma-v2.jpg", description: "Objective I · II · Exercises", isComingSoon: false, subject: "Physics", badge: "HC Verma", exam: "NEET", type: "exam", count: 1854 },
-    { id: "69cfb4af611e9b07b5d55e79", title: "Physics Top Irodov Problems", cover: "assets/book-covers/irodov.jpg", description: "MCQs for NEET", isComingSoon: false, subject: "Physics", badge: "Irodov", exam: "NEET", type: "exam", count: 158 },
-    { id: "69a684ac213ecfafb0629c0d", title: "Biology 360/360 for NEET 2027", cover: "assets/book-covers/biology-360.jpg", description: "Botany + Zoology complete", isComingSoon: false, subject: "Biology", badge: "NEET 2027", exam: "NEET", type: "exam", count: 17415 },
-    { id: "69f9ccfa011347df7bce2a38", title: "Concepts Of Physics MCQ Edition [Volume 1]", cover: "assets/book-covers/hc-verma-v1.jpg", description: "Objective I · II · Exercises", isComingSoon: false, subject: "Physics", badge: "HC Verma", exam: "NEET", type: "exam", count: 1853 },
-    { id: "69a6ea53213ecfafb0629c18", title: "Top 500 JEE Main PYQs for NEET 2027", cover: "assets/book-covers/top500-physics.jpg", description: "Physics", isComingSoon: false, subject: "Physics", badge: "Top 500", exam: "NEET", type: "exam", count: 500 },
-    { id: "69a6eaf1213ecfafb0629c19", title: "Top 500 JEE Main PYQs for NEET 2027", cover: "assets/book-covers/top500-chemistry.jpg", description: "Chemistry", isComingSoon: false, subject: "Chemistry", badge: "Top 500", exam: "NEET", type: "exam", count: 500 }
+    { id: "6a507da9107f81233d9985c1", title: "Fundamentals of Organic Chemistry", cover: "assets/book-covers/organic-chemistry.jpg", description: "for NEET 2027", isComingSoon: false, subject: "Chemistry", badge: "Organic", exam: "NEET", type: "exam", count: 1151, aliasId: "6a4ce383c59a7b462185330f" },
+    { id: "6a0adb714b032b031e049a34", title: "Concepts Of Physics MCQ Edition [Volume 2]", cover: "assets/book-covers/hc-verma-v2.jpg", description: "Objective I · II · Exercises", isComingSoon: false, subject: "Physics", badge: "HC Verma", exam: "NEET", type: "exam", count: 1854, aliasId: "6a0addba4b032b031e049a36" },
+    { id: "69cfb4af611e9b07b5d55e79", title: "Physics Top Irodov Problems", cover: "assets/book-covers/irodov.jpg", description: "MCQs for NEET", isComingSoon: false, subject: "Physics", badge: "Irodov", exam: "NEET", type: "exam", count: 158, aliasId: "69cfb5366ecf5579037d96a4" },
+    { id: "69a684ac213ecfafb0629c0d", title: "Biology 360/360 for NEET 2027", cover: "assets/book-covers/biology-360.jpg", description: "Botany + Zoology complete", isComingSoon: false, subject: "Biology", badge: "NEET 2027", exam: "NEET", type: "exam", count: 17415, bankFallback: "neet" },
+    { id: "69f9ccfa011347df7bce2a38", title: "Concepts Of Physics MCQ Edition [Volume 1]", cover: "assets/book-covers/hc-verma-v1.jpg", description: "Objective I · II · Exercises", isComingSoon: false, subject: "Physics", badge: "HC Verma", exam: "NEET", type: "exam", count: 1853, aliasId: "69f9cc23681eab6d6021a4d1" },
+    { id: "69a6ea53213ecfafb0629c18", title: "Top 500 JEE Main PYQs for NEET 2027 — Physics", cover: "assets/book-covers/top500-physics.jpg", description: "Physics", isComingSoon: false, subject: "Physics", badge: "Top 500", exam: "NEET", type: "exam", count: 500, bankFallback: "jee_main" },
+    { id: "69a6eaf1213ecfafb0629c19", title: "Top 500 JEE Main PYQs for NEET 2027 — Chemistry", cover: "assets/book-covers/top500-chemistry.jpg", description: "Chemistry", isComingSoon: false, subject: "Chemistry", badge: "Top 500", exam: "NEET", type: "exam", count: 500, bankFallback: "jee_main" }
   ],
   curated: [
     { id: "67656ccf18ff438b6c18cc4c", title: "Must Do Top Qs of JEE Main 2024", cover: "assets/book-covers/must-do-2024.jpg", subject: "PCM", badge: "PYQ 2024", exam: "JEE Main", isComingSoon: false, bankSlug: "jee_main", count: 490, type: "curated", tag: "New" },
@@ -7520,10 +7520,10 @@ async function viewBooks(payload) {
 
     if (isMed) {
       // qxmd170: MIPYQ NEET 2027 first in Recommended + all 8 in All Books grid
-      const recIds = ["6a91185f41ab5aba084f4d30", "6a507da9107f81233d9985c1", "6a0adb714b032b031e049a34", "69cfb4af611e9b07b5d55e79"];
+      const recIds = ["6a91185f41ab5aba084f4d30", "69a684ac213ecfafb0629c0d", "6a507da9107f81233d9985c1", "6a0adb714b032b031e049a34", "69cfb4af611e9b07b5d55e79", "69a6ea53213ecfafb0629c18"];
       const rec = recIds.map((id) => examBooks.find((b) => b.id === id)).filter(Boolean);
       const recCards = rec.map((b) => { try { return renderCard({ ...b, type: b.type || "exam" }); } catch (_) { return ""; } }).join("");
-      return `${topbar("Most Important Digital Books", "No need to buy bulky physical books. Get them all in one place!")}
+      return `${topbar("Quantrex Digital Books — NEET", "Expert-picked NEET books — practice on Quantrex Academy")}
         <div class="qx-books-lib">
           <section class="qx-books-lib-sec">
             <h3>Recommended for You</h3>
@@ -7536,9 +7536,22 @@ async function viewBooks(payload) {
         </div>`;
     }
 
-    return `${topbar(title, subtitle)}
-      ${countNote || '<p class="sec-desc">Tap a cover to open — each book shows its own questions only.</p>'}
-      <div class="books-grid">${bookCards || '<div class="empty">No digital books for this exam yet. <button type="button" class="btn-soft" onclick="resetBooksCache();go(\'books\')">Retry</button></div>'}</div>`;
+    /* qxmd172: Engineering Recommended + All (Marks content parity, Quantrex brand) */
+    const engRecIds = ["6a91185f41ab5aba084f4d30", "6a4ce383c59a7b462185330f", "6a0addba4b032b031e049a36", "69f9cc23681eab6d6021a4d1", "69cfb5366ecf5579037d96a4", "68f1ce4cc729e5251bd00430"];
+    const engRec = engRecIds.map((id) => examBooks.find((b) => b.id === id)).filter(Boolean);
+    const engRecCards = engRec.map((b) => { try { return renderCard({ ...b, type: b.type || "exam" }); } catch (_) { return ""; } }).join("");
+    return `${topbar(title || "Quantrex Digital Books — Engineering", subtitle)}
+      ${countNote || ""}
+      <div class="qx-books-lib">
+        <section class="qx-books-lib-sec">
+          <h3>Recommended for You</h3>
+          <div class="books-scroll">${engRecCards || bookCards}</div>
+        </section>
+        <section class="qx-books-lib-sec">
+          <h3>All Books</h3>
+          <div class="books-grid">${bookCards || '<div class="empty">No digital books for this exam yet. <button type="button" class="btn-soft" onclick="resetBooksCache();go(\'books\')">Retry</button></div>'}</div>
+        </section>
+      </div>`;
   }
 
   let nav = null;

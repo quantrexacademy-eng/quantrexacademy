@@ -1,6 +1,6 @@
 {
-  "title": "Most Imp Digital Books for IIT-JEE",
-  "subtitle": "No need to buy bulky physical books. Get them all in one place!",
+  "title": "Quantrex Digital Books — Engineering",
+  "subtitle": "Expert-picked question banks — practice on Quantrex Academy",
   "engineering": [
     {
       "id": "6a91185f41ab5aba084f4d30",
@@ -61,7 +61,7 @@
     },
     {
       "id": "69736c8362b916d85e52cd1b",
-      "title": "BITSAT English and Logical Reasoning Prep Guide",
+      "title": "English & Reasoning Practice Guide (BITSAT)",
       "cover": "assets/book-covers/bitsat-english-lr.jpg",
       "subject": "English + LR",
       "badge": "BITSAT",
@@ -89,7 +89,7 @@
     },
     {
       "id": "68f1ce4cc729e5251bd00430",
-      "title": "Most Important Selected Qs for JEE Advanced",
+      "title": "IIT-JEE Rank Booster — Advanced Questions",
       "cover": "assets/book-covers/rank-booster.jpg",
       "subject": "PCM",
       "badge": "Rank Booster",
@@ -161,7 +161,7 @@
     },
     {
       "id": "6894d29d3156b1f3ca5ad0be",
-      "title": "Highly selective Backlog Qs for JEE Main",
+      "title": "JEE Main Backlog Booster",
       "cover": "assets/book-covers/backlog-booster.jpg",
       "subject": "PCM",
       "badge": "Backlog Booster",
@@ -175,7 +175,7 @@
     },
     {
       "id": "69048808ef55966cf1d71f1d",
-      "title": "Olympiad workbook",
+      "title": "Olympiad Workbook",
       "cover": "assets/book-covers/olympiad.jpg",
       "subject": "PCM",
       "badge": "Olympiad",
@@ -215,7 +215,8 @@
       "badge": "Organic",
       "exam": "NEET",
       "type": "exam",
-      "count": 1151
+      "count": 1151,
+      "aliasId": "6a4ce383c59a7b462185330f"
     },
     {
       "id": "6a0adb714b032b031e049a34",
@@ -227,7 +228,8 @@
       "badge": "HC Verma",
       "exam": "NEET",
       "type": "exam",
-      "count": 1854
+      "count": 1854,
+      "aliasId": "6a0addba4b032b031e049a36"
     },
     {
       "id": "69cfb4af611e9b07b5d55e79",
@@ -239,7 +241,8 @@
       "badge": "Irodov",
       "exam": "NEET",
       "type": "exam",
-      "count": 158
+      "count": 158,
+      "aliasId": "69cfb5366ecf5579037d96a4"
     },
     {
       "id": "69a684ac213ecfafb0629c0d",
@@ -251,7 +254,8 @@
       "badge": "NEET 2027",
       "exam": "NEET",
       "type": "exam",
-      "count": 17415
+      "count": 17415,
+      "bankFallback": "neet"
     },
     {
       "id": "69f9ccfa011347df7bce2a38",
@@ -263,11 +267,12 @@
       "badge": "HC Verma",
       "exam": "NEET",
       "type": "exam",
-      "count": 1853
+      "count": 1853,
+      "aliasId": "69f9cc23681eab6d6021a4d1"
     },
     {
       "id": "69a6ea53213ecfafb0629c18",
-      "title": "Top 500 JEE Main PYQs for NEET 2027",
+      "title": "Top 500 JEE Main PYQs for NEET 2027 — Physics",
       "cover": "assets/book-covers/top500-physics.jpg",
       "description": "Physics",
       "isComingSoon": false,
@@ -275,11 +280,12 @@
       "badge": "Top 500",
       "exam": "NEET",
       "type": "exam",
-      "count": 500
+      "count": 500,
+      "bankFallback": "jee_main"
     },
     {
       "id": "69a6eaf1213ecfafb0629c19",
-      "title": "Top 500 JEE Main PYQs for NEET 2027",
+      "title": "Top 500 JEE Main PYQs for NEET 2027 — Chemistry",
       "cover": "assets/book-covers/top500-chemistry.jpg",
       "description": "Chemistry",
       "isComingSoon": false,
@@ -287,7 +293,8 @@
       "badge": "Top 500",
       "exam": "NEET",
       "type": "exam",
-      "count": 500
+      "count": 500,
+      "bankFallback": "jee_main"
     }
   ],
   "curated": [

@@ -527,20 +527,20 @@
     const footClose = (sideOpen && isMobileEg)
       ? '<button type="button" class="eg-btn eg-btn-close-pal" id="egFootClose" title="Close palette">✕ Close</button>'
       : "";
-    /* Prev | Next ALWAYS in foot from first paint */
-    /* qxmd170: mobile Practice = Previous | Next only; Mark/Clear/Show via More sheet */
+    /* Prev/Next always present; Marks-like Mark|Clear + Save&Next on mobile */
+    /* qxmd171: Marks mobile Practice foot — Mark | Clear / Previous | Save & Next */
     const foot = practice
-      ? '<div class="eg-foot eg-foot-practice" id="egFoot">' +
-        '<div class="eg-foot-nav eg-foot-right">' +
-        (footClose || "") +
-        '<button type="button" class="eg-btn eg-btn-more" id="egFootMore" title="More actions" aria-label="More actions" aria-expanded="false">⋯</button>' +
-        '<button type="button" class="eg-btn" id="qxPrevBtn"' + (firstQ ? " disabled" : "") + ">Previous</button>" +
-        '<button type="button" class="eg-btn eg-btn-next" id="qxNextBtn"' + (lastQ ? " disabled" : "") + ">Next</button>" +
-        "</div>" +
+      ? '<div class="eg-foot eg-foot-practice eg-marks-foot" id="egFoot">' +
         '<div class="eg-foot-extra eg-foot-left" id="egFootExtra">' +
         showSwitch +
-        '<button type="button" class="eg-btn eg-btn-review" id="qxReviewNextBtn">Mark for Review</button>' +
-        '<button type="button" class="eg-btn eg-btn-clear" id="qxClearBtn">Clear Response</button>' +
+        '<button type="button" class="eg-btn eg-btn-review" id="qxReviewNextBtn"><span class="eg-btn-full">Mark for Review</span><span class="eg-btn-short">Mark</span></button>' +
+        '<button type="button" class="eg-btn eg-btn-clear" id="qxClearBtn"><span class="eg-btn-full">Clear Response</span><span class="eg-btn-short">Clear</span></button>' +
+        "</div>" +
+        '<div class="eg-foot-nav eg-foot-right">' +
+        (footClose || "") +
+        '<button type="button" class="eg-btn eg-btn-more" id="egFootMore" title="More" aria-label="More" aria-expanded="false" hidden>⋯</button>' +
+        '<button type="button" class="eg-btn" id="qxPrevBtn"' + (firstQ ? " disabled" : "") + ">Previous</button>" +
+        '<button type="button" class="eg-btn eg-btn-next" id="qxNextBtn"' + (lastQ ? " disabled" : "") + '><span class="eg-btn-full">Save &amp; Next</span><span class="eg-btn-short">Save &amp; Next</span></button>' +
         "</div>" +
         '<div class="eg-foot-sheet-scrim" id="egFootSheetScrim" hidden aria-hidden="true"></div>' +
         "</div>"
@@ -599,7 +599,7 @@
     return '<div class="eg-test-root mtk-test-root' +
       (sideOpen ? " eg-side-open" : " eg-side-collapsed") +
       (stripOpen ? " eg-strip-open" : " eg-strip-collapsed") +
-      " eg-tools-closed eg-compact eg-qxmd167 eg-qxmd170 eg-qxtool8 eg-qxeg1 eg-qxeg2 eg-qxeg3 eg-qxeg4 eg-qxeg5 eg-qxeg6 eg-qxeg7" +
+      " eg-tools-closed eg-compact eg-qxmd167 eg-qxmd170 eg-qxmd171 eg-qxtool8 eg-qxeg1 eg-qxeg2 eg-qxeg3 eg-qxeg4 eg-qxeg5 eg-qxeg6 eg-qxeg7" +
       (previewOpen ? " eg-preview-open" : " eg-preview-collapsed") +
       (desktopMode ? " eg-desktop-mode" : " eg-mobile") +
       (!desktopMode && isMobileEg ? " eg-mobile-vp" : "") +
@@ -640,7 +640,7 @@
       '<span class="eg-q-num" title="Question ' + qno + '">' + qnoPad + "</span>" +
       '<span class="eg-q-time" id="egQTime" title="Time on this question">' + formatQTime(dwellSec(session)) + "</span>" +
       '<span class="eg-meta-sep" aria-hidden="true">|</span>' +
-      '<span class="eg-marks" title="Marks"><span class="eg-mark eg-mark-pos">+' + marks.pos +
+      '<span class="eg-marks" title="Scoring"><span class="eg-mark eg-mark-pos">+' + marks.pos +
       '</span> <span class="eg-mark eg-mark-neg">' + (marks.neg ? String(marks.neg) : "0") + "</span></span>" +
       '<span class="eg-meta-sep" aria-hidden="true">|</span>' +
       (examLine
@@ -1114,9 +1114,9 @@
         }
         var practiceFoot = !!(root.getAttribute("data-eg-mode") === "practice");
         var narrow = !!(window.matchMedia && window.matchMedia("(max-width: 720px)").matches);
-        /* qxmd170: practice mobile = More | Prev | Next; do not force 1fr 1fr over CSS */
+        /* qxmd171: Marks mobile = Prev | Save&Next grid; Mark/Clear stay in left row via CSS */
         if (practiceFoot && narrow) {
-          right.style.cssText = "display:grid!important;grid-template-columns:48px 1fr 1fr!important;gap:8px!important;width:100%!important;visibility:visible!important;opacity:1!important;";
+          right.style.cssText = "display:grid!important;grid-template-columns:1fr 1fr!important;gap:8px!important;width:100%!important;visibility:visible!important;opacity:1!important;";
         } else {
           right.style.cssText = "display:grid!important;grid-template-columns:1fr 1fr!important;gap:8px!important;width:100%!important;visibility:visible!important;opacity:1!important;";
         }
@@ -1149,9 +1149,7 @@
             }
           });
         } catch (_) {}
-        if (practiceFoot && narrow) {
-          ensureBtn("egFootMore", "⋯", false);
-        }
+        /* qxmd171: More stays hidden on Marks foot; Mark/Clear painted by CSS */
         ensureBtn("qxPrevBtn", "Previous", false);
         var next;
         if (practiceFoot) {
@@ -1159,7 +1157,11 @@
           if (saveLeftover) {
             try { saveLeftover.id = "qxNextBtn"; saveLeftover.className = "eg-btn eg-btn-next"; } catch (_) {}
           }
-          next = ensureBtn("qxNextBtn", "Next", true);
+          next = ensureBtn("qxNextBtn", "Save & Next", true);
+          try {
+            var moreB = foot.querySelector("#egFootMore");
+            if (moreB) { moreB.setAttribute("hidden", ""); moreB.style.display = "none"; }
+          } catch (_) {}
         } else {
           next = foot.querySelector("#qxSaveBtn") ? ensureBtn("qxSaveBtn", "Save & Next", true) : ensureBtn("qxNextBtn", "Next", true);
         }
@@ -1201,7 +1203,7 @@
         root.classList.toggle("eg-preview-open", previewOpen);
         root.classList.toggle("eg-preview-collapsed", !previewOpen);
         root.classList.remove("eg-tools-open");
-        root.classList.add("eg-tools-closed", "eg-qxmd167", "eg-qxmd170", "eg-qxtool8", "eg-qxeg1", "eg-qxeg2", "eg-qxeg3", "eg-qxeg4", "eg-qxeg5", "eg-qxeg6", "eg-qxeg7", "eg-foot-ready");
+        root.classList.add("eg-tools-closed", "eg-qxmd167", "eg-qxmd170", "eg-qxmd171", "eg-qxtool8", "eg-qxeg1", "eg-qxeg2", "eg-qxeg3", "eg-qxeg4", "eg-qxeg5", "eg-qxeg6", "eg-qxeg7", "eg-foot-ready");
         root.setAttribute("data-eg-cycle", bothOpen ? "1" : "0");
         const strip = root.querySelector("#egQBar");
         if (strip) {
@@ -1553,7 +1555,7 @@
       } catch (_) { /* */ }
     });
 
-    /* qxmd170: mobile More sheet for Mark / Clear / Show Answer */
+    /* qxmd171: More sheet retained as fallback (hidden on Marks foot); still wires if present */
     (function wireFootMore() {
       try {
         var more = root.querySelector("#egFootMore");
