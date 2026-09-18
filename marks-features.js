@@ -1813,9 +1813,16 @@ function bindCpyqbFilters(root) {
 }
 
 function filterByMarksIds(qs, ids) {
-  if (!ids || !ids.length) return qs;
-  const set = new Set(ids);
-  return qs.filter(q => q._marksId && set.has(q._marksId));
+  if (!ids || !ids.length) return qs || [];
+  const set = new Set((ids || []).map(String));
+  return (qs || []).filter(q => {
+    if (!q) return false;
+    if (q._marksId && set.has(String(q._marksId))) return true;
+    const id = q.id != null ? String(q.id) : "";
+    if (id && set.has(id)) return true;
+    if (id.indexOf("m_") === 0 && set.has(id.slice(2))) return true;
+    return false;
+  });
 }
 
 function marksIdsFromMeta(meta, mode, bucketId, bucketTitle, topicId, topicTitle) {
@@ -1954,6 +1961,22 @@ async function ensureCpyqbChapterQuestions(examSlug, subject, chapter, meta, opt
           if (topic && topic.questionIds && topic.questionIds.length) {
             const filtered = filterByMarksIds(fast, topic.questionIds);
             if (filtered.length) return filtered;
+            // qxmd174: meta IDs present but bank rows missing _marksId match → stubs (not empty/triple error)
+            if (typeof qxLightStubsFromMarksIds === "function") {
+              const stubs = qxLightStubsFromMarksIds(topic.questionIds, {
+                bank: examSlug,
+                subject: subject,
+                chapter: chapter,
+                exam: (typeof BANK_INDEX !== "undefined" && BANK_INDEX[examSlug] && BANK_INDEX[examSlug].category) || "Engineering",
+                examName: (typeof BANK_INDEX !== "undefined" && BANK_INDEX[examSlug] && BANK_INDEX[examSlug].title) || examSlug
+              });
+              if (stubs && stubs.length) {
+                if (typeof qxFillStubsFromCatalog === "function") {
+                  try { return await qxFillStubsFromCatalog(stubs); } catch (_) { return stubs; }
+                }
+                return stubs;
+              }
+            }
           }
         } else {
           return fast;
@@ -2034,6 +2057,15 @@ async function ensureCpyqbChapterQuestions(examSlug, subject, chapter, meta, opt
           meta.examId, meta.subjectId, meta.chapterId, opts.topicId, liveMeta
         );
         qs = data.questions || [];
+        // qxmd174: live empty → local stubs from chapter_meta IDs (Existence of Limit etc.)
+        if (!qs.length) {
+          const ids = marksIdsFromMeta(meta, opts.mode, opts.bucketId, opts.bucketTitle, opts.topicId, opts.topicTitle);
+          if (ids.length && typeof qxLightStubsFromMarksIds === "function") {
+            qs = typeof qxFillStubsFromCatalog === "function"
+              ? await qxFillStubsFromCatalog(qxLightStubsFromMarksIds(ids, liveMeta))
+              : qxLightStubsFromMarksIds(ids, liveMeta);
+          }
+        }
       } else {
         // Instant stubs from chapter_meta IDs (no full-body fetch, no bank)
         const ids = marksIdsFromMeta(meta, opts.mode, opts.bucketId, opts.bucketTitle, opts.topicId, opts.topicTitle);
@@ -2114,6 +2146,18 @@ async function ensureCpyqbChapterQuestions(examSlug, subject, chapter, meta, opt
     }
   }
 
+  if (!qs.length && meta) {
+    // qxmd174 last chance: build list from chapter_meta questionIds even if bank/live failed
+    const ids = marksIdsFromMeta(meta, opts.mode, opts.bucketId, opts.bucketTitle, opts.topicId, opts.topicTitle);
+    if (ids.length && typeof qxLightStubsFromMarksIds === "function") {
+      try {
+        qs = typeof qxFillStubsFromCatalog === "function"
+          ? await qxFillStubsFromCatalog(qxLightStubsFromMarksIds(ids, liveMeta))
+          : qxLightStubsFromMarksIds(ids, liveMeta);
+      } catch (_) { /* */ }
+    }
+  }
+
   if (qs.length) {
     // Light background prefetch of first few only
     if (typeof MarksLive !== "undefined" && MarksLive.prefetchQuestions) {
@@ -2123,8 +2167,9 @@ async function ensureCpyqbChapterQuestions(examSlug, subject, chapter, meta, opt
     return qs;
   }
 
+  // Single clear empty state — avoid toast + banner + empty triple noise
   if (typeof showToast === "function") {
-    showToast("⚠️ Could not load chapter questions. Retry in a moment.");
+    showToast("No questions in this topic yet.");
   }
   return qs;
 }
@@ -2132,15 +2177,39 @@ async function ensureCpyqbChapterQuestions(examSlug, subject, chapter, meta, opt
 function findMetaItem(list, id, title) {
   if (!list || !list.length) return null;
   if (id) {
-    const byId = list.find(x => x.id === id);
+    const byId = list.find(x => x.id === id || String(x.id) === String(id));
     if (byId) return byId;
   }
   if (title) {
     const t = String(title).trim();
-    return list.find(x => x.title === t) || list.find(x => (x.title || "").trim() === t);
+    const tL = t.toLowerCase();
+    let hit = list.find(x => x.title === t) || list.find(x => (x.title || "").trim() === t);
+    if (hit) return hit;
+    hit = list.find(x => String(x.title || "").trim().toLowerCase() === tL);
+    if (hit) return hit;
+    // qxmd174: Existance ↔ Existence (Marks meta spelling drift)
+    const norm = (s) => String(s || "").toLowerCase().replace(/existance/g, "existence").replace(/[^a-z0-9]+/g, "");
+    const tN = norm(t);
+    hit = list.find(x => norm(x.title) === tN);
+    if (hit) return hit;
+    if (tL.length >= 8) {
+      hit = list.find(x => {
+        const xl = String(x.title || "").toLowerCase();
+        return xl.includes(tL) || tL.includes(xl);
+      });
+      if (hit) return hit;
+    }
   }
   return null;
 }
+
+/** Display-only title tidy (does not rewrite bank JSON). */
+function qxTopicDisplayTitle(title) {
+  return String(title || "")
+    .replace(/\bExistance\b/g, "Existence")
+    .replace(/\bDefintion\b/g, "Definition");
+}
+
 
 function bucketTone(bucket) {
   const b = typeof bucket === "string" ? { title: bucket } : (bucket || {});
@@ -3081,7 +3150,7 @@ async function viewCpyqb(payload) {
         <div class="qx-ch-card-top">
           ${cpyqbChapterIcon(null, p.subject, t.title)}
           <div class="qx-topic-body qx-ch-body">
-            <strong>${t.title}</strong>
+            <strong>${typeof qxTopicDisplayTitle === "function" ? qxTopicDisplayTitle(t.title) : t.title}</strong>
             <small>${(t.count || 0).toLocaleString()} questions</small>
           </div>
         </div>
@@ -3132,11 +3201,13 @@ async function viewCpyqb(payload) {
     });
   }
   if (!qs.length) {
-    filterNote = `<p class="result-count">Could not load questions for this chapter. Check connection and retry.</p>`;
+    filterNote = `<p class="result-count">No questions in this topic for this chapter yet.</p>`;
   }
 
   _lastListFn = () => ({ ...p, step: "questions" });
-  const modeLabel = p.levelTitle || p.bucketTitle || p.topicTitle || "All Questions";
+  const modeLabel = (typeof qxTopicDisplayTitle === "function"
+    ? qxTopicDisplayTitle(p.levelTitle || p.bucketTitle || p.topicTitle || "All Questions")
+    : (p.levelTitle || p.bucketTitle || p.topicTitle || "All Questions"));
   const bc = breadcrumb(baseBc.concat([
     p.mode === "typeLevel" || p.levelId
       ? { label: "Types", view: "cpyqb", payload: { step: "chapterHub", exam: p.exam, subject: p.subject, chapter: p.chapter } }
@@ -3164,7 +3235,7 @@ async function viewCpyqb(payload) {
     ${filterNote}
     ${p.levelId === "multipleCorrect" ? `<p class="result-count" style="color:#b45309;font-weight:600">Multi Correct — select one or more options (A–D).</p>` : ""}
     ${p.levelId === "columnMatch" ? `<p class="result-count">Column Matching — choose the correct List-I ↔ List-II option.</p>` : ""}
-    ${qs.length ? renderQList(qs, _listPage, testMeta) : `<div class="empty">No questions in this type for this chapter.</div>`}`;
+    ${qs.length ? renderQList(qs, _listPage, testMeta) : `<div class="empty">No questions in this topic yet.</div>`}`;
 }
 
 // ============ ALL QUESTION BANK / NCERT (MARKS NEET modules) ============

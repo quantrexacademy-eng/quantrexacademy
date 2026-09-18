@@ -1811,7 +1811,7 @@ window.Mx = (() => {
         "oplus|ominus|otimes|oslash|odot|dagger|ddagger|star|circ|bullet|" +
         "angle|perp|parallel|mid|nmid|forall|exists|nexists|partial|nabla|" +
         "emptyset|varnothing|ell|hbar|Re|Im|aleph|wp|triangle|square|diamond|" +
-        "sin|cos|tan|cot|sec|csc|log|ln|exp|lim|max|min|sup|inf|det|dim|ker|deg|" +
+        "sin|cos|tan|cot|sec|csc|log|ln|exp|lim|int|sum|prod|oint|max|min|sup|inf|det|dim|ker|deg|" +
         "alpha|beta|gamma|delta|epsilon|varepsilon|zeta|eta|theta|vartheta|" +
         "iota|kappa|lambda|mu|nu|xi|pi|varpi|rho|varrho|sigma|varsigma|" +
         "tau|upsilon|phi|varphi|chi|psi|omega|" +

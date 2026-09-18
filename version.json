@@ -1,10 +1,10 @@
 {
-  "build": "qxmd173",
-  "cache": "qx-pwa-qxmd173",
-  "title": "qxmd173 · Mobile Practice: hide Clear; Prev|Next primary + safe-area foot",
-  "body": "Mobile Practice: Clear hidden (desktop ExamGoal Clear kept). Prev|Next primary full-width foot with larger taps + safe-area padding so bottom bar is fully visible. Show Answer unchanged. No bank rewrite. No Vercel.",
+  "build": "qxmd174",
+  "cache": "qx-pwa-qxmd174",
+  "title": "qxmd174 \u00b7 Fix raw LaTeX ($$ strip) + Existence of Limit load",
+  "body": "Client sanitize no longer strips display $$\u2026$$ (was leaving raw \\mathrm/\\begin{pmatrix}/\\int). Keep TeX \\{ \\} set braces. Topic load: fuzzy Existance/Existence, stubs when filter misses, single empty state. Preview strips bare TeX. No bank rewrite. No Vercel.",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app",
   "site": "https://www.quantrexacademy.com",
   "package": "com.quantrexacademy.app",
-  "ts": 1789702800000
+  "ts": 1789706400000
 }

@@ -245,11 +245,13 @@
     // Normalize weird dollar spacing
     s = s.replace(/\\\(\s+/g, "\\(").replace(/\s+\\\)/g, "\\)");
     s = s.replace(/\\\[\s+/g, "\\[").replace(/\s+\\\]/g, "\\]");
-    // Collapse empty math islands
-    s = s.replace(/\$\s*\$/g, "");
+    // Collapse EMPTY math islands only.
+    // CRITICAL (qxmd174): never use /\$\s*\$/ — that also matches display "$$…$$" delimiters
+    // and strips them, leaving raw \begin{pmatrix} / \mathrm / \int visible sitewide.
+    s = s.replace(/\$\$\s*\$\$/g, "");           // empty display $$ $$
+    s = s.replace(/(^|[^$])\$\s+\$(?!\$)/g, "$1"); // empty inline $  $ (needs whitespace)
     s = s.replace(/\\\(\s*\\\)/g, "");
     s = s.replace(/\\\[\s*\\\]/g, "");
-    // Prefer \( \) over single $ for recovered chem-only? Keep $ if already present.
     return s;
   }
 
@@ -319,12 +321,8 @@
       });
     // Subscript _{1 / 2} → _{1/2}
     t = t.replace(/_\{\s*(\d+)\s*\/\s*(\d+)\s*\}/g, "_{$1/$2}");
-    // Collapse leftover \\{ \\} that are not \left\{ / \right\}
-    t = t.replace(/(^|[^\\])\\\{(?![a-zA-Z])/g, "$1{");
-    t = t.replace(/(^|[^\\])\\\}/g, "$1}");
-    // Restore \left\{ \right\} if over-collapsed
-    t = t.replace(/(\\left)\s*\{/g, "$1\\{");
-    t = t.replace(/(\\right)\s*\}/g, "$1\\}");
+    // qxmd174: keep TeX \{ \} set braces (do not collapse to { }).
+    // Double-escaped \{\cmd\} already handled above. Preserve \left\{ / \right\}.
     return t;
   }
 

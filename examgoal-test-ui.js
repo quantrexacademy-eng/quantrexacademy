@@ -121,13 +121,13 @@
     }
   }
 
-  /** Plain stem snippet for Questions Preview rows (ExamGoal-like) */
+  /** Plain stem snippet for Questions Preview rows (ExamGoal-style). qxmd174: never leave raw \mathrm/\lim. */
   function stemPreviewText(q) {
     if (!q) return "Question";
     if (typeof global.qPreview === "function") {
       try {
         const t = global.qPreview(q.q || q.question || q.stem || "");
-        if (t) return t;
+        if (t && !/\\[a-zA-Z]/.test(t)) return t;
       } catch (_) { /* */ }
     }
     let s = String(q.q || q.question || q.stem || "");
@@ -139,7 +139,22 @@
       .replace(/&[a-z]+;/gi, " ");
     s = s.replace(/\$\$[\s\S]*?\$\$/g, " ");
     s = s.replace(/\\\[[\s\S]*?\\\]/g, " ");
-    s = s.replace(/\$([^$]*)\$/g, "$1");
+    s = s.replace(/\\\([\s\S]*?\\\)/g, " ");
+    s = s.replace(/\$([^$]*)\$/g, (_, inner) => {
+      return String(inner)
+        .replace(/\\(?:mathrm|mathbf|mathbb|mathcal|text|textbf|textit)\s*\{([^{}]*)\}/gi, "$1")
+        .replace(/\\(?:left|right)\s*/g, "")
+        .replace(/\\(?:frac|dfrac|tfrac)\s*\{([^{}]*)\}\s*\{([^{}]*)\}/gi, "($1)/($2)")
+        .replace(/\\(?:lim|int|sum|prod|log|ln|sin|cos|tan|sqrt)(?![a-zA-Z])/g, " ")
+        .replace(/\\[a-zA-Z]+\s*\{([^{}]*)\}/g, "$1")
+        .replace(/\\[a-zA-Z]+/g, " ")
+        .replace(/[_^]\{([^{}]*)\}/g, "$1")
+        .replace(/[_^]/g, "")
+        .replace(/[{}]/g, "");
+    });
+    // Bare leftover TeX (after $$ strip bug leftovers)
+    s = s.replace(/\\(?:mathrm|mathbf|mathbb|mathcal|text|textbf|textit)\s*\{([^{}]*)\}/gi, "$1");
+    s = s.replace(/\\begin\{[^}]+\}[\s\S]*?\\end\{[^}]+\}/g, " ");
     s = s.replace(/\\[a-zA-Z]+\s*\{([^{}]*)\}/g, "$1");
     s = s.replace(/\\[a-zA-Z]+/g, " ");
     s = s.replace(/[{}$]/g, " ").replace(/\s+/g, " ").trim();
