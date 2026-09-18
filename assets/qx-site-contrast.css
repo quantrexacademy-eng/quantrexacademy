@@ -790,10 +790,13 @@ html[data-theme="light"] .eg-test-root[data-test-theme="light"].eg-sol-showing .
   margin: 0 !important;
   padding: 0 !important;
   border: 0 !important;
-  position: absolute !important;
-  left: -10000px !important;
-  width: 0 !important;
-  clip: rect(0, 0, 0, 0) !important;
+  /* qxmd178: no absolute — ghost stem above header */
+  position: static !important;
+  left: auto !important;
+  top: auto !important;
+  width: auto !important;
+  clip: auto !important;
+  clip-path: none !important;
   pointer-events: none !important;
 }
 
@@ -833,9 +836,12 @@ html .mtk-test-root[data-test-theme="light"].eg-sol-showing .mtk-q-text {
   margin: 0 !important;
   padding: 0 !important;
   border: 0 !important;
-  clip: rect(0, 0, 0, 0) !important;
-  position: absolute !important;
-  left: -9999px !important;
+  clip: auto !important;
+  clip-path: none !important;
+  /* qxmd178: no absolute — ghost stem above header */
+  position: static !important;
+  left: auto !important;
+  top: auto !important;
   pointer-events: none !important;
   color: transparent !important;
   font-size: 0 !important;
@@ -1195,3 +1201,21 @@ html[data-theme="light"] .qx-settings-page .qx-set-sec {
   border-color: #e2e8f0 !important;
 }
 
+
+
+/* qxmd178: site-contrast stem — reinforce static hide + no host bleed */
+html .eg-test-root.eg-sol-showing.eg-qxmd178 #egQArea,
+html .eg-test-root.eg-sol-showing.eg-qxmd178 .eg-q-stem,
+html .eg-test-root.eg-qxmd178 .eg-stem-sol-hidden {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+  position: static !important;
+  left: auto !important;
+  top: auto !important;
+  clip: auto !important;
+  clip-path: none !important;
+  pointer-events: none !important;
+}

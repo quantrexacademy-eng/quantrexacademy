@@ -1,10 +1,10 @@
 {
-  "build": "qxmd177",
-  "cache": "qx-pwa-qxmd177",
-  "title": "qxmd177 · Marks mobile Check Answer (no Q jump to top) + stable in-flow Solution",
-  "body": "Fix qxmd176 top-jump: remove scrollTop=0 on Check/Show Answer; capture/restore scroll across reveal+refresh; Marks-like in-flow sol under metadata; opts hide after sol paint (no broken stack); Show Answer sync kept; mobile Clear hidden; Prev/Next visible; Quantrex brand; no Vercel.",
+  "build": "qxmd178",
+  "cache": "qx-pwa-qxmd178",
+  "title": "qxmd178 · Marks mobile: stem never above header when Solution open",
+  "body": "Root cause: absolute top:0/-9999 stem-hide + #app-main scrolling whole shell let orphan/host stem paint above blue .eg-top. Fix: static display:none stem-hide; fixed fullscreen practice chrome with overflow only on .eg-body; hide host .q-card strips; eg-qxmd178 defensive CSS/JS; Show Answer sync kept; Clear hidden mobile; Prev/Next visible; soft lim glued-prose unglue; Quantrex; no Vercel.",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app",
   "site": "https://www.quantrexacademy.com",
   "package": "com.quantrexacademy.app",
-  "ts": 1789723600000
+  "ts": 1789724500000
 }

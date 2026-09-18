@@ -1534,7 +1534,7 @@ function qxSchedulePracticeHydrate(q) {
 }
 
 function enterAllenPracticeMode() {
-  document.body.classList.add("allen-cbt-active", "allen-practice-active");
+  document.body.classList.add("allen-cbt-active", "allen-practice-active", "eg-qxmd178-host", "eg-qxmd178");
   const sidebar = document.getElementById("sidebar");
   const topbar = document.querySelector(".topbar");
   const mainEl = document.querySelector(".main");
@@ -1545,7 +1545,7 @@ function enterAllenPracticeMode() {
 }
 
 function exitAllenPracticeMode() {
-  document.body.classList.remove("allen-cbt-active", "allen-practice-active");
+  document.body.classList.remove("allen-cbt-active", "allen-practice-active", "eg-qxmd178-host");
   const sidebar = document.getElementById("sidebar");
   const topbar = document.querySelector(".topbar");
   const mainEl = document.querySelector(".main");
@@ -2510,11 +2510,13 @@ function qxHidePracticeStem(scope) {
         /* qxmd176: never absolute/left:-9999 (ghost stem above header) */
         el.style.setProperty("position", "static", "important");
         el.style.setProperty("left", "auto", "important");
+        el.style.setProperty("top", "auto", "important");
         el.style.setProperty("clip", "auto", "important");
       } catch (_) { /* */ }
     });
     const wrap = root.querySelector(".mtk-test-root, .allen-practice, .qx-practice-page, .eg-test-root");
-    if (wrap) wrap.classList.add("eg-sol-showing", "qx-sol-showing", "eg-qxmd176", "eg-qxmd177");
+    if (wrap) wrap.classList.add("eg-sol-showing", "qx-sol-showing", "eg-qxmd176", "eg-qxmd177", "eg-qxmd178");
+    try { document.body.classList.add("eg-qxmd178-host", "eg-qxmd178"); } catch (_) { /* */ }
   } catch (_) { /* */ }
 }
 

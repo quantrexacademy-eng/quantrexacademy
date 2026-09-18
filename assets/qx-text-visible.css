@@ -757,10 +757,13 @@ html[data-theme="light"] .eg-test-root[data-test-theme="light"].eg-sol-showing .
   margin: 0 !important;
   padding: 0 !important;
   border: 0 !important;
-  position: absolute !important;
-  left: -10000px !important;
-  width: 0 !important;
-  clip: rect(0, 0, 0, 0) !important;
+  /* qxmd178: no absolute — ghost stem above header */
+  position: static !important;
+  left: auto !important;
+  top: auto !important;
+  width: auto !important;
+  clip: auto !important;
+  clip-path: none !important;
   pointer-events: none !important;
 }
 
@@ -800,9 +803,12 @@ html .mtk-test-root[data-test-theme="light"].eg-sol-showing .mtk-q-text {
   margin: 0 !important;
   padding: 0 !important;
   border: 0 !important;
-  clip: rect(0, 0, 0, 0) !important;
-  position: absolute !important;
-  left: -9999px !important;
+  clip: auto !important;
+  clip-path: none !important;
+  /* qxmd178: no absolute — ghost stem above header */
+  position: static !important;
+  left: auto !important;
+  top: auto !important;
   pointer-events: none !important;
   color: transparent !important;
   font-size: 0 !important;
@@ -1000,4 +1006,30 @@ html .eg-test-root.eg-qxmd177 .qx-stem-sol-hidden {
 html .eg-test-root.eg-qxmd177,
 html .eg-test-root.eg-qxmd177 .eg-body {
   overflow-anchor: none !important;
+}
+
+
+/* qxmd178: vis stem — display:none wins; never absolute/top:0 */
+html .eg-test-root.eg-sol-showing.eg-qxmd178 #egQArea,
+html .eg-test-root.eg-sol-showing.eg-qxmd178 .eg-q-stem,
+html .eg-test-root.eg-sol-showing.eg-qxmd178 .eg-q-stem *,
+html .eg-test-root.eg-sol-showing.eg-qxmd178 #egQArea *,
+html .eg-test-root.eg-qxmd178 .eg-stem-sol-hidden,
+html .eg-test-root.eg-qxmd178 .qx-stem-sol-hidden,
+html[data-theme="light"] .eg-test-root.eg-sol-showing.eg-qxmd178 .eg-q-stem,
+html[data-theme="dark"] .eg-test-root.eg-sol-showing.eg-qxmd178 .eg-q-stem {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+  position: static !important;
+  left: auto !important;
+  top: auto !important;
+  clip: auto !important;
+  clip-path: none !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
 }
