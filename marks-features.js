@@ -7369,6 +7369,7 @@ const QX_BOOKS_CATALOG = {
     { id: "a1b2c3d4e5f6010203040507", title: "Skills in Mathematics — Integral Calculus", cover: "assets/book-covers/skills-integral-calculus.png", subject: "Mathematics", badge: "Amit M Agarwal", exam: "JEE", isComingSoon: true, count: 0, type: "exam" }
   ],
   medical: [
+    { id: "6a91185f41ab5aba084f4d30", title: "Most Important PYQ NEET 2027", cover: "assets/book-covers/qx-pyq-important.jpg", description: "Most Important PYQ Based Questions for NEET 2027", isComingSoon: false, subject: "PCB", badge: "Quantrex PYQ", exam: "NEET", type: "exam", tag: "PYQ 2022–2026", bankSlug: "jee_main", redirectType: "subject", moduleId: "6a916235cb18ffc9d00d5aa1", count: 4289 },
     { id: "6a507da9107f81233d9985c1", title: "Fundamentals of Organic Chemistry", cover: "assets/book-covers/organic-chemistry.jpg", description: "for NEET 2027", isComingSoon: false, subject: "Chemistry", badge: "Organic", exam: "NEET", type: "exam", count: 1151 },
     { id: "6a0adb714b032b031e049a34", title: "Concepts Of Physics MCQ Edition [Volume 2]", cover: "assets/book-covers/hc-verma-v2.jpg", description: "Objective I · II · Exercises", isComingSoon: false, subject: "Physics", badge: "HC Verma", exam: "NEET", type: "exam", count: 1854 },
     { id: "69cfb4af611e9b07b5d55e79", title: "Physics Top Irodov Problems", cover: "assets/book-covers/irodov.jpg", description: "MCQs for NEET", isComingSoon: false, subject: "Physics", badge: "Irodov", exam: "NEET", type: "exam", count: 158 },
@@ -7419,6 +7420,8 @@ let _booksCache = null;
 let _booksPayload = { step: "list" };
 
 function resetBooksCache(opts) {
+  try { if (typeof window !== "undefined") window._qxBookForceNet = true; } catch (_) { /* */ }
+  try { setTimeout(function () { try { window._qxBookForceNet = false; } catch (_) {} }, 8000); } catch (_) { /* */ }
   _booksCache = null;
   const keepPayload = opts && opts.keepPayload;
   if (!keepPayload) _booksPayload = { step: "list" };
@@ -7435,7 +7438,7 @@ async function fetchBooks(force) {
   const to = setTimeout(() => { try { ctrl && ctrl.abort(); } catch (_) { /* */ } }, 12000);
   try {
     const res = await fetch(`data/books.json?v=${bust}`, {
-      cache: "no-store",
+      cache: force ? "no-store" : "default",
       signal: ctrl ? ctrl.signal : undefined
     });
     clearTimeout(to);

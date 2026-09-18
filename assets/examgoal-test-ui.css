@@ -5058,9 +5058,15 @@ html .eg-test-root[data-test-theme="light"] .eg-sol .katex {
   .eg-test-root.eg-qxmd167.eg-qxtool8 .eg-top-tools .eg-tip {
     font-size: 8px !important;
   }
-  /* Practice: if still crowded, tuck secondary into Aa More (keep primary row clean) */
-  .eg-test-root.eg-qxmd167[data-eg-mode="practice"] .eg-top-tools .eg-tool-sec {
+  /* Practice: tuck Bookmark/Full into Aa More; Report+Group stay (qxmd169 reach) */
+  .eg-test-root.eg-qxmd167[data-eg-mode="practice"] .eg-top-tools .eg-tool-sec:not(.eg-tool-reach) {
     display: none !important;
+  }
+  .eg-test-root.eg-qxmd167[data-eg-mode="practice"] .eg-top-tools .eg-tool-reach,
+  .eg-test-root.eg-qxmd169[data-eg-mode="practice"] .eg-top-tools #egPlusBtn,
+  .eg-test-root.eg-qxmd169[data-eg-mode="practice"] .eg-top-tools #mtkReportBtn {
+    display: inline-flex !important;
+    visibility: visible !important;
   }
   .eg-test-root.eg-qxmd167[data-eg-mode="practice"] .eg-fmt-more,
   .eg-test-root.eg-qxmd167[data-eg-mode="practice"] .eg-fmt-more-h {
@@ -5132,18 +5138,122 @@ html .eg-test-root[data-test-theme="light"] .eg-sol .katex {
   margin-right: 4px;
 }
 @media (max-width: 720px) {
-  .eg-test-root.eg-qxmd167 .eg-foot-practice .eg-btn-review {
-    flex: 1 1 100%;
+  /* qxmd169: Previous | Next only — no stacked Mark/Clear/Save */
+  .eg-test-root.eg-qxmd167 .eg-foot-practice,
+  .eg-test-root.eg-qxmd169 .eg-foot-practice {
+    flex-direction: column-reverse !important;
+    flex-wrap: nowrap !important;
+    gap: 0 !important;
+    padding: 8px 10px max(10px, env(safe-area-inset-bottom, 0px)) !important;
   }
-  .eg-test-root.eg-qxmd167 .eg-foot-practice .eg-btn-clear {
-    flex: 1 1 auto;
-  }
-  .eg-test-root.eg-qxmd167.eg-qxtool8 .eg-foot-practice .eg-foot-right {
+  .eg-test-root.eg-qxmd169 .eg-foot-practice .eg-foot-nav,
+  .eg-test-root.eg-qxmd169 .eg-foot-practice .eg-foot-right {
     display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
+    grid-template-columns: 48px 1fr 1fr !important;
+    gap: 8px !important;
     width: 100% !important;
-    flex: 1 1 100% !important;
+    flex: 0 0 auto !important;
+    order: 2 !important;
   }
+  .eg-test-root.eg-qxmd169 .eg-foot-practice .eg-btn-close-pal {
+    display: none !important;
+  }
+  .eg-test-root.eg-qxmd169 .eg-foot-practice #egFootMore {
+    display: inline-flex !important;
+    min-width: 48px !important;
+    width: 48px !important;
+    font-size: 22px !important;
+    font-weight: 800 !important;
+    line-height: 1 !important;
+  }
+  .eg-test-root.eg-qxmd169 .eg-foot-practice #qxPrevBtn,
+  .eg-test-root.eg-qxmd169 .eg-foot-practice #qxNextBtn {
+    display: inline-flex !important;
+    min-height: 52px !important;
+    font-size: 16px !important;
+    font-weight: 800 !important;
+    width: 100% !important;
+  }
+  /* Hide Mark / Clear / Show in the foot bar — live in More sheet */
+  .eg-test-root.eg-qxmd169:not(.eg-foot-more-open) .eg-foot-practice .eg-foot-extra,
+  .eg-test-root.eg-qxmd169:not(.eg-foot-more-open) .eg-foot-practice .eg-foot-left {
+    display: none !important;
+  }
+  .eg-test-root.eg-qxmd169.eg-foot-more-open .eg-foot-practice .eg-foot-extra,
+  .eg-test-root.eg-qxmd169.eg-foot-more-open .eg-foot-practice .eg-foot-left {
+    display: flex !important;
+    flex-direction: column !important;
+    flex-wrap: nowrap !important;
+    gap: 8px !important;
+    width: 100% !important;
+    order: 1 !important;
+    padding: 10px 4px 8px !important;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.35);
+    margin-bottom: 6px;
+  }
+  .eg-test-root.eg-qxmd169.eg-foot-more-open .eg-foot-practice .eg-btn-review,
+  .eg-test-root.eg-qxmd169.eg-foot-more-open .eg-foot-practice .eg-btn-clear {
+    flex: 0 0 auto !important;
+    width: 100% !important;
+    min-height: 44px !important;
+  }
+  .eg-test-root.eg-qxmd169 .eg-foot-sheet-scrim {
+    display: none !important;
+  }
+  .eg-test-root.eg-qxmd169.eg-foot-more-open .eg-foot-sheet-scrim {
+    display: block !important;
+    position: fixed !important;
+    inset: 0 !important;
+    bottom: 120px !important;
+    background: rgba(15, 23, 42, 0.35) !important;
+    z-index: 2147482990 !important;
+    pointer-events: auto !important;
+  }
+}
+
+/* Desktop / wide: full ExamGoal foot; hide More */
+@media (min-width: 721px) {
+  .eg-test-root.eg-qxmd169 .eg-foot-practice #egFootMore,
+  .eg-test-root.eg-qxmd169 .eg-foot-sheet-scrim {
+    display: none !important;
+  }
+  .eg-test-root.eg-qxmd169 .eg-foot-practice {
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+  }
+  .eg-test-root.eg-qxmd169 .eg-foot-practice .eg-foot-extra,
+  .eg-test-root.eg-qxmd169 .eg-foot-practice .eg-foot-left {
+    display: flex !important;
+  }
+  .eg-test-root.eg-qxmd169 .eg-foot-practice .eg-foot-nav {
+    display: flex !important;
+    grid-template-columns: none !important;
+    margin-left: auto;
+  }
+}
+
+
+/* qxmd169: Report + Group always reachable on mobile Practice */
+@media (max-width: 720px) {
+  .eg-test-root.eg-qxmd169[data-eg-mode="practice"] .eg-top-tools .eg-tool-reach,
+  .eg-test-root.eg-qxmd169[data-eg-mode="practice"] .eg-top-tools #egPlusBtn,
+  .eg-test-root.eg-qxmd169[data-eg-mode="practice"] .eg-top-tools #mtkReportBtn {
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+}
+
+/* qxmd169: palette chrome ≤120ms */
+.eg-test-root.eg-qxmd169 {
+  --eg-chrome-ms: 120ms;
+}
+.eg-test-root.eg-qxmd169 #egSide,
+.eg-test-root.eg-qxmd169 .eg-side,
+.eg-test-root.eg-qxmd169.eg-side-open #egSide,
+.eg-test-root.eg-qxmd169.eg-side-open .eg-side {
+  transition: transform var(--eg-chrome-ms, 120ms) cubic-bezier(.2,.8,.2,1),
+              opacity var(--eg-chrome-ms, 120ms) ease !important;
 }
 
 /* Radio never overlaps letter circle — letter IS the control (sitewide) */

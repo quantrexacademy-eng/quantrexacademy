@@ -1,10 +1,10 @@
 {
-  "build": "qxmd168",
-  "cache": "qx-pwa-qxmd168",
-  "title": "qxmd168 \u00b7 Digital Books load complete \u2014 catalog, chapters, figures, retry",
-  "body": "Digital Books: full catalog (incl. curated), chapter packs load all Qs, bank books use chapter shards (no 50MB hang), resetBooksCache clears nav/chapter, figures prefer local qx-book-* with Firebase onerror, letter-only never Loading. qxmd167 Practice/format kept. No Vercel. No bank rewrite.",
+  "build": "qxmd169",
+  "cache": "qx-pwa-qxmd169",
+  "title": "qxmd169 \u00b7 Mobile Practice foot + Report/Group + Medical MIPYQ + palette/load speed",
+  "body": "Practice mobile: Previous|Next only (\u22ef More for Mark/Clear/Show). Report+Group restored on toolbar. Medical Digital Books include Most Important PYQ NEET 2027. Palette CSS-instant \u2264120ms; legend counts match grid. Faster book/practice load (shorter failsafes, default cache with bust). Format/stem-hide from 167/168 kept. No Vercel. No bank rewrite.",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app",
   "site": "https://www.quantrexacademy.com",
   "package": "com.quantrexacademy.app",
-  "ts": 1789661451121
+  "ts": 1789663200000
 }

@@ -454,9 +454,12 @@
       }).join("");
       let counts;
       if (practice) {
+        /* qxmd169: counts must cover every paletteStatus class used by grid cells */
         counts = '<span><i class="eg-dot correct"></i> ' + countStatus(g, "eg-correct") +
           '</span><span><i class="eg-dot wrong"></i> ' + countStatus(g, "eg-wrong") +
           '</span><span><i class="eg-dot att"></i> ' + countStatus(g, "eg-att") +
+          '</span><span><i class="eg-dot marked"></i> ' + countStatus(g, "eg-marked") +
+          '</span><span><i class="eg-dot att-mark"></i> ' + countStatus(g, "eg-att-mark") +
           '</span><span><i class="eg-dot seen-p"></i> ' + countStatus(g, "eg-seen") +
           '</span><span><i class="eg-dot unseen"></i> ' + countStatus(g, "eg-unseen") + "</span>";
       } else {
@@ -525,19 +528,22 @@
       ? '<button type="button" class="eg-btn eg-btn-close-pal" id="egFootClose" title="Close palette">✕ Close</button>'
       : "";
     /* Prev | Next ALWAYS in foot from first paint */
-    /* qxmd167: Practice gets ExamGoal actions (Mark/Clear/Save) + Show Answer; no Submit */
+    /* qxmd169: mobile Practice = Previous | Next only; Mark/Clear/Show via More sheet */
     const foot = practice
       ? '<div class="eg-foot eg-foot-practice" id="egFoot">' +
-        '<div class="eg-foot-left">' +
+        '<div class="eg-foot-nav eg-foot-right">' +
+        (footClose || "") +
+        '<button type="button" class="eg-btn eg-btn-more" id="egFootMore" title="More actions" aria-label="More actions" aria-expanded="false">⋯</button>' +
+        '<button type="button" class="eg-btn" id="qxPrevBtn"' + (firstQ ? " disabled" : "") + ">Previous</button>" +
+        '<button type="button" class="eg-btn eg-btn-next" id="qxNextBtn"' + (lastQ ? " disabled" : "") + ">Next</button>" +
+        "</div>" +
+        '<div class="eg-foot-extra eg-foot-left" id="egFootExtra">' +
         showSwitch +
-        '<button type="button" class="eg-btn eg-btn-review" id="qxReviewNextBtn">Mark for Review &amp; Next</button>' +
+        '<button type="button" class="eg-btn eg-btn-review" id="qxReviewNextBtn">Mark for Review</button>' +
         '<button type="button" class="eg-btn eg-btn-clear" id="qxClearBtn">Clear Response</button>' +
         "</div>" +
-        '<div class="eg-foot-right">' +
-        (footClose || "") +
-        '<button type="button" class="eg-btn" id="qxPrevBtn"' + (firstQ ? " disabled" : "") + ">Previous</button>" +
-        '<button type="button" class="eg-btn eg-btn-next" id="qxSaveBtn"' + (lastQ ? " disabled" : "") + ">Save &amp; Next</button>" +
-        "</div></div>"
+        '<div class="eg-foot-sheet-scrim" id="egFootSheetScrim" hidden aria-hidden="true"></div>' +
+        "</div>"
       : '<div class="eg-foot" id="egFoot">' +
         '<div class="eg-foot-left">' +
         '<button type="button" class="eg-btn" id="qxReviewNextBtn">Mark for Review &amp; Next</button>' +
@@ -593,7 +599,7 @@
     return '<div class="eg-test-root mtk-test-root' +
       (sideOpen ? " eg-side-open" : " eg-side-collapsed") +
       (stripOpen ? " eg-strip-open" : " eg-strip-collapsed") +
-      " eg-tools-closed eg-compact eg-qxmd167 eg-qxtool8 eg-qxeg1 eg-qxeg2 eg-qxeg3 eg-qxeg4 eg-qxeg5 eg-qxeg6 eg-qxeg7" +
+      " eg-tools-closed eg-compact eg-qxmd167 eg-qxmd169 eg-qxtool8 eg-qxeg1 eg-qxeg2 eg-qxeg3 eg-qxeg4 eg-qxeg5 eg-qxeg6 eg-qxeg7" +
       (previewOpen ? " eg-preview-open" : " eg-preview-collapsed") +
       (desktopMode ? " eg-desktop-mode" : " eg-mobile") +
       (!desktopMode && isMobileEg ? " eg-mobile-vp" : "") +
@@ -619,11 +625,11 @@
       /* secondary — stay if fit; mobile CSS may tuck into Aa */
       '<button type="button" class="eg-ico star eg-tool-btn eg-tool-sec' + (bmOn ? " on" : "") + '" id="egStarBtn" data-tip="Bookmark" title="Bookmark" aria-label="Bookmark">' +
       (bmOn ? "★" : "☆") + '<span class="eg-tip">Bookmark</span></button>' +
-      '<button type="button" class="eg-ico eg-tool-btn eg-tool-sec" id="egPlusBtn" data-tip="Group" title="Create group" aria-label="Create group">' +
+      '<button type="button" class="eg-ico eg-tool-btn eg-tool-sec eg-tool-reach" id="egPlusBtn" data-tip="Group" title="Create group" aria-label="Create group">' +
       groupIco + '<span class="eg-tip">Group</span></button>' +
       '<button type="button" class="eg-ico eg-tool-btn eg-tool-sec" id="egFullBtn" data-tip="Fullscreen" title="Fullscreen" aria-label="Fullscreen">' +
       ico('<path d="M8 3H3v5M16 3h5v5M8 21H3v-5M21 16v5h-5"/>') + '<span class="eg-tip">Full</span></button>' +
-      '<button type="button" class="eg-ico warn eg-tool-btn eg-tool-sec" id="mtkReportBtn" data-tip="Report" title="Report question" aria-label="Report">!<span class="eg-tip">Report</span></button>' +
+      '<button type="button" class="eg-ico warn eg-tool-btn eg-tool-sec eg-tool-reach" id="mtkReportBtn" data-tip="Report" title="Report question" aria-label="Report">!<span class="eg-tip">Report</span></button>' +
       "</div>" + fmt +
       "</header>" +
       '<div class="eg-subs">' + tabs + "</div>" +
@@ -1106,14 +1112,21 @@
           right.className = "eg-foot-right";
           foot.appendChild(right);
         }
-        right.style.cssText = "display:grid!important;grid-template-columns:1fr 1fr!important;gap:8px!important;width:100%!important;visibility:visible!important;opacity:1!important;";
+        var practiceFoot = !!(root.getAttribute("data-eg-mode") === "practice");
+        var narrow = !!(window.matchMedia && window.matchMedia("(max-width: 720px)").matches);
+        /* qxmd169: practice mobile = More | Prev | Next; do not force 1fr 1fr over CSS */
+        if (practiceFoot && narrow) {
+          right.style.cssText = "display:grid!important;grid-template-columns:48px 1fr 1fr!important;gap:8px!important;width:100%!important;visibility:visible!important;opacity:1!important;";
+        } else {
+          right.style.cssText = "display:grid!important;grid-template-columns:1fr 1fr!important;gap:8px!important;width:100%!important;visibility:visible!important;opacity:1!important;";
+        }
         function ensureBtn(id, label, nextish) {
           let b = foot.querySelector("#" + id);
           if (!b) {
             b = document.createElement("button");
             b.type = "button";
             b.id = id;
-            b.className = "eg-btn" + (nextish ? " eg-btn-next" : "");
+            b.className = "eg-btn" + (nextish ? " eg-btn-next" : "") + (id === "egFootMore" ? " eg-btn-more" : "");
             right.appendChild(b);
           }
           b.textContent = label;
@@ -1131,13 +1144,15 @@
         try {
           Array.prototype.slice.call(foot.querySelectorAll("button, .eg-btn")).forEach(function (el) {
             var t = String(el.textContent || "");
-            if (/saved\s*at\s*q/i.test(t) && el.id !== "qxPrevBtn" && el.id !== "qxNextBtn" && el.id !== "qxSaveBtn") {
+            if (/saved\s*at\s*q/i.test(t) && el.id !== "qxPrevBtn" && el.id !== "qxNextBtn" && el.id !== "qxSaveBtn" && el.id !== "egFootMore") {
               el.remove();
             }
           });
         } catch (_) {}
+        if (practiceFoot && narrow) {
+          ensureBtn("egFootMore", "⋯", false);
+        }
         ensureBtn("qxPrevBtn", "Previous", false);
-        var practiceFoot = !!(root.getAttribute("data-eg-mode") === "practice");
         var next;
         if (practiceFoot) {
           var saveLeftover = foot.querySelector("#qxSaveBtn");
@@ -1186,7 +1201,7 @@
         root.classList.toggle("eg-preview-open", previewOpen);
         root.classList.toggle("eg-preview-collapsed", !previewOpen);
         root.classList.remove("eg-tools-open");
-        root.classList.add("eg-tools-closed", "eg-qxmd167", "eg-qxtool8", "eg-qxeg1", "eg-qxeg2", "eg-qxeg3", "eg-qxeg4", "eg-qxeg5", "eg-qxeg6", "eg-qxeg7", "eg-foot-ready");
+        root.classList.add("eg-tools-closed", "eg-qxmd167", "eg-qxmd169", "eg-qxtool8", "eg-qxeg1", "eg-qxeg2", "eg-qxeg3", "eg-qxeg4", "eg-qxeg5", "eg-qxeg6", "eg-qxeg7", "eg-foot-ready");
         root.setAttribute("data-eg-cycle", bothOpen ? "1" : "0");
         const strip = root.querySelector("#egQBar");
         if (strip) {
@@ -1278,7 +1293,7 @@
         session._egSideCollapsed = false;
         session._egSideUserOpened = true;
         session._egHdrCycle = 1;
-        session._egSideIgnoreScrimUntil = Date.now() + 450;
+        session._egSideIgnoreScrimUntil = Date.now() + 200;
         syncCycleBtn();
       } catch (_) { /* */ }
     }
@@ -1289,7 +1304,7 @@
         session._egSideCollapsed = false;
         session._egSideUserOpened = true;
         session._egHdrCycle = 1;
-        session._egSideIgnoreScrimUntil = Date.now() + 450;
+        session._egSideIgnoreScrimUntil = Date.now() + 200;
         syncCycleBtn();
       } catch (_) { /* */ }
     }
@@ -1335,7 +1350,7 @@
           if (e.stopImmediatePropagation) e.stopImmediatePropagation();
         } catch (_) { /* */ }
       }
-      if (window._egAllQToggleLock && Date.now() - window._egAllQToggleLock < 180) return;
+      if (window._egAllQToggleLock && Date.now() - window._egAllQToggleLock < 80) return;
       window._egAllQToggleLock = Date.now();
       const cf = chromeFlags(session);
       if (cf.previewOpen || cf.stripOpen) collapseEgPreviewStrip();
@@ -1351,7 +1366,7 @@
           if (e.stopImmediatePropagation) e.stopImmediatePropagation();
         } catch (_) { /* */ }
       }
-      if (window._egMenuToggleLock && Date.now() - window._egMenuToggleLock < 200) return;
+      if (window._egMenuToggleLock && Date.now() - window._egMenuToggleLock < 80) return;
       window._egMenuToggleLock = Date.now();
       const cf = chromeFlags(session);
       const pref = getPalettePref();
@@ -1429,7 +1444,7 @@
             }
             var now = Date.now();
             if (now < lockUntil) return;
-            lockUntil = now + 400;
+            lockUntil = now + 150;
             go();
           }
           el.ontouchend = null;
@@ -1518,7 +1533,7 @@
         }
         var now = Date.now();
         if (now < lockUntil) return;
-        lockUntil = now + 400;
+        lockUntil = now + 120;
         const idx = parseInt(cell.getAttribute("data-qidx"), 10);
         if (Number.isNaN(idx)) return;
         markCurrentPal(idx);
@@ -1537,6 +1552,68 @@
         cell.style.setProperty("pointer-events", "auto", "important");
       } catch (_) { /* */ }
     });
+
+    /* qxmd169: mobile More sheet for Mark / Clear / Show Answer */
+    (function wireFootMore() {
+      try {
+        var more = root.querySelector("#egFootMore");
+        var extra = root.querySelector("#egFootExtra");
+        var scrim = root.querySelector("#egFootSheetScrim");
+        function setOpen(on) {
+          root.classList.toggle("eg-foot-more-open", !!on);
+          if (more) more.setAttribute("aria-expanded", on ? "true" : "false");
+          if (scrim) {
+            if (on) { scrim.removeAttribute("hidden"); scrim.setAttribute("aria-hidden", "false"); }
+            else { scrim.setAttribute("hidden", ""); scrim.setAttribute("aria-hidden", "true"); }
+          }
+        }
+        if (more) {
+          more.onclick = function (e) {
+            if (e) { e.preventDefault(); e.stopPropagation(); }
+            setOpen(!root.classList.contains("eg-foot-more-open"));
+          };
+        }
+        if (scrim) {
+          scrim.onclick = function (e) {
+            if (e) { e.preventDefault(); e.stopPropagation(); }
+            setOpen(false);
+          };
+        }
+        /* Close sheet after Mark / Clear so foot stays clean */
+        ["#qxReviewNextBtn", "#qxClearBtn"].forEach(function (sel) {
+          var b = root.querySelector(sel);
+          if (!b) return;
+          var prev = b.onclick;
+          b.addEventListener("click", function () {
+            setTimeout(function () { setOpen(false); }, 30);
+          }, true);
+        });
+        /* Swipe-up / long-press on foot opens More; swipe-down closes */
+        var footEl = root.querySelector("#egFoot");
+        if (footEl && !footEl._egSwipeBound) {
+          footEl._egSwipeBound = true;
+          var sy = 0, lpTimer = 0;
+          footEl.addEventListener("touchstart", function (ev) {
+            try { sy = ev.touches && ev.touches[0] ? ev.touches[0].clientY : 0; } catch (_) { sy = 0; }
+            try { clearTimeout(lpTimer); } catch (_) {}
+            lpTimer = setTimeout(function () { setOpen(true); }, 480);
+          }, { passive: true });
+          footEl.addEventListener("touchmove", function () { try { clearTimeout(lpTimer); } catch (_) {} }, { passive: true });
+          footEl.addEventListener("touchend", function (ev) {
+            try { clearTimeout(lpTimer); } catch (_) {}
+            try {
+              var ey = ev.changedTouches && ev.changedTouches[0] ? ev.changedTouches[0].clientY : sy;
+              var dy = ey - sy;
+              if (dy < -40) setOpen(true);
+              else if (dy > 40) setOpen(false);
+            } catch (_) {}
+          }, { passive: true });
+          footEl.addEventListener("touchcancel", function () { try { clearTimeout(lpTimer); } catch (_) {} }, { passive: true });
+        }
+        void extra;
+      } catch (_) { /* */ }
+    })();
+
     const themeBtn = root.querySelector("#mtkThemeBtn");
     if (themeBtn) themeBtn.onclick = function (e) {
       if (e) { e.preventDefault(); e.stopPropagation(); }
@@ -1547,7 +1624,15 @@
     const fmtBtn = root.querySelector("#egFmtBtn");
     if (fmtBtn) fmtBtn.onclick = function (e) {
       if (e) { e.preventDefault(); e.stopPropagation(); }
+      if (window._egFmtLock && Date.now() - window._egFmtLock < 120) return;
+      window._egFmtLock = Date.now();
       session._egFmtOpen = !session._egFmtOpen;
+      var existing = root.querySelector("#egFmtPop");
+      if (!session._egFmtOpen) {
+        if (existing) try { existing.remove(); } catch (_) {}
+        return;
+      }
+      /* Prefer light refresh only if pop markup not in DOM yet */
       if (typeof api.refresh === "function") api.refresh();
     };
     root.querySelectorAll("[data-eg-scale]").forEach(function (b) {
@@ -1666,7 +1751,7 @@
           if (!sess) return;
           const id = t.id || "";
           if (id === "egMenuBtn") {
-            if (window._egMenuToggleLock && Date.now() - window._egMenuToggleLock < 200) return;
+            if (window._egMenuToggleLock && Date.now() - window._egMenuToggleLock < 80) return;
             window._egMenuToggleLock = Date.now();
             if (sess._egSideOpen) {
               sess._egSideOpen = false;
@@ -1675,10 +1760,10 @@
               sess._egSideOpen = true;
               sess._egSideCollapsed = false;
               sess._egSideUserOpened = true;
-              sess._egSideIgnoreScrimUntil = Date.now() + 280;
+              sess._egSideIgnoreScrimUntil = Date.now() + 160;
             }
           } else {
-            if (window._egAllQToggleLock && Date.now() - window._egAllQToggleLock < 180) return;
+            if (window._egAllQToggleLock && Date.now() - window._egAllQToggleLock < 80) return;
             window._egAllQToggleLock = Date.now();
             if (sess._egPreviewOpen || sess._egStripOpen) {
               sess._egPreviewOpen = false;

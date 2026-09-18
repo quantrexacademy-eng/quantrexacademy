@@ -543,7 +543,7 @@ function render(view, payload) {
         '<button type="button" class="btn-primary" onclick="location.reload()">Retry</button> ' +
         '<button type="button" class="btn-soft" onclick="go(\'dashboard\')">Home</button></div>';
     };
-    // Soft nudge at 8s; hard failsafe only after a real hang (20s) — never wipe early
+    // qxmd169: Soft nudge at 6s; hard failsafe at 16s — prefer Retry over endless splash
     const slowTimer = setTimeout(function () {
       if (seq !== window._qxRenderSeq) return;
       const main = document.getElementById("app-main");
@@ -553,7 +553,7 @@ function render(view, payload) {
         const st = main.querySelector(".qx-load-status");
         if (st) st.textContent = "Still loading — almost ready";
       } catch (_) { /* */ }
-    }, 8000);
+    }, 6000);
     const hardTimer = setTimeout(function () {
       if (seq !== window._qxRenderSeq) return;
       const main = document.getElementById("app-main");
@@ -561,12 +561,12 @@ function render(view, payload) {
       if (!/Opening your Academy desk|Still loading/i.test(html)) return;
       window._qxRenderSeq = seq + 1;
       finishRender(qxSlowRetryHtml());
-    }, 20000);
+    }, 16000);
     const viewPromise = Promise.resolve().then(function () { return asyncMap[view](payload); });
     const raced = Promise.race([
       viewPromise,
       new Promise(function (_, reject) {
-        setTimeout(function () { reject(new Error("View render timeout")); }, 20000);
+        setTimeout(function () { reject(new Error("View render timeout")); }, 16000);
       })
     ]);
     raced.then((html) => {
@@ -3079,7 +3079,7 @@ function bindDynamic() {
 // ---------- Practice / paper load failsafe (fast first paint; never endless splash) ----------
 let _qxPracticeFailsafeTimer = null;
 let _qxPracticeSplashAt = 0;
-let _qxPracticeFailsafeMs = 12000;
+let _qxPracticeFailsafeMs = 10000;
 let _qxPracticePartialTimer = null;
 let _qxNetInflight = 0;
 let _qxPracticeUiObserver = null;
@@ -3179,8 +3179,8 @@ function qxClearPracticeFailsafe() {
 function qxArmPracticeFailsafe(ms) {
   qxClearPracticeFailsafe();
   _qxPracticeSplashAt = Date.now();
-  // Practice: ~12s soft; papers pass longer budget; avoid premature wipe
-  const wait = Math.max(10000, Number(ms) || 12000);
+  // qxmd169: ~10s soft; papers can pass longer; force first-paint early
+  const wait = Math.max(8000, Number(ms) || 10000);
   _qxPracticeFailsafeMs = wait;
   qxEnsurePracticeUiObserver();
   // At 2s nudge: force partial UI paint — never imply wait forever
@@ -3225,7 +3225,7 @@ function qxArmPracticeFailsafe(ms) {
           const st = document.querySelector("#app-main .qx-load-status");
           if (st) st.textContent = "Still loading — almost ready";
         } catch (_) { /* */ }
-        _qxPracticeFailsafeTimer = setTimeout(tick, 10000);
+        _qxPracticeFailsafeTimer = setTimeout(tick, 6000);
         return;
       }
       setTimeout(function () {
@@ -3390,7 +3390,7 @@ function bootApp() {
   // Soft arm only if boot already landed on practice/paper splash (deep-link).
   // startTest / startPyqPaperMock re-arm with full 28s budget; UI paint clears it.
   try {
-    if (qxPracticeSplashActive()) qxArmPracticeFailsafe(12000);
+    if (qxPracticeSplashActive()) qxArmPracticeFailsafe(10000);
     else qxEnsurePracticeUiObserver();
   } catch (_) { /* */ }
 

@@ -14540,10 +14540,11 @@ async function fetchBookNav(bookId) {
   if (_bookNavCache[bookId]) return _bookNavCache[bookId];
   const bust = typeof _qxBookDataVer !== "undefined" ? _qxBookDataVer : (typeof QX_BUILD !== "undefined" ? QX_BUILD : Date.now());
   const ctrl = typeof AbortController !== "undefined" ? new AbortController() : null;
-  const to = setTimeout(() => { try { ctrl && ctrl.abort(); } catch (_) { /* */ } }, 15000);
+  const to = setTimeout(() => { try { ctrl && ctrl.abort(); } catch (_) { /* */ } }, 10000);
   try {
+    const forceNet = !!(typeof window !== "undefined" && window._qxBookForceNet);
     const res = await fetch(`data/nav/books/${bookId}.json?v=${encodeURIComponent(bust)}`, {
-      cache: "no-store",
+      cache: forceNet ? "no-store" : "default",
       signal: ctrl ? ctrl.signal : undefined
     });
     clearTimeout(to);
@@ -14632,12 +14633,14 @@ async function loadBookChapter(bookId, chapterKey) {
   }
   const bust = encodeURIComponent(_qxBookDataVer);
   const ctrl = typeof AbortController !== "undefined" ? new AbortController() : null;
-  const to = setTimeout(() => { try { ctrl && ctrl.abort(); } catch (_) { /* */ } }, 20000);
+  const to = setTimeout(() => { try { ctrl && ctrl.abort(); } catch (_) { /* */ } }, 12000);
   let res;
   try {
-    // no-store: never reuse a stale empty/404 from SW or HTTP cache (books "not loading")
+    // qxmd169: version bust is enough for freshness; avoid no-store hangs on mobile.
+    // Retry path (force) still uses no-store via opts / cache miss empty.
+    const forceNet = !!(typeof window !== "undefined" && window._qxBookForceNet);
     res = await fetch(`data/books/chapters/${resolvedId}/${chapterKey}.json?v=${bust}`, {
-      cache: "no-store",
+      cache: forceNet ? "no-store" : "default",
       signal: ctrl ? ctrl.signal : undefined
     });
   } catch (e) {
