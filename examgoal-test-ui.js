@@ -454,7 +454,7 @@
       }).join("");
       let counts;
       if (practice) {
-        /* qxmd169: counts must cover every paletteStatus class used by grid cells */
+        /* qxmd170: counts must cover every paletteStatus class used by grid cells */
         counts = '<span><i class="eg-dot correct"></i> ' + countStatus(g, "eg-correct") +
           '</span><span><i class="eg-dot wrong"></i> ' + countStatus(g, "eg-wrong") +
           '</span><span><i class="eg-dot att"></i> ' + countStatus(g, "eg-att") +
@@ -528,7 +528,7 @@
       ? '<button type="button" class="eg-btn eg-btn-close-pal" id="egFootClose" title="Close palette">✕ Close</button>'
       : "";
     /* Prev | Next ALWAYS in foot from first paint */
-    /* qxmd169: mobile Practice = Previous | Next only; Mark/Clear/Show via More sheet */
+    /* qxmd170: mobile Practice = Previous | Next only; Mark/Clear/Show via More sheet */
     const foot = practice
       ? '<div class="eg-foot eg-foot-practice" id="egFoot">' +
         '<div class="eg-foot-nav eg-foot-right">' +
@@ -599,7 +599,7 @@
     return '<div class="eg-test-root mtk-test-root' +
       (sideOpen ? " eg-side-open" : " eg-side-collapsed") +
       (stripOpen ? " eg-strip-open" : " eg-strip-collapsed") +
-      " eg-tools-closed eg-compact eg-qxmd167 eg-qxmd169 eg-qxtool8 eg-qxeg1 eg-qxeg2 eg-qxeg3 eg-qxeg4 eg-qxeg5 eg-qxeg6 eg-qxeg7" +
+      " eg-tools-closed eg-compact eg-qxmd167 eg-qxmd170 eg-qxtool8 eg-qxeg1 eg-qxeg2 eg-qxeg3 eg-qxeg4 eg-qxeg5 eg-qxeg6 eg-qxeg7" +
       (previewOpen ? " eg-preview-open" : " eg-preview-collapsed") +
       (desktopMode ? " eg-desktop-mode" : " eg-mobile") +
       (!desktopMode && isMobileEg ? " eg-mobile-vp" : "") +
@@ -1114,7 +1114,7 @@
         }
         var practiceFoot = !!(root.getAttribute("data-eg-mode") === "practice");
         var narrow = !!(window.matchMedia && window.matchMedia("(max-width: 720px)").matches);
-        /* qxmd169: practice mobile = More | Prev | Next; do not force 1fr 1fr over CSS */
+        /* qxmd170: practice mobile = More | Prev | Next; do not force 1fr 1fr over CSS */
         if (practiceFoot && narrow) {
           right.style.cssText = "display:grid!important;grid-template-columns:48px 1fr 1fr!important;gap:8px!important;width:100%!important;visibility:visible!important;opacity:1!important;";
         } else {
@@ -1201,7 +1201,7 @@
         root.classList.toggle("eg-preview-open", previewOpen);
         root.classList.toggle("eg-preview-collapsed", !previewOpen);
         root.classList.remove("eg-tools-open");
-        root.classList.add("eg-tools-closed", "eg-qxmd167", "eg-qxmd169", "eg-qxtool8", "eg-qxeg1", "eg-qxeg2", "eg-qxeg3", "eg-qxeg4", "eg-qxeg5", "eg-qxeg6", "eg-qxeg7", "eg-foot-ready");
+        root.classList.add("eg-tools-closed", "eg-qxmd167", "eg-qxmd170", "eg-qxtool8", "eg-qxeg1", "eg-qxeg2", "eg-qxeg3", "eg-qxeg4", "eg-qxeg5", "eg-qxeg6", "eg-qxeg7", "eg-foot-ready");
         root.setAttribute("data-eg-cycle", bothOpen ? "1" : "0");
         const strip = root.querySelector("#egQBar");
         if (strip) {
@@ -1553,7 +1553,7 @@
       } catch (_) { /* */ }
     });
 
-    /* qxmd169: mobile More sheet for Mark / Clear / Show Answer */
+    /* qxmd170: mobile More sheet for Mark / Clear / Show Answer */
     (function wireFootMore() {
       try {
         var more = root.querySelector("#egFootMore");

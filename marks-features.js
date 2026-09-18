@@ -7407,9 +7407,14 @@ function mergeBooksCatalog(remote, base) {
 
 function booksForExam(catalog, examKey) {
   const c = catalog || QX_BOOKS_CATALOG;
-  if (examKey === "Medical") {
+  const key = String(examKey || "");
+  const isMed = key === "Medical" || /neet|medical/i.test(key);
+  if (isMed) {
     const med = filterActiveBooks(c.medical || []);
-    return med.length ? med : filterActiveBooks(c.engineering || []);
+    // Never fall back to engineering when medical list exists but empty after filter — show medical (possibly empty) only if remote wiped; else engineering only as last resort
+    if (med.length) return med;
+    const embedded = filterActiveBooks((QX_BOOKS_CATALOG.medical || []));
+    return embedded.length ? embedded : filterActiveBooks(c.engineering || []);
   }
   const eng = filterActiveBooks(c.engineering || []);
   const curated = filterActiveBooks(c.curated || []);
@@ -7496,8 +7501,9 @@ async function viewBooks(payload) {
   const catalog = await fetchBooks(!!p.forceReload);
 
   if (!p.bookId || p.step === "list") {
-    const isMed = STATE.exam === "Medical";
-    const examBooks = booksForExam(catalog, STATE.exam);
+    // qxmd170: track fallback so Medical books never hide when folder=Medical but STATE.exam drifted
+    const isMed = STATE.exam === "Medical" || (typeof qxFolderTrack === "function" && qxFolderTrack() === "Medical");
+    const examBooks = booksForExam(catalog, isMed ? "Medical" : STATE.exam);
     const title = isMed ? "NEET Digital Books" : (catalog.title || "Digital Books");
     const subtitle = catalog.subtitle || "Expert-picked question banks — one tap to practice";
     const renderCard = typeof renderBookCard === "function" ? renderBookCard : (b) => `<div class="book-card">${b.title || "Book"}</div>`;
@@ -7513,7 +7519,8 @@ async function viewBooks(payload) {
       : `<p class="sec-desc">${engCount} digital books${curatedCount ? ` · ${curatedCount} PYQ collections` : ""} — tap a cover to practice</p>`;
 
     if (isMed) {
-      const recIds = ["6a507da9107f81233d9985c1", "6a0adb714b032b031e049a34", "69cfb4af611e9b07b5d55e79"];
+      // qxmd170: MIPYQ NEET 2027 first in Recommended + all 8 in All Books grid
+      const recIds = ["6a91185f41ab5aba084f4d30", "6a507da9107f81233d9985c1", "6a0adb714b032b031e049a34", "69cfb4af611e9b07b5d55e79"];
       const rec = recIds.map((id) => examBooks.find((b) => b.id === id)).filter(Boolean);
       const recCards = rec.map((b) => { try { return renderCard({ ...b, type: b.type || "exam" }); } catch (_) { return ""; } }).join("");
       return `${topbar("Most Important Digital Books", "No need to buy bulky physical books. Get them all in one place!")}

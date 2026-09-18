@@ -192,9 +192,27 @@ const QuantrexSolution = (() => {
     if (!t) return "";
     // Keep line breaks so multi-line shortcuts still render each math island
     t = t.replace(/[ \t]+/g, " ").replace(/\n{3,}/g, "\n\n");
-    try { t = repairSolutionDelimiters(t); } catch (_) { /* */ }
-    if (isCleanLatex(t) && !/\$/.test(t)) t = `$${t}$`;
-    // Wrap remaining bare TeX chunks when some $ already present
+    // qxmd170: Marks glue first
+    try {
+      if (typeof QxMathSanitize !== "undefined" && QxMathSanitize.repairMarksExportTex) {
+        t = QxMathSanitize.repairMarksExportTex(t);
+      }
+    } catch (_) { /* */ }
+    const isProseTip = /^(?:key\s*step|final\s*answer|correct\s*(?:option|mapping)|round|select|apply|choose|write|draw|track|look|recall|step\s*\d)\b/i.test(t);
+    if (isProseTip) {
+      // Wrap only the math after "Key step:" — do not run full wrapBareLine merge
+      if (!/\$/.test(t) && /\\[a-zA-Z]/.test(t)) {
+        t = t.replace(/(:\s*)(.+)$/, (_, a, math) => {
+          const m = String(math || "").trim();
+          if (!m) return _;
+          if (/\$/.test(m)) return a + m;
+          return a + "$" + m + "$";
+        });
+      }
+    } else {
+      try { t = repairSolutionDelimiters(t); } catch (_) { /* */ }
+      if (isCleanLatex(t) && !/\$/.test(t)) t = `$${t}$`;
+    }
     try {
       if (typeof Mx !== "undefined" && Mx.ensureMathDelimiters) t = Mx.ensureMathDelimiters(t);
     } catch (_) { /* */ }
@@ -616,11 +634,27 @@ const QuantrexSolution = (() => {
     s = s.replace(/\${3,}/g, "$$");
     s = s.replace(/\$\s+\$/g, " ");
 
+    // qxmd170: kill $$\n$ / leading $$ before ⇒ / mashed display openers after stem strip
+    s = s.replace(/\$\$\s*\$/g, "$");
+    s = s.replace(/\$\$\s*(?=⇒|=>|⟹)/g, "$");
+    s = s.replace(/(^|>)\s*\$\$\s*(?=\\|[A-Za-z0-9|])/gm, "$1$");
+
+
     // Wrap bare TeX lines so KaTeX sees them; also close half-open bare+$\dfrac$ mixes
     function wrapBareLine(line) {
       let L = String(line || "").trim();
       if (!L) return line;
       if (/class=["'][^"']*katex|<math[\s>]/i.test(L)) return line;
+      // qxmd170: never merge "Key step:" / prose tips into one $…$ island
+      if (/^(?:key\s*step|final\s*answer|correct\s*(?:option|mapping)|round|select|apply|choose|write|draw|track|look|recall|step\s*\d)\b/i.test(L)) {
+        if (!/\$/.test(L) && /\\[a-zA-Z]/.test(L)) {
+          L = L.replace(/(:\s*)([\\$].+)$/, (_, a, math) => a + (math.startsWith("$") ? math : ("$" + math.trim() + "$")));
+          if (!/\$/.test(L)) {
+            L = L.replace(/((?:\\(?:sin|cos|tan|log|ln|frac|dfrac|sqrt|left|pm|cdot|times)[^<]*)+)$/i, (m) => "$" + m.trim() + "$");
+          }
+        }
+        return L;
+      }
       // Bare operators: sin 2x → \sin 2x inside upcoming math
       L = L.replace(/(^|[^\\A-Za-z])(sin|cos|tan|cot|sec|csc|log|ln)(?=\s*[0-9A-Za-z(_{])/g,
         (_, pre, fn) => pre + "\\" + fn);

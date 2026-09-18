@@ -543,7 +543,7 @@ function render(view, payload) {
         '<button type="button" class="btn-primary" onclick="location.reload()">Retry</button> ' +
         '<button type="button" class="btn-soft" onclick="go(\'dashboard\')">Home</button></div>';
     };
-    // qxmd169: Soft nudge at 6s; hard failsafe at 16s — prefer Retry over endless splash
+    // qxmd170: Soft nudge at 6s; hard failsafe at 16s — prefer Retry over endless splash
     const slowTimer = setTimeout(function () {
       if (seq !== window._qxRenderSeq) return;
       const main = document.getElementById("app-main");
@@ -3179,7 +3179,7 @@ function qxClearPracticeFailsafe() {
 function qxArmPracticeFailsafe(ms) {
   qxClearPracticeFailsafe();
   _qxPracticeSplashAt = Date.now();
-  // qxmd169: ~10s soft; papers can pass longer; force first-paint early
+  // qxmd170: ~10s soft; papers can pass longer; force first-paint early
   const wait = Math.max(8000, Number(ms) || 10000);
   _qxPracticeFailsafeMs = wait;
   qxEnsurePracticeUiObserver();

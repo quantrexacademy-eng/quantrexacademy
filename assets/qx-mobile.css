@@ -851,9 +851,9 @@ html { -webkit-text-size-adjust: 100%; }
   .eg-test-root.eg-qxmd167[data-eg-mode="practice"] .eg-top-tools .eg-tool-sec:not(.eg-tool-reach) {
     display: none !important;
   }
-  .eg-test-root.eg-qxmd169[data-eg-mode="practice"] .eg-top-tools .eg-tool-reach,
-  .eg-test-root.eg-qxmd169[data-eg-mode="practice"] .eg-top-tools #egPlusBtn,
-  .eg-test-root.eg-qxmd169[data-eg-mode="practice"] .eg-top-tools #mtkReportBtn {
+  .eg-test-root.eg-qxmd170[data-eg-mode="practice"] .eg-top-tools .eg-tool-reach,
+  .eg-test-root.eg-qxmd170[data-eg-mode="practice"] .eg-top-tools #egPlusBtn,
+  .eg-test-root.eg-qxmd170[data-eg-mode="practice"] .eg-top-tools #mtkReportBtn {
     display: inline-flex !important;
     visibility: visible !important;
   }

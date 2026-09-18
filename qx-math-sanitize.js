@@ -278,15 +278,32 @@
     // Bare sin/cos after | : |sin x|
     t = t.replace(/(\|)\s*(sin|cos|tan|cot|sec|csc)\s+(?=[A-Za-z])/gi,
       (_, bar, fn) => bar + "\\" + String(fn).toLowerCase() + " ");
-    // qxmd167: glued trig/log words — sinx / cosx / tanx
-    t = t.replace(/(^|[^\\A-Za-z])(sin|cos|tan|cot|sec|csc|log|ln)(x|y|z|t|u|v)\b/gi,
+
+    // qxmd170: {lncos}^{2}x / {lnsin} → \ln\cos^{2} x / \ln\sin (before bare glue)
+    t = t.replace(/\{(ln|log)(sin|cos|tan|cot|sec|csc)\}(\^\{[^}]*\}|\^\d)?([A-Za-z0-9]?)/gi,
+      (_, a, b, pow, v) => "\\" + a.toLowerCase() + "\\" + b.toLowerCase() + (pow || "") + (v ? " " + v : ""));
+    // qxmd170: bare ln/log glued to trig — lnsinx / lncosx / logsinx (inside \dfrac{} too)
+    t = t.replace(/(^|[^\\A-Za-z])(ln|log)(sin|cos|tan|cot|sec|csc)([A-Za-z0-9]?)/gi,
+      (_, pre, a, b, v) => pre + "\\" + a.toLowerCase() + " \\" + b.toLowerCase() + (v ? " " + v : ""));
+    // qxmd170: product glue sinxcosx / 2sinxcosx / sinxcos → \sin x \cos …
+    t = t.replace(/(^|[^\\A-Za-z])(sin|cos|tan|cot|sec|csc)(x|y|z|t|u|v)(sin|cos|tan|cot|sec|csc)([A-Za-z0-9]?)/gi,
+      (_, pre, a, v, b, v2) => pre + "\\" + a.toLowerCase() + " " + v + " \\" + b.toLowerCase() + (v2 ? " " + v2 : ""));
+
+    // qxmd167/170: glued trig/log words — sinx / cosx / tanx (lookahead: end or non-letter)
+    t = t.replace(/(^|[^\\A-Za-z])(sin|cos|tan|cot|sec|csc|log|ln)(x|y|z|t|u|v)(?![A-Za-z])/gi,
       (_, pre, fn, v) => pre + "\\" + fn.toLowerCase() + " " + v);
     // Bare fn before digit/paren: sin 2x / cos( → \sin
     t = t.replace(/(^|[^\\A-Za-z])(sin|cos|tan|cot|sec|csc|log|ln)\s*(?=[0-9(])/gi,
       (_, pre, fn) => pre + "\\" + fn.toLowerCase() + " ");
+    // Bare log/ln before subscript: log _{1/2} → \log_{1/2}
+    t = t.replace(/(^|[^\\A-Za-z])(log|ln)\s+(_\{)/gi,
+      (_, pre, fn, sub) => pre + "\\" + fn.toLowerCase() + sub);
     // After a command already present: \sin xcos → \sin x \cos
     t = t.replace(/(\\(?:sin|cos|tan|cot|sec|csc|ln|log)\s+[A-Za-z0-9])(sin|cos|tan|cot|sec|csc)\b/gi,
       (_, left, fn) => left + " \\" + fn.toLowerCase());
+    // Also: \sin xcosx (variable still glued to next trig)
+    t = t.replace(/(\\(?:sin|cos|tan|cot|sec|csc|ln|log)\s+)([A-Za-z0-9])(sin|cos|tan|cot|sec|csc)\b/gi,
+      (_, left, v, fn) => left + v + " \\" + fn.toLowerCase());
     // \lnsinx / \lncosx (command glued to sin/cos)
     t = t.replace(/\\(ln|log)(sin|cos|tan|cot|sec|csc)([A-Za-z0-9]?)/gi,
       (_, a, b, v) => "\\" + a.toLowerCase() + " \\" + b.toLowerCase() + (v ? " " + v : ""));
@@ -319,6 +336,8 @@
     if (/\{\\?(?:log|ln|sin|cos|tan)\}/.test(t)) return true;
     if (/\\left\s*\|\s*(?:sin|cos|tan)\b/i.test(t)) return true;
     if (/(?:^|[^\\])(?:sin|cos|tan|ln|log)x\b/i.test(t)) return true;
+    if (/(?:^|[^\\])(?:ln|log)(?:sin|cos|tan)/i.test(t)) return true;
+    if (/(?:sin|cos|tan)x(?:sin|cos|tan)/i.test(t)) return true;
     if (/\\(?:ln|log)(?:sin|cos)/i.test(t)) return true;
     if (/\\(?:alpha|beta|gamma|theta)[a-z]{2,}/i.test(t)) return true;
     return false;

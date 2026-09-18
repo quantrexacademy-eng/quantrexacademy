@@ -550,6 +550,12 @@ const QuantrexQFormat = (() => {
 
   function htmlContent(text) {
     let expanded = String(text || "");
+    // qxmd170: Marks TeX glue repair before proofread / Mx (stems + options)
+    try {
+      if (typeof QxMathSanitize !== "undefined" && QxMathSanitize.repairMarksExportTex) {
+        expanded = QxMathSanitize.repairMarksExportTex(expanded);
+      }
+    } catch (_) { /* */ }
     if (typeof QxProof !== "undefined" && QxProof.proofreadHtml) {
       try { expanded = QxProof.proofreadHtml(expanded); } catch(e) { console.error("Proofread failed", e); }
     }
@@ -1233,7 +1239,19 @@ const QuantrexQFormat = (() => {
      * Fix `$C < B < A$` — bare < in LaTeX was parsed as HTML and options vanished.
      * NEVER rewrite real HTML / MathML tags (screenshot 696: "with <math>…" was destroyed).
      */
-    function protectMathLtGt(s) {
+    /** qxmd170: run Marks TeX repair before Mx/KaTeX for stems & options */
+  function qxPrepMathText(s) {
+    let t = String(s == null ? "" : s);
+    if (!t) return t;
+    try {
+      if (typeof QxMathSanitize !== "undefined" && QxMathSanitize.repairMarksExportTex) {
+        t = QxMathSanitize.repairMarksExportTex(t);
+      }
+    } catch (_) { /* */ }
+    return t;
+  }
+
+  function protectMathLtGt(s) {
       let out = String(s || "");
       // Restore ‹math…› pseudo-tags first
       if (typeof Mx !== "undefined" && typeof Mx.restoreAngleQuoteTags === "function") {
@@ -1351,7 +1369,7 @@ const QuantrexQFormat = (() => {
           /* keep shimmer */
         } else if (rawHasImg) optBody = sizeOptionImgs(cleanPoolImgHtml(formatStructureNameOption(raw)));
         else if (plain && !/^(figure|fig\.?|diagram|image|structure|photo)$/i.test(plain)) {
-          optBody = (typeof Mx !== "undefined" && Mx.html) ? Mx.html(protectMathLtGt(plain)) : plain;
+          optBody = (typeof Mx !== "undefined" && Mx.html) ? Mx.html(protectMathLtGt(qxPrepMathText(plain))) : plain;
         } else if (raw && !isFigStubHtml(raw)) optBody = raw;
         else optBody = `<span class="qx-fig-loading" data-qx-fig-wait="${i}"></span>`;
       }

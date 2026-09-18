@@ -5058,13 +5058,13 @@ html .eg-test-root[data-test-theme="light"] .eg-sol .katex {
   .eg-test-root.eg-qxmd167.eg-qxtool8 .eg-top-tools .eg-tip {
     font-size: 8px !important;
   }
-  /* Practice: tuck Bookmark/Full into Aa More; Report+Group stay (qxmd169 reach) */
+  /* Practice: tuck Bookmark/Full into Aa More; Report+Group stay (qxmd170 reach) */
   .eg-test-root.eg-qxmd167[data-eg-mode="practice"] .eg-top-tools .eg-tool-sec:not(.eg-tool-reach) {
     display: none !important;
   }
   .eg-test-root.eg-qxmd167[data-eg-mode="practice"] .eg-top-tools .eg-tool-reach,
-  .eg-test-root.eg-qxmd169[data-eg-mode="practice"] .eg-top-tools #egPlusBtn,
-  .eg-test-root.eg-qxmd169[data-eg-mode="practice"] .eg-top-tools #mtkReportBtn {
+  .eg-test-root.eg-qxmd170[data-eg-mode="practice"] .eg-top-tools #egPlusBtn,
+  .eg-test-root.eg-qxmd170[data-eg-mode="practice"] .eg-top-tools #mtkReportBtn {
     display: inline-flex !important;
     visibility: visible !important;
   }
@@ -5138,16 +5138,16 @@ html .eg-test-root[data-test-theme="light"] .eg-sol .katex {
   margin-right: 4px;
 }
 @media (max-width: 720px) {
-  /* qxmd169: Previous | Next only — no stacked Mark/Clear/Save */
+  /* qxmd170: Previous | Next only — no stacked Mark/Clear/Save */
   .eg-test-root.eg-qxmd167 .eg-foot-practice,
-  .eg-test-root.eg-qxmd169 .eg-foot-practice {
+  .eg-test-root.eg-qxmd170 .eg-foot-practice {
     flex-direction: column-reverse !important;
     flex-wrap: nowrap !important;
     gap: 0 !important;
     padding: 8px 10px max(10px, env(safe-area-inset-bottom, 0px)) !important;
   }
-  .eg-test-root.eg-qxmd169 .eg-foot-practice .eg-foot-nav,
-  .eg-test-root.eg-qxmd169 .eg-foot-practice .eg-foot-right {
+  .eg-test-root.eg-qxmd170 .eg-foot-practice .eg-foot-nav,
+  .eg-test-root.eg-qxmd170 .eg-foot-practice .eg-foot-right {
     display: grid !important;
     grid-template-columns: 48px 1fr 1fr !important;
     gap: 8px !important;
@@ -5155,10 +5155,10 @@ html .eg-test-root[data-test-theme="light"] .eg-sol .katex {
     flex: 0 0 auto !important;
     order: 2 !important;
   }
-  .eg-test-root.eg-qxmd169 .eg-foot-practice .eg-btn-close-pal {
+  .eg-test-root.eg-qxmd170 .eg-foot-practice .eg-btn-close-pal {
     display: none !important;
   }
-  .eg-test-root.eg-qxmd169 .eg-foot-practice #egFootMore {
+  .eg-test-root.eg-qxmd170 .eg-foot-practice #egFootMore {
     display: inline-flex !important;
     min-width: 48px !important;
     width: 48px !important;
@@ -5166,8 +5166,8 @@ html .eg-test-root[data-test-theme="light"] .eg-sol .katex {
     font-weight: 800 !important;
     line-height: 1 !important;
   }
-  .eg-test-root.eg-qxmd169 .eg-foot-practice #qxPrevBtn,
-  .eg-test-root.eg-qxmd169 .eg-foot-practice #qxNextBtn {
+  .eg-test-root.eg-qxmd170 .eg-foot-practice #qxPrevBtn,
+  .eg-test-root.eg-qxmd170 .eg-foot-practice #qxNextBtn {
     display: inline-flex !important;
     min-height: 52px !important;
     font-size: 16px !important;
@@ -5175,12 +5175,12 @@ html .eg-test-root[data-test-theme="light"] .eg-sol .katex {
     width: 100% !important;
   }
   /* Hide Mark / Clear / Show in the foot bar — live in More sheet */
-  .eg-test-root.eg-qxmd169:not(.eg-foot-more-open) .eg-foot-practice .eg-foot-extra,
-  .eg-test-root.eg-qxmd169:not(.eg-foot-more-open) .eg-foot-practice .eg-foot-left {
+  .eg-test-root.eg-qxmd170:not(.eg-foot-more-open) .eg-foot-practice .eg-foot-extra,
+  .eg-test-root.eg-qxmd170:not(.eg-foot-more-open) .eg-foot-practice .eg-foot-left {
     display: none !important;
   }
-  .eg-test-root.eg-qxmd169.eg-foot-more-open .eg-foot-practice .eg-foot-extra,
-  .eg-test-root.eg-qxmd169.eg-foot-more-open .eg-foot-practice .eg-foot-left {
+  .eg-test-root.eg-qxmd170.eg-foot-more-open .eg-foot-practice .eg-foot-extra,
+  .eg-test-root.eg-qxmd170.eg-foot-more-open .eg-foot-practice .eg-foot-left {
     display: flex !important;
     flex-direction: column !important;
     flex-wrap: nowrap !important;
@@ -5191,16 +5191,16 @@ html .eg-test-root[data-test-theme="light"] .eg-sol .katex {
     border-bottom: 1px solid rgba(148, 163, 184, 0.35);
     margin-bottom: 6px;
   }
-  .eg-test-root.eg-qxmd169.eg-foot-more-open .eg-foot-practice .eg-btn-review,
-  .eg-test-root.eg-qxmd169.eg-foot-more-open .eg-foot-practice .eg-btn-clear {
+  .eg-test-root.eg-qxmd170.eg-foot-more-open .eg-foot-practice .eg-btn-review,
+  .eg-test-root.eg-qxmd170.eg-foot-more-open .eg-foot-practice .eg-btn-clear {
     flex: 0 0 auto !important;
     width: 100% !important;
     min-height: 44px !important;
   }
-  .eg-test-root.eg-qxmd169 .eg-foot-sheet-scrim {
+  .eg-test-root.eg-qxmd170 .eg-foot-sheet-scrim {
     display: none !important;
   }
-  .eg-test-root.eg-qxmd169.eg-foot-more-open .eg-foot-sheet-scrim {
+  .eg-test-root.eg-qxmd170.eg-foot-more-open .eg-foot-sheet-scrim {
     display: block !important;
     position: fixed !important;
     inset: 0 !important;
@@ -5213,19 +5213,19 @@ html .eg-test-root[data-test-theme="light"] .eg-sol .katex {
 
 /* Desktop / wide: full ExamGoal foot; hide More */
 @media (min-width: 721px) {
-  .eg-test-root.eg-qxmd169 .eg-foot-practice #egFootMore,
-  .eg-test-root.eg-qxmd169 .eg-foot-sheet-scrim {
+  .eg-test-root.eg-qxmd170 .eg-foot-practice #egFootMore,
+  .eg-test-root.eg-qxmd170 .eg-foot-sheet-scrim {
     display: none !important;
   }
-  .eg-test-root.eg-qxmd169 .eg-foot-practice {
+  .eg-test-root.eg-qxmd170 .eg-foot-practice {
     flex-direction: row !important;
     flex-wrap: wrap !important;
   }
-  .eg-test-root.eg-qxmd169 .eg-foot-practice .eg-foot-extra,
-  .eg-test-root.eg-qxmd169 .eg-foot-practice .eg-foot-left {
+  .eg-test-root.eg-qxmd170 .eg-foot-practice .eg-foot-extra,
+  .eg-test-root.eg-qxmd170 .eg-foot-practice .eg-foot-left {
     display: flex !important;
   }
-  .eg-test-root.eg-qxmd169 .eg-foot-practice .eg-foot-nav {
+  .eg-test-root.eg-qxmd170 .eg-foot-practice .eg-foot-nav {
     display: flex !important;
     grid-template-columns: none !important;
     margin-left: auto;
@@ -5233,25 +5233,25 @@ html .eg-test-root[data-test-theme="light"] .eg-sol .katex {
 }
 
 
-/* qxmd169: Report + Group always reachable on mobile Practice */
+/* qxmd170: Report + Group always reachable on mobile Practice */
 @media (max-width: 720px) {
-  .eg-test-root.eg-qxmd169[data-eg-mode="practice"] .eg-top-tools .eg-tool-reach,
-  .eg-test-root.eg-qxmd169[data-eg-mode="practice"] .eg-top-tools #egPlusBtn,
-  .eg-test-root.eg-qxmd169[data-eg-mode="practice"] .eg-top-tools #mtkReportBtn {
+  .eg-test-root.eg-qxmd170[data-eg-mode="practice"] .eg-top-tools .eg-tool-reach,
+  .eg-test-root.eg-qxmd170[data-eg-mode="practice"] .eg-top-tools #egPlusBtn,
+  .eg-test-root.eg-qxmd170[data-eg-mode="practice"] .eg-top-tools #mtkReportBtn {
     display: inline-flex !important;
     visibility: visible !important;
     opacity: 1 !important;
   }
 }
 
-/* qxmd169: palette chrome ≤120ms */
-.eg-test-root.eg-qxmd169 {
+/* qxmd170: palette chrome ≤120ms */
+.eg-test-root.eg-qxmd170 {
   --eg-chrome-ms: 120ms;
 }
-.eg-test-root.eg-qxmd169 #egSide,
-.eg-test-root.eg-qxmd169 .eg-side,
-.eg-test-root.eg-qxmd169.eg-side-open #egSide,
-.eg-test-root.eg-qxmd169.eg-side-open .eg-side {
+.eg-test-root.eg-qxmd170 #egSide,
+.eg-test-root.eg-qxmd170 .eg-side,
+.eg-test-root.eg-qxmd170.eg-side-open #egSide,
+.eg-test-root.eg-qxmd170.eg-side-open .eg-side {
   transition: transform var(--eg-chrome-ms, 120ms) cubic-bezier(.2,.8,.2,1),
               opacity var(--eg-chrome-ms, 120ms) ease !important;
 }
@@ -5283,3 +5283,33 @@ html .eg-test-root[data-test-theme="light"] .eg-sol .katex {
 /* Practice legend marked colors */
 .eg-legend .eg-dot.marked { background: #a855f7; }
 .eg-legend .eg-dot.att-mark { background: #a855f7; box-shadow: 0 0 0 2px #22c55e; }
+
+/* qxmd170: option KaTeX clear in dark + light (letter circle is control; radio hidden) */
+.eg-test-root[data-test-theme="dark"] .mtk-opt-text .katex,
+.eg-test-root[data-test-theme="dark"] .mtk-opt-text .katex *,
+.eg-test-root[data-test-theme="dark"] .qx-prac-opt-text .katex,
+.eg-test-root[data-test-theme="dark"] .qx-prac-opt-text .katex *,
+.mtk-test-root[data-test-theme="dark"] .mtk-opt-text .katex,
+.mtk-test-root[data-test-theme="dark"] .mtk-opt-text .katex *,
+.eg-test-root[data-test-theme="dark"] .eg-opt .katex,
+.eg-test-root[data-test-theme="dark"] .eg-opt .katex * {
+  color: #e8eef7 !important;
+}
+.eg-test-root[data-test-theme="light"] .mtk-opt-text .katex,
+.eg-test-root[data-test-theme="light"] .mtk-opt-text .katex *,
+.eg-test-root[data-test-theme="light"] .qx-prac-opt-text .katex,
+.eg-test-root[data-test-theme="light"] .qx-prac-opt-text .katex *,
+.mtk-test-root[data-test-theme="light"] .mtk-opt-text .katex,
+.mtk-test-root[data-test-theme="light"] .mtk-opt-text .katex *,
+.eg-test-root[data-test-theme="light"] .eg-opt .katex,
+.eg-test-root[data-test-theme="light"] .eg-opt .katex * {
+  color: #0f172a !important;
+}
+.eg-test-root .mtk-opt-letter,
+.eg-test-root .qx-opt-circle,
+.mtk-test-root .mtk-opt-letter,
+.mtk-test-root .qx-opt-circle {
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}

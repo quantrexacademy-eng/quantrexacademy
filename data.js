@@ -14636,7 +14636,7 @@ async function loadBookChapter(bookId, chapterKey) {
   const to = setTimeout(() => { try { ctrl && ctrl.abort(); } catch (_) { /* */ } }, 12000);
   let res;
   try {
-    // qxmd169: version bust is enough for freshness; avoid no-store hangs on mobile.
+    // qxmd170: version bust is enough for freshness; avoid no-store hangs on mobile.
     // Retry path (force) still uses no-store via opts / cache miss empty.
     const forceNet = !!(typeof window !== "undefined" && window._qxBookForceNet);
     res = await fetch(`data/books/chapters/${resolvedId}/${chapterKey}.json?v=${bust}`, {
