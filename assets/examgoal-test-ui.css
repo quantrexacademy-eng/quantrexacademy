@@ -5834,3 +5834,146 @@ html .qx-stem-sol-hidden {
     overflow: visible !important;
   }
 }
+
+
+/* ========== qxmd176: kill off-canvas ghost stem; Marks-like sol; opts hide while sol ========== */
+/* Root cause of stem fragments ABOVE header: position:absolute + left:-9999px (+ scrollIntoView).
+   Override ALL prior stem-hide absolute/clip rules — in-flow collapse only. */
+html .eg-test-root.eg-sol-showing.eg-qxmd176 .eg-q-stem,
+html .eg-test-root.eg-sol-showing.eg-qxmd176 #egQArea,
+html .eg-test-root.eg-qxmd176.eg-sol-showing .eg-q-stem,
+html .eg-test-root.eg-qxmd176.eg-sol-showing #egQArea,
+html .eg-test-root.eg-sol-showing.eg-qxmd176 .eg-q-stem.eg-stem-sol-hidden,
+html .eg-test-root.eg-sol-showing.eg-qxmd176 #egQArea.eg-stem-sol-hidden,
+html .eg-test-root.eg-qxmd176 .eg-stem-sol-hidden,
+html .eg-test-root.eg-qxmd176 .qx-stem-sol-hidden,
+html .mtk-test-root.eg-sol-showing.eg-qxmd176 .mtk-q-text,
+html .allen-practice.eg-sol-showing .mtk-q-text,
+html[data-theme="light"] .eg-test-root.eg-sol-showing.eg-qxmd176 .eg-q-stem,
+html[data-theme="dark"] .eg-test-root.eg-sol-showing.eg-qxmd176 .eg-q-stem,
+html .eg-test-root[data-test-theme="light"].eg-sol-showing.eg-qxmd176 .eg-q-stem,
+html .eg-test-root[data-test-theme="dark"].eg-sol-showing.eg-qxmd176 .eg-q-stem {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  max-height: 0 !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  border: 0 !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+  pointer-events: none !important;
+  /* CRITICAL — no off-canvas paint */
+  position: static !important;
+  left: auto !important;
+  top: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  width: auto !important;
+  clip: auto !important;
+  clip-path: none !important;
+  transform: none !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+}
+
+/* Marks-like: options + check row hide while Solution open; restore when class gone */
+html .eg-test-root.eg-sol-showing.eg-qxmd176 #qxOpts,
+html .eg-test-root.eg-sol-showing.eg-qxmd176 .eg-opts,
+html .eg-test-root.eg-sol-showing.eg-qxmd176 .eg-action-row,
+html .eg-test-root.eg-sol-showing.eg-qxmd176 #egCheckRow,
+html .eg-test-root.eg-sol-showing .eg-opts-sol-hidden {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Solution panel fills main content cleanly under metadata strip */
+.eg-test-root.eg-qxmd176.eg-sol-showing .eg-sol-panel.eg-sol-marks-way,
+.eg-test-root.eg-qxmd176 .eg-sol-panel.eg-sol-marks-way {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 0 12px !important;
+  float: none !important;
+  position: relative !important;
+  left: auto !important;
+  top: auto !important;
+  grid-column: 1 / -1 !important;
+  z-index: 1 !important;
+}
+
+/* Keep info strip (Q# / type / source) visible — Marks metadata */
+.eg-test-root.eg-qxmd176.eg-sol-showing .eg-info-strip,
+.eg-test-root.eg-qxmd176.eg-sol-showing #egInfoStrip,
+.eg-test-root.eg-qxmd176.eg-sol-showing .eg-top {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: relative !important;
+  left: auto !important;
+  clip: auto !important;
+}
+
+/* Contain any leftover paint inside body — never leak above header */
+.eg-test-root.eg-qxmd176 .eg-body,
+.eg-test-root.eg-qxmd176.eg-sol-showing .eg-body {
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  position: relative !important;
+  contain: paint !important;
+}
+.eg-test-root.eg-qxmd176 .eg-q-card,
+.eg-test-root.eg-qxmd176.eg-sol-showing .eg-q-card {
+  overflow: hidden !important;
+  position: relative !important;
+}
+
+/* Retain mobile foot / Clear-hide from qxmd175 under qxmd176 class */
+@media (max-width: 768px) {
+  .eg-test-root.eg-qxmd176 .eg-foot,
+  .eg-test-root.eg-qxmd176 .eg-foot-practice,
+  .eg-test-root.eg-qxmd176 #egFoot,
+  .eg-test-root.eg-sol-showing.eg-qxmd176 .eg-foot,
+  .eg-test-root.eg-sol-showing.eg-qxmd176 #egFoot {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    position: fixed !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    z-index: 2147483000 !important;
+    transform: none !important;
+    overflow: visible !important;
+    clip: auto !important;
+    max-height: none !important;
+    padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px)) !important;
+    min-height: 64px !important;
+  }
+  .eg-test-root.eg-qxmd176 .eg-foot-practice #qxPrevBtn,
+  .eg-test-root.eg-qxmd176 .eg-foot-practice #qxNextBtn {
+    display: inline-flex !important;
+    visibility: visible !important;
+    min-height: 52px !important;
+  }
+  .eg-test-root.eg-qxmd176 .eg-foot-practice .eg-btn-clear,
+  .eg-test-root.eg-qxmd176 .eg-foot-practice #qxClearBtn {
+    display: none !important;
+  }
+  .eg-test-root.eg-qxmd176.eg-sol-showing .eg-sol-panel,
+  .eg-test-root.eg-qxmd176.eg-sol-showing .eg-main,
+  .eg-test-root.eg-qxmd176.eg-sol-showing .eg-q-card,
+  .eg-test-root.eg-qxmd176.eg-sol-showing .eg-body {
+    padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+}

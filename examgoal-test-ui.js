@@ -525,8 +525,9 @@
         '<div class="eg-check-wrap"><button type="button" class="eg-check" id="egCheckBtn">Check Answer</button></div>' +
         '<button type="button" class="eg-note" id="egNoteBtn">Add a Note</button></div>'
       : "";
+    /* qxmd176: toggle ON whenever solution is open (Check Answer or Show Answer) */
     const showSwitch = '<label class="eg-show"><span class="eg-switch"><input type="checkbox" id="egShowAns"' +
-      (session._egShowAnswer ? " checked" : "") +
+      (wantShowSol(session, session.idx) ? " checked" : "") +
       '><span class="eg-switch-knob" aria-hidden="true"></span></span> Show Answer</label>';
     const lastQ = session.idx >= session.ids.length - 1;
     const firstQ = session.idx <= 0;
@@ -614,7 +615,7 @@
     return '<div class="eg-test-root mtk-test-root' +
       (sideOpen ? " eg-side-open" : " eg-side-collapsed") +
       (stripOpen ? " eg-strip-open" : " eg-strip-collapsed") +
-      " eg-tools-closed eg-compact eg-qxmd167 eg-qxmd170 eg-qxmd171 eg-qxmd173 eg-qxmd175 eg-qxtool8 eg-qxeg1 eg-qxeg2 eg-qxeg3 eg-qxeg4 eg-qxeg5 eg-qxeg6 eg-qxeg7" +
+      " eg-tools-closed eg-compact eg-qxmd167 eg-qxmd170 eg-qxmd171 eg-qxmd173 eg-qxmd175 eg-qxmd176 eg-qxtool8 eg-qxeg1 eg-qxeg2 eg-qxeg3 eg-qxeg4 eg-qxeg5 eg-qxeg6 eg-qxeg7" +
       (previewOpen ? " eg-preview-open" : " eg-preview-collapsed") +
       (desktopMode ? " eg-desktop-mode" : " eg-mobile") +
       (!desktopMode && isMobileEg ? " eg-mobile-vp" : "") +
@@ -674,11 +675,11 @@
          Options stay for marking. Exam/Take-Test never sets showSol. */
       '<div class="eg-q-stem' + (showSol ? " eg-stem-sol-hidden" : "") + '" id="egQArea"' +
       (showSol
-        ? ' hidden aria-hidden="true" style="display:none!important;visibility:hidden!important;opacity:0!important;height:0!important;max-height:0!important;overflow:hidden!important;margin:0!important;padding:0!important;position:absolute!important;left:-9999px!important;clip:rect(0,0,0,0)!important"'
+        ? ' hidden aria-hidden="true" style="display:none!important;visibility:hidden!important;opacity:0!important;height:0!important;max-height:0!important;overflow:hidden!important;margin:0!important;padding:0!important;position:static!important;left:auto!important;clip:auto!important"'
         : ' aria-hidden="false"') + ">" +
       /* qxmd164/175: empty stem while Solution open — keep #egQArea node */
       (showSol ? "" : stem) + "</div>" +
-      /* qxmd175 Marks-way: Solution REPLACES stem slot (not a split under the question) */
+      /* qxmd175/176 Marks-way: Solution REPLACES stem slot (not a split under the question) */
       (showSol ? (function () {
         var solInner = "";
         try { solInner = solutionHtml(q); } catch (_solErr) { solInner = ""; }
@@ -864,7 +865,7 @@
       if (existing) {
         existing.outerHTML = panelHtml;
       } else {
-        /* qxmd175 Marks-way: inject Solution where the stem was (after #egQArea), not under a split */
+        /* qxmd175/176 Marks-way: inject Solution where the stem was (after #egQArea), not under a split */
         const qSlot = root.querySelector("#egQArea");
         const card = root.querySelector(".eg-q-card");
         const actionRow = root.querySelector(".eg-action-row");
@@ -888,19 +889,25 @@
     }
 
     try {
-      root.classList.add("eg-sol-showing", "eg-qxmd175");
+      root.classList.add("eg-sol-showing", "eg-qxmd175", "eg-qxmd176");
       const egRoot = root.classList.contains("eg-test-root") ? root : (root.closest && root.closest(".eg-test-root"));
-      if (egRoot) egRoot.classList.add("eg-sol-showing", "eg-qxmd175");
+      if (egRoot) egRoot.classList.add("eg-sol-showing", "eg-qxmd175", "eg-qxmd176");
+      /* qxmd176: sync Show Answer toggle with solution visibility */
+      try {
+        session._egShowAnswer = true;
+        const showElSync = root.querySelector("#egShowAns");
+        if (showElSync) showElSync.checked = true;
+      } catch (_) { /* */ }
     } catch (_) { /* */ }
     const qArea = root.querySelector("#egQArea");
     if (qArea) {
       try {
-        /* qxmd165: empty stem text while Solution open — keep #egQArea node */
+        /* qxmd165/176: empty stem while Solution open — keep #egQArea node.
+           NEVER absolute/left:-9999/clip — that paints orphan stem above the header. */
         try { qArea.innerHTML = ""; } catch (_) { /* */ }
         qArea.classList.add("eg-stem-sol-hidden");
         qArea.setAttribute("hidden", "");
         qArea.setAttribute("aria-hidden", "true");
-        // qxmd163: inline !important beats theme visibility:visible rules
         qArea.style.setProperty("display", "none", "important");
         qArea.style.setProperty("visibility", "hidden", "important");
         qArea.style.setProperty("opacity", "0", "important");
@@ -909,11 +916,27 @@
         qArea.style.setProperty("overflow", "hidden", "important");
         qArea.style.setProperty("margin", "0", "important");
         qArea.style.setProperty("padding", "0", "important");
-        qArea.style.setProperty("position", "absolute", "important");
-        qArea.style.setProperty("left", "-9999px", "important");
-        qArea.style.setProperty("clip", "rect(0, 0, 0, 0)", "important");
+        qArea.style.setProperty("position", "static", "important");
+        qArea.style.setProperty("left", "auto", "important");
+        qArea.style.setProperty("clip", "auto", "important");
+        qArea.style.setProperty("font-size", "0", "important");
+        qArea.style.setProperty("line-height", "0", "important");
       } catch (_) { /* */ }
     }
+    /* qxmd176 Marks-like: hide options while Solution open (restore on close/refresh) */
+    try {
+      const optsEl = root.querySelector("#qxOpts, .eg-opts");
+      if (optsEl) {
+        optsEl.classList.add("eg-opts-sol-hidden");
+        optsEl.setAttribute("aria-hidden", "true");
+        optsEl.style.setProperty("display", "none", "important");
+      }
+      const checkRow = root.querySelector(".eg-action-row, #egCheckRow");
+      if (checkRow) {
+        checkRow.classList.add("eg-opts-sol-hidden");
+        checkRow.style.setProperty("display", "none", "important");
+      }
+    } catch (_) { /* */ }
 
     const panel = root.querySelector("#egSolPanel");
     const solClose = root.querySelector("#egSolClose");
@@ -947,8 +970,15 @@
               qArea.style.removeProperty("position");
               qArea.style.removeProperty("left");
               qArea.style.removeProperty("clip");
+              qArea.style.removeProperty("font-size");
+              qArea.style.removeProperty("line-height");
             } catch (_) { /* */ }
           }
+          root.querySelectorAll(".eg-opts-sol-hidden").forEach(function (el) {
+            el.classList.remove("eg-opts-sol-hidden");
+            el.removeAttribute("aria-hidden");
+            try { el.style.removeProperty("display"); } catch (_) { /* */ }
+          });
         } catch (_) { /* */ }
         if (typeof api.refresh === "function") {
           try { api.refresh(); } catch (_) { /* */ }
@@ -984,9 +1014,12 @@
     try {
       if (root && typeof root._egForceFoot === "function") root._egForceFoot(true);
     } catch (_) { /* */ }
-    if (panel && panel.scrollIntoView) {
-      try { panel.scrollIntoView({ behavior: "smooth", block: "nearest" }); } catch (_) { /* */ }
-    }
+    /* qxmd176: scroll main body to top — NEVER use scrollIntoView on sol panel; it pulls ghost stem above header */
+    try {
+      const bodyScroll = root.querySelector(".eg-body, .eg-main, .eg-scroll") || root;
+      if (bodyScroll && typeof bodyScroll.scrollTop === "number") bodyScroll.scrollTop = 0;
+      try { if (root.scrollTop) root.scrollTop = 0; } catch (_) { /* */ }
+    } catch (_) { /* */ }
     return !!panel;
   }
 
@@ -1013,8 +1046,15 @@
           qArea.style.removeProperty("position");
           qArea.style.removeProperty("left");
           qArea.style.removeProperty("clip");
+          qArea.style.removeProperty("font-size");
+          qArea.style.removeProperty("line-height");
         } catch (_) { /* */ }
       }
+      root.querySelectorAll(".eg-opts-sol-hidden").forEach(function (el) {
+        el.classList.remove("eg-opts-sol-hidden");
+        el.removeAttribute("aria-hidden");
+        try { el.style.removeProperty("display"); } catch (_) { /* */ }
+      });
     } catch (_) { /* */ }
   }
 
@@ -1063,6 +1103,12 @@
       var ok = false;
       try { ok = !!checkAnswer(session, api.getQ); } catch (_) { ok = false; }
       if (ok) {
+        /* qxmd176: Marks-like — Check Answer turns Show Answer ON (sol open ↔ toggle sync) */
+        try {
+          session._egShowAnswer = true;
+          var seOn = root.querySelector("#egShowAns");
+          if (seOn) seOn.checked = true;
+        } catch (_) { /* */ }
         try { revealPracticeSolution(root, api); } catch (_rev) {
           try { console.warn("[egCheckBtn reveal]", _rev); } catch (_) { /* */ }
         }
@@ -1080,6 +1126,11 @@
           try { console.warn("[egShowAns reveal]", _rev); } catch (_) { /* */ }
         }
       } else {
+        /* qxmd176: toggle OFF = close solution fully (clear Check Answer lock too) */
+        if (session._egChecked) {
+          try { delete session._egChecked[session.idx]; } catch (_) { /* */ }
+          try { delete session._egChecked[String(session.idx)]; } catch (_) { /* */ }
+        }
         hidePracticeSolutionDom(root);
       }
       if (typeof api.refresh === "function") {
@@ -1108,11 +1159,11 @@
         if (Mx.afterRender) Mx.afterRender(solRoot);
         else if (Mx.afterRenderLight) Mx.afterRenderLight(solRoot);
       }
-      if (solRoot && solRoot.scrollIntoView) {
-        setTimeout(function () {
-          try { solRoot.scrollIntoView({ behavior: "smooth", block: "nearest" }); } catch (_) { /* */ }
-        }, 60);
-      }
+      /* qxmd176: no scrollIntoView — keep chrome stable; scroll body top only */
+      try {
+        var bs = root.querySelector(".eg-body, .eg-main, .eg-scroll");
+        if (bs) bs.scrollTop = 0;
+      } catch (_) { /* */ }
     } catch (_) { /* */ }
     /* qxeg7: foot already in DOM from render — CSS nuclear visibility; debounce thrash */
     var _egFootRaf = 0;
@@ -1142,7 +1193,7 @@
           foot.classList.add("eg-foot");
         } catch (_) { /* */ }
         foot.removeAttribute("hidden");
-        root.classList.add("eg-foot-ready", "eg-qxeg7", "eg-qxmd173", "eg-qxmd175");
+        root.classList.add("eg-foot-ready", "eg-qxeg7", "eg-qxmd173", "eg-qxmd175", "eg-qxmd176");
         /* Skip heavy inline cssText once CSS has painted foot (unless force) */
         if (_egFootPainted && !force && foot.querySelector("#qxPrevBtn") && (foot.querySelector("#qxNextBtn") || foot.querySelector("#qxSaveBtn"))) {
           var p0 = foot.querySelector("#qxPrevBtn");
@@ -1274,7 +1325,7 @@
         root.classList.toggle("eg-preview-open", previewOpen);
         root.classList.toggle("eg-preview-collapsed", !previewOpen);
         root.classList.remove("eg-tools-open");
-        root.classList.add("eg-tools-closed", "eg-qxmd167", "eg-qxmd170", "eg-qxmd171", "eg-qxmd173", "eg-qxmd175", "eg-qxtool8", "eg-qxeg1", "eg-qxeg2", "eg-qxeg3", "eg-qxeg4", "eg-qxeg5", "eg-qxeg6", "eg-qxeg7", "eg-foot-ready");
+        root.classList.add("eg-tools-closed", "eg-qxmd167", "eg-qxmd170", "eg-qxmd171", "eg-qxmd173", "eg-qxmd175", "eg-qxmd176", "eg-qxtool8", "eg-qxeg1", "eg-qxeg2", "eg-qxeg3", "eg-qxeg4", "eg-qxeg5", "eg-qxeg6", "eg-qxeg7", "eg-foot-ready");
         root.setAttribute("data-eg-cycle", bothOpen ? "1" : "0");
         const strip = root.querySelector("#egQBar");
         if (strip) {

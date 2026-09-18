@@ -714,9 +714,9 @@ const AllenTestUI = (() => {
             ${partsSafe.paperMeta || ""}
             ${partsSafe.diagramSlot || ""}
             ${stemHtml || (String(qBody).includes("qx-question-body") ? qBody : `<div class="mtk-q-text qx-content" data-qx-qid="${q.id}">${qBody}</div>`)}
-            ${/* qxmd175 Marks-way: solution replaces stem slot */""}
-            <div id="qaSolReveal" class="${solOpen ? "eg-sol-marks-way" : ""}">${partsSafe.solReveal || ""}</div>
-            <div id="qaResult" class="${solOpen ? "eg-sol-marks-way" : ""}">${partsSafe.resultHtml || ""}</div>
+            ${/* qxmd175/176 Marks-way: solution replaces stem slot; no off-canvas stem */""}
+            <div id="qaSolReveal" class="${solOpen ? "eg-sol-marks-way eg-qxmd176-sol" : ""}">${partsSafe.solReveal || ""}</div>
+            <div id="qaResult" class="${solOpen ? "eg-sol-marks-way eg-qxmd176-sol" : ""}">${partsSafe.resultHtml || ""}</div>
             <div class="${optsClass}" id="qaOpts">${opts}</div>
             <div class="eg-action-row">
               <div class="eg-check-wrap">${done || incomplete ? "" : `<button type="button" class="eg-check" id="qxPracSubmit" ${canSubmit ? "" : "disabled"}>Check Answer</button>`}</div>
@@ -724,7 +724,7 @@ const AllenTestUI = (() => {
             </div>
             ${partsSafe.solActions || ""}
             <div class="eg-foot mtk-controls">
-              <div class="eg-foot-left"><label class="eg-show"><span class="eg-switch"><input type="checkbox" id="qxPracShowAns"${pc.showAnswer ? " checked" : ""}><span class="eg-switch-knob" aria-hidden="true"></span></span> Show Answer</label></div>
+              <div class="eg-foot-left"><label class="eg-show"><span class="eg-switch"><input type="checkbox" id="qxPracShowAns"${solOpen ? " checked" : ""}><span class="eg-switch-knob" aria-hidden="true"></span></span> Show Answer</label></div>
               <div class="eg-foot-right">
                 <button type="button" class="eg-btn" id="qxPracClear">Clear</button>
                 <button type="button" class="eg-btn" id="qxPracPrev" ${pc.idx <= 0 ? "disabled" : ""}>Previous</button>
@@ -794,8 +794,8 @@ const AllenTestUI = (() => {
         ${String(qBody).includes("qx-question-body")
           ? qBody
           : (stemHtml || `<div class="mtk-q-text qx-content mq-stem" data-qx-qid="${q.id}">${qBody}</div>`)}
-        <div id="qaSolReveal" class="${solOpen ? "eg-sol-marks-way" : ""}">${partsSafe.solReveal || ""}</div>
-        <div id="qaResult" class="${solOpen ? "eg-sol-marks-way" : ""}">${partsSafe.resultHtml || ""}</div>
+        <div id="qaSolReveal" class="${solOpen ? "eg-sol-marks-way eg-qxmd176-sol" : ""}">${partsSafe.solReveal || ""}</div>
+        <div id="qaResult" class="${solOpen ? "eg-sol-marks-way eg-qxmd176-sol" : ""}">${partsSafe.resultHtml || ""}</div>
         <div class="${optsClass} mq-opts egmq-opts" id="qaOpts">${opts}</div>
         ${partsSafe.solActions || ""}
         <button type="button" class="qx-best-note" id="qxPracNote">Add a Note</button>
@@ -823,7 +823,7 @@ const AllenTestUI = (() => {
             <button type="button" class="qx-prac-zoom-reset" id="pracZoomReset">100%</button>
           </div></div>
         <div class="qx-prac-view-sec">
-          <label class="eg-show" style="display:flex;align-items:center;gap:8px"><span class="eg-switch"><input type="checkbox" id="qxPracShowAns"${pc.showAnswer ? " checked" : ""}><span class="eg-switch-knob" aria-hidden="true"></span></span> Show Answer</label>
+          <label class="eg-show" style="display:flex;align-items:center;gap:8px"><span class="eg-switch"><input type="checkbox" id="qxPracShowAns"${solOpen ? " checked" : ""}><span class="eg-switch-knob" aria-hidden="true"></span></span> Show Answer</label>
         </div>
         <div class="qx-prac-view-sec">
           <button type="button" class="mtk-font-btn qx-prac-theme-btn" id="pracThemeToggle">${appTheme === "dark" ? "Light" : "Dark"} mode</button>

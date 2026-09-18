@@ -1,10 +1,10 @@
 {
-  "build": "qxmd175",
-  "cache": "qx-pwa-qxmd175",
-  "title": "qxmd175 \u00b7 Marks-way Check Answer + mobile Prev/Next + math typeset",
-  "body": "Check Answer = Marks Practice: stem hides/replaced (no split). Mobile Prev|Next stay visible with safe-area; Clear stays hidden. Client math: keep adjacent $$\u2026$$$$\u2026$$, typeset after Check Answer inject, sol/options/preview hooks. No bank rewrite. No Vercel.",
+  "build": "qxmd176",
+  "cache": "qx-pwa-qxmd176",
+  "title": "qxmd176 \u00b7 Marks-like Check Answer (no ghost stem) + Show Answer sync + glued-word sanitize",
+  "body": "Fix qxmd175 ghost stem above header: drop absolute/left:-9999 hide; Marks-like Solution in main (metadata stays); Show Answer syncs with sol open/close; options hide while sol open & restore; client unglue oddodd/eveneven/sosymmetricrelation. Mobile Clear hidden; Prev/Next visible; Aa top; no Vercel.",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app",
   "site": "https://www.quantrexacademy.com",
   "package": "com.quantrexacademy.app",
-  "ts": 1789710000000
+  "ts": 1789720000000
 }

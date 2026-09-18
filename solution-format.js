@@ -192,6 +192,11 @@ const QuantrexSolution = (() => {
     if (!t) return "";
     // Keep line breaks so multi-line shortcuts still render each math island
     t = t.replace(/[ \t]+/g, " ").replace(/\n{3,}/g, "\n\n");
+    // qxmd176: unglue Quick Shortcut prose (oddodd / sosymmetricrelation)
+    try {
+      if (typeof Mx !== "undefined" && Mx.unglueLowercaseMathProse) t = Mx.unglueLowercaseMathProse(t);
+      else if (typeof Mx !== "undefined" && Mx.fixWordSpacing) t = Mx.fixWordSpacing(t);
+    } catch (_) { /* */ }
     // qxmd170: Marks glue first
     try {
       if (typeof QxMathSanitize !== "undefined" && QxMathSanitize.repairMarksExportTex) {
@@ -1191,6 +1196,9 @@ const QuantrexSolution = (() => {
     if (typeof Mx !== "undefined" && Mx.cleanQuestionText) {
       try { raw = Mx.cleanQuestionText(raw); } catch (_) { /* */ }
     }
+    try {
+      if (typeof Mx !== "undefined" && Mx.unglueLowercaseMathProse) raw = Mx.unglueLowercaseMathProse(raw);
+    } catch (_) { /* */ }
     if (typeof QxProof !== "undefined" && QxProof.proofreadHtml) {
       try { raw = QxProof.proofreadHtml(raw); } catch (_) { /* */ }
     }

@@ -952,3 +952,30 @@ html .qx-stem-sol-hidden {
   overflow: hidden !important;
   pointer-events: none !important;
 }
+
+
+/* qxmd176: stem-hide without off-canvas absolute (ghost-above-header fix) */
+html .eg-test-root.eg-sol-showing.eg-qxmd176 .eg-q-stem,
+html .eg-test-root.eg-sol-showing.eg-qxmd176 #egQArea,
+html .eg-test-root.eg-sol-showing.eg-qxmd176 .eg-q-stem *,
+html .eg-test-root.eg-sol-showing.eg-qxmd176 #egQArea *,
+html[data-theme="light"] .eg-test-root.eg-sol-showing.eg-qxmd176 .eg-q-stem,
+html[data-theme="dark"] .eg-test-root.eg-sol-showing.eg-qxmd176 .eg-q-stem,
+html .eg-test-root[data-test-theme="light"].eg-sol-showing.eg-qxmd176 .eg-q-stem,
+html .eg-test-root[data-test-theme="dark"].eg-sol-showing.eg-qxmd176 .eg-q-stem,
+html .eg-test-root.eg-qxmd176 .eg-stem-sol-hidden,
+html .eg-test-root.eg-qxmd176 .qx-stem-sol-hidden {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+  position: static !important;
+  left: auto !important;
+  clip: auto !important;
+  clip-path: none !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+}

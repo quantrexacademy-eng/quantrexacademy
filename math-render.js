@@ -2661,6 +2661,70 @@ window.Mx = (() => {
     return c;
   }
 
+  /**
+   * qxmd176: unglue lowercase OCR/prose joins common in solutions & Quick Shortcut
+   * e.g. oddodd → odd odd, eveneven → even even, sosymmetricrelation → so symmetric relation
+   * Client-only — no bank JSON rewrite.
+   */
+  function unglueLowercaseMathProse(s) {
+    let c = String(s || "");
+    if (!c || c.length < 6) return c;
+    // Explicit reported glues
+    const pairs = [
+      [/\boddodd\b/gi, "odd odd"],
+      [/\beveneven\b/gi, "even even"],
+      [/\boddoddly\b/gi, "odd oddly"],
+      [/\bsosymmetricrelation\b/gi, "so symmetric relation"],
+      [/\bsosymmetric\b/gi, "so symmetric"],
+      [/\bsymmetricrelation\b/gi, "symmetric relation"],
+      [/\basymmetricrelation\b/gi, "asymmetric relation"],
+      [/\breflexiverelation\b/gi, "reflexive relation"],
+      [/\btransitiverelation\b/gi, "transitive relation"],
+      [/\bequivalencerelation\b/gi, "equivalence relation"],
+      [/\bantisymmetric\b/gi, "antisymmetric"], // keep real word
+      [/\bisnotsymmetric\b/gi, "is not symmetric"],
+      [/\bisnotreflexive\b/gi, "is not reflexive"],
+      [/\bisnottransitive\b/gi, "is not transitive"],
+      [/\bisasymmetric\b/gi, "is asymmetric"],
+      [/\bissymmetric\b/gi, "is symmetric"],
+      [/\bisreflexive\b/gi, "is reflexive"],
+      [/\bistransitive\b/gi, "is transitive"],
+      [/\bnotsymmetric\b/gi, "not symmetric"],
+      [/\bnotreflexive\b/gi, "not reflexive"],
+      [/\bnottransitive\b/gi, "not transitive"],
+      [/\boneof\b/gi, "one of"],
+      [/\beachof\b/gi, "each of"],
+      [/\ballof\b/gi, "all of"],
+      [/\bnoneof\b/gi, "none of"],
+      [/\bifandonlyif\b/gi, "if and only if"],
+      [/\bforall\b/gi, "for all"],
+      [/\bthereexists\b/gi, "there exists"],
+    ];
+    pairs.forEach(function (pr) { c = c.replace(pr[0], pr[1]); });
+    // Dictionary split: known token glued to another known token (lowercase)
+    const TOK = (
+      "odd|even|so|is|are|not|a|an|the|and|or|of|to|in|on|for|with|from|that|this|" +
+      "symmetric|asymmetric|antisymmetric|reflexive|transitive|equivalence|relation|relations|" +
+      "property|properties|matrix|matrices|function|functions|domain|range|set|subset|" +
+      "integer|integers|real|complex|positive|negative|natural|rational|prime|" +
+      "continuous|differentiable|increasing|decreasing|identity|inverse|onto|into|" +
+      "hence|thus|therefore|because|since|then|when|where|which|whose"
+    );
+    const reTok = new RegExp("\\b(" + TOK + ")(" + TOK + ")\\b", "gi");
+    // Iterate a few times for triple glues like sosymmetricrelation → so+symmetricrelation → so+symmetric+relation
+    for (let i = 0; i < 4; i++) {
+      const next = c.replace(reTok, function (_, a, b) {
+        // avoid splitting real compounds already correct
+        const joined = (a + b).toLowerCase();
+        if (joined === "antisymmetric" || joined === "into" || joined === "onto") return a + b;
+        return a + " " + b;
+      });
+      if (next === c) break;
+      c = next;
+    }
+    return c;
+  }
+
   /** English word heal dictionary (OCR / bad glue splits) — all screens */
   function healBrokenEnglishWords(s) {
     let c = String(s || "");
@@ -2818,6 +2882,7 @@ window.Mx = (() => {
     });
 
     c = healBrokenEnglishWords(c);
+    try { c = unglueLowercaseMathProse(c); } catch (_) { /* */ }
 
     // Normalize List labels (column matching headers)
     c = c.replace(/\bList\s*[-–]?\s*II\b/gi, "List-II");
@@ -2889,6 +2954,7 @@ window.Mx = (() => {
     c = c.replace(/\uE200(\d+)\uE201/g, (_, i) => slots[+i] || "");
     c = repairLatexCommandSpaces(c);
     c = healBrokenEnglishWords(c);
+    try { c = unglueLowercaseMathProse(c); } catch (_) { /* */ }
     c = c.replace(/[ \t]{2,}/g, " ");
     return c;
   }
@@ -4521,6 +4587,7 @@ window.Mx = (() => {
       out = repairBrokenLatex(out);
       out = repairLatexCommandSpaces(out);
       out = fixWordSpacing(out);
+      try { out = unglueLowercaseMathProse(out); } catch (_) { /* */ }
       if (/\\le\s*ft|\\pithen|\\textb\{|unknown node/i.test(out)) {
         out = repairBrokenLatex(out);
         out = repairLatexCommandSpaces(out);
@@ -4550,6 +4617,7 @@ window.Mx = (() => {
     recoverHollowStemInDom,
     cleanDom,
     fixWordSpacing,
+    unglueLowercaseMathProse,
     fixSpacingInDom,
     cleanQuestionText,
     sanitizeIncoming: qxSanitizeIncoming,

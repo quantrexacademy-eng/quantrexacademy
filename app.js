@@ -2437,8 +2437,9 @@ function qxPracticeWireExtra(scope, ctx, qid) {
 
   const show = scope.querySelector("#qxPracShowAns");
   if (show) {
-    show.checked = !!ctx.showAnswer;
-    if (ctx.showAnswer && q) {
+    /* qxmd176: toggle follows solution visibility */
+    show.checked = !!(ctx.showAnswer || (window._qxSolRevealed && window._qxSolRevealed[qid]));
+    if ((ctx.showAnswer || (window._qxSolRevealed && window._qxSolRevealed[qid])) && q) {
       if (typeof QuantrexQFormat !== "undefined" && QuantrexQFormat.revealAnswers) {
         QuantrexQFormat.revealAnswers(scope, q, ctx.selected[qid]);
       }
@@ -2506,10 +2507,14 @@ function qxHidePracticeStem(scope) {
         el.style.setProperty("overflow", "hidden", "important");
         el.style.setProperty("margin", "0", "important");
         el.style.setProperty("padding", "0", "important");
+        /* qxmd176: never absolute/left:-9999 (ghost stem above header) */
+        el.style.setProperty("position", "static", "important");
+        el.style.setProperty("left", "auto", "important");
+        el.style.setProperty("clip", "auto", "important");
       } catch (_) { /* */ }
     });
     const wrap = root.querySelector(".mtk-test-root, .allen-practice, .qx-practice-page, .eg-test-root");
-    if (wrap) wrap.classList.add("eg-sol-showing", "qx-sol-showing");
+    if (wrap) wrap.classList.add("eg-sol-showing", "qx-sol-showing", "eg-qxmd176");
   } catch (_) { /* */ }
 }
 
@@ -2600,7 +2605,19 @@ async function answerQ(qid, response) {
       }, ms);
     });
   }
+  /* qxmd176: Check Answer → Show Answer ON + sync toggle (Marks-like) */
+  try {
+    ctx.showAnswer = true;
+    window._qxPracticeCtx = ctx;
+    var showEl = main && main.querySelector("#qxPracShowAns");
+    if (showEl) showEl.checked = true;
+  } catch (_) { /* */ }
   try { qxHidePracticeStem(main); } catch (_) { /* */ }
+  try {
+    if (typeof qxHasSolution === "function" && qxHasSolution(q) && typeof qxRevealSolution === "function") {
+      qxRevealSolution(qid);
+    }
+  } catch (_) { /* */ }
   const sub = main.querySelector("#qxPracSubmit");
   if (sub) sub.disabled = true;
   // Practice stays clean — no auto Jovi panel / inline card (user opens FAB only)
