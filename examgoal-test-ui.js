@@ -615,7 +615,7 @@
     return '<div class="eg-test-root mtk-test-root' +
       (sideOpen ? " eg-side-open" : " eg-side-collapsed") +
       (stripOpen ? " eg-strip-open" : " eg-strip-collapsed") +
-      " eg-tools-closed eg-compact eg-qxmd167 eg-qxmd170 eg-qxmd171 eg-qxmd173 eg-qxmd175 eg-qxmd176 eg-qxmd177 eg-qxmd178 eg-qxtool8 eg-qxeg1 eg-qxeg2 eg-qxeg3 eg-qxeg4 eg-qxeg5 eg-qxeg6 eg-qxeg7" +
+      " eg-tools-closed eg-compact eg-qxmd167 eg-qxmd170 eg-qxmd171 eg-qxmd173 eg-qxmd175 eg-qxmd176 eg-qxmd177 eg-qxmd179 eg-qxtool8 eg-qxeg1 eg-qxeg2 eg-qxeg3 eg-qxeg4 eg-qxeg5 eg-qxeg6 eg-qxeg7" +
       (previewOpen ? " eg-preview-open" : " eg-preview-collapsed") +
       (desktopMode ? " eg-desktop-mode" : " eg-mobile") +
       (!desktopMode && isMobileEg ? " eg-mobile-vp" : "") +
@@ -924,7 +924,7 @@
   function egLockScrollJump(root, on) {
     try {
       if (!root || !root.classList) return;
-      if (on) root.classList.add("eg-qxmd177-scroll-lock", "eg-qxmd177", "eg-qxmd178");
+      if (on) root.classList.add("eg-qxmd177-scroll-lock", "eg-qxmd177", "eg-qxmd179");
       else root.classList.remove("eg-qxmd177-scroll-lock");
     } catch (_) { /* */ }
   }
@@ -934,14 +934,14 @@
     try {
       var body = document.body;
       if (!body) return;
-      if (on) body.classList.add("eg-qxmd178-host", "eg-qxmd178");
-      else body.classList.remove("eg-qxmd178-host");
+      if (on) body.classList.add("eg-qxmd179-host", "eg-qxmd179");
+      else body.classList.remove("eg-qxmd179-host");
       /* Hide any chapter/list question text still in DOM outside practice root */
       if (on) {
         document.querySelectorAll(".q-card .q-text, .q-text.qx-content, .cpyqb-q-stem, .qx-list-q-stem").forEach(function (el) {
           try {
             if (el.closest && el.closest(".eg-test-root, .mtk-test-root, .eg-sol-panel")) return;
-            el.setAttribute("data-eg-qxmd178-host-hid", "1");
+            el.setAttribute("data-eg-qxmd179-host-hid", "1");
             el.style.setProperty("display", "none", "important");
             el.style.setProperty("visibility", "hidden", "important");
             el.style.setProperty("height", "0", "important");
@@ -949,9 +949,9 @@
           } catch (_) { /* */ }
         });
       } else {
-        document.querySelectorAll("[data-eg-qxmd178-host-hid]").forEach(function (el) {
+        document.querySelectorAll("[data-eg-qxmd179-host-hid]").forEach(function (el) {
           try {
-            el.removeAttribute("data-eg-qxmd178-host-hid");
+            el.removeAttribute("data-eg-qxmd179-host-hid");
             el.style.removeProperty("display");
             el.style.removeProperty("visibility");
             el.style.removeProperty("height");
@@ -965,7 +965,7 @@
   function egNukeStemAboveHeader(root) {
     try {
       if (!root) return;
-      root.classList.add("eg-qxmd178", "eg-qxmd177", "eg-qxmd176");
+      root.classList.add("eg-qxmd179", "eg-qxmd177", "eg-qxmd176");
       egCoverHostQuestionStrip(true);
       var nodes = [];
       try {
@@ -1059,9 +1059,9 @@
     }
 
     try {
-      root.classList.add("eg-sol-showing", "eg-qxmd175", "eg-qxmd176", "eg-qxmd177", "eg-qxmd178");
+      root.classList.add("eg-sol-showing", "eg-qxmd175", "eg-qxmd176", "eg-qxmd177", "eg-qxmd179");
       const egRoot = root.classList.contains("eg-test-root") ? root : (root.closest && root.closest(".eg-test-root"));
-      if (egRoot) egRoot.classList.add("eg-sol-showing", "eg-qxmd175", "eg-qxmd176", "eg-qxmd177", "eg-qxmd178");
+      if (egRoot) egRoot.classList.add("eg-sol-showing", "eg-qxmd175", "eg-qxmd176", "eg-qxmd177", "eg-qxmd179");
       /* qxmd176: sync Show Answer toggle with solution visibility */
       try {
         session._egShowAnswer = true;
@@ -1094,7 +1094,7 @@
         qArea.style.setProperty("line-height", "0", "important");
       } catch (_) { /* */ }
     }
-    /* qxmd178: nuke stem + cover host strips so nothing paints above .eg-top */
+    /* qxmd179: nuke stem + cover host strips so nothing paints above .eg-top */
     try { egNukeStemAboveHeader(root); } catch (_) { /* */ }
     /* qxmd177 Marks-like: hide options AFTER sol is in DOM (avoid reflow jump / broken stack) */
     function egHideOptsAfterSol() {
@@ -1248,7 +1248,7 @@
 
   function bind(root, api) {
     if (!root || !api || !api.session) return;
-    try { if (api.session.practiceMode) { root.classList.add("eg-qxmd178"); egCoverHostQuestionStrip(true); } } catch (_) { /* */ }
+    try { if (api.session.practiceMode) { root.classList.add("eg-qxmd179"); egCoverHostQuestionStrip(true); } } catch (_) { /* */ }
     const session = api.session;
     normalizeSessionSets(session);
     applyOptDecor(root, session, api.getQ(session.ids[session.idx]), session.idx);
@@ -1426,7 +1426,7 @@
           foot.classList.add("eg-foot");
         } catch (_) { /* */ }
         foot.removeAttribute("hidden");
-        root.classList.add("eg-foot-ready", "eg-qxeg7", "eg-qxmd173", "eg-qxmd175", "eg-qxmd176", "eg-qxmd177", "eg-qxmd178");
+        root.classList.add("eg-foot-ready", "eg-qxeg7", "eg-qxmd173", "eg-qxmd175", "eg-qxmd176", "eg-qxmd177", "eg-qxmd179");
         /* Skip heavy inline cssText once CSS has painted foot (unless force) */
         if (_egFootPainted && !force && foot.querySelector("#qxPrevBtn") && (foot.querySelector("#qxNextBtn") || foot.querySelector("#qxSaveBtn"))) {
           var p0 = foot.querySelector("#qxPrevBtn");
@@ -1558,7 +1558,7 @@
         root.classList.toggle("eg-preview-open", previewOpen);
         root.classList.toggle("eg-preview-collapsed", !previewOpen);
         root.classList.remove("eg-tools-open");
-        root.classList.add("eg-tools-closed", "eg-qxmd167", "eg-qxmd170", "eg-qxmd171", "eg-qxmd173", "eg-qxmd175", "eg-qxmd176", "eg-qxmd177", "eg-qxmd178", "eg-qxtool8", "eg-qxeg1", "eg-qxeg2", "eg-qxeg3", "eg-qxeg4", "eg-qxeg5", "eg-qxeg6", "eg-qxeg7", "eg-foot-ready");
+        root.classList.add("eg-tools-closed", "eg-qxmd167", "eg-qxmd170", "eg-qxmd171", "eg-qxmd173", "eg-qxmd175", "eg-qxmd176", "eg-qxmd177", "eg-qxmd179", "eg-qxtool8", "eg-qxeg1", "eg-qxeg2", "eg-qxeg3", "eg-qxeg4", "eg-qxeg5", "eg-qxeg6", "eg-qxeg7", "eg-foot-ready");
         root.setAttribute("data-eg-cycle", bothOpen ? "1" : "0");
         const strip = root.querySelector("#egQBar");
         if (strip) {

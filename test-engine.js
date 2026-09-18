@@ -5489,7 +5489,7 @@ function qxClearBlockingMount() {
 
 function qxForceResetShell(opts) {
   const o = opts || {};
-  document.body.classList.remove("marks-test-active", "marks-instr-active", "allen-cbt-active", "allen-practice-active", "qzrr-instr-active", "ts-fmt-chooser-active", "eg-qxmd178-host");
+  document.body.classList.remove("marks-test-active", "marks-instr-active", "allen-cbt-active", "allen-practice-active", "qzrr-instr-active", "ts-fmt-chooser-active", "eg-qxmd179-host");
   document.body.style.overflow = "";
   ["marksInstrOverlay", "marksCountdownOverlay", "mtkStopModal", "mtkSubmitModal", "tsResumeModal", "pyqResumeModal", "pyqPreviewModal", "tsFormatChooser"].forEach(id => {
     const el = document.getElementById(id);
@@ -5540,7 +5540,7 @@ function qxShowTestMount(main) {
 }
 
 function enterMarksTestMode() {
-  document.body.classList.add("marks-test-active", "allen-cbt-active", "eg-qxmd178-host", "eg-qxmd178");
+  document.body.classList.add("marks-test-active", "allen-cbt-active", "eg-qxmd179-host", "eg-qxmd179");
   const appMain = document.getElementById("app-main");
   qxShowTestMount(appMain);
   const sidebar = document.getElementById("sidebar");

@@ -1,10 +1,10 @@
 {
-  "build": "qxmd178",
-  "cache": "qx-pwa-qxmd178",
-  "title": "qxmd178 · Marks mobile: stem never above header when Solution open",
-  "body": "Root cause: absolute top:0/-9999 stem-hide + #app-main scrolling whole shell let orphan/host stem paint above blue .eg-top. Fix: static display:none stem-hide; fixed fullscreen practice chrome with overflow only on .eg-body; hide host .q-card strips; eg-qxmd178 defensive CSS/JS; Show Answer sync kept; Clear hidden mobile; Prev/Next visible; soft lim glued-prose unglue; Quantrex; no Vercel.",
+  "build": "qxmd179",
+  "cache": "qx-pwa-qxmd179",
+  "title": "qxmd179 \u00b7 Eng/Med Digital Books split + question-count badges (Marks parity)",
+  "body": "Medical no longer reuses Eng MIPYQ id/bank. Catalogs match Marks Eng vs Med lists; count badges on covers (Eng PYQ 4200+, Med PYQ 4941 coming-soon). PhysChem Eng/Med coming-soon until local packs exist. Keep Med Organic/HCV/Irodov aliases. Quantrex branding; no Vercel; no invented bank content.",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app",
   "site": "https://www.quantrexacademy.com",
   "package": "com.quantrexacademy.app",
-  "ts": 1789724500000
+  "ts": 1790000000000
 }

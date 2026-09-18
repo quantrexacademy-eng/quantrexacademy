@@ -14524,7 +14524,7 @@ if (typeof sessionStorage !== "undefined") {
   }
 }
 
-/* qxmd172 medical nav aliases → Engineering packs (same questions, no invent) */
+/* qxmd179 medical nav aliases → Eng packs where Marks Med edition packs missing (HCV/Irodov/Organic); Med MIPYQ must NOT alias to Eng */
 const QX_BOOK_NAV_ALIAS = {
   "69f9ccfa011347df7bce2a38": "69f9cc23681eab6d6021a4d1",
   "6a0adb714b032b031e049a34": "6a0addba4b032b031e049a36",

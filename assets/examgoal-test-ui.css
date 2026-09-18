@@ -4784,7 +4784,7 @@ body.qx-immersive .eg-test-root.eg-qxeg5 .eg-foot {
   overflow: hidden !important;
   border: 0 !important;
   pointer-events: none !important;
-  /* qxmd178: NEVER absolute/top:0/left:-9999 — orphan stem paints above .eg-top */
+  /* qxmd179: NEVER absolute/top:0/left:-9999 — orphan stem paints above .eg-top */
   position: static !important;
   left: auto !important;
   top: auto !important;
@@ -4823,7 +4823,7 @@ html[data-theme="light"] .eg-test-root[data-test-theme="light"].eg-sol-showing .
   margin: 0 !important;
   padding: 0 !important;
   border: 0 !important;
-  /* qxmd178: static collapse only — absolute orphaned stem above header */
+  /* qxmd179: static collapse only — absolute orphaned stem above header */
   position: static !important;
   left: auto !important;
   top: auto !important;
@@ -4888,7 +4888,7 @@ html .mtk-test-root[data-test-theme="light"].eg-sol-showing .mtk-q-text {
   border: 0 !important;
   clip: auto !important;
   clip-path: none !important;
-  /* qxmd178: static — absolute ghosted stem above .eg-top */
+  /* qxmd179: static — absolute ghosted stem above .eg-top */
   position: static !important;
   left: auto !important;
   top: auto !important;
@@ -5748,7 +5748,7 @@ html .qx-stem-sol-hidden {
   margin: 0 !important;
   padding: 0 !important;
   border: 0 !important;
-  /* qxmd178: static — absolute ghosted stem above .eg-top */
+  /* qxmd179: static — absolute ghosted stem above .eg-top */
   position: static !important;
   left: auto !important;
   top: auto !important;
@@ -6118,7 +6118,7 @@ html .eg-test-root.eg-sol-showing.eg-qxmd177 #egCheckRow {
 }
 
 
-/* ========== qxmd178: stem ABOVE header — root cause + Marks shell ==========
+/* ========== qxmd179: stem ABOVE header — root cause + Marks shell ==========
    ROOT CAUSE (high confidence):
    1) Legacy stem-hide used position:absolute; top:0; left:-9999. When display:none
       raced/lost to theme visibility, WebKit painted the orphan stem at the TOP of
@@ -6129,19 +6129,19 @@ html .eg-test-root.eg-sol-showing.eg-qxmd177 #egCheckRow {
    FIX: static display:none stem-hide (patched above); lock practice chrome fixed
    fullscreen with overflow ONLY on .eg-body; hide host question strips while active.
 */
-html .eg-test-root.eg-sol-showing.eg-qxmd178 #egQArea,
-html .eg-test-root.eg-sol-showing.eg-qxmd178 .eg-q-stem,
-html .eg-test-root.eg-sol-showing.eg-qxmd178 .eg-q-stem.eg-stem-sol-hidden,
-html .eg-test-root.eg-sol-showing.eg-qxmd178 #egQArea.eg-stem-sol-hidden,
-html .eg-test-root.eg-qxmd178 .eg-stem-sol-hidden,
-html .eg-test-root.eg-qxmd178 .qx-stem-sol-hidden,
-html .eg-test-root.eg-sol-showing.eg-qxmd178 .mtk-q-text.eg-stem-sol-hidden,
-html[data-theme="dark"] .eg-test-root.eg-sol-showing.eg-qxmd178 #egQArea,
-html[data-theme="light"] .eg-test-root.eg-sol-showing.eg-qxmd178 #egQArea,
-html[data-theme="dark"] .eg-test-root.eg-sol-showing.eg-qxmd178 .eg-q-stem,
-html[data-theme="light"] .eg-test-root.eg-sol-showing.eg-qxmd178 .eg-q-stem,
-html .eg-test-root[data-test-theme="dark"].eg-sol-showing.eg-qxmd178 .eg-q-stem,
-html .eg-test-root[data-test-theme="light"].eg-sol-showing.eg-qxmd178 .eg-q-stem {
+html .eg-test-root.eg-sol-showing.eg-qxmd179 #egQArea,
+html .eg-test-root.eg-sol-showing.eg-qxmd179 .eg-q-stem,
+html .eg-test-root.eg-sol-showing.eg-qxmd179 .eg-q-stem.eg-stem-sol-hidden,
+html .eg-test-root.eg-sol-showing.eg-qxmd179 #egQArea.eg-stem-sol-hidden,
+html .eg-test-root.eg-qxmd179 .eg-stem-sol-hidden,
+html .eg-test-root.eg-qxmd179 .qx-stem-sol-hidden,
+html .eg-test-root.eg-sol-showing.eg-qxmd179 .mtk-q-text.eg-stem-sol-hidden,
+html[data-theme="dark"] .eg-test-root.eg-sol-showing.eg-qxmd179 #egQArea,
+html[data-theme="light"] .eg-test-root.eg-sol-showing.eg-qxmd179 #egQArea,
+html[data-theme="dark"] .eg-test-root.eg-sol-showing.eg-qxmd179 .eg-q-stem,
+html[data-theme="light"] .eg-test-root.eg-sol-showing.eg-qxmd179 .eg-q-stem,
+html .eg-test-root[data-test-theme="dark"].eg-sol-showing.eg-qxmd179 .eg-q-stem,
+html .eg-test-root[data-test-theme="light"].eg-sol-showing.eg-qxmd179 .eg-q-stem {
   display: none !important;
   visibility: hidden !important;
   opacity: 0 !important;
@@ -6169,16 +6169,16 @@ html .eg-test-root[data-test-theme="light"].eg-sol-showing.eg-qxmd178 .eg-q-stem
 }
 
 /* Hide stray practice stems / clones outside the blue header when Solution open */
-html body:has(.eg-test-root.eg-sol-showing.eg-qxmd178) .q-card .q-text,
-html body:has(.eg-test-root.eg-sol-showing.eg-qxmd178) .q-text.qx-content,
-html body:has(.eg-test-root.eg-sol-showing.eg-qxmd178) .cpyqb-q-stem,
-html body:has(.eg-test-root.eg-sol-showing.eg-qxmd178) .qx-list-q-stem,
-html .eg-test-root.eg-sol-showing.eg-qxmd178 ~ .eg-q-stem,
-html .eg-test-root.eg-sol-showing.eg-qxmd178 ~ .mtk-q-text,
+html body:has(.eg-test-root.eg-sol-showing.eg-qxmd179) .q-card .q-text,
+html body:has(.eg-test-root.eg-sol-showing.eg-qxmd179) .q-text.qx-content,
+html body:has(.eg-test-root.eg-sol-showing.eg-qxmd179) .cpyqb-q-stem,
+html body:has(.eg-test-root.eg-sol-showing.eg-qxmd179) .qx-list-q-stem,
+html .eg-test-root.eg-sol-showing.eg-qxmd179 ~ .eg-q-stem,
+html .eg-test-root.eg-sol-showing.eg-qxmd179 ~ .mtk-q-text,
 body.marks-test-active .eg-q-stem:not(.eg-test-root .eg-q-stem):not(.eg-sol-panel *),
 body.allen-practice-active .eg-q-stem:not(.eg-test-root .eg-q-stem):not(.eg-sol-panel *),
-body.marks-test-active.eg-qxmd178-host .q-card,
-body.allen-practice-active.eg-qxmd178-host .q-card {
+body.marks-test-active.eg-qxmd179-host .q-card,
+body.allen-practice-active.eg-qxmd179-host .q-card {
   display: none !important;
   visibility: hidden !important;
   height: 0 !important;
@@ -6201,19 +6201,19 @@ body.allen-practice-active #app-main > :not(.eg-test-root):not(.mtk-test-root):n
 }
 
 /* Fullscreen practice chrome: header locked at top; scroll content pane ONLY */
-body.marks-test-active.eg-qxmd178-host #app-main,
-body.allen-practice-active.eg-qxmd178-host #app-main,
-body.marks-test-active:has(.eg-test-root.eg-qxmd178) #app-main,
-body.allen-practice-active:has(.eg-test-root.eg-qxmd178) #app-main {
+body.marks-test-active.eg-qxmd179-host #app-main,
+body.allen-practice-active.eg-qxmd179-host #app-main,
+body.marks-test-active:has(.eg-test-root.eg-qxmd179) #app-main,
+body.allen-practice-active:has(.eg-test-root.eg-qxmd179) #app-main {
   overflow: hidden !important;
   overscroll-behavior: none !important;
 }
 
-.eg-test-root.eg-qxmd178,
-.eg-test-root.eg-qxmd178.mtk-test-root,
-body.marks-test-active .eg-test-root.eg-qxmd178,
-body.marks-test-active .eg-test-root.eg-qxmd178.mtk-test-root,
-body.allen-practice-active .eg-test-root.eg-qxmd178 {
+.eg-test-root.eg-qxmd179,
+.eg-test-root.eg-qxmd179.mtk-test-root,
+body.marks-test-active .eg-test-root.eg-qxmd179,
+body.marks-test-active .eg-test-root.eg-qxmd179.mtk-test-root,
+body.allen-practice-active .eg-test-root.eg-qxmd179 {
   position: fixed !important;
   inset: 0 !important;
   top: 0 !important;
@@ -6231,7 +6231,7 @@ body.allen-practice-active .eg-test-root.eg-qxmd178 {
   background: var(--eg-bg, #eef2f7) !important;
 }
 
-.eg-test-root.eg-qxmd178 > .eg-top {
+.eg-test-root.eg-qxmd179 > .eg-top {
   position: relative !important;
   top: auto !important;
   left: auto !important;
@@ -6244,16 +6244,16 @@ body.allen-practice-active .eg-test-root.eg-qxmd178 {
   transform: none !important;
 }
 
-.eg-test-root.eg-qxmd178 > .eg-subs,
-.eg-test-root.eg-qxmd178 > .eg-qbar,
-.eg-test-root.eg-qxmd178 > .eg-info-strip,
-.eg-test-root.eg-qxmd178 > #egInfoStrip {
+.eg-test-root.eg-qxmd179 > .eg-subs,
+.eg-test-root.eg-qxmd179 > .eg-qbar,
+.eg-test-root.eg-qxmd179 > .eg-info-strip,
+.eg-test-root.eg-qxmd179 > #egInfoStrip {
   flex-shrink: 0 !important;
   position: relative !important;
   order: unset !important;
 }
 
-.eg-test-root.eg-qxmd178 > .eg-body {
+.eg-test-root.eg-qxmd179 > .eg-body {
   flex: 1 1 auto !important;
   min-height: 0 !important;
   overflow-x: hidden !important;
@@ -6264,18 +6264,18 @@ body.allen-practice-active .eg-test-root.eg-qxmd178 {
   contain: layout paint !important;
 }
 
-.eg-test-root.eg-qxmd178 .eg-main {
+.eg-test-root.eg-qxmd179 .eg-main {
   min-height: 0 !important;
   overflow: visible !important;
 }
 
-.eg-test-root.eg-qxmd178 .eg-q-card {
+.eg-test-root.eg-qxmd179 .eg-q-card {
   overflow: visible !important;
   position: relative !important;
 }
 
 /* Sol open: keep Marks-like in-flow panel under metadata; zero stem paint */
-.eg-test-root.eg-qxmd178.eg-sol-showing .eg-sol-panel.eg-sol-marks-way {
+.eg-test-root.eg-qxmd179.eg-sol-showing .eg-sol-panel.eg-sol-marks-way {
   display: block !important;
   position: relative !important;
   left: auto !important;
@@ -6286,20 +6286,20 @@ body.allen-practice-active .eg-test-root.eg-qxmd178 {
   z-index: 1 !important;
 }
 
-.eg-test-root.eg-qxmd178.eg-sol-showing > .eg-top,
-.eg-test-root.eg-qxmd178.eg-sol-showing > .eg-subs,
-.eg-test-root.eg-qxmd178.eg-sol-showing > .eg-info-strip {
+.eg-test-root.eg-qxmd179.eg-sol-showing > .eg-top,
+.eg-test-root.eg-qxmd179.eg-sol-showing > .eg-subs,
+.eg-test-root.eg-qxmd179.eg-sol-showing > .eg-info-strip {
   display: flex !important;
   visibility: visible !important;
   opacity: 1 !important;
 }
 
 @media (max-width: 768px) {
-  .eg-test-root.eg-qxmd178 .eg-foot,
-  .eg-test-root.eg-qxmd178 .eg-foot-practice,
-  .eg-test-root.eg-qxmd178 #egFoot,
-  .eg-test-root.eg-sol-showing.eg-qxmd178 .eg-foot,
-  .eg-test-root.eg-sol-showing.eg-qxmd178 #egFoot {
+  .eg-test-root.eg-qxmd179 .eg-foot,
+  .eg-test-root.eg-qxmd179 .eg-foot-practice,
+  .eg-test-root.eg-qxmd179 #egFoot,
+  .eg-test-root.eg-sol-showing.eg-qxmd179 .eg-foot,
+  .eg-test-root.eg-sol-showing.eg-qxmd179 #egFoot {
     display: flex !important;
     visibility: visible !important;
     opacity: 1 !important;
@@ -6313,20 +6313,20 @@ body.allen-practice-active .eg-test-root.eg-qxmd178 {
     padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px)) !important;
     min-height: 64px !important;
   }
-  .eg-test-root.eg-qxmd178 .eg-foot-practice #qxPrevBtn,
-  .eg-test-root.eg-qxmd178 .eg-foot-practice #qxNextBtn {
+  .eg-test-root.eg-qxmd179 .eg-foot-practice #qxPrevBtn,
+  .eg-test-root.eg-qxmd179 .eg-foot-practice #qxNextBtn {
     display: inline-flex !important;
     visibility: visible !important;
     min-height: 52px !important;
   }
-  .eg-test-root.eg-qxmd178 .eg-foot-practice .eg-btn-clear,
-  .eg-test-root.eg-qxmd178 .eg-foot-practice #qxClearBtn {
+  .eg-test-root.eg-qxmd179 .eg-foot-practice .eg-btn-clear,
+  .eg-test-root.eg-qxmd179 .eg-foot-practice #qxClearBtn {
     display: none !important;
   }
-  .eg-test-root.eg-qxmd178.eg-sol-showing .eg-sol-panel,
-  .eg-test-root.eg-qxmd178.eg-sol-showing .eg-main,
-  .eg-test-root.eg-qxmd178.eg-sol-showing .eg-q-card,
-  .eg-test-root.eg-qxmd178.eg-sol-showing .eg-body {
+  .eg-test-root.eg-qxmd179.eg-sol-showing .eg-sol-panel,
+  .eg-test-root.eg-qxmd179.eg-sol-showing .eg-main,
+  .eg-test-root.eg-qxmd179.eg-sol-showing .eg-q-card,
+  .eg-test-root.eg-qxmd179.eg-sol-showing .eg-body {
     padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px)) !important;
   }
 }

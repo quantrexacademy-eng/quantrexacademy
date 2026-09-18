@@ -757,7 +757,7 @@ html[data-theme="light"] .eg-test-root[data-test-theme="light"].eg-sol-showing .
   margin: 0 !important;
   padding: 0 !important;
   border: 0 !important;
-  /* qxmd178: no absolute — ghost stem above header */
+  /* qxmd179: no absolute — ghost stem above header */
   position: static !important;
   left: auto !important;
   top: auto !important;
@@ -805,7 +805,7 @@ html .mtk-test-root[data-test-theme="light"].eg-sol-showing .mtk-q-text {
   border: 0 !important;
   clip: auto !important;
   clip-path: none !important;
-  /* qxmd178: no absolute — ghost stem above header */
+  /* qxmd179: no absolute — ghost stem above header */
   position: static !important;
   left: auto !important;
   top: auto !important;
@@ -1009,15 +1009,15 @@ html .eg-test-root.eg-qxmd177 .eg-body {
 }
 
 
-/* qxmd178: vis stem — display:none wins; never absolute/top:0 */
-html .eg-test-root.eg-sol-showing.eg-qxmd178 #egQArea,
-html .eg-test-root.eg-sol-showing.eg-qxmd178 .eg-q-stem,
-html .eg-test-root.eg-sol-showing.eg-qxmd178 .eg-q-stem *,
-html .eg-test-root.eg-sol-showing.eg-qxmd178 #egQArea *,
-html .eg-test-root.eg-qxmd178 .eg-stem-sol-hidden,
-html .eg-test-root.eg-qxmd178 .qx-stem-sol-hidden,
-html[data-theme="light"] .eg-test-root.eg-sol-showing.eg-qxmd178 .eg-q-stem,
-html[data-theme="dark"] .eg-test-root.eg-sol-showing.eg-qxmd178 .eg-q-stem {
+/* qxmd179: vis stem — display:none wins; never absolute/top:0 */
+html .eg-test-root.eg-sol-showing.eg-qxmd179 #egQArea,
+html .eg-test-root.eg-sol-showing.eg-qxmd179 .eg-q-stem,
+html .eg-test-root.eg-sol-showing.eg-qxmd179 .eg-q-stem *,
+html .eg-test-root.eg-sol-showing.eg-qxmd179 #egQArea *,
+html .eg-test-root.eg-qxmd179 .eg-stem-sol-hidden,
+html .eg-test-root.eg-qxmd179 .qx-stem-sol-hidden,
+html[data-theme="light"] .eg-test-root.eg-sol-showing.eg-qxmd179 .eg-q-stem,
+html[data-theme="dark"] .eg-test-root.eg-sol-showing.eg-qxmd179 .eg-q-stem {
   display: none !important;
   visibility: hidden !important;
   opacity: 0 !important;

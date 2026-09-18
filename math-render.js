@@ -2699,7 +2699,7 @@ window.Mx = (() => {
       [/\bifandonlyif\b/gi, "if and only if"],
       [/\bforall\b/gi, "for all"],
       [/\bthereexists\b/gi, "there exists"],
-      /* qxmd178: lim / vertex prose glues ($-coordinateofthevertexmustliein$) */
+      /* qxmd179: lim / vertex prose glues ($-coordinateofthevertexmustliein$) */
       [/\bcoordinateofthevertex\b/gi, "coordinate of the vertex"],
       [/\bcoordinatesofthevertex\b/gi, "coordinates of the vertex"],
       [/\bmustliein\b/gi, "must lie in"],
@@ -2711,7 +2711,7 @@ window.Mx = (() => {
       [/\by-coordinateofthe\b/gi, "y-coordinate of the"],
     ];
     pairs.forEach(function (pr) { c = c.replace(pr[0], pr[1]); });
-    /* qxmd178: $-coordinateofthevertexmustliein$ → prose (false math island) */
+    /* qxmd179: $-coordinateofthevertexmustliein$ → prose (false math island) */
     try {
       c = c.replace(/\$(\s*-?[a-z][a-z0-9\-]{12,})\$/g, function (_m, inner) {
         if (/[\\^_{}=<>]|\\[a-zA-Z]|\d\s*[+\-*/]/.test(inner)) return _m;

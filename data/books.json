@@ -3,6 +3,19 @@
   "subtitle": "Expert-picked question banks — practice on Quantrex Academy",
   "engineering": [
     {
+      "id": "qx_physchem_jee_2027",
+      "title": "Problems in Physical Chemistry for JEE Main 2027",
+      "cover": "assets/book-covers/physical-chemistry-jee.svg",
+      "subject": "Chemistry",
+      "badge": "Physical Chemistry",
+      "exam": "JEE Main 2027",
+      "isComingSoon": true,
+      "count": 0,
+      "type": "exam",
+      "tag": "Coming Soon",
+      "residual": "No local Marks Physical Chemistry JEE pack on disk"
+    },
+    {
       "id": "6a91185f41ab5aba084f4d30",
       "title": "Most Important PYQ Based Questions",
       "cover": "assets/book-covers/qx-pyq-important.jpg",
@@ -14,8 +27,10 @@
       "redirectType": "subject",
       "moduleId": "6a916235cb18ffc9d00d5aa1",
       "count": 4289,
+      "countBadge": "4200+ Questions",
       "type": "exam",
-      "tag": "PYQ 2022–2026"
+      "tag": "PYQ 2022–2026",
+      "countSource": "local chapters sum 4289; Marks UI badge 4200+"
     },
     {
       "id": "6a0addba4b032b031e049a36",
@@ -29,7 +44,25 @@
       "redirectType": "module",
       "moduleId": null,
       "count": 1854,
-      "type": "exam"
+      "countBadge": "1854 Questions",
+      "type": "exam",
+      "countSource": "nav modules sum"
+    },
+    {
+      "id": "6a4ce383c59a7b462185330f",
+      "title": "Fundamentals of Organic Chemistry — JEE Mains & Advanced",
+      "cover": "assets/book-covers/organic-chemistry.jpg",
+      "subject": "Chemistry",
+      "badge": "Organic",
+      "exam": "JEE Main",
+      "isComingSoon": false,
+      "bankSlug": "jee_main",
+      "redirectType": "subject",
+      "moduleId": "6a4e21aea2f0a1af5a74e192",
+      "count": 1151,
+      "countBadge": "1151 Questions",
+      "type": "exam",
+      "countSource": "local chapters sum"
     },
     {
       "id": "69f9cc23681eab6d6021a4d1",
@@ -43,39 +76,13 @@
       "redirectType": "module",
       "moduleId": null,
       "count": 1853,
-      "type": "exam"
-    },
-    {
-      "id": "6a4ce383c59a7b462185330f",
-      "title": "Fundamentals of Organic Chemistry",
-      "cover": "assets/book-covers/organic-chemistry.jpg",
-      "subject": "Chemistry",
-      "badge": "Organic",
-      "exam": "JEE Main",
-      "isComingSoon": false,
-      "bankSlug": "jee_main",
-      "redirectType": "subject",
-      "moduleId": "6a4e21aea2f0a1af5a74e192",
-      "count": 1151,
-      "type": "exam"
-    },
-    {
-      "id": "69736c8362b916d85e52cd1b",
-      "title": "English & Reasoning Practice Guide (BITSAT)",
-      "cover": "assets/book-covers/bitsat-english-lr.jpg",
-      "subject": "English + LR",
-      "badge": "BITSAT",
-      "exam": "BITSAT",
-      "isComingSoon": false,
-      "bankSlug": "jee_main",
-      "redirectType": "subject",
-      "moduleId": "69736e5def12da848f4c24f2",
-      "count": 1749,
-      "type": "exam"
+      "countBadge": "1853 Questions",
+      "type": "exam",
+      "countSource": "nav / local chapters"
     },
     {
       "id": "69cfb5366ecf5579037d96a4",
-      "title": "Top IE IRODOV Physics Problems",
+      "title": "Physics Top IRODOV Problems — MCQs for IIT JEE",
       "cover": "assets/book-covers/irodov.jpg",
       "subject": "Physics",
       "badge": "Irodov",
@@ -85,7 +92,9 @@
       "redirectType": "subject",
       "moduleId": "69d34798097639b3bf3ea47a",
       "count": 158,
-      "type": "exam"
+      "countBadge": "158 Questions",
+      "type": "exam",
+      "countSource": "local chapters sum"
     },
     {
       "id": "68f1ce4cc729e5251bd00430",
@@ -99,7 +108,90 @@
       "redirectType": "module",
       "moduleId": null,
       "count": 2793,
-      "type": "exam"
+      "countBadge": "2793 Questions",
+      "type": "exam",
+      "countSource": "local chapters sum"
+    },
+    {
+      "id": "68946f70ebd145663de38728",
+      "title": "99 Percentile Question Bank — Targeted Problems for JEE Mains",
+      "cover": "assets/book-covers/99-percentile.jpg",
+      "subject": "PCM",
+      "badge": "99 Percentile",
+      "exam": "High Yield",
+      "isComingSoon": false,
+      "bankSlug": "jee_main",
+      "redirectType": "subject",
+      "moduleId": "689470b46cc631f0fbe63f08",
+      "count": 3139,
+      "countBadge": "3139 Questions",
+      "type": "exam",
+      "countSource": "local chapters sum"
+    },
+    {
+      "id": "6894d29d3156b1f3ca5ad0be",
+      "title": "Backlog Se Azadi — JEE Main 2027",
+      "cover": "assets/book-covers/backlog-booster.jpg",
+      "subject": "PCM",
+      "badge": "Backlog",
+      "exam": "Selective PYQs",
+      "isComingSoon": false,
+      "bankSlug": "jee_main",
+      "redirectType": "subject",
+      "moduleId": "6894d2f5d0af19a8bc64156f",
+      "count": 760,
+      "countBadge": "760 Questions",
+      "type": "exam",
+      "countSource": "local chapters sum"
+    },
+    {
+      "id": "69048808ef55966cf1d71f1d",
+      "title": "Olympiad Workbook — NSEC, NSEP and IOQM",
+      "cover": "assets/book-covers/olympiad.jpg",
+      "subject": "PCM",
+      "badge": "Olympiad",
+      "exam": "Olympiad",
+      "isComingSoon": false,
+      "bankSlug": "jee_main",
+      "redirectType": "module",
+      "moduleId": null,
+      "count": 1512,
+      "countBadge": "1512 Questions",
+      "type": "exam",
+      "countSource": "local chapters sum"
+    },
+    {
+      "id": "69736c8362b916d85e52cd1b",
+      "title": "English & Reasoning Practice Guide — BITSAT, VITEEE, MET and SRMJEE",
+      "cover": "assets/book-covers/bitsat-english-lr.jpg",
+      "subject": "English + LR",
+      "badge": "BITSAT",
+      "exam": "BITSAT",
+      "isComingSoon": false,
+      "bankSlug": "jee_main",
+      "redirectType": "subject",
+      "moduleId": "69736e5def12da848f4c24f2",
+      "count": 1749,
+      "countBadge": "1749 Questions",
+      "type": "exam",
+      "countSource": "local chapters sum"
+    },
+    {
+      "id": "a1b2c3d4e5f6010203040508",
+      "title": "Black Book Advanced Problems in Mathematics",
+      "cover": "assets/book-covers/black-book-math.png",
+      "subject": "Mathematics",
+      "badge": "Black Book",
+      "exam": "JEE Main & Advanced",
+      "isComingSoon": false,
+      "bankSlug": "jee_advanced",
+      "redirectType": "subject",
+      "count": 1201,
+      "countBadge": "1201 Questions",
+      "type": "exam",
+      "tag": "Vikas Gupta · Pankaj Joshi · Ex 1–5",
+      "countSource": "local chapters sum",
+      "quantrexExtra": true
     },
     {
       "id": "a1b2c3d4e5f6010203040506",
@@ -114,7 +206,8 @@
       "moduleId": null,
       "count": 0,
       "type": "curated",
-      "tag": "Premium Cover"
+      "tag": "Coming Soon",
+      "quantrexExtra": true
     },
     {
       "id": "a1b2c3d4e5f6010203040507",
@@ -129,94 +222,41 @@
       "moduleId": null,
       "count": 0,
       "type": "curated",
-      "tag": "Premium Cover"
-    },
-    {
-      "id": "a1b2c3d4e5f6010203040508",
-      "title": "Black Book Advanced Problems in Mathematics",
-      "cover": "assets/book-covers/black-book-math.png",
-      "subject": "Mathematics",
-      "badge": "Black Book",
-      "exam": "JEE Main & Advanced",
-      "isComingSoon": false,
-      "bankSlug": "jee_advanced",
-      "redirectType": "subject",
-      "count": 1201,
-      "type": "exam",
-      "tag": "Vikas Gupta · Pankaj Joshi · Ex 1–5"
-    },
-    {
-      "id": "68946f70ebd145663de38728",
-      "title": "99 Percentile Qs Bank for JEE Main",
-      "cover": "assets/book-covers/99-percentile.jpg",
-      "subject": "PCM",
-      "badge": "99 Percentile",
-      "exam": "High Yield",
-      "isComingSoon": false,
-      "bankSlug": "jee_main",
-      "redirectType": "subject",
-      "moduleId": "689470b46cc631f0fbe63f08",
-      "count": 3139,
-      "type": "exam"
-    },
-    {
-      "id": "6894d29d3156b1f3ca5ad0be",
-      "title": "JEE Main Backlog Booster",
-      "cover": "assets/book-covers/backlog-booster.jpg",
-      "subject": "PCM",
-      "badge": "Backlog Booster",
-      "exam": "Selective PYQs",
-      "isComingSoon": false,
-      "bankSlug": "jee_main",
-      "redirectType": "subject",
-      "moduleId": "6894d2f5d0af19a8bc64156f",
-      "count": 760,
-      "type": "exam"
-    },
-    {
-      "id": "69048808ef55966cf1d71f1d",
-      "title": "Olympiad Workbook",
-      "cover": "assets/book-covers/olympiad.jpg",
-      "subject": "PCM",
-      "badge": "Olympiad",
-      "exam": "Olympiad",
-      "isComingSoon": false,
-      "bankSlug": "jee_main",
-      "redirectType": "module",
-      "moduleId": null,
-      "count": 1512,
-      "type": "exam"
+      "tag": "Coming Soon",
+      "quantrexExtra": true
     }
   ],
   "medical": [
     {
-      "id": "6a91185f41ab5aba084f4d30",
-      "title": "Most Important PYQ NEET 2027",
+      "id": "qx_physchem_neet_2027",
+      "title": "Problems in Physical Chemistry for NEET 2027",
+      "cover": "assets/book-covers/physical-chemistry-neet.svg",
+      "description": "Physical Chemistry for NEET 2027",
+      "isComingSoon": true,
+      "subject": "Chemistry",
+      "badge": "Physical Chemistry",
+      "exam": "NEET",
+      "type": "exam",
+      "count": 0,
+      "tag": "Coming Soon",
+      "residual": "No local Marks Physical Chemistry NEET pack on disk"
+    },
+    {
+      "id": "qx_mipyq_neet_2027",
+      "title": "Most Important PYQ Based Questions — NEET 2027",
       "cover": "assets/book-covers/qx-pyq-important.jpg",
       "description": "Most Important PYQ Based Questions for NEET 2027",
-      "isComingSoon": false,
+      "isComingSoon": true,
       "subject": "PCB",
       "badge": "Quantrex PYQ",
       "exam": "NEET",
       "type": "exam",
-      "tag": "PYQ 2022–2026",
-      "bankSlug": "jee_main",
-      "redirectType": "subject",
-      "moduleId": "6a916235cb18ffc9d00d5aa1",
-      "count": 4289
-    },
-    {
-      "id": "6a507da9107f81233d9985c1",
-      "title": "Fundamentals of Organic Chemistry",
-      "cover": "assets/book-covers/organic-chemistry.jpg",
-      "description": "for NEET 2027",
-      "isComingSoon": false,
-      "subject": "Chemistry",
-      "badge": "Organic",
-      "exam": "NEET",
-      "type": "exam",
-      "count": 1151,
-      "aliasId": "6a4ce383c59a7b462185330f"
+      "tag": "Coming Soon",
+      "count": 4941,
+      "countBadge": "4941 Questions",
+      "marksBadge": "4941 Questions",
+      "countSource": "Marks screenshot badge; no local NEET MIPYQ pack (must not reuse Eng 6a91185… / 4289)",
+      "residual": "Marks Med MIPYQ pack id + chapter bank missing on disk — do not wire to Eng JEE MIPYQ"
     },
     {
       "id": "6a0adb714b032b031e049a34",
@@ -229,24 +269,29 @@
       "exam": "NEET",
       "type": "exam",
       "count": 1854,
-      "aliasId": "6a0addba4b032b031e049a36"
+      "countBadge": "1854 Questions",
+      "aliasId": "6a0addba4b032b031e049a36",
+      "countSource": "Eng HCV2 nav (Marks Med catalog id; chapter keys → Eng pack)"
     },
     {
-      "id": "69cfb4af611e9b07b5d55e79",
-      "title": "Physics Top Irodov Problems",
-      "cover": "assets/book-covers/irodov.jpg",
-      "description": "MCQs for NEET",
+      "id": "6a507da9107f81233d9985c1",
+      "title": "Fundamentals of Organic Chemistry — NEET 2027",
+      "cover": "assets/book-covers/organic-chemistry.jpg",
+      "description": "for NEET 2027",
       "isComingSoon": false,
-      "subject": "Physics",
-      "badge": "Irodov",
+      "subject": "Chemistry",
+      "badge": "Organic",
       "exam": "NEET",
       "type": "exam",
-      "count": 158,
-      "aliasId": "69cfb5366ecf5579037d96a4"
+      "count": 1151,
+      "countBadge": "1151 Questions",
+      "aliasId": "6a4ce383c59a7b462185330f",
+      "countSource": "Eng Organic pack via alias — Marks NEET Organic edition content not scraped separately",
+      "residual": "May differ from Marks NEET Organic question set"
     },
     {
       "id": "69a684ac213ecfafb0629c0d",
-      "title": "Biology 360/360 for NEET 2027",
+      "title": "Biology 360/360 — NEET 2027",
       "cover": "assets/book-covers/biology-360.jpg",
       "description": "Botany + Zoology complete",
       "isComingSoon": false,
@@ -255,7 +300,9 @@
       "exam": "NEET",
       "type": "exam",
       "count": 17415,
-      "bankFallback": "neet"
+      "countBadge": "17415 Questions",
+      "bankFallback": "neet",
+      "countSource": "nav chapter count sum → neet bankFallback"
     },
     {
       "id": "69f9ccfa011347df7bce2a38",
@@ -268,7 +315,24 @@
       "exam": "NEET",
       "type": "exam",
       "count": 1853,
-      "aliasId": "69f9cc23681eab6d6021a4d1"
+      "countBadge": "1853 Questions",
+      "aliasId": "69f9cc23681eab6d6021a4d1",
+      "countSource": "Eng HCV1 via alias"
+    },
+    {
+      "id": "69cfb4af611e9b07b5d55e79",
+      "title": "Physics Top IRODOV Problems — MCQs for NEET",
+      "cover": "assets/book-covers/irodov.jpg",
+      "description": "MCQs for NEET",
+      "isComingSoon": false,
+      "subject": "Physics",
+      "badge": "Irodov",
+      "exam": "NEET",
+      "type": "exam",
+      "count": 158,
+      "countBadge": "158 Questions",
+      "aliasId": "69cfb5366ecf5579037d96a4",
+      "countSource": "Eng Irodov via alias"
     },
     {
       "id": "69a6ea53213ecfafb0629c18",
@@ -281,7 +345,9 @@
       "exam": "NEET",
       "type": "exam",
       "count": 500,
-      "bankFallback": "jee_main"
+      "countBadge": "500 Questions",
+      "bankFallback": "jee_main",
+      "countSource": "nav sourceIds length 500"
     },
     {
       "id": "69a6eaf1213ecfafb0629c19",
@@ -294,7 +360,9 @@
       "exam": "NEET",
       "type": "exam",
       "count": 500,
-      "bankFallback": "jee_main"
+      "countBadge": "500 Questions",
+      "bankFallback": "jee_main",
+      "countSource": "nav sourceIds length 500"
     }
   ],
   "curated": [
@@ -308,6 +376,7 @@
       "isComingSoon": false,
       "bankSlug": "jee_main",
       "count": 490,
+      "countBadge": "490 Questions",
       "type": "curated",
       "tag": "New"
     },
@@ -321,6 +390,7 @@
       "isComingSoon": false,
       "bankSlug": "jee_main",
       "count": 300,
+      "countBadge": "300 Questions",
       "type": "curated",
       "tag": "Numerical"
     },
@@ -334,6 +404,7 @@
       "isComingSoon": false,
       "bankSlug": "jee_main",
       "count": 750,
+      "countBadge": "750 Questions",
       "type": "curated",
       "tag": "PYQ"
     }

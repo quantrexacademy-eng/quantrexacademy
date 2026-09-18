@@ -21,6 +21,9 @@ const BOOK_COVER_PRESETS = {
   "6894d29d3156b1f3ca5ad0be": { brand: "Backlog Booster", line: "Selective Qs", vol: "Backlog Clear", subject: "PCM", badge: "Backlog Booster", colors: ["#9a3412", "#ea580c", "#fb923c"], icon: "⚡", pattern: "diagonal" },
   "69048808ef55966cf1d71f1d": { brand: "Olympiad", line: "Workbook", vol: "Competitive", subject: "PCM", badge: "Olympiad", colors: ["#134e4a", "#0d9488", "#5eead4"], icon: "🏅", pattern: "grid" },
   "6a91185f41ab5aba084f4d30": { brand: "Quantrex Academy", line: "Most Important PYQ", vol: "JEE Main 2027", subject: "PCM", badge: "Quantrex PYQ", colors: ["#0b1b4a", "#1d4ed8", "#fbbf24"], icon: "⭐", pattern: "shine", tag: "PYQ 2022–2026" },
+  "qx_mipyq_neet_2027": { brand: "Quantrex Academy", line: "Most Important PYQ", vol: "NEET 2027", subject: "PCB", badge: "Quantrex PYQ", colors: ["#0b1b4a", "#1d4ed8", "#fbbf24"], icon: "⭐", pattern: "shine", tag: "4941 Questions" },
+  "qx_physchem_jee_2027": { brand: "Quantrex Academy", line: "Physical Chemistry", vol: "JEE Main 2027", subject: "Chemistry", badge: "Physical Chemistry", colors: ["#0f172a", "#1e3a8a", "#dc2626"], icon: "⚗️", pattern: "waves" },
+  "qx_physchem_neet_2027": { brand: "Quantrex Academy", line: "Physical Chemistry", vol: "NEET 2027", subject: "Chemistry", badge: "Physical Chemistry", colors: ["#0f172a", "#1e3a8a", "#dc2626"], icon: "⚗️", pattern: "waves" },
   "6a916235cb18ffc9d00d5aa1": { brand: "Quantrex Academy", line: "Most Important PYQ", vol: "JEE Main 2027", subject: "PCM", badge: "Quantrex PYQ", colors: ["#0b1b4a", "#1d4ed8", "#fbbf24"], icon: "⭐", pattern: "shine", tag: "PYQ 2022–2026" },
   "69968cee494a12a5771e3455": { brand: "Biology 360", line: "NEET Biology", vol: "2026 Edition", subject: "Biology", badge: "NEET Biology", colors: ["#14532d", "#16a34a", "#86efac"], icon: "🧬", pattern: "waves" },
   "67656ccf18ff438b6c18cc4c": { brand: "Must Do 2024", line: "Top PYQs", vol: "2024 Edition", subject: "PCM", badge: "PYQ 2024", colors: ["#881337", "#e11d48", "#fda4af"], icon: "⭐", pattern: "shine", tag: "New" },
@@ -40,6 +43,9 @@ const BOOK_COVER_PHOTO = {
   "69cfb5366ecf5579037d96a4": "assets/book-covers/irodov.jpg",
   "69cfb4af611e9b07b5d55e79": "assets/book-covers/irodov.jpg",
   "69a684ac213ecfafb0629c0d": "assets/book-covers/biology-360.jpg",
+  "qx_physchem_jee_2027": "assets/book-covers/physical-chemistry-jee.svg",
+  "qx_physchem_neet_2027": "assets/book-covers/physical-chemistry-neet.svg",
+  "qx_mipyq_neet_2027": "assets/book-covers/qx-pyq-important.jpg",
   "69a6ea53213ecfafb0629c18": "assets/book-covers/top500-physics.jpg",
   "69a6eaf1213ecfafb0629c19": "assets/book-covers/top500-chemistry.jpg",
   "68f1ce4cc729e5251bd00430": "assets/book-covers/rank-booster.jpg",
@@ -92,6 +98,7 @@ function bookDisplayBadge(book) {
   if (/olympiad/i.test(t)) return "Olympiad";
   if (/most important pyq|pyq based questions/i.test(t)) return "Quantrex PYQ";
   if (/biology 360/i.test(t)) return "NEET Biology";
+  if (/physical chemistry/i.test(t)) return "Physical Chemistry";
   if (/organic chemistry/i.test(t)) return "Organic Chemistry";
   if (/bitsat/i.test(t)) return "BITSAT";
   if (/black book/i.test(t)) return "Black Book";
@@ -171,9 +178,23 @@ function bookCardMeta(book) {
   const badge = bookDisplayBadge(book);
   if (badge) parts.push(badge);
   if (book.subject && book.subject !== badge) parts.push(book.subject);
-  if (book.count) parts.push(`${book.count.toLocaleString()} questions`);
+  const cbt = bookCountBadgeText(book);
+  if (cbt) parts.push(cbt);
+  else if (book.count) parts.push(`${book.count.toLocaleString()} questions`);
   if (book.isComingSoon) parts.push("Coming Soon");
   return parts.join(" · ") || "Digital Book";
+}
+
+
+function bookCountBadgeText(book) {
+  if (!book) return "";
+  const raw = book.countBadge || book.marksBadge || "";
+  if (raw) return String(raw);
+  const n = Number(book.count);
+  if (!n || n <= 0) return "";
+  // Eng MIPYQ local ≥4200 → Marks-style 4200+ when no explicit badge
+  if (book.id === "6a91185f41ab5aba084f4d30" && n >= 4200) return "4200+ Questions";
+  return n.toLocaleString() + " Questions";
 }
 
 function renderBookPhotoCover(book, size) {
@@ -182,8 +203,9 @@ function renderBookPhotoCover(book, size) {
   if (!img) return null;
 
   const sz = size === "sm" ? " qx-cover-sm" : size === "lg" ? " qx-cover-lg" : "";
-  const count = book.count ? `<span class="qx-photo-count">${book.count.toLocaleString()} Qs</span>` : "";
-  const tag = book.tag ? `<span class="qx-photo-tag">${book.tag}</span>` : "";
+  const countTxt = bookCountBadgeText(book);
+  const count = countTxt ? `<span class="qx-photo-count qx-photo-qbadge" title="${String(countTxt).replace(/"/g, "&quot;")}">${countTxt}</span>` : "";
+  const tag = book.tag && !/coming soon/i.test(book.tag) && !/questions/i.test(book.tag) ? `<span class="qx-photo-tag">${book.tag}</span>` : "";
   const soon = book.isComingSoon ? `<span class="qx-photo-soon">Coming Soon</span>` : "";
   const esc = (book.title || "Book").replace(/"/g, "&quot;");
   const fb = fallback && fallback !== img ? fallback.replace(/'/g, "\\'") : "";
@@ -206,7 +228,8 @@ function renderBookArtCover(book, size, inline) {
   const c1 = st.colors[0] || "#1e3a8a";
   const c2 = st.colors[1] || "#3b82f6";
   const c3 = st.colors[2] || "#93c5fd";
-  const count = book.count ? `${book.count.toLocaleString()} Qs` : "";
+  const countTxt = bookCountBadgeText(book);
+  const count = countTxt || "";
   const soon = book.isComingSoon ? `<span class="qx-cover-soon">Coming Soon</span>` : "";
   const tag = st.tag ? `<span class="qx-cover-tag">${st.tag}</span>` : "";
   const sz = size === "sm" ? " qx-cover-sm" : size === "lg" ? " qx-cover-lg" : "";
