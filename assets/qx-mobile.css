@@ -888,3 +888,48 @@ html { -webkit-text-size-adjust: 100%; }
   .eg-test-root.eg-qxmd171 .eg-foot-practice .eg-btn-full { display: none !important; }
 }
 
+
+/* ========== qxmd173: mobile foot Clear hide + safe-area (Show Answer untouched) ========== */
+@media (max-width: 768px) {
+  .eg-test-root.eg-qxmd173 .eg-foot-practice .eg-btn-clear,
+  .eg-test-root.eg-qxmd173 .eg-foot-practice #qxClearBtn {
+    display: none !important;
+  }
+  .eg-test-root.eg-qxmd173 .eg-foot-practice,
+  .eg-test-root.eg-qxmd173 #egFoot.eg-foot-practice {
+    bottom: 0 !important;
+    overflow: visible !important;
+    padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+  .eg-test-root.eg-qxmd173 .eg-foot-practice #qxPrevBtn,
+  .eg-test-root.eg-qxmd173 .eg-foot-practice #qxNextBtn {
+    min-height: 52px !important;
+    font-size: 16px !important;
+    font-weight: 800 !important;
+  }
+  body.allen-practice-active .mtk-test-root.allen-practice.eg-qxmd173 .eg-foot,
+  body.allen-practice-active .eg-test-root.eg-qxmd173 .eg-foot {
+    padding: 8px 10px calc(12px + env(safe-area-inset-bottom, 0px)) !important;
+    bottom: 0 !important;
+  }
+}
+
+
+/* qxmd173: Aa stays top; fmt pop opens from top (not bottom foot) */
+@media (max-width: 768px) {
+  .eg-test-root.eg-qxmd173 .eg-top-tools #egFmtBtn {
+    display: inline-flex !important;
+    visibility: visible !important;
+  }
+  .eg-test-root.eg-qxmd173 .eg-fmt-pop,
+  .eg-test-root.eg-qxmd173 #egFmtPop {
+    position: fixed !important;
+    top: calc(52px + env(safe-area-inset-top, 0px)) !important;
+    bottom: auto !important;
+    left: auto !important;
+    right: 8px !important;
+    width: min(280px, calc(100vw - 16px)) !important;
+    max-height: min(42vh, 320px) !important;
+    overflow-y: auto !important;
+  }
+}

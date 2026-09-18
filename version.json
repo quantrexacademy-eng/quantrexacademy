@@ -1,10 +1,10 @@
 {
-  "build": "qxmd172",
-  "cache": "qx-pwa-qxmd172",
-  "title": "qxmd172 \u00b7 Eng+Med content wire + Marks UI/Settings + Quantrex brand",
-  "body": "Medical books nav alias+manifests (Organic/HCV/Irodov\u2192Eng packs). Hide Concept Videos. Quantrex Digital Books titles; strip Marks from UI labels. Keep qxmd171 Marks-like Practice foot + Settings. qxmd170 format kept. No Bio DPP/Med tests/Bio formulas invented. No bank rewrite. No Vercel.",
+  "build": "qxmd173",
+  "cache": "qx-pwa-qxmd173",
+  "title": "qxmd173 · Mobile Practice: hide Clear; Prev|Next primary + safe-area foot",
+  "body": "Mobile Practice: Clear hidden (desktop ExamGoal Clear kept). Prev|Next primary full-width foot with larger taps + safe-area padding so bottom bar is fully visible. Show Answer unchanged. No bank rewrite. No Vercel.",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app",
   "site": "https://www.quantrexacademy.com",
   "package": "com.quantrexacademy.app",
-  "ts": 1789701000000
+  "ts": 1789702800000
 }

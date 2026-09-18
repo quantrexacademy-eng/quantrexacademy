@@ -528,7 +528,7 @@
       ? '<button type="button" class="eg-btn eg-btn-close-pal" id="egFootClose" title="Close palette">✕ Close</button>'
       : "";
     /* Prev/Next always present; Marks-like Mark|Clear + Save&Next on mobile */
-    /* qxmd171: Marks mobile Practice foot — Mark | Clear / Previous | Save & Next */
+    /* qxmd171 Marks foot DOM; qxmd173 mobile CSS hides Clear — Prev|Next primary; Show Answer unchanged */
     const foot = practice
       ? '<div class="eg-foot eg-foot-practice eg-marks-foot" id="egFoot">' +
         '<div class="eg-foot-extra eg-foot-left" id="egFootExtra">' +
@@ -540,7 +540,7 @@
         (footClose || "") +
         '<button type="button" class="eg-btn eg-btn-more" id="egFootMore" title="More" aria-label="More" aria-expanded="false" hidden>⋯</button>' +
         '<button type="button" class="eg-btn" id="qxPrevBtn"' + (firstQ ? " disabled" : "") + ">Previous</button>" +
-        '<button type="button" class="eg-btn eg-btn-next" id="qxNextBtn"' + (lastQ ? " disabled" : "") + '><span class="eg-btn-full">Save &amp; Next</span><span class="eg-btn-short">Save &amp; Next</span></button>' +
+        '<button type="button" class="eg-btn eg-btn-next" id="qxNextBtn"' + (lastQ ? " disabled" : "") + '><span class="eg-btn-full">Save &amp; Next</span><span class="eg-btn-short">Next</span></button>' +
         "</div>" +
         '<div class="eg-foot-sheet-scrim" id="egFootSheetScrim" hidden aria-hidden="true"></div>' +
         "</div>"
@@ -599,7 +599,7 @@
     return '<div class="eg-test-root mtk-test-root' +
       (sideOpen ? " eg-side-open" : " eg-side-collapsed") +
       (stripOpen ? " eg-strip-open" : " eg-strip-collapsed") +
-      " eg-tools-closed eg-compact eg-qxmd167 eg-qxmd170 eg-qxmd171 eg-qxtool8 eg-qxeg1 eg-qxeg2 eg-qxeg3 eg-qxeg4 eg-qxeg5 eg-qxeg6 eg-qxeg7" +
+      " eg-tools-closed eg-compact eg-qxmd167 eg-qxmd170 eg-qxmd171 eg-qxmd173 eg-qxtool8 eg-qxeg1 eg-qxeg2 eg-qxeg3 eg-qxeg4 eg-qxeg5 eg-qxeg6 eg-qxeg7" +
       (previewOpen ? " eg-preview-open" : " eg-preview-collapsed") +
       (desktopMode ? " eg-desktop-mode" : " eg-mobile") +
       (!desktopMode && isMobileEg ? " eg-mobile-vp" : "") +
@@ -1099,12 +1099,16 @@
         }
         var dark = (root.getAttribute("data-test-theme") === "dark");
         /* One-shot nuclear inline backup (CSS is primary) */
+        /* qxmd173: bottom:0 + padding-bottom safe-area so Prev|Next never clipped under home indicator */
+        var sab = "env(safe-area-inset-bottom, 0px)";
         foot.style.cssText = "display:flex!important;visibility:visible!important;opacity:1!important;" +
           "pointer-events:auto!important;position:fixed!important;left:0!important;right:0!important;" +
-          "bottom:max(8px, env(safe-area-inset-bottom, 0px))!important;z-index:2147483000!important;transform:none!important;" +
-          "flex-wrap:wrap!important;gap:8px!important;padding:12px 12px 14px!important;" +
+          "bottom:0!important;z-index:2147483000!important;transform:none!important;" +
+          "overflow:visible!important;clip:auto!important;max-height:none!important;" +
+          "flex-wrap:wrap!important;gap:8px!important;padding:10px 12px calc(12px + " + sab + ")!important;" +
           "background:" + (dark ? "#0b1220" : "#ffffff") + "!important;border-top:2px solid " +
           (dark ? "#334155" : "#94a3b8") + "!important;width:100%!important;max-width:100vw!important;" +
+          "box-sizing:border-box!important;" +
           "box-shadow:0 -8px 24px rgba(15,23,42,.18)!important;min-height:64px!important;";
         let right = foot.querySelector(".eg-foot-right");
         if (!right) {
@@ -1114,7 +1118,7 @@
         }
         var practiceFoot = !!(root.getAttribute("data-eg-mode") === "practice");
         var narrow = !!(window.matchMedia && window.matchMedia("(max-width: 720px)").matches);
-        /* qxmd171: Marks mobile = Prev | Save&Next grid; Mark/Clear stay in left row via CSS */
+        /* qxmd173: Prev|Next primary grid; Clear hidden on mobile via CSS (desktop Clear kept) */
         if (practiceFoot && narrow) {
           right.style.cssText = "display:grid!important;grid-template-columns:1fr 1fr!important;gap:8px!important;width:100%!important;visibility:visible!important;opacity:1!important;";
         } else {
@@ -1149,7 +1153,7 @@
             }
           });
         } catch (_) {}
-        /* qxmd171: More stays hidden on Marks foot; Mark/Clear painted by CSS */
+        /* qxmd173: More hidden; Clear hidden on mobile CSS; Prev|Next painted large */
         ensureBtn("qxPrevBtn", "Previous", false);
         var next;
         if (practiceFoot) {
@@ -1157,11 +1161,22 @@
           if (saveLeftover) {
             try { saveLeftover.id = "qxNextBtn"; saveLeftover.className = "eg-btn eg-btn-next"; } catch (_) {}
           }
-          next = ensureBtn("qxNextBtn", "Save & Next", true);
+          next = ensureBtn("qxNextBtn", narrow ? "Next" : "Save & Next", true);
           try {
             var moreB = foot.querySelector("#egFootMore");
             if (moreB) { moreB.setAttribute("hidden", ""); moreB.style.display = "none"; }
           } catch (_) {}
+          /* qxmd173: hide Clear on mobile practice only (desktop ExamGoal Clear stays in DOM/CSS) */
+          if (narrow) {
+            try {
+              var clr = foot.querySelector("#qxClearBtn, .eg-btn-clear");
+              if (clr) { clr.style.display = "none"; clr.setAttribute("aria-hidden", "true"); }
+            } catch (_) {}
+            try {
+              var prevB = foot.querySelector("#qxPrevBtn");
+              if (prevB) prevB.textContent = "Previous";
+            } catch (_) {}
+          }
         } else {
           next = foot.querySelector("#qxSaveBtn") ? ensureBtn("qxSaveBtn", "Save & Next", true) : ensureBtn("qxNextBtn", "Next", true);
         }
@@ -1203,7 +1218,7 @@
         root.classList.toggle("eg-preview-open", previewOpen);
         root.classList.toggle("eg-preview-collapsed", !previewOpen);
         root.classList.remove("eg-tools-open");
-        root.classList.add("eg-tools-closed", "eg-qxmd167", "eg-qxmd170", "eg-qxmd171", "eg-qxtool8", "eg-qxeg1", "eg-qxeg2", "eg-qxeg3", "eg-qxeg4", "eg-qxeg5", "eg-qxeg6", "eg-qxeg7", "eg-foot-ready");
+        root.classList.add("eg-tools-closed", "eg-qxmd167", "eg-qxmd170", "eg-qxmd171", "eg-qxmd173", "eg-qxtool8", "eg-qxeg1", "eg-qxeg2", "eg-qxeg3", "eg-qxeg4", "eg-qxeg5", "eg-qxeg6", "eg-qxeg7", "eg-foot-ready");
         root.setAttribute("data-eg-cycle", bothOpen ? "1" : "0");
         const strip = root.querySelector("#egQBar");
         if (strip) {

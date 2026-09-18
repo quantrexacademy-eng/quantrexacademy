@@ -7,7 +7,7 @@
 (function (global) {
   "use strict";
 
-  var PARITY = "qxmd172";
+  var PARITY = "qxmd173";
   var PREF = {
     push: "qx_pref_push_notif",
     email: "qx_pref_email_notif",
