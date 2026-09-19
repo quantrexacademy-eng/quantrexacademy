@@ -13,8 +13,26 @@
     } else if (!l.id) {
       l.id = "egTestUiCss";
     }
-    const href = "assets/examgoal-test-ui.css?v=" + encodeURIComponent(global.QX_BUILD || "qxeg7");
+    const href = "assets/examgoal-test-ui.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd191");
     if (l.getAttribute("href") !== href) l.href = href;
+    let chrome = document.getElementById("qxPracChromeCss");
+    if (!chrome) {
+      chrome = document.createElement("link");
+      chrome.id = "qxPracChromeCss";
+      chrome.rel = "stylesheet";
+      document.head.appendChild(chrome);
+    }
+    const ch = "assets/qx-prac-chrome.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd191");
+    if (chrome.getAttribute("href") !== ch) chrome.href = ch;
+    let r = document.getElementById("qxPracticeReadCss");
+    if (!r) {
+      r = document.createElement("link");
+      r.id = "qxPracticeReadCss";
+      r.rel = "stylesheet";
+      document.head.appendChild(r);
+    }
+    const rh = "assets/qx-practice-read.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd182");
+    if (r.getAttribute("href") !== rh) r.href = rh;
   }
 
   function isExamgoalUi(session) {
@@ -59,8 +77,8 @@
         session._egStripOpen = true;
         session._egSideOpen = true;
       } else {
-        session._egStripOpen = false;
-        session._egSideOpen = false;
+        session._egStripOpen = true;
+        session._egSideOpen = true;
       }
     }
     if (session._egStripOpen == null) session._egStripOpen = false;
@@ -93,7 +111,7 @@
       var v = localStorage.getItem(EG_PALETTE_PREF_KEY);
       if (v === "side" || v === "strip" || v === "both") return v;
     } catch (_) { /* */ }
-    return "side";
+    return "both";
   }
   function setPalettePref(mode) {
     var m = mode === "side" || mode === "strip" || mode === "both" ? mode : "side";
@@ -256,7 +274,7 @@
     const visited = !!(session.visited && session.visited.has(i));
     const marked = !!(session.review && session.review.has(i));
     const practice = !!session.practiceMode;
-    const revealed = !!(session._egShowAnswer || egCheckedAt(session, i));
+    const revealed = egCheckedAt(session, i);
     if (practice) {
       if (revealed && hasAns) {
         return (session._egCorrect && session._egCorrect[i]) ? "eg-correct" : "eg-wrong";
@@ -295,7 +313,6 @@
 
   function wantShowSol(session, idx) {
     if (!session || !session.practiceMode) return false;
-    if (session._egShowAnswer) return true;
     var i = idx != null ? idx : session.idx;
     return egCheckedAt(session, i);
   }
@@ -305,6 +322,12 @@
     try {
       if (typeof QuantrexSolution !== "undefined" && QuantrexSolution.renderBlock) {
         solContent = QuantrexSolution.renderBlock(q);
+        try {
+          if (QuantrexSolution.stripLeadingStemEcho) {
+            solContent = QuantrexSolution.stripLeadingStemEcho(solContent, q);
+          }
+        } catch (_) { /* */ }
+        solContent = String(solContent || "").replace(/<(div|p|section)[^>]*class="[^"]*(?:eg-q-stem|mtk-q-text|qa-q)[^"]*"[\s\S]*?<\/\1>/gi, "");
       }
     } catch (_) { /* */ }
     if (!solContent) {
@@ -549,14 +572,14 @@
       ? '<div class="eg-foot eg-foot-practice eg-marks-foot" id="egFoot">' +
         '<div class="eg-foot-extra eg-foot-left" id="egFootExtra">' +
         showSwitch +
-        '<button type="button" class="eg-btn eg-btn-review" id="qxReviewNextBtn"><span class="eg-btn-full">Mark for Review</span><span class="eg-btn-short">Mark</span></button>' +
-        '<button type="button" class="eg-btn eg-btn-clear" id="qxClearBtn"><span class="eg-btn-full">Clear Response</span><span class="eg-btn-short">Clear</span></button>' +
+        '<button type="button" class="eg-btn eg-btn-review" id="qxReviewNextBtn">Mark for Review</button>' +
+        '<button type="button" class="eg-btn eg-btn-clear" id="qxClearBtn">Clear Response</button>' +
         "</div>" +
         '<div class="eg-foot-nav eg-foot-right">' +
         (footClose || "") +
         '<button type="button" class="eg-btn eg-btn-more" id="egFootMore" title="More" aria-label="More" aria-expanded="false" hidden>⋯</button>' +
-        '<button type="button" class="eg-btn" id="qxPrevBtn"' + (firstQ ? " disabled" : "") + ">Previous</button>" +
-        '<button type="button" class="eg-btn eg-btn-next" id="qxNextBtn"' + (lastQ ? " disabled" : "") + '><span class="eg-btn-full">Save &amp; Next</span><span class="eg-btn-short">Next</span></button>' +
+        '<button type="button" class="eg-btn" id="qxPrevBtn" style="display:inline-flex!important;visibility:visible!important;opacity:1!important"' + (firstQ ? " disabled" : "") + ">Previous</button>" +
+        '<button type="button" class="eg-btn eg-btn-next" id="qxNextBtn" style="display:inline-flex!important;visibility:visible!important;opacity:1!important"' + (lastQ ? " disabled" : "") + ">Next</button>" +
         "</div>" +
         '<div class="eg-foot-sheet-scrim" id="egFootSheetScrim" hidden aria-hidden="true"></div>' +
         "</div>"
@@ -615,11 +638,11 @@
     return '<div class="eg-test-root mtk-test-root' +
       (sideOpen ? " eg-side-open" : " eg-side-collapsed") +
       (stripOpen ? " eg-strip-open" : " eg-strip-collapsed") +
-      " eg-tools-closed eg-compact eg-qxmd167 eg-qxmd170 eg-qxmd171 eg-qxmd173 eg-qxmd175 eg-qxmd176 eg-qxmd177 eg-qxmd179 eg-qxtool8 eg-qxeg1 eg-qxeg2 eg-qxeg3 eg-qxeg4 eg-qxeg5 eg-qxeg6 eg-qxeg7" +
+      " eg-tools-open eg-compact eg-qxmd167 eg-qxmd170 eg-qxmd171 eg-qxmd173 eg-qxmd180 eg-qxmd182 eg-qxtool8 eg-qxeg1 eg-qxeg2 eg-qxeg3 eg-qxeg4 eg-qxeg5 eg-qxeg6 eg-qxeg7" +
       (previewOpen ? " eg-preview-open" : " eg-preview-collapsed") +
       (desktopMode ? " eg-desktop-mode" : " eg-mobile") +
       (!desktopMode && isMobileEg ? " eg-mobile-vp" : "") +
-      (showSol ? " eg-sol-showing" : "") +
+      "" +
       '" data-test-theme="' + theme + '" data-font-scale="' + fontScale +
       '" data-eg-mode="' + (practice ? "practice" : "test") + '" data-ui="examgoal" data-eg-cycle="' + (chromeOpen ? "1" : "0") + '">' +
       '<header class="eg-top">' +
@@ -669,22 +692,18 @@
       "</div>" +
       '<div class="eg-body">' +
       '<div class="eg-main"><div class="eg-q-card">' +
-      /* qxmd161: when Practice Show/Check Answer opens Solution, hide stem visually
-         (eg-stem-sol-hidden + hidden/aria-hidden + CSS display:none). ALWAYS keep stem
-         HTML in the DOM — omitting markup emptied #egQArea and broke Check/Show Answer.
-         Options stay for marking. Exam/Take-Test never sets showSol. */
-      '<div class="eg-q-stem' + (showSol ? " eg-stem-sol-hidden" : "") + '" id="egQArea"' +
-      (showSol
-        ? ' hidden aria-hidden="true" style="display:none!important;visibility:hidden!important;opacity:0!important;height:0!important;max-height:0!important;overflow:hidden!important;margin:0!important;padding:0!important;position:static!important;left:auto!important;top:auto!important;clip:auto!important"'
-        : ' aria-hidden="false"') + ">" +
-      /* qxmd164/175: empty stem while Solution open — keep #egQArea node */
-      (showSol ? "" : stem) + "</div>" +
-      /* qxmd175/176 Marks-way: Solution REPLACES stem slot (not a split under the question) */
+      /* qxmd180: Check Answer keeps stem + options visible; solution sits below (Exam Goal). */
+      '<div class="eg-q-stem" id="egQArea" aria-hidden="false">' +
+      stem + "</div>" +
+      (ctx.sectionInstr || "") +
+      '<div class="' + (ctx.optsClass || "mtk-options mtk-options-grid") + ' eg-opts" id="qxOpts">' +
+      (ctx.opts || "") + "</div>" +
+      checkRow +
       (showSol ? (function () {
         var solInner = "";
         try { solInner = solutionHtml(q); } catch (_solErr) { solInner = ""; }
         if (!solInner) solInner = '<p class="qx-sol-missing">Solution unavailable</p>';
-        return '<div class="eg-sol-panel eg-sol-marks-way" id="egSolPanel" role="region" aria-label="Solution">' +
+        return '<div class="eg-sol-panel eg-sol-below" id="egSolPanel" role="region" aria-label="Solution">' +
           '<header class="eg-sol-panel-head">' +
           '<strong>Solution</strong>' +
           '<button type="button" class="eg-sol-panel-close" id="egSolClose" title="Close">✕</button>' +
@@ -692,11 +711,6 @@
           '<div class="eg-sol eg-sol-inline qx-content" id="egSol">' + solInner + '</div>' +
           '</div>';
       })() : "") +
-      (ctx.sectionInstr || "") +
-      '<div class="' + (ctx.optsClass || "mtk-options mtk-options-grid") + ' eg-opts' + (showSol ? " eg-opts-sol-hidden" : "") + '" id="qxOpts"' +
-      (showSol ? ' hidden aria-hidden="true" style="display:none!important"' : "") + ">" +
-      (showSol ? "" : (ctx.opts || "")) + "</div>" +
-      (showSol ? "" : checkRow) +
       '</div>' +
       "</div>" +
       '<aside class="eg-side" id="egSide"' + (sideOpen ? ' aria-hidden="false"' : ' hidden aria-hidden="true"') + '>' +
@@ -732,18 +746,24 @@
   }
 
   function applyOptDecor(root, session, q, idx) {
-    if (!root || !q) return;
-    const show = !!(session._egShowAnswer || egCheckedAt(session, idx));
-    if (!show || typeof QuantrexQFormat === "undefined") return;
+    if (!root) return;
+    const chosen = session && session.answers ? session.answers[idx] : null;
+    const chosenSet = Array.isArray(chosen)
+      ? chosen.map(function (x) { return Number(x); })
+      : (chosen != null && chosen !== "" ? [Number(chosen)] : []);
+    const show = !!(session && egCheckedAt(session, idx));
     let cor = [];
-    try { cor = QuantrexQFormat.correctIndices(q) || []; } catch (_) { cor = []; }
-    const chosen = session.answers[idx];
-    const chosenSet = Array.isArray(chosen) ? chosen : (chosen != null && chosen !== "" ? [chosen] : []);
+    if (show && q && typeof QuantrexQFormat !== "undefined") {
+      try { cor = QuantrexQFormat.correctIndices(q) || []; } catch (_) { cor = []; }
+    }
     root.querySelectorAll("[data-opt]").forEach(function (btn) {
       const i = parseInt(btn.dataset.opt, 10);
+      const picked = chosenSet.indexOf(i) >= 0;
+      btn.classList.toggle("selected", picked);
       btn.classList.remove("eg-opt-right", "eg-opt-wrong");
+      if (!show) return;
       if (cor.indexOf(i) >= 0) btn.classList.add("eg-opt-right");
-      else if (chosenSet.indexOf(i) >= 0) btn.classList.add("eg-opt-wrong");
+      else if (picked) btn.classList.add("eg-opt-wrong");
     });
   }
 
@@ -924,7 +944,7 @@
   function egLockScrollJump(root, on) {
     try {
       if (!root || !root.classList) return;
-      if (on) root.classList.add("eg-qxmd177-scroll-lock", "eg-qxmd177", "eg-qxmd179");
+      if (on) root.classList.add("eg-qxmd177-scroll-lock");
       else root.classList.remove("eg-qxmd177-scroll-lock");
     } catch (_) { /* */ }
   }
@@ -934,8 +954,8 @@
     try {
       var body = document.body;
       if (!body) return;
-      if (on) body.classList.add("eg-qxmd179-host", "eg-qxmd179");
-      else body.classList.remove("eg-qxmd179-host");
+      if (on) body.classList.remove("eg-qxmd179-host", "eg-qxmd179");
+      else body.classList.remove("eg-qxmd179-host", "eg-qxmd179");
       /* Hide any chapter/list question text still in DOM outside practice root */
       if (on) {
         document.querySelectorAll(".q-card .q-text, .q-text.qx-content, .cpyqb-q-stem, .qx-list-q-stem").forEach(function (el) {
@@ -964,45 +984,10 @@
 
   function egNukeStemAboveHeader(root) {
     try {
-      if (!root) return;
-      root.classList.add("eg-qxmd179", "eg-qxmd177", "eg-qxmd176");
-      egCoverHostQuestionStrip(true);
-      var nodes = [];
-      try {
-        root.querySelectorAll("#egQArea, .eg-q-stem, .eg-stem-sol-hidden, .mtk-q-text.eg-stem-sol-hidden").forEach(function (n) { nodes.push(n); });
-      } catch (_) { /* */ }
-      /* Also any stem clones outside .eg-top but claiming to be practice stems */
-      try {
-        document.querySelectorAll(".eg-q-stem, #egQArea").forEach(function (n) {
-          if (!n) return;
-          if (n.closest && n.closest(".eg-sol-panel")) return;
-          if (nodes.indexOf(n) < 0) nodes.push(n);
-        });
-      } catch (_) { /* */ }
-      nodes.forEach(function (qArea) {
-        if (!qArea) return;
-        if (qArea.closest && qArea.closest(".eg-sol-panel, #egSol")) return;
-        try { qArea.innerHTML = ""; } catch (_) { /* */ }
-        qArea.classList.add("eg-stem-sol-hidden", "qx-stem-sol-hidden");
-        qArea.setAttribute("hidden", "");
-        qArea.setAttribute("aria-hidden", "true");
-        try {
-          qArea.style.setProperty("display", "none", "important");
-          qArea.style.setProperty("visibility", "hidden", "important");
-          qArea.style.setProperty("opacity", "0", "important");
-          qArea.style.setProperty("height", "0", "important");
-          qArea.style.setProperty("max-height", "0", "important");
-          qArea.style.setProperty("overflow", "hidden", "important");
-          qArea.style.setProperty("margin", "0", "important");
-          qArea.style.setProperty("padding", "0", "important");
-          qArea.style.setProperty("position", "static", "important");
-          qArea.style.setProperty("left", "auto", "important");
-          qArea.style.setProperty("top", "auto", "important");
-          qArea.style.setProperty("clip", "auto", "important");
-          qArea.style.setProperty("font-size", "0", "important");
-          qArea.style.setProperty("line-height", "0", "important");
-        } catch (_) { /* */ }
-      });
+      if (root && root.classList) {
+        root.classList.add("eg-qxmd182", "eg-qxmd180");
+        root.classList.remove("eg-qxmd179", "eg-qxmd177", "eg-qxmd176", "eg-qxmd175");
+      }
     } catch (_) { /* */ }
   }
 
@@ -1040,10 +1025,14 @@
         const card = root.querySelector(".eg-q-card");
         const actionRow = root.querySelector(".eg-action-row");
         const opts = root.querySelector("#qxOpts");
-        if (qSlot && qSlot.parentNode) {
+        if (opts && opts.parentNode) {
+          opts.insertAdjacentHTML("afterend", panelHtml);
+        } else if (actionRow && actionRow.parentNode) {
+          actionRow.insertAdjacentHTML("afterend", panelHtml);
+        } else if (qSlot && qSlot.parentNode) {
           qSlot.insertAdjacentHTML("afterend", panelHtml);
         } else if (card) {
-          card.insertAdjacentHTML("afterbegin", panelHtml);
+          card.insertAdjacentHTML("beforeend", panelHtml);
         } else {
           const insertAfter = actionRow || opts;
           if (insertAfter && insertAfter.parentNode) {
@@ -1059,67 +1048,50 @@
     }
 
     try {
-      root.classList.add("eg-sol-showing", "eg-qxmd175", "eg-qxmd176", "eg-qxmd177", "eg-qxmd179");
+      root.classList.add("eg-sol-showing", "eg-qxmd180", "eg-qxmd182");
+      root.classList.remove("eg-qxmd175", "eg-qxmd176", "eg-qxmd177", "eg-qxmd179");
       const egRoot = root.classList.contains("eg-test-root") ? root : (root.closest && root.closest(".eg-test-root"));
-      if (egRoot) egRoot.classList.add("eg-sol-showing", "eg-qxmd175", "eg-qxmd176", "eg-qxmd177", "eg-qxmd179");
+      if (egRoot) {
+        egRoot.classList.add("eg-sol-showing", "eg-qxmd180", "eg-qxmd182");
+        egRoot.classList.remove("eg-qxmd175", "eg-qxmd176", "eg-qxmd177", "eg-qxmd179");
+      }
       /* qxmd176: sync Show Answer toggle with solution visibility */
       try {
-        session._egShowAnswer = true;
+        session._egShowAnswer = false;
         const showElSync = root.querySelector("#egShowAns");
-        if (showElSync) showElSync.checked = true;
+        if (showElSync) showElSync.checked = wantShowSol(session, session.idx);
       } catch (_) { /* */ }
     } catch (_) { /* */ }
     const qArea = root.querySelector("#egQArea");
+    try {
+      root.classList.add("eg-qxmd180", "eg-qxmd182");
+      root.classList.remove("eg-qxmd175", "eg-qxmd176", "eg-qxmd177", "eg-qxmd179");
+    } catch (_) { /* */ }
     if (qArea) {
       try {
-        /* qxmd165/176: empty stem while Solution open — keep #egQArea node.
-           NEVER absolute/left:-9999/clip — that paints orphan stem above the header. */
-        try { qArea.innerHTML = ""; } catch (_) { /* */ }
-        qArea.classList.add("eg-stem-sol-hidden");
-        qArea.setAttribute("hidden", "");
-        qArea.setAttribute("aria-hidden", "true");
-        qArea.style.setProperty("display", "none", "important");
-        qArea.style.setProperty("visibility", "hidden", "important");
-        qArea.style.setProperty("opacity", "0", "important");
-        qArea.style.setProperty("height", "0", "important");
-        qArea.style.setProperty("max-height", "0", "important");
-        qArea.style.setProperty("overflow", "hidden", "important");
-        qArea.style.setProperty("margin", "0", "important");
-        qArea.style.setProperty("padding", "0", "important");
-        qArea.style.setProperty("position", "static", "important");
-        qArea.style.setProperty("left", "auto", "important");
-        qArea.style.setProperty("top", "auto", "important");
-        qArea.style.setProperty("clip", "auto", "important");
-        qArea.style.setProperty("font-size", "0", "important");
-        qArea.style.setProperty("line-height", "0", "important");
-      } catch (_) { /* */ }
-    }
-    /* qxmd179: nuke stem + cover host strips so nothing paints above .eg-top */
-    try { egNukeStemAboveHeader(root); } catch (_) { /* */ }
-    /* qxmd177 Marks-like: hide options AFTER sol is in DOM (avoid reflow jump / broken stack) */
-    function egHideOptsAfterSol() {
-      try {
-        const optsEl = root.querySelector("#qxOpts, .eg-opts");
-        if (optsEl) {
-          optsEl.classList.add("eg-opts-sol-hidden");
-          optsEl.setAttribute("aria-hidden", "true");
-          optsEl.style.setProperty("display", "none", "important");
-        }
-        const checkRow = root.querySelector(".eg-action-row, #egCheckRow");
-        if (checkRow) {
-          checkRow.classList.add("eg-opts-sol-hidden");
-          checkRow.style.setProperty("display", "none", "important");
-        }
+        qArea.classList.remove("eg-stem-sol-hidden", "qx-stem-sol-hidden");
+        qArea.removeAttribute("hidden");
+        qArea.setAttribute("aria-hidden", "false");
+        qArea.style.cssText = "";
       } catch (_) { /* */ }
     }
     try {
-      requestAnimationFrame(function () {
-        egHideOptsAfterSol();
-        egRestoreScroll(_egScrollSnap);
-      });
-    } catch (_) {
-      egHideOptsAfterSol();
-    }
+      const optsEl = root.querySelector("#qxOpts, .eg-opts");
+      if (optsEl) {
+        optsEl.classList.remove("eg-opts-sol-hidden");
+        optsEl.removeAttribute("hidden");
+        optsEl.setAttribute("aria-hidden", "false");
+        optsEl.style.cssText = "";
+      }
+      const checkRow = root.querySelector(".eg-action-row, #egCheckRow");
+      if (checkRow) {
+        checkRow.classList.remove("eg-opts-sol-hidden");
+        checkRow.style.cssText = "";
+      }
+    } catch (_) { /* */ }
+    try {
+      requestAnimationFrame(function () { egRestoreScroll(_egScrollSnap); });
+    } catch (_) { /* */ }
 
     const panel = root.querySelector("#egSolPanel");
     const solClose = root.querySelector("#egSolClose");
@@ -1248,7 +1220,11 @@
 
   function bind(root, api) {
     if (!root || !api || !api.session) return;
-    try { if (api.session.practiceMode) { root.classList.add("eg-qxmd179"); egCoverHostQuestionStrip(true); } } catch (_) { /* */ }
+    try {
+      root.classList.add("eg-qxmd182", "eg-qxmd180");
+      root.classList.remove("eg-qxmd175", "eg-qxmd176", "eg-qxmd177", "eg-qxmd179");
+      document.documentElement.classList.add("qx-test-zoom");
+    } catch (_) { /* */ }
     const session = api.session;
     normalizeSessionSets(session);
     applyOptDecor(root, session, api.getQ(session.ids[session.idx]), session.idx);
@@ -1295,9 +1271,8 @@
       var _chkSnap = egCaptureScroll(root);
       egLockScrollJump(root, true);
       if (ok) {
-        /* qxmd176/177: Marks-like — Check Answer turns Show Answer ON (sol open ↔ toggle sync) */
         try {
-          session._egShowAnswer = true;
+          session._egShowAnswer = false;
           var seOn = root.querySelector("#egShowAns");
           if (seOn) seOn.checked = true;
         } catch (_) { /* */ }
@@ -1327,19 +1302,22 @@
     };
     const show = root.querySelector("#egShowAns");
     if (show) show.onchange = function () {
-      session._egShowAnswer = !!show.checked;
+      if (!session._egChecked) session._egChecked = {};
+      if (show.checked) {
+        session._egChecked[session.idx] = true;
+        try { session._egChecked[String(session.idx)] = true; } catch (_) { /* */ }
+      } else {
+        try { delete session._egChecked[session.idx]; } catch (_) { /* */ }
+        try { delete session._egChecked[String(session.idx)]; } catch (_) { /* */ }
+      }
+      session._egShowAnswer = false;
       var _showSnap = egCaptureScroll(root);
       egLockScrollJump(root, true);
-      if (session._egShowAnswer) {
+      if (show.checked) {
         try { revealPracticeSolution(root, api); } catch (_rev) {
           try { console.warn("[egShowAns reveal]", _rev); } catch (_) { /* */ }
         }
       } else {
-        /* qxmd176/177: toggle OFF = close solution fully (clear Check Answer lock too) */
-        if (session._egChecked) {
-          try { delete session._egChecked[session.idx]; } catch (_) { /* */ }
-          try { delete session._egChecked[String(session.idx)]; } catch (_) { /* */ }
-        }
         hidePracticeSolutionDom(root);
       }
       if (typeof api.refresh === "function") {
@@ -1426,7 +1404,8 @@
           foot.classList.add("eg-foot");
         } catch (_) { /* */ }
         foot.removeAttribute("hidden");
-        root.classList.add("eg-foot-ready", "eg-qxeg7", "eg-qxmd173", "eg-qxmd175", "eg-qxmd176", "eg-qxmd177", "eg-qxmd179");
+        root.classList.add("eg-foot-ready", "eg-qxeg7", "eg-qxmd173", "eg-qxmd180", "eg-qxmd182");
+        root.classList.remove("eg-qxmd175", "eg-qxmd176", "eg-qxmd177", "eg-qxmd179");
         /* Skip heavy inline cssText once CSS has painted foot (unless force) */
         if (_egFootPainted && !force && foot.querySelector("#qxPrevBtn") && (foot.querySelector("#qxNextBtn") || foot.querySelector("#qxSaveBtn"))) {
           var p0 = foot.querySelector("#qxPrevBtn");
@@ -1557,8 +1536,8 @@
         root.classList.toggle("eg-mobile", !anyOpen);
         root.classList.toggle("eg-preview-open", previewOpen);
         root.classList.toggle("eg-preview-collapsed", !previewOpen);
-        root.classList.remove("eg-tools-open");
-        root.classList.add("eg-tools-closed", "eg-qxmd167", "eg-qxmd170", "eg-qxmd171", "eg-qxmd173", "eg-qxmd175", "eg-qxmd176", "eg-qxmd177", "eg-qxmd179", "eg-qxtool8", "eg-qxeg1", "eg-qxeg2", "eg-qxeg3", "eg-qxeg4", "eg-qxeg5", "eg-qxeg6", "eg-qxeg7", "eg-foot-ready");
+        root.classList.remove("eg-tools-closed", "eg-tools-open", "eg-sol-showing", "eg-qxmd175", "eg-qxmd176", "eg-qxmd177", "eg-qxmd179");
+        root.classList.add("eg-tools-open", "eg-qxmd167", "eg-qxmd170", "eg-qxmd171", "eg-qxmd173", "eg-qxmd180", "eg-qxmd182", "eg-qxtool8", "eg-qxeg1", "eg-qxeg2", "eg-qxeg3", "eg-qxeg4", "eg-qxeg5", "eg-qxeg6", "eg-qxeg7", "eg-foot-ready");
         root.setAttribute("data-eg-cycle", bothOpen ? "1" : "0");
         const strip = root.querySelector("#egQBar");
         if (strip) {
@@ -1738,15 +1717,8 @@
         return;
       }
       if (pref === "both") {
-        if (cf.sideOpen && cf.stripOpen) {
-          collapseEgSideOnly(); /* close side first; strip stays until its ✕ / All Q */
-        } else if (cf.sideOpen || cf.stripOpen) {
-          /* one open — open the missing one to honour Both, or close side if only side */
-          if (cf.sideOpen && !cf.stripOpen) collapseEgSideOnly();
-          else applyPalettePrefOpen(session);
-          session._egSideIgnoreScrimUntil = Date.now() + 280;
-          syncCycleBtn();
-        } else {
+        if (cf.sideOpen && cf.stripOpen) collapseEgBoth();
+        else {
           applyPalettePrefOpen(session);
           session._egSideIgnoreScrimUntil = Date.now() + 280;
           syncCycleBtn();
@@ -2380,6 +2352,7 @@
     bind: bind,
     paletteStatus: paletteStatus,
     subjectGroups: subjectGroups,
+    applyOptDecor: applyOptDecor,
     checkAnswer: checkAnswer,
     ensureCss: ensureCss,
     openNote: openNote,

@@ -4772,31 +4772,22 @@ body.qx-immersive .eg-test-root.eg-qxeg5 .eg-foot {
 .eg-q-stem.eg-stem-sol-hidden[hidden],
 #egQArea.eg-stem-sol-hidden[hidden],
 #egQArea.eg-stem-sol-hidden {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  -webkit-text-fill-color: transparent !important;
-  height: 0 !important;
-  max-height: 0 !important;
-  min-height: 0 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  overflow: hidden !important;
-  border: 0 !important;
-  pointer-events: none !important;
-  /* qxmd179: NEVER absolute/top:0/left:-9999 — orphan stem paints above .eg-top */
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+  pointer-events: auto !important;
   position: static !important;
-  left: auto !important;
-  top: auto !important;
-  width: auto !important;
-  clip: auto !important;
-  clip-path: none !important;
+  font-size: 17px !important;
+  line-height: 1.65 !important;
 }
 .eg-test-root.eg-sol-showing .eg-sol-panel {
   margin-top: 12px;
 }
 
-/* qxmd164 — Practice Solution open: kill stem even against theme visibility:visible !important */
+/* qxmd184 — NEVER hide stem/options when Solution is open (parent + children) */
 html .eg-test-root.eg-sol-showing .eg-q-stem,
 html .eg-test-root.eg-sol-showing .eg-q-stem.eg-stem-sol-hidden,
 html .eg-test-root.eg-sol-showing #egQArea,
@@ -4814,23 +4805,26 @@ html[data-theme="light"] .eg-test-root[data-test-theme="dark"].eg-sol-showing .e
 html[data-theme="light"] .eg-test-root[data-test-theme="light"].eg-sol-showing .eg-q-stem,
 .eg-test-root.eg-sol-showing .eg-q-stem .katex,
 .eg-test-root.eg-sol-showing .eg-q-stem .katex * {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  height: 0 !important;
-  max-height: 0 !important;
-  overflow: hidden !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  border: 0 !important;
-  /* qxmd179: static collapse only — absolute orphaned stem above header */
+  display: revert !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+  margin: revert !important;
+  padding: revert !important;
+  border: revert !important;
   position: static !important;
   left: auto !important;
   top: auto !important;
   width: auto !important;
   clip: auto !important;
   clip-path: none !important;
-  pointer-events: none !important;
+  pointer-events: auto !important;
+  color: inherit !important;
+  -webkit-text-fill-color: inherit !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
 }
 
 
@@ -4851,7 +4845,7 @@ html[data-theme="light"] .eg-test-root[data-test-theme="light"].eg-sol-showing .
 }
 
 
-/* ========== qxmd165: stem hide sitewide (Practice + Allen + Examgoal) dark/light ========== */
+/* qxmd184: keep stem visible sitewide when solution is open */
 html .eg-test-root.eg-sol-showing .eg-q-stem,
 html .eg-test-root.eg-sol-showing #egQArea,
 html .eg-test-root.eg-sol-showing .mtk-q-text.eg-stem-sol-hidden,
@@ -4877,25 +4871,24 @@ html .eg-test-root[data-test-theme="dark"].eg-sol-showing .eg-q-stem,
 html .eg-test-root[data-test-theme="light"].eg-sol-showing .eg-q-stem,
 html .mtk-test-root[data-test-theme="dark"].eg-sol-showing .mtk-q-text,
 html .mtk-test-root[data-test-theme="light"].eg-sol-showing .mtk-q-text {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  height: 0 !important;
-  max-height: 0 !important;
-  overflow: hidden !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  border: 0 !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+  margin: revert !important;
+  padding: revert !important;
+  border: revert !important;
   clip: auto !important;
   clip-path: none !important;
-  /* qxmd179: static — absolute ghosted stem above .eg-top */
   position: static !important;
   left: auto !important;
   top: auto !important;
-  pointer-events: none !important;
-  color: transparent !important;
-  font-size: 0 !important;
-  line-height: 0 !important;
+  pointer-events: auto !important;
+  color: inherit !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
 }
 
 /* Solution math readable in both themes */
@@ -5730,33 +5723,49 @@ html .eg-test-root[data-test-theme="light"] .eg-sol .katex {
 
 /* ========== qxmd175: Marks-way Check Answer + mobile Prev/Next never clipped ========== */
 
-/* Stem must stay gone while Solution open (beat qxmd167 visibility:visible) */
+/* ========== qxmd185: Check Answer NEVER hides the live question ========== */
 html .eg-test-root.eg-sol-showing.eg-qxmd175 .eg-q-stem,
 html .eg-test-root.eg-sol-showing.eg-qxmd175 #egQArea,
 html .eg-test-root.eg-sol-showing .eg-q-stem.eg-stem-sol-hidden,
 html .eg-test-root.eg-sol-showing #egQArea.eg-stem-sol-hidden,
 html .mtk-test-root.eg-sol-showing .mtk-q-text,
 html .allen-practice.eg-sol-showing .mtk-q-text,
-html .eg-stem-sol-hidden,
-html .qx-stem-sol-hidden {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  height: 0 !important;
-  max-height: 0 !important;
-  overflow: hidden !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  border: 0 !important;
-  /* qxmd179: static — absolute ghosted stem above .eg-top */
+html .eg-test-root.eg-sol-showing #egQArea,
+html .eg-test-root.eg-sol-showing .eg-q-stem {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+  margin: revert !important;
+  padding: revert !important;
+  border: revert !important;
   position: static !important;
-  left: auto !important;
-  top: auto !important;
-  clip: auto !important;
-  clip-path: none !important;
-  pointer-events: none !important;
-  font-size: 0 !important;
-  line-height: 0 !important;
+  pointer-events: auto !important;
+  font-size: 17px !important;
+  line-height: 1.65 !important;
+  color: inherit !important;
+  -webkit-text-fill-color: inherit !important;
+}
+html .eg-stem-sol-hidden:not(.eg-sol *):not(.qx-sol-card *):not(#egSol *),
+html .qx-stem-sol-hidden:not(.eg-sol *):not(.qx-sol-card *) {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  height: auto !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+}
+/* Solution must not reprint the question stem */
+.eg-sol .eg-q-stem,
+.eg-sol .mtk-q-text,
+.qx-sol-card .eg-q-stem,
+.qx-sol-flow > .eg-q-stem,
+#egSol .eg-q-stem,
+#qaSolReveal .mtk-q-text,
+#qaSolReveal .eg-q-stem {
+  display: none !important;
 }
 
 /* Marks-way panel sits where the stem was — full width, not a side-by-side split */
@@ -5863,47 +5872,33 @@ html[data-theme="light"] .eg-test-root.eg-sol-showing.eg-qxmd176 .eg-q-stem,
 html[data-theme="dark"] .eg-test-root.eg-sol-showing.eg-qxmd176 .eg-q-stem,
 html .eg-test-root[data-test-theme="light"].eg-sol-showing.eg-qxmd176 .eg-q-stem,
 html .eg-test-root[data-test-theme="dark"].eg-sol-showing.eg-qxmd176 .eg-q-stem {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  height: 0 !important;
-  max-height: 0 !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  height: auto !important;
+  max-height: none !important;
   min-height: 0 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  overflow: hidden !important;
-  border: 0 !important;
-  font-size: 0 !important;
-  line-height: 0 !important;
-  pointer-events: none !important;
-  /* CRITICAL — no off-canvas paint */
+  overflow: visible !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+  pointer-events: auto !important;
   position: static !important;
-  left: auto !important;
-  top: auto !important;
-  right: auto !important;
-  bottom: auto !important;
-  width: auto !important;
-  clip: auto !important;
-  clip-path: none !important;
-  transform: none !important;
-  -webkit-text-fill-color: transparent !important;
-  color: transparent !important;
+  color: inherit !important;
+  -webkit-text-fill-color: inherit !important;
 }
 
-/* Marks-like: options + check row hide while Solution open; restore when class gone */
+/* Keep options visible while Solution is open */
 html .eg-test-root.eg-sol-showing.eg-qxmd176 #qxOpts,
 html .eg-test-root.eg-sol-showing.eg-qxmd176 .eg-opts,
 html .eg-test-root.eg-sol-showing.eg-qxmd176 .eg-action-row,
 html .eg-test-root.eg-sol-showing.eg-qxmd176 #egCheckRow,
 html .eg-test-root.eg-sol-showing .eg-opts-sol-hidden {
-  display: none !important;
-  visibility: hidden !important;
-  height: 0 !important;
-  max-height: 0 !important;
-  overflow: hidden !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  pointer-events: none !important;
+  display: revert !important;
+  visibility: visible !important;
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+  pointer-events: auto !important;
 }
 
 /* Solution panel fills main content cleanly under metadata strip */
@@ -6142,30 +6137,16 @@ html[data-theme="dark"] .eg-test-root.eg-sol-showing.eg-qxmd179 .eg-q-stem,
 html[data-theme="light"] .eg-test-root.eg-sol-showing.eg-qxmd179 .eg-q-stem,
 html .eg-test-root[data-test-theme="dark"].eg-sol-showing.eg-qxmd179 .eg-q-stem,
 html .eg-test-root[data-test-theme="light"].eg-sol-showing.eg-qxmd179 .eg-q-stem {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  height: 0 !important;
-  max-height: 0 !important;
-  min-height: 0 !important;
-  overflow: hidden !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  border: 0 !important;
-  font-size: 0 !important;
-  line-height: 0 !important;
-  pointer-events: none !important;
-  position: static !important;
-  left: auto !important;
-  top: auto !important;
-  right: auto !important;
-  bottom: auto !important;
-  clip: auto !important;
-  clip-path: none !important;
-  transform: none !important;
-  -webkit-text-fill-color: transparent !important;
-  color: transparent !important;
-  aria-hidden: true;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+  pointer-events: auto !important;
+  color: inherit !important;
 }
 
 /* Hide stray practice stems / clones outside the blue header when Solution open */
@@ -6331,3 +6312,152 @@ body.allen-practice-active .eg-test-root.eg-qxmd179 {
   }
 }
 
+
+
+/* qxmd180 — Check Answer: keep question + options */
+html .eg-test-root.eg-qxmd180.eg-sol-showing #egQArea,
+html .eg-test-root.eg-qxmd180.eg-sol-showing .eg-q-stem,
+html .eg-test-root.eg-qxmd180 #egQArea,
+html .eg-test-root.eg-qxmd180 .eg-q-stem {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+  position: static !important;
+  pointer-events: auto !important;
+  color: inherit !important;
+}
+html .eg-test-root.eg-qxmd180.eg-sol-showing #qxOpts,
+html .eg-test-root.eg-qxmd180.eg-sol-showing .eg-opts,
+html .eg-test-root.eg-qxmd180 .eg-opts,
+html .eg-test-root.eg-qxmd180 #qxOpts {
+  display: grid !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+  pointer-events: auto !important;
+}
+html .eg-test-root.eg-qxmd180 .eg-sol-panel { display: block !important; margin: 14px 0 8px !important; }
+.eg-test-root.eg-qxmd180 .eg-qbar-n,
+.eg-test-root.eg-qxmd180 .eg-pal-cell {
+  min-width: 36px; min-height: 36px; pointer-events: auto !important; touch-action: manipulation; cursor: pointer;
+}
+html .eg-test-root.eg-qxmd180 .eg-q-card {
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  touch-action: pan-y !important;
+  overscroll-behavior: contain;
+  min-height: 0 !important;
+  height: auto !important;
+  max-height: none !important;
+  flex: 1 1 auto !important;
+}
+html .eg-test-root.eg-qxmd180 .eg-main,
+html .eg-test-root.eg-qxmd180 .eg-body {
+  min-height: 0 !important;
+  overflow: hidden !important;
+}
+html .eg-test-root.eg-qxmd180 .eg-q-stem,
+html .eg-test-root.eg-qxmd180 .eg-sol,
+html .eg-test-root.eg-qxmd180 .eg-sol .qx-content,
+html .eg-test-root.eg-qxmd180 .qx-sol-flow,
+html .eg-test-root.eg-qxmd180 .mtk-opt,
+html .eg-test-root.eg-qxmd180 .eg-opts {
+  font-size: 16px !important;
+  line-height: 1.55 !important;
+}
+html .eg-test-root.eg-qxmd180 .eg-q-stem {
+  min-height: 0 !important;
+  height: auto !important;
+  margin-bottom: 12px !important;
+}
+html .eg-test-root.eg-qxmd180 .eg-sol .eg-q-stem,
+html .eg-test-root.eg-qxmd180 .qx-sol-card .eg-q-stem,
+html .eg-test-root.eg-qxmd180 .qx-sol-flow > .eg-q-stem {
+  display: none !important;
+}
+html .eg-test-root.eg-qxmd180.eg-sol-showing.eg-qxmd177 #egQArea,
+html .eg-test-root.eg-qxmd180.eg-sol-showing.eg-qxmd179 #egQArea,
+html .eg-test-root.eg-qxmd180.eg-sol-showing.eg-qxmd177 .eg-q-stem,
+html .eg-test-root.eg-qxmd180.eg-sol-showing.eg-qxmd179 .eg-q-stem,
+html .eg-test-root.eg-qxmd180.eg-sol-showing.eg-qxmd177 #qxOpts,
+html .eg-test-root.eg-qxmd180.eg-sol-showing.eg-qxmd179 #qxOpts {
+  display: block !important;
+  visibility: visible !important;
+  height: auto !important;
+  overflow: visible !important;
+  pointer-events: auto !important;
+}
+
+/* qxmd184 — stem children stay visible; numerical keypad not a 2-col grid */
+html body .eg-test-root.eg-sol-showing #egQArea,
+html body .eg-test-root.eg-sol-showing #egQArea *,
+html body .eg-test-root.eg-sol-showing .eg-q-stem,
+html body .eg-test-root.eg-sol-showing .eg-q-stem * {
+  visibility: visible !important;
+  opacity: 1 !important;
+  color: inherit !important;
+  -webkit-text-fill-color: inherit !important;
+  pointer-events: auto !important;
+}
+html body .eg-test-root.eg-sol-showing #egQArea,
+html body .eg-test-root.eg-sol-showing .eg-q-stem {
+  display: block !important;
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+  font-size: 16px !important;
+  line-height: 1.55 !important;
+}
+html body .eg-test-root #qxOpts.mtk-numerical-wrap,
+html body .eg-test-root #qxOpts.qx-num-eg {
+  display: flex !important;
+  grid-template-columns: none !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+html body .eg-test-root .qx-num-keypad,
+html body .eg-test-root .qx-num-key,
+html body .eg-test-root #qxNumInput {
+  pointer-events: auto !important;
+  touch-action: manipulation !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+.eg-test-root .qx-num-input {
+  font-size: 22px !important;
+  min-height: 48px !important;
+  text-align: center !important;
+}
+
+/* qxmd191 — tools + Previous/Next always on screen */
+.eg-test-root .eg-top-tools,
+.eg-test-root.eg-qxmd167 .eg-top-tools {
+  display: flex !important;
+  visibility: visible !important;
+  overflow: visible !important;
+  max-width: none !important;
+}
+.eg-test-root .eg-top-tools .eg-tool-btn,
+.eg-test-root .eg-top-tools .eg-ico,
+.eg-test-root.eg-qxmd167[data-eg-mode="practice"] .eg-top-tools .eg-tool-sec:not(.eg-tool-reach) {
+  display: inline-flex !important;
+  visibility: visible !important;
+}
+.eg-test-root .eg-foot,
+.eg-test-root #egFoot {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+.eg-test-root .eg-foot #qxPrevBtn,
+.eg-test-root .eg-foot #qxNextBtn {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}

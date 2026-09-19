@@ -1,3 +1,45 @@
+/* Quantrex practice chrome — toolbar + Previous/Next always visible (website + app).
+   Loaded last so it wins over examgoal-test-ui.css. */
+
+.eg-test-root .eg-top-tools,
+.eg-test-root.eg-qxtool8 .eg-top-tools,
+.eg-test-root.eg-qxmd167 .eg-top-tools,
+.eg-test-root[data-eg-mode="practice"] .eg-top-tools {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  flex-wrap: wrap !important;
+  max-width: none !important;
+  overflow: visible !important;
+  z-index: 14050 !important;
+}
+.eg-test-root .eg-top-tools .eg-tool-btn,
+.eg-test-root .eg-top-tools .eg-ico,
+.eg-test-root .eg-top-tools .eg-tool-sec,
+.eg-test-root.eg-qxmd167[data-eg-mode="practice"] .eg-top-tools .eg-tool-sec,
+.eg-test-root.eg-qxmd167[data-eg-mode="practice"] .eg-top-tools .eg-tool-sec:not(.eg-tool-reach) {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+.eg-test-root .eg-foot,
+.eg-test-root #egFoot,
+.eg-test-root .eg-foot #qxPrevBtn,
+.eg-test-root .eg-foot #qxNextBtn,
+.eg-test-root .eg-foot .eg-btn-next {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+.eg-test-root .eg-foot #qxPrevBtn,
+.eg-test-root .eg-foot #qxNextBtn,
+.eg-test-root .eg-foot .eg-btn-next {
+  display: inline-flex !important;
+  min-height: 42px !important;
+  min-width: 88px !important;
+}
+
 /* Quantrex practice chrome — toolbar + Previous/Next always visible (website + app). */
 
 .mtk-test-root.allen-practice .mtk-header {

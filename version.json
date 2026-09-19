@@ -1,10 +1,10 @@
 {
-  "build": "qxmd190",
-  "cache": "qx-pwa-qxmd190",
-  "title": "qxmd190 · toolbar + prev/next + Quantrex-only branding",
-  "body": "Practice toolbar and Previous/Next visible on website and app. Font restored. Solution does not repeat the question. Student UI branding is Quantrex Academy only.",
+  "build": "qxmd191",
+  "cache": "qx-pwa-qxmd191",
+  "title": "qxmd191 · force toolbar + Next/Previous on screen",
+  "body": "Top tools and Previous/Next forced visible in ExamGoal practice chrome. allen-test-ui loads with the app. Cache bust qxmd191. Quantrex branding only.",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app",
   "site": "https://www.quantrexacademy.com",
   "package": "com.quantrexacademy.app",
-  "ts": 1900000000000
+  "ts": 1910000000000
 }
