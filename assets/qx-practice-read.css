@@ -193,8 +193,8 @@ html .eg-test-root.eg-qxmd182.eg-sol-showing #qxOpts.qx-num-eg {
 .eg-test-root.eg-qxmd182 .qx-sol-card,
 .eg-test-root.eg-qxmd182 .qx-sol-flow,
 .eg-test-root.eg-qxmd182 .eg-sol .qx-content {
-  font-size: 16px !important;
-  line-height: 1.55 !important;
+  font-size: var(--nta-q, 16px) !important;
+  line-height: var(--nta-lh, 1.55) !important;
   color: inherit !important;
 }
 .eg-test-root.eg-qxmd182 .eg-qpreview-stem {
@@ -318,8 +318,8 @@ html .eg-test-root.eg-qxmd182 .eg-sol,
 html .eg-test-root.eg-qxmd182 .qx-sol-flow,
 html .eg-test-root.eg-qxmd182 .sol-body,
 html #qaSolReveal .sol-body {
-  font-size: 16.5px !important;
-  line-height: 1.72 !important;
+  font-size: var(--nta-q, 16px) !important;
+  line-height: var(--nta-lh, 1.72) !important;
 }
 html .eg-test-root.eg-qxmd182 .eg-sol-panel-head strong,
 html .eg-test-root.eg-qxmd182 .qx-sol-card-h {
@@ -333,3 +333,31 @@ html .allen-practice .katex {
   font-size: 1.08em !important;
 }
 
+
+/* qxmd220: sol + stem track --nta-q (override legacy 16px locks) */
+html .eg-test-root.eg-qxmd180 .eg-sol,
+html .eg-test-root.eg-qxmd180 .eg-sol .qx-content,
+html .eg-test-root.eg-qxmd180 .qx-sol-flow,
+html .eg-test-root.eg-qxmd180 .sol-body,
+html .eg-test-root.eg-qxmd180 .qx-sol-card,
+html .eg-test-root.eg-qxmd182 .eg-sol,
+html .eg-test-root.eg-qxmd182 .qx-sol-flow,
+html .eg-test-root.eg-qxmd182 .sol-body,
+html .eg-test-root.eg-qxmd182 .qx-sol-card,
+html .eg-test-root .eg-sol,
+html .eg-test-root .eg-sol *:not(.katex):not(.katex *):not(svg):not(svg *):not(img):not(button):not(input),
+html .eg-test-root #egSol,
+html .eg-test-root .qx-sol-flow,
+html .eg-test-root .sol-body,
+html .eg-test-root .qx-sol-card {
+  font-size: var(--nta-q, 16px) !important;
+  line-height: var(--nta-lh, 1.55) !important;
+}
+html .eg-test-root .eg-q-stem,
+html .eg-test-root #egQArea,
+html .eg-test-root .mtk-q-text,
+html .eg-test-root .mtk-opt-text,
+html .eg-test-root .eg-opts {
+  font-size: var(--nta-q, 16px) !important;
+  line-height: var(--nta-lh, 1.55) !important;
+}

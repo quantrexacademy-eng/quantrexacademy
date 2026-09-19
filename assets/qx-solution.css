@@ -9,8 +9,8 @@
   border-radius: 14px;
   background: #fff;
   color: #0f172a;
-  line-height: 1.8;
-  font-size: 17px;
+  line-height: var(--nta-lh, 1.8);
+  font-size: var(--nta-q, 17px);
 }
 .qx-sol-card-h {
   font-size: 13px;
@@ -660,8 +660,8 @@ html[data-theme="dark"] .qx-easy-more summary { color: #a5b4fc; }
 .sol-body,
 .qx-sol-reveal-box .sol-body {
   font-family: "Roboto", "Inter", "Noto Sans Devanagari", system-ui, sans-serif;
-  font-size: 15px;
-  line-height: 1.7;
+  font-size: var(--nta-q, 16px);
+  line-height: var(--nta-lh, 1.7);
   font-weight: 400;
 }
 
@@ -1152,8 +1152,8 @@ body.qx-sol-fullscreen-active #mkSolView.on { position: fixed !important; inset:
 .qx-sol-flow,
 .eg-sol .sol-body,
 .eg-sol .qx-sol-flow {
-  font-size: 16px !important;
-  line-height: 1.78 !important;
+  font-size: var(--nta-q, 16px) !important;
+  line-height: var(--nta-lh, 1.78) !important;
   letter-spacing: -0.005em;
 }
 .qx-sol-flow > .qx-sol-p,

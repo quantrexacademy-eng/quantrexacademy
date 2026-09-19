@@ -1,10 +1,10 @@
 {
-    "cache": "qx-pwa-qxmd219",
-    "ts": 1789859308438,
-    "title": "qxmd219: open Marks Settings from gear; fix sol prose KaTeX jam; Allen foot pad",
+    "cache": "qx-pwa-qxmd220",
+    "ts": 1789861318818,
+    "title": "qxmd220: peel SOLUTION prose from KaTeX; scale sol body with text size",
     "site": "https://www.quantrexacademy.com",
-    "build": "qxmd219",
-    "body": "Gear opens full Marks Question View Settings (Examgoal+Allen). SOLUTION prose stays text (not KaTeX mathnormal). Text size S/M/L/XL scales stem+options+solution. Allen fixed Prev|Check|Next padded; transparent dark foot; no palette peek. Tools in Settings only.",
+    "build": "qxmd220",
+    "body": "SOLUTION English prose is peeled from KaTeX mathnormal / $\u2026$ islands (real math kept). Text size S/M/L/XL scales solution body with stem/options. Settings gear, Allen foot pad, tools-in-Settings preserved.",
     "package": "com.quantrexacademy.app",
     "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }

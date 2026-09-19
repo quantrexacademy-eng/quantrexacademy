@@ -6373,8 +6373,8 @@ html .eg-test-root.eg-qxmd180 .eg-sol .qx-content,
 html .eg-test-root.eg-qxmd180 .qx-sol-flow,
 html .eg-test-root.eg-qxmd180 .mtk-opt,
 html .eg-test-root.eg-qxmd180 .eg-opts {
-  font-size: 16px !important;
-  line-height: 1.55 !important;
+  font-size: var(--nta-q, 16px) !important;
+  line-height: var(--nta-lh, 1.55) !important;
 }
 html .eg-test-root.eg-qxmd180 .eg-q-stem {
   min-height: 0 !important;
@@ -6569,3 +6569,32 @@ html[data-theme="dark"] .eg-fmt-pop.eg-view-settings .eg-fmt-row button,
 .eg-test-root.eg-qxmd217 .eg-main { padding-bottom: calc(var(--eg-foot-pad, 72px)) !important; }
 .eg-test-root.eg-qxmd217 .eg-sol .qx-sol-card { margin-top: 8px !important; border-left: none !important; }
 .katex-error, .katex-error-color, [class*="katex-error"] { display: none !important; visibility: hidden !important; height: 0 !important; overflow: hidden !important; }
+
+
+/* qxmd220: sol + stem track --nta-q (override legacy 16px locks) */
+html .eg-test-root.eg-qxmd180 .eg-sol,
+html .eg-test-root.eg-qxmd180 .eg-sol .qx-content,
+html .eg-test-root.eg-qxmd180 .qx-sol-flow,
+html .eg-test-root.eg-qxmd180 .sol-body,
+html .eg-test-root.eg-qxmd180 .qx-sol-card,
+html .eg-test-root.eg-qxmd182 .eg-sol,
+html .eg-test-root.eg-qxmd182 .qx-sol-flow,
+html .eg-test-root.eg-qxmd182 .sol-body,
+html .eg-test-root.eg-qxmd182 .qx-sol-card,
+html .eg-test-root .eg-sol,
+html .eg-test-root .eg-sol *:not(.katex):not(.katex *):not(svg):not(svg *):not(img):not(button):not(input),
+html .eg-test-root #egSol,
+html .eg-test-root .qx-sol-flow,
+html .eg-test-root .sol-body,
+html .eg-test-root .qx-sol-card {
+  font-size: var(--nta-q, 16px) !important;
+  line-height: var(--nta-lh, 1.55) !important;
+}
+html .eg-test-root .eg-q-stem,
+html .eg-test-root #egQArea,
+html .eg-test-root .mtk-q-text,
+html .eg-test-root .mtk-opt-text,
+html .eg-test-root .eg-opts {
+  font-size: var(--nta-q, 16px) !important;
+  line-height: var(--nta-lh, 1.55) !important;
+}

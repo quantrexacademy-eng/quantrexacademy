@@ -13,7 +13,7 @@
     } else if (!l.id) {
       l.id = "egTestUiCss";
     }
-    const href = "assets/examgoal-test-ui.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd219");
+    const href = "assets/examgoal-test-ui.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd220");
     if (l.getAttribute("href") !== href) l.href = href;
     let chrome = document.getElementById("qxPracChromeCss");
     if (!chrome) {
@@ -22,7 +22,7 @@
       chrome.rel = "stylesheet";
       document.head.appendChild(chrome);
     }
-    const ch = "assets/qx-prac-chrome.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd219");
+    const ch = "assets/qx-prac-chrome.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd220");
     if (chrome.getAttribute("href") !== ch) chrome.href = ch;
     let both = document.getElementById("qxBothThemesCss");
     if (!both) {
@@ -31,7 +31,7 @@
       both.rel = "stylesheet";
       document.head.appendChild(both);
     }
-    const bh = "assets/qx-both-themes.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd219");
+    const bh = "assets/qx-both-themes.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd220");
     if (both.getAttribute("href") !== bh) both.href = bh;
     let r = document.getElementById("qxPracticeReadCss");
     if (!r) {
@@ -40,7 +40,7 @@
       r.rel = "stylesheet";
       document.head.appendChild(r);
     }
-    const rh = "assets/qx-practice-read.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd219");
+    const rh = "assets/qx-practice-read.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd220");
     if (r.getAttribute("href") !== rh) r.href = rh;
 
     /* qxmd218: practice chrome — only Settings gear; Marks-like settings cards */
@@ -50,7 +50,7 @@
       s218.textContent = [
         '.eg-test-root[data-eg-mode="practice"] .eg-top-tools.eg-tools-settings-only .eg-tool-btn:not(.eg-settings-gear),',
         '.eg-test-root[data-eg-mode="practice"] .eg-top-tools .eg-tool-hid,',
-        '.eg-test-root.eg-qxmd219 eg-qxmd218[data-eg-mode="practice"] .eg-top-tools .eg-tool-btn:not(.eg-settings-gear){display:none!important;width:0!important;height:0!important;min-width:0!important;min-height:0!important;padding:0!important;margin:0!important;border:0!important;overflow:hidden!important;opacity:0!important;pointer-events:none!important;position:absolute!important;left:-9999px!important}',
+        '.eg-test-root.eg-qxmd220 eg-qxmd219 eg-qxmd218[data-eg-mode="practice"] .eg-top-tools .eg-tool-btn:not(.eg-settings-gear){display:none!important;width:0!important;height:0!important;min-width:0!important;min-height:0!important;padding:0!important;margin:0!important;border:0!important;overflow:hidden!important;opacity:0!important;pointer-events:none!important;position:absolute!important;left:-9999px!important}',
         '.eg-test-root[data-eg-mode="practice"] .eg-top-tools.eg-tools-settings-only{display:flex!important;flex-wrap:nowrap!important;gap:6px!important;margin-left:auto!important;align-items:center!important}',
         '.eg-test-root[data-eg-mode="practice"] .eg-top-tools .eg-settings-gear{display:inline-flex!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important;position:relative!important;left:auto!important;width:36px!important;height:36px!important;min-width:36px!important;min-height:36px!important}',
         '.eg-fmt-pop.eg-vs-marks{max-width:min(420px,94vw)!important;max-height:min(78vh,640px)!important;overflow:auto!important;padding:12px 14px 16px!important;border-radius:16px!important;box-shadow:0 18px 48px rgba(15,23,42,.28)!important;z-index:2147483000!important;background:var(--qx-card,#fff)!important;color:var(--qx-fg,#0f172a)!important;border:1px solid #e2e8f0!important}',
@@ -748,7 +748,7 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
     return '<div class="eg-test-root mtk-test-root' +
       (sideOpen ? " eg-side-open" : " eg-side-collapsed") +
       (stripOpen ? " eg-strip-open" : " eg-strip-collapsed") +
-      " eg-tools-open eg-compact eg-qxmd167 eg-qxmd170 eg-qxmd171 eg-qxmd173 eg-qxmd180 eg-qxmd182 eg-qxmd217 eg-qxmd219 eg-qxmd218 eg-qxtool8 eg-qxeg1 eg-qxeg2 eg-qxeg3 eg-qxeg4 eg-qxeg5 eg-qxeg6 eg-qxeg7" +
+      " eg-tools-open eg-compact eg-qxmd167 eg-qxmd170 eg-qxmd171 eg-qxmd173 eg-qxmd180 eg-qxmd182 eg-qxmd217 eg-qxmd220 eg-qxmd219 eg-qxmd218 eg-qxtool8 eg-qxeg1 eg-qxeg2 eg-qxeg3 eg-qxeg4 eg-qxeg5 eg-qxeg6 eg-qxeg7" +
       (previewOpen ? " eg-preview-open" : " eg-preview-collapsed") +
       (desktopMode ? " eg-desktop-mode" : " eg-mobile") +
       (!desktopMode && isMobileEg ? " eg-mobile-vp" : "") +
@@ -1697,7 +1697,7 @@ function forceFootVisible(force) {
         root.classList.toggle("eg-preview-open", previewOpen);
         root.classList.toggle("eg-preview-collapsed", !previewOpen);
         root.classList.remove("eg-tools-closed", "eg-tools-open", "eg-sol-showing", "eg-qxmd175", "eg-qxmd176", "eg-qxmd177", "eg-qxmd179");
-        root.classList.add("eg-tools-open", "eg-qxmd217 eg-qxmd219 eg-qxmd218", "eg-qxmd167", "eg-qxmd170", "eg-qxmd171", "eg-qxmd173", "eg-qxmd180", "eg-qxmd182", "eg-qxtool8", "eg-qxeg1", "eg-qxeg2", "eg-qxeg3", "eg-qxeg4", "eg-qxeg5", "eg-qxeg6", "eg-qxeg7", "eg-foot-ready");
+        root.classList.add("eg-tools-open", "eg-qxmd217 eg-qxmd220 eg-qxmd219 eg-qxmd218", "eg-qxmd167", "eg-qxmd170", "eg-qxmd171", "eg-qxmd173", "eg-qxmd180", "eg-qxmd182", "eg-qxtool8", "eg-qxeg1", "eg-qxeg2", "eg-qxeg3", "eg-qxeg4", "eg-qxeg5", "eg-qxeg6", "eg-qxeg7", "eg-foot-ready");
         root.setAttribute("data-eg-cycle", bothOpen ? "1" : "0");
         const strip = root.querySelector("#egQBar");
         if (strip) {

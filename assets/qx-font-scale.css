@@ -1,28 +1,28 @@
 /* qxmd205: fixed font-scale selectors — stem + options + solution */
 :root, html, body {
-  --nta-q: 17px;
+  --nta-q: 18px;
   --nta-lh: 1.55;
   --nta-math: 1.22em;
 }
 html[data-font-scale="small"],
 .eg-test-root[data-font-scale="small"],
 .mtk-test-root[data-font-scale="small"] {
-  --nta-q: 15px; --nta-lh: 1.45; --nta-math: 1.18em;
+  --nta-q: 16px; --nta-lh: 1.45; --nta-math: 1.18em;
 }
 html[data-font-scale="medium"],
 .eg-test-root[data-font-scale="medium"],
 .mtk-test-root[data-font-scale="medium"] {
-  --nta-q: 17px; --nta-lh: 1.55; --nta-math: 1.22em;
+  --nta-q: 18px; --nta-lh: 1.55; --nta-math: 1.22em;
 }
 html[data-font-scale="large"],
 .eg-test-root[data-font-scale="large"],
 .mtk-test-root[data-font-scale="large"] {
-  --nta-q: 19px; --nta-lh: 1.6; --nta-math: 1.24em;
+  --nta-q: 20px; --nta-lh: 1.6; --nta-math: 1.24em;
 }
 html[data-font-scale="xlarge"],
 .eg-test-root[data-font-scale="xlarge"],
 .mtk-test-root[data-font-scale="xlarge"] {
-  --nta-q: 21px; --nta-lh: 1.65; --nta-math: 1.28em;
+  --nta-q: 22px; --nta-lh: 1.65; --nta-math: 1.28em;
 }
 
 /* STEM — was stuck at 16px because selectors were broken commas */
@@ -93,4 +93,69 @@ html[data-font-scale="xlarge"],
 .allen-practice .sol-body .katex,
 .allen-practice .qx-sol-card .katex {
   font-size: var(--nta-math) !important;
+}
+
+
+/* qxmd220: SOLUTION body MUST track Text Size S/M/L/XL (--nta-q). Beat legacy 16px !important locks. */
+html[data-font-scale] .eg-sol,
+html[data-font-scale] .eg-sol *:not(.katex):not(.katex *):not(svg):not(svg *):not(img):not(button):not(input):not(select):not(textarea),
+html[data-font-scale] #egSol,
+html[data-font-scale] #egSol *:not(.katex):not(.katex *):not(svg):not(svg *):not(img):not(button),
+html[data-font-scale] .qx-sol-card,
+html[data-font-scale] .qx-sol-card *:not(.katex):not(.katex *):not(svg):not(svg *):not(img):not(button):not(.qx-sol-card-h):not(.qx-sol-ans-lab):not(.qx-sol-shortcut-title):not(.qx-sol-n),
+html[data-font-scale] .qx-sol-flow,
+html[data-font-scale] .qx-sol-flow *:not(.katex):not(.katex *):not(svg):not(svg *):not(img),
+html[data-font-scale] .sol-body,
+html[data-font-scale] .sol-body *:not(.katex):not(.katex *):not(svg):not(svg *):not(img),
+html[data-font-scale] .qx-sol-body,
+html[data-font-scale] .qx-sol-flow-inner,
+html[data-font-scale] #qaSolReveal,
+html[data-font-scale] #qaSolReveal .sol-body,
+html[data-font-scale] .mk-sol-body,
+.eg-test-root[data-font-scale] .eg-sol,
+.eg-test-root[data-font-scale] .eg-sol *:not(.katex):not(.katex *):not(svg):not(svg *):not(img):not(button),
+.eg-test-root[data-font-scale] #egSol,
+.eg-test-root[data-font-scale] .qx-sol-card,
+.eg-test-root[data-font-scale] .qx-sol-flow,
+.eg-test-root[data-font-scale] .sol-body,
+.eg-test-root[data-font-scale] .qx-sol-body,
+.eg-test-root[data-font-scale] .eg-sol .qx-content,
+.eg-test-root[data-font-scale] .qx-sol-card .qx-content,
+.eg-test-root.eg-qxmd180 .eg-sol,
+.eg-test-root.eg-qxmd180 .qx-sol-flow,
+.eg-test-root.eg-qxmd180 .sol-body,
+.eg-test-root.eg-qxmd180 .qx-sol-card,
+.eg-test-root.eg-qxmd182 .eg-sol,
+.eg-test-root.eg-qxmd182 .qx-sol-flow,
+.eg-test-root.eg-qxmd182 .sol-body,
+.eg-test-root.eg-qxmd182 .qx-sol-card,
+.eg-test-root.eg-qxmd182 .eg-sol .qx-content,
+.mtk-test-root[data-font-scale] .eg-sol,
+.mtk-test-root[data-font-scale] .qx-sol-card,
+.mtk-test-root[data-font-scale] .qx-sol-flow,
+.mtk-test-root[data-font-scale] .sol-body,
+.mtk-test-root[data-font-scale] #qaSolReveal,
+.allen-practice[data-font-scale] .sol-body,
+.allen-practice[data-font-scale] .qx-sol-card,
+.allen-practice[data-font-scale] .qx-sol-flow,
+.allen-practice[data-font-scale] #qaSolReveal,
+.allen-practice .sol-body,
+.allen-practice .qx-sol-card,
+.allen-practice .qx-sol-flow {
+  font-size: var(--nta-q) !important;
+  line-height: var(--nta-lh, 1.55) !important;
+}
+html[data-font-scale] .eg-sol .katex,
+html[data-font-scale] #egSol .katex,
+html[data-font-scale] .qx-sol-card .katex,
+html[data-font-scale] .qx-sol-flow .katex,
+html[data-font-scale] .sol-body .katex,
+.eg-test-root[data-font-scale] .eg-sol .katex,
+.eg-test-root.eg-qxmd180 .eg-sol .katex,
+.eg-test-root.eg-qxmd182 .eg-sol .katex,
+.eg-test-root.eg-qxmd182 .qx-sol-flow .katex,
+.mtk-test-root[data-font-scale] .sol-body .katex,
+.allen-practice .sol-body .katex,
+.allen-practice .qx-sol-card .katex {
+  font-size: var(--nta-math, 1.22em) !important;
 }

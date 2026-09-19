@@ -2761,66 +2761,182 @@ window.Mx = (() => {
    * Client-only — no bank JSON rewrite.
    */
 
+
   /**
-   * qxmd219: unwrap $EnglishProse$ false math islands (KaTeX paints them as mord mathnormal).
-   * Only peels letter-heavy prose with no TeX commands / math operators. Never invents content.
+   * qxmd220: unwrap $English prose$ / \(prose\) false math islands.
+   * Any letter-heavy English sentence (with or without spaces) becomes plain text.
+   * Real math (\frac, ^, _, operators, TeX cmds) stays delimited. Never invents content.
    */
   function peelFalseProseMathIslands(s) {
     let c = String(s || "");
-    if (!c || c.length < 8) return c;
-    if (/class=["'][^"']*katex/i.test(c) || looksLetterSpacedMarkup(c)) return c;
+    if (!c || c.length < 6) return c;
+    // If already rendered KaTeX HTML, leave to peelProseKatexInDom (do not letter-space).
+    if (/class=["'][^"']*\bkatex\b/i.test(c) || looksLetterSpacedMarkup(c)) return c;
+    const isRealMath = (t) => {
+      if (!t) return true;
+      if (/\\(?:frac|dfrac|tfrac|sqrt|left|right|begin|end|mathbb|mathrm|mathbf|boldsymbol|ce|overline|overrightarrow|vec|hat|sum|int|prod|lim|partial|infty|alpha|beta|gamma|delta|theta|lambda|mu|pi|sigma|omega|leq|geq|neq|approx|pm|times|cdot|rightarrow|leftarrow)\b/i.test(t)) return true;
+      if (/[_^{}]/.test(t) && /\\|[0-9]/.test(t)) return true;
+      if (/\d\s*[+\-*/^=<>]/.test(t)) return true;
+      if (/[+\-*/^=]{2,}/.test(t)) return true;
+      if (/[=<>]\s*[+\-]?[A-Za-z0-9\\]/.test(t) && /\\|[0-9]/.test(t)) return true;
+      return false;
+    };
+    const isProseIsland = (raw) => {
+      let t = String(raw || "").trim();
+      if (!t || t.length < 6) return false;
+      // Strip \text{...} / \mathrm{...} wrapper when that IS the whole island
+      const textWrap = t.match(/^\\(?:text|mathrm|textbf|textit)\s*\{([\s\S]*)\}$/);
+      if (textWrap) t = String(textWrap[1] || "").trim();
+      if (isRealMath(t)) return false;
+      const letters = (t.match(/[A-Za-z]/g) || []).length;
+      const nonspace = t.replace(/\s+/g, "").length;
+      if (letters < 6) return false;
+      if (letters / Math.max(nonspace, 1) < 0.72) return false;
+      // Allow common prose punctuation; reject heavy TeX residue
+      if (/\\[a-zA-Z]/.test(t)) return false;
+      if (!/^[A-Za-z0-9\s.,;:'"!?()\[\]\-\/+\u2013\u2014\u2018\u2019\u201c\u201d%]+$/.test(t)) return false;
+      // Prefer multi-word OR long glued OCR word runs (no digits-as-formula)
+      const words = t.split(/\s+/).filter(Boolean);
+      if (words.length >= 2) return true;
+      if (letters >= 10 && !/\d/.test(t)) return true;
+      return false;
+    };
+    const peelInner = (inner) => {
+      const t = String(inner || "").trim();
+      if (!isProseIsland(t)) return null;
+      let out = t;
+      const textWrap = out.match(/^\\(?:text|mathrm|textbf|textit)\s*\{([\s\S]*)\}$/);
+      if (textWrap) out = String(textWrap[1] || "").trim();
+      return out;
+    };
     try {
-      c = c.replace(/\$([^$\n]{6,320})\$/g, function (_m, inner) {
-        const t = String(inner || "").trim();
-        if (!t) return _m;
-        if (/\\[a-zA-Z]|[_^{}]|[=<>]|\\mathbb|\\frac|\\sqrt|\\left|\\right|\\begin|\\mathrm|\\text|\\ce\b/.test(t)) return _m;
-        if (/\d\s*[+\-*/^=]/.test(t)) return _m;
-        if (/[+\-*/^=]{2,}/.test(t)) return _m;
-        const letters = (t.match(/[A-Za-z]/g) || []).length;
-        const nonspace = t.replace(/\s+/g, "").length;
-        if (letters < 8) return _m;
-        if (letters / Math.max(nonspace, 1) < 0.82) return _m;
-        if (!/^[A-Za-z0-9\s.,;:'"()\-\u2013\u2014]+$/.test(t)) return _m;
-        return t;
+      // $...$ (non-greedy, single-line-ish up to 400 chars)
+      c = c.replace(/\$([^$\n]{6,400})\$/g, function (_m, inner) {
+        const p = peelInner(inner);
+        return p != null ? p : _m;
+      });
+      // \( ... \)
+      c = c.replace(/\\\(([\s\S]{6,400}?)\\\)/g, function (_m, inner) {
+        const p = peelInner(inner);
+        return p != null ? p : _m;
+      });
+      // $$...$$ prose-only (rare)
+      c = c.replace(/\$\$([^$]{6,400}?)\$\$/g, function (_m, inner) {
+        const p = peelInner(inner);
+        return p != null ? p : _m;
       });
     } catch (_) { /* */ }
     return c;
   }
 
-  /** qxmd219: if KaTeX already painted English as mathnormal letter spans, restore text nodes. */
+  /**
+   * qxmd220: after KaTeX paint, walk SOLUTION hosts; if a .katex node is mostly Latin words
+   * (not fractions/superscripts), replace with plain textContent (preserve spaces).
+   * Never letter-space HTML. Keep real math (.mfrac, .msup, .msub, .msqrt, delims).
+   */
   function peelProseKatexInDom(root) {
     const scope = root && root.querySelectorAll ? root : document;
-    const hosts = scope.querySelectorAll
-      ? scope.querySelectorAll(".eg-sol, #egSol, .sol-body, .qx-sol-body, .qx-sol-flow, .qx-sol-card, #qaSolReveal")
-      : [];
-    const list = hosts && hosts.length ? Array.prototype.slice.call(hosts) : (root && root.nodeType === 1 ? [root] : []);
-    list.forEach(function (host) {
+    const HOST_SEL = "#egSol, .eg-sol, .eg-sol-inline, .eg-sol-panel, .sol-body, .qx-sol-body, .qx-sol-flow, .qx-sol-card, #qaSolReveal, #qaResult, .mk-sol-body, .allen-sol";
+    let hosts = [];
+    try {
+      if (scope.querySelectorAll) hosts = Array.prototype.slice.call(scope.querySelectorAll(HOST_SEL));
+    } catch (_) { hosts = []; }
+    // If root itself is a sol host, include it
+    try {
+      if (root && root.nodeType === 1) {
+        const id = (root.id || "").toLowerCase();
+        const cls = String(root.className || "");
+        if (/^(egsol|qasolreveal|qaresult)$/i.test(id) || /\b(eg-sol|sol-body|qx-sol-body|qx-sol-flow|qx-sol-card|mk-sol-body|allen-sol)\b/.test(cls)) {
+          if (hosts.indexOf(root) < 0) hosts.unshift(root);
+        }
+      }
+    } catch (_) { /* */ }
+    if (!hosts.length && root && root.nodeType === 1) hosts = [root];
+
+    const looksRealMathDom = (k) => {
+      if (!k || !k.querySelector) return false;
+      if (k.querySelector(".mfrac, .msup, .msub, .msubsup, .msqrt, .mtable, .minner, .delimsizing, .mop, .mbin, .mrel, .vlist-t, .hlmsup, .hlmsub")) return true;
+      if (k.querySelector(".mord.mathdefault + .mbin, .mbin, .mrel")) {
+        // operator present — likely formula; still allow pure-letter prose with incidental nodes
+      }
+      const ann = k.querySelector('annotation[encoding="application/x-tex"]');
+      const src = ann ? String(ann.textContent || "") : "";
+      if (/\\(?:frac|dfrac|sqrt|left|right|begin|sum|int|prod|mathbb|mathrm\{[A-Z]|vec|hat|partial|infty|leq|geq|neq|pm|times|cdot|rightarrow)/.test(src)) return true;
+      if (/[_^]/.test(src) && /\\|\d/.test(src)) return true;
+      if (/\d\s*[+\-*/=]/.test(src)) return true;
+      return false;
+    };
+
+    const proseFromKatex = (k) => {
+      let src = "";
+      try {
+        const ann = k.querySelector('annotation[encoding="application/x-tex"]');
+        if (ann) src = String(ann.textContent || "").trim();
+      } catch (_) { /* */ }
+      // Prefer katex-html text (has layout spaces) over full .katex (MathML duplicates)
+      let visual = "";
+      try {
+        const htmlEl = k.querySelector(".katex-html");
+        visual = String((htmlEl || k).textContent || "").replace(/\u00a0/g, " ").replace(/\s+/g, " ").trim();
+      } catch (_) { visual = String(k.textContent || "").replace(/\s+/g, " ").trim(); }
+      // Strip \text{...} wrapper from annotation
+      if (src) {
+        const tw = src.match(/^\\(?:text|mathrm|textbf|textit)\s*\{([\s\S]*)\}$/);
+        if (tw) src = String(tw[1] || "").trim();
+      }
+      const candidate = (src && /[A-Za-z]{3,}/.test(src) && src.length >= (visual.length * 0.5)) ? src : visual;
+      return { src: src || visual, visual: visual || src, candidate };
+    };
+
+    const isProseText = (t) => {
+      const s = String(t || "").trim();
+      if (!s || s.length < 6) return false;
+      if (/\\[a-zA-Z]/.test(s)) return false;
+      const letters = (s.match(/[A-Za-z]/g) || []).length;
+      const nonspace = s.replace(/\s+/g, "").length;
+      if (letters < 6) return false;
+      if (letters / Math.max(nonspace, 1) < 0.72) return false;
+      if (!/^[A-Za-z0-9\s.,;:'"!?()\[\]\-\/+\u2013\u2014\u2018\u2019\u201c\u201d%]+$/.test(s)) return false;
+      const words = s.split(/\s+/).filter(Boolean);
+      if (words.length >= 2) return true;
+      if (letters >= 10 && !/\d/.test(s)) return true;
+      return false;
+    };
+
+    hosts.forEach(function (host) {
       if (!host || !host.querySelectorAll) return;
-      host.querySelectorAll(".katex").forEach(function (k) {
+      const nodes = Array.prototype.slice.call(host.querySelectorAll(".katex"));
+      // Process deepest-first so nested replacements stay stable
+      nodes.sort(function (a, b) {
+        try { return (b.querySelectorAll(".katex").length || 0) - (a.querySelectorAll(".katex").length || 0); } catch (_) { return 0; }
+      });
+      nodes.forEach(function (k) {
         try {
           if (!k || !k.parentNode) return;
-          let src = "";
-          const ann = k.querySelector('annotation[encoding="application/x-tex"]');
-          if (ann) src = String(ann.textContent || "").trim();
-          if (!src) {
-            const bits = [];
-            k.querySelectorAll(".mord.mathnormal, span.mathnormal").forEach(function (s) {
-              bits.push(s.textContent || "");
-            });
-            src = bits.join("");
-          }
-          if (!src || src.length < 8) return;
-          if (/\\[a-zA-Z]|[_^{}=<>]/.test(src)) return;
-          const letters = (src.match(/[A-Za-z]/g) || []).length;
-          const nonspace = src.replace(/\s+/g, "").length;
-          if (letters < 8 || letters / Math.max(nonspace, 1) < 0.82) return;
-          if (!/^[A-Za-z0-9\s.,;:'"()\-\u2013\u2014]+$/.test(src)) return;
-          const tn = document.createTextNode(src + (/\s$/.test(src) ? "" : " "));
+          // Skip if already inside a peeled text-only wrapper
+          if (k.closest && k.closest("[data-qx-peeled-prose]")) return;
+          if (looksRealMathDom(k)) return;
+          const got = proseFromKatex(k);
+          // Prefer spaced visual text when it is prose; else annotation
+          let plain = "";
+          if (isProseText(got.visual)) plain = got.visual;
+          else if (isProseText(got.candidate)) plain = got.candidate;
+          else if (isProseText(got.src)) plain = got.src;
+          else return;
+          // Preserve trailing space if original had word separation after
+          let suffix = "";
+          try {
+            const next = k.nextSibling;
+            if (next && next.nodeType === 3 && /^\s/.test(next.textContent || "")) suffix = "";
+            else if (!/\s$/.test(plain)) suffix = " ";
+          } catch (_) { suffix = " "; }
+          const tn = document.createTextNode(plain + suffix);
           k.parentNode.replaceChild(tn, k);
         } catch (_) { /* */ }
       });
     });
   }
+
 
   function unglueLowercaseMathProse(s) {
     let c = String(s || "");
@@ -4545,6 +4661,18 @@ window.Mx = (() => {
       const run = () => {
         try { fixSpacingInDom(el); } catch (_) { /* */ }
         try { peelProseKatexInDom(el); } catch (_) { /* */ }
+        /* qxmd220: sol peel reinforce after KaTeX settles */
+        try {
+          setTimeout(function () {
+            try {
+              var sols = (el && el.querySelectorAll)
+                ? el.querySelectorAll("#egSol, .eg-sol, .qx-sol-card, .qx-sol-flow, .sol-body, #qaSolReveal")
+                : [];
+              if (sols && sols.length) sols.forEach(function (n) { try { peelProseKatexInDom(n); } catch (_) {} });
+              else peelProseKatexInDom(el);
+            } catch (_) { /* */ }
+          }, 48);
+        } catch (_) { /* */ }
         try { beautifyMatchTablesInDom(el); } catch (_) { /* */ }
         try { healStemDollarsInDom(); } catch (_) { /* */ }
         try { upgradeBareTexInDom(el); } catch (_) { /* */ }
