@@ -1007,19 +1007,36 @@ const QuantrexSolution = (() => {
   function ensureNoStemHead(html, q) {
     let out = String(html || "");
     if (!out.trim()) return out;
+    if (/class=["'][^"']*qx-sol-card/.test(out) || /class=["'][^"']*qx-sol-card-h/.test(out)) {
+      return out;
+    }
     out = stripLeadingSolMeta(out);
     const stemP = pickStemPlain(q) || stemComparePlain((q && (q.questionText || q.q || q.question || q.text || q._qxOrigStem || q._qxBankQ)) || "");
     if (stemP.length < 8) return out;
     const headLen = Math.min(40, stemP.length);
     const head = stemP.slice(0, headLen);
     if (head.length < 12) return out;
+    /* qxmd207: also probe shorter heads — bank solutions often insert a word (e.g. "reaction") */
+    const head24 = stemP.slice(0, Math.min(24, stemP.length));
+    const head18 = stemP.slice(0, Math.min(18, stemP.length));
+    const stemWords = stemP.split(/\s+/).filter(Boolean);
 
     function plainStartsWithStem(src) {
       const p = stemComparePlain(src);
       if (!p) return false;
       if (p.indexOf(head) === 0) return true;
-      const at = p.indexOf(head);
-      return at > 0 && at <= 24;
+      if (head24.length >= 14 && p.indexOf(head24) === 0) return true;
+      if (head18.length >= 12 && p.indexOf(head18) === 0) return true;
+      const at = p.indexOf(head24.length >= 14 ? head24 : head);
+      if (at > 0 && at <= 24) return true;
+      /* first 5+ stem words match solution opening (wording drift) */
+      if (stemWords.length >= 5) {
+        const pw = p.split(/\s+/).filter(Boolean);
+        let n = 0;
+        while (n < 8 && n < stemWords.length && n < pw.length && stemWords[n] === pw[n]) n++;
+        if (n >= 5) return true;
+      }
+      return false;
     }
 
     for (let n = 0; n < 48; n++) {
@@ -1071,6 +1088,10 @@ const QuantrexSolution = (() => {
   function stripLeadingStemEcho(html, q) {
     let out = String(html || "");
     if (!out.trim()) return out;
+    /* qxmd207: never run map-cut on a rendered solution card (destroys qx-sol-card-h) */
+    if (/class=["'][^"']*qx-sol-card/.test(out) || /class=["'][^"']*qx-sol-card-h/.test(out)) {
+      return out;
+    }
     out = stripLeadingSolMeta(out);
     /* qxmd205: run aggressive ensure after existing logic via wrapper at end */
     // Drop common wrappers that precede a stem echo in Marks/bank solutions
@@ -1190,14 +1211,30 @@ const QuantrexSolution = (() => {
       const probeLen = Math.min(sv.length, Math.max(32, Math.floor(sv.length * 0.82)));
       const probe = sv.slice(0, probeLen);
       const head = sv.slice(0, Math.min(40, sv.length));
-      if (solP.startsWith(probe) || solP.startsWith(head)) {
+      const head24 = sv.slice(0, Math.min(24, sv.length));
+      const head18 = sv.slice(0, Math.min(18, sv.length));
+      if (solP.startsWith(probe) || solP.startsWith(head) || solP.startsWith(head24) || (head18.length >= 12 && solP.startsWith(head18))) {
         align = 0;
         matchedStem = sv;
         break;
       }
-      const at = solP.indexOf(head);
-      if (at >= 0 && at <= 64) {
+      /* qxmd207: only treat near-start matches as stem echo — never mid-card (at<=64 on
+         rendered cards sliced Chemistry Solution headers and floated stem above Medium). */
+      let at = solP.indexOf(head);
+      if (at < 0) at = solP.indexOf(head24);
+      if (at < 0 && head18.length >= 12) at = solP.indexOf(head18);
+      if (at >= 0 && at <= 12) {
         align = at;
+        matchedStem = sv;
+        break;
+      }
+      /* shared opening words (wording drift: disproportionation vs disproportionation reaction) */
+      const sw = sv.split(/\s+/).filter(Boolean);
+      const pw = solP.split(/\s+/).filter(Boolean);
+      let n = 0;
+      while (n < 8 && n < sw.length && n < pw.length && sw[n] === pw[n]) n++;
+      if (n >= 5) {
+        align = 0;
         matchedStem = sv;
         break;
       }

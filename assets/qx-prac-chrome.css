@@ -1,11 +1,19 @@
-/* qxmd205: ONE white strip Previous | Check Answer | Next */
+/* qxmd207: ONE white strip Previous | Check Answer | Next (row; wrap only if extremely narrow) */
 .eg-test-root #egFoot,
 .eg-test-root .eg-foot,
 .eg-test-root .eg-foot-practice,
+.eg-test-root .eg-foot-marks,
+.eg-test-root.eg-mobile #egFoot,
+.eg-test-root.eg-mobile .eg-foot,
+.eg-test-root.eg-desktop-mode #egFoot,
+.eg-test-root.eg-desktop-mode .eg-foot,
 .eg-test-root.qx-sol-showing #egFoot,
-.eg-test-root.qx-sol-showing .eg-foot {
+.eg-test-root.qx-sol-showing .eg-foot,
+.eg-test-root.eg-sol-showing #egFoot,
+.eg-test-root.eg-sol-showing .eg-foot {
   display: grid !important;
   grid-template-columns: 1fr 1.25fr 1fr !important;
+  grid-auto-flow: row !important;
   gap: 8px !important;
   align-items: stretch !important;
   background: #ffffff !important;
@@ -17,9 +25,17 @@
   padding: 10px 12px calc(10px + env(safe-area-inset-bottom,0px)) !important;
   width: 100% !important;
   box-sizing: border-box !important;
-  flex-direction: unset !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
   visibility: visible !important;
   opacity: 1 !important;
+}
+@media (max-width: 360px) {
+  .eg-test-root #egFoot,
+  .eg-test-root .eg-foot-marks,
+  .eg-test-root .eg-foot-practice {
+    grid-template-columns: 1fr !important;
+  }
 }
 .eg-test-root .eg-foot-extra,
 .eg-test-root #egFootExtra,

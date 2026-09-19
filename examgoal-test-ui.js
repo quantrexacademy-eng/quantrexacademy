@@ -13,7 +13,7 @@
     } else if (!l.id) {
       l.id = "egTestUiCss";
     }
-    const href = "assets/examgoal-test-ui.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd191");
+    const href = "assets/examgoal-test-ui.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd207");
     if (l.getAttribute("href") !== href) l.href = href;
     let chrome = document.getElementById("qxPracChromeCss");
     if (!chrome) {
@@ -22,7 +22,7 @@
       chrome.rel = "stylesheet";
       document.head.appendChild(chrome);
     }
-    const ch = "assets/qx-prac-chrome.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd202");
+    const ch = "assets/qx-prac-chrome.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd207");
     if (chrome.getAttribute("href") !== ch) chrome.href = ch;
     let both = document.getElementById("qxBothThemesCss");
     if (!both) {
@@ -31,7 +31,7 @@
       both.rel = "stylesheet";
       document.head.appendChild(both);
     }
-    const bh = "assets/qx-both-themes.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd203");
+    const bh = "assets/qx-both-themes.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd207");
     if (both.getAttribute("href") !== bh) both.href = bh;
     let r = document.getElementById("qxPracticeReadCss");
     if (!r) {
@@ -40,7 +40,7 @@
       r.rel = "stylesheet";
       document.head.appendChild(r);
     }
-    const rh = "assets/qx-practice-read.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd182");
+    const rh = "assets/qx-practice-read.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd207");
     if (r.getAttribute("href") !== rh) r.href = rh;
   }
 
@@ -339,20 +339,15 @@
 
   function solutionHtml(q) {
     let solContent = "";
+    let fromRenderBlock = false;
     try {
       if (typeof QuantrexSolution !== "undefined" && QuantrexSolution.renderBlock) {
+        /* qxmd207: renderBlock already runs formatBody/stripLeadingStemEcho/ensureNoStemHead.
+           Do NOT re-strip the rendered card HTML — that sliced mid-tag and could float the
+           stem echo above Medium/Chemistry Solution while .qx-sol-flow still started at math. */
         solContent = QuantrexSolution.renderBlock(q);
-        try {
-          if (QuantrexSolution.stripLeadingStemEcho) {
-            solContent = QuantrexSolution.stripLeadingStemEcho(solContent, q);
-          }
-        } catch (_) { /* */ }
-        solContent = String(solContent || "").replace(/<(div|p|section)[^>]*class="[^"]*(?:eg-q-stem|mtk-q-text|qa-q)[^"]*"[\s\S]*?<\/\1>/gi, "");
-        solContent = cutStemPrefix(solContent, q);
-        try {
-          if (QuantrexSolution.ensureNoStemHead) solContent = QuantrexSolution.ensureNoStemHead(solContent, q);
-        } catch (_) {}
-        solContent = cutStemPrefix(solContent, q);
+        fromRenderBlock = !!solContent;
+        solContent = String(solContent || "").replace(/<(div|p|section)[^>]*class="[^"]*(?:eg-q-stem|mtk-q-text|qa-q)[^"]*"[sS]*?<\/\1>/gi, "");
       }
     } catch (_) { /* */ }
     if (!solContent) {
@@ -367,6 +362,12 @@
             cleanSol = QuantrexSolution.stripLeadingStemEcho(sol, q);
           }
         } catch (_) { /* */ }
+        try {
+          if (typeof QuantrexSolution !== "undefined" && QuantrexSolution.ensureNoStemHead) {
+            cleanSol = QuantrexSolution.ensureNoStemHead(cleanSol, q);
+          }
+        } catch (_) { /* */ }
+        cleanSol = cutStemPrefix(cleanSol, q);
         let html = cleanSol;
         try {
           if (typeof MathTextRenderer !== "undefined" && MathTextRenderer.render) {
@@ -380,7 +381,8 @@
         solContent = '<div class="qx-content sol-body qx-sol-flow">' + html + "</div>";
       }
     }
-    /* Difficulty ONLY in solution panel (never on question view) */
+    /* renderBlock already paints Difficulty + subject; only add badge on fallback path */
+    if (fromRenderBlock) return solContent;
     let diffBadge = "";
     try {
       if (typeof qxDifficultyTag === "function") {
@@ -649,8 +651,8 @@
       ? '<span class="qx-paper-chip qx-paper-exam"><span class="qx-paper-exam-txt">' + examLine + "</span></span>"
       : "");
 
-    /* Mobile-first; desktop-mode while strip, side, or preview is open */
-    const desktopMode = !!(stripOpen || sideOpen || previewOpen);
+    /* qxmd207: eg-mobile only on narrow VP; wide desktop keeps row foot even if palette closed */
+    const desktopMode = !isMobileEg || !!(stripOpen || sideOpen || previewOpen);
     return '<div class="eg-test-root mtk-test-root' +
       (sideOpen ? " eg-side-open" : " eg-side-collapsed") +
       (stripOpen ? " eg-strip-open" : " eg-strip-collapsed") +
@@ -1379,8 +1381,14 @@
       try {
         const foot = root.querySelector("#egFoot, .eg-foot");
         if (!foot) return;
-        foot.style.setProperty("display", "flex", "important");
-        foot.style.setProperty("flex-direction", "column", "important");
+        /* qxmd207: Marks practice = ONE horizontal white strip Previous | Check Answer | Next */
+        const marksRow = !!(foot.classList.contains("eg-foot-marks") || foot.classList.contains("eg-foot-practice") || foot.querySelector("#egCheckBtn"));
+        foot.style.setProperty("display", "grid", "important");
+        foot.style.setProperty("grid-template-columns", marksRow ? "1fr 1.25fr 1fr" : "1fr 1fr", "important");
+        foot.style.setProperty("flex-direction", "row", "important");
+        foot.style.setProperty("flex-wrap", "wrap", "important");
+        foot.style.setProperty("align-items", "stretch", "important");
+        foot.style.setProperty("gap", "8px", "important");
         foot.style.setProperty("background", "#ffffff", "important");
         foot.style.setProperty("visibility", "visible", "important");
         const nav = foot.querySelector(".eg-foot-nav, .eg-foot-right");
@@ -1390,13 +1398,14 @@
           nav.style.setProperty("width", "100%", "important");
           nav.style.setProperty("visibility", "visible", "important");
         }
-        ["qxPrevBtn", "qxNextBtn"].forEach(function (id) {
+        ["qxPrevBtn", "egCheckBtn", "qxNextBtn"].forEach(function (id) {
           const b = foot.querySelector("#" + id);
           if (!b) return;
           b.style.setProperty("display", "inline-flex", "important");
           b.style.setProperty("visibility", "visible", "important");
           b.style.setProperty("opacity", "1", "important");
           b.style.setProperty("min-height", "48px", "important");
+          b.style.setProperty("width", "100%", "important");
         });
         try { if (typeof root._egBindNavBtns === "function") root._egBindNavBtns(); } catch (_) {}
       } catch (_) { /* */ }
@@ -1428,8 +1437,9 @@
         root.classList.toggle("eg-side-open", sideOpen);
         root.classList.toggle("eg-strip-collapsed", !stripOpen);
         root.classList.toggle("eg-strip-open", stripOpen);
-        root.classList.toggle("eg-desktop-mode", anyOpen);
-        root.classList.toggle("eg-mobile", !anyOpen);
+        var _egNarrow = !!(window.matchMedia && window.matchMedia("(max-width: 900px)").matches);
+        root.classList.toggle("eg-desktop-mode", !_egNarrow || anyOpen);
+        root.classList.toggle("eg-mobile", _egNarrow && !anyOpen);
         root.classList.toggle("eg-preview-open", previewOpen);
         root.classList.toggle("eg-preview-collapsed", !previewOpen);
         root.classList.remove("eg-tools-closed", "eg-tools-open", "eg-sol-showing", "eg-qxmd175", "eg-qxmd176", "eg-qxmd177", "eg-qxmd179");
@@ -2019,8 +2029,9 @@
               rootEl.classList.toggle("eg-side-open", !!cf2.sideOpen);
               rootEl.classList.toggle("eg-side-collapsed", !cf2.sideOpen);
               rootEl.classList.toggle("eg-preview-open", !!cf2.previewOpen);
-              rootEl.classList.toggle("eg-desktop-mode", !!cf2.anyOpen);
-              rootEl.classList.toggle("eg-mobile", !cf2.anyOpen);
+              var _egNarrow2 = !!(window.matchMedia && window.matchMedia("(max-width: 900px)").matches);
+              rootEl.classList.toggle("eg-desktop-mode", !_egNarrow2 || !!cf2.anyOpen);
+              rootEl.classList.toggle("eg-mobile", _egNarrow2 && !cf2.anyOpen);
             } catch (_) {}
           }
         } catch (_) { /* */ }
