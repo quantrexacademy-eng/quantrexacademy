@@ -153,36 +153,16 @@ html[data-theme="dark"] .qx-hw-paper {
   border-color: #334155 !important;
 }
 
-/* MARKS question view: practice keeps stem + options when solution is open */
+/* Practice: keep the stem box visible. Do NOT restyle every descendant (that broke tools, font, KaTeX). */
 html .mtk-test-root.allen-practice #egQArea,
-html .mtk-test-root.allen-practice #egQArea *,
 html .mtk-test-root.allen-practice .mtk-q-text,
-html .mtk-test-root.allen-practice .mtk-q-text *,
-html .mtk-test-root.allen-practice .qx-question-body,
-html .mtk-test-root.allen-practice.qx-sol-showing #egQArea,
-html .mtk-test-root.allen-practice.qx-sol-showing #egQArea *,
-html .mtk-test-root.allen-practice.qx-sol-showing .mtk-q-text,
-html .mtk-test-root.allen-practice.eg-sol-showing #egQArea,
-html .mtk-test-root.allen-practice.eg-sol-showing #egQArea *,
-html .mtk-test-root.allen-practice.eg-sol-showing .mtk-q-text,
-html .mtk-test-root.allen-practice.eg-sol-showing .mtk-q-text *,
-html .allen-practice.eg-sol-showing .katex,
-html .allen-practice.eg-sol-showing .katex * {
-  display: revert !important;
+html .mtk-test-root.allen-practice .qx-question-body {
+  display: block !important;
   visibility: visible !important;
   opacity: 1 !important;
   height: auto !important;
   max-height: none !important;
   overflow: visible !important;
-  position: static !important;
-  clip: auto !important;
-  clip-path: none !important;
-  font-size: inherit !important;
-  line-height: inherit !important;
-  pointer-events: auto !important;
-  color: inherit !important;
-}
-html .mtk-test-root.allen-practice #egQArea,
-html .mtk-test-root.allen-practice .mtk-q-text {
-  display: block !important;
+  font-size: var(--nta-q, 16px) !important;
+  line-height: var(--nta-lh, 1.65) !important;
 }

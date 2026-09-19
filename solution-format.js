@@ -250,12 +250,17 @@ const QuantrexSolution = (() => {
     return "";
   }
 
-  function extractKeyFormula(solution) {
+  function extractKeyFormula(solution, q) {
     const latex = [...String(solution || "").matchAll(/\$([^$]{3,80})\$/g)]
       .map(m => m[1].trim())
       .filter(isCleanLatex);
     if (!latex.length) return "";
     const best = latex.find(f => /=/.test(f) && !/\\begin/.test(f)) || latex[latex.length - 1];
+    try {
+      const stemP = stemComparePlain((q && (q.q || q.questionText || q._qxOrigStem || q._qxBankQ)) || "");
+      const bestP = stemComparePlain(best);
+      if (stemP.length >= 8 && bestP.length >= 4 && stemP.indexOf(bestP) >= 0) return "";
+    } catch (_) { /* */ }
     return `Key step: $${best}$`;
   }
 
@@ -279,7 +284,7 @@ const QuantrexSolution = (() => {
     const finalLine = extractFinalAnswerLine(raw, q);
     if (finalLine) tips.push(finalLine);
 
-    const keyFormula = extractKeyFormula(solution);
+    const keyFormula = extractKeyFormula(solution, q);
     if (keyFormula && tips.length < 3) tips.push(keyFormula);
 
     if (/nearest\s+integer|round\s+off/i.test(raw)) tips.push("Round your final value to the nearest integer.");
@@ -1221,11 +1226,40 @@ const QuantrexSolution = (() => {
     html = String(html || "")
       .replace(/(<br\s*\/?>\s*){3,}/gi, "<br><br>")
       .replace(/\n{3,}/g, "\n\n");
+    try { html = stripLeadingStemEcho(html, q); } catch (_) { /* */ }
+    html = String(html || "").replace(/<(div|p|section)[^>]*class="[^"]*(?:eg-q-stem|mtk-q-text|qa-q|qx-question-body)[^"]*"[\s\S]*?<\/\1>/gi, "");
+    try { html = dropRepeatedQuestionBlocks(html, q); } catch (_) { /* */ }
     // Never re-polish after KaTeX HTML exists (would space class="katex-display")
     if (!/class=["'][^"']*katex/i.test(html)) {
       try { html = polishScientificSymbols(html); } catch (_) { /* */ }
     }
     return html;
+  }
+
+  function dropRepeatedQuestionBlocks(html, q) {
+    const stemP = stemComparePlain((q && (q.q || q.questionText || q._qxOrigStem || q._qxBankQ || q.question)) || "");
+    if (stemP.length < 8) return html;
+    let s = String(html || "");
+    for (let n = 0; n < 8; n++) {
+      s = s.replace(/^(?:\s|&nbsp;|<br\s*\/?\s*>)+/i, "");
+      const m = /^(<(?:p|div)[^>]*>[\s\S]*?<\/(?:p|div)>|[\s\S]{8,220}?(?:<\/p>|<br\s*\/?\s*>|(?=<(?:p|div)\b)))/i.exec(s);
+      if (!m || !m[0]) break;
+      const bp = stemComparePlain(m[0]);
+      if (bp.length < 8) break;
+      const work = /\b(?:hence|therefore|thus|so the|option|statement\s*[i12]|pairs?\s+satisfying|do not belong|total number|for statement)\b/i.test(bp);
+      const head = bp.slice(0, Math.min(42, bp.length));
+      const toks = bp.split(/\s+/).filter(function (t) { return t.length > 1; });
+      const hit = toks.filter(function (t) { return stemP.indexOf(t) >= 0; }).length;
+      const echo = (head.length >= 8 && stemP.indexOf(head) >= 0)
+        || (stemP.slice(0, 28) && bp.indexOf(stemP.slice(0, 28)) >= 0)
+        || (toks.length >= 3 && hit / toks.length >= 0.55);
+      if (echo && !work) {
+        s = s.slice(m[0].length);
+        continue;
+      }
+      break;
+    }
+    return s;
   }
 
   function subjectBadgeLabel(q) {
@@ -1285,6 +1319,7 @@ const QuantrexSolution = (() => {
     try { ensureSolCss(); } catch (_) { /* */ }
     let sol = rawSolution != null ? rawSolution : (q && (q.solution || q.sol || q.explanation));
     try { sol = stripLeadingStemEcho(sol, q); } catch (_) { /* */ }
+    try { sol = String(sol || "").replace(/<(div|p|section)[^>]*class="[^"]*(?:eg-q-stem|mtk-q-text)[^"]*"[\s\S]*?<\/\1>/gi, ""); } catch (_) { /* */ }
     const has = !isPlaceholderSolution(sol);
     const theme = subjectTheme(q);
     const head = subjectBadgeLabel(q);
@@ -1335,7 +1370,7 @@ const QuantrexSolution = (() => {
     }
     const fromSol = [];
     try {
-      const keyFormula = extractKeyFormula(sol);
+      const keyFormula = extractKeyFormula(sol, q);
       if (keyFormula) fromSol.push(keyFormula);
     } catch (_) { /* */ }
     let shortcutHtml = "";

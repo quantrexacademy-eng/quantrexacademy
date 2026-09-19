@@ -699,17 +699,13 @@ const AllenTestUI = (() => {
     const opts = partsSafe.opts || "";
     const optsClass = partsSafe.optsClass || "mtk-options mtk-options-grid";
     const typeBadge = partsSafe.typeBadge || `<span class="qx-best-mcq">MCQ</span>`;
-    const appShell = isQxAppShell();
-    /* qxmd185: Check Answer keeps stem; solution is extra below options — never wipe the question */
+    /* Same Quantrex chrome on website + app: top tools + Previous/Next always visible. */
     const solOpen = !!(pc.showAnswer || (partsSafe.solReveal && String(partsSafe.solReveal).trim())
       || (partsSafe.resultHtml && /qx-sol-reveal-box|qx-sol-card|sol-body/i.test(String(partsSafe.resultHtml))));
-    /* MARKS: solution open ≠ hide stem. eg-sol-showing CSS wipes #egQArea. */
     const stemHtml = String(qBody).includes("qx-question-body")
       ? qBody
       : `<div class="mtk-q-text qx-content" id="egQArea" data-qx-qid="${q.id}">${qBody}</div>`;
 
-    // Website / desktop: keep classic Allen practice (do not force phone chrome)
-    if (!appShell) {
       const BM_SVG = `<svg class="qx-bm-svg" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M6 3.5h12a1.5 1.5 0 0 1 1.5 1.5v15.2a.9.9 0 0 1-1.4.75L12 16.6l-6.1 4.35A.9.9 0 0 1 4.5 20.2V5A1.5 1.5 0 0 1 6 3.5z" fill="currentColor"/></svg>`;
       const themeLbl = appTheme === "dark" ? "Light" : "Dark";
       const subj = (subject || "").toLowerCase();
@@ -727,7 +723,7 @@ const AllenTestUI = (() => {
         <header class="mtk-header">
           <div class="mtk-header-left">
             <button type="button" class="mtk-close-btn" id="qxPracBackBtn" title="Back" aria-label="Back">&larr;</button>
-            <div class="mtk-brand allen-brand"><span class="mtk-brand-text">Quantrex Academy · Practice</span></div>
+            <div class="mtk-brand qx-prac-brand"><span class="mtk-brand-text">Quantrex Academy</span></div>
           </div>
           <div class="mtk-prac-progress">Q${pos} / ${total}</div>
           ${timerHtml}
@@ -783,86 +779,6 @@ const AllenTestUI = (() => {
             </div></div>
         </div>
       </div>`;
-    }
-
-    // APP ONLY — unique Quantrex chrome (best of Marks + ExamGoal, not a clone)
-    let strip = "";
-    const maxStrip = Math.min(total, 40);
-    for (let i = 0; i < maxStrip; i++) {
-      const idAt = pc.ids && pc.ids[i];
-      const answered = !!(idAt && pc.done && pc.done[idAt]);
-      const on = i === (pc.idx || 0) ? " on" : "";
-      const ans = answered ? " answered" : "";
-      strip += `<button type="button" class="qx-best-pill${on}${ans}" data-prac-idx="${i}">${i + 1}</button>`;
-    }
-    if (total > maxStrip) strip += `<span class="qx-best-more">+${total - maxStrip}</span>`;
-
-    try { document.body.classList.add("qx-app-shell", "qx-q-fullscreen"); } catch (_) {}
-
-    return `<div class="mtk-test-root allen-cbt allen-practice egmq-root mq-qx-best qx-font-host${bookCls}${solOpen ? " qx-sol-showing" : ""}" data-test-theme="${appTheme}" data-font-scale="${fontScale}">
-      <header class="qx-best-head">
-        <button type="button" class="qx-best-icon" id="qxPracBackBtn" aria-label="Back">←</button>
-        <div class="qx-best-mid">
-          <div class="qx-best-brand">Quantrex</div>
-          <div class="qx-best-crumb">${crumb}</div>
-        </div>
-        <button type="button" class="qx-best-icon" id="pracViewMenuBtn" aria-label="Options" aria-expanded="false" aria-controls="pracViewPanel">☰</button>
-      </header>
-      <nav class="qx-best-strip" aria-label="Questions">${strip}</nav>
-      <div class="qx-best-exambar">${esc(paperText)}</div>
-      <div class="qx-best-meta">
-        <span class="qx-best-qno">${String(pos).padStart(2, "0")}</span>
-        ${showTimer ? `<span class="qx-best-timer" id="egmqQTime"><span id="egmqTimerSec">0s</span></span>` : ""}
-        <span class="qx-best-marks"><b class="ok">+4</b><b class="bad">−1</b></span>
-        <span class="qx-best-actions qx-prac-tools">
-          ${hintBtn}
-          <button type="button" class="qx-best-ico eg-tool-btn ${bmOn ? "on" : ""}" onclick="typeof toggleBm==='function'&&toggleBm(${qidAttr})" data-tip="Bookmark" title="Bookmark" aria-label="Bookmark">☆<span class="eg-tip">Bookmark</span></button>
-          <button type="button" class="qx-best-ico eg-tool-btn" onclick="typeof toggleBmWithGroup==='function'&&toggleBmWithGroup(${qidAttr})" data-tip="Create group" title="Create group" aria-label="Create group">+<span class="eg-tip">Group</span></button>
-          <button type="button" class="qx-best-ico warn eg-tool-btn" onclick="typeof openQuestionReport==='function'&&openQuestionReport(${qidAttr})" data-tip="Report" title="Report" aria-label="Report">⚠<span class="eg-tip">Report</span></button>
-        </span>
-      </div>
-      <div class="qx-best-body mtk-main egmq-body">
-        <div class="qx-best-type">${typeBadge}</div>
-        ${partsSafe.diagramSlot || ""}
-        ${String(qBody).includes("qx-question-body")
-          ? qBody
-          : (stemHtml || `<div class="mtk-q-text qx-content mq-stem" data-qx-qid="${q.id}">${qBody}</div>`)}
-        <div class="${optsClass} mq-opts egmq-opts" id="qaOpts">${opts}</div>
-        <div id="qaResult">${partsSafe.resultHtml || ""}</div>
-        <div id="qaSolReveal">${partsSafe.solReveal || ""}</div>
-        ${partsSafe.solActions || ""}
-        <button type="button" class="qx-best-note" id="qxPracNote">Add a Note</button>
-      </div>
-      <div class="qx-best-foot egmq-foot mtk-controls">
-        <button type="button" class="qx-best-btn" id="qxPracPrev" ${pc.idx <= 0 ? "disabled" : ""}>Previous</button>
-        ${done || incomplete
-          ? `<button type="button" class="qx-best-btn qx-best-check" id="qxPracClear">Clear</button>`
-          : `<button type="button" class="qx-best-btn qx-best-check" id="qxPracSubmit" ${canSubmit ? "" : "disabled"}>Check Answer</button>`}
-        <button type="button" class="qx-best-btn qx-best-next" id="qxPracNext" ${pc.idx >= total - 1 ? "disabled" : ""}>Next</button>
-      </div>
-      <div class="qx-prac-view-panel egmq-view-panel" id="pracViewPanel" hidden>
-        <div class="qx-prac-view-sec"><div class="qx-prac-view-label">Text size</div>
-          <div class="qx-prac-size-row">
-            <button type="button" class="qx-prac-size-btn${sizeOn("small")}" data-scale="small">S</button>
-            <button type="button" class="qx-prac-size-btn${sizeOn("medium")}" data-scale="medium">M</button>
-            <button type="button" class="qx-prac-size-btn${sizeOn("large")}" data-scale="large">L</button>
-            <button type="button" class="qx-prac-size-btn${sizeOn("xlarge")}" data-scale="xlarge">XL</button>
-          </div></div>
-        <div class="qx-prac-view-sec"><div class="qx-prac-view-label">Zoom</div>
-          <div class="qx-prac-zoom-row">
-            <button type="button" class="qx-zoom-btn mtk-font-btn" id="pracZoomOut">−</button>
-            <span class="qx-zoom-lbl" id="pracZoomLbl">${zoomPct}</span>
-            <button type="button" class="qx-zoom-btn mtk-font-btn" id="pracZoomIn">+</button>
-            <button type="button" class="qx-prac-zoom-reset" id="pracZoomReset">100%</button>
-          </div></div>
-        <div class="qx-prac-view-sec">
-          <label class="eg-show" style="display:flex;align-items:center;gap:8px"><span class="eg-switch"><input type="checkbox" id="qxPracShowAns"${solOpen ? " checked" : ""}><span class="eg-switch-knob" aria-hidden="true"></span></span> Show Answer</label>
-        </div>
-        <div class="qx-prac-view-sec">
-          <button type="button" class="mtk-font-btn qx-prac-theme-btn" id="pracThemeToggle">${appTheme === "dark" ? "Light" : "Dark"} mode</button>
-        </div>
-      </div>
-    </div>`;
   }
 
   function fmtEgmqClock(totalSec) {

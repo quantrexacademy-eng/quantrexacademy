@@ -372,7 +372,7 @@
     return (
       '<div class="qx-set-sec qx-set-span" id="qxSetQuestionSec">' +
       '<div class="qx-set-sec-h">Question settings</div>' +
-      '<p class="qx-set-sec-sub">Same as MARKS — timer, sounds, hint, solution mode, notes, attempt insight.</p>' +
+      '<p class="qx-set-sec-sub">Timer, sounds, hint, solution mode, notes, and attempt insight for practice.</p>' +
       '<div class="qx-set-list">' +
       row("qxSetShowTimer", "showTimer", "Show timer", "Timer on every practice question") +
       row("qxSetPlaySounds", "playSounds", "Play sounds", "Sound after you check an answer") +
