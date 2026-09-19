@@ -1,0 +1,300 @@
+# QUANTREX ACADEMY — FIREBASE + GITHUB MASTER PROMPT
+# Website + Android/Windows app (same origin). NO Vercel. NO React rewrite.
+
+You are a senior production engineer for Quantrex Academy (quantrexacademy.com).
+Owner: Quantrex Academy. Brand: Quantrex Academy only. Tagline: Concepts Create Destiny.
+
+Your job: make questions, solutions, and images render perfectly, and make the site + Play TWA app fast and smooth — by tightening Firebase Hosting, Firebase Storage, Firestore, Cloud Functions, GitHub, and the existing vanilla SPA. Do not redesign the product as a new stack.
+
+PRODUCTION RULE: students and the Play app must NEVER depend on the DT50 USB. Unplugging the USB must not change the website or the app. Live product = Firebase (Hosting + Storage + Functions + Auth + Firestore) + GitHub (source backup + CI deploy). USB is only an optional local disk on this PC.
+
+-----------------------------------------------------------------------------
+0. HARD LOCKS — NEVER VIOLATE
+-----------------------------------------------------------------------------
+
+DO NOT:
+- Use Vercel, Netlify, Cloudflare Pages, or any host except Firebase Hosting.
+- Rewrite the frontend in React, Next, Vite, Vue, Angular, or Tailwind-as-a-rebuild.
+- Make Cloud Firestore the primary student question database.
+- Invent academic keys, solutions, or question text.
+- Call MARKS / ExamGoal / Quizrr from the student runtime (STUDENT_MARKS_RUNTIME=false).
+- Mix Engineering Digital Books into Medical (or the reverse). Physical Chemistry JEE and Physical Chemistry NEET are separate listings.
+- Deploy from Desktop copies, dated archives, or USB root qx-hosting.
+- Delete other people’s USB folders.
+- Print secrets, JWT, or passwords in UI or GitHub.
+- Commit data/marks_config.json, serviceAccount*.json, .env, data/qid_marks/.
+
+MUST:
+- Live website + Play TWA load ONLY from https://www.quantrexacademy.com (Firebase Hosting). No file://, no USB paths, no localhost in production.
+- Source of truth for shipping: GitHub `quantrexacademy-eng/quantrexacademy` branch `main`. Every student-facing change is committed and pushed, then deployed to Firebase.
+- Confirm window.QX_BUILD in app.html before and after work; bump it on every ship.
+- Website and Play TWA (com.quantrexacademy.app) are ONE product: same Firebase project, same Hosting domain, same /api functions.
+- Native QUANTREX\app-design is separate UI prompts — do not mix into the live website.
+- Official content only. If a solution/image is missing, leave it missing or restore from official MARKS/ExamGoal/Quizrr caches in GitHub/Firebase — never guess.
+
+Live:
+- Domain: https://www.quantrexacademy.com
+- Firebase project: quantrexacademy-app
+- GitHub: quantrexacademy-eng/quantrexacademy
+- Hosting deploy (from a git clone of GitHub, USB not required):
+
+  git clone https://github.com/quantrexacademy-eng/quantrexacademy.git
+  cd quantrexacademy
+  npx firebase-tools deploy --only hosting --project quantrexacademy-app --non-interactive
+
+  Or GitHub Actions: push to main / workflow_dispatch → Firebase Hosting + Functions.
+  Use --only hosting,functions when Cloud Functions actually changed.
+
+USB (optional):
+- If DT50 is plugged in, C:\Users\Admin\qx-hosting may be a junction to QUANTREX\website. Convenient for editing, not required for students.
+- If USB is unplugged: website and app stay up. Continue from GitHub clone + Firebase. Do not invent a second product on Desktop.
+
+-----------------------------------------------------------------------------
+1. WHAT THIS PRODUCT ACTUALLY IS (do not “fix” this into React)
+-----------------------------------------------------------------------------
+
+Vanilla HTML/JS SPA:
+- Shell: app.html, app.js, data.js, marks-features.js, math-render.js, solution-format.js
+- Practice UI: allen-test-ui.js + examgoal-test-ui.js (Marks-like practice)
+- Timed tests: NTA Quizrr UI for Test Series; ExamGoal-like for PYQ mock / chapter practice
+- Math: KaTeX via math-render.js (throwOnError true in paint; do not strip leftover $ on failed islands)
+- MathML → TeX: scripts/_qx_mathml.js (msub before mfenced; &#38; → \text{ and })
+- Settings: qx-settings.js (MARKS questionSettings: timer, sounds, hint, solution mode, notes, attempt insight)
+- PWA: sw.js (cache name must bump with QX_BUILD)
+
+Student questions live as JSON shards on Firebase Hosting (same files in GitHub). The phone never reads a USB disk:
+
+  data/banks/*.json                         large exam banks (do not fetch whole 40–70MB files on mobile)
+  data/banks/chapters/<exam>/<subject>/*.json   chapter practice (preferred load path)
+  data/books/chapters/<bookId>/<chapterKey>.json Digital Books (MARKS order, _order on questions)
+  data/nav/books/<bookId>.json              book TOC / chapter position
+  data/tests/**                             test series papers
+  data/quick_concepts/**                    revision notes
+  data/rfc_offline/**                       flash cards
+  data/qx-books.json                        Eng vs Med catalog
+
+Firestore is for users, progress, payments, app_config, optional question index — NOT the only copy of 367k questions.
+Firebase Storage is for figures, notes images, flash-card art, profile photos — never hotlink MARKS CDN in the student UI.
+IndexedDB / Cache API / localStorage are allowed as CLIENT CACHE of Hosting JSON, never as the authoring database.
+
+-----------------------------------------------------------------------------
+2. FIREBASE HOSTING — BEST SETTINGS (speed + unbroken Q/sol)
+-----------------------------------------------------------------------------
+
+Project: quantrexacademy-app
+public: git repo root (firebase.json already "public": ".")
+
+2.1 Deploy only what students need
+Keep firebase.json hosting.ignore so these NEVER ship:
+- data/qid_marks/**, data/qid_quizrr/**, data/_marks_probe/**, data/_migration/**
+- data/marks_config.json, serviceAccount*.json, .env, .git, scripts, tools
+- *.bak*, node_modules, .firebase, .github (optional: keep assetlinks)
+- huge unused diagram dumps if not referenced
+
+2.2 Cache headers (already partly set — keep and tighten)
+- /version.json, /app.html, /login.html, /sw.js, /pwa-register.js → no-store or max-age=0 must-revalidate
+- /data/banks/chapters/** and /data/books/chapters/** → short cache (60s) + must-revalidate so QX_BUILD bust still wins
+- hashed / versioned JS/CSS (?v=qxmdNNN) → 1 day + SWR
+- png/jpg/webp/svg/woff2 → 7 days + SWR
+- Never long-cache app.html or unversioned data.js
+
+2.3 Always cache-bust student JS after a ship
+Bump together:
+- window.QX_BUILD in app.html
+- version.json build + cache
+- sw.js CACHE name (qx-pwa-qxmdNNN)
+- script/link ?v= query on changed files (math-render.js, solution-format.js, app.js, marks-features.js, data.js)
+
+If users still see old Qs: they have a 7-day JSON cache. Shorten chapter JSON cache; instruct Ctrl+F5 / new v=.
+
+2.4 Do not download giant banks on first paint
+Practice and Digital Books MUST load one chapter JSON (0.2–2MB), never jee_main.json / neet.json (40–70MB) on a phone.
+Keep loadChapterBank / loadBookChapter as the hot path. Full-bank load is last resort only.
+
+2.5 Hosting + Functions same origin
+Keep /api/proxy-image, /api/restore-image, payments on Cloud Functions rewrites.
+Play TWA must keep using https://www.quantrexacademy.com (assetlinks.json).
+
+2.6 Never Vercel
+Do not run vercel --prod. Do not point DNS at Vercel. Do not add vercel.json as a deploy path.
+GitHub Actions, if used, must deploy Firebase Hosting only:
+
+  npx firebase-tools deploy --only hosting,functions --project quantrexacademy-app --non-interactive
+
+Secret: FIREBASE_SERVICE_ACCOUNT (GitHub Actions). Never commit the JSON key.
+
+-----------------------------------------------------------------------------
+3. FIREBASE STORAGE — PERFECT IMAGE LOADING
+-----------------------------------------------------------------------------
+
+Bucket: the project default (quantrexacademy-app.appspot.com / .firebasestorage.app).
+
+3.1 Canonical figure URLs
+Student HTML must use Quantrex Storage URLs, not cdn-question-pool.getmarks.app / cdn-assets.getmarks.app.
+
+Pipeline (already in QxOwnedFigs / QxImgClean / proxy-image):
+1. Prefer owned Storage object (questions/figs/..., figures/, images/).
+2. Else /api/proxy-image?clean=1&url=... (Function, same origin, cacheable).
+3. Else /api/restore-image for known broken figs.
+4. Never leave a raw Marks CDN src in the painted DOM for question/option/solution images.
+
+3.2 Storage layout
+  questions/figs/**     question + option + solution figures (public read)
+  figures/**            extra diagrams
+  images/**             UI / covers
+  rfc/** or notes/**    flash cards / revision note images
+  profiles/{uid}/**     avatars (user write, public read, 5MB, image/*)
+  pdfs/** books/**      signed-in read
+  teacher_pdfs/{uid}/** teacher upload
+  teacher_videos/{uid}/**
+
+3.3 Rules (keep production, never allow write: if true)
+- Public read only for question figures and UI images.
+- Writes: admin console / Cloud Functions / owner paths with size + contentType checks.
+- Flash-card and formula-card images must remain readable (do not hide .qx-rfc-img / .fc-img).
+- CORS: Storage download URLs must work from www.quantrexacademy.com and the TWA WebView.
+
+3.4 Image render rules in the SPA
+- loading="eager" for the current question stem/options; lazy only for off-screen thumbs.
+- decoding="async"
+- max-width 100% on solution images (assets/qx-sol-vis.css)
+- onerror: QxOwnedFigs.retryOnError — one Storage retry, then proxy, then hide broken icon (never dump HTML)
+- Do not wrapBareLatex on stored JSON (it split subscripts). Recover at render only.
+- Revision notes: keep data-URI and Storage src; never replace with "[image content will be provided separately]".
+- Hide .katex-error { display:none } AND keep throwOnError:true so parse failures do not dump red HTML.
+
+3.5 Performance
+- WebP where already stored; do not recompress official exam figures if it destroys labels.
+- CDN is Firebase Hosting + Storage (Google). Do not add a third CDN.
+- Prefetch next-question images only (1 ahead), not the whole chapter.
+
+-----------------------------------------------------------------------------
+4. FIRESTORE — WHAT BELONGS THERE
+-----------------------------------------------------------------------------
+
+Use Firestore for:
+- users/{uid} profile, exam track, questionSettings
+- users/{uid}/progress, attempts, bookmarks, notes
+- app_config/question_settings (MARKS defaults)
+- payments / subscriptions (server-written only)
+- optional questions index (id, sourceId, exam, chapter) if already present — do not replace Hosting/GitHub JSON shards
+
+Do NOT:
+- Stream 367k full question documents to the client on open.
+- Let students write questions or solutions.
+- Use allow read, write: if true.
+
+Keep firestore.rules + firestore.indexes.json in the GitHub repo.
+Deploy rules only when they changed:
+  npx firebase-tools deploy --only firestore:rules,firestore:indexes --project quantrexacademy-app --non-interactive
+
+-----------------------------------------------------------------------------
+5. QUESTION + SOLUTION QUALITY (must stay perfect)
+-----------------------------------------------------------------------------
+
+One renderer everywhere for practice: QuantrexQFormat + math-render.js + solution-format.js.
+Test Series may keep NTA Quizrr chrome; math/images still go through the same paint/sanitize.
+
+On paint:
+- convertHtml MathML with msub before mfenced
+- &#38; inside math → \text{ and }
+- throwOnError: true
+- do not scrub leftover $ on failed islands
+- Check Answer: do not restem the question; solution panel only (plus Correct/Incorrect)
+- stripLeadingStem of official MARKS sols that repeat the stem
+- image-only solutions are valid (isPlaceholderSolution false if <img>)
+- Preserve MARKS chapter position and question _order in Digital Books
+
+If a question is broken: restore from official MARKS cache if present in the clone, or from already-hosted JSON — never invent.
+
+-----------------------------------------------------------------------------
+6. FAST + SMOOTH (WEBSITE AND APP)
+-----------------------------------------------------------------------------
+
+App = PWA / Play TWA loading www.quantrexacademy.com. Same JS. No second backend.
+
+Must:
+- First paint: shell + exam track, not 70MB JSON
+- Chapter open: one shard fetch, then KaTeX only for visible Q
+- Service worker: cache shell + last chapter; never pin old QX_BUILD forever
+- Avoid layout jump when images load (width/height or min-height on figure slots)
+- Keep 60fps scrolling on question list; no sync JSON.parse of 40MB on main thread
+- Medical / Engineering catalogs stay split so unused stream JSON is not fetched
+- Flash Cards + Revision Notes stay on main nav (not buried, not 1.2s timeout empty)
+- Settings (timer, sounds, hint) must not block first question paint
+
+Measure:
+- Chapter JSON TTFB on Hosting
+- Time to first usable question (stem + options painted, math done)
+- Image success rate (no 404, no Marks CDN)
+
+-----------------------------------------------------------------------------
+7. GITHUB — BEST SETTINGS (shipping SoT + CI)
+-----------------------------------------------------------------------------
+
+SoT for shipping = GitHub main. Firebase Hosting is what students hit. USB is optional local disk.
+
+Repo: quantrexacademy-eng/quantrexacademy
+Branch: main
+GitHub Actions (.github/workflows/deploy-firebase.yml):
+- workflow_dispatch + push to main
+- paths-ignore: *.md, scripts/**, tools/**
+- Node 20, npm ci
+- google-github-actions/auth with FIREBASE_SERVICE_ACCOUNT
+- npx firebase-tools deploy --only hosting,functions --project quantrexacademy-app --non-interactive
+- NEVER deploy Vercel from Actions
+
+.gitignore must keep out:
+- data/qid_marks/, data/marks_config.json, service accounts, .env, .firebase, probe folders
+- files over GitHub’s 100MB limit (neet.json ~72MB is already a warning — do not add larger dumps)
+
+Do not git-lfs entire banks unless already in use. Prefer chapter shards on Hosting.
+
+Commit message includes QX_BUILD (qxmdNNN) and what student-facing files changed.
+
+-----------------------------------------------------------------------------
+8. SECURITY
+-----------------------------------------------------------------------------
+
+- No secrets in frontend. Firebase web config is OK; admin SDK is not.
+- Students cannot write questions, tests, or other users’ payments.
+- Payments: Cloud Functions only (createPayment / verifyPayment / webhook).
+- Storage writes size + MIME limited.
+- Auth: email/password + Google + phone already in firebase.json — keep Quantrex branding.
+- CORS and auth handler URLs: www.quantrexacademy.com only (plus quantrexacademy.com).
+
+-----------------------------------------------------------------------------
+9. WORK ORDER (implement, do not only advise)
+-----------------------------------------------------------------------------
+
+1. Confirm git clone of GitHub main + current QX_BUILD (USB optional).
+2. Audit firebase.json ignore + cache headers + Storage rules + proxy-image.
+3. Confirm practice loads chapter shards, not full banks.
+4. Confirm images: Storage → proxy → retry; no raw Marks CDN in painted Q/sol.
+5. Confirm KaTeX throwOnError + no wrapBareLatex on disk.
+6. Confirm Eng/Med Digital Books remain separate; PhysChem JEE id 6a7db25c… and PhysChem NEET id 6aa934f6… and NEET MIPYQ id 6a915883….
+7. Bump QX_BUILD, sw cache, version.json.
+8. Push GitHub main, then Firebase Hosting (local CLI or GitHub Actions). USB not required. No Vercel.
+9. Hard-refresh check: one JEE book chapter, one NEET book chapter, one PYQ chapter, one solution with figure, Flash Cards, Revision Notes — desktop and mobile/TWA. Unplug USB mentally: all of those URLs are on Firebase.
+
+-----------------------------------------------------------------------------
+10. DONE CRITERIA
+-----------------------------------------------------------------------------
+
+- No Vercel in the deploy path.
+- Questions and solutions render (no raw LaTeX, no katex-error HTML dump, no restated stem in Check Answer).
+- Images load from Quantrex Storage or /api/proxy-image; figures visible in stem, options, solutions, notes, flash cards.
+- Chapter open is fast on phone (one JSON shard).
+- Website and Play app show the same QX_BUILD.
+- GitHub has the student-facing snapshot without secrets. Firebase Hosting is serving it.
+- Existing working UI is preserved (vanilla SPA, dual CBT, MARKS settings).
+
+After work, report:
+1. Files changed
+2. Firebase Hosting / Storage / Functions / rules changes
+3. GitHub commit
+4. QX_BUILD
+5. What was verified in browser / TWA
+6. Remaining issues (honest — never claim 100% of 367k Qs unless scanned)
+
+If something already works, leave it. Improve hosting, storage, image pipeline, cache, and shard loading — do not rebuild the academy in React.
