@@ -141,6 +141,50 @@
   display: none !important;
 }
 
+/* After Check Answer: Previous/Next stay on a white bar, never grey, never hidden */
+.eg-test-root .eg-foot,
+.eg-test-root.eg-qxmd182 .eg-foot,
+.eg-test-root.qx-sol-showing .eg-foot {
+  display: flex !important;
+  flex-direction: column !important;
+  background: #ffffff !important;
+  border-top: 1px solid #e5e7eb !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+}
+.eg-test-root .eg-foot-extra,
+.eg-test-root .eg-foot-left {
+  background: #ffffff !important;
+  width: 100% !important;
+}
+.eg-test-root .eg-foot-nav,
+.eg-test-root .eg-foot-right {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  width: 100% !important;
+  gap: 8px !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+.eg-test-root .eg-foot #qxPrevBtn,
+.eg-test-root .eg-foot #qxNextBtn {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  min-height: 48px !important;
+}
+.eg-test-root .eg-foot #qxPrevBtn {
+  background: #ffffff !important;
+  color: #1565C0 !important;
+  border: 2px solid #1565C0 !important;
+}
+.eg-test-root .eg-foot #qxNextBtn {
+  background: #1565C0 !important;
+  color: #ffffff !important;
+  border: 2px solid #1565C0 !important;
+}
+
 @media (max-width: 900px) {
   .mtk-test-root.allen-practice .eg-foot,
   .mtk-test-root.allen-practice .mtk-controls.eg-foot {

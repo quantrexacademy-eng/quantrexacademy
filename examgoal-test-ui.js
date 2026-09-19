@@ -1424,11 +1424,10 @@
           "pointer-events:auto!important;position:fixed!important;left:0!important;right:0!important;" +
           "bottom:0!important;z-index:2147483000!important;transform:none!important;" +
           "overflow:visible!important;clip:auto!important;max-height:none!important;" +
-          "flex-wrap:wrap!important;gap:8px!important;padding:10px 12px calc(12px + " + sab + ")!important;" +
-          "background:" + (dark ? "#0b1220" : "#ffffff") + "!important;border-top:2px solid " +
-          (dark ? "#334155" : "#94a3b8") + "!important;width:100%!important;max-width:100vw!important;" +
-          "box-sizing:border-box!important;" +
-          "box-shadow:0 -8px 24px rgba(15,23,42,.18)!important;min-height:64px!important;";
+          "flex-direction:column!important;flex-wrap:nowrap!important;gap:8px!important;" +
+          "padding:10px 12px calc(12px + " + sab + ")!important;" +
+          "background:#ffffff!important;border-top:1px solid #e5e7eb!important;width:100%!important;max-width:100vw!important;" +
+          "box-sizing:border-box!important;box-shadow:none!important;min-height:64px!important;";
         let right = foot.querySelector(".eg-foot-right");
         if (!right) {
           right = document.createElement("div");
@@ -1454,12 +1453,13 @@
           }
           b.textContent = label;
           try { b.setAttribute("aria-label", label); } catch (_) {}
-          var bg = nextish ? "#2563eb" : (dark ? "#1e293b" : "#e2e8f0");
-          var fg = nextish ? "#ffffff" : (dark ? "#e2e8f0" : "#0f172a");
+          var bg = nextish ? "#1565C0" : "#ffffff";
+          var fg = nextish ? "#ffffff" : "#1565C0";
+          var bd = "#1565C0";
           b.style.cssText = "display:inline-flex!important;visibility:visible!important;opacity:1!important;" +
             "pointer-events:auto!important;align-items:center!important;justify-content:center!important;" +
             "min-height:48px!important;width:100%!important;border-radius:10px!important;font-weight:800!important;" +
-            "font-size:15px!important;border:1px solid " + (nextish ? "#1d4ed8" : (dark ? "#475569" : "#94a3b8")) +
+            "font-size:15px!important;border:2px solid " + bd +
             "!important;background:" + bg + "!important;color:" + fg + "!important;-webkit-text-fill-color:" +
             fg + "!important;text-shadow:none!important;filter:none!important;";
           return b;
@@ -1480,7 +1480,7 @@
           if (saveLeftover) {
             try { saveLeftover.id = "qxNextBtn"; saveLeftover.className = "eg-btn eg-btn-next"; } catch (_) {}
           }
-          next = ensureBtn("qxNextBtn", narrow ? "Next" : "Save & Next", true);
+          next = ensureBtn("qxNextBtn", "Next", true);
           try {
             var moreB = foot.querySelector("#egFootMore");
             if (moreB) { moreB.setAttribute("hidden", ""); moreB.style.display = "none"; }
@@ -1750,14 +1750,18 @@
     }
     function goNav(idx) {
       if (typeof api.goTo !== "function") return;
-      /* qxeg1: keep whichever panels user opened; x / All-Q only change them */
       const cf = chromeFlags(session);
       if (cf.stripOpen || cf.sideOpen || session._egSideUserOpened) {
-        /* preserve independent open flags */
         session._egStripOpen = !! session._egStripOpen;
         session._egSideOpen = !! session._egSideOpen;
         session._egSideCollapsed = !session._egSideOpen;
       }
+      /* Next/Previous must not auto-open Show Answer / solution */
+      session._egShowAnswer = false;
+      try {
+        const showEl = root.querySelector("#egShowAns, #qxPracShowAns");
+        if (showEl && !egCheckedAt(session, idx)) showEl.checked = false;
+      } catch (_) { /* */ }
       markCurrentPal(idx);
       api.goTo(idx);
     }

@@ -1,10 +1,10 @@
 {
-  "build": "qxmd193",
-  "cache": "qx-pwa-qxmd193",
-  "title": "qxmd193 · blue toolbar back on top",
-  "body": "Header was CSS-pinned under Previous/Next (white). Toolbar is blue at the top again with Theme, Aa, All Q, Palette, Bookmark, Group, Full, Report.",
+  "build": "qxmd194",
+  "cache": "qx-pwa-qxmd194",
+  "title": "qxmd194 · PYQ papers + footer Next/Prev after Check Answer",
+  "body": "PYQ mocks load from Hosting JSON. After Check Answer, Previous/Next stay on a white bar (not grey). Next does not auto-open Show Answer. Solution drops restated question text.",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app",
   "site": "https://www.quantrexacademy.com",
   "package": "com.quantrexacademy.app",
-  "ts": 1930000000000
+  "ts": 1940000000000
 }

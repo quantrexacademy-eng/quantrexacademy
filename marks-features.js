@@ -7204,18 +7204,57 @@ async function viewPyqMock(payload) {
   </div>`;
 }
 
-/** Load one PYQ paper via catalog ID list (Marks order). Never JSON.parse a 15k–41k bank on the phone. */
+/** Load one PYQ paper from Hosting JSON first (USB packs). Catalog API is fallback only. */
 async function qxLoadPyqPaper(slug, source) {
   const src = String(source || "");
   const norm = (s) => String(s || "").replace(/\s+/g, " ").trim().toLowerCase();
   const want = norm(src);
-  let qs = [];
+  const bust = (typeof window !== "undefined" && window.QX_BUILD) ? window.QX_BUILD : "qxmd194";
+  function ingest(list) {
+    return (list || []).map(function (rec) {
+      const q = Object.assign({}, rec, { _bank: slug, source: rec.source || src, _catalogTried: true });
+      try {
+        if (typeof QuantrexQFormat !== "undefined" && QuantrexQFormat.getType) QuantrexQFormat.getType(q);
+      } catch (_) { /* */ }
+      if (typeof QUESTIONS !== "undefined" && !QUESTIONS.some(function (x) { return x && String(x.id) === String(q.id); })) {
+        QUESTIONS.push(q);
+      }
+      return q;
+    });
+  }
+  function pickFile(papers, wantSrc) {
+    if (!papers) return "";
+    if (typeof papers === "string") return papers;
+    if (papers[src]) return papers[src];
+    const keys = Object.keys(papers);
+    for (let i = 0; i < keys.length; i++) {
+      if (norm(keys[i]) === wantSrc) return papers[keys[i]];
+    }
+    const compact = wantSrc.replace(/[^a-z0-9]+/g, "");
+    for (let i = 0; i < keys.length; i++) {
+      if (norm(keys[i]).replace(/[^a-z0-9]+/g, "") === compact) return papers[keys[i]];
+    }
+    return "";
+  }
   try {
     if (typeof showToast === "function") showToast("Loading paper…");
-    const url = "/api/catalog?action=paper&exam=" + encodeURIComponent(slug) + "&source=" + encodeURIComponent(src) + "&v=qxfast1";
-    // Network-first (no force-cache hang on stale SW/HTTP); abort soft at 4s
+    const idxRes = await fetch("data/nav/pyq_papers/" + encodeURIComponent(slug) + "/_index.json?v=" + encodeURIComponent(bust), { cache: "no-cache" });
+    if (idxRes.ok) {
+      const idx = await idxRes.json();
+      const file = pickFile(idx.papers || idx, want);
+      if (file) {
+        const paperRes = await fetch("data/nav/pyq_papers/" + encodeURIComponent(slug) + "/" + file + "?v=" + encodeURIComponent(bust), { cache: "no-cache" });
+        if (paperRes.ok) {
+          const paper = await paperRes.json();
+          if (Array.isArray(paper.questions) && paper.questions.length) return ingest(paper.questions);
+        }
+      }
+    }
+  } catch (_) { /* */ }
+  try {
+    const url = "/api/catalog?action=paper&exam=" + encodeURIComponent(slug) + "&source=" + encodeURIComponent(src) + "&v=qxmd194";
     const ctrl = (typeof AbortController !== "undefined") ? new AbortController() : null;
-    const to = setTimeout(function () { try { if (ctrl) ctrl.abort(); } catch (_) { /* */ } }, 4000);
+    const to = setTimeout(function () { try { if (ctrl) ctrl.abort(); } catch (_) { /* */ } }, 6000);
     let data = null;
     try {
       const r = await fetch(url, { cache: "no-cache", signal: ctrl ? ctrl.signal : undefined });
@@ -7223,25 +7262,12 @@ async function qxLoadPyqPaper(slug, source) {
     } finally {
       clearTimeout(to);
     }
-    if (data && data.ok && Array.isArray(data.questions) && data.questions.length) {
-      qs = data.questions.map((rec) => {
-        const q = Object.assign({}, rec, { _bank: slug, source: rec.source || src, _catalogTried: true });
-        try {
-          if (typeof QuantrexQFormat !== "undefined" && QuantrexQFormat.getType) QuantrexQFormat.getType(q);
-        } catch (_) { /* */ }
-        if (typeof QUESTIONS !== "undefined" && !QUESTIONS.some((x) => x && String(x.id) === String(q.id))) {
-          QUESTIONS.push(q);
-        }
-        return q;
-      });
-    }
+    if (data && data.ok && Array.isArray(data.questions) && data.questions.length) return ingest(data.questions);
   } catch (_) { /* */ }
-  if (qs.length) return qs;
-  qs = (typeof QUESTIONS !== "undefined" ? QUESTIONS : []).filter((q) => q && q._bank === slug && (
+  return (typeof QUESTIONS !== "undefined" ? QUESTIONS : []).filter((q) => q && q._bank === slug && (
     q.source === src || q.paperSource === src || q._sourceFull === src
     || norm(q.source) === want || norm(q.paperSource) === want
   ));
-  return qs;
 }
 
 async function startPyqPaperMock(slug, source, freshStart, practiceOpts) {

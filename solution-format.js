@@ -1228,7 +1228,13 @@ const QuantrexSolution = (() => {
       .replace(/\n{3,}/g, "\n\n");
     try { html = stripLeadingStemEcho(html, q); } catch (_) { /* */ }
     html = String(html || "").replace(/<(div|p|section)[^>]*class="[^"]*(?:eg-q-stem|mtk-q-text|qa-q|qx-question-body)[^"]*"[\s\S]*?<\/\1>/gi, "");
-    try { html = dropRepeatedQuestionBlocks(html, q); } catch (_) { /* */ }
+    try {
+      for (var _si = 0; _si < 12; _si++) {
+        var _nx = dropRepeatedQuestionBlocks(html, q);
+        if (_nx === html) break;
+        html = _nx;
+      }
+    } catch (_) { /* */ }
     // Never re-polish after KaTeX HTML exists (would space class="katex-display")
     if (!/class=["'][^"']*katex/i.test(html)) {
       try { html = polishScientificSymbols(html); } catch (_) { /* */ }
@@ -1246,14 +1252,13 @@ const QuantrexSolution = (() => {
       if (!m || !m[0]) break;
       const bp = stemComparePlain(m[0]);
       if (bp.length < 8) break;
-      const work = /\b(?:hence|therefore|thus|so the|option|statement\s*[i12]|pairs?\s+satisfying|do not belong|total number|for statement)\b/i.test(bp);
-      const head = bp.slice(0, Math.min(42, bp.length));
+      const head = bp.slice(0, Math.min(48, bp.length));
       const toks = bp.split(/\s+/).filter(function (t) { return t.length > 1; });
       const hit = toks.filter(function (t) { return stemP.indexOf(t) >= 0; }).length;
-      const echo = (head.length >= 8 && stemP.indexOf(head) >= 0)
-        || (stemP.slice(0, 28) && bp.indexOf(stemP.slice(0, 28)) >= 0)
-        || (toks.length >= 3 && hit / toks.length >= 0.55);
-      if (echo && !work) {
+      const echo = (head.length >= 8 && stemP.indexOf(head) === 0)
+        || (stemP.slice(0, 24) && bp.indexOf(stemP.slice(0, 24)) === 0)
+        || (toks.length >= 4 && hit / toks.length >= 0.62);
+      if (echo) {
         s = s.slice(m[0].length);
         continue;
       }
