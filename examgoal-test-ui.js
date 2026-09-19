@@ -320,6 +320,23 @@
     return egCheckedAt(session, i);
   }
 
+  function cutStemPrefix(html, q) {
+    const stem = String((q && (q.q || q.question || q.questionText)) || "")
+      .replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim().toLowerCase();
+    const head = stem.slice(0, 40);
+    if (head.length < 16) return html;
+    let s = String(html || "");
+    for (let n = 0; n < 16; n++) {
+      const plain = s.replace(/<[^>]+>/g, " ").replace(/&nbsp;/gi, " ").replace(/\s+/g, " ").trim().toLowerCase();
+      if (plain.indexOf(head) !== 0) break;
+      const m = /^(?:\s|&nbsp;|<br\s*\/?>|<(?:p|div|span|h[1-6]|li)[^>]*>[\s\S]*?<\/(?:p|div|span|h[1-6]|li)>)+/i.exec(s);
+      if (!m || m[0].length < 8) break;
+      if (m[0].length >= s.length - 8) break;
+      s = s.slice(m[0].length);
+    }
+    return s;
+  }
+
   function solutionHtml(q) {
     let solContent = "";
     try {
@@ -331,6 +348,7 @@
           }
         } catch (_) { /* */ }
         solContent = String(solContent || "").replace(/<(div|p|section)[^>]*class="[^"]*(?:eg-q-stem|mtk-q-text|qa-q)[^"]*"[\s\S]*?<\/\1>/gi, "");
+        solContent = cutStemPrefix(solContent, q);
       }
     } catch (_) { /* */ }
     if (!solContent) {
@@ -376,7 +394,7 @@
           lab.replace(/</g, "&lt;") + "</span></div>";
       }
     }
-    return diffBadge + solContent;
+    return cutStemPrefix(diffBadge + solContent, q);
   }
 
   function dwellSec(session) {
@@ -572,19 +590,9 @@
     /* Prev/Next always present; Marks-like Mark|Clear + Save&Next on mobile */
     /* qxmd171 Marks foot DOM; qxmd173 mobile CSS hides Clear — Prev|Next primary; Show Answer unchanged */
     const foot = practice
-      ? '<div class="eg-foot eg-foot-practice eg-marks-foot" id="egFoot" style="display:flex!important;flex-direction:column!important;background:#ffffff!important;border-top:1px solid #e5e7eb!important;box-shadow:none!important;position:fixed!important;left:0!important;right:0!important;bottom:0!important;z-index:2147483000!important;padding:8px 12px calc(8px + env(safe-area-inset-bottom,0px))!important;gap:8px!important;">' +
-        '<div class="eg-foot-extra eg-foot-left" id="egFootExtra" style="background:#ffffff!important;width:100%!important;">' +
-        showSwitch +
-        '<button type="button" class="eg-btn eg-btn-review" id="qxReviewNextBtn">Mark for Review</button>' +
-        '<button type="button" class="eg-btn eg-btn-clear" id="qxClearBtn">Clear Response</button>' +
-        "</div>" +
-        '<div class="eg-foot-nav eg-foot-right" style="display:grid!important;grid-template-columns:1fr 1fr!important;gap:8px!important;width:100%!important;order:99!important;visibility:visible!important;">' +
-        (footClose || "") +
-        '<button type="button" class="eg-btn eg-btn-more" id="egFootMore" title="More" aria-label="More" aria-expanded="false" hidden>⋯</button>' +
-        '<button type="button" class="eg-btn" id="qxPrevBtn" style="display:inline-flex!important;visibility:visible!important;opacity:1!important;min-height:48px!important;background:#ffffff!important;color:#1565C0!important;border:2px solid #1565C0!important;border-radius:10px!important;font-weight:800!important;"' + (firstQ ? " disabled" : "") + ">Previous</button>" +
-        '<button type="button" class="eg-btn eg-btn-next" id="qxNextBtn" style="display:inline-flex!important;visibility:visible!important;opacity:1!important;min-height:48px!important;background:#1565C0!important;color:#ffffff!important;border:2px solid #1565C0!important;border-radius:10px!important;font-weight:800!important;"' + (lastQ ? " disabled" : "") + ">Next</button>" +
-        "</div>" +
-        '<div class="eg-foot-sheet-scrim" id="egFootSheetScrim" hidden aria-hidden="true"></div>' +
+      ? '<div class="eg-foot eg-foot-practice" id="egFoot" style="display:grid!important;grid-template-columns:1fr 1fr!important;gap:8px!important;background:#fff!important;position:fixed!important;left:0!important;right:0!important;bottom:0!important;z-index:2147483646!important;padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px))!important;border-top:1px solid #e5e7eb!important;">' +
+        '<button type="button" class="eg-btn" id="qxPrevBtn" style="display:inline-flex!important;visibility:visible!important;min-height:48px!important;background:#fff!important;color:#1565C0!important;border:2px solid #1565C0!important;border-radius:10px!important;font-weight:800!important;"' + (firstQ ? " disabled" : "") + ">Previous</button>" +
+        '<button type="button" class="eg-btn eg-btn-next" id="qxNextBtn" style="display:inline-flex!important;visibility:visible!important;min-height:48px!important;background:#1565C0!important;color:#fff!important;border:2px solid #1565C0!important;border-radius:10px!important;font-weight:800!important;"' + (lastQ ? " disabled" : "") + ">Next</button>" +
         "</div>"
       : '<div class="eg-foot" id="egFoot">' +
         '<div class="eg-foot-left">' +
@@ -1270,36 +1278,15 @@
       if (e) { e.preventDefault(); e.stopPropagation(); }
       var ok = false;
       try { ok = !!checkAnswer(session, api.getQ); } catch (_) { ok = false; }
-      /* qxmd177: freeze scroll across Check Answer + refresh (no Q→top jump) */
-      var _chkSnap = egCaptureScroll(root);
-      egLockScrollJump(root, true);
       if (ok) {
         try {
-          session._egShowAnswer = false;
-          var seOn = root.querySelector("#egShowAns");
-          if (seOn) seOn.checked = true;
-        } catch (_) { /* */ }
-        try { revealPracticeSolution(root, api); } catch (_rev) {
-          try { console.warn("[egCheckBtn reveal]", _rev); } catch (_) { /* */ }
-        }
-      }
-      if (typeof api.refresh === "function") {
-        try {
-          var _refRet = api.refresh();
-          var _restore = function () {
-            try { egRestoreScroll(_chkSnap); egLockScrollJump(root, false); } catch (_) { /* */ }
-          };
-          if (_refRet && typeof _refRet.then === "function") {
-            _refRet.then(_restore).catch(_restore);
-          } else {
-            setTimeout(_restore, 0);
-            setTimeout(_restore, 80);
-            setTimeout(_restore, 200);
+          if (typeof QuantrexQFormat !== "undefined" && QuantrexQFormat.applyPracticeResult) {
+            QuantrexQFormat.applyPracticeResult(root, api.getQ(session.ids[session.idx]), session.answers[session.idx]);
+          } else if (typeof ExamgoalTestUI !== "undefined" && ExamgoalTestUI.applyOptDecor) {
+            ExamgoalTestUI.applyOptDecor(root, session, api.getQ(session.ids[session.idx]), session.idx);
           }
-        } catch (_) { egRestoreScroll(_chkSnap); }
-      } else {
-        egRestoreScroll(_chkSnap);
-        egLockScrollJump(root, false);
+        } catch (_) { /* */ }
+        try { revealPracticeSolution(root, api); } catch (_) { /* */ }
       }
       try { if (typeof forceFootVisible === "function") forceFootVisible(true); } catch (_) { /* */ }
     };
@@ -1858,6 +1845,11 @@
       if (window._egThemeLock && Date.now() - window._egThemeLock < 400) return;
       window._egThemeLock = Date.now();
       if (typeof toggleTestTheme === "function") toggleTestTheme();
+      try {
+        var th = document.documentElement.getAttribute("data-theme") || "dark";
+        localStorage.setItem("quantrex_theme", th);
+        localStorage.setItem("qx_test_theme", th);
+      } catch (_) { /* */ }
     };
     const fmtBtn = root.querySelector("#egFmtBtn");
     if (fmtBtn) fmtBtn.onclick = function (e) {

@@ -1,3 +1,26 @@
+/* Bottom Show-Answer strip removed — only Previous | Next */
+.eg-test-root .eg-foot-extra,
+.eg-test-root #egFootExtra,
+.eg-test-root .eg-foot-left {
+  display: none !important;
+  height: 0 !important;
+  overflow: hidden !important;
+}
+.eg-test-root #egFoot,
+.eg-test-root .eg-foot {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  background: #ffffff !important;
+  z-index: 2147483646 !important;
+}
+.eg-test-root #qxPrevBtn,
+.eg-test-root #qxNextBtn {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  min-height: 48px !important;
+}
+
 /* Number strip must NOT cover options. Hidden unless All Q is on. */
 .eg-test-root .eg-qbar,
 .eg-test-root .eg-qbar.eg-strip,
