@@ -13,7 +13,7 @@
     } else if (!l.id) {
       l.id = "egTestUiCss";
     }
-    const href = "assets/examgoal-test-ui.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd207");
+    const href = "assets/examgoal-test-ui.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd210");
     if (l.getAttribute("href") !== href) l.href = href;
     let chrome = document.getElementById("qxPracChromeCss");
     if (!chrome) {
@@ -22,7 +22,7 @@
       chrome.rel = "stylesheet";
       document.head.appendChild(chrome);
     }
-    const ch = "assets/qx-prac-chrome.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd207");
+    const ch = "assets/qx-prac-chrome.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd210");
     if (chrome.getAttribute("href") !== ch) chrome.href = ch;
     let both = document.getElementById("qxBothThemesCss");
     if (!both) {
@@ -31,7 +31,7 @@
       both.rel = "stylesheet";
       document.head.appendChild(both);
     }
-    const bh = "assets/qx-both-themes.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd207");
+    const bh = "assets/qx-both-themes.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd210");
     if (both.getAttribute("href") !== bh) both.href = bh;
     let r = document.getElementById("qxPracticeReadCss");
     if (!r) {
@@ -40,7 +40,7 @@
       r.rel = "stylesheet";
       document.head.appendChild(r);
     }
-    const rh = "assets/qx-practice-read.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd207");
+    const rh = "assets/qx-practice-read.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd210");
     if (r.getAttribute("href") !== rh) r.href = rh;
   }
 
@@ -1093,6 +1093,14 @@
     try {
       root.classList.add("qx-sol-showing", "eg-qxmd180", "eg-qxmd182");
       root.classList.remove("eg-sol-showing", "eg-qxmd175", "eg-qxmd176", "eg-qxmd177", "eg-qxmd179");
+      try {
+        var _padFn = null;
+        try { if (typeof syncEgFootPad === "function") _padFn = syncEgFootPad; } catch (_) {}
+        if (!_padFn && typeof window._qxSyncEgFootPad === "function") _padFn = window._qxSyncEgFootPad;
+        if (!_padFn && typeof window.qxSyncEgFootPad === "function") _padFn = window.qxSyncEgFootPad;
+        if (typeof _padFn === "function") _padFn(root);
+        /* qxmd210 after sol */
+      } catch (_) { /* */ }
       const egRoot = root.classList.contains("eg-test-root") ? root : (root.closest && root.closest(".eg-test-root"));
       if (egRoot) {
         egRoot.classList.add("qx-sol-showing", "eg-qxmd180", "eg-qxmd182");
@@ -1403,6 +1411,48 @@
       } catch (_) { /* */ }
     } catch (_) { /* */ }
     /* qxeg7: foot already in DOM from render — CSS nuclear visibility; debounce thrash */
+    /* qxmd210: measure fixed #egFoot and pad scroll areas so SOLUTION clears the strip */
+    function syncEgFootPad(scope) {
+      try {
+        var host = scope || root;
+        var foot = (host && host.querySelector) ? host.querySelector("#egFoot, .eg-foot") : null;
+        if (!foot) foot = document.querySelector("#egFoot, .eg-foot.eg-foot-marks");
+        if (!foot) return;
+        var h = Math.ceil(foot.getBoundingClientRect().height || foot.offsetHeight || 64);
+        if (!isFinite(h) || h < 48) h = 64;
+        if (h > 140) h = 140;
+        var pad = h + 28;
+        var solOpen = !!(host && host.classList && (host.classList.contains("qx-sol-showing") || host.classList.contains("eg-sol-showing")));
+        if (solOpen) pad = h + 48;
+        var cssPad = "calc(" + pad + "px + env(safe-area-inset-bottom, 0px))";
+        try {
+          document.documentElement.style.setProperty("--eg-foot-h", h + "px");
+          document.documentElement.style.setProperty("--eg-foot-pad", cssPad);
+        } catch (_) {}
+        var nodes = [];
+        try {
+          if (host && host.querySelectorAll) {
+            host.querySelectorAll(".eg-main, .eg-q-card, .mtk-main, .mtk-body").forEach(function (n) { nodes.push(n); });
+          }
+        } catch (_) {}
+        try {
+          var appMain = document.getElementById("app-main");
+          if (appMain) nodes.push(appMain);
+        } catch (_) {}
+        nodes.forEach(function (n) {
+          if (!n || !n.style) return;
+          try {
+            n.style.setProperty("padding-bottom", cssPad, "important");
+            n.style.setProperty("scroll-padding-bottom", cssPad, "important");
+          } catch (_) {}
+        });
+        try {
+          var sol = (host && host.querySelector) ? host.querySelector("#egSolPanel, .eg-sol-panel, #qaSolReveal") : null;
+          if (sol && sol.style) sol.style.setProperty("margin-bottom", "16px", "important");
+        } catch (_) {}
+      } catch (_) { /* */ }
+    }
+        try { window._qxSyncEgFootPad = syncEgFootPad; } catch (_) {}
     var _egFootRaf = 0;
     var _egFootLast = 0;
     var _egFootPainted = false;
@@ -1413,29 +1463,32 @@
         /* qxmd207: Marks practice = ONE horizontal white strip Previous | Check Answer | Next */
         const marksRow = !!(foot.classList.contains("eg-foot-marks") || foot.classList.contains("eg-foot-practice") || foot.querySelector("#egCheckBtn"));
         foot.style.setProperty("display", "grid", "important");
-        foot.style.setProperty("grid-template-columns", marksRow ? "1fr 1.25fr 1fr" : "1fr 1fr", "important");
+        /* qxmd210: always one Marks row - never wrap into stacked bars */
+        foot.style.setProperty("grid-template-columns", marksRow ? "1fr 1.35fr 1fr" : "1fr 1fr", "important");
         foot.style.setProperty("flex-direction", "row", "important");
-        foot.style.setProperty("flex-wrap", "wrap", "important");
-        foot.style.setProperty("align-items", "stretch", "important");
+        foot.style.setProperty("flex-wrap", "nowrap", "important");
+        foot.style.setProperty("align-items", "center", "important");
         foot.style.setProperty("gap", "8px", "important");
         foot.style.setProperty("background", "#ffffff", "important");
         foot.style.setProperty("visibility", "visible", "important");
+        foot.style.setProperty("padding", "8px 12px calc(8px + env(safe-area-inset-bottom, 0px))", "important");
         const nav = foot.querySelector(".eg-foot-nav, .eg-foot-right");
         if (nav) {
-          nav.style.setProperty("display", "grid", "important");
-          nav.style.setProperty("grid-template-columns", "1fr 1fr", "important");
-          nav.style.setProperty("width", "100%", "important");
+          nav.style.setProperty("display", "contents", "important");
           nav.style.setProperty("visibility", "visible", "important");
         }
-        ["qxPrevBtn", "egCheckBtn", "qxNextBtn"].forEach(function (id) {
+        ["qxPrevBtn", "egCheckBtn", "qxNextBtn", "qxPracPrev", "qxPracSubmit", "qxPracNext"].forEach(function (id) {
           const b = foot.querySelector("#" + id);
           if (!b) return;
           b.style.setProperty("display", "inline-flex", "important");
           b.style.setProperty("visibility", "visible", "important");
           b.style.setProperty("opacity", "1", "important");
-          b.style.setProperty("min-height", "48px", "important");
+          b.style.setProperty("min-height", "40px", "important");
+          b.style.setProperty("height", "40px", "important");
+          b.style.setProperty("border-radius", "999px", "important");
           b.style.setProperty("width", "100%", "important");
         });
+        try { if (typeof syncEgFootPad === "function") syncEgFootPad(root); } catch (_) {}
         try { if (typeof root._egBindNavBtns === "function") root._egBindNavBtns(); } catch (_) {}
       } catch (_) { /* */ }
     }
@@ -1453,6 +1506,21 @@
         try { forceFootVisibleNow(false); } catch (_) {}
       });
     }
+    
+    try {
+      if (!root._qxmd210FootPadBound) {
+        root._qxmd210FootPadBound = true;
+        var _padT = 0;
+        function _onPad() {
+          clearTimeout(_padT);
+          _padT = setTimeout(function () { try { syncEgFootPad(root); forceFootVisible(false); } catch (_) {} }, 80);
+        }
+        window.addEventListener("resize", _onPad, { passive: true });
+        window.addEventListener("orientationchange", _onPad, { passive: true });
+        try { syncEgFootPad(root); } catch (_) {}
+      }
+    } catch (_) { /* qxmd210-foot-pad-resize */ }
+
     function syncCycleBtn() {
       try {
         const cf = chromeFlags(session);
@@ -2316,3 +2384,38 @@
     applyPalettePrefOpen: applyPalettePrefOpen
   };
 })(window);
+
+/* qxmd210 global foot pad (usable from revealPracticeSolution / allen) */
+(function (g) {
+  function qxSyncEgFootPadGlobal(scope) {
+    try {
+      if (typeof g._qxSyncEgFootPad === "function") return g._qxSyncEgFootPad(scope);
+      var host = scope || document.querySelector(".eg-test-root, .allen-practice, .qx-practice-page") || document;
+      var foot = (host.querySelector && host.querySelector("#egFoot, .eg-foot")) || document.querySelector("#egFoot");
+      if (!foot) return;
+      var h = Math.ceil(foot.getBoundingClientRect().height || 64);
+      if (!isFinite(h) || h < 48) h = 64;
+      if (h > 140) h = 140;
+      var solOpen = !!(host.classList && (host.classList.contains("qx-sol-showing") || host.classList.contains("eg-sol-showing")));
+      var pad = solOpen ? h + 48 : h + 28;
+      var cssPad = "calc(" + pad + "px + env(safe-area-inset-bottom, 0px))";
+      document.documentElement.style.setProperty("--eg-foot-h", h + "px");
+      document.documentElement.style.setProperty("--eg-foot-pad", cssPad);
+      var sels = [".eg-main", ".eg-q-card", ".mtk-main", ".mtk-body", "#app-main"];
+      for (var i = 0; i < sels.length; i++) {
+        var nodes = document.querySelectorAll(sels[i]);
+        for (var j = 0; j < nodes.length; j++) {
+          try {
+            nodes[j].style.setProperty("padding-bottom", cssPad, "important");
+            nodes[j].style.setProperty("scroll-padding-bottom", cssPad, "important");
+          } catch (_) {}
+        }
+      }
+      var sol = document.querySelector("#egSolPanel, .eg-sol-panel, #qaSolReveal");
+      if (sol) sol.style.setProperty("margin-bottom", "16px", "important");
+    } catch (_) {}
+  }
+  g._qxSyncEgFootPad = g._qxSyncEgFootPad || qxSyncEgFootPadGlobal;
+  g.qxSyncEgFootPad = qxSyncEgFootPadGlobal;
+})(typeof window !== "undefined" ? window : this);
+

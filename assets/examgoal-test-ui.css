@@ -6479,3 +6479,43 @@ html body .eg-test-root #qxNumInput {
     display: none !important;
   }
 }
+
+
+/* ========== qxmd210-sol-above-foot: SOLUTION clears Marks white strip ========== */
+.eg-test-root,
+.allen-practice,
+.qx-practice-page {
+  --eg-foot-h: 64px;
+  --eg-foot-pad: calc(var(--eg-foot-h) + 28px + env(safe-area-inset-bottom, 0px));
+}
+.eg-test-root .eg-main,
+.eg-test-root .eg-q-card,
+.mtk-test-root.allen-practice .mtk-main,
+.qx-practice-page .eg-main {
+  padding-bottom: var(--eg-foot-pad) !important;
+  scroll-padding-bottom: var(--eg-foot-pad) !important;
+}
+.eg-test-root.qx-sol-showing .eg-q-card,
+.allen-practice.qx-sol-showing .mtk-main {
+  padding-bottom: calc(var(--eg-foot-h) + 48px + env(safe-area-inset-bottom, 0px)) !important;
+}
+#egSolPanel,
+.eg-sol-panel,
+.eg-sol-marks-way,
+#qaSolReveal {
+  position: relative !important;
+  bottom: auto !important;
+  margin-bottom: 16px !important;
+}
+/* Keep foot one-row compact even if older mobile rules stacked it */
+@media (max-width: 900px) {
+  .eg-test-root .eg-foot.eg-foot-marks,
+  .eg-test-root .eg-foot-practice,
+  .allen-practice .eg-foot.eg-foot-marks,
+  .qx-prac-foot.eg-foot-marks {
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1.35fr 1fr !important;
+  }
+}

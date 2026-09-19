@@ -1,4 +1,4 @@
-/* qxmd207: ONE white strip Previous | Check Answer | Next (row; wrap only if extremely narrow) */
+﻿/* qxmd207: ONE white strip Previous | Check Answer | Next (row; wrap only if extremely narrow) */
 .eg-test-root #egFoot,
 .eg-test-root .eg-foot,
 .eg-test-root .eg-foot-practice,
@@ -208,4 +208,206 @@ body.allen-cbt-active #app-main {
 .mtk-test-root[data-test-theme="dark"] .eg-foot-marks {
   background: #0f172a !important;
   border-top-color: #334155 !important;
+}
+
+/* ========== qxmd210: Marks-compact white strip + SOLUTION scroll ABOVE foot ==========
+   Keep the WHITE footer strip (never remove/collapse). Make it Marks-thin one-row pills.
+   Main scroll areas get padding-bottom >= measured foot height so Q+SOL never jam under it.
+   Zoom/XL text: scroll parents stay overflow-y auto (no clip without scroll). */
+:root {
+  --eg-foot-h: 64px;
+  --eg-foot-pad: calc(var(--eg-foot-h) + 28px + env(safe-area-inset-bottom, 0px));
+}
+
+/* Compact Marks strip — always 3 columns, never stack into a giant slab */
+.eg-test-root #egFoot,
+.eg-test-root .eg-foot,
+.eg-test-root .eg-foot-practice,
+.eg-test-root .eg-foot-marks,
+.eg-test-root.eg-mobile #egFoot,
+.eg-test-root.eg-mobile .eg-foot,
+.eg-test-root.eg-desktop-mode #egFoot,
+.eg-test-root.eg-desktop-mode .eg-foot,
+.eg-test-root.qx-sol-showing #egFoot,
+.eg-test-root.qx-sol-showing .eg-foot,
+.eg-test-root.eg-sol-showing #egFoot,
+.eg-test-root.eg-sol-showing .eg-foot,
+.allen-practice .eg-foot.eg-foot-marks,
+.allen-practice .eg-foot-practice,
+.mtk-test-root.allen-practice #egFoot,
+.qx-practice-page .eg-foot-marks,
+.qx-prac-foot.eg-foot-marks {
+  display: grid !important;
+  grid-template-columns: 1fr 1.35fr 1fr !important;
+  grid-auto-flow: row !important;
+  gap: 8px !important;
+  align-items: center !important;
+  background: #ffffff !important;
+  border-top: 1px solid #e8eaed !important;
+  box-shadow: 0 -1px 0 rgba(15, 23, 42, 0.04) !important;
+  position: fixed !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 2147483646 !important;
+  padding: 8px 12px calc(8px + env(safe-area-inset-bottom, 0px)) !important;
+  width: 100% !important;
+  max-width: 100vw !important;
+  box-sizing: border-box !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  transform: none !important;
+  min-height: 0 !important;
+  height: auto !important;
+  max-height: none !important;
+}
+
+/* Never collapse to stacked full-width bars (old 360px rule removed) */
+@media (max-width: 420px) {
+  .eg-test-root #egFoot,
+  .eg-test-root .eg-foot-marks,
+  .eg-test-root .eg-foot-practice,
+  .allen-practice .eg-foot.eg-foot-marks,
+  .qx-prac-foot.eg-foot-marks {
+    grid-template-columns: 1fr 1.4fr 1fr !important;
+    gap: 6px !important;
+    padding: 6px 8px calc(6px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+}
+
+/* Pill buttons — Previous/Next light, Check Answer primary light-blue */
+.eg-test-root #egFoot #qxPrevBtn,
+.eg-test-root #egFoot #egCheckBtn,
+.eg-test-root #egFoot #qxNextBtn,
+.allen-practice #egFoot #qxPracPrev,
+.allen-practice #egFoot #qxPracSubmit,
+.allen-practice #egFoot #qxPracNext,
+.qx-prac-foot #qxPracPrev,
+.qx-prac-foot #qxPracSubmit,
+.qx-prac-foot #qxPracNext {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  min-height: 40px !important;
+  height: 40px !important;
+  max-height: 44px !important;
+  border-radius: 999px !important;
+  font-weight: 700 !important;
+  font-size: 13px !important;
+  line-height: 1.1 !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 10px !important;
+  box-sizing: border-box !important;
+  white-space: nowrap !important;
+}
+.eg-test-root #egFoot #qxPrevBtn,
+.eg-test-root #egFoot #qxNextBtn,
+.allen-practice #egFoot #qxPracPrev,
+.allen-practice #egFoot #qxPracNext,
+.qx-prac-foot #qxPracPrev,
+.qx-prac-foot #qxPracNext {
+  background: #f8fafc !important;
+  color: #334155 !important;
+  border: 1px solid #d0d7de !important;
+  box-shadow: none !important;
+}
+.eg-test-root #egFoot #egCheckBtn,
+.allen-practice #egFoot #qxPracSubmit,
+.qx-prac-foot #qxPracSubmit {
+  background: #5b9cf5 !important;
+  color: #ffffff !important;
+  border: 1px solid #4a8ce8 !important;
+  box-shadow: none !important;
+}
+.eg-test-root #egFoot #egCheckBtn:disabled,
+.allen-practice #egFoot #qxPracSubmit:disabled,
+.qx-prac-foot #qxPracSubmit:disabled {
+  background: #94a3b8 !important;
+  border-color: #94a3b8 !important;
+  color: #fff !important;
+}
+
+/* Scroll padding: Q + options + SOLUTION clear the fixed white strip */
+.eg-test-root .eg-main,
+.eg-test-root .eg-q-card,
+.eg-test-root.qx-sol-showing .eg-main,
+.eg-test-root.qx-sol-showing .eg-q-card,
+.allen-practice .mtk-main,
+.allen-practice .mtk-body,
+.qx-practice-page,
+.qx-practice-page .eg-main,
+body.allen-practice-active #app-main,
+body.allen-cbt-active #app-main,
+body.marks-test-active #app-main {
+  padding-bottom: var(--eg-foot-pad) !important;
+  scroll-padding-bottom: var(--eg-foot-pad) !important;
+  box-sizing: border-box !important;
+}
+
+/* Extra air when SOLUTION is open so card bottom never sits flush on strip */
+.eg-test-root.qx-sol-showing .eg-q-card,
+.eg-test-root.qx-sol-showing .eg-main,
+.allen-practice.qx-sol-showing .mtk-main,
+.qx-practice-page.qx-sol-showing {
+  padding-bottom: calc(var(--eg-foot-h) + 48px + env(safe-area-inset-bottom, 0px)) !important;
+}
+
+#egSolPanel,
+.eg-sol-panel,
+.eg-sol-marks-way,
+#qaSolReveal,
+.qx-sol-reveal-box,
+.allen-practice #qaSolReveal,
+.allen-practice .eg-sol-panel {
+  position: relative !important;
+  inset: auto !important;
+  bottom: auto !important;
+  margin-bottom: calc(12px + 8px) !important;
+  z-index: 1 !important;
+}
+
+/* Zoom / Aa XL: keep scroll, never clip without a scrollbar */
+.eg-test-root .eg-q-card,
+.allen-practice .mtk-main,
+body.allen-practice-active #app-main,
+body.marks-test-active #app-main {
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  overscroll-behavior: contain;
+  touch-action: pan-y pinch-zoom;
+}
+.eg-test-root .eg-main {
+  overflow: hidden !important; /* flex shell; child .eg-q-card scrolls */
+  min-height: 0 !important;
+}
+.allen-practice.mtk-test-root {
+  overflow: hidden !important;
+}
+.allen-practice .mtk-body {
+  overflow: hidden !important;
+  min-height: 0 !important;
+}
+
+.mtk-test-root[data-test-theme="dark"].allen-practice #egFoot,
+.mtk-test-root[data-test-theme="dark"] .eg-foot-marks,
+.eg-test-root[data-test-theme="dark"] #egFoot,
+.eg-test-root[data-test-theme="dark"] .eg-foot-marks {
+  background: #0f172a !important;
+  border-top-color: #334155 !important;
+}
+.mtk-test-root[data-test-theme="dark"] #egFoot #qxPracPrev,
+.mtk-test-root[data-test-theme="dark"] #egFoot #qxPracNext,
+.eg-test-root[data-test-theme="dark"] #egFoot #qxPrevBtn,
+.eg-test-root[data-test-theme="dark"] #egFoot #qxNextBtn {
+  background: #1e293b !important;
+  color: #e2e8f0 !important;
+  border-color: #475569 !important;
 }

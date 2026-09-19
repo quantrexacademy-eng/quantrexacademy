@@ -8,7 +8,7 @@
 (function (global) {
   "use strict";
 
-  var VERSION = "qxfst1";
+  var VERSION = "qxfst210";
   var IDB_NAME = "qx_chapter_banks_v1";
   var IDB_STORE = "chapters";
   var IDB_TTL_MS = 7 * 24 * 60 * 60 * 1000;
@@ -186,6 +186,35 @@
     } catch (_) { /* */ }
   }
 
+
+  function prefetchNextQuestionImages() {
+    try {
+      var ids = null, idx = 0;
+      if (global._qxPracticeCtx && global._qxPracticeCtx.ids) {
+        ids = global._qxPracticeCtx.ids; idx = global._qxPracticeCtx.idx || 0;
+      } else if (global.session && global.session.ids) {
+        ids = global.session.ids; idx = global.session.idx || 0;
+      }
+      if (!ids || idx + 1 >= ids.length) return;
+      var nid = ids[idx + 1];
+      var q = null;
+      try { q = typeof global.getQ === "function" ? global.getQ(nid) : null; } catch (_) { q = null; }
+      if (!q) return;
+      var html = [q.q, q.question, q.body, q.stem, q.solution, q.sol].filter(Boolean).join(" ");
+      var re = /(?:src|data-src)=["']([^"']+\.(?:png|jpe?g|webp|gif|svg)[^"']*)["']/ig;
+      var m, n = 0;
+      while ((m = re.exec(html)) && n < 4) {
+        try {
+          var img = new Image();
+          img.decoding = "async";
+          img.src = m[1];
+          n++;
+        } catch (_) {}
+      }
+      if (n) mark("prefetch-next-imgs n=" + n);
+    } catch (_) { /* */ }
+  }
+
   function prefetchNextQuestions() {
     try {
       var ids = null;
@@ -199,7 +228,7 @@
       }
       if (!ids || !ids.length) return;
       var near = [];
-      for (var d = 1; d <= 3; d++) {
+      for (var d = 1; d <= 1; d++) { /* qxmd210: 1 ahead only */
         if (idx + d < ids.length) near.push(ids[idx + d]);
         if (idx - d >= 0 && d === 1) near.push(ids[idx - d]);
       }
@@ -208,7 +237,7 @@
         if (_prefetchBusy[k]) return false;
         _prefetchBusy[k] = true;
         return true;
-      }).slice(0, 4);
+      }).slice(0, 1); /* qxmd210 */
       if (!near.length) return;
       var t0 = performance.now();
       var jobs = [];
@@ -238,7 +267,7 @@
       try { global.QxPerf.lazyImages(document.getElementById("app-main")); } catch (_) { /* */ }
     }
     // Defer neighbor prefetch so current paint wins
-    var run = function () { prefetchNextQuestions(); };
+    var run = function () { prefetchNextQuestionImages(); prefetchNextQuestions(); };
     if (typeof requestIdleCallback === "function") requestIdleCallback(run, { timeout: 900 });
     else setTimeout(run, 60);
     mark("question-paint", t0);

@@ -994,3 +994,40 @@ function showAllenInstructions(config, onDone, onCancel) {
   window.scrollTo(0, 0);
 }
 window.showAllenInstructions = showAllenInstructions;
+
+/* qxmd210-allen-foot-pad: keep SOLUTION above Marks white strip */
+(function () {
+  function syncAllenFootPad() {
+    try {
+      var foot = document.querySelector(".allen-practice #egFoot, .allen-practice .eg-foot-marks, #egFoot");
+      if (!foot) return;
+      var h = Math.ceil(foot.getBoundingClientRect().height || 64);
+      if (!isFinite(h) || h < 48) h = 64;
+      if (h > 140) h = 140;
+      var root = document.querySelector(".allen-practice, .mtk-test-root.allen-practice");
+      var solOpen = !!(root && root.classList && root.classList.contains("qx-sol-showing"));
+      var pad = (solOpen ? h + 48 : h + 28);
+      var cssPad = "calc(" + pad + "px + env(safe-area-inset-bottom, 0px))";
+      try {
+        document.documentElement.style.setProperty("--eg-foot-h", h + "px");
+        document.documentElement.style.setProperty("--eg-foot-pad", cssPad);
+      } catch (_) {}
+      [".mtk-main", ".mtk-body", "#app-main", ".eg-q-card"].forEach(function (sel) {
+        var n = document.querySelector(sel);
+        if (n && n.style) {
+          n.style.setProperty("padding-bottom", cssPad, "important");
+          n.style.setProperty("scroll-padding-bottom", cssPad, "important");
+        }
+      });
+      var sol = document.querySelector("#qaSolReveal, #egSolPanel, .eg-sol-panel");
+      if (sol && sol.style) sol.style.setProperty("margin-bottom", "16px", "important");
+    } catch (_) {}
+  }
+  try {
+    document.addEventListener("qx:question-rendered", function () { setTimeout(syncAllenFootPad, 30); });
+    window.addEventListener("resize", function () { setTimeout(syncAllenFootPad, 80); }, { passive: true });
+    setTimeout(syncAllenFootPad, 100);
+  } catch (_) {}
+  try { window._qxSyncAllenFootPad = syncAllenFootPad; } catch (_) {}
+})();
+

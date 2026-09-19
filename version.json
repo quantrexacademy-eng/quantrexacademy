@@ -1,10 +1,10 @@
 {
-  "build": "qxmd209",
-  "cache": "qx-pwa-qxmd209",
-  "title": "qxmd209: Marks footer Prev|Check|Next only on all practice paths",
-  "body": "Root cause: NEET/Medical chapter practice used AllenTestUI.practiceHtml (and app.js fallback) with Show Answer|Clear|Prev|Next strip and Check Answer outside the fixed bar. Lock Marks one-row Previous|Check Answer|Next on allen + fallback; keep examgoal path; keep qxmd208 stem-rescue guards.",
+  "build": "qxmd210",
+  "cache": "qx-pwa-qxmd210",
+  "title": "qxmd210: keep SOLUTION above Marks footer; scroll padding so zoom does not hide Q/sol",
+  "body": "Marks-compact white Prev|Check|Next strip stays; measure foot height + padding-bottom so SOLUTION scrolls above strip (never jammed). Keep qxmd208 stem-free sol + qxmd209 one-row bar. Speed: chapter shard only, prefetch next-Q images 1 ahead, SW cache bump.",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app",
   "site": "https://www.quantrexacademy.com",
   "package": "com.quantrexacademy.app",
-  "ts": 1789826364938
+  "ts": 1789827637851
 }
