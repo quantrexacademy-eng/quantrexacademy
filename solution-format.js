@@ -607,10 +607,15 @@ const QuantrexSolution = (() => {
 
     s = s.replace(/\s{2,}/g, " ");
     s = s.replace(/ *\n */g, "\n");
-    /* qxmd215: restore sol spaces — NowCartesianproduct / letter-gluing */
-    s = s.replace(/\b(Now|Then|Hence|Therefore|Since|But|Also|Thus|So|Let|Given|Here|Consider|Cartesian|product)(?=[A-Z][a-z])/g, "$1 ");
-    s = s.replace(/\b(Cartesian)(product)\b/gi, "$1 $2");
-    s = s.replace(/([a-z])([A-Z][a-z]{2,})/g, "$1 $2");
+    /* qxmd217: restore sol spaces ONLY on plain text — never inside HTML tags / KaTeX */
+    if (!/class=["'][^"']*katex/i.test(s) && !/<\s*[a-z]\s+[a-z]\s+[a-z]/i.test(s)) {
+      const park = [];
+      let plain = s.replace(/<[^>]+>/g, (m) => { const k = String.fromCharCode(0xE600) + park.length + String.fromCharCode(0xE601); park.push(m); return k; });
+      plain = plain.replace(/\b(Now|Then|Hence|Therefore|Since|But|Also|Thus|So|Let|Given|Here|Consider|Cartesian|product)(?=[A-Z][a-z])/g, "$1 ");
+      plain = plain.replace(/\b(Cartesian)(product)\b/gi, "$1 $2");
+      plain = plain.replace(/([a-z])([A-Z][a-z]{2,})/g, "$1 $2");
+      s = plain.replace(new RegExp(String.fromCharCode(0xE600) + "(\\d+)" + String.fromCharCode(0xE601), "g"), (_, i) => park[+i] || "");
+    }
     s = s.replace(/([a-zA-Z])(\\(?:left|right|in|mathbb|frac|text|mathrm|begin|end|cdot|times|leq|geq|neq|subset|forall|exists|alpha|beta|gamma|theta|pi|infty))(?![a-zA-Z])/g, "$1 $2");
     s = s.replace(/&#38;|&amp;/gi, " and ");
     s = s.replace(/(^|[^\\$A-Za-z])&(?![#a-zA-Z])/g, "$1 and ");
@@ -1325,7 +1330,8 @@ const QuantrexSolution = (() => {
   }
 
     function formatBody(solution, q) {
-    let raw = flattenMarksSolTables(String(solution || ""));
+    const _qxSolSrc = String(solution || "");
+    let raw = flattenMarksSolTables(_qxSolSrc);
     raw = stripLeadingStemEcho(raw, q);
     try { raw = ensureNoStemHead(raw, q); } catch (_) { /* */ }
     // Same deep TeX/symbol repair as stems/options (solutions were missing shatter/tofu fixes)
@@ -1370,6 +1376,30 @@ const QuantrexSolution = (() => {
     if (!/class=["'][^"']*katex/i.test(html)) {
       try { html = polishScientificSymbols(html); } catch (_) { /* */ }
     }
+    // qxmd217: if SOLUTION shows letter-spaced KaTeX HTML, recover once from original source
+    try {
+      const looksSpaced = (typeof Mx !== "undefined" && Mx.looksLetterSpacedMarkup)
+        ? Mx.looksLetterSpacedMarkup(html)
+        : /<\s*[a-z]\s+[a-z]\s+[a-z]|c\s+l\s+a\s+s\s+s\s*=|k\s+a\s+t\s+e\s+x/i.test(html);
+      if (looksSpaced) {
+        if (typeof Mx !== "undefined" && Mx.recoverLetterSpacedKatexHtml) {
+          html = Mx.recoverLetterSpacedKatexHtml(html);
+        }
+        if ((typeof Mx !== "undefined" && Mx.looksLetterSpacedMarkup && Mx.looksLetterSpacedMarkup(html))
+            || /<\s*[a-z]\s+[a-z]\s+[a-z]/i.test(html)) {
+          // Re-render once from original solution (skip second cleanQuestionText unglue on katex)
+          let raw2 = flattenMarksSolTables(_qxSolSrc);
+          try { raw2 = stripLeadingStemEcho(raw2, q); } catch (_) { /* */ }
+          try { raw2 = ensureNoStemHead(raw2, q); } catch (_) { /* */ }
+          try { raw2 = repairSolutionDelimiters(raw2); } catch (_) { /* */ }
+          try { raw2 = polishScientificSymbols(raw2); } catch (_) { /* */ }
+          try { html = solRenderHtml(raw2); } catch (_) { /* keep */ }
+          if (typeof Mx !== "undefined" && Mx.recoverLetterSpacedKatexHtml) {
+            try { html = Mx.recoverLetterSpacedKatexHtml(html); } catch (_) { /* */ }
+          }
+        }
+      }
+    } catch (_) { /* */ }
     return html;
   }
 
@@ -1447,7 +1477,7 @@ const QuantrexSolution = (() => {
     if (document.querySelector('link[href*="qx-solution.css"]')) return;
     const s = document.createElement("style");
     s.id = "qx-sol-css-fallback";
-    s.textContent = "/* qxmd215: sol css no left */.sol-body,.qx-sol-body,.qx-sol-flow,.eg-sol,#egSol,.qx-sol-card{border-left:none!important}.qx-sol-card{margin:14px 0;padding:14px 16px;border:1px solid #cbd5e1;border-left:none!important;border-radius:14px;background:#fff;color:#0f172a}.qx-sol-card::before,.eg-sol::before,#egSol::before{content:none!important;display:none!important}.qx-sol-card-h{font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#334155;margin:0 0 12px}.qx-sol-ans{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 12px;padding:8px 12px;border-radius:10px;background:#ecfdf5;border:1px solid #86efac}.qx-sol-missing{color:#64748b}";
+    s.textContent = "/* qxmd217: neat sol + hide katex-error */.sol-body,.qx-sol-body,.qx-sol-flow,.eg-sol,#egSol,.qx-sol-card{border-left:none!important}.qx-sol-card{margin:8px 0 10px;padding:12px 14px;border:1px solid #cbd5e1;border-left:none!important;border-radius:12px;background:#fff;color:#0f172a}.qx-sol-card::before,.eg-sol::before,#egSol::before{content:none!important;display:none!important}.qx-sol-card-h{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#334155;margin:0 0 8px}.qx-sol-ans{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 10px;padding:8px 12px;border-radius:10px;background:#ecfdf5;border:1px solid #86efac}.qx-sol-missing{color:#64748b}.katex-error,.katex-error-color,[class*=\"katex-error\"]{display:none!important;visibility:hidden!important;height:0!important;overflow:hidden!important;font-size:0!important}";
     document.head.appendChild(s);
   }
 
@@ -1514,7 +1544,9 @@ const QuantrexSolution = (() => {
     try { shortcutHtml = renderShortcutPanel(fromSol); } catch (_) { shortcutHtml = ""; }
     let ansHtml = "";
     try { ansHtml = officialAnswerHtml(q); } catch (_) { ansHtml = ""; }
-    return `<div class="qx-sol-card ${theme}">
+    // qxmd217: keep original sol source on card for one-shot re-render if letter-spaced
+    const srcAttr = (typeof esc === "function" ? esc(String(sol || "").slice(0, 12000)) : String(sol || "").slice(0, 12000).replace(/"/g, "&quot;"));
+    return `<div class="qx-sol-card ${theme}" data-qx-sol-src="${srcAttr}">
       <div class="qx-sol-card-h" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
         <span>${head}</span>
         ${diffBadge}

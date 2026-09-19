@@ -719,7 +719,7 @@ const AllenTestUI = (() => {
         const st = d ? "answered" : (i === (pc.idx || 0) ? "not-answered" : "unvisited");
         return `<button type="button" class="mtk-pal-cell ${st}${cur}" data-prac-idx="${i}">${i + 1}</button>`;
       }).join("");
-      return `<div class="mtk-test-root allen-cbt allen-practice qx-font-host${bookCls}${solOpen ? " qx-sol-showing" : ""}" data-test-theme="${appTheme}" data-font-scale="${fontScale}">
+      return `<div class="mtk-test-root allen-cbt allen-practice qx-font-host qxmd217-allen${bookCls}${solOpen ? " qx-sol-showing" : ""}" data-test-theme="${appTheme}" data-font-scale="${fontScale}">
         <header class="mtk-header">
           <div class="mtk-header-left">
             <button type="button" class="mtk-close-btn" id="qxPracBackBtn" title="Back" aria-label="Back">&larr;</button>
@@ -1055,6 +1055,15 @@ window.showAllenInstructions = showAllenInstructions;
     setTimeout(syncAllenFootPad, 100);
   } catch (_) {}
   try { window._qxSyncAllenFootPad = syncAllenFootPad; } catch (_) {}
+
+(function qxmd217AllenChrome(){
+  if (document.getElementById("qxmd217AllenCss")) return;
+  var s = document.createElement("style");
+  s.id = "qxmd217AllenCss";
+  s.textContent = ".allen-practice.qxmd217-allen .mtk-header-tools .eg-tool-btn:not(#pracViewMenuBtn):not(.qx-prac-view-btn),.allen-practice.qxmd217-allen .qx-prac-tools .qx-bm-btn,.allen-practice.qxmd217-allen .qx-prac-tools .qx-prac-theme-btn{display:none!important}.allen-practice.qxmd217-allen .mtk-header-tools{display:flex!important}";
+  document.head.appendChild(s);
+})();
+
 })();
 
 

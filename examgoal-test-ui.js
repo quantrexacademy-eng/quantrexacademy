@@ -13,7 +13,7 @@
     } else if (!l.id) {
       l.id = "egTestUiCss";
     }
-    const href = "assets/examgoal-test-ui.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd216");
+    const href = "assets/examgoal-test-ui.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd217");
     if (l.getAttribute("href") !== href) l.href = href;
     let chrome = document.getElementById("qxPracChromeCss");
     if (!chrome) {
@@ -22,7 +22,7 @@
       chrome.rel = "stylesheet";
       document.head.appendChild(chrome);
     }
-    const ch = "assets/qx-prac-chrome.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd216");
+    const ch = "assets/qx-prac-chrome.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd217");
     if (chrome.getAttribute("href") !== ch) chrome.href = ch;
     let both = document.getElementById("qxBothThemesCss");
     if (!both) {
@@ -31,7 +31,7 @@
       both.rel = "stylesheet";
       document.head.appendChild(both);
     }
-    const bh = "assets/qx-both-themes.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd216");
+    const bh = "assets/qx-both-themes.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd217");
     if (both.getAttribute("href") !== bh) both.href = bh;
     let r = document.getElementById("qxPracticeReadCss");
     if (!r) {
@@ -40,7 +40,7 @@
       r.rel = "stylesheet";
       document.head.appendChild(r);
     }
-    const rh = "assets/qx-practice-read.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd216");
+    const rh = "assets/qx-practice-read.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd217");
     if (r.getAttribute("href") !== rh) r.href = rh;
   }
 
@@ -556,19 +556,26 @@
     const timer = '<span class="eg-timer" id="egTimer">' +
       formatClock(session.remainingSec != null ? session.remainingSec : 0) + "</span>";
     const palPref = getPalettePref();
+    /* qxmd217: ALL tools live in Question View Settings (gear) */
     const fmtSec = practice
-      ? '<h5 class="eg-fmt-pal-h eg-fmt-more-h">More</h5><div class="eg-fmt-row eg-fmt-more" role="group" aria-label="More tools">' +
+      ? '<h5 class="eg-fmt-pal-h eg-fmt-more-h">Question tools</h5><div class="eg-fmt-row eg-fmt-more" role="group" aria-label="Question tools">' +
+        '<button type="button" data-eg-fmt-act="theme" title="Theme">Theme</button>' +
+        '<button type="button" data-eg-fmt-act="allq" title="All questions">All Q</button>' +
+        '<button type="button" data-eg-fmt-act="palette" title="Palette">Palette</button>' +
         '<button type="button" data-eg-fmt-act="star" title="Bookmark">Bookmark</button>' +
         '<button type="button" data-eg-fmt-act="plus" title="Create group">Group</button>' +
         '<button type="button" data-eg-fmt-act="full" title="Fullscreen">Full</button>' +
         '<button type="button" data-eg-fmt-act="report" title="Report question">Report</button>' +
+        '<button type="button" data-eg-fmt-act="note" title="Add a note">Note</button>' +
         "</div>"
       : "";
     const fmt = fmtOpen
-      ? '<div class="eg-fmt-pop" id="egFmtPop"><h5>Text size</h5><div class="eg-fmt-row">' +
-        '<button type="button" data-eg-scale="small"' + (fontScale === "small" ? ' class="on"' : "") + ">A−</button>" +
-        '<button type="button" data-eg-scale="medium"' + (fontScale === "medium" ? ' class="on"' : "") + ">A</button>" +
-        '<button type="button" data-eg-scale="large"' + (fontScale === "large" ? ' class="on"' : "") + ">A+</button>" +
+      ? '<div class="eg-fmt-pop eg-view-settings" id="egFmtPop" role="dialog" aria-label="Question View Settings">' +
+        '<h5 class="eg-fmt-title">Question View Settings</h5>' +
+        '<h5>Text size</h5><div class="eg-fmt-row">' +
+        '<button type="button" data-eg-scale="small"' + (fontScale === "small" ? ' class="on"' : "") + ">S</button>" +
+        '<button type="button" data-eg-scale="medium"' + (fontScale === "medium" ? ' class="on"' : "") + ">M</button>" +
+        '<button type="button" data-eg-scale="large"' + (fontScale === "large" ? ' class="on"' : "") + ">L</button>" +
         '<button type="button" data-eg-scale="xlarge"' + (fontScale === "xlarge" ? ' class="on"' : "") + ">XL</button>" +
         '</div><h5 class="eg-fmt-pal-h">Palette</h5><div class="eg-fmt-row eg-fmt-pal" role="group" aria-label="Palette layout">' +
         '<button type="button" data-eg-pal="side"' + (palPref === "side" ? ' class="on"' : "") + ' title="Right sidebar">Right</button>' +
@@ -577,9 +584,9 @@
         "</div>" + fmtSec + "</div>"
       : "";
 
-    const checkRow = practice
-      ? '<div class="eg-action-row eg-action-note-only"><button type="button" class="eg-note" id="egNoteBtn">Add a Note</button></div>'
-      : "";
+    const checkRow = ""; /* qxmd217: Note moved into View Settings */
+    const hiddenNote = '<button type="button" class="eg-note" id="egNoteBtn" style="display:none!important" aria-hidden="true">Note</button>';
+
     /* qxmd176: toggle ON whenever solution is open (Check Answer or Show Answer) */
     const showSwitch = '<label class="eg-show"><span class="eg-switch"><input type="checkbox" id="egShowAns"' +
       (wantShowSol(session, session.idx) ? " checked" : "") +
@@ -662,7 +669,7 @@
     return '<div class="eg-test-root mtk-test-root' +
       (sideOpen ? " eg-side-open" : " eg-side-collapsed") +
       (stripOpen ? " eg-strip-open" : " eg-strip-collapsed") +
-      " eg-tools-open eg-compact eg-qxmd167 eg-qxmd170 eg-qxmd171 eg-qxmd173 eg-qxmd180 eg-qxmd182 eg-qxtool8 eg-qxeg1 eg-qxeg2 eg-qxeg3 eg-qxeg4 eg-qxeg5 eg-qxeg6 eg-qxeg7" +
+      " eg-tools-open eg-compact eg-qxmd167 eg-qxmd170 eg-qxmd171 eg-qxmd173 eg-qxmd180 eg-qxmd182 eg-qxmd217 eg-qxtool8 eg-qxeg1 eg-qxeg2 eg-qxeg3 eg-qxeg4 eg-qxeg5 eg-qxeg6 eg-qxeg7" +
       (previewOpen ? " eg-preview-open" : " eg-preview-collapsed") +
       (desktopMode ? " eg-desktop-mode" : " eg-mobile") +
       (!desktopMode && isMobileEg ? " eg-mobile-vp" : "") +
@@ -680,7 +687,7 @@
         ? ico('<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>')
         : '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>') +
       '<span class="eg-tip">Theme</span></button>' +
-      '<button type="button" class="eg-ico eg-tool-btn eg-tool-pri" id="egFmtBtn" data-tip="Text size" title="Text size" aria-label="Text size">Aa<span class="eg-tip">Aa</span></button>' +
+      '<button type="button" class="eg-ico eg-tool-btn eg-tool-pri eg-settings-gear" id="egFmtBtn" data-tip="Settings" title="Question View Settings" aria-label="Question View Settings">⚙<span class="eg-tip">Aa</span></button>' +
       '<button type="button" class="eg-ico eg-tool-btn eg-allq-btn eg-tool-pri' + (allQOn ? " on" : "") + '" id="egAllQBtn" data-tip="All Q" title="' + allQTitle + '" aria-label="' + allQTitle + '" aria-expanded="' + (allQOn ? "true" : "false") + '" data-eg-cycle="' + (allQOn ? "1" : "0") + '">' +
       gridIco + '<span class="eg-tip">All Q</span></button>' +
       '<button type="button" class="eg-ico eg-tool-btn eg-menu-btn eg-lines-btn eg-tool-pri' + (sideOpen ? " on" : "") + '" id="egMenuBtn" data-tip="Palette" title="' + sideTitle + '" aria-label="' + sideTitle + '" aria-expanded="' + (sideOpen ? "true" : "false") + '">' +
@@ -722,7 +729,7 @@
       (ctx.sectionInstr || "") +
       '<div class="' + (ctx.optsClass || "mtk-options mtk-options-grid") + ' eg-opts" id="qxOpts">' +
       (ctx.opts || "") + "</div>" +
-      checkRow +
+      checkRow + hiddenNote +
       (showSol ? (function () {
         var solInner = "";
         try { solInner = solutionHtml(q); } catch (_solErr) { solInner = ""; }
@@ -1420,15 +1427,15 @@
         if (!foot) return;
         var h = Math.ceil(foot.getBoundingClientRect().height || foot.offsetHeight || 64);
         if (!isFinite(h) || h < 40) h = 52;
-        if (h > 72) h = 72; /* qxmd216 compact fixed */
-        var pad = h + 12; /* qxmd216 fixed overlay clear */
+        if (h > 72) h = 72; /* qxmd217 compact fixed */
+        var pad = h + 12; /* qxmd217 fixed overlay clear */
         var solOpen = !!(host && host.classList && (host.classList.contains("qx-sol-showing") || host.classList.contains("eg-sol-showing")));
-        if (solOpen) pad = h + 12; /* qxmd216 */
+        if (solOpen) pad = h + 12; /* qxmd217 */
         var cssPad = "calc(" + pad + "px + env(safe-area-inset-bottom, 0px))";
         try {
           document.documentElement.style.setProperty("--eg-foot-h", h + "px");
           document.documentElement.style.setProperty("--eg-foot-pad", cssPad);
-      /* qxmd216-global-unlock */
+      /* qxmd217-global-unlock */
       try {
         var am2 = document.getElementById("app-main");
         if (am2 && document.body.classList.contains("allen-practice-active")) {
@@ -1468,7 +1475,7 @@
       try {
         const foot = root.querySelector("#egFoot, .eg-foot");
         if (!foot) return;
-        /* qxmd216: FIXED transparent pills at true bottom — never reparent into scroll host */
+        /* qxmd217: FIXED transparent pills at true bottom — never reparent into scroll host */
         foot.style.setProperty("position", "fixed", "important");
         foot.style.setProperty("left", "0", "important");
         foot.style.setProperty("right", "0", "important");
@@ -1491,8 +1498,8 @@
         foot.style.setProperty("max-width", "none", "important");
         foot.style.setProperty("width", "100%", "important");
         foot.classList.remove("qxmd215-inflow");
-        foot.classList.add("qxmd216-fixed");
-        foot.classList.add("qxmd216-noslab");
+        foot.classList.add("qxmd217-fixed");
+        foot.classList.add("qxmd217-noslab");
 
         const marksRow = !!(foot.classList.contains("eg-foot-marks") || foot.classList.contains("eg-foot-practice") || foot.querySelector("#egCheckBtn"));
         foot.style.setProperty("display", "grid", "important");
@@ -1593,7 +1600,7 @@ function forceFootVisible(force) {
         root.classList.toggle("eg-preview-open", previewOpen);
         root.classList.toggle("eg-preview-collapsed", !previewOpen);
         root.classList.remove("eg-tools-closed", "eg-tools-open", "eg-sol-showing", "eg-qxmd175", "eg-qxmd176", "eg-qxmd177", "eg-qxmd179");
-        root.classList.add("eg-tools-open", "eg-qxmd167", "eg-qxmd170", "eg-qxmd171", "eg-qxmd173", "eg-qxmd180", "eg-qxmd182", "eg-qxtool8", "eg-qxeg1", "eg-qxeg2", "eg-qxeg3", "eg-qxeg4", "eg-qxeg5", "eg-qxeg6", "eg-qxeg7", "eg-foot-ready");
+        root.classList.add("eg-tools-open", "eg-qxmd217", "eg-qxmd167", "eg-qxmd170", "eg-qxmd171", "eg-qxmd173", "eg-qxmd180", "eg-qxmd182", "eg-qxtool8", "eg-qxeg1", "eg-qxeg2", "eg-qxeg3", "eg-qxeg4", "eg-qxeg5", "eg-qxeg6", "eg-qxeg7", "eg-foot-ready");
         root.setAttribute("data-eg-cycle", bothOpen ? "1" : "0");
         const strip = root.querySelector("#egQBar");
         if (strip) {
@@ -2069,7 +2076,7 @@ function forceFootVisible(force) {
       b.onclick = function (e) {
         if (e) { e.preventDefault(); e.stopPropagation(); }
         var act = b.getAttribute("data-eg-fmt-act");
-        var map = { star: "#egStarBtn", plus: "#egPlusBtn", full: "#egFullBtn", report: "#mtkReportBtn" };
+        var map = { star: "#egStarBtn", plus: "#egPlusBtn", full: "#egFullBtn", report: "#mtkReportBtn", theme: "#mtkThemeBtn", allq: "#egAllQBtn", palette: "#egMenuBtn", note: "#egNoteBtn" };
         var sel = map[act];
         var tgt = sel && root.querySelector(sel);
         session._egFmtOpen = false;
@@ -2448,9 +2455,9 @@ function forceFootVisible(force) {
       if (!foot) return;
       var h = Math.ceil(foot.getBoundingClientRect().height || 64);
       if (!isFinite(h) || h < 40) h = 52;
-      if (h > 72) h = 72; /* qxmd216 compact */
+      if (h > 72) h = 72; /* qxmd217 compact */
       var solOpen = !!(host.classList && (host.classList.contains("qx-sol-showing") || host.classList.contains("eg-sol-showing")));
-      var pad = h + 12; /* qxmd216 */
+      var pad = h + 12; /* qxmd217 */
       var cssPad = "calc(" + pad + "px + env(safe-area-inset-bottom, 0px))";
       document.documentElement.style.setProperty("--eg-foot-h", h + "px");
       document.documentElement.style.setProperty("--eg-foot-pad", cssPad);

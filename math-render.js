@@ -137,7 +137,7 @@ window.Mx = (() => {
   }
 
   const KATEX_OPTS = {
-    throwOnError: false,
+    throwOnError: true,
     errorColor: "transparent",
     strict: false,
     trust: true,
@@ -1145,14 +1145,82 @@ window.Mx = (() => {
     return repairSpacedKatexTags(out);
   }
 
+  function looksLetterSpacedMarkup(s) {
+    const t = String(s || "");
+    return /<\s*[a-zA-Z]\s+[a-zA-Z]\s+[a-zA-Z]/.test(t)
+      || /c\s+l\s+a\s+s\s+s\s*=/.test(t)
+      || /k\s+a\s+t\s+e\s+x/.test(t)
+      || /s\s+t\s+r\s+u\s+t/.test(t)
+      || /spanclass|mordmathnormal/i.test(t);
+  }
+
+  function withParkedHtmlTags(s, fn) {
+    const slots = [];
+    const PH0 = String.fromCharCode(0xE500);
+    const PH1 = String.fromCharCode(0xE501);
+    let c = String(s || "").replace(/<[^>]+>/g, (m) => {
+      const k = PH0 + slots.length + PH1;
+      slots.push(m);
+      return k;
+    });
+    try { c = fn(c); } catch (_) { /* keep */ }
+    const esc = (ch) => ch.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const re = new RegExp(esc(PH0) + "(\\d+)" + esc(PH1), "g");
+    return String(c || "").replace(re, (_, i) => slots[+i] || "");
+  }
+
   function repairSpacedKatexTags(s) {
-    return String(s || "")
+    let out = String(s || "");
+    if (looksLetterSpacedMarkup(out)) {
+      out = out.replace(/<\/?[^>]{3,}>/g, (tag) => {
+        const close = tag.startsWith("</");
+        let inner = tag.replace(/^<\/?/, "").replace(/\/?\s*>$/, "");
+        const parts = inner.trim().split(/\s+/).filter(Boolean);
+        const singles = parts.filter((p) => p.length === 1).length;
+        if (!(singles >= 4 && singles >= Math.floor(parts.length * 0.45))) return tag;
+        inner = parts.join("");
+        inner = inner
+          .replace(/\bspanclass\b/gi, "span class")
+          .replace(/\bdivclass\b/gi, "div class")
+          .replace(/\bspanstyle\b/gi, "span style")
+          .replace(/(^|\/)(span|div|svg|path|math|mi|mo|mn|mrow|annotation|semantics)(?=class|style|aria|xmlns|width|height|viewBox|encoding)/i, "$1$2 ")
+          .replace(/([a-z])(?=class=|style=|aria-|xmlns=)/gi, "$1 ")
+          .replace(/class="katexdisplay"/gi, 'class="katex-display"')
+          .replace(/class="katexhtml"/gi, 'class="katex-html"')
+          .replace(/class="katexmathml"/gi, 'class="katex-mathml"');
+        return (close ? "</" : "<") + inner + ">";
+      });
+    }
+    return out
       .replace(/<\s*spanclass\s*=\s*"\s*katex\s*-\s*display\s*"\s*>/gi, '<span class="katex-display">')
       .replace(/<\s*span\s+class\s*=\s*"\s*katex\s*-\s*display\s*"\s*>/gi, '<span class="katex-display">')
       .replace(/<\s*spanclass\s*=\s*"\s*katex\s*"\s*>/gi, '<span class="katex">')
       .replace(/class\s*=\s*"\s*katex\s*-\s*html\s*"/gi, 'class="katex-html"')
-      .replace(/class\s*=\s*"\s*katex\s*-\s*display\s*"/gi, 'class="katex-display"');
+      .replace(/class\s*=\s*"\s*katex\s*-\s*display\s*"/gi, 'class="katex-display"')
+      .replace(/\bspanclass\b/gi, "span class")
+      .replace(/katex\s*-\s*/gi, "katex-");
   }
+
+  function recoverLetterSpacedKatexHtml(html) {
+    let s = String(html || "");
+    if (!looksLetterSpacedMarkup(s)) return repairSpacedKatexTags(s);
+    s = repairSpacedKatexTags(s);
+    if (looksLetterSpacedMarkup(s)) {
+      try {
+        if (typeof QxMathSanitize !== "undefined" && QxMathSanitize.recoverKatexHtml) {
+          const rec = QxMathSanitize.recoverKatexHtml(s);
+          if (rec && rec.html) s = rec.html;
+        }
+      } catch (_) { /* */ }
+      s = repairSpacedKatexTags(s);
+    }
+    if (looksLetterSpacedMarkup(s)) {
+      s = s.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+    }
+    return s;
+  }
+
+
 
   /** Quizrr/Marks \\[4pt] row skips must not become a table cell. */
   function stripLatexRowSkips(s) {
@@ -2259,6 +2327,11 @@ window.Mx = (() => {
   }
 
   function unglueTexFromWords(s) {
+    if (/class=["'][^"']*katex/i.test(String(s || "")) || looksLetterSpacedMarkup(s)) return repairSpacedKatexTags(s);
+    if (/<[a-zA-Z][^>]*>/.test(String(s || ""))) return withParkedHtmlTags(s, (inner) => unglueTexFromWordsPlain(inner));
+    return unglueTexFromWordsPlain(s);
+  }
+  function unglueTexFromWordsPlain(s) {
     // Longest first — never split \left → \le + ft (screenshot 864)
     const cmds = [
       "varepsilon", "vartheta", "varrho", "varsigma", "varphi", "varpi",
@@ -2690,6 +2763,13 @@ window.Mx = (() => {
   function unglueLowercaseMathProse(s) {
     let c = String(s || "");
     if (!c || c.length < 6) return c;
+    if (/class=["'][^"']*katex/i.test(c) || looksLetterSpacedMarkup(c)) return repairSpacedKatexTags(c);
+    if (/<[a-zA-Z][^>]*>/.test(c)) return withParkedHtmlTags(c, (plain) => unglueLowercaseMathProsePlain(plain));
+    return unglueLowercaseMathProsePlain(c);
+  }
+  function unglueLowercaseMathProsePlain(s) {
+    let c = String(s || "");
+    if (!c || c.length < 6) return c;
     // Explicit reported glues
     const pairs = [
       [/\boddodd\b/gi, "odd odd"],
@@ -2766,6 +2846,8 @@ window.Mx = (() => {
   /** English word heal dictionary (OCR / bad glue splits) — all screens */
   function healBrokenEnglishWords(s) {
     let c = String(s || "");
+    if (/class=["'][^"']*katex/i.test(c) || looksLetterSpacedMarkup(c)) return repairSpacedKatexTags(c);
+    if (/<[a-zA-Z][^>]*>/.test(c)) return withParkedHtmlTags(c, (inner) => healBrokenEnglishWords(inner));
     const heal = [
       [/\bSuppos\s+e\b/gi, "Suppose"],
       [/\bsatisf\s+y\b/gi, "satisfy"],
@@ -4028,6 +4110,7 @@ window.Mx = (() => {
       try { s = professionalizeSgnPiecewise(s); } catch (_) { /* */ }
       try { s = katexRenderIslands(s); } catch (_) { /* */ }
       try { s = repairSpacedKatexTags(s); } catch (_) { /* */ }
+      try { s = recoverLetterSpacedKatexHtml(s); } catch (_) { /* */ }
       return memoHtml(cacheKey, s);
     }
     // Plain / LaTeX: escape only outside math so `$C < B$` stays valid for MathJax
@@ -4061,6 +4144,7 @@ window.Mx = (() => {
     try { out = healShatteredTex(out); } catch (_) { /* */ }
     try { out = katexRenderIslands(out); } catch (_) { /* */ }
     try { out = repairSpacedKatexTags(out); } catch (_) { /* */ }
+    try { out = recoverLetterSpacedKatexHtml(out); } catch (_) { /* */ }
     return memoHtml(cacheKey, out);
   }
 
@@ -4371,6 +4455,22 @@ window.Mx = (() => {
         });
       };
       try { healStemDollarsInDom(); } catch (_) { /* */ }
+      try {
+        el.querySelectorAll(".eg-sol, #egSol, .sol-body, .qx-sol-body, .qx-sol-flow, .qx-sol-card").forEach((node) => {
+          if (!node) return;
+          const before = node.innerHTML || "";
+          if (!looksLetterSpacedMarkup(before)) return;
+          const orig = node.getAttribute("data-qx-sol-src");
+          let fixed = recoverLetterSpacedKatexHtml(before);
+          if (orig && looksLetterSpacedMarkup(fixed)) {
+            try { fixed = html(orig); } catch (_) { /* */ }
+          }
+          if (fixed && fixed !== before) {
+            node.innerHTML = fixed;
+            try { typesetKatex([node]); } catch (_) { /* */ }
+          }
+        });
+      } catch (_) { /* */ }
       try {
         el.querySelectorAll(".qx-prac-opt, .mtk-opt, .qa-opt").forEach((opt) => {
           if (opt.querySelector("img")) {
@@ -4698,7 +4798,11 @@ window.Mx = (() => {
     upgradePlainMathNotation,
     restoreAngleQuoteTags,
     convertAllMathML,
-    unglueTexFromWords
+    unglueTexFromWords,
+    looksLetterSpacedMarkup,
+    repairSpacedKatexTags,
+    recoverLetterSpacedKatexHtml,
+    withParkedHtmlTags
   };
 })();
 

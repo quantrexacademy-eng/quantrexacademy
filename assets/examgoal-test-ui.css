@@ -2448,7 +2448,7 @@ html[data-theme="light"] .qx-prac-foot.eg-foot {
   text-transform: none !important;
 }
 .eg-test-root.eg-qxtool8[data-test-theme="dark"] .eg-foot {
-  background: #0f172a !important;
+  background: transparent !important; /* qxmd214b */
   border-top-color: #1e293b !important;
 }
 .eg-test-root.eg-qxtool8[data-test-theme="dark"] .eg-foot #qxPrevBtn,
@@ -2825,7 +2825,7 @@ html[data-theme="light"] .qx-prac-foot.eg-foot {
   border-color: #1d4ed8 !important;
 }
 .eg-test-root.eg-qxtool8[data-test-theme="dark"] .eg-foot {
-  background: #0f172a !important;
+  background: transparent !important; /* qxmd214b */
   border-top-color: #334155 !important;
 }
 .eg-test-root.eg-qxtool8[data-test-theme="dark"] .eg-foot #qxPrevBtn,
@@ -2947,7 +2947,7 @@ html[data-theme="dark"] .eg-test-root.eg-qxtool8[data-test-theme="light"] .eg-fo
 }
 .eg-test-root.eg-qxtool8[data-test-theme="dark"] .eg-foot,
 html[data-theme="dark"] .eg-test-root.eg-qxtool8[data-test-theme="dark"] .eg-foot {
-  background: #0f172a !important;
+  background: transparent !important; /* qxmd214b */
   border-top-color: #334155 !important;
 }
 .eg-test-root.eg-qxtool8 .eg-foot-right {
@@ -6537,3 +6537,35 @@ html body.allen-practice-active .mtk-test-root.allen-practice .mtk-main {
   display: inline-flex !important; visibility: visible !important; opacity: 1 !important; pointer-events: auto !important;
 }
 .eg-main, .eg-q-card, .mtk-main { padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)) !important; scroll-padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)) !important; }
+
+
+/* qxmd217-settings-chrome */
+.eg-test-root.eg-qxmd217 .eg-top-tools .eg-tool-btn:not(#egFmtBtn),
+.eg-test-root.eg-qxmd217 .eg-top-tools .eg-tool-pri:not(#egFmtBtn),
+.eg-test-root.eg-qxmd217 .eg-top-tools .eg-tool-sec,
+.eg-test-root.eg-qxmd217 .eg-top-tools #mtkThemeBtn,
+.eg-test-root.eg-qxmd217 .eg-top-tools #egAllQBtn,
+.eg-test-root.eg-qxmd217 .eg-top-tools #egMenuBtn,
+.eg-test-root.eg-qxmd217 .eg-top-tools #egStarBtn,
+.eg-test-root.eg-qxmd217 .eg-top-tools #egPlusBtn,
+.eg-test-root.eg-qxmd217 .eg-top-tools #egFullBtn,
+.eg-test-root.eg-qxmd217 .eg-top-tools #mtkReportBtn,
+.eg-test-root.eg-qxmd217 .eg-action-row.eg-action-note-only { display: none !important; }
+.eg-test-root.eg-qxmd217 .eg-top { min-height: 36px !important; padding: 2px 8px !important; }
+.eg-test-root.eg-qxmd217 .eg-top-tools { display: flex !important; gap: 6px !important; }
+.eg-test-root.eg-qxmd217 #egFmtBtn.eg-settings-gear { display: inline-flex !important; min-width: 36px !important; font-size: 16px !important; }
+.eg-fmt-pop.eg-view-settings { max-width: min(360px, 92vw); max-height: min(70vh, 520px); overflow: auto; z-index: 2147483000; padding: 12px 14px 14px; border-radius: 14px; box-shadow: 0 12px 40px rgba(15,23,42,.22); background: #fff; }
+.eg-fmt-pop.eg-view-settings .eg-fmt-title { margin: 0 0 10px; font-size: 13px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; color: #0f172a; }
+html[data-theme="dark"] .eg-fmt-pop.eg-view-settings .eg-fmt-title,
+.eg-test-root[data-test-theme="dark"] .eg-fmt-pop.eg-view-settings .eg-fmt-title { color: #f8fafc; }
+.eg-fmt-pop.eg-view-settings .eg-fmt-row button { color: #0f172a; background: #f1f5f9; border: 1px solid #cbd5e1; }
+.eg-fmt-pop.eg-view-settings .eg-fmt-row button.on { background: #2563eb; color: #fff; border-color: #2563eb; }
+html[data-theme="dark"] .eg-fmt-pop.eg-view-settings,
+.eg-test-root[data-test-theme="dark"] .eg-fmt-pop.eg-view-settings { background: #0f172a; border: 1px solid #334155; color: #e2e8f0; }
+html[data-theme="dark"] .eg-fmt-pop.eg-view-settings .eg-fmt-row button,
+.eg-test-root[data-test-theme="dark"] .eg-fmt-pop.eg-view-settings .eg-fmt-row button { background: #1e293b; color: #f1f5f9; border-color: #475569; }
+.eg-test-root.eg-qxmd217 .eg-q-area,
+.eg-test-root.eg-qxmd217 #egQArea,
+.eg-test-root.eg-qxmd217 .eg-main { padding-bottom: calc(var(--eg-foot-pad, 72px)) !important; }
+.eg-test-root.eg-qxmd217 .eg-sol .qx-sol-card { margin-top: 8px !important; border-left: none !important; }
+.katex-error, .katex-error-color, [class*="katex-error"] { display: none !important; visibility: hidden !important; height: 0 !important; overflow: hidden !important; }

@@ -1,10 +1,10 @@
 {
-    "cache": "qx-pwa-qxmd216",
-    "ts": 1789834402693,
-    "title": "qxmd216: fixed bottom pills; max question area; no hang; sol format kept",
+    "cache": "qx-pwa-qxmd217",
+    "ts": 1789835403786,
+    "title": "qxmd217: never letter-space KaTeX HTML in SOLUTION; bottom pills + max Q area",
     "site": "https://www.quantrexacademy.com",
-    "build": "qxmd216",
-    "body": "FOOT fixed transparent at true bottom (safe-area only). Compact top chrome. Pad = foot+12. No MutationObserver/setInterval reparent loops. Keep qxmd213 SOLUTION format + qxmd214 contrast.",
+    "build": "qxmd217",
+    "body": "SOLUTION: never letter-space KaTeX HTML; unglue parks tags; recover once. Practice tools in View Settings gear. Fixed transparent Prev|Check|Next. Max Q area. No hang loops. Quantrex brand.",
     "package": "com.quantrexacademy.app",
     "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }
