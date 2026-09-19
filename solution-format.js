@@ -607,6 +607,13 @@ const QuantrexSolution = (() => {
 
     s = s.replace(/\s{2,}/g, " ");
     s = s.replace(/ *\n */g, "\n");
+    /* qxmd213: restore sol spaces — NowCartesianproduct / letter-gluing */
+    s = s.replace(/\b(Now|Then|Hence|Therefore|Since|But|Also|Thus|So|Let|Given|Here|Consider|Cartesian|product)(?=[A-Z][a-z])/g, "$1 ");
+    s = s.replace(/\b(Cartesian)(product)\b/gi, "$1 $2");
+    s = s.replace(/([a-z])([A-Z][a-z]{2,})/g, "$1 $2");
+    s = s.replace(/([a-zA-Z])(\\(?:left|right|in|mathbb|frac|text|mathrm|begin|end|cdot|times|leq|geq|neq|subset|forall|exists|alpha|beta|gamma|theta|pi|infty))(?![a-zA-Z])/g, "$1 $2");
+    s = s.replace(/&#38;|&amp;/gi, " and ");
+    s = s.replace(/(^|[^\\$A-Za-z])&(?![#a-zA-Z])/g, "$1 and ");
     return s.trim();
   }
 
@@ -1440,7 +1447,7 @@ const QuantrexSolution = (() => {
     if (document.querySelector('link[href*="qx-solution.css"]')) return;
     const s = document.createElement("style");
     s.id = "qx-sol-css-fallback";
-    s.textContent = ".qx-sol-card{margin:14px 0;padding:14px 16px;border:1px solid #cbd5e1;border-radius:14px;background:#fff;color:#0f172a}.qx-sol-card-h{font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#334155;margin:0 0 12px}.qx-sol-ans{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 12px;padding:8px 12px;border-radius:10px;background:#ecfdf5;border:1px solid #86efac}.qx-sol-missing{color:#64748b}";
+    s.textContent = "/* qxmd213: sol css no left */.qx-sol-card{margin:14px 0;padding:14px 16px;border:1px solid #cbd5e1;border-left:none!important;border-radius:14px;background:#fff;color:#0f172a}.qx-sol-card::before,.eg-sol::before,#egSol::before{content:none!important;display:none!important}.qx-sol-card-h{font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#334155;margin:0 0 12px}.qx-sol-ans{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 12px;padding:8px 12px;border-radius:10px;background:#ecfdf5;border:1px solid #86efac}.qx-sol-missing{color:#64748b}";
     document.head.appendChild(s);
   }
 

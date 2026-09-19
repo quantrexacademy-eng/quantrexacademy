@@ -485,3 +485,23 @@ html[data-theme="dark"] .qx-src-label,
 html[data-theme="dark"] .qx-book-badge { color: #e2e8f0 !important; -webkit-text-fill-color: #e2e8f0 !important; }
 html[data-theme="light"] .qx-src-label,
 html[data-theme="light"] .qx-book-badge { color: #0f172a !important; -webkit-text-fill-color: #0f172a !important; }
+
+/* qxmd213: dark chip contrast — never white text on light grey */
+.eg-test-root[data-test-theme="dark"] .qx-paper-chip,
+.mtk-test-root[data-test-theme="dark"] .qx-paper-chip,
+.eg-test-root[data-test-theme="dark"] .qx-paper-shift,
+.mtk-test-root[data-test-theme="dark"] .qx-paper-shift,
+html[data-theme="dark"] .qx-paper-chip,
+html[data-theme="dark"] .qx-paper-shift {
+  background: #1e293b !important;
+  color: #f8fafc !important;
+  border: 1px solid #64748b !important;
+  -webkit-text-fill-color: #f8fafc !important;
+}
+.eg-test-root[data-test-theme="dark"] .qx-paper-chip *,
+.mtk-test-root[data-test-theme="dark"] .qx-paper-chip *,
+.eg-test-root[data-test-theme="dark"] .qx-paper-shift *,
+html[data-theme="dark"] .qx-paper-shift * {
+  color: inherit !important;
+  -webkit-text-fill-color: inherit !important;
+}

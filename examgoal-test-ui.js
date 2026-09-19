@@ -13,7 +13,7 @@
     } else if (!l.id) {
       l.id = "egTestUiCss";
     }
-    const href = "assets/examgoal-test-ui.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd212");
+    const href = "assets/examgoal-test-ui.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd213");
     if (l.getAttribute("href") !== href) l.href = href;
     let chrome = document.getElementById("qxPracChromeCss");
     if (!chrome) {
@@ -22,7 +22,7 @@
       chrome.rel = "stylesheet";
       document.head.appendChild(chrome);
     }
-    const ch = "assets/qx-prac-chrome.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd212");
+    const ch = "assets/qx-prac-chrome.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd213");
     if (chrome.getAttribute("href") !== ch) chrome.href = ch;
     let both = document.getElementById("qxBothThemesCss");
     if (!both) {
@@ -31,7 +31,7 @@
       both.rel = "stylesheet";
       document.head.appendChild(both);
     }
-    const bh = "assets/qx-both-themes.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd212");
+    const bh = "assets/qx-both-themes.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd213");
     if (both.getAttribute("href") !== bh) both.href = bh;
     let r = document.getElementById("qxPracticeReadCss");
     if (!r) {
@@ -40,7 +40,7 @@
       r.rel = "stylesheet";
       document.head.appendChild(r);
     }
-    const rh = "assets/qx-practice-read.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd212");
+    const rh = "assets/qx-practice-read.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd213");
     if (r.getAttribute("href") !== rh) r.href = rh;
   }
 
@@ -1420,15 +1420,15 @@
         if (!foot) return;
         var h = Math.ceil(foot.getBoundingClientRect().height || foot.offsetHeight || 64);
         if (!isFinite(h) || h < 40) h = 52;
-        if (h > 90) h = 90; /* qxmd212 compact */
-        var pad = h + 28;
+        if (h > 72) h = 72; /* qxmd213 compact pills */
+        var pad = h + 48; /* qxmd213 */
         var solOpen = !!(host && host.classList && (host.classList.contains("qx-sol-showing") || host.classList.contains("eg-sol-showing")));
-        if (solOpen) pad = h + 48;
+        if (solOpen) pad = h + 64; /* qxmd213 sol clear */
         var cssPad = "calc(" + pad + "px + env(safe-area-inset-bottom, 0px))";
         try {
           document.documentElement.style.setProperty("--eg-foot-h", h + "px");
           document.documentElement.style.setProperty("--eg-foot-pad", cssPad);
-      /* qxmd212-global-unlock */
+      /* qxmd213-global-unlock */
       try {
         var am2 = document.getElementById("app-main");
         if (am2 && document.body.classList.contains("allen-practice-active")) {
@@ -1477,7 +1477,7 @@
         foot.style.setProperty("flex-wrap", "nowrap", "important");
         foot.style.setProperty("align-items", "center", "important");
         foot.style.setProperty("gap", "8px", "important");
-        foot.style.setProperty("background", "transparent", "important"); /* qxmd212 no white slab */
+        foot.style.setProperty("background", "transparent", "important"); /* qxmd213 no white slab */
         foot.style.setProperty("background-color", "transparent", "important");
         foot.style.setProperty("box-shadow", "none", "important");
         foot.style.setProperty("border", "none", "important");
@@ -1490,15 +1490,21 @@
           nav.style.setProperty("visibility", "visible", "important");
         }
         ["qxPrevBtn", "egCheckBtn", "qxNextBtn", "qxPracPrev", "qxPracSubmit", "qxPracNext"].forEach(function (id) {
-          const b = foot.querySelector("#" + id);
+          const b = foot.querySelector("#" + id) || document.getElementById(id);
           if (!b) return;
+          /* qxmd213: force nav always — never display:none after Check */
+          try { b.hidden = false; b.removeAttribute("hidden"); } catch (_) {}
           b.style.setProperty("display", "inline-flex", "important");
           b.style.setProperty("visibility", "visible", "important");
           b.style.setProperty("opacity", "1", "important");
-          b.style.setProperty("min-height", "38px", "important");
-          b.style.setProperty("height", "38px", "important");
+          b.style.setProperty("pointer-events", "auto", "important");
+          b.style.setProperty("min-height", "40px", "important");
+          b.style.setProperty("height", "40px", "important");
+          b.style.setProperty("max-height", "40px", "important");
           b.style.setProperty("border-radius", "999px", "important");
           b.style.setProperty("width", "100%", "important");
+          b.style.setProperty("z-index", "2147483647", "important");
+          b.style.setProperty("position", "relative", "important");
         });
         try { if (typeof syncEgFootPad === "function") syncEgFootPad(root); } catch (_) {}
         try { if (typeof root._egBindNavBtns === "function") root._egBindNavBtns(); } catch (_) {}
@@ -2407,7 +2413,7 @@
       if (!foot) return;
       var h = Math.ceil(foot.getBoundingClientRect().height || 64);
       if (!isFinite(h) || h < 40) h = 52;
-      if (h > 90) h = 90; /* qxmd212 compact */
+      if (h > 90) h = 90; /* qxmd213 compact */
       var solOpen = !!(host.classList && (host.classList.contains("qx-sol-showing") || host.classList.contains("eg-sol-showing")));
       var pad = solOpen ? h + 48 : h + 28;
       var cssPad = "calc(" + pad + "px + env(safe-area-inset-bottom, 0px))";

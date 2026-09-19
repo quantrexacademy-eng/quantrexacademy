@@ -1,10 +1,10 @@
 {
-  "build": "qxmd212",
-  "cache": "qx-pwa-qxmd212",
-  "title": "qxmd212: force transparent footer — no white strip; keep Prev|Check|Next pills",
-  "body": "Force transparent #egFoot/.eg-foot (no opaque white slab). Compact Prev|Check|Next pills readable in light+dark. SOLUTION: no left accent/border; tight under options. Keep stem-free solution + Allen #app-main scroll unlock. Beat foot-lock/both-themes/examgoal white !important.",
+  "build": "qxmd213",
+  "cache": "qx-pwa-qxmd213",
+  "title": "qxmd213: SOLUTION math+spacing; no left line; transparent foot; Prev|Check|Next always; dark contrast",
+  "body": "Fix KaTeX $ in math mode + katex-error hide + letter unglue + MathML &#38;→\\\\text{ and }. Remove solution left accent. Transparent footer (no white slab); larger scroll pad; Prev|Check|Next always visible light+dark. Dark chips/options readable. Compact toolbar contrast. Keep stem-free sol + Allen scroll unlock.",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app",
   "site": "https://www.quantrexacademy.com",
   "package": "com.quantrexacademy.app",
-  "ts": 1789829614279
+  "ts": 1789830485966
 }

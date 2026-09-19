@@ -999,7 +999,7 @@ window.showAllenInstructions = showAllenInstructions;
 (function () {
   function syncAllenFootPad() {
     try {
-      /* qxmd212-force-app-main-scroll */
+      /* qxmd213-force-app-main-scroll */
       try {
         var am = document.getElementById("app-main");
         if (am) {
@@ -1059,8 +1059,8 @@ window.showAllenInstructions = showAllenInstructions;
 
 
 
-/* qxmd212 foot transparent — kill white strip from inline styles */
-(function qxmd212ForceFootTransparent() {
+/* qxmd213 foot transparent — kill white strip from inline styles */
+(function qxmd213ForceFootTransparent() {
   function paint(foot) {
     if (!foot) return;
     try {
@@ -1091,3 +1091,41 @@ window.showAllenInstructions = showAllenInstructions;
   setTimeout(run, 1000);
 })();
 
+
+;(function qxmd213ForceNav(){
+  function paint(){
+    try {
+      var foot = document.querySelector("#egFoot, .eg-foot-marks, .eg-foot");
+      if (foot) {
+        foot.style.setProperty("background","transparent","important");
+        foot.style.setProperty("background-color","transparent","important");
+        foot.style.setProperty("box-shadow","none","important");
+        foot.style.setProperty("border","none","important");
+        foot.style.setProperty("display","grid","important");
+        foot.style.setProperty("grid-template-columns","1fr 1.2fr 1fr","important");
+        foot.style.setProperty("z-index","2147483646","important");
+        foot.style.setProperty("visibility","visible","important");
+        foot.style.setProperty("pointer-events","none","important");
+      }
+      ["qxPrevBtn","egCheckBtn","qxNextBtn","qxPracPrev","qxPracSubmit","qxPracNext"].forEach(function(id){
+        var b = document.getElementById(id);
+        if (!b) return;
+        try { b.hidden = false; b.removeAttribute("hidden"); } catch(_){}
+        b.style.setProperty("display","inline-flex","important");
+        b.style.setProperty("visibility","visible","important");
+        b.style.setProperty("opacity","1","important");
+        b.style.setProperty("pointer-events","auto","important");
+      });
+      var am = document.getElementById("app-main");
+      if (am) {
+        am.style.setProperty("overflow-y","auto","important");
+        am.style.setProperty("padding-bottom","calc(96px + env(safe-area-inset-bottom, 0px))","important");
+      }
+    } catch(_){}
+  }
+  if (typeof document !== "undefined") {
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", paint);
+    else paint();
+    setInterval(paint, 1500);
+  }
+})();

@@ -887,7 +887,7 @@ html[data-theme="dark"] .eg-test-root[data-test-theme="light"] .eg-sol,
 html[data-theme="dark"] .mtk-test-root[data-test-theme="light"] .eg-sol {
   background: #f8fafc !important;
   border: 1px solid #e2e8f0 !important;
-  border-left: 3px solid #0d9488 !important;
+  border-left: none !important; /* qxmd213 */
 }
 
 .eg-test-root[data-test-theme="light"] .qx-sol-card-h,
@@ -1002,7 +1002,7 @@ html[data-theme="dark"]:not(:has([data-test-theme="light"])) .qx-sol-reveal-box 
 html[data-theme="dark"]:not(:has([data-test-theme="light"])) .eg-sol {
   background: #0b1220 !important;
   border: 1px solid #1e293b !important;
-  border-left: 3px solid #14b8a6 !important;
+  border-left: none !important; /* qxmd213 */
 }
 
 .mtk-test-root[data-test-theme="dark"] .qx-sol-card-h,
@@ -1291,3 +1291,17 @@ html[data-theme="light"] .qx-sol-reveal-box {
   background: #fff;
   color: #0f172a;
 }
+
+
+/* ========== qxmd213: force no left accent on solution ========== */
+#egSol, .eg-sol, .eg-sol-panel, .eg-sol-marks-way, .qx-sol-card, .qx-sol-reveal-box, #qaSolReveal,
+.eg-test-root[data-test-theme="light"] .eg-sol,
+.eg-test-root[data-test-theme="dark"] .eg-sol,
+.mtk-test-root[data-test-theme="light"] .eg-sol,
+.mtk-test-root[data-test-theme="dark"] .eg-sol {
+  border-left: none !important;
+}
+#egSol::before, .eg-sol::before, .qx-sol-card::before, .qx-sol-phys::before, .qx-sol-chem::before, .qx-sol-bio::before, .qx-sol-reveal-box::before {
+  content: none !important; display: none !important; width: 0 !important; background: none !important;
+}
+.katex-error { display: none !important; }

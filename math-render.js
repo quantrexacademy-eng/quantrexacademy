@@ -130,7 +130,7 @@ window.Mx = (() => {
         "  background:rgba(255,255,255,.08)}",
         "pre.qx-tex-code{display:block;overflow-x:auto;padding:12px 14px;border-radius:12px;",
         "  background:#0f172a;color:#e2e8f0;font-size:13px;line-height:1.45;margin:10px 0}",
-        "pre.qx-tex-code code{background:none;color:inherit;padding:0}"
+        "pre.qx-tex-code code{background:none;color:inherit;padding:0}}.katex-error{display:none!important;visibility:hidden!important;height:0!important;overflow:hidden!important;font-size:0!important}.qx-math-fallback,.qx-tex-fallback{font-family:ui-monospace,Consolas,Menlo,monospace;font-size:.92em;background:rgba(15,23,42,.06);padding:.1em .4em;border-radius:6px;white-space:pre-wrap;word-break:break-word}html[data-theme=dark] .qx-math-fallback,.eg-test-root[data-test-theme=dark] .qx-math-fallback{background:rgba(255,255,255,.08);color:#e2e8f0}/* qxmd213: katex-error hide */"
       ].join("");
       document.head.appendChild(s);
     }
@@ -138,6 +138,7 @@ window.Mx = (() => {
 
   const KATEX_OPTS = {
     throwOnError: false,
+    errorColor: "transparent",
     strict: false,
     trust: true,
     output: "html",
@@ -1112,11 +1113,23 @@ window.Mx = (() => {
     });
     const paint = (tex, display) => {
       let t = String(tex || "").replace(/\uE300(\d+)\uE301/g, " ").trim();
-      if (!t) return display ? "$$$$" : "$$";
+      if (!t) return "";
+      /* qxmd213: never double-wrap $ inside math mode */
+      t = t.replace(/^\$+|\$+$/g, "").replace(/\$\$/g, " ");
+      t = t.replace(/(^|[^\\])\$(?!\$)/g, "$1 ");
+      t = t.replace(/&#38;|&amp;/gi, "\\text{ and }").replace(/(^|[^\\&A-Za-z])amp;/gi, "$1\\text{ and }");
+      t = t.replace(/\s+/g, " ").trim();
+      if (!t) return "";
       try {
-        return window.katex.renderToString(t, Object.assign({ displayMode: !!display }, KATEX_OPTS));
+        const html = window.katex.renderToString(t, Object.assign({ displayMode: !!display }, KATEX_OPTS));
+        if (/class=["'][^"']*katex-error|ParseError|Can't use function/i.test(html)) {
+          const esc = t.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+          return '<code class="qx-tex-code qx-tex-fallback" title="TeX">' + esc + "</code>";
+        }
+        return html;
       } catch (_) {
-        return display ? ("$$" + t + "$$") : ("$" + t + "$");
+        const esc = t.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        return '<code class="qx-tex-code qx-tex-fallback" title="TeX">' + esc + "</code>";
       }
     };
     out = out.replace(/\$\$([\s\S]+?)\$\$/g, (_, tex) => paint(tex, true));
@@ -2027,7 +2040,7 @@ window.Mx = (() => {
     phi: "\\phi", omega: "\\omega", infin: "\\infty", le: "\\le", ge: "\\ge",
     ne: "\\ne", times: "\\times", plusmn: "\\pm", isin: "\\in", notin: "\\notin",
     cap: "\\cap", cup: "\\cup", sub: "\\subset", sum: "\\sum", int: "\\int",
-    part: "\\partial", nbsp: " "
+    part: "\\partial", nbsp: " ", amp: "\text{ and }", and: "\text{ and }"
   };
 
   function mmlDecodeText(t) {
@@ -2040,6 +2053,7 @@ window.Mx = (() => {
       })
       .replace(/&#(\d+);/g, (_, d) => {
         const n = parseInt(d, 10);
+        if (n === 38) return " \\text{ and } "; /* qxmd213: amp38 */
         if (MML_CODE_TEX[n] != null) return " " + MML_CODE_TEX[n] + " ";
         try { return String.fromCharCode(n); } catch (e) { return ""; }
       })
@@ -2238,6 +2252,9 @@ window.Mx = (() => {
       out = out.replace(/\$([^$]+)\$([A-Za-z])/g, "$$$1$ $2");
     }
     out = out.replace(/\$\s*=\s*\$\s*\{\s*\$/g, "$ = \\{");
+    /* qxmd213: strip stray amp */
+    out = out.replace(/&#38;/g, " and ").replace(/&amp;/gi, " and ");
+    out = out.replace(/(^|[^\\$A-Za-z])&(?![#a-zA-Z])/g, "$1 and ");
     return out;
   }
 
@@ -2259,8 +2276,12 @@ window.Mx = (() => {
     c = c.replace(/\\le\s*ft\b/g, "\\left");
     c = c.replace(/\\ri\s*ght\b/g, "\\right");
     c = c.replace(/\\right(\s*[\]\}])([A-Za-z])/g, "\\right$1 $2");
-    c = c.replace(/&amp;/gi, "&");
-    c = c.replace(/(^|[^&A-Za-z])amp;/gi, "$1&");
+    c = c.replace(/&amp;/gi, "\\text{ and }");
+    c = c.replace(/(^|[^&A-Za-z])amp;/gi, "$1\\text{ and }");
+    c = c.replace(/&#38;/g, "\\text{ and }");
+    /* qxmd213: unglue Camel */
+    c = c.replace(/\b(Now|Then|Hence|Therefore|Since|But|Also|Thus|So|Let|Given|Here|Consider)(?=[A-Z][a-z])/g, "$1 ");
+    c = c.replace(/([a-z])([A-Z][a-z]{2,})/g, "$1 $2");
     return c;
   }
 
@@ -4142,7 +4163,7 @@ window.Mx = (() => {
       while (walker.nextNode()) {
         const n = walker.currentNode;
         if (!n || !n.nodeValue) continue;
-        if (/Unknown node type/i.test(n.nodeValue) || /Math input error/i.test(n.nodeValue)) {
+        if (/Unknown node type/i.test(n.nodeValue) || /Math input error/i.test(n.nodeValue) || /KaTeX parse error/i.test(n.nodeValue) || /Can't use function/i.test(n.nodeValue)) {
           bad.push(n);
         }
       }
@@ -4151,6 +4172,8 @@ window.Mx = (() => {
           .replace(/Unknown node type\s*["']?span["']?/gi, "")
           .replace(/Unknown node type\s*["']?[a-zA-Z]+["']?/gi, "")
           .replace(/Math input error/gi, "")
+          .replace(/KaTeX parse error[^\n]*/gi, "")
+          .replace(/Can't use function[^\n]*/gi, "")
           .replace(/\s{2,}/g, " ");
       });
     } catch (e) { /* ignore */ }

@@ -237,3 +237,157 @@
   border-left: none !important;
   margin-top: 8px !important;
 }
+
+/* ========== qxmd213: transparent foot + always-visible Prev|Check|Next + scroll pad + dark contrast + no sol left line ========== */
+#egFoot, .eg-foot, .eg-foot-practice, .eg-foot-marks, .mtk-controls, footer.eg-foot,
+.eg-test-root #egFoot, .eg-test-root .eg-foot, .allen-practice #egFoot, .allen-practice .eg-foot,
+.qx-prac-foot.eg-foot-marks, .mtk-test-root.allen-practice #egFoot,
+.eg-test-root.eg-sol-showing #egFoot, .eg-test-root.qx-sol-showing #egFoot,
+html[data-theme="light"] .eg-foot, html[data-theme="dark"] .eg-foot,
+.eg-test-root[data-test-theme="light"] .eg-foot, .eg-test-root[data-test-theme="dark"] .eg-foot,
+.mtk-test-root[data-test-theme="light"] .eg-foot, .mtk-test-root[data-test-theme="dark"] .eg-foot {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  border-top: none !important;
+  min-height: 0 !important;
+  display: grid !important;
+  grid-template-columns: 1fr 1.2fr 1fr !important;
+  gap: 8px !important;
+  align-items: center !important;
+  position: fixed !important;
+  left: 0 !important; right: 0 !important; bottom: 0 !important;
+  z-index: 2147483646 !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: none !important;
+  padding: 6px 10px calc(6px + env(safe-area-inset-bottom, 0px)) !important;
+  transform: none !important;
+}
+#egFoot::before, .eg-foot::before, .eg-foot-marks::before { content: none !important; display: none !important; height: 0 !important; }
+
+#egFoot #qxPrevBtn, #egFoot #egCheckBtn, #egFoot #qxNextBtn,
+#egFoot #qxPracPrev, #egFoot #qxPracSubmit, #egFoot #qxPracNext,
+.eg-foot #qxPrevBtn, .eg-foot #egCheckBtn, .eg-foot #qxNextBtn,
+.eg-foot #qxPracPrev, .eg-foot #qxPracSubmit, .eg-foot #qxPracNext,
+.allen-practice #qxPracPrev, .allen-practice #qxPracSubmit, .allen-practice #qxPracNext {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 40px !important;
+  height: 40px !important;
+  max-height: 40px !important;
+  border-radius: 999px !important;
+  font-weight: 700 !important;
+  width: 100% !important;
+  z-index: 2147483647 !important;
+  position: relative !important;
+}
+
+/* LIGHT pills */
+.eg-test-root:not([data-test-theme="dark"]) #egFoot #qxPrevBtn,
+.eg-test-root:not([data-test-theme="dark"]) #egFoot #qxNextBtn,
+.mtk-test-root:not([data-test-theme="dark"]) #egFoot #qxPracPrev,
+.mtk-test-root:not([data-test-theme="dark"]) #egFoot #qxPracNext,
+.allen-practice:not([data-test-theme="dark"]) #qxPracPrev,
+.allen-practice:not([data-test-theme="dark"]) #qxPracNext {
+  background: #ffffff !important; color: #0f172a !important; border: 1.5px solid #94a3b8 !important;
+  box-shadow: 0 2px 10px rgba(15,23,42,.14) !important;
+}
+.eg-test-root:not([data-test-theme="dark"]) #egFoot #egCheckBtn,
+.mtk-test-root:not([data-test-theme="dark"]) #egFoot #qxPracSubmit,
+.allen-practice:not([data-test-theme="dark"]) #qxPracSubmit {
+  background: #2563eb !important; color: #fff !important; border: 1.5px solid #1d4ed8 !important;
+  box-shadow: 0 2px 10px rgba(37,99,235,.35) !important; font-weight: 800 !important;
+}
+
+/* DARK pills — never white slab / invisible */
+.eg-test-root[data-test-theme="dark"] #egFoot #qxPrevBtn,
+.eg-test-root[data-test-theme="dark"] #egFoot #qxNextBtn,
+.mtk-test-root[data-test-theme="dark"] #egFoot #qxPracPrev,
+.mtk-test-root[data-test-theme="dark"] #egFoot #qxPracNext,
+.allen-practice[data-test-theme="dark"] #qxPracPrev,
+.allen-practice[data-test-theme="dark"] #qxPracNext,
+html[data-theme="dark"] .eg-test-root[data-test-theme="dark"] #qxPrevBtn,
+html[data-theme="dark"] .eg-test-root[data-test-theme="dark"] #qxNextBtn {
+  background: #1e293b !important; color: #f1f5f9 !important; border: 1.5px solid #64748b !important;
+  box-shadow: 0 2px 10px rgba(0,0,0,.45) !important; -webkit-text-fill-color: #f1f5f9 !important;
+}
+.eg-test-root[data-test-theme="dark"] #egFoot #egCheckBtn,
+.mtk-test-root[data-test-theme="dark"] #egFoot #qxPracSubmit,
+.allen-practice[data-test-theme="dark"] #qxPracSubmit {
+  background: #3b82f6 !important; color: #ffffff !important; border: 1.5px solid #60a5fa !important;
+  box-shadow: 0 2px 10px rgba(59,130,246,.4) !important; -webkit-text-fill-color: #ffffff !important; font-weight: 800 !important;
+}
+
+/* Scroll: content clears fixed pills */
+.eg-main, .eg-q-card, .mtk-main, .mtk-body, #app-main,
+.eg-test-root .eg-main, .eg-test-root .eg-q-card,
+.mtk-test-root .mtk-main, .allen-practice .mtk-main {
+  padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)) !important;
+  scroll-padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)) !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+.eg-test-root.eg-sol-showing .eg-main,
+.eg-test-root.qx-sol-showing .eg-main,
+.eg-test-root.eg-sol-showing .eg-q-card,
+.eg-test-root.qx-sol-showing .eg-q-card,
+.allen-practice.qx-sol-showing .mtk-main {
+  padding-bottom: calc(112px + env(safe-area-inset-bottom, 0px)) !important;
+  scroll-padding-bottom: calc(112px + env(safe-area-inset-bottom, 0px)) !important;
+}
+#app-main {
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+}
+
+/* SOLUTION tight, no left line */
+#egSol, .eg-sol, .qx-sol-card, .eg-sol-panel, #egSolPanel, .qx-sol-reveal-box {
+  border-left: none !important;
+  margin-top: 8px !important;
+  box-shadow: none !important;
+}
+#egSol::before, .eg-sol::before, .qx-sol-card::before { content: none !important; display: none !important; }
+
+/* Dark mode chips / badges / options readable */
+.eg-test-root[data-test-theme="dark"] .qx-paper-chip,
+.mtk-test-root[data-test-theme="dark"] .qx-paper-chip,
+.eg-test-root[data-test-theme="dark"] .qx-paper-shift,
+.mtk-test-root[data-test-theme="dark"] .qx-paper-shift,
+html[data-theme="dark"] .qx-paper-chip,
+html[data-theme="dark"] .qx-paper-shift,
+.eg-test-root[data-test-theme="dark"] .eg-meta,
+.eg-test-root[data-test-theme="dark"] .eg-chip,
+.eg-test-root[data-test-theme="dark"] .qx-sol-diff-badge {
+  background: #1e293b !important;
+  color: #f1f5f9 !important;
+  border: 1px solid #64748b !important;
+  -webkit-text-fill-color: #f1f5f9 !important;
+}
+.eg-test-root[data-test-theme="dark"] .mtk-opt,
+.eg-test-root[data-test-theme="dark"] .eg-opt,
+.mtk-test-root[data-test-theme="dark"] .mtk-opt,
+.eg-test-root[data-test-theme="dark"] .mtk-opt-text,
+.mtk-test-root[data-test-theme="dark"] .mtk-opt-text,
+.eg-test-root[data-test-theme="dark"] .eg-q-stem,
+.eg-test-root[data-test-theme="dark"] .mtk-q-text,
+.mtk-test-root[data-test-theme="dark"] .mtk-q-text {
+  color: #e2e8f0 !important;
+  -webkit-text-fill-color: #e2e8f0 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+.eg-test-root[data-test-theme="dark"] .mtk-opt,
+.mtk-test-root[data-test-theme="dark"] .mtk-opt,
+.eg-test-root[data-test-theme="dark"] .eg-opt {
+  background: #0f172a !important;
+  border-color: #334155 !important;
+}
+.katex-error { display: none !important; visibility: hidden !important; height: 0 !important; overflow: hidden !important; }

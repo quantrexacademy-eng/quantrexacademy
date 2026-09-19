@@ -676,3 +676,20 @@ body.allen-practice-active .eg-foot-marks {
   border-top: none !important;
   box-shadow: none !important;
 }
+
+/* qxmd213: allen foot */
+.mtk-test-root.allen-practice .eg-foot,
+.mtk-test-root.allen-practice #egFoot,
+body.allen-practice-active #egFoot,
+body.allen-practice-active .eg-foot-marks {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+body.allen-practice-active #app-main,
+.mtk-test-root.allen-practice .mtk-main {
+  padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)) !important;
+  scroll-padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)) !important;
+  overflow-y: auto !important;
+}
