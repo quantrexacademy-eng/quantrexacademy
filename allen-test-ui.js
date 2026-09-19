@@ -719,7 +719,7 @@ const AllenTestUI = (() => {
         const st = d ? "answered" : (i === (pc.idx || 0) ? "not-answered" : "unvisited");
         return `<button type="button" class="mtk-pal-cell ${st}${cur}" data-prac-idx="${i}">${i + 1}</button>`;
       }).join("");
-      return `<div class="mtk-test-root allen-cbt allen-practice qx-font-host qxmd217-allen${bookCls}${solOpen ? " qx-sol-showing" : ""}" data-test-theme="${appTheme}" data-font-scale="${fontScale}">
+      return `<div class="mtk-test-root allen-cbt allen-practice qx-font-host qxmd218-allen${bookCls}${solOpen ? " qx-sol-showing" : ""}" data-test-theme="${appTheme}" data-font-scale="${fontScale}">
         <header class="mtk-header">
           <div class="mtk-header-left">
             <button type="button" class="mtk-close-btn" id="qxPracBackBtn" title="Back" aria-label="Back">&larr;</button>
@@ -727,13 +727,14 @@ const AllenTestUI = (() => {
           </div>
           <div class="mtk-prac-progress">Q${pos} / ${total}</div>
           ${timerHtml}
-          <div class="mtk-header-tools qx-prac-tools">
+          <div class="mtk-header-tools qx-prac-tools eg-tools-settings-only">
             ${hintBtn}
-            <button type="button" class="qx-bm-btn eg-tool-btn ${bmOn ? "on" : ""}" onclick="typeof toggleBm==='function'&&toggleBm(${qidAttr})" data-tip="Bookmark" title="Bookmark" aria-label="Bookmark">${BM_SVG}<span class="eg-tip">Bookmark</span></button>
-            <button type="button" class="eg-tool-btn" onclick="typeof toggleBmWithGroup==='function'&&toggleBmWithGroup(${qidAttr})" data-tip="Create group" title="Create group" aria-label="Create group">+<span class="eg-tip">Group</span></button>
-            <button type="button" class="qx-report-fab eg-tool-btn" onclick="typeof openQuestionReport==='function'&&openQuestionReport(${qidAttr})" data-tip="Report" title="Report" aria-label="Report">!<span class="eg-tip">Report</span></button>
-            <button type="button" class="mtk-font-btn qx-prac-theme-btn eg-tool-btn" id="pracThemeToggle" data-tip="Theme" title="Theme">${themeLbl}<span class="eg-tip">Theme</span></button>
-            <button type="button" class="mtk-font-btn qx-prac-view-btn eg-tool-btn" id="pracViewMenuBtn" data-tip="Text size" title="Text size" aria-expanded="false" aria-controls="pracViewPanel">Aa<span class="eg-tip">Aa</span></button>
+            <button type="button" class="qx-bm-btn eg-tool-btn eg-tool-hid ${bmOn ? "on" : ""}" id="pracBmBtn" onclick="typeof toggleBm==='function'&&toggleBm(${qidAttr})" data-tip="Bookmark" title="Bookmark" aria-label="Bookmark" tabindex="-1" aria-hidden="true">${BM_SVG}</button>
+            <button type="button" class="eg-tool-btn eg-tool-hid" id="pracGroupBtn" onclick="typeof toggleBmWithGroup==='function'&&toggleBmWithGroup(${qidAttr})" data-tip="Create group" title="Create group" aria-label="Create group" tabindex="-1" aria-hidden="true">+</button>
+            <button type="button" class="qx-report-fab eg-tool-btn eg-tool-hid" id="pracReportBtn" onclick="typeof openQuestionReport==='function'&&openQuestionReport(${qidAttr})" data-tip="Report" title="Report" aria-label="Report" tabindex="-1" aria-hidden="true">!</button>
+            <button type="button" class="mtk-font-btn qx-prac-theme-btn eg-tool-btn eg-tool-hid" id="pracThemeToggle" data-tip="Theme" title="Theme" tabindex="-1" aria-hidden="true">${themeLbl}</button>
+            <button type="button" class="eg-tool-btn eg-tool-hid" id="pracFullBtn" data-tip="Fullscreen" title="Fullscreen" aria-label="Fullscreen" tabindex="-1" aria-hidden="true">Full</button>
+            <button type="button" class="mtk-font-btn qx-prac-view-btn eg-tool-btn eg-settings-gear" id="pracViewMenuBtn" data-tip="Settings" title="Question View Settings" aria-expanded="false" aria-controls="pracViewPanel" aria-label="Question View Settings">⚙<span class="eg-tip">Settings</span></button>
           </div>
         </header>
         <div class="mtk-sec-bar"><div class="mtk-sec-tabs"><button type="button" class="mtk-sec-tab ${secCls} active">${esc(subject || "Question")}</button></div></div>
@@ -746,8 +747,8 @@ const AllenTestUI = (() => {
             <div class="${optsClass}" id="qaOpts">${opts}</div>
             <div id="qaResult">${partsSafe.resultHtml || ""}</div>
             <div id="qaSolReveal">${partsSafe.solReveal || ""}</div>
-            <div class="eg-action-row eg-action-note-only">
-              <button type="button" class="eg-note" id="qxPracNote">Add a Note</button>
+            <div class="eg-action-row eg-action-note-only" hidden style="display:none!important">
+              <button type="button" class="eg-note" id="qxPracNote" tabindex="-1" aria-hidden="true">Add a Note</button>
             </div>
             ${partsSafe.solActions || ""}
             <div class="eg-foot eg-foot-practice eg-foot-marks mtk-controls" id="egFoot">
@@ -759,21 +760,55 @@ const AllenTestUI = (() => {
           
 <aside class="mtk-palette"><div class="mtk-pal-grp-grid flat">${cells}</div></aside>
         </div>
-        <div class="qx-prac-view-panel" id="pracViewPanel" hidden>
-          <div class="qx-prac-view-sec"><div class="qx-prac-view-label">Text size</div>
-            <div class="qx-prac-size-row">
-              <button type="button" class="qx-prac-size-btn${sizeOn("small")}" data-scale="small">S</button>
-              <button type="button" class="qx-prac-size-btn${sizeOn("medium")}" data-scale="medium">M</button>
-              <button type="button" class="qx-prac-size-btn${sizeOn("large")}" data-scale="large">L</button>
-              <button type="button" class="qx-prac-size-btn${sizeOn("xlarge")}" data-scale="xlarge">XL</button>
-            </div></div>
-          <div class="qx-prac-view-sec"><div class="qx-prac-view-label">Zoom</div>
+                <div class="qx-prac-view-panel eg-vs-marks" id="pracViewPanel" hidden role="dialog" aria-label="Question View Settings">
+          <div class="eg-vs-head"><h5 class="eg-fmt-title">Question View Settings</h5>
+            <button type="button" class="eg-vs-close" id="pracViewClose" aria-label="Close">×</button></div>
+          <section class="eg-vs-sec"><h5 class="eg-vs-h">Notes &amp; Solutions</h5>
+            <div class="eg-vs-row"><div class="eg-vs-lab"><span class="eg-vs-lab-t">Show hint</span><span class="eg-vs-hint">Hint button when the question has a hint</span></div>
+              <button type="button" class="eg-vs-tog${qs.showHint ? " on" : ""}" data-eg-qset="showHint" aria-pressed="${qs.showHint ? "true" : "false"}" role="switch"><span class="eg-vs-knob"></span></button></div>
+            <div class="eg-vs-row"><div class="eg-vs-lab"><span class="eg-vs-lab-t">Always show My note</span><span class="eg-vs-hint">Keep the note box open</span></div>
+              <button type="button" class="eg-vs-tog${qs.alwaysShowMyNote ? " on" : ""}" data-eg-qset="alwaysShowMyNote" aria-pressed="${qs.alwaysShowMyNote ? "true" : "false"}" role="switch"><span class="eg-vs-knob"></span></button></div>
+            <div class="eg-vs-row"><div class="eg-vs-lab"><span class="eg-vs-lab-t">Question Solution Mode</span><span class="eg-vs-hint">Open the official solution when the question loads</span></div>
+              <button type="button" class="eg-vs-tog${qs.isQuestionSolutionMode ? " on" : ""}" data-eg-qset="isQuestionSolutionMode" aria-pressed="${qs.isQuestionSolutionMode ? "true" : "false"}" role="switch"><span class="eg-vs-knob"></span></button></div>
+          </section>
+          <section class="eg-vs-sec"><h5 class="eg-vs-h">Practice Experience</h5>
+            <div class="eg-vs-row"><div class="eg-vs-lab"><span class="eg-vs-lab-t">Start timer auto</span><span class="eg-vs-hint">Timer on every practice question</span></div>
+              <button type="button" class="eg-vs-tog${qs.showTimer !== false ? " on" : ""}" data-eg-qset="showTimer" aria-pressed="${qs.showTimer !== false ? "true" : "false"}" role="switch"><span class="eg-vs-knob"></span></button></div>
+            <div class="eg-vs-row"><div class="eg-vs-lab"><span class="eg-vs-lab-t">Play sounds</span><span class="eg-vs-hint">Sound after you check an answer</span></div>
+              <button type="button" class="eg-vs-tog${qs.playSounds !== false ? " on" : ""}" data-eg-qset="playSounds" aria-pressed="${qs.playSounds !== false ? "true" : "false"}" role="switch"><span class="eg-vs-knob"></span></button></div>
+            <div class="eg-vs-row"><div class="eg-vs-lab"><span class="eg-vs-lab-t">Don’t show correct immediately</span><span class="eg-vs-hint">Grade first; mark options only when Show Answer is on</span></div>
+              <button type="button" class="eg-vs-tog${qs.dontShowCorrectAnswerImmediately ? " on" : ""}" data-eg-qset="dontShowCorrectAnswerImmediately" aria-pressed="${qs.dontShowCorrectAnswerImmediately ? "true" : "false"}" role="switch"><span class="eg-vs-knob"></span></button></div>
+            <div class="eg-vs-row eg-vs-sizes"><div class="eg-vs-lab"><span class="eg-vs-lab-t">Text Size</span><span class="eg-vs-hint">Question &amp; solution font</span></div>
+              <div class="qx-prac-size-row eg-vs-size-row">
+                <button type="button" class="qx-prac-size-btn${sizeOn("small")}" data-scale="small">S</button>
+                <button type="button" class="qx-prac-size-btn${sizeOn("medium")}" data-scale="medium">M</button>
+                <button type="button" class="qx-prac-size-btn${sizeOn("large")}" data-scale="large">L</button>
+                <button type="button" class="qx-prac-size-btn${sizeOn("xlarge")}" data-scale="xlarge">XL</button>
+              </div></div>
+          </section>
+          <section class="eg-vs-sec"><h5 class="eg-vs-h">Tools</h5>
+            <div class="eg-fmt-row eg-vs-tools" role="group" aria-label="Question tools">
+              <button type="button" data-prac-fmt-act="theme">Theme</button>
+              <button type="button" data-prac-fmt-act="star">Bookmark</button>
+              <button type="button" data-prac-fmt-act="plus">Group</button>
+              <button type="button" data-prac-fmt-act="full">Fullscreen</button>
+              <button type="button" data-prac-fmt-act="report">Report</button>
+              <button type="button" data-prac-fmt-act="note">Note</button>
+              <button type="button" data-prac-fmt-act="hint"${hintTxt ? "" : " disabled"}>Hint</button>
+            </div>
+          </section>
+          <section class="eg-vs-sec"><h5 class="eg-vs-h">Peer Insights</h5>
+            <div class="eg-vs-row"><div class="eg-vs-lab"><span class="eg-vs-lab-t">Show attempt insight</span><span class="eg-vs-hint">Time taken after Check Answer</span></div>
+              <button type="button" class="eg-vs-tog${qs.showAttemptInsight !== false ? " on" : ""}" data-eg-qset="showAttemptInsight" aria-pressed="${qs.showAttemptInsight !== false ? "true" : "false"}" role="switch"><span class="eg-vs-knob"></span></button></div>
+          </section>
+          <section class="eg-vs-sec"><h5 class="eg-vs-h">Zoom</h5>
             <div class="qx-prac-zoom-row">
               <button type="button" class="qx-zoom-btn mtk-font-btn" id="pracZoomOut">−</button>
               <span class="qx-zoom-lbl" id="pracZoomLbl">${zoomPct}</span>
               <button type="button" class="qx-zoom-btn mtk-font-btn" id="pracZoomIn">+</button>
               <button type="button" class="qx-prac-zoom-reset" id="pracZoomReset">100%</button>
-            </div></div>
+            </div>
+          </section>
         </div>
       </div>`;
   }
@@ -928,6 +963,69 @@ const AllenTestUI = (() => {
       if (tbtn) tbtn.textContent = next === "dark" ? "Light" : "Dark";
     });
 
+    /* qxmd218: Settings toggles + tool rows inside View Settings */
+    root.querySelector("#pracViewClose")?.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const viewPanel = root.querySelector("#pracViewPanel");
+      const viewBtn = root.querySelector("#pracViewMenuBtn");
+      if (viewPanel) viewPanel.setAttribute("hidden", "");
+      if (viewBtn) viewBtn.setAttribute("aria-expanded", "false");
+    });
+    root.querySelectorAll("[data-eg-qset]").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const key = btn.getAttribute("data-eg-qset");
+        if (!key) return;
+        const next = !btn.classList.contains("on");
+        try {
+          if (typeof QxSettings !== "undefined" && QxSettings.setQuestionSetting) QxSettings.setQuestionSetting(key, next);
+          else {
+            const raw = JSON.parse(localStorage.getItem("qx_marks_question_settings") || "{}") || {};
+            raw[key] = next;
+            localStorage.setItem("qx_marks_question_settings", JSON.stringify(raw));
+          }
+        } catch (_) { /* */ }
+        btn.classList.toggle("on", next);
+        btn.setAttribute("aria-pressed", next ? "true" : "false");
+        if (key === "alwaysShowMyNote" && next) {
+          try { root.querySelector("#qxPracNote")?.click(); } catch (_) { /* */ }
+        }
+      });
+    });
+    root.querySelectorAll("[data-prac-fmt-act]").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const act = btn.getAttribute("data-prac-fmt-act");
+        const map = { theme: "#pracThemeToggle", star: "#pracBmBtn", plus: "#pracGroupBtn", full: "#pracFullBtn", report: "#pracReportBtn", note: "#qxPracNote", hint: "#qxPracHint" };
+        const viewPanel = root.querySelector("#pracViewPanel");
+        const viewBtn = root.querySelector("#pracViewMenuBtn");
+        if (viewPanel) viewPanel.setAttribute("hidden", "");
+        if (viewBtn) viewBtn.setAttribute("aria-expanded", "false");
+        if (act === "full") {
+          try {
+            if (typeof toggleQxImmersiveFullscreen === "function") toggleQxImmersiveFullscreen(root);
+            else if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+              (document.documentElement.requestFullscreen || document.documentElement.webkitRequestFullscreen).call(document.documentElement);
+            } else {
+              (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+            }
+          } catch (_) { /* */ }
+          return;
+        }
+        const sel = map[act];
+        const tgt = sel && root.querySelector(sel);
+        if (tgt) { try { tgt.click(); } catch (_) { /* */ } }
+      });
+    });
+    root.querySelector("#pracFullBtn")?.addEventListener("click", () => {
+      try {
+        if (typeof toggleQxImmersiveFullscreen === "function") toggleQxImmersiveFullscreen(root);
+        else if (!document.fullscreenElement) document.documentElement.requestFullscreen && document.documentElement.requestFullscreen();
+        else document.exitFullscreen && document.exitFullscreen();
+      } catch (_) { /* */ }
+    });
+
+
     try {
       const qs = qxMarksQSet();
       if (qs.showTimer !== false) startEgmqTimers(root);
@@ -1056,11 +1154,11 @@ window.showAllenInstructions = showAllenInstructions;
   } catch (_) {}
   try { window._qxSyncAllenFootPad = syncAllenFootPad; } catch (_) {}
 
-(function qxmd217AllenChrome(){
-  if (document.getElementById("qxmd217AllenCss")) return;
+(function qxmd218AllenChrome(){
+  if (document.getElementById("qxmd218AllenCss")) return;
   var s = document.createElement("style");
-  s.id = "qxmd217AllenCss";
-  s.textContent = ".allen-practice.qxmd217-allen .mtk-header-tools .eg-tool-btn:not(#pracViewMenuBtn):not(.qx-prac-view-btn),.allen-practice.qxmd217-allen .qx-prac-tools .qx-bm-btn,.allen-practice.qxmd217-allen .qx-prac-tools .qx-prac-theme-btn{display:none!important}.allen-practice.qxmd217-allen .mtk-header-tools{display:flex!important}";
+  s.id = "qxmd218AllenCss";
+  s.textContent = '.allen-practice.qxmd218-allen .mtk-header-tools .eg-tool-btn:not(#pracViewMenuBtn):not(.qx-prac-view-btn):not(.eg-settings-gear),.allen-practice.qxmd218-allen .qx-prac-tools .eg-tool-hid,.allen-practice.qxmd218-allen .qx-prac-tools .qx-bm-btn,.allen-practice.qxmd218-allen .qx-prac-tools .qx-prac-theme-btn,.allen-practice.qxmd218-allen .eg-action-row.eg-action-note-only{display:none!important}.allen-practice.qxmd218-allen .mtk-header-tools{display:flex!important;margin-left:auto!important}.allen-practice.qxmd218-allen .eg-settings-gear{display:inline-flex!important;visibility:visible!important;opacity:1!important}.allen-practice .qx-prac-view-panel.eg-vs-marks{max-width:min(420px,94vw);max-height:min(78vh,640px);overflow:auto;padding:12px 14px 16px;border-radius:16px;z-index:2147483000;position:fixed;right:10px;top:56px;background:#fff;color:#0f172a;border:1px solid #e2e8f0;box-shadow:0 18px 48px rgba(15,23,42,.28)}html[data-theme=dark] .allen-practice .qx-prac-view-panel.eg-vs-marks{background:#111827;color:#f1f5f9;border-color:#334155}.allen-practice .eg-vs-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 0 8px}.allen-practice .eg-vs-h{margin:0 0 8px;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#64748b}.allen-practice .eg-vs-sec{margin:10px 0 6px;padding:10px;border-radius:12px;background:#f8fafc;border:1px solid #e2e8f0}html[data-theme=dark] .allen-practice .eg-vs-sec{background:#0b1220;border-color:#1e293b}.allen-practice .eg-vs-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 2px;min-height:44px}.allen-practice .eg-vs-lab{display:flex;flex-direction:column;gap:2px;min-width:0}.allen-practice .eg-vs-lab-t{font-size:14px;font-weight:650}.allen-practice .eg-vs-hint{font-size:11px;color:#64748b}.allen-practice .eg-vs-tog{appearance:none;border:0;width:46px;height:28px;border-radius:999px;background:#cbd5e1;position:relative;cursor:pointer}.allen-practice .eg-vs-tog.on{background:#2563eb}.allen-practice .eg-vs-knob{position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:999px;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:left .15s}.allen-practice .eg-vs-tog.on .eg-vs-knob{left:21px}.allen-practice .eg-vs-tools{display:flex;flex-wrap:wrap;gap:8px}.allen-practice .eg-vs-tools button{appearance:none;border:1px solid #cbd5e1;background:#fff;border-radius:10px;padding:8px 12px;font-size:13px;font-weight:650;cursor:pointer}html[data-theme=dark] .allen-practice .eg-vs-tools button{background:#1e293b;color:#f1f5f9;border-color:#475569}.allen-practice .eg-vs-close{appearance:none;border:0;background:#e2e8f0;width:32px;height:32px;border-radius:999px;font-size:18px;cursor:pointer}';
   document.head.appendChild(s);
 })();
 

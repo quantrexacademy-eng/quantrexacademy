@@ -13,7 +13,7 @@
     } else if (!l.id) {
       l.id = "egTestUiCss";
     }
-    const href = "assets/examgoal-test-ui.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd217");
+    const href = "assets/examgoal-test-ui.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd218");
     if (l.getAttribute("href") !== href) l.href = href;
     let chrome = document.getElementById("qxPracChromeCss");
     if (!chrome) {
@@ -22,7 +22,7 @@
       chrome.rel = "stylesheet";
       document.head.appendChild(chrome);
     }
-    const ch = "assets/qx-prac-chrome.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd217");
+    const ch = "assets/qx-prac-chrome.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd218");
     if (chrome.getAttribute("href") !== ch) chrome.href = ch;
     let both = document.getElementById("qxBothThemesCss");
     if (!both) {
@@ -31,7 +31,7 @@
       both.rel = "stylesheet";
       document.head.appendChild(both);
     }
-    const bh = "assets/qx-both-themes.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd217");
+    const bh = "assets/qx-both-themes.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd218");
     if (both.getAttribute("href") !== bh) both.href = bh;
     let r = document.getElementById("qxPracticeReadCss");
     if (!r) {
@@ -40,8 +40,44 @@
       r.rel = "stylesheet";
       document.head.appendChild(r);
     }
-    const rh = "assets/qx-practice-read.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd217");
+    const rh = "assets/qx-practice-read.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd218");
     if (r.getAttribute("href") !== rh) r.href = rh;
+
+    /* qxmd218: practice chrome — only Settings gear; Marks-like settings cards */
+    if (!document.getElementById("qxmd218EgCss")) {
+      var s218 = document.createElement("style");
+      s218.id = "qxmd218EgCss";
+      s218.textContent = [
+        '.eg-test-root[data-eg-mode="practice"] .eg-top-tools.eg-tools-settings-only .eg-tool-btn:not(.eg-settings-gear),',
+        '.eg-test-root[data-eg-mode="practice"] .eg-top-tools .eg-tool-hid,',
+        '.eg-test-root.eg-qxmd218[data-eg-mode="practice"] .eg-top-tools .eg-tool-btn:not(.eg-settings-gear){display:none!important;width:0!important;height:0!important;min-width:0!important;min-height:0!important;padding:0!important;margin:0!important;border:0!important;overflow:hidden!important;opacity:0!important;pointer-events:none!important;position:absolute!important;left:-9999px!important}',
+        '.eg-test-root[data-eg-mode="practice"] .eg-top-tools.eg-tools-settings-only{display:flex!important;flex-wrap:nowrap!important;gap:6px!important;margin-left:auto!important;align-items:center!important}',
+        '.eg-test-root[data-eg-mode="practice"] .eg-top-tools .eg-settings-gear{display:inline-flex!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important;position:relative!important;left:auto!important;width:36px!important;height:36px!important;min-width:36px!important;min-height:36px!important}',
+        '.eg-fmt-pop.eg-vs-marks{max-width:min(420px,94vw)!important;max-height:min(78vh,640px)!important;overflow:auto!important;padding:12px 14px 16px!important;border-radius:16px!important;box-shadow:0 18px 48px rgba(15,23,42,.28)!important;z-index:2147483000!important;background:var(--qx-card,#fff)!important;color:var(--qx-fg,#0f172a)!important;border:1px solid #e2e8f0!important}',
+        'html[data-theme=dark] .eg-fmt-pop.eg-vs-marks,.eg-test-root[data-test-theme=dark] .eg-fmt-pop.eg-vs-marks{background:#111827!important;color:#f1f5f9!important;border-color:#334155!important}',
+        '.eg-vs-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 0 8px}',
+        '.eg-vs-head .eg-fmt-title{margin:0;font-size:16px;font-weight:800}',
+        '.eg-vs-close{appearance:none;border:0;background:#e2e8f0;color:#0f172a;width:32px;height:32px;border-radius:999px;font-size:18px;line-height:1;cursor:pointer}',
+        'html[data-theme=dark] .eg-vs-close,.eg-test-root[data-test-theme=dark] .eg-vs-close{background:#334155;color:#f8fafc}',
+        '.eg-vs-sec{margin:10px 0 6px;padding:10px 10px 6px;border-radius:12px;background:#f8fafc;border:1px solid #e2e8f0}',
+        'html[data-theme=dark] .eg-vs-sec,.eg-test-root[data-test-theme=dark] .eg-vs-sec{background:#0b1220;border-color:#1e293b}',
+        '.eg-vs-h{margin:0 0 8px;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#64748b}',
+        '.eg-vs-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 2px;min-height:44px}',
+        '.eg-vs-lab{display:flex;flex-direction:column;gap:2px;min-width:0}',
+        '.eg-vs-lab-t{font-size:14px;font-weight:650;color:inherit}',
+        '.eg-vs-hint{font-size:11px;font-weight:500;color:#64748b}',
+        '.eg-vs-tog{appearance:none;border:0;width:46px;height:28px;border-radius:999px;background:#cbd5e1;position:relative;cursor:pointer;flex-shrink:0;transition:background .15s}',
+        '.eg-vs-tog.on{background:#2563eb}',
+        '.eg-vs-knob{position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:999px;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:left .15s}',
+        '.eg-vs-tog.on .eg-vs-knob{left:21px}',
+        '.eg-vs-tools{display:flex;flex-wrap:wrap;gap:8px}',
+        '.eg-vs-tools button{appearance:none;border:1px solid #cbd5e1;background:#fff;color:#0f172a;border-radius:10px;padding:8px 12px;font-size:13px;font-weight:650;cursor:pointer}',
+        'html[data-theme=dark] .eg-vs-tools button,.eg-test-root[data-test-theme=dark] .eg-vs-tools button{background:#1e293b;color:#f1f5f9;border-color:#475569}',
+        '.eg-vs-size-row button{min-width:40px}',
+        '.eg-test-root[data-eg-mode="practice"] .eg-action-row.eg-action-note-only{display:none!important}'
+      ].join("");
+      document.head.appendChild(s218);
+    }
   }
 
   function isExamgoalUi(session) {
@@ -556,35 +592,78 @@
     const timer = '<span class="eg-timer" id="egTimer">' +
       formatClock(session.remainingSec != null ? session.remainingSec : 0) + "</span>";
     const palPref = getPalettePref();
-    /* qxmd217: ALL tools live in Question View Settings (gear) */
+    ﻿    /* qxmd218: Marks-like View Settings holds ALL practice toolbars */
+    var qsFmt = {};
+    try {
+      qsFmt = (typeof QxSettings !== "undefined" && QxSettings.getQuestionSettings)
+        ? QxSettings.getQuestionSettings()
+        : {};
+    } catch (_qs) { qsFmt = {}; }
+    function egQsetOn(key, defVal) {
+      if (qsFmt && typeof qsFmt[key] === "boolean") return qsFmt[key];
+      return !!defVal;
+    }
+    function egToggleRow(key, lab, hint, defVal) {
+      var on = egQsetOn(key, defVal);
+      return '<div class="eg-vs-row">' +
+        '<div class="eg-vs-lab"><span class="eg-vs-lab-t">' + lab + '</span>' +
+        (hint ? '<span class="eg-vs-hint">' + hint + '</span>' : '') +
+        '</div>' +
+        '<button type="button" class="eg-vs-tog' + (on ? ' on' : '') + '" data-eg-qset="' + key + '" aria-pressed="' + (on ? 'true' : 'false') + '" role="switch">' +
+        '<span class="eg-vs-knob" aria-hidden="true"></span></button></div>';
+    }
     const fmtSec = practice
-      ? '<h5 class="eg-fmt-pal-h eg-fmt-more-h">Question tools</h5><div class="eg-fmt-row eg-fmt-more" role="group" aria-label="Question tools">' +
+      ? '<section class="eg-vs-sec"><h5 class="eg-vs-h">Tools</h5>' +
+        '<div class="eg-fmt-row eg-fmt-more eg-vs-tools" role="group" aria-label="Question tools">' +
         '<button type="button" data-eg-fmt-act="theme" title="Theme">Theme</button>' +
         '<button type="button" data-eg-fmt-act="allq" title="All questions">All Q</button>' +
         '<button type="button" data-eg-fmt-act="palette" title="Palette">Palette</button>' +
         '<button type="button" data-eg-fmt-act="star" title="Bookmark">Bookmark</button>' +
         '<button type="button" data-eg-fmt-act="plus" title="Create group">Group</button>' +
-        '<button type="button" data-eg-fmt-act="full" title="Fullscreen">Full</button>' +
+        '<button type="button" data-eg-fmt-act="full" title="Fullscreen">Fullscreen</button>' +
         '<button type="button" data-eg-fmt-act="report" title="Report question">Report</button>' +
         '<button type="button" data-eg-fmt-act="note" title="Add a note">Note</button>' +
-        "</div>"
+        '</div></section>'
       : "";
     const fmt = fmtOpen
-      ? '<div class="eg-fmt-pop eg-view-settings" id="egFmtPop" role="dialog" aria-label="Question View Settings">' +
-        '<h5 class="eg-fmt-title">Question View Settings</h5>' +
-        '<h5>Text size</h5><div class="eg-fmt-row">' +
-        '<button type="button" data-eg-scale="small"' + (fontScale === "small" ? ' class="on"' : "") + ">S</button>" +
-        '<button type="button" data-eg-scale="medium"' + (fontScale === "medium" ? ' class="on"' : "") + ">M</button>" +
-        '<button type="button" data-eg-scale="large"' + (fontScale === "large" ? ' class="on"' : "") + ">L</button>" +
-        '<button type="button" data-eg-scale="xlarge"' + (fontScale === "xlarge" ? ' class="on"' : "") + ">XL</button>" +
-        '</div><h5 class="eg-fmt-pal-h">Palette</h5><div class="eg-fmt-row eg-fmt-pal" role="group" aria-label="Palette layout">' +
+      ? '<div class="eg-fmt-pop eg-view-settings eg-vs-marks" id="egFmtPop" role="dialog" aria-label="Question View Settings">' +
+        '<div class="eg-vs-head"><h5 class="eg-fmt-title">Question View Settings</h5>' +
+        '<button type="button" class="eg-vs-close" id="egFmtClose" aria-label="Close">\u00d7</button></div>' +
+        (practice
+          ? ('<section class="eg-vs-sec"><h5 class="eg-vs-h">Notes &amp; Solutions</h5>' +
+            egToggleRow("showHint", "Show hint", "Hint button when the question has a hint", false) +
+            egToggleRow("alwaysShowMyNote", "Always show My note", "Keep the note box open", false) +
+            egToggleRow("isQuestionSolutionMode", "Question Solution Mode", "Open the official solution when the question loads", false) +
+            '</section>' +
+            '<section class="eg-vs-sec"><h5 class="eg-vs-h">Practice Experience</h5>' +
+            egToggleRow("showTimer", "Start timer auto", "Timer on every practice question", true) +
+            egToggleRow("playSounds", "Play sounds", "Sound after you check an answer", true) +
+            egToggleRow("dontShowCorrectAnswerImmediately", "Don\u2019t show correct immediately", "Grade first; mark options only when Show Answer is on", false) +
+            '<div class="eg-vs-row eg-vs-sizes"><div class="eg-vs-lab"><span class="eg-vs-lab-t">Text Size</span>' +
+            '<span class="eg-vs-hint">Question &amp; solution font</span></div>' +
+            '<div class="eg-fmt-row eg-vs-size-row">' +
+            '<button type="button" data-eg-scale="small"' + (fontScale === "small" ? ' class="on"' : "") + ">S</button>" +
+            '<button type="button" data-eg-scale="medium"' + (fontScale === "medium" ? ' class="on"' : "") + ">M</button>" +
+            '<button type="button" data-eg-scale="large"' + (fontScale === "large" ? ' class="on"' : "") + ">L</button>" +
+            '<button type="button" data-eg-scale="xlarge"' + (fontScale === "xlarge" ? ' class="on"' : "") + ">XL</button>" +
+            '</div></div></section>' +
+            '<section class="eg-vs-sec"><h5 class="eg-vs-h">Peer Insights</h5>' +
+            egToggleRow("showAttemptInsight", "Show attempt insight", "Time taken after Check Answer", true) +
+            '</section>')
+          : ('<h5>Text size</h5><div class="eg-fmt-row">' +
+            '<button type="button" data-eg-scale="small"' + (fontScale === "small" ? ' class="on"' : "") + ">S</button>" +
+            '<button type="button" data-eg-scale="medium"' + (fontScale === "medium" ? ' class="on"' : "") + ">M</button>" +
+            '<button type="button" data-eg-scale="large"' + (fontScale === "large" ? ' class="on"' : "") + ">L</button>" +
+            '<button type="button" data-eg-scale="xlarge"' + (fontScale === "xlarge" ? ' class="on"' : "") + ">XL</button></div>")) +
+        '<section class="eg-vs-sec"><h5 class="eg-vs-h">Palette</h5><div class="eg-fmt-row eg-fmt-pal" role="group" aria-label="Palette layout">' +
         '<button type="button" data-eg-pal="side"' + (palPref === "side" ? ' class="on"' : "") + ' title="Right sidebar">Right</button>' +
         '<button type="button" data-eg-pal="strip"' + (palPref === "strip" ? ' class="on"' : "") + ' title="Top question bar">Top</button>' +
         '<button type="button" data-eg-pal="both"' + (palPref === "both" ? ' class="on"' : "") + ' title="Right sidebar and top bar">Both</button>' +
-        "</div>" + fmtSec + "</div>"
+        '</div></section>' +
+        fmtSec +
+        '</div>'
       : "";
-
-    const checkRow = ""; /* qxmd217: Note moved into View Settings */
+const checkRow = ""; /* qxmd217: Note moved into View Settings */
     const hiddenNote = '<button type="button" class="eg-note" id="egNoteBtn" style="display:none!important" aria-hidden="true">Note</button>';
 
     /* qxmd176: toggle ON whenever solution is open (Check Answer or Show Answer) */
@@ -669,7 +748,7 @@
     return '<div class="eg-test-root mtk-test-root' +
       (sideOpen ? " eg-side-open" : " eg-side-collapsed") +
       (stripOpen ? " eg-strip-open" : " eg-strip-collapsed") +
-      " eg-tools-open eg-compact eg-qxmd167 eg-qxmd170 eg-qxmd171 eg-qxmd173 eg-qxmd180 eg-qxmd182 eg-qxmd217 eg-qxtool8 eg-qxeg1 eg-qxeg2 eg-qxeg3 eg-qxeg4 eg-qxeg5 eg-qxeg6 eg-qxeg7" +
+      " eg-tools-open eg-compact eg-qxmd167 eg-qxmd170 eg-qxmd171 eg-qxmd173 eg-qxmd180 eg-qxmd182 eg-qxmd217 eg-qxmd218 eg-qxtool8 eg-qxeg1 eg-qxeg2 eg-qxeg3 eg-qxeg4 eg-qxeg5 eg-qxeg6 eg-qxeg7" +
       (previewOpen ? " eg-preview-open" : " eg-preview-collapsed") +
       (desktopMode ? " eg-desktop-mode" : " eg-mobile") +
       (!desktopMode && isMobileEg ? " eg-mobile-vp" : "") +
@@ -679,28 +758,46 @@
       '<header class="eg-top" style="display:flex!important;align-items:center!important;gap:8px!important;min-height:40px!important;padding:2px 6px!important;background:#1565C0!important;color:#fff!important;visibility:visible!important;opacity:1!important;position:relative!important;top:auto!important;bottom:auto!important;left:auto!important;right:auto!important;z-index:70!important;flex-shrink:0!important;">' +
       '<button type="button" class="eg-back" id="mtkExitBtn" data-qx-exit="1" title="Exit" aria-label="Exit">‹</button>' +
       '<div class="eg-top-title">' + titleEsc + ' <span class="eg-mode-pill">' + mode + "</span></div>" +
-      '<div class="eg-top-tools qx-prac-tools" role="toolbar" aria-label="Question tools" style="display:flex!important;visibility:visible!important;opacity:1!important;flex-wrap:wrap!important;gap:6px!important;margin-left:auto!important;">' +
+      ﻿'<div class="eg-top-tools qx-prac-tools' + (practice ? " eg-tools-settings-only" : "") + '" role="toolbar" aria-label="Question tools">' +
       (!practice ? timer : "") +
-      /* qxmd167: primary always-visible row — Theme, Aa, All Q, Palette */
-      '<button type="button" class="eg-ico mtk-theme-btn eg-tool-btn eg-tool-pri' + (theme === "light" ? " eg-moon" : "") + '" id="mtkThemeBtn" data-tip="Theme" title="Light / dark" aria-label="Light / dark">' +
-      (theme === "dark"
-        ? ico('<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>')
-        : '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>') +
-      '<span class="eg-tip">Theme</span></button>' +
-      '<button type="button" class="eg-ico eg-tool-btn eg-tool-pri eg-settings-gear" id="egFmtBtn" data-tip="Settings" title="Question View Settings" aria-label="Question View Settings">⚙<span class="eg-tip">Aa</span></button>' +
-      '<button type="button" class="eg-ico eg-tool-btn eg-allq-btn eg-tool-pri' + (allQOn ? " on" : "") + '" id="egAllQBtn" data-tip="All Q" title="' + allQTitle + '" aria-label="' + allQTitle + '" aria-expanded="' + (allQOn ? "true" : "false") + '" data-eg-cycle="' + (allQOn ? "1" : "0") + '">' +
-      gridIco + '<span class="eg-tip">All Q</span></button>' +
-      '<button type="button" class="eg-ico eg-tool-btn eg-menu-btn eg-lines-btn eg-tool-pri' + (sideOpen ? " on" : "") + '" id="egMenuBtn" data-tip="Palette" title="' + sideTitle + '" aria-label="' + sideTitle + '" aria-expanded="' + (sideOpen ? "true" : "false") + '">' +
-      menuIco + '<span class="eg-tip">Palette</span></button>' +
-      /* secondary — stay if fit; mobile CSS may tuck into Aa */
-      '<button type="button" class="eg-ico star eg-tool-btn eg-tool-sec' + (bmOn ? " on" : "") + '" id="egStarBtn" data-tip="Bookmark" title="Bookmark" aria-label="Bookmark">' +
-      (bmOn ? "★" : "☆") + '<span class="eg-tip">Bookmark</span></button>' +
-      '<button type="button" class="eg-ico eg-tool-btn eg-tool-sec eg-tool-reach" id="egPlusBtn" data-tip="Group" title="Create group" aria-label="Create group">' +
-      groupIco + '<span class="eg-tip">Group</span></button>' +
-      '<button type="button" class="eg-ico eg-tool-btn eg-tool-sec" id="egFullBtn" data-tip="Fullscreen" title="Fullscreen" aria-label="Fullscreen">' +
-      ico('<path d="M8 3H3v5M16 3h5v5M8 21H3v-5M21 16v5h-5"/>') + '<span class="eg-tip">Full</span></button>' +
-      '<button type="button" class="eg-ico warn eg-tool-btn eg-tool-sec eg-tool-reach" id="mtkReportBtn" data-tip="Report" title="Report question" aria-label="Report">!<span class="eg-tip">Report</span></button>' +
+      /* qxmd218: practice keeps ONLY Settings gear visible; other tools stay in DOM (hidden) for Settings proxies */
+      (practice
+        ? ('<button type="button" class="eg-ico eg-tool-btn eg-tool-pri eg-settings-gear" id="egFmtBtn" data-tip="Settings" title="Question View Settings" aria-label="Question View Settings">\u2699<span class="eg-tip">Settings</span></button>' +
+          '<button type="button" class="eg-ico mtk-theme-btn eg-tool-btn eg-tool-hid' + (theme === "light" ? " eg-moon" : "") + '" id="mtkThemeBtn" data-tip="Theme" title="Light / dark" aria-label="Light / dark" tabindex="-1" aria-hidden="true">' +
+          (theme === "dark"
+            ? ico('<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>')
+            : '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>') +
+          '</button>' +
+          '<button type="button" class="eg-ico eg-tool-btn eg-allq-btn eg-tool-hid' + (allQOn ? " on" : "") + '" id="egAllQBtn" data-tip="All Q" title="' + allQTitle + '" aria-label="' + allQTitle + '" aria-expanded="' + (allQOn ? "true" : "false") + '" data-eg-cycle="' + (allQOn ? "1" : "0") + '" tabindex="-1" aria-hidden="true">' +
+          gridIco + '</button>' +
+          '<button type="button" class="eg-ico eg-tool-btn eg-menu-btn eg-lines-btn eg-tool-hid' + (sideOpen ? " on" : "") + '" id="egMenuBtn" data-tip="Palette" title="' + sideTitle + '" aria-label="' + sideTitle + '" aria-expanded="' + (sideOpen ? "true" : "false") + '" tabindex="-1" aria-hidden="true">' +
+          menuIco + '</button>' +
+          '<button type="button" class="eg-ico star eg-tool-btn eg-tool-hid' + (bmOn ? " on" : "") + '" id="egStarBtn" data-tip="Bookmark" title="Bookmark" aria-label="Bookmark" tabindex="-1" aria-hidden="true">' +
+          (bmOn ? "\u2605" : "\u2606") + '</button>' +
+          '<button type="button" class="eg-ico eg-tool-btn eg-tool-hid" id="egPlusBtn" data-tip="Group" title="Create group" aria-label="Create group" tabindex="-1" aria-hidden="true">' +
+          groupIco + '</button>' +
+          '<button type="button" class="eg-ico eg-tool-btn eg-tool-hid" id="egFullBtn" data-tip="Fullscreen" title="Fullscreen" aria-label="Fullscreen" tabindex="-1" aria-hidden="true">' +
+          ico('<path d="M8 3H3v5M16 3h5v5M8 21H3v-5M21 16v5h-5"/>') + '</button>' +
+          '<button type="button" class="eg-ico warn eg-tool-btn eg-tool-hid" id="mtkReportBtn" data-tip="Report" title="Report question" aria-label="Report" tabindex="-1" aria-hidden="true">!</button>')
+        : ('<button type="button" class="eg-ico mtk-theme-btn eg-tool-btn eg-tool-pri' + (theme === "light" ? " eg-moon" : "") + '" id="mtkThemeBtn" data-tip="Theme" title="Light / dark" aria-label="Light / dark">' +
+          (theme === "dark"
+            ? ico('<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>')
+            : '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>') +
+          '<span class="eg-tip">Theme</span></button>' +
+          '<button type="button" class="eg-ico eg-tool-btn eg-tool-pri eg-settings-gear" id="egFmtBtn" data-tip="Settings" title="Question View Settings" aria-label="Question View Settings">\u2699<span class="eg-tip">Aa</span></button>' +
+          '<button type="button" class="eg-ico eg-tool-btn eg-allq-btn eg-tool-pri' + (allQOn ? " on" : "") + '" id="egAllQBtn" data-tip="All Q" title="' + allQTitle + '" aria-label="' + allQTitle + '" aria-expanded="' + (allQOn ? "true" : "false") + '" data-eg-cycle="' + (allQOn ? "1" : "0") + '">' +
+          gridIco + '<span class="eg-tip">All Q</span></button>' +
+          '<button type="button" class="eg-ico eg-tool-btn eg-menu-btn eg-lines-btn eg-tool-pri' + (sideOpen ? " on" : "") + '" id="egMenuBtn" data-tip="Palette" title="' + sideTitle + '" aria-label="' + sideTitle + '" aria-expanded="' + (sideOpen ? "true" : "false") + '">' +
+          menuIco + '<span class="eg-tip">Palette</span></button>' +
+          '<button type="button" class="eg-ico star eg-tool-btn eg-tool-sec' + (bmOn ? " on" : "") + '" id="egStarBtn" data-tip="Bookmark" title="Bookmark" aria-label="Bookmark">' +
+          (bmOn ? "\u2605" : "\u2606") + '<span class="eg-tip">Bookmark</span></button>' +
+          '<button type="button" class="eg-ico eg-tool-btn eg-tool-sec eg-tool-reach" id="egPlusBtn" data-tip="Group" title="Create group" aria-label="Create group">' +
+          groupIco + '<span class="eg-tip">Group</span></button>' +
+          '<button type="button" class="eg-ico eg-tool-btn eg-tool-sec" id="egFullBtn" data-tip="Fullscreen" title="Fullscreen" aria-label="Fullscreen">' +
+          ico('<path d="M8 3H3v5M16 3h5v5M8 21H3v-5M21 16v5h-5"/>') + '<span class="eg-tip">Full</span></button>' +
+          '<button type="button" class="eg-ico warn eg-tool-btn eg-tool-sec eg-tool-reach" id="mtkReportBtn" data-tip="Report" title="Report question" aria-label="Report">!<span class="eg-tip">Report</span></button>')) +
       "</div>" + fmt +
+
       "</header>" +
       '<div class="eg-subs">' + tabs + "</div>" +
       '<div class="eg-qbar eg-strip' + (stripOpen ? "" : " eg-strip-collapsed") + '" id="egQBar" role="navigation" aria-label="Question numbers" aria-hidden="' + (stripOpen ? "false" : "true") + '"' + (stripOpen ? '' : ' hidden') + '>' +
@@ -1600,7 +1697,7 @@ function forceFootVisible(force) {
         root.classList.toggle("eg-preview-open", previewOpen);
         root.classList.toggle("eg-preview-collapsed", !previewOpen);
         root.classList.remove("eg-tools-closed", "eg-tools-open", "eg-sol-showing", "eg-qxmd175", "eg-qxmd176", "eg-qxmd177", "eg-qxmd179");
-        root.classList.add("eg-tools-open", "eg-qxmd217", "eg-qxmd167", "eg-qxmd170", "eg-qxmd171", "eg-qxmd173", "eg-qxmd180", "eg-qxmd182", "eg-qxtool8", "eg-qxeg1", "eg-qxeg2", "eg-qxeg3", "eg-qxeg4", "eg-qxeg5", "eg-qxeg6", "eg-qxeg7", "eg-foot-ready");
+        root.classList.add("eg-tools-open", "eg-qxmd217 eg-qxmd218", "eg-qxmd167", "eg-qxmd170", "eg-qxmd171", "eg-qxmd173", "eg-qxmd180", "eg-qxmd182", "eg-qxtool8", "eg-qxeg1", "eg-qxeg2", "eg-qxeg3", "eg-qxeg4", "eg-qxeg5", "eg-qxeg6", "eg-qxeg7", "eg-foot-ready");
         root.setAttribute("data-eg-cycle", bothOpen ? "1" : "0");
         const strip = root.querySelector("#egQBar");
         if (strip) {
@@ -2036,6 +2133,40 @@ function forceFootVisible(force) {
       }
       /* Prefer light refresh only if pop markup not in DOM yet */
       if (typeof api.refresh === "function") api.refresh();
+    };
+    /* qxmd218: Marks settings toggles + close */
+    root.querySelectorAll("[data-eg-qset]").forEach(function (b) {
+      b.onclick = function (e) {
+        if (e) { e.preventDefault(); e.stopPropagation(); }
+        var key = b.getAttribute("data-eg-qset");
+        if (!key) return;
+        var cur = b.classList.contains("on");
+        var next = !cur;
+        try {
+          if (typeof QxSettings !== "undefined" && QxSettings.setQuestionSetting) {
+            QxSettings.setQuestionSetting(key, next);
+          } else {
+            var raw = {};
+            try { raw = JSON.parse(localStorage.getItem("qx_marks_question_settings") || "{}") || {}; } catch (_) { raw = {}; }
+            raw[key] = next;
+            localStorage.setItem("qx_marks_question_settings", JSON.stringify(raw));
+          }
+        } catch (_) { /* */ }
+        b.classList.toggle("on", next);
+        b.setAttribute("aria-pressed", next ? "true" : "false");
+        if (key === "alwaysShowMyNote" && next && typeof api.openNote === "function") {
+          try { api.openNote(session); } catch (_) { /* */ }
+        }
+        if (key === "isQuestionSolutionMode" || key === "showHint" || key === "showTimer") {
+          try { if (typeof api.refresh === "function") api.refresh(); } catch (_) { /* */ }
+        }
+      };
+    });
+    var fmtClose = root.querySelector("#egFmtClose");
+    if (fmtClose) fmtClose.onclick = function (e) {
+      if (e) { e.preventDefault(); e.stopPropagation(); }
+      session._egFmtOpen = false;
+      try { var pop = root.querySelector("#egFmtPop"); if (pop) pop.remove(); } catch (_) {}
     };
     root.querySelectorAll("[data-eg-scale]").forEach(function (b) {
       b.onclick = function (e) {
