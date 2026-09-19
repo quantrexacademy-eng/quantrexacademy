@@ -2554,7 +2554,7 @@ function qxPracticeWireExtra(scope, ctx, qid) {
   }
 }
 
-/** qxmd185: Check Answer keeps the stem. Never wipe or hide the question. */
+/** MARKS practice: stem + options stay; solution is extra below. Never add eg-sol-showing (that CSS kills #egQArea). */
 function qxHidePracticeStem(scope) {
   try {
     const root = scope || document.getElementById("app-main") || document;
@@ -2571,8 +2571,8 @@ function qxHidePracticeStem(scope) {
     });
     const wrap = root.querySelector(".mtk-test-root, .allen-practice, .qx-practice-page, .eg-test-root");
     if (wrap) {
-      wrap.classList.add("eg-sol-showing", "qx-sol-showing", "eg-qxmd182");
-      wrap.classList.remove("eg-qxmd175", "eg-qxmd176", "eg-qxmd177", "eg-qxmd179");
+      wrap.classList.add("qx-sol-showing");
+      wrap.classList.remove("eg-sol-showing", "eg-qxmd175", "eg-qxmd176", "eg-qxmd177", "eg-qxmd179", "eg-qxmd182");
     }
   } catch (_) { /* */ }
 }

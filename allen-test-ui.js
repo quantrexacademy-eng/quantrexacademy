@@ -703,6 +703,7 @@ const AllenTestUI = (() => {
     /* qxmd185: Check Answer keeps stem; solution is extra below options — never wipe the question */
     const solOpen = !!(pc.showAnswer || (partsSafe.solReveal && String(partsSafe.solReveal).trim())
       || (partsSafe.resultHtml && /qx-sol-reveal-box|qx-sol-card|sol-body/i.test(String(partsSafe.resultHtml))));
+    /* MARKS: solution open ≠ hide stem. eg-sol-showing CSS wipes #egQArea. */
     const stemHtml = String(qBody).includes("qx-question-body")
       ? qBody
       : `<div class="mtk-q-text qx-content" id="egQArea" data-qx-qid="${q.id}">${qBody}</div>`;
@@ -722,7 +723,7 @@ const AllenTestUI = (() => {
         const st = d ? "answered" : (i === (pc.idx || 0) ? "not-answered" : "unvisited");
         return `<button type="button" class="mtk-pal-cell ${st}${cur}" data-prac-idx="${i}">${i + 1}</button>`;
       }).join("");
-      return `<div class="mtk-test-root allen-cbt allen-practice qx-font-host${bookCls}${solOpen ? " eg-sol-showing qx-sol-showing" : ""}" data-test-theme="${appTheme}" data-font-scale="${fontScale}">
+      return `<div class="mtk-test-root allen-cbt allen-practice qx-font-host${bookCls}${solOpen ? " qx-sol-showing" : ""}" data-test-theme="${appTheme}" data-font-scale="${fontScale}">
         <header class="mtk-header">
           <div class="mtk-header-left">
             <button type="button" class="mtk-close-btn" id="qxPracBackBtn" title="Back" aria-label="Back">&larr;</button>
@@ -798,7 +799,7 @@ const AllenTestUI = (() => {
 
     try { document.body.classList.add("qx-app-shell", "qx-q-fullscreen"); } catch (_) {}
 
-    return `<div class="mtk-test-root allen-cbt allen-practice egmq-root mq-qx-best qx-font-host${bookCls}${solOpen ? " eg-sol-showing qx-sol-showing" : ""}" data-test-theme="${appTheme}" data-font-scale="${fontScale}">
+    return `<div class="mtk-test-root allen-cbt allen-practice egmq-root mq-qx-best qx-font-host${bookCls}${solOpen ? " qx-sol-showing" : ""}" data-test-theme="${appTheme}" data-font-scale="${fontScale}">
       <header class="qx-best-head">
         <button type="button" class="qx-best-icon" id="qxPracBackBtn" aria-label="Back">←</button>
         <div class="qx-best-mid">

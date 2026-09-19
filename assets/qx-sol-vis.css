@@ -1,0 +1,188 @@
+/* Quantrex solutions — always readable in light + dark. Never hide. */
+#qaSolReveal, #qaResult, #qaResult .result-box, #qaResult .qx-sol-reveal-box,
+.qx-prac-result-wrap, .qx-sol-reveal-box,
+.eg-sol, .eg-sol.eg-sol-open, #egSol,
+.sol-body, .qx-sol-flow, .qx-sol-card, .qx-sol-p, .qx-sol-step,
+.qx-sol-step-plain, .qx-sol-step-body, .qx-sol-body-wrap, .eg-sol-inner,
+.mk-sol-body, .mk-sol-body-clean, .mk-sol-block, .qx-sol-flow-inner,
+.qzrr-cbt .sol-body, .mtk-sol .qx-content {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  overflow: visible !important;
+  max-height: none !important;
+  height: auto !important;
+  clip: auto !important;
+}
+
+.eg-sol table, .sol-body table, .qx-sol-flow table, .mk-sol-body table,
+.qx-match-table {
+  display: table !important;
+  visibility: visible !important;
+  width: auto !important;
+  max-width: 100% !important;
+  border-collapse: collapse !important;
+  margin: 10px 0 !important;
+}
+.eg-sol td, .sol-body td, .qx-match-table td {
+  display: table-cell !important;
+  visibility: visible !important;
+  padding: 6px 8px !important;
+}
+
+/* Light */
+.eg-test-root[data-test-theme="light"] .eg-sol,
+.eg-test-root[data-test-theme="light"] .sol-body,
+.eg-test-root[data-test-theme="light"] .qx-sol-card,
+.qzrr-cbt[data-test-theme="light"] .sol-body,
+.qzrr-cbt[data-test-theme="light"] .mk-sol-body,
+html[data-theme="light"] .eg-sol,
+html[data-theme="light"] .sol-body,
+html[data-theme="light"] .qx-sol-card,
+html[data-theme="light"] .mk-sol-body {
+  color: #0f172a !important;
+  background: #ffffff !important;
+}
+html[data-theme="light"] .sol-body *,
+.eg-test-root[data-test-theme="light"] .sol-body *,
+.eg-test-root[data-test-theme="light"] .eg-sol * {
+  color: inherit;
+}
+
+/* Dark */
+.eg-test-root[data-test-theme="dark"] .eg-sol,
+.eg-test-root[data-test-theme="dark"] .sol-body,
+.eg-test-root[data-test-theme="dark"] .qx-sol-card,
+.qzrr-cbt[data-test-theme="dark"] .sol-body,
+.qzrr-cbt[data-test-theme="dark"] .mk-sol-body,
+html[data-theme="dark"] .eg-sol,
+html[data-theme="dark"] .sol-body,
+html[data-theme="dark"] .qx-sol-card,
+html[data-theme="dark"] .mk-sol-body {
+  color: #e5e7eb !important;
+  background: #111827 !important;
+}
+
+/* Never paint-fill KaTeX glyphs — that hides math */
+.katex-error, .katex-error-color, [class*="katex-error"] {
+  display: none !important;
+}
+.qx-sol-card {
+  margin: 16px 0 8px !important;
+  padding: 16px 18px !important;
+  border-radius: 14px !important;
+  border: 1px solid #cbd5e1 !important;
+  background: #fff !important;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06) !important;
+}
+.qx-sol-card-h {
+  font-size: 13px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.04em !important;
+  text-transform: uppercase !important;
+  color: #1d4ed8 !important;
+  margin: 0 0 12px !important;
+}
+.qx-sol-ans {
+  display: flex !important;
+  gap: 10px !important;
+  align-items: center !important;
+  margin: 0 0 14px !important;
+  padding: 10px 12px !important;
+  border-radius: 10px !important;
+  background: #ecfdf5 !important;
+  border: 1px solid #86efac !important;
+}
+.qx-sol-ans-lab { font-weight: 800 !important; color: #047857 !important; }
+.sol-body, .qx-sol-card .sol-body {
+  font-size: 16px !important;
+  line-height: 1.75 !important;
+  color: #0f172a !important;
+}
+html[data-theme="dark"] .qx-sol-card {
+  background: #111827 !important;
+  border-color: #334155 !important;
+}
+html[data-theme="dark"] .qx-sol-card-h { color: #93c5fd !important; }
+html[data-theme="dark"] .sol-body, html[data-theme="dark"] .qx-sol-card .sol-body {
+  color: #e5e7eb !important;
+}
+.eg-sol .katex, .sol-body .katex, .qx-sol-flow .katex, .mk-sol-body .katex,
+.eg-sol .katex *, .sol-body .katex *, .qx-sol-flow .katex *, .mk-sol-body .katex * {
+  -webkit-text-fill-color: unset !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.qx-sol-shortcut-panel,
+.mk-sol-body-clean .qx-sol-shortcut-panel,
+.eg-sol .qx-sol-shortcut-panel {
+  display: none !important;
+}
+
+.eg-q-stem img, .mtk-q-text img, .qx-prac-q img, .qx-content img,
+.sol-body img, .qx-sol-flow img, .mk-sol-body img, .eg-sol img {
+  max-width: min(100%, 560px) !important;
+  height: auto !important;
+  display: block !important;
+  margin: 12px auto !important;
+  background: #fff !important;
+  border-radius: 8px !important;
+  object-fit: contain !important;
+}
+.eg-q-stem, .mtk-q-text, .qx-prac-q, .sol-body, .qx-sol-flow {
+  font-size: 17px !important;
+  line-height: 1.7 !important;
+  overflow-wrap: anywhere !important;
+}
+.eg-q-stem .katex, .mtk-q-text .katex, .sol-body .katex, .qx-sol-flow .katex {
+  font-size: 1.08em !important;
+}
+.katex-display {
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  max-width: 100% !important;
+}
+
+.qx-hw-ink, .qx-hw-ink p, .qx-hw-ink .qx-sol-step-body {
+  color: inherit !important;
+}
+.eg-test-root[data-test-theme="dark"] .qx-hw-paper,
+html[data-theme="dark"] .qx-hw-paper {
+  background-color: #111827 !important;
+  border-color: #334155 !important;
+}
+
+/* MARKS question view: practice keeps stem + options when solution is open */
+html .mtk-test-root.allen-practice #egQArea,
+html .mtk-test-root.allen-practice #egQArea *,
+html .mtk-test-root.allen-practice .mtk-q-text,
+html .mtk-test-root.allen-practice .mtk-q-text *,
+html .mtk-test-root.allen-practice .qx-question-body,
+html .mtk-test-root.allen-practice.qx-sol-showing #egQArea,
+html .mtk-test-root.allen-practice.qx-sol-showing #egQArea *,
+html .mtk-test-root.allen-practice.qx-sol-showing .mtk-q-text,
+html .mtk-test-root.allen-practice.eg-sol-showing #egQArea,
+html .mtk-test-root.allen-practice.eg-sol-showing #egQArea *,
+html .mtk-test-root.allen-practice.eg-sol-showing .mtk-q-text,
+html .mtk-test-root.allen-practice.eg-sol-showing .mtk-q-text *,
+html .allen-practice.eg-sol-showing .katex,
+html .allen-practice.eg-sol-showing .katex * {
+  display: revert !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+  position: static !important;
+  clip: auto !important;
+  clip-path: none !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+  pointer-events: auto !important;
+  color: inherit !important;
+}
+html .mtk-test-root.allen-practice #egQArea,
+html .mtk-test-root.allen-practice .mtk-q-text {
+  display: block !important;
+}

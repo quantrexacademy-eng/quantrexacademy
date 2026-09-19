@@ -249,11 +249,11 @@ html[data-font-scale="small"] {
   --nta-q: 14px;
 }
 html[data-font-scale="medium"] {
-  --qx-read-stem: 16px;
-  --qx-read-opt: 16px;
-  --qx-read-sol: 16px;
+  --qx-read-stem: 18px;
+  --qx-read-opt: 18px;
+  --qx-read-sol: 18px;
   --qx-read-lh: 1.65;
-  --nta-q: 16px;
+  --nta-q: 18px;
 }
 html[data-font-scale="large"] {
   --qx-read-stem: 18px;

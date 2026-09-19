@@ -1,10 +1,10 @@
 {
-  "build": "qxmd188",
-  "cache": "qx-pwa-qxmd188",
-  "title": "qxmd188 · missing MARKS books + visible revision/flash cards",
-  "body": "Extracted Physical Chemistry JEE/NEET (1045 each) and NEET MIPYQ (4941) in MARKS chapter and question order. Flash Cards and Revision Notes on main nav. Medical RFC no longer times out empty.",
+  "build": "qxmd189",
+  "cache": "qx-pwa-qxmd189",
+  "title": "qxmd189 · MARKS app settings + question view keeps stem",
+  "body": "Settings match MARKS login (timer, sounds, hint, solution mode, notes, attempt insight, theme Auto, text 18px). Check Answer no longer hides the question. Solution sits below options like MARKS.",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app",
   "site": "https://www.quantrexacademy.com",
   "package": "com.quantrexacademy.app",
-  "ts": 1880000000000
+  "ts": 1890000000000
 }

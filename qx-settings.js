@@ -7,7 +7,7 @@
 (function (global) {
   "use strict";
 
-  var PARITY = "qxmd187";
+  var PARITY = "qxmd189";
   var PREF = {
     push: "qx_pref_push_notif",
     email: "qx_pref_email_notif",
@@ -141,9 +141,9 @@
   }
 
   function getThemePref() {
-    var v = lsGet(PREF.themePref, "dark");
+    var v = lsGet(PREF.themePref, "system");
     if (v === "light" || v === "dark" || v === "system") return v;
-    return "dark";
+    return "system";
   }
 
   function resolveTheme(pref) {
@@ -190,8 +190,9 @@
       lsSet(PREF.font, s);
       document.documentElement.setAttribute("data-font-scale", s);
       if (document.body) document.body.setAttribute("data-font-scale", s);
-      document.documentElement.style.setProperty("--qx-q-font", s === "small" ? "14px" : s === "large" ? "18px" : "16px");
+      document.documentElement.style.setProperty("--qx-q-font", s === "small" ? "14px" : s === "large" ? "20px" : "18px");
     }
+    setQuestionSetting("textSize", s === "small" ? 14 : s === "large" ? 20 : 18);
   }
 
   function getPaletteMode() {
@@ -370,17 +371,17 @@
     }
     return (
       '<div class="qx-set-sec qx-set-span" id="qxSetQuestionSec">' +
-      '<div class="qx-set-sec-h">Question</div>' +
-      '<p class="qx-set-sec-sub">Same question settings as MARKS — timer, sounds, hint, solution mode, notes.</p>' +
+      '<div class="qx-set-sec-h">Question settings</div>' +
+      '<p class="qx-set-sec-sub">Same as MARKS — timer, sounds, hint, solution mode, notes, attempt insight.</p>' +
       '<div class="qx-set-list">' +
-      row("qxSetShowTimer", "showTimer", "Show timer", "Per-question timer while you practise") +
-      row("qxSetPlaySounds", "playSounds", "Play sounds", "Correct / incorrect chime after Check Answer") +
-      row("qxSetShowHint", "showHint", "Show hint", "Hint button on each question when a hint exists") +
-      row("qxSetHintPopup", "showHintFeedbackPopup", "Hint feedback popup", "Open hint in a popup instead of a toast") +
-      row("qxSetNoImmediateAns", "dontShowCorrectAnswerImmediately", "Don't show correct answer immediately", "Check Answer grades you, but options stay unmarked until Show Answer") +
-      row("qxSetSolMode", "isQuestionSolutionMode", "Solution mode", "Open the official solution as soon as the question loads") +
-      row("qxSetAlwaysNote", "alwaysShowMyNote", "Always show my note", "Keep the note box open on every question") +
-      row("qxSetAttemptInsight", "showAttemptInsight", "Show attempt insight", "Time taken and result after you check") +
+      row("qxSetShowTimer", "showTimer", "Show timer", "Timer on every practice question") +
+      row("qxSetPlaySounds", "playSounds", "Play sounds", "Sound after you check an answer") +
+      row("qxSetShowHint", "showHint", "Show hint", "Hint button when the question has a hint") +
+      row("qxSetHintPopup", "showHintFeedbackPopup", "Hint feedback popup", "Open hint in a popup") +
+      row("qxSetNoImmediateAns", "dontShowCorrectAnswerImmediately", "Don't show correct answer immediately", "Grade first; mark options only when Show Answer is on") +
+      row("qxSetSolMode", "isQuestionSolutionMode", "Question solution mode", "Open the official solution when the question loads") +
+      row("qxSetAlwaysNote", "alwaysShowMyNote", "Always show my note", "Keep the note box open") +
+      row("qxSetAttemptInsight", "showAttemptInsight", "Show attempt insight", "Time taken after Check Answer") +
       "</div></div>"
     );
   }
@@ -780,6 +781,21 @@
     setTimeout(patchNav, 900);
   }
 
+  function applyMarksAppDefaults() {
+    try {
+      if (!lsGet(PREF.qset, "")) lsSet(PREF.qset, JSON.stringify(QSET_DEFAULTS));
+    } catch (_) { /* */ }
+    try {
+      if (!localStorage.getItem(PREF.themePref)) lsSet(PREF.themePref, "system");
+      setTheme(getThemePref());
+    } catch (_) { /* */ }
+    try {
+      if (localStorage.getItem(PREF.push) == null) setPush(true);
+      if (localStorage.getItem(PREF.email) == null) setEmail(true);
+    } catch (_) { /* */ }
+  }
+  try { applyMarksAppDefaults(); } catch (_) { /* */ }
+
   var api = {
     view: viewSettings,
     open: open,
@@ -797,6 +813,7 @@
     setQuestionSetting: setQuestionSetting,
     playAnswerSound: playAnswerSound,
     getThemePref: getThemePref,
+    applyMarksAppDefaults: applyMarksAppDefaults,
     PARITY: PARITY
   };
   global.QxSettings = api;
