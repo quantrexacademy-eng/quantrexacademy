@@ -580,7 +580,7 @@ body.marks-test-active #app-main:has(.mtk-test-root[data-test-theme="light"]) {
 body.qzrr-analysis-active #app-main,
 body.marks-results-active #app-main { overflow: auto; }
 .qz-an-page { min-height: 100vh; display: flex; }
-.sol-body, .qx-exam-sol { display: block !important; margin-top: 10px; padding: 12px; background: #f8fafc; border-radius: 10px; border-left: 3px solid #0d9488; }
+.sol-body, .qx-exam-sol { display: block !important; margin-top: 10px; padding: 12px; background: #f8fafc; border-radius: 10px; border-left: none !important; /* qxmd214 */ }
 
 
 

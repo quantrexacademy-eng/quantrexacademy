@@ -999,7 +999,7 @@ window.showAllenInstructions = showAllenInstructions;
 (function () {
   function syncAllenFootPad() {
     try {
-      /* qxmd213-force-app-main-scroll */
+      /* qxmd214-force-app-main-scroll */
       try {
         var am = document.getElementById("app-main");
         if (am) {
@@ -1059,8 +1059,8 @@ window.showAllenInstructions = showAllenInstructions;
 
 
 
-/* qxmd213 foot transparent — kill white strip from inline styles */
-(function qxmd213ForceFootTransparent() {
+/* qxmd214 foot transparent — kill white strip from inline styles */
+(function qxmd214ForceFootTransparent() {
   function paint(foot) {
     if (!foot) return;
     try {
@@ -1092,7 +1092,7 @@ window.showAllenInstructions = showAllenInstructions;
 })();
 
 
-;(function qxmd213ForceNav(){
+;(function qxmd214ForceNav(){
   function paint(){
     try {
       var foot = document.querySelector("#egFoot, .eg-foot-marks, .eg-foot");
@@ -1127,5 +1127,34 @@ window.showAllenInstructions = showAllenInstructions;
     if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", paint);
     else paint();
     setInterval(paint, 1500);
+  }
+})();
+
+;(function qxmd214ForcePillContrast(){
+  function paint(){
+    try {
+      var root = document.querySelector(".eg-test-root, .mtk-test-root, .allen-practice");
+      var dark = !!(root && root.getAttribute("data-test-theme") === "dark");
+      ["qxPrevBtn","qxNextBtn","qxPracPrev","qxPracNext"].forEach(function(id){
+        var b = document.getElementById(id);
+        if (!b) return;
+        b.style.setProperty("background", dark ? "#1e293b" : "#ffffff", "important");
+        b.style.setProperty("color", dark ? "#f1f5f9" : "#0f172a", "important");
+        b.style.setProperty("-webkit-text-fill-color", dark ? "#f1f5f9" : "#0f172a", "important");
+        b.style.setProperty("border", dark ? "1.5px solid #64748b" : "1.5px solid #94a3b8", "important");
+      });
+      ["egCheckBtn","qxPracSubmit"].forEach(function(id){
+        var b = document.getElementById(id);
+        if (!b) return;
+        b.style.setProperty("background", dark ? "#3b82f6" : "#2563eb", "important");
+        b.style.setProperty("color", "#ffffff", "important");
+        b.style.setProperty("-webkit-text-fill-color", "#ffffff", "important");
+      });
+    } catch(_){}
+  }
+  if (typeof document !== "undefined") {
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", paint);
+    else paint();
+    setInterval(paint, 2000);
   }
 })();

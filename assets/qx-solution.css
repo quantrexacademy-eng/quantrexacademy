@@ -1305,3 +1305,201 @@ html[data-theme="light"] .qx-sol-reveal-box {
   content: none !important; display: none !important; width: 0 !important; background: none !important;
 }
 .katex-error { display: none !important; }
+
+/* ========== qxmd214: light/dark contrast — footer, options, toolbar, sol no left line ========== */
+
+/* 1) LIGHT footer Prev/Next: force dark text (kill white -webkit-text-fill on white pills) */
+.eg-test-root:not([data-test-theme="dark"]) #egFoot #qxPrevBtn,
+.eg-test-root:not([data-test-theme="dark"]) #egFoot #qxNextBtn,
+.eg-test-root:not([data-test-theme="dark"]) #egFoot #qxNextBtn.eg-btn-next,
+.eg-test-root:not([data-test-theme="dark"]) .eg-foot #qxPrevBtn,
+.eg-test-root:not([data-test-theme="dark"]) .eg-foot #qxNextBtn,
+.eg-test-root:not([data-test-theme="dark"]) .eg-foot #qxNextBtn.eg-btn-next,
+.eg-test-root.eg-qxtool8:not([data-test-theme="dark"]) #egFoot #qxPrevBtn,
+.eg-test-root.eg-qxtool8:not([data-test-theme="dark"]) #egFoot #qxNextBtn,
+.eg-test-root.eg-qxtool8:not([data-test-theme="dark"]) .eg-foot #qxPrevBtn,
+.eg-test-root.eg-qxtool8:not([data-test-theme="dark"]) .eg-foot #qxNextBtn,
+.mtk-test-root:not([data-test-theme="dark"]) #egFoot #qxPracPrev,
+.mtk-test-root:not([data-test-theme="dark"]) #egFoot #qxPracNext,
+.allen-practice:not([data-test-theme="dark"]) #qxPracPrev,
+.allen-practice:not([data-test-theme="dark"]) #qxPracNext,
+html[data-theme="light"] #egFoot #qxPrevBtn,
+html[data-theme="light"] #egFoot #qxNextBtn,
+html[data-theme="light"] #egFoot #qxPracPrev,
+html[data-theme="light"] #egFoot #qxPracNext {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+  border: 1.5px solid #94a3b8 !important;
+  text-shadow: none !important;
+  mix-blend-mode: normal !important;
+  filter: none !important;
+}
+.eg-test-root:not([data-test-theme="dark"]) #egFoot #egCheckBtn,
+.eg-test-root:not([data-test-theme="dark"]) .eg-foot #egCheckBtn,
+.mtk-test-root:not([data-test-theme="dark"]) #egFoot #qxPracSubmit,
+.allen-practice:not([data-test-theme="dark"]) #qxPracSubmit,
+html[data-theme="light"] #egFoot #egCheckBtn,
+html[data-theme="light"] #egFoot #qxPracSubmit {
+  background: #2563eb !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  border: 1.5px solid #1d4ed8 !important;
+}
+
+/* 2) DARK Examgoal options: .qx-opt-plain + KaTeX .mord light on dark */
+.eg-test-root[data-test-theme="dark"] .qx-opt-plain,
+.eg-test-root[data-test-theme="dark"] .mtk-opt .qx-opt-plain,
+.eg-test-root[data-test-theme="dark"] .eg-opt .qx-opt-plain,
+.eg-test-root[data-test-theme="dark"] .mtk-opt-text,
+.eg-test-root[data-test-theme="dark"] .eg-opt,
+.eg-test-root[data-test-theme="dark"] .mtk-opt,
+.mtk-test-root[data-test-theme="dark"] .qx-opt-plain,
+.mtk-test-root[data-test-theme="dark"] .mtk-opt-text,
+.allen-practice[data-test-theme="dark"] .qx-opt-plain,
+html[data-theme="dark"] .eg-test-root .qx-opt-plain,
+html[data-theme="dark"] .qx-opt-plain {
+  color: #e2e8f0 !important;
+  -webkit-text-fill-color: #e2e8f0 !important;
+}
+.eg-test-root[data-test-theme="dark"] .mtk-opt .katex,
+.eg-test-root[data-test-theme="dark"] .eg-opt .katex,
+.eg-test-root[data-test-theme="dark"] .mtk-opt-text .katex,
+.eg-test-root[data-test-theme="dark"] .qx-opt-plain .katex,
+.eg-test-root[data-test-theme="dark"] .mtk-opt .mord,
+.eg-test-root[data-test-theme="dark"] .eg-opt .mord,
+.eg-test-root[data-test-theme="dark"] .mtk-opt-text .mord,
+.eg-test-root[data-test-theme="dark"] .qx-opt-plain .mord,
+.eg-test-root[data-test-theme="dark"] .mtk-opt .katex *,
+.eg-test-root[data-test-theme="dark"] .eg-opt .katex *,
+.mtk-test-root[data-test-theme="dark"] .mtk-opt .mord,
+.mtk-test-root[data-test-theme="dark"] .mtk-opt .katex,
+.mtk-test-root[data-test-theme="dark"] .mtk-opt .katex *,
+.allen-practice[data-test-theme="dark"] .mtk-opt .mord,
+.allen-practice[data-test-theme="dark"] .mtk-opt .katex *,
+html[data-theme="dark"] .eg-opt .mord,
+html[data-theme="dark"] .mtk-opt .mord {
+  color: #e2e8f0 !important;
+  -webkit-text-fill-color: #e2e8f0 !important;
+  fill: currentColor !important;
+}
+
+/* 3) Remove ALL border-left on sol-body / qx-sol / eg-sol */
+.sol-body, .qx-sol-body, .qx-sol-flow, .qx-exam-sol, .mk-sol-body,
+.qx-sol, .qx-sol-card, .eg-sol, #egSol, .eg-sol-panel, #egSolPanel,
+.qx-sol-reveal-box, #qaSolReveal, .eg-sol-marks-way, .eg-sol-inline,
+.eg-test-root .sol-body, .mtk-test-root .sol-body,
+.eg-test-root[data-test-theme="light"] .sol-body,
+.eg-test-root[data-test-theme="dark"] .sol-body,
+html[data-theme="light"] .sol-body, html[data-theme="dark"] .sol-body {
+  border-left: none !important;
+  border-left-width: 0 !important;
+  border-left-color: transparent !important;
+  border-left-style: none !important;
+}
+.sol-body::before, .qx-sol::before, .qx-sol-card::before, .eg-sol::before, #egSol::before,
+.qx-sol-reveal-box::before, .eg-sol-panel::before {
+  content: none !important; display: none !important; width: 0 !important; border: none !important;
+}
+
+/* 4) LIGHT toolbar: dark icon fill/stroke on light chips (beat "always white on blue bar") */
+.eg-test-root:not([data-test-theme="dark"]) .eg-top-tools .eg-tool-btn,
+.eg-test-root:not([data-test-theme="dark"]) .eg-top-tools .eg-ico,
+.mtk-test-root:not([data-test-theme="dark"]) .eg-top-tools .eg-tool-btn,
+.mtk-test-root:not([data-test-theme="dark"]) .eg-top-tools .eg-ico,
+.allen-practice:not([data-test-theme="dark"]) .eg-top-tools .eg-tool-btn,
+.allen-practice:not([data-test-theme="dark"]) .qx-prac-tools .eg-ico,
+html[data-theme="light"] .eg-top-tools .eg-tool-btn,
+html[data-theme="light"] .eg-top-tools .eg-ico {
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+  background: #f8fafc !important;
+  border: 1px solid #cbd5e1 !important;
+  fill: #0f172a !important;
+  stroke: #0f172a !important;
+}
+.eg-test-root:not([data-test-theme="dark"]) .eg-top-tools .eg-tool-btn svg,
+.eg-test-root:not([data-test-theme="dark"]) .eg-top-tools .eg-ico svg,
+.eg-test-root:not([data-test-theme="dark"]) .eg-top-tools svg,
+.eg-test-root:not([data-test-theme="dark"]) .eg-top-tools svg *,
+.mtk-test-root:not([data-test-theme="dark"]) .eg-top-tools svg,
+.mtk-test-root:not([data-test-theme="dark"]) .eg-top-tools svg *,
+.allen-practice:not([data-test-theme="dark"]) .eg-top-tools svg,
+.allen-practice:not([data-test-theme="dark"]) .qx-prac-tools svg,
+html[data-theme="light"] .eg-top-tools svg,
+html[data-theme="light"] .eg-top-tools svg * {
+  color: #0f172a !important;
+  fill: #0f172a !important;
+  stroke: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+}
+.eg-test-root:not([data-test-theme="dark"]) .eg-top-tools .eg-tip,
+.mtk-test-root:not([data-test-theme="dark"]) .eg-top-tools .eg-tip {
+  color: #334155 !important;
+  -webkit-text-fill-color: #334155 !important;
+  fill: none !important;
+}
+
+/* 5) DARK NEET/Examgoal solution card: dark surface + light text */
+.eg-test-root[data-test-theme="dark"] .qx-sol-card,
+.eg-test-root[data-test-theme="dark"] .eg-sol,
+.eg-test-root[data-test-theme="dark"] #egSol,
+.eg-test-root[data-test-theme="dark"] .qx-sol-reveal-box,
+.eg-test-root[data-test-theme="dark"] .eg-sol-panel,
+.mtk-test-root[data-test-theme="dark"] .qx-sol-card,
+.mtk-test-root[data-test-theme="dark"] .eg-sol,
+.allen-practice[data-test-theme="dark"] .qx-sol-card,
+.allen-practice[data-test-theme="dark"] .sol-body,
+html[data-theme="dark"] .eg-test-root .qx-sol-card,
+html[data-theme="dark"] .qx-sol-card {
+  background: #0f172a !important;
+  background-color: #0f172a !important;
+  border: 1px solid #334155 !important;
+  border-left: none !important;
+  color: #e2e8f0 !important;
+  -webkit-text-fill-color: #e2e8f0 !important;
+}
+.eg-test-root[data-test-theme="dark"] .qx-sol-card-h,
+.eg-test-root[data-test-theme="dark"] .qx-sol-ans,
+.eg-test-root[data-test-theme="dark"] .qx-sol-ans-lab,
+.eg-test-root[data-test-theme="dark"] .eg-sol .qx-sol-card-h,
+.eg-test-root[data-test-theme="dark"] .sol-body,
+.eg-test-root[data-test-theme="dark"] .qx-sol-flow,
+.mtk-test-root[data-test-theme="dark"] .qx-sol-card-h,
+.mtk-test-root[data-test-theme="dark"] .sol-body,
+.allen-practice[data-test-theme="dark"] .qx-sol-card-h,
+html[data-theme="dark"] .qx-sol-card-h,
+html[data-theme="dark"] .qx-sol-ans-lab {
+  color: #e2e8f0 !important;
+  -webkit-text-fill-color: #e2e8f0 !important;
+}
+.eg-test-root[data-test-theme="dark"] .qx-sol-ans,
+.mtk-test-root[data-test-theme="dark"] .qx-sol-ans,
+html[data-theme="dark"] .qx-sol-ans {
+  background: #052e1a !important;
+  border: 1px solid #166534 !important;
+  color: #bbf7d0 !important;
+  -webkit-text-fill-color: #bbf7d0 !important;
+}
+.eg-test-root[data-test-theme="dark"] .qx-sol-ans-lab,
+html[data-theme="dark"] .qx-sol-ans-lab {
+  color: #86efac !important;
+  -webkit-text-fill-color: #86efac !important;
+}
+.eg-test-root[data-test-theme="dark"] .sol-body .katex,
+.eg-test-root[data-test-theme="dark"] .sol-body .katex *,
+.eg-test-root[data-test-theme="dark"] .qx-sol-card .katex,
+.eg-test-root[data-test-theme="dark"] .qx-sol-card .katex *,
+.eg-test-root[data-test-theme="dark"] .sol-body .mord {
+  color: #e2e8f0 !important;
+  -webkit-text-fill-color: #e2e8f0 !important;
+}
+
+/* Keep: transparent footer (no slab) */
+#egFoot, .eg-foot, .eg-foot-practice, .eg-foot-marks, .mtk-controls, footer.eg-foot {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}

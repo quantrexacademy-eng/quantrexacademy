@@ -13,7 +13,7 @@
     } else if (!l.id) {
       l.id = "egTestUiCss";
     }
-    const href = "assets/examgoal-test-ui.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd213");
+    const href = "assets/examgoal-test-ui.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd214");
     if (l.getAttribute("href") !== href) l.href = href;
     let chrome = document.getElementById("qxPracChromeCss");
     if (!chrome) {
@@ -22,7 +22,7 @@
       chrome.rel = "stylesheet";
       document.head.appendChild(chrome);
     }
-    const ch = "assets/qx-prac-chrome.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd213");
+    const ch = "assets/qx-prac-chrome.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd214");
     if (chrome.getAttribute("href") !== ch) chrome.href = ch;
     let both = document.getElementById("qxBothThemesCss");
     if (!both) {
@@ -31,7 +31,7 @@
       both.rel = "stylesheet";
       document.head.appendChild(both);
     }
-    const bh = "assets/qx-both-themes.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd213");
+    const bh = "assets/qx-both-themes.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd214");
     if (both.getAttribute("href") !== bh) both.href = bh;
     let r = document.getElementById("qxPracticeReadCss");
     if (!r) {
@@ -40,7 +40,7 @@
       r.rel = "stylesheet";
       document.head.appendChild(r);
     }
-    const rh = "assets/qx-practice-read.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd213");
+    const rh = "assets/qx-practice-read.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd214");
     if (r.getAttribute("href") !== rh) r.href = rh;
   }
 
@@ -1420,15 +1420,15 @@
         if (!foot) return;
         var h = Math.ceil(foot.getBoundingClientRect().height || foot.offsetHeight || 64);
         if (!isFinite(h) || h < 40) h = 52;
-        if (h > 72) h = 72; /* qxmd213 compact pills */
-        var pad = h + 48; /* qxmd213 */
+        if (h > 72) h = 72; /* qxmd214 compact pills */
+        var pad = h + 48; /* qxmd214 */
         var solOpen = !!(host && host.classList && (host.classList.contains("qx-sol-showing") || host.classList.contains("eg-sol-showing")));
-        if (solOpen) pad = h + 64; /* qxmd213 sol clear */
+        if (solOpen) pad = h + 64; /* qxmd214 sol clear */
         var cssPad = "calc(" + pad + "px + env(safe-area-inset-bottom, 0px))";
         try {
           document.documentElement.style.setProperty("--eg-foot-h", h + "px");
           document.documentElement.style.setProperty("--eg-foot-pad", cssPad);
-      /* qxmd213-global-unlock */
+      /* qxmd214-global-unlock */
       try {
         var am2 = document.getElementById("app-main");
         if (am2 && document.body.classList.contains("allen-practice-active")) {
@@ -1477,7 +1477,7 @@
         foot.style.setProperty("flex-wrap", "nowrap", "important");
         foot.style.setProperty("align-items", "center", "important");
         foot.style.setProperty("gap", "8px", "important");
-        foot.style.setProperty("background", "transparent", "important"); /* qxmd213 no white slab */
+        foot.style.setProperty("background", "transparent", "important"); /* qxmd214 no white slab */
         foot.style.setProperty("background-color", "transparent", "important");
         foot.style.setProperty("box-shadow", "none", "important");
         foot.style.setProperty("border", "none", "important");
@@ -1492,7 +1492,7 @@
         ["qxPrevBtn", "egCheckBtn", "qxNextBtn", "qxPracPrev", "qxPracSubmit", "qxPracNext"].forEach(function (id) {
           const b = foot.querySelector("#" + id) || document.getElementById(id);
           if (!b) return;
-          /* qxmd213: force nav always — never display:none after Check */
+          /* qxmd214: force nav always — never display:none after Check */
           try { b.hidden = false; b.removeAttribute("hidden"); } catch (_) {}
           b.style.setProperty("display", "inline-flex", "important");
           b.style.setProperty("visibility", "visible", "important");
@@ -1505,6 +1505,21 @@
           b.style.setProperty("width", "100%", "important");
           b.style.setProperty("z-index", "2147483647", "important");
           b.style.setProperty("position", "relative", "important");
+          /* qxmd214: pill contrast */
+          try {
+            var dark = !!(root && (root.getAttribute("data-test-theme") === "dark" || (document.documentElement.getAttribute("data-theme") === "dark" && root.getAttribute("data-test-theme") !== "light")));
+            var isCheck = (id === "egCheckBtn" || id === "qxPracSubmit");
+            if (isCheck) {
+              b.style.setProperty("background", dark ? "#3b82f6" : "#2563eb", "important");
+              b.style.setProperty("color", "#ffffff", "important");
+              b.style.setProperty("-webkit-text-fill-color", "#ffffff", "important");
+            } else {
+              b.style.setProperty("background", dark ? "#1e293b" : "#ffffff", "important");
+              b.style.setProperty("color", dark ? "#f1f5f9" : "#0f172a", "important");
+              b.style.setProperty("-webkit-text-fill-color", dark ? "#f1f5f9" : "#0f172a", "important");
+              b.style.setProperty("border", dark ? "1.5px solid #64748b" : "1.5px solid #94a3b8", "important");
+            }
+          } catch (_c) {}
         });
         try { if (typeof syncEgFootPad === "function") syncEgFootPad(root); } catch (_) {}
         try { if (typeof root._egBindNavBtns === "function") root._egBindNavBtns(); } catch (_) {}
@@ -2413,7 +2428,7 @@
       if (!foot) return;
       var h = Math.ceil(foot.getBoundingClientRect().height || 64);
       if (!isFinite(h) || h < 40) h = 52;
-      if (h > 90) h = 90; /* qxmd213 compact */
+      if (h > 90) h = 90; /* qxmd214 compact */
       var solOpen = !!(host.classList && (host.classList.contains("qx-sol-showing") || host.classList.contains("eg-sol-showing")));
       var pad = solOpen ? h + 48 : h + 28;
       var cssPad = "calc(" + pad + "px + env(safe-area-inset-bottom, 0px))";
