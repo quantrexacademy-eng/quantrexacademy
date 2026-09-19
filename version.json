@@ -1,10 +1,10 @@
 {
-    "cache":  "qx-pwa-qxmd214",
-    "ts":  1789832971060,
-    "title":  "qxmd214: light/dark contrast - footer, options, toolbar, sol no left line",
+    "cache":  "qx-pwa-qxmd215",
+    "ts":  1789833521032,
+    "title":  "qxmd215: destroy bottom strip - in-flow Prev|Check|Next pills",
     "site":  "https://www.quantrexacademy.com",
-    "build":  "qxmd214",
-    "body":  "LIGHT footer Prev/Next force dark -webkit-text-fill (not white-on-white). DARK options .qx-opt-plain + KaTeX .mord light text. Remove ALL sol-body/qx-sol/eg-sol border-left. LIGHT toolbar SVG dark fill on chips. DARK solution card dark surface + light headers/ANSWER. Keep transparent foot, Prev|Check|Next, scroll unlock, KaTeX no double-dollar, stem-free.",
+    "build":  "qxmd215",
+    "body":  "FOOT no longer position:fixed. In-flow relative pills at end of scroll host so Q+SOLUTION never covered. Transparent; no ::before slab; no border-top; no min-height bar. Pad 24px. Keep toolbar/options contrast. Trust fix #1.",
     "package":  "com.quantrexacademy.app",
     "play":  "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }

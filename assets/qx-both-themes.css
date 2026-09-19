@@ -258,7 +258,7 @@ html[data-theme="light"] .eg-foot, html[data-theme="dark"] .eg-foot,
   grid-template-columns: 1fr 1.2fr 1fr !important;
   gap: 8px !important;
   align-items: center !important;
-  position: fixed !important;
+  position: relative !important; /* qxmd215 was fixed */
   left: 0 !important; right: 0 !important; bottom: 0 !important;
   z-index: 2147483646 !important;
   visibility: visible !important;
@@ -589,4 +589,335 @@ html[data-theme="dark"] .qx-sol-ans-lab {
   background-image: none !important;
   box-shadow: none !important;
   border: none !important;
+}
+
+/* ========== qxmd214b: no bottom slab + toolbar/options never hide (light+dark) ========== */
+
+/* 1) Kill remaining bottom white/grey strip — transparent foot; pills only */
+#egFoot, .eg-foot, .eg-foot-practice, .eg-foot-marks, .mtk-controls, footer.eg-foot,
+.eg-test-root #egFoot, .eg-test-root .eg-foot, .eg-test-root .eg-foot-practice, .eg-test-root .eg-foot-marks,
+.mtk-test-root #egFoot, .mtk-test-root .eg-foot, .allen-practice #egFoot, .allen-practice .eg-foot,
+.qx-prac-foot, .qx-prac-foot.eg-foot-marks, .qx-practice-page .eg-foot,
+.eg-test-root.eg-qxtool8 #egFoot, .eg-test-root.eg-qxtool8 .eg-foot,
+.eg-test-root.eg-qxtool8[data-test-theme="light"] .eg-foot,
+.eg-test-root.eg-qxtool8[data-test-theme="dark"] .eg-foot,
+.eg-test-root.eg-mobile .eg-foot, .eg-test-root.eg-desktop-mode .eg-foot,
+html[data-theme="light"] .eg-foot, html[data-theme="dark"] .eg-foot,
+html[data-theme="light"] #egFoot, html[data-theme="dark"] #egFoot {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  outline: none !important;
+  min-height: 0 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+#egFoot::before, #egFoot::after, .eg-foot::before, .eg-foot::after,
+.eg-foot-marks::before, .eg-foot-marks::after, .eg-foot-practice::before,
+.mtk-controls::before, .mtk-controls::after, .qx-prac-foot::before {
+  content: none !important; display: none !important; height: 0 !important;
+  background: none !important; box-shadow: none !important; border: none !important;
+}
+/* hide any leftover slab wrappers under foot */
+.eg-foot-slab, .eg-foot-bg, .qx-foot-slab, .eg-foot-bar, #egFootBar,
+.eg-test-root .eg-foot-extra, .eg-test-root #egFootExtra {
+  display: none !important; height: 0 !important; background: transparent !important;
+}
+
+/* 2) Toolbar icons + labels NEVER hide — both themes, force contrast */
+.eg-test-root .eg-top-tools,
+.eg-test-root .eg-top-tools .eg-tool-btn,
+.eg-test-root .eg-top-tools .eg-ico,
+.eg-test-root .eg-top-tools .eg-tip,
+.mtk-test-root .eg-top-tools,
+.mtk-test-root .eg-top-tools .eg-tool-btn,
+.mtk-test-root .eg-top-tools .eg-ico,
+.allen-practice .eg-top-tools,
+.allen-practice .qx-prac-tools,
+.allen-practice .qx-prac-tools .eg-ico {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+.eg-test-root .eg-top-tools { display: flex !important; flex-wrap: nowrap !important; }
+.eg-test-root:not([data-test-theme="dark"]) .eg-top-tools .eg-tool-btn,
+.eg-test-root:not([data-test-theme="dark"]) .eg-top-tools .eg-ico,
+.mtk-test-root:not([data-test-theme="dark"]) .eg-top-tools .eg-tool-btn,
+.allen-practice:not([data-test-theme="dark"]) .eg-top-tools .eg-tool-btn,
+.allen-practice:not([data-test-theme="dark"]) .qx-prac-tools .eg-ico,
+html[data-theme="light"] .eg-top-tools .eg-tool-btn,
+html[data-theme="light"] .eg-top-tools .eg-ico {
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+  background: #f8fafc !important;
+  border: 1px solid #cbd5e1 !important;
+  fill: #0f172a !important;
+  stroke: #0f172a !important;
+}
+.eg-test-root:not([data-test-theme="dark"]) .eg-top-tools .eg-tip,
+.mtk-test-root:not([data-test-theme="dark"]) .eg-top-tools .eg-tip,
+.allen-practice:not([data-test-theme="dark"]) .eg-top-tools .eg-tip,
+html[data-theme="light"] .eg-top-tools .eg-tip {
+  color: #334155 !important;
+  -webkit-text-fill-color: #334155 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  background: transparent !important;
+}
+.eg-test-root:not([data-test-theme="dark"]) .eg-top-tools svg,
+.eg-test-root:not([data-test-theme="dark"]) .eg-top-tools svg *,
+.mtk-test-root:not([data-test-theme="dark"]) .eg-top-tools svg,
+.mtk-test-root:not([data-test-theme="dark"]) .eg-top-tools svg *,
+.allen-practice:not([data-test-theme="dark"]) .eg-top-tools svg,
+.allen-practice:not([data-test-theme="dark"]) .qx-prac-tools svg,
+html[data-theme="light"] .eg-top-tools svg,
+html[data-theme="light"] .eg-top-tools svg * {
+  color: #0f172a !important;
+  fill: #0f172a !important;
+  stroke: #0f172a !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+.eg-test-root[data-test-theme="dark"] .eg-top-tools .eg-tool-btn,
+.eg-test-root[data-test-theme="dark"] .eg-top-tools .eg-ico,
+.mtk-test-root[data-test-theme="dark"] .eg-top-tools .eg-tool-btn,
+.allen-practice[data-test-theme="dark"] .eg-top-tools .eg-tool-btn,
+.allen-practice[data-test-theme="dark"] .qx-prac-tools .eg-ico,
+html[data-theme="dark"] .eg-top-tools .eg-tool-btn,
+html[data-theme="dark"] .eg-top-tools .eg-ico {
+  color: #f1f5f9 !important;
+  -webkit-text-fill-color: #f1f5f9 !important;
+  background: #1e293b !important;
+  border: 1px solid #64748b !important;
+  fill: #f1f5f9 !important;
+  stroke: #f1f5f9 !important;
+}
+.eg-test-root[data-test-theme="dark"] .eg-top-tools .eg-tip,
+.mtk-test-root[data-test-theme="dark"] .eg-top-tools .eg-tip,
+html[data-theme="dark"] .eg-top-tools .eg-tip {
+  color: #e2e8f0 !important;
+  -webkit-text-fill-color: #e2e8f0 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  background: transparent !important;
+}
+.eg-test-root[data-test-theme="dark"] .eg-top-tools svg,
+.eg-test-root[data-test-theme="dark"] .eg-top-tools svg *,
+.mtk-test-root[data-test-theme="dark"] .eg-top-tools svg,
+.mtk-test-root[data-test-theme="dark"] .eg-top-tools svg *,
+.allen-practice[data-test-theme="dark"] .eg-top-tools svg,
+html[data-theme="dark"] .eg-top-tools svg,
+html[data-theme="dark"] .eg-top-tools svg * {
+  color: #f1f5f9 !important;
+  fill: #f1f5f9 !important;
+  stroke: #f1f5f9 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* 3) Options NEVER hide — readable text + KaTeX both themes */
+.eg-test-root .eg-opts, .eg-test-root #qxOpts, .eg-test-root .mtk-opt, .eg-test-root .eg-opt,
+.eg-test-root .mtk-opt-text, .eg-test-root .qx-opt-plain, .eg-test-root [data-opt],
+.mtk-test-root .mtk-opt, .mtk-test-root .mtk-opt-text, .mtk-test-root .qx-opt-plain,
+.allen-practice .mtk-opt, .allen-practice .mtk-opt-text, .allen-practice .qx-opt-plain {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  z-index: 2 !important;
+}
+.eg-test-root .eg-opts, .eg-test-root #qxOpts, .mtk-test-root .mtk-opts {
+  display: flex !important;
+  flex-direction: column !important;
+}
+.eg-test-root:not([data-test-theme="dark"]) .mtk-opt,
+.eg-test-root:not([data-test-theme="dark"]) .eg-opt,
+.eg-test-root:not([data-test-theme="dark"]) .mtk-opt-text,
+.eg-test-root:not([data-test-theme="dark"]) .qx-opt-plain,
+.mtk-test-root:not([data-test-theme="dark"]) .mtk-opt-text,
+.mtk-test-root:not([data-test-theme="dark"]) .qx-opt-plain,
+.allen-practice:not([data-test-theme="dark"]) .qx-opt-plain,
+html[data-theme="light"] .qx-opt-plain,
+html[data-theme="light"] .mtk-opt-text {
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+}
+.eg-test-root:not([data-test-theme="dark"]) .mtk-opt .mord,
+.eg-test-root:not([data-test-theme="dark"]) .eg-opt .mord,
+.eg-test-root:not([data-test-theme="dark"]) .mtk-opt .katex,
+.eg-test-root:not([data-test-theme="dark"]) .eg-opt .katex,
+.eg-test-root:not([data-test-theme="dark"]) .mtk-opt .katex *,
+.eg-test-root:not([data-test-theme="dark"]) .eg-opt .katex *,
+.eg-test-root:not([data-test-theme="dark"]) .qx-opt-plain .mord,
+.eg-test-root:not([data-test-theme="dark"]) .qx-opt-plain .katex *,
+.mtk-test-root:not([data-test-theme="dark"]) .mtk-opt .mord,
+.mtk-test-root:not([data-test-theme="dark"]) .mtk-opt .katex *,
+html[data-theme="light"] .mtk-opt .mord,
+html[data-theme="light"] .mtk-opt .katex * {
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+  fill: currentColor !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+.eg-test-root[data-test-theme="dark"] .mtk-opt,
+.eg-test-root[data-test-theme="dark"] .eg-opt,
+.eg-test-root[data-test-theme="dark"] .mtk-opt-text,
+.eg-test-root[data-test-theme="dark"] .qx-opt-plain,
+.mtk-test-root[data-test-theme="dark"] .mtk-opt-text,
+.mtk-test-root[data-test-theme="dark"] .qx-opt-plain,
+.allen-practice[data-test-theme="dark"] .qx-opt-plain,
+html[data-theme="dark"] .qx-opt-plain,
+html[data-theme="dark"] .mtk-opt-text {
+  color: #e2e8f0 !important;
+  -webkit-text-fill-color: #e2e8f0 !important;
+}
+.eg-test-root[data-test-theme="dark"] .mtk-opt .mord,
+.eg-test-root[data-test-theme="dark"] .eg-opt .mord,
+.eg-test-root[data-test-theme="dark"] .mtk-opt .katex,
+.eg-test-root[data-test-theme="dark"] .eg-opt .katex,
+.eg-test-root[data-test-theme="dark"] .mtk-opt .katex *,
+.eg-test-root[data-test-theme="dark"] .eg-opt .katex *,
+.eg-test-root[data-test-theme="dark"] .qx-opt-plain .mord,
+.eg-test-root[data-test-theme="dark"] .qx-opt-plain .katex *,
+.mtk-test-root[data-test-theme="dark"] .mtk-opt .mord,
+.mtk-test-root[data-test-theme="dark"] .mtk-opt .katex *,
+html[data-theme="dark"] .mtk-opt .mord,
+html[data-theme="dark"] .mtk-opt .katex * {
+  color: #e2e8f0 !important;
+  -webkit-text-fill-color: #e2e8f0 !important;
+  fill: currentColor !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* ========== qxmd215: DESTROY bottom strip — in-flow pills, never cover Q/sol ========== */
+#egFoot, .eg-foot, .eg-foot-practice, .eg-foot-marks, .mtk-controls, footer.eg-foot,
+.eg-test-root #egFoot, .eg-test-root .eg-foot, .eg-test-root .eg-foot-marks,
+.mtk-test-root #egFoot, .allen-practice #egFoot, .allen-practice .eg-foot,
+.qx-prac-foot, .qx-prac-foot.eg-foot-marks,
+.eg-test-root.eg-qxtool8 #egFoot, .eg-test-root.eg-qxtool8 .eg-foot,
+.eg-test-root.eg-qxtool8[data-test-theme="light"] .eg-foot,
+.eg-test-root.eg-qxtool8[data-test-theme="dark"] .eg-foot,
+.eg-test-root.eg-mobile .eg-foot, .eg-test-root.eg-desktop-mode .eg-foot,
+.eg-test-root.qx-sol-showing #egFoot, .eg-test-root.eg-sol-showing #egFoot,
+html[data-theme="light"] #egFoot, html[data-theme="dark"] #egFoot,
+html[data-theme="light"] .eg-foot, html[data-theme="dark"] .eg-foot {
+  position: relative !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  top: auto !important;
+  inset: auto !important;
+  transform: none !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  outline: none !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  height: auto !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  z-index: 20 !important;
+  display: grid !important;
+  grid-template-columns: 1fr 1.2fr 1fr !important;
+  gap: 8px !important;
+  align-items: center !important;
+  width: 100% !important;
+  max-width: 720px !important;
+  margin: 12px auto 16px !important;
+  padding: 8px 10px 12px !important;
+  pointer-events: none !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  flex: 0 0 auto !important;
+}
+#egFoot::before, #egFoot::after, .eg-foot::before, .eg-foot::after,
+.eg-foot-marks::before, .eg-foot-marks::after, .eg-foot-practice::before,
+.mtk-controls::before, .mtk-controls::after, .qx-prac-foot::before, .qx-prac-foot::after {
+  content: none !important; display: none !important; width: 0 !important; height: 0 !important;
+  background: none !important; box-shadow: none !important; border: none !important;
+}
+#egFoot #qxPrevBtn, #egFoot #egCheckBtn, #egFoot #qxNextBtn,
+#egFoot #qxPracPrev, #egFoot #qxPracSubmit, #egFoot #qxPracNext,
+.eg-foot #qxPrevBtn, .eg-foot #egCheckBtn, .eg-foot #qxNextBtn,
+.eg-foot #qxPracPrev, .eg-foot #qxPracSubmit, .eg-foot #qxPracNext {
+  pointer-events: auto !important;
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: relative !important;
+  z-index: 21 !important;
+  min-height: 40px !important;
+  height: 40px !important;
+  max-height: 40px !important;
+  border-radius: 999px !important;
+  width: 100% !important;
+  font-weight: 800 !important;
+  box-shadow: 0 2px 8px rgba(15,23,42,.18) !important;
+}
+/* light pills */
+.eg-test-root:not([data-test-theme="dark"]) #egFoot #qxPrevBtn,
+.eg-test-root:not([data-test-theme="dark"]) #egFoot #qxNextBtn,
+.mtk-test-root:not([data-test-theme="dark"]) #egFoot #qxPracPrev,
+.mtk-test-root:not([data-test-theme="dark"]) #egFoot #qxPracNext,
+.allen-practice:not([data-test-theme="dark"]) #qxPracPrev,
+.allen-practice:not([data-test-theme="dark"]) #qxPracNext {
+  background: #ffffff !important; color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important; border: 1.5px solid #94a3b8 !important;
+}
+.eg-test-root:not([data-test-theme="dark"]) #egFoot #egCheckBtn,
+.mtk-test-root:not([data-test-theme="dark"]) #egFoot #qxPracSubmit,
+.allen-practice:not([data-test-theme="dark"]) #qxPracSubmit {
+  background: #2563eb !important; color: #fff !important;
+  -webkit-text-fill-color: #fff !important; border: 1.5px solid #1d4ed8 !important;
+}
+.eg-test-root[data-test-theme="dark"] #egFoot #qxPrevBtn,
+.eg-test-root[data-test-theme="dark"] #egFoot #qxNextBtn,
+.mtk-test-root[data-test-theme="dark"] #egFoot #qxPracPrev,
+.mtk-test-root[data-test-theme="dark"] #egFoot #qxPracNext,
+.allen-practice[data-test-theme="dark"] #qxPracPrev,
+.allen-practice[data-test-theme="dark"] #qxPracNext {
+  background: #1e293b !important; color: #f1f5f9 !important;
+  -webkit-text-fill-color: #f1f5f9 !important; border: 1.5px solid #64748b !important;
+}
+.eg-test-root[data-test-theme="dark"] #egFoot #egCheckBtn,
+.mtk-test-root[data-test-theme="dark"] #egFoot #qxPracSubmit,
+.allen-practice[data-test-theme="dark"] #qxPracSubmit {
+  background: #3b82f6 !important; color: #fff !important;
+  -webkit-text-fill-color: #fff !important; border: 1.5px solid #60a5fa !important;
+}
+/* root flex so foot sits BELOW scroll area, never overlays */
+.eg-test-root, .mtk-test-root.allen-practice {
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 0 !important;
+}
+.eg-test-root .eg-main, .eg-test-root .eg-q-card,
+.mtk-test-root .mtk-main, .allen-practice .mtk-main {
+  flex: 1 1 auto !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  padding-bottom: 24px !important;
+  scroll-padding-bottom: 24px !important;
+}
+#app-main {
+  overflow-y: auto !important;
+  padding-bottom: 24px !important;
+  scroll-padding-bottom: 24px !important;
+}
+/* when foot lives inside scroll host, keep modest end pad so last lines clear pills */
+.eg-main #egFoot, .eg-q-card #egFoot, .mtk-main #egFoot, #app-main #egFoot {
+  margin-top: 16px !important;
+  margin-bottom: 20px !important;
 }

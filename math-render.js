@@ -130,7 +130,7 @@ window.Mx = (() => {
         "  background:rgba(255,255,255,.08)}",
         "pre.qx-tex-code{display:block;overflow-x:auto;padding:12px 14px;border-radius:12px;",
         "  background:#0f172a;color:#e2e8f0;font-size:13px;line-height:1.45;margin:10px 0}",
-        "pre.qx-tex-code code{background:none;color:inherit;padding:0}}.katex-error{display:none!important;visibility:hidden!important;height:0!important;overflow:hidden!important;font-size:0!important}.qx-math-fallback,.qx-tex-fallback{font-family:ui-monospace,Consolas,Menlo,monospace;font-size:.92em;background:rgba(15,23,42,.06);padding:.1em .4em;border-radius:6px;white-space:pre-wrap;word-break:break-word}html[data-theme=dark] .qx-math-fallback,.eg-test-root[data-test-theme=dark] .qx-math-fallback{background:rgba(255,255,255,.08);color:#e2e8f0}/* qxmd214: katex-error hide */"
+        "pre.qx-tex-code code{background:none;color:inherit;padding:0}}.katex-error{display:none!important;visibility:hidden!important;height:0!important;overflow:hidden!important;font-size:0!important}.qx-math-fallback,.qx-tex-fallback{font-family:ui-monospace,Consolas,Menlo,monospace;font-size:.92em;background:rgba(15,23,42,.06);padding:.1em .4em;border-radius:6px;white-space:pre-wrap;word-break:break-word}html[data-theme=dark] .qx-math-fallback,.eg-test-root[data-test-theme=dark] .qx-math-fallback{background:rgba(255,255,255,.08);color:#e2e8f0}/* qxmd215: katex-error hide */"
       ].join("");
       document.head.appendChild(s);
     }
@@ -1114,7 +1114,7 @@ window.Mx = (() => {
     const paint = (tex, display) => {
       let t = String(tex || "").replace(/\uE300(\d+)\uE301/g, " ").trim();
       if (!t) return "";
-      /* qxmd214: never double-wrap $ inside math mode */
+      /* qxmd215: never double-wrap $ inside math mode */
       t = t.replace(/^\$+|\$+$/g, "").replace(/\$\$/g, " ");
       t = t.replace(/(^|[^\\])\$(?!\$)/g, "$1 ");
       t = t.replace(/&#38;|&amp;/gi, "\\text{ and }").replace(/(^|[^\\&A-Za-z])amp;/gi, "$1\\text{ and }");
@@ -2053,7 +2053,7 @@ window.Mx = (() => {
       })
       .replace(/&#(\d+);/g, (_, d) => {
         const n = parseInt(d, 10);
-        if (n === 38) return " \\text{ and } "; /* qxmd214: amp38 */
+        if (n === 38) return " \\text{ and } "; /* qxmd215: amp38 */
         if (MML_CODE_TEX[n] != null) return " " + MML_CODE_TEX[n] + " ";
         try { return String.fromCharCode(n); } catch (e) { return ""; }
       })
@@ -2252,7 +2252,7 @@ window.Mx = (() => {
       out = out.replace(/\$([^$]+)\$([A-Za-z])/g, "$$$1$ $2");
     }
     out = out.replace(/\$\s*=\s*\$\s*\{\s*\$/g, "$ = \\{");
-    /* qxmd214: strip stray amp */
+    /* qxmd215: strip stray amp */
     out = out.replace(/&#38;/g, " and ").replace(/&amp;/gi, " and ");
     out = out.replace(/(^|[^\\$A-Za-z])&(?![#a-zA-Z])/g, "$1 and ");
     return out;
@@ -2279,7 +2279,7 @@ window.Mx = (() => {
     c = c.replace(/&amp;/gi, "\\text{ and }");
     c = c.replace(/(^|[^&A-Za-z])amp;/gi, "$1\\text{ and }");
     c = c.replace(/&#38;/g, "\\text{ and }");
-    /* qxmd214: unglue Camel */
+    /* qxmd215: unglue Camel */
     c = c.replace(/\b(Now|Then|Hence|Therefore|Since|But|Also|Thus|So|Let|Given|Here|Consider)(?=[A-Z][a-z])/g, "$1 ");
     c = c.replace(/([a-z])([A-Z][a-z]{2,})/g, "$1 $2");
     return c;

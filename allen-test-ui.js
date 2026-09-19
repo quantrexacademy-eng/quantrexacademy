@@ -999,7 +999,7 @@ window.showAllenInstructions = showAllenInstructions;
 (function () {
   function syncAllenFootPad() {
     try {
-      /* qxmd214-force-app-main-scroll */
+      /* qxmd215-force-app-main-scroll */
       try {
         var am = document.getElementById("app-main");
         if (am) {
@@ -1059,8 +1059,8 @@ window.showAllenInstructions = showAllenInstructions;
 
 
 
-/* qxmd214 foot transparent — kill white strip from inline styles */
-(function qxmd214ForceFootTransparent() {
+/* qxmd215 foot transparent — kill white strip from inline styles */
+(function qxmd215ForceFootTransparent() {
   function paint(foot) {
     if (!foot) return;
     try {
@@ -1092,7 +1092,7 @@ window.showAllenInstructions = showAllenInstructions;
 })();
 
 
-;(function qxmd214ForceNav(){
+;(function qxmd215ForceNav(){
   function paint(){
     try {
       var foot = document.querySelector("#egFoot, .eg-foot-marks, .eg-foot");
@@ -1130,7 +1130,7 @@ window.showAllenInstructions = showAllenInstructions;
   }
 })();
 
-;(function qxmd214ForcePillContrast(){
+;(function qxmd215ForcePillContrast(){
   function paint(){
     try {
       var root = document.querySelector(".eg-test-root, .mtk-test-root, .allen-practice");
@@ -1156,5 +1156,93 @@ window.showAllenInstructions = showAllenInstructions;
     if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", paint);
     else paint();
     setInterval(paint, 2000);
+  }
+})();
+
+;(function qxmd215bKillSlab(){
+  function paint(){
+    try {
+      document.querySelectorAll("#egFoot, .eg-foot, .eg-foot-marks, .eg-foot-practice, .mtk-controls, .qx-prac-foot").forEach(function(foot){
+        foot.style.setProperty("background","transparent","important");
+        foot.style.setProperty("background-color","transparent","important");
+        foot.style.setProperty("background-image","none","important");
+        foot.style.setProperty("box-shadow","none","important");
+        foot.style.setProperty("border","none","important");
+        foot.style.setProperty("border-top","none","important");
+        foot.style.setProperty("min-height","0","important");
+      });
+      /* toolbar never hide */
+      document.querySelectorAll(".eg-top-tools .eg-tool-btn, .eg-top-tools .eg-ico, .qx-prac-tools .eg-ico").forEach(function(b){
+        b.style.setProperty("visibility","visible","important");
+        b.style.setProperty("opacity","1","important");
+        b.style.setProperty("display","inline-flex","important");
+      });
+      /* options never hide */
+      document.querySelectorAll(".mtk-opt, .eg-opt, .qx-opt-plain, .mtk-opt-text").forEach(function(el){
+        el.style.setProperty("visibility","visible","important");
+        el.style.setProperty("opacity","1","important");
+      });
+    } catch(_){}
+  }
+  if (typeof document !== "undefined") {
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", paint);
+    else paint();
+    setInterval(paint, 1800);
+  }
+})();
+
+;(function qxmd215InflowFoot(){
+  function paint(){
+    try {
+      document.querySelectorAll("#egFoot, .eg-foot, .eg-foot-marks, .eg-foot-practice, .mtk-controls, .qx-prac-foot").forEach(function(foot){
+        foot.style.setProperty("position","relative","important");
+        foot.style.setProperty("left","auto","important");
+        foot.style.setProperty("right","auto","important");
+        foot.style.setProperty("bottom","auto","important");
+        foot.style.setProperty("top","auto","important");
+        foot.style.setProperty("background","transparent","important");
+        foot.style.setProperty("background-color","transparent","important");
+        foot.style.setProperty("background-image","none","important");
+        foot.style.setProperty("box-shadow","none","important");
+        foot.style.setProperty("border","none","important");
+        foot.style.setProperty("border-top","none","important");
+        foot.style.setProperty("min-height","0","important");
+        foot.style.setProperty("height","auto","important");
+        foot.style.setProperty("backdrop-filter","none","important");
+        foot.style.setProperty("-webkit-backdrop-filter","none","important");
+        foot.style.setProperty("z-index","20","important");
+        foot.style.setProperty("display","grid","important");
+        foot.style.setProperty("grid-template-columns","1fr 1.2fr 1fr","important");
+        foot.style.setProperty("pointer-events","none","important");
+        foot.style.setProperty("margin","12px auto 16px","important");
+        foot.style.setProperty("max-width","720px","important");
+        foot.classList.add("qxmd215-inflow");
+      });
+      ["qxPrevBtn","egCheckBtn","qxNextBtn","qxPracPrev","qxPracSubmit","qxPracNext"].forEach(function(id){
+        var b = document.getElementById(id);
+        if (!b) return;
+        try { b.hidden = false; b.removeAttribute("hidden"); } catch(_){}
+        b.style.setProperty("display","inline-flex","important");
+        b.style.setProperty("visibility","visible","important");
+        b.style.setProperty("opacity","1","important");
+        b.style.setProperty("pointer-events","auto","important");
+        b.style.setProperty("position","relative","important");
+      });
+      var main = document.querySelector(".eg-test-root .eg-main, .allen-practice .mtk-main, .mtk-test-root .mtk-main") || document.getElementById("app-main");
+      var foot = document.getElementById("egFoot");
+      if (main && foot && foot.parentElement !== main) {
+        try { main.appendChild(foot); } catch(_){}
+      }
+      var am = document.getElementById("app-main");
+      if (am) {
+        am.style.setProperty("overflow-y","auto","important");
+        am.style.setProperty("padding-bottom","24px","important");
+      }
+    } catch(_){}
+  }
+  if (typeof document !== "undefined") {
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", paint);
+    else paint();
+    setInterval(paint, 1200);
   }
 })();
