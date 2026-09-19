@@ -1,108 +1,58 @@
-/* NTA JEE Main CBT sizes — A− / A+ steps text AND math together */
-
+/* qxmd205: fixed font-scale selectors — stem + options + solution */
 :root, html, body {
-  --nta-q: 18px;
-  --nta-lh: 1.7;
+  --nta-q: 17px;
+  --nta-lh: 1.55;
   --nta-math: 1.22em;
-  --qx-content-zoom: 1;
+}
+html[data-font-scale="small"],
+.eg-test-root[data-font-scale="small"],
+.mtk-test-root[data-font-scale="small"] {
+  --nta-q: 15px; --nta-lh: 1.45; --nta-math: 1.18em;
+}
+html[data-font-scale="medium"],
+.eg-test-root[data-font-scale="medium"],
+.mtk-test-root[data-font-scale="medium"] {
+  --nta-q: 17px; --nta-lh: 1.55; --nta-math: 1.22em;
+}
+html[data-font-scale="large"],
+.eg-test-root[data-font-scale="large"],
+.mtk-test-root[data-font-scale="large"] {
+  --nta-q: 19px; --nta-lh: 1.6; --nta-math: 1.24em;
+}
+html[data-font-scale="xlarge"],
+.eg-test-root[data-font-scale="xlarge"],
+.mtk-test-root[data-font-scale="xlarge"] {
+  --nta-q: 21px; --nta-lh: 1.65; --nta-math: 1.28em;
 }
 
-.qzrr-q-area,
-#qzrrQArea,
-.mtk-test-root .mtk-main, .eg-test-root .eg-main,
-.qx-practice-page .qx-prac-body,
-.qzrr-zoom-target,
-.qx-prac-zoom-host {
-  zoom: var(--qx-content-zoom, 1);
-}
-@supports not (zoom: 1) {
-  .qzrr-q-area,
-  #qzrrQArea,
-  .mtk-test-root .mtk-main, .eg-test-root .eg-main,
-  .qx-practice-page .qx-prac-body {
-    transform: scale(var(--qx-content-zoom, 1));
-    transform-origin: top left;
-    width: calc(100% / var(--qx-content-zoom, 1));
-  }
-}
-
-.mtk-test-root, .eg-test-root,
-.qx-practice-page,
-.qx-font-host {
-  --nta-q: 18px;
-  --nta-lh: 1.7;
-  --nta-math: 1.22em;
-}
-.mtk-test-root, .eg-test-root[data-font-scale="small"],
-html[data-font-scale="small"] .mtk-test-root, .eg-test-root,
-html[data-font-scale="small"] .qx-practice-page,
-.qx-practice-page[data-font-scale="small"] {
-  --nta-q: 16px;
-  --nta-lh: 1.62;
-  --nta-math: 1.2em;
-}
-.mtk-test-root, .eg-test-root[data-font-scale="medium"],
-html[data-font-scale="medium"] .mtk-test-root, .eg-test-root,
-html[data-font-scale="medium"] .qx-practice-page,
-.qx-practice-page[data-font-scale="medium"] {
-  --nta-q: 18px;
-  --nta-lh: 1.7;
-  --nta-math: 1.22em;
-}
-.mtk-test-root, .eg-test-root[data-font-scale="large"],
-html[data-font-scale="large"] .mtk-test-root, .eg-test-root,
-html[data-font-scale="large"] .qx-practice-page,
-.qx-practice-page[data-font-scale="large"] {
-  --nta-q: 20px;
-  --nta-lh: 1.72;
-  --nta-math: 1.22em;
-}
-.mtk-test-root, .eg-test-root[data-font-scale="xlarge"],
-html[data-font-scale="xlarge"] .mtk-test-root, .eg-test-root,
-html[data-font-scale="xlarge"] .qx-practice-page,
-.qx-practice-page[data-font-scale="xlarge"] {
-  --nta-q: 22px;
-  --nta-lh: 1.75;
-  --nta-math: 1.24em;
-}
-
-.mtk-test-root, .eg-test-root .mtk-q-text,
-.mtk-test-root, .eg-test-root .mtk-q-text .qx-content,
-.mtk-test-root, .eg-test-root .qx-q-seg-text,
-.mtk-test-root, .eg-test-root .qx-question-body,
-.mtk-test-root, .eg-test-root .qx-content.qx-q-text-only,
-.mtk-test-root, .eg-test-root .qzrr-q-area,
-.mtk-test-root, .eg-test-root .mtk-opt-text,
-.mtk-test-root, .eg-test-root .qx-prac-opt-text,
-.mtk-test-root, .eg-test-root .sol-body,
-.mtk-test-root, .eg-test-root .qx-sol-body,
-.qx-practice-page .qx-prac-q,
-.qx-practice-page .qx-prac-opt-text,
-.qx-practice-page .qx-content.qx-q-text-only,
-.qx-practice-page .qx-question-body {
-  font-family: "Source Serif 4", "Literata", "STIX Two Text", Georgia, "Times New Roman", serif !important;
+/* STEM — was stuck at 16px because selectors were broken commas */
+.eg-test-root .mtk-q-text,
+.eg-test-root .eg-q-stem,
+.eg-test-root #egQArea,
+.eg-test-root #egQArea .mtk-q-text,
+.eg-test-root #egQArea .qx-content,
+.eg-test-root .qx-question-body,
+.eg-test-root .qx-q-seg-text,
+.mtk-test-root .mtk-q-text,
+.mtk-test-root .qx-question-body {
   font-size: var(--nta-q) !important;
   line-height: var(--nta-lh) !important;
+  font-family: "Source Serif 4", Literata, Georgia, "Times New Roman", serif !important;
   font-weight: 500 !important;
-  color: inherit;
 }
-
-.mtk-test-root, .eg-test-root .katex,
-.mtk-test-root, .eg-test-root .katex-display > .katex,
-.mtk-q-text .katex,
-.mtk-opt-text .katex,
-.qx-prac-q .katex,
-.qx-prac-opt-text .katex,
-.sol-body .katex,
-.qx-sol-body .katex,
-.qx-content .katex,
-.qzrr-q-area .katex {
-  font-size: var(--math-inline-size, var(--nta-math, 1.22em)) !important;
+.eg-test-root .mtk-opt-text,
+.eg-test-root .qx-prac-opt-text,
+.eg-test-root .sol-body,
+.eg-test-root .qx-sol-flow,
+.eg-test-root .eg-sol .qx-content,
+.eg-test-root .qx-sol-card .qx-content {
+  font-size: var(--nta-q) !important;
+  line-height: var(--nta-lh) !important;
 }
-
-.q-card .q-text {
-  font-family: "Literata", Georgia, serif !important;
-  font-size: var(--nta-q, 18px) !important;
-  line-height: var(--nta-lh, 1.7) !important;
-  font-weight: 500 !important;
+.eg-test-root .mtk-q-text .katex,
+.eg-test-root .eg-q-stem .katex,
+.eg-test-root #egQArea .katex,
+.eg-test-root .mtk-opt-text .katex,
+.eg-test-root .sol-body .katex {
+  font-size: var(--nta-math) !important;
 }

@@ -987,10 +987,92 @@ const QuantrexSolution = (() => {
   }
 
 
+
+  /**
+   * qxmd205 HARD LOCK: solution plain text must NOT start with the first ~40 letters of the stem.
+   * Peels leading blocks until the stem head is gone. Never invents content.
+   */
+  function pickStemPlain(q) {
+    const cands = [];
+    if (!q) return "";
+    [q.questionText, q.q, q.question, q.text, q._qxOrigStem, q._qxBankQ].forEach(function (src) {
+      const p = stemComparePlain(src);
+      if (p && p.length >= 8) cands.push(p);
+    });
+    if (!cands.length) return "";
+    cands.sort(function (a, b) { return b.length - a.length; });
+    return cands[0];
+  }
+
+  function ensureNoStemHead(html, q) {
+    let out = String(html || "");
+    if (!out.trim()) return out;
+    out = stripLeadingSolMeta(out);
+    const stemP = pickStemPlain(q) || stemComparePlain((q && (q.questionText || q.q || q.question || q.text || q._qxOrigStem || q._qxBankQ)) || "");
+    if (stemP.length < 8) return out;
+    const headLen = Math.min(40, stemP.length);
+    const head = stemP.slice(0, headLen);
+    if (head.length < 12) return out;
+
+    function plainStartsWithStem(src) {
+      const p = stemComparePlain(src);
+      if (!p) return false;
+      if (p.indexOf(head) === 0) return true;
+      const at = p.indexOf(head);
+      return at > 0 && at <= 24;
+    }
+
+    for (let n = 0; n < 48; n++) {
+      if (!plainStartsWithStem(out)) break;
+      const before = out;
+      const m = /^(?:\s|&nbsp;|<br\s*\/?>|<(?:p|div|span|h[1-6]|li|section)[^>]*>[\s\S]*?<\/(?:p|div|span|h[1-6]|li|section)>)+/i.exec(out);
+      if (m && m[0].length >= 8 && m[0].length < out.length - 4) {
+        out = tidyAfterStemCut(out.slice(m[0].length));
+        if (out !== before) continue;
+      }
+      let i = 0, emitted = 0, cutAt = -1;
+      const src = out;
+      while (i < src.length && emitted < headLen) {
+        if (src[i] === "<") {
+          const close = src.indexOf(">", i);
+          if (close < 0) { cutAt = src.length; break; }
+          const tag = src.slice(i, close + 1);
+          if (/^<(?:br\b|\/(?:p|div|li|tr|h[1-6])\b)/i.test(tag)) emitted += 1;
+          i = close + 1;
+          continue;
+        }
+        if (src[i] === "&") {
+          const semi = src.indexOf(";", i);
+          if (semi > i && semi - i < 14) { emitted += 1; i = semi + 1; continue; }
+        }
+        if (/[a-zA-Z0-9]/.test(src[i])) emitted += 1;
+        i++;
+        if (emitted >= headLen) { cutAt = i; break; }
+      }
+      if (cutAt > 0 && cutAt < src.length - 2) {
+        out = tidyAfterStemCut(src.slice(cutAt));
+      } else {
+        const br = out.search(/<br\s*\/?\s*>|\.\s+|\n/i);
+        if (br > 12 && br < out.length - 8) out = tidyAfterStemCut(out.slice(br + 1));
+        else break;
+      }
+      if (out === before) break;
+    }
+    out = stripLeadingSolMeta(out);
+    try { out = stripLeadingDefEchoes(out, stemP); } catch (_) { /* */ }
+    for (let n = 0; n < 20 && plainStartsWithStem(out); n++) {
+      const wm = /^(?:\s|&nbsp;|<br\s*\/?>|<[^>]+>)*[A-Za-z0-9\\$\\{][^\s<]{0,48}/.exec(out);
+      if (!wm || wm[0].length >= out.length - 4) break;
+      out = tidyAfterStemCut(out.slice(wm[0].length));
+    }
+    return out;
+  }
+
   function stripLeadingStemEcho(html, q) {
     let out = String(html || "");
     if (!out.trim()) return out;
     out = stripLeadingSolMeta(out);
+    /* qxmd205: run aggressive ensure after existing logic via wrapper at end */
     // Drop common wrappers that precede a stem echo in Marks/bank solutions
     // qxmd164: also swallow the closing </p> after "Given," so defs start clean
     out = out.replace(
@@ -999,10 +1081,7 @@ const QuantrexSolution = (() => {
     );
     out = stripLeadingSolMeta(out);
 
-    const stemSrc = (q && (
-      q.questionText || q.q || q.question || q.text || q._qxOrigStem || q._qxBankQ || ""
-    )) || "";
-    const stemP = stemComparePlain(stemSrc);
+    const stemP = (typeof pickStemPlain === "function" ? pickStemPlain(q) : "") || stemComparePlain((q && (q.questionText || q.q || q.question || q.text || q._qxOrigStem || q._qxBankQ || "")) || "");
     if (stemP.length < 6) return stripLeadingSolMeta(out);
 
     // qxmd160: drop "Given," + leading set/def paragraphs that only restate stem math
@@ -1180,6 +1259,7 @@ const QuantrexSolution = (() => {
     if (restPlain.length < 3 && stemP.length >= solP.length - 4) {
       return stripLeadingSolMeta(String(html || ""));
     }
+    try { rest = ensureNoStemHead(rest, q); } catch (_) { /* */ }
     return rest || out;
   }
 
@@ -1197,6 +1277,7 @@ const QuantrexSolution = (() => {
     function formatBody(solution, q) {
     let raw = flattenMarksSolTables(String(solution || ""));
     raw = stripLeadingStemEcho(raw, q);
+    try { raw = ensureNoStemHead(raw, q); } catch (_) { /* */ }
     // Same deep TeX/symbol repair as stems/options (solutions were missing shatter/tofu fixes)
     if (typeof Mx !== "undefined" && Mx.cleanQuestionText) {
       try { raw = Mx.cleanQuestionText(raw); } catch (_) { /* */ }
@@ -1225,6 +1306,7 @@ const QuantrexSolution = (() => {
       .replace(/(<br\s*\/?>\s*){3,}/gi, "<br><br>")
       .replace(/\n{3,}/g, "\n\n");
     try { html = stripLeadingStemEcho(html, q); } catch (_) { /* */ }
+    try { html = ensureNoStemHead(html, q); } catch (_) { /* */ }
     html = String(html || "").replace(/<(div|p|section)[^>]*class="[^"]*(?:eg-q-stem|mtk-q-text|qa-q|qx-question-body)[^"]*"[\s\S]*?<\/\1>/gi, "");
     try {
       for (var _si = 0; _si < 12; _si++) {
@@ -1322,6 +1404,7 @@ const QuantrexSolution = (() => {
     try { ensureSolCss(); } catch (_) { /* */ }
     let sol = rawSolution != null ? rawSolution : (q && (q.solution || q.sol || q.explanation));
     try { sol = stripLeadingStemEcho(sol, q); } catch (_) { /* */ }
+    try { sol = ensureNoStemHead(sol, q); } catch (_) { /* */ }
     try { sol = String(sol || "").replace(/<(div|p|section)[^>]*class="[^"]*(?:eg-q-stem|mtk-q-text)[^"]*"[\s\S]*?<\/\1>/gi, ""); } catch (_) { /* */ }
     const has = !isPlaceholderSolution(sol);
     const theme = subjectTheme(q);
@@ -1403,6 +1486,6 @@ const QuantrexSolution = (() => {
     cleanSolutionFigHtml, handleSolImgErr, polishScientificSymbols, extractEasyExplain, renderEasyExplain,
     solutionLooksRelevant, isMatchQuestion, structureSolutionBody, formatShortcutLine,
     flattenMarksSolTables, renderTeacherWrap, looksHollowStem,
-    stripLeadingStemEcho, stripLeadingSolMeta, stemComparePlain
+    stripLeadingStemEcho, stripLeadingSolMeta, stemComparePlain, ensureNoStemHead, pickStemPlain
   };
 })();

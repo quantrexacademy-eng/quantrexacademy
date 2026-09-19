@@ -1,10 +1,10 @@
 {
-  "build": "qxmd204",
-  "cache": "qx-pwa-qxmd204",
-  "title": "qxmd204 · Check Answer keeps Previous/Next; no bottom strip; solution drops stem",
-  "body": "Check Answer no longer refreshes the page (that hid Next/Prev). Footer is only Previous|Next. Show-Answer strip removed. Solution cuts the repeated question.",
+  "build": "qxmd205",
+  "cache": "qx-pwa-qxmd205",
+  "title": "qxmd205 — stem-free solution; Prev|Check|Next one strip; Aa scales stem",
+  "body": "Solution drops question stem. Footer is Previous | Check Answer | Next on one white strip. Aa S/M/L/XL scales question stem, options, and solution.",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app",
   "site": "https://www.quantrexacademy.com",
   "package": "com.quantrexacademy.app",
-  "ts": 2040000000000
+  "ts": 1789821483127
 }

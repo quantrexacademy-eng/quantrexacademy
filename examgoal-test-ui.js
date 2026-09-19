@@ -349,6 +349,10 @@
         } catch (_) { /* */ }
         solContent = String(solContent || "").replace(/<(div|p|section)[^>]*class="[^"]*(?:eg-q-stem|mtk-q-text|qa-q)[^"]*"[\s\S]*?<\/\1>/gi, "");
         solContent = cutStemPrefix(solContent, q);
+        try {
+          if (QuantrexSolution.ensureNoStemHead) solContent = QuantrexSolution.ensureNoStemHead(solContent, q);
+        } catch (_) {}
+        solContent = cutStemPrefix(solContent, q);
       }
     } catch (_) { /* */ }
     if (!solContent) {
@@ -556,7 +560,8 @@
       ? '<div class="eg-fmt-pop" id="egFmtPop"><h5>Text size</h5><div class="eg-fmt-row">' +
         '<button type="button" data-eg-scale="small"' + (fontScale === "small" ? ' class="on"' : "") + ">A−</button>" +
         '<button type="button" data-eg-scale="medium"' + (fontScale === "medium" ? ' class="on"' : "") + ">A</button>" +
-        '<button type="button" data-eg-scale="large"' + (fontScale === "large" ? ' class="on"' : "") + ">A+</button>" +
+        '<button type="button" data-eg-scale="large"' + (fontScale === "large" ? ' class="on"' : "") + ">A+</button>' +
+        '<button type="button" data-eg-scale="xlarge"' + (fontScale === "xlarge" ? ' class="on"' : "") + ">XL</button>' +
         '</div><h5 class="eg-fmt-pal-h">Palette</h5><div class="eg-fmt-row eg-fmt-pal" role="group" aria-label="Palette layout">' +
         '<button type="button" data-eg-pal="side"' + (palPref === "side" ? ' class="on"' : "") + ' title="Right sidebar">Right</button>' +
         '<button type="button" data-eg-pal="strip"' + (palPref === "strip" ? ' class="on"' : "") + ' title="Top question bar">Top</button>' +
@@ -565,9 +570,7 @@
       : "";
 
     const checkRow = practice
-      ? '<div class="eg-action-row">' +
-        '<div class="eg-check-wrap"><button type="button" class="eg-check" id="egCheckBtn">Check Answer</button></div>' +
-        '<button type="button" class="eg-note" id="egNoteBtn">Add a Note</button></div>'
+      ? '<div class="eg-action-row eg-action-note-only"><button type="button" class="eg-note" id="egNoteBtn">Add a Note</button></div>'
       : "";
     /* qxmd176: toggle ON whenever solution is open (Check Answer or Show Answer) */
     const showSwitch = '<label class="eg-show"><span class="eg-switch"><input type="checkbox" id="egShowAns"' +
@@ -589,10 +592,12 @@
       : "";
     /* Prev/Next always present; Marks-like Mark|Clear + Save&Next on mobile */
     /* qxmd171 Marks foot DOM; qxmd173 mobile CSS hides Clear — Prev|Next primary; Show Answer unchanged */
+    const _egCheckedFoot = !!(session && session._egChecked && (session._egChecked[session.idx] || session._egChecked[String(session.idx)]));
     const foot = practice
-      ? '<div class="eg-foot eg-foot-practice" id="egFoot" style="display:grid!important;grid-template-columns:1fr 1fr!important;gap:8px!important;background:#fff!important;position:fixed!important;left:0!important;right:0!important;bottom:0!important;z-index:2147483646!important;padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px))!important;border-top:1px solid #e5e7eb!important;">' +
-        '<button type="button" class="eg-btn" id="qxPrevBtn" style="display:inline-flex!important;visibility:visible!important;min-height:48px!important;background:#fff!important;color:#1565C0!important;border:2px solid #1565C0!important;border-radius:10px!important;font-weight:800!important;"' + (firstQ ? " disabled" : "") + ">Previous</button>" +
-        '<button type="button" class="eg-btn eg-btn-next" id="qxNextBtn" style="display:inline-flex!important;visibility:visible!important;min-height:48px!important;background:#1565C0!important;color:#fff!important;border:2px solid #1565C0!important;border-radius:10px!important;font-weight:800!important;"' + (lastQ ? " disabled" : "") + ">Next</button>" +
+      ? '<div class="eg-foot eg-foot-practice eg-foot-marks" id="egFoot">' +
+        '<button type="button" class="eg-btn" id="qxPrevBtn"' + (firstQ ? " disabled" : "") + ">Previous</button>' +
+        '<button type="button" class="eg-btn eg-btn-check" id="egCheckBtn"' + (_egCheckedFoot ? " disabled" : "") + '>' + (_egCheckedFoot ? "Checked" : "Check Answer") + '</button>' +
+        '<button type="button" class="eg-btn eg-btn-next" id="qxNextBtn"' + (lastQ ? " disabled" : "") + ">Next</button>' +
         "</div>"
       : '<div class="eg-foot" id="egFoot">' +
         '<div class="eg-foot-left">' +
