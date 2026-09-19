@@ -31,7 +31,7 @@
       both.rel = "stylesheet";
       document.head.appendChild(both);
     }
-    const bh = "assets/qx-both-themes.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd202");
+    const bh = "assets/qx-both-themes.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd203");
     if (both.getAttribute("href") !== bh) both.href = bh;
     let r = document.getElementById("qxPracticeReadCss");
     if (!r) {
@@ -81,14 +81,8 @@
   function chromeFlags(session) {
     if (!session) return { stripOpen: false, sideOpen: false, previewOpen: false, anyOpen: false, bothOpen: false };
     if (session._egStripOpen == null && session._egSideOpen == null) {
-      // migrate legacy single-flag sessions once
-      if (session._egSideUserOpened && session._egSideCollapsed === false) {
-        session._egStripOpen = true;
-        session._egSideOpen = true;
-      } else {
-        session._egStripOpen = true;
-        session._egSideOpen = true;
-      }
+      session._egStripOpen = false;
+      session._egSideOpen = false;
     }
     if (session._egStripOpen == null) session._egStripOpen = false;
     if (session._egSideOpen == null) session._egSideOpen = false;
@@ -120,7 +114,7 @@
       var v = localStorage.getItem(EG_PALETTE_PREF_KEY);
       if (v === "side" || v === "strip" || v === "both") return v;
     } catch (_) { /* */ }
-    return "both";
+    return "side";
   }
   function setPalettePref(mode) {
     var m = mode === "side" || mode === "strip" || mode === "both" ? mode : "side";

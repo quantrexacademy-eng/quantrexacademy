@@ -1,10 +1,10 @@
 {
-  "build": "qxmd202",
-  "cache": "qx-pwa-qxmd202",
-  "title": "qxmd202 · light and dark: options, text, icons visible",
-  "body": "Light: dark ink on white cards. Dark: light ink on slate cards. Correct/wrong keep readable contrast. Header icons stay white on blue.",
+  "build": "qxmd203",
+  "cache": "qx-pwa-qxmd203",
+  "title": "qxmd203 · hide question-number strip so options stay visible",
+  "body": "Top Q-number strip no longer opens by default (it was covering A/B/C/D). All Q still opens it. Light/dark option text stays visible.",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app",
   "site": "https://www.quantrexacademy.com",
   "package": "com.quantrexacademy.app",
-  "ts": 2020000000000
+  "ts": 2030000000000
 }

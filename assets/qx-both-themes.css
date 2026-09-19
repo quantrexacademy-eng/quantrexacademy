@@ -1,3 +1,39 @@
+/* Number strip must NOT cover options. Hidden unless All Q is on. */
+.eg-test-root .eg-qbar,
+.eg-test-root .eg-qbar.eg-strip,
+.eg-test-root #egQBar,
+.eg-test-root.eg-strip-collapsed .eg-qbar,
+.eg-test-root:not(.eg-strip-open) .eg-qbar,
+.eg-test-root:not(.eg-strip-open) #egQBar {
+  display: none !important;
+  height: 0 !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+}
+.eg-test-root.eg-strip-open .eg-qbar,
+.eg-test-root.eg-strip-open #egQBar {
+  display: flex !important;
+  height: auto !important;
+  max-height: 72px !important;
+  overflow-x: auto !important;
+  pointer-events: auto !important;
+}
+.eg-test-root .eg-opts,
+.eg-test-root #qxOpts {
+  visibility: visible !important;
+  opacity: 1 !important;
+  z-index: 2 !important;
+}
+.eg-test-root .mtk-opt,
+.eg-test-root .eg-opt {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+
 /* Light + dark: stem, options, icons, solution always visible. Load last. */
 
 .eg-test-root .eg-q-stem,
