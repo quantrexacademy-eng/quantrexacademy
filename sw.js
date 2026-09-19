@@ -1,7 +1,7 @@
 /* Quantrex PWA — website + Android TWA share this cache.
    Bump CACHE on every release so activate deletes ALL old qx-pwa-* caches.
    Critical question/math/test JS must NEVER be served stale from cache. */
-const CACHE = "qx-pwa-qxmd194";
+const CACHE = "qx-pwa-qxmd200";
 const PRECACHE = ["/login.html", "/manifest.webmanifest", "/assets/icon-192.png", "/assets/icon-512.png"];
 const SKIP = /\.(mp4|webm|apk|m4a|mp3)$/i;
 const ASSET_IMG = /\.(png|jpe?g|webp|svg|gif|ico|woff2?)$/i;

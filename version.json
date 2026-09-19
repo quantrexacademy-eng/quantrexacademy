@@ -1,10 +1,10 @@
 {
-  "build": "qxmd194",
-  "cache": "qx-pwa-qxmd194",
-  "title": "qxmd194 · PYQ papers + footer Next/Prev after Check Answer",
-  "body": "PYQ mocks load from Hosting JSON. After Check Answer, Previous/Next stay on a white bar (not grey). Next does not auto-open Show Answer. Solution drops restated question text.",
+  "build": "qxmd200",
+  "cache": "qx-pwa-qxmd200",
+  "title": "qxmd200 · locked Previous/Next footer after Check Answer",
+  "body": "Footer is two rows: extras then Previous|Next with inline styles so they cannot hide or go grey. Master prompt: QUANTREX_QUESTION_VIEW_100_PROMPT.txt",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app",
   "site": "https://www.quantrexacademy.com",
   "package": "com.quantrexacademy.app",
-  "ts": 1940000000000
+  "ts": 2000000000000
 }

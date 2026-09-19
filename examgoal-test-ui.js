@@ -569,17 +569,17 @@
     /* Prev/Next always present; Marks-like Mark|Clear + Save&Next on mobile */
     /* qxmd171 Marks foot DOM; qxmd173 mobile CSS hides Clear — Prev|Next primary; Show Answer unchanged */
     const foot = practice
-      ? '<div class="eg-foot eg-foot-practice eg-marks-foot" id="egFoot">' +
-        '<div class="eg-foot-extra eg-foot-left" id="egFootExtra">' +
+      ? '<div class="eg-foot eg-foot-practice eg-marks-foot" id="egFoot" style="display:flex!important;flex-direction:column!important;background:#ffffff!important;border-top:1px solid #e5e7eb!important;box-shadow:none!important;position:fixed!important;left:0!important;right:0!important;bottom:0!important;z-index:2147483000!important;padding:8px 12px calc(8px + env(safe-area-inset-bottom,0px))!important;gap:8px!important;">' +
+        '<div class="eg-foot-extra eg-foot-left" id="egFootExtra" style="background:#ffffff!important;width:100%!important;">' +
         showSwitch +
         '<button type="button" class="eg-btn eg-btn-review" id="qxReviewNextBtn">Mark for Review</button>' +
         '<button type="button" class="eg-btn eg-btn-clear" id="qxClearBtn">Clear Response</button>' +
         "</div>" +
-        '<div class="eg-foot-nav eg-foot-right">' +
+        '<div class="eg-foot-nav eg-foot-right" style="display:grid!important;grid-template-columns:1fr 1fr!important;gap:8px!important;width:100%!important;order:99!important;visibility:visible!important;">' +
         (footClose || "") +
         '<button type="button" class="eg-btn eg-btn-more" id="egFootMore" title="More" aria-label="More" aria-expanded="false" hidden>⋯</button>' +
-        '<button type="button" class="eg-btn" id="qxPrevBtn" style="display:inline-flex!important;visibility:visible!important;opacity:1!important"' + (firstQ ? " disabled" : "") + ">Previous</button>" +
-        '<button type="button" class="eg-btn eg-btn-next" id="qxNextBtn" style="display:inline-flex!important;visibility:visible!important;opacity:1!important"' + (lastQ ? " disabled" : "") + ">Next</button>" +
+        '<button type="button" class="eg-btn" id="qxPrevBtn" style="display:inline-flex!important;visibility:visible!important;opacity:1!important;min-height:48px!important;background:#ffffff!important;color:#1565C0!important;border:2px solid #1565C0!important;border-radius:10px!important;font-weight:800!important;"' + (firstQ ? " disabled" : "") + ">Previous</button>" +
+        '<button type="button" class="eg-btn eg-btn-next" id="qxNextBtn" style="display:inline-flex!important;visibility:visible!important;opacity:1!important;min-height:48px!important;background:#1565C0!important;color:#ffffff!important;border:2px solid #1565C0!important;border-radius:10px!important;font-weight:800!important;"' + (lastQ ? " disabled" : "") + ">Next</button>" +
         "</div>" +
         '<div class="eg-foot-sheet-scrim" id="egFootSheetScrim" hidden aria-hidden="true"></div>' +
         "</div>"

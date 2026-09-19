@@ -1,0 +1,216 @@
+# QUANTREX — QUESTION VIEW 100% PROMPT (single source of truth)
+# Website + Play TWA. Firebase Hosting + GitHub only. NO Vercel. NO React rewrite.
+
+You are implementing Quantrex Academy practice UI until the screenshots below CANNOT happen.
+Owner product: vanilla SPA on USB `QUANTREX\website` (junction `C:\Users\Admin\qx-hosting` while DT50 is plugged). Live: https://www.quantrexacademy.com Firebase project `quantrexacademy-app`. GitHub `quantrexacademy-eng/quantrexacademy` main.
+
+If USB is unplugged, clone GitHub and deploy Firebase. Students never depend on USB.
+
+-----------------------------------------------------------------------------
+0. PROOF THE USER IS STILL BROKEN (2026-09-19)
+-----------------------------------------------------------------------------
+
+Desktop Screenshot (1124) URL:
+  https://www.quantrexacademy.com/app.html?exam=Engineering&login=1#cpyqb
+  (NO ?v= cache bust — user often has this. Your ship MUST work WITHOUT asking them for a magic v= URL.)
+
+What 1124 shows AFTER Check Answer:
+- Blue header tools ARE visible (Theme, Aa, All Q, Palette, Bookmark, Group, Full, Report). Keep that.
+- Options math is GARBAGE: `A ∪ B −∞1 ∪ 2∞` instead of proper set notation with commas and \infty.
+- SOLUTION panel REPEATS THE QUESTION stem ("Let A = {x : |x²−10| ≤ 6} and B = … Then") then a Medium chip. That is FAIL.
+- Bottom grey/white strip: only "Show Answer / Mark for Review / Clear Response".
+- Previous and Next are GONE after Check Answer. That is FAIL.
+
+Mobile attachments (phone Chrome, same session):
+- 1000224440: solution is KaTeX HTML dumped as italic prose:
+  `spanclass = "katex – display"` `/span >` `aria – hidden = "true"` `strut style = "height : 0.3669em;"`
+  That is FAIL. Never paint KaTeX source/HTML as text.
+- 1000224441: solution letters exploded (`w h e n`, `s a t i s f i e d`) + random vertical rules through math.
+- 1000224442 / 4443: matrices/determinants smashed (`sin x271`, `C3 - C1 y(x) = |sin x271`).
+- 1000224444: mixed raw `$ \left(2 \alpha + 5 \right)$` plus dumped `class="strut"`.
+- Mobile footer: EMPTY GREY block. No Previous, no Next.
+
+Acceptance: you are NOT done until a hard-refresh of
+  https://www.quantrexacademy.com/app.html
+  (and the app TWA) shows: blue tools on top, white footer with Previous|Next ALWAYS (including after Check Answer), solution text that is ONLY the explanation (no stem, no katex HTML dump), options with real math.
+
+-----------------------------------------------------------------------------
+1. HARD RULES
+-----------------------------------------------------------------------------
+
+- Edit only QUANTREX\website / qx-hosting. Brand: Quantrex Academy only (no MARKS / Allen / ExamGoal / Quizrr in student UI).
+- Do NOT invent academic solutions. Official USB JSON / Marks cache only.
+- Do NOT rewrite in React. Do NOT deploy Vercel.
+- Do NOT add more `eg-qxmdNNN` class soup. The current 167/170/173/180/182/qxtool8/qxeg1–7 war is WHY CSS never sticks.
+- Bump `window.QX_BUILD` (e.g. qxmd200), `version.json`, `sw.js` CACHE, and every changed file `?v=`.
+- `app.html`, `version.json`, `sw.js` must be Cache-Control: no-store.
+- `pwa-register.js` must fetch `/version.json?t=` and hardReload if build differs (already exists — keep it working).
+- Deploy:
+    cd /d E:\QUANTREX\website
+    npx firebase-tools deploy --only hosting --project quantrexacademy-app --non-interactive
+  then `git add` the changed files, commit, `git push origin main`.
+- After deploy, verify by fetching:
+    https://www.quantrexacademy.com/version.json?t=NOW
+  must equal the new QX_BUILD. If not, you did not ship.
+
+-----------------------------------------------------------------------------
+2. FOOTER — THIS IS THE #1 LAYOUT BUG
+-----------------------------------------------------------------------------
+
+Root cause (already seen in code):
+- `assets/qx-practice-read.css` once set `.eg-top, .eg-subs, .eg-info-strip, .eg-foot { position:fixed; bottom:0; background:#fff }` which stacked the HEADER under the footer.
+- After Check Answer, `.eg-foot-extra` (Show Answer / Mark / Clear) becomes the only visible row. `.eg-foot-nav` (Previous / Next) is either `display:none`, height 0, or pushed below the Windows/Android chrome.
+
+REQUIRED DOM (practice + chapter PYQ ExamgoalTestUI). Do not generate a second footer. One `#egFoot`:
+
+```
+<footer id="egFoot" class="eg-foot">
+  <div class="eg-foot-extra">  <!-- optional, compact, WHITE, never grey -->
+    Show Answer toggle | Mark for Review | Clear
+  </div>
+  <div class="eg-foot-nav">     <!-- ALWAYS last, ALWAYS visible, NEVER grey -->
+    <button id="qxPrevBtn">Previous</button>
+    <button id="qxNextBtn">Next</button>
+  </div>
+</footer>
+```
+
+REQUIRED CSS (put in ONE file loaded LAST, e.g. `assets/qx-prac-chrome.css`, and ALSO a `<style id="qxFootLock">` inside the practice root so later examgoal CSS cannot win):
+
+```
+#egFoot {
+  position: fixed; left: 0; right: 0; bottom: 0;
+  z-index: 2147483000;
+  display: flex; flex-direction: column;
+  background: #ffffff;           /* NOT #e2e8f0, NOT grey */
+  border-top: 1px solid #e5e7eb;
+  box-shadow: none;
+  padding: 8px 12px calc(8px + env(safe-area-inset-bottom));
+}
+#egFoot .eg-foot-nav {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px; width: 100%;
+  order: 99;
+}
+#egFoot #qxPrevBtn, #egFoot #qxNextBtn {
+  display: inline-flex !important;
+  visibility: visible !important;
+  min-height: 48px; width: 100%;
+  pointer-events: auto !important;
+}
+#qxPrevBtn { background:#fff; color:#1565C0; border:2px solid #1565C0; }
+#qxNextBtn { background:#1565C0; color:#fff; border:2px solid #1565C0; }
+```
+
+NEVER:
+- `position:fixed; bottom:0` on `.eg-top`
+- hide `#qxPrevBtn/#qxNextBtn` in any `@media` or `.eg-sol-showing` / `.qx-sol-showing`
+- paint Previous as `#e2e8f0` grey
+- `api.refresh()` after Check Answer in a way that rebuilds the foot without Prev/Next
+
+Check Answer MUST:
+- keep stem + options
+- open solution BELOW options
+- keep Previous | Next visible
+- NOT navigate
+- NOT auto-advance
+
+Next / Previous MUST:
+- work on mobile (pointerup + click, 300ms lock, `touch-action: manipulation`)
+- NOT auto-check the next question
+- NOT auto-open Show Answer / solution on the next question
+- `session._egShowAnswer = false` and uncheck `#egShowAns` unless THAT index was already checked
+
+-----------------------------------------------------------------------------
+3. SOLUTION PANEL — NEVER THE QUESTION, NEVER KATEX HTML
+-----------------------------------------------------------------------------
+
+FAIL states from screenshots:
+1. First paragraph of solution == question stem.
+2. Solution body is KaTeX DOM serialized (`class="katex"`, `strut`, `aria-hidden="true"`).
+3. Letters spaced (`w h e n`).
+4. Raw `$ \left( ... \right)$` left in the panel.
+
+REQUIRED:
+- Panel title: "SOLUTION" (Quantrex). Then official answer chip if needed. Then explanation body.
+- Body = official solution HTML → MathML/TeX convert (`scripts/_qx_mathml.js`, msub before mfenced, `&#38;` → `\text{ and }`) → KaTeX `throwOnError: true`.
+- If KaTeX throws: keep the `$...$` source, do NOT innerHTML the error, do NOT stringify the KaTeX DOM.
+- NEVER run `wrapBareLatex` on stored JSON.
+- NEVER `element.textContent = element.innerHTML` on `.katex`.
+- After render, `stripLeadingStemEcho` + `dropRepeatedQuestionBlocks` until the first 40 letters of the stem are NOT the start of the solution plain text.
+- If Marks sol starts by restating the stem, DROP that prefix. Keep only the working (`hence`, `therefore`, `option`, computation).
+- Hide `.katex-error { display:none }`.
+- Image-only solutions are valid.
+
+Code to touch: `solution-format.js` (`formatBody`, `renderBlock`, `stripLeadingStemEcho`), `examgoal-test-ui.js` (`solutionHtml`, `revealPracticeSolution`), `math-render.js` `paint()`.
+
+-----------------------------------------------------------------------------
+4. OPTIONS + STEM MATH
+-----------------------------------------------------------------------------
+
+Screenshot 1124 options:
+  A `A ∪ B −∞1 ∪ 2∞`  FAIL (commas and braces eaten, \infty glued)
+  B `B − A −∞ −4 ∪ −21 ∪ 4∞` FAIL
+
+Required: KaTeX of the stored option TeX, commas inside sets preserved.
+Do not strip `,` inside `$...$`.
+Do not run option text through a "plain" path that does `.replace(/<[^>]+>/g,"")` then display that as the option (test-engine.js has this fallback — stop using it when QuantrexQFormat exists).
+Stem and options use the same `Mx.html` / `MathTextRenderer.render` path as the rest of the site.
+
+-----------------------------------------------------------------------------
+5. PYQ MOCK "PAPER NOT FOUND"
+-----------------------------------------------------------------------------
+
+`qxLoadPyqPaper` must NOT depend on `/api/catalog` (Cloud Function often missing).
+
+Load order:
+1. `data/nav/pyq_papers/{slug}/_index.json` → map source string → filename
+2. `data/nav/pyq_papers/{slug}/{file}.json` — these files ALREADY contain `questions[]` with q/options/answer/solution
+3. Only then `/api/catalog?action=paper`
+4. Never toast "Paper not found" if the JSON file exists; if index key mismatch, fuzzy-match source (ignore punctuation/case)
+
+-----------------------------------------------------------------------------
+6. TOOLBAR (already partly working — do not regress)
+-----------------------------------------------------------------------------
+
+Keep the blue `.eg-top` at the TOP (not bottom). Tools: Theme, Aa, All Q, Palette, Bookmark, Group, Full, Report.
+Inline styles on `<header class="eg-top">` are OK as a lock.
+Never apply `position:fixed; bottom:0` to `.eg-top`.
+
+-----------------------------------------------------------------------------
+7. CONTENT / SPEED (if you have time after 2–6)
+-----------------------------------------------------------------------------
+
+- Chapter-wise PYQ banks on disk are NOT empty (21 exams). Do not invent questions.
+- Hide Coming Soon books with count 0.
+- Medical Tests must not open JEE ExamGoal series; open NEET/AIIMS/JIPMER PYQ mocks + chapter PYQ.
+- Practice must load ONE chapter JSON, never `neet.json` / `jee_main.json` (40–76MB).
+- Branding Quantrex only.
+
+-----------------------------------------------------------------------------
+8. IMPLEMENTATION ORDER
+-----------------------------------------------------------------------------
+
+1. Fix footer DOM + one last CSS file + inline `#qxFootLock` style. Prove Prev/Next still there after Check Answer on desktop AND a 390px viewport.
+2. Stop Check Answer from calling a full `api.refresh()` that wipes the foot, OR re-bind foot after refresh.
+3. Solution: strip stem; never serialize .katex to text; throwOnError true.
+4. Option math path.
+5. PYQ JSON loader.
+6. Bump QX_BUILD, no-store headers, SW, pwa-register hardReload.
+7. Firebase Hosting deploy from USB. GitHub push of the same files (no secrets, no qid_marks).
+8. Verify version.json. Open `#cpyqb` practice, Check Answer: Prev/Next still there, solution has no stem, no grey bar.
+
+-----------------------------------------------------------------------------
+9. DONE / NOT DONE
+-----------------------------------------------------------------------------
+
+DONE only if:
+- Desktop Check Answer: Previous | Next visible on a WHITE bar; extra row may sit ABOVE them; nothing grey.
+- Mobile: Previous | Next tappable, not covered by the Android nav, not auto-opening solution on Next.
+- Solution panel does not start with the question text.
+- Solution panel does not contain `class="katex"` or `strut` as visible text.
+- PYQ Mock opens a real paper from `data/nav/pyq_papers`.
+- Live `version.json` matches QX_BUILD without a special local USB.
+
+If any screenshot 1124 / 1000224440–4444 can still be reproduced, you are not done. Fix again. Do not add another eg-qxmd class. Change the DOM and one CSS file.
