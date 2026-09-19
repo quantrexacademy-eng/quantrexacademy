@@ -645,10 +645,10 @@
       "" +
       '" data-test-theme="' + theme + '" data-font-scale="' + fontScale +
       '" data-eg-mode="' + (practice ? "practice" : "test") + '" data-ui="examgoal" data-eg-cycle="' + (chromeOpen ? "1" : "0") + '">' +
-      '<header class="eg-top">' +
+      '<header class="eg-top" style="display:flex!important;align-items:center!important;gap:8px!important;min-height:56px!important;padding:6px 10px!important;background:#1565C0!important;color:#fff!important;visibility:visible!important;opacity:1!important;position:relative!important;top:auto!important;bottom:auto!important;left:auto!important;right:auto!important;z-index:70!important;flex-shrink:0!important;">' +
       '<button type="button" class="eg-back" id="mtkExitBtn" data-qx-exit="1" title="Exit" aria-label="Exit">‹</button>' +
       '<div class="eg-top-title">' + titleEsc + ' <span class="eg-mode-pill">' + mode + "</span></div>" +
-      '<div class="eg-top-tools qx-prac-tools" role="toolbar" aria-label="Question tools">' +
+      '<div class="eg-top-tools qx-prac-tools" role="toolbar" aria-label="Question tools" style="display:flex!important;visibility:visible!important;opacity:1!important;flex-wrap:wrap!important;gap:6px!important;margin-left:auto!important;">' +
       (!practice ? timer : "") +
       /* qxmd167: primary always-visible row — Theme, Aa, All Q, Palette */
       '<button type="button" class="eg-ico mtk-theme-btn eg-tool-btn eg-tool-pri' + (theme === "light" ? " eg-moon" : "") + '" id="mtkThemeBtn" data-tip="Theme" title="Light / dark" aria-label="Light / dark">' +
@@ -735,7 +735,7 @@
           '<div class="eg-sol eg-sol-inline" id="egSol"><p class="qx-sol-missing">Solution unavailable</p></div></div>'
         : "";
       var titleFail = String((sess && sess.title) || "Test").replace(/</g, "&lt;");
-      return '<div class="eg-test-root mtk-test-root eg-sol-showing" data-ui="examgoal" data-eg-mode="' +
+      return '<div class="eg-test-root mtk-test-root" data-ui="examgoal" data-eg-mode="' +
         (practiceFail ? "practice" : "test") + '">' +
         '<header class="eg-top"><div class="eg-top-title">' + titleFail + "</div></header>" +
         '<div class="eg-body"><div class="eg-main"><div class="eg-q-card">' +
@@ -1048,12 +1048,12 @@
     }
 
     try {
-      root.classList.add("eg-sol-showing", "eg-qxmd180", "eg-qxmd182");
-      root.classList.remove("eg-qxmd175", "eg-qxmd176", "eg-qxmd177", "eg-qxmd179");
+      root.classList.add("qx-sol-showing", "eg-qxmd180", "eg-qxmd182");
+      root.classList.remove("eg-sol-showing", "eg-qxmd175", "eg-qxmd176", "eg-qxmd177", "eg-qxmd179");
       const egRoot = root.classList.contains("eg-test-root") ? root : (root.closest && root.closest(".eg-test-root"));
       if (egRoot) {
-        egRoot.classList.add("eg-sol-showing", "eg-qxmd180", "eg-qxmd182");
-        egRoot.classList.remove("eg-qxmd175", "eg-qxmd176", "eg-qxmd177", "eg-qxmd179");
+        egRoot.classList.add("qx-sol-showing", "eg-qxmd180", "eg-qxmd182");
+        egRoot.classList.remove("eg-sol-showing", "eg-qxmd175", "eg-qxmd176", "eg-qxmd177", "eg-qxmd179");
       }
       /* qxmd176: sync Show Answer toggle with solution visibility */
       try {
