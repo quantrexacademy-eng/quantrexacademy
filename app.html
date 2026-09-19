@@ -44,21 +44,21 @@
     <!-- First paint: UI Inter + exam reading Source Serif 4. KaTeX ships math fonts. -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
     <!-- Critical CSS (dashboard + reading) -->
-    <link rel="stylesheet" href="assets/quantrex-brand.css?v=qxmd179">
-    <link rel="stylesheet" href="assets/qx-quantrex-branding.css?v=qxmd179">
+    <link rel="stylesheet" href="assets/quantrex-brand.css?v=qxmd216">
+    <link rel="stylesheet" href="assets/qx-quantrex-branding.css?v=qxmd216">
     <link rel="stylesheet" href="assets/qx-premium-ux.css?v=qxfix43">
     <link rel="stylesheet" href="assets/qx-typography.css?v=qxfix43">
     <link rel="stylesheet" href="assets/qx-redesign-v2.css?v=qxfix59">
     <link rel="stylesheet" href="assets/qx-identity.css?v=qxfix102">
-    <link rel="stylesheet" href="assets/qx-premium-ui.css?v=qxmd179">
-    <link rel="stylesheet" href="assets/qx-mobile.css?v=qxmd179">
+    <link rel="stylesheet" href="assets/qx-premium-ui.css?v=qxmd216">
+    <link rel="stylesheet" href="assets/qx-mobile.css?v=qxmd216">
     <link rel="stylesheet" href="assets/qx-viewport.css?v=qxfix102">
     <link rel="stylesheet" href="assets/qx-touch-perf.css?v=qxfix102">
-    <link rel="stylesheet" href="assets/qx-question-format.css?v=qxmd215">
-    <link rel="stylesheet" href="assets/qx-marks-practice.css?v=qxmd187">
-    <link rel="stylesheet" href="assets/qx-text-visible.css?v=qxmd179">
-    <link rel="stylesheet" href="assets/qx-site-contrast.css?v=qxmd179">
-    <link rel="stylesheet" href="assets/qx-nav-foot.css?v=qxmd179">
+    <link rel="stylesheet" href="assets/qx-question-format.css?v=qxmd216">
+    <link rel="stylesheet" href="assets/qx-marks-practice.css?v=qxmd216">
+    <link rel="stylesheet" href="assets/qx-text-visible.css?v=qxmd216">
+    <link rel="stylesheet" href="assets/qx-site-contrast.css?v=qxmd216">
+    <link rel="stylesheet" href="assets/qx-nav-foot.css?v=qxmd216">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         [data-theme="dark"] body { background: var(--bg); color: var(--text); }
@@ -3400,7 +3400,7 @@
           position: fixed !important; inset: 0 !important; z-index: 9500 !important;
           overflow: hidden !important; background: #eef2f7 !important;
         }
-        /* qxmd215: Allen/NEET practice must scroll — do not inherit CBT overflow:hidden trap */
+        /* qxmd216: Allen/NEET practice must scroll — do not inherit CBT overflow:hidden trap */
         body.allen-practice-active #app-main,
         body.allen-practice-active #app-main.content,
         body.marks-test-active.allen-practice-active #app-main,
@@ -4301,7 +4301,7 @@
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js" defer></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js" defer></script>
     <script>
-      window.QX_BUILD = "qxmd215";
+      window.QX_BUILD = "qxmd216";
       (function () {
         try {
           var pill = document.getElementById("qxBuildPill");
@@ -4314,36 +4314,36 @@
       /* Secondary CSS/JS — loaded after first paint by qx-perf (not on critical path) */
       window.QX_SECONDARY_CSS = [
         "https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css",
-        "assets/qx-font-scale.css?v=qxmd215",
-        "assets/qx-beauty-read.css?v=qxmd189",
+        "assets/qx-font-scale.css?v=qxmd216",
+        "assets/qx-beauty-read.css?v=qxmd216",
         "assets/marks-test-engine.css?v=qxapp1",
         "assets/qx-no-watermark.css?v=qxfix110",
         "assets/qx-soft-wm.css?v=qxfix34",
         "assets/qx-live-purchases.css?v=qxfix91",
         "assets/qx-admin.css?v=qxfix94",
         "assets/qx-theme-practice.css?v=qxvis4",
-        "assets/qx-paper-meta.css?v=qxmd215",
-        "assets/allen-test-engine.css?v=qxmd215",
+        "assets/qx-paper-meta.css?v=qxmd216",
+        "assets/allen-test-engine.css?v=qxmd216",
         "assets/qx-brand-overlay.css?v=qxfix116",
         "assets/qx-figure.css?v=qxfix60",
         "assets/qx-figure-beauty.css?v=qxnta1",
         "assets/qx-figure-viewer.css?v=qxfull1",
         "assets/qx-figure-hd.css?v=qxfigstd1",
         "assets/qx-fig-standard.css?v=qxfix18",
-        "assets/qx-image-clean.css?v=qxmd179",
+        "assets/qx-image-clean.css?v=qxmd216",
         "assets/qx-num-keypad.css?v=qxvis4",
         "assets/qx-image-quality.css?v=qxfull1",
-        "assets/qx-solution.css?v=qxmd215",
-        "assets/qx-sol-vis.css?v=qxmd190",
-        "assets/qx-prac-chrome.css?v=qxmd215",
+        "assets/qx-solution.css?v=qxmd216",
+        "assets/qx-sol-vis.css?v=qxmd216",
+        "assets/qx-prac-chrome.css?v=qxmd216",
         "assets/jovi.css?v=qxjovi2",
         "assets/exam-info.css?v=qxfull1",
-        "assets/qx-gemini-theme.css?v=qxmd179",
+        "assets/qx-gemini-theme.css?v=qxmd216",
         "assets/qx-fig-lock.css?v=qxiro2",
         "assets/qx-motion.css?v=qxfix105",
         "assets/examgoal-premium.css?v=qxfix56",
-        "assets/examgoal-test-ui.css?v=qxmd215",
-        "assets/qx-practice-read.css?v=qxmd215",
+        "assets/examgoal-test-ui.css?v=qxmd216",
+        "assets/qx-practice-read.css?v=qxmd216",
         "assets/qx-nta-bright.css?v=qxqa1",
         "test-series-page.css?v=qxfix79",
         "assets/qx-rfc.css?v=qxqa1",
@@ -4353,8 +4353,8 @@
         "assets/qx-palette-nav.css?v=qxexam1",
         "assets/qx-hw-sol.css?v=qxhw3",
         "assets/qx-cbt-contrast.css?v=qxnav1",
-        "assets/qx-site-contrast.css?v=qxmd179",
-        "assets/qx-nav-foot.css?v=qxmd179"
+        "assets/qx-site-contrast.css?v=qxmd216",
+        "assets/qx-nav-foot.css?v=qxmd216"
       ];
       window.QX_SECONDARY_JS = [
         "https://www.gstatic.com/firebasejs/10.14.1/firebase-analytics-compat.js",
@@ -4377,13 +4377,13 @@
         "qx-india-geo.js?v=qxfix68",
         "qx-leads.js?v=qxfix72",
         "qx-live-feed.js?v=qxfix93",
-        "book-covers.js?v=qxmd179",
+        "book-covers.js?v=qxmd216",
         "qx-premium-watermark.js?v=qxfull1",
         "qx-nowm-guard.js?v=qxfix116",
         "qx-watermark.js?v=qxnobrand1",
         "qx-soft-wm.js?v=qxfix110",
         "qx-figure-viewer.js?v=qxfull1",
-        "qx-proofread.js?v=qxmd179",
+        "qx-proofread.js?v=qxmd216",
         "assets/qx-question-qa.js?v=qxfull1",
         "search.js?v=qxfull1",
         "jovi.js?v=qxjovi2"
@@ -4434,18 +4434,18 @@
     <script src="assets/branding-strip.js?v=qxbrand2" defer></script>
     <script src="qx-brand-ui.js?v=qxfull1" defer></script>
     <script src="exam-logos.js?v=qxfull1" defer></script>
-    <script src="qx-redesign-nav.js?v=qxmd188" defer></script>
+    <script src="qx-redesign-nav.js?v=qxmd216" defer></script>
     <script src="qx-card-icons.js?v=qxfix116" defer></script>
     <script src="assets/qx-local-fig-map.js?v=qxfig111" defer></script>
-    <script src="qx-owned-figures.js?v=qxmd179" defer></script>
-    <script src="qx-image-clean.js?v=qxmd215" defer></script>
+    <script src="qx-owned-figures.js?v=qxmd216" defer></script>
+    <script src="qx-image-clean.js?v=qxmd216" defer></script>
     <script src="qx-test-engine-perf.js?v=qxq861" defer></script>
-    <script src="qx-math-sanitize.js?v=qxmd179" defer></script>
-    <script src="math-render.js?v=qxmd215" defer></script>
-    <script src="question-format.js?v=qxmd184" defer></script>
-    <script src="solution-format.js?v=qxmd215" defer></script>
+    <script src="qx-math-sanitize.js?v=qxmd216" defer></script>
+    <script src="math-render.js?v=qxmd216" defer></script>
+    <script src="question-format.js?v=qxmd216" defer></script>
+    <script src="solution-format.js?v=qxmd216" defer></script>
     <script src="assets/qx-question-cache.js?v=qxfix17" defer></script>
-    <script src="data.js?v=qxmd188" defer></script>
+    <script src="data.js?v=qxmd216" defer></script>
     <script src="firebase-db.js?v=qxfix115" defer></script>
     <script src="qx-firebase-bank.js?v=qxfix110" defer></script>
     <script src="quantrex-auth-otp.js?v=qxfix72" defer></script>
@@ -4458,9 +4458,9 @@
     <!-- payments.js / premium.js omitted: all courses free -->
     <script src="marks-shell.js?v=qxvis4" defer></script>
     <script src="marks-live.js?v=qxvis4" defer></script>
-    <script src="marks-features.js?v=qxmd194" defer></script>
-    <script src="examgoal-test-ui.js?v=qxmd215" defer></script>
-    <script src="allen-test-ui.js?v=qxmd215" defer></script>
+    <script src="marks-features.js?v=qxmd216" defer></script>
+    <script src="examgoal-test-ui.js?v=qxmd216" defer></script>
+    <script src="allen-test-ui.js?v=qxmd216" defer></script>
     <script>
       window.TS_CFG = {
         seriesId: "jee_main_examgoal_2027",
@@ -4471,14 +4471,14 @@
       };
     </script>
     <script src="test-series.js?v=qxfix86" defer></script>
-    <script src="test-engine.js?v=qxmd184" defer></script>
+    <script src="test-engine.js?v=qxmd216" defer></script>
     <script src="bookmarks.js?v=qxfix58" defer></script>
-    <script src="theme.js?v=qxmd179" defer></script>
+    <script src="theme.js?v=qxmd216" defer></script>
     <script src="qx-guest-trial.js?v=qxfix115" defer></script>
-    <script src="app.js?v=qxmd215" defer></script>
-<script src="qx-settings.js?v=qxmd190" defer></script>
-<script src="qx-cbt-ux.js?v=qxmd179" defer></script>
-<script src="qx-q-fast.js?v=qxmd215" defer></script>
+    <script src="app.js?v=qxmd216" defer></script>
+<script src="qx-settings.js?v=qxmd216" defer></script>
+<script src="qx-cbt-ux.js?v=qxmd216" defer></script>
+<script src="qx-q-fast.js?v=qxmd216" defer></script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         try {
@@ -4503,9 +4503,9 @@
         })();
       });
     </script>
-<link rel="stylesheet" href="assets/qx-nav-foot.css?v=qxmd179">
-<link rel="stylesheet" href="assets/qx-prac-chrome.css?v=qxmd215">
-<link rel="stylesheet" href="assets/qx-both-themes.css?v=qxmd215">
-<script src="pwa-register.js?v=qxmd215"></script>
+<link rel="stylesheet" href="assets/qx-nav-foot.css?v=qxmd216">
+<link rel="stylesheet" href="assets/qx-prac-chrome.css?v=qxmd216">
+<link rel="stylesheet" href="assets/qx-both-themes.css?v=qxmd216">
+<script src="pwa-register.js?v=qxmd216"></script>
 </body>
 </html>

@@ -258,7 +258,7 @@ html[data-theme="light"] .eg-foot, html[data-theme="dark"] .eg-foot,
   grid-template-columns: 1fr 1.2fr 1fr !important;
   gap: 8px !important;
   align-items: center !important;
-  position: relative !important; /* qxmd215 was fixed */
+  position: fixed !important; /* qxmd216 fixed */
   left: 0 !important; right: 0 !important; bottom: 0 !important;
   z-index: 2147483646 !important;
   visibility: visible !important;
@@ -796,7 +796,11 @@ html[data-theme="dark"] .mtk-opt .katex * {
   visibility: visible !important;
 }
 
-/* ========== qxmd215: DESTROY bottom strip — in-flow pills, never cover Q/sol ========== */
+/* ========== qxmd216: FIXED transparent bottom pills — max Q area; no strip; no hang ========== */
+:root {
+  --eg-foot-h: 52px;
+  --eg-foot-pad: calc(var(--eg-foot-h) + 12px + env(safe-area-inset-bottom, 0px));
+}
 #egFoot, .eg-foot, .eg-foot-practice, .eg-foot-marks, .mtk-controls, footer.eg-foot,
 .eg-test-root #egFoot, .eg-test-root .eg-foot, .eg-test-root .eg-foot-marks,
 .mtk-test-root #egFoot, .allen-practice #egFoot, .allen-practice .eg-foot,
@@ -808,12 +812,12 @@ html[data-theme="dark"] .mtk-opt .katex * {
 .eg-test-root.qx-sol-showing #egFoot, .eg-test-root.eg-sol-showing #egFoot,
 html[data-theme="light"] #egFoot, html[data-theme="dark"] #egFoot,
 html[data-theme="light"] .eg-foot, html[data-theme="dark"] .eg-foot {
-  position: relative !important;
-  left: auto !important;
-  right: auto !important;
-  bottom: auto !important;
+  position: fixed !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
   top: auto !important;
-  inset: auto !important;
+  inset: auto 0 0 0 !important;
   transform: none !important;
   background: transparent !important;
   background-color: transparent !important;
@@ -828,15 +832,15 @@ html[data-theme="light"] .eg-foot, html[data-theme="dark"] .eg-foot {
   height: auto !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
-  z-index: 20 !important;
+  z-index: 2147483646 !important;
   display: grid !important;
   grid-template-columns: 1fr 1.2fr 1fr !important;
   gap: 8px !important;
   align-items: center !important;
   width: 100% !important;
-  max-width: 720px !important;
-  margin: 12px auto 16px !important;
-  padding: 8px 10px 12px !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 6px 10px calc(6px + env(safe-area-inset-bottom, 0px)) !important;
   pointer-events: none !important;
   visibility: visible !important;
   opacity: 1 !important;
@@ -857,7 +861,7 @@ html[data-theme="light"] .eg-foot, html[data-theme="dark"] .eg-foot {
   visibility: visible !important;
   opacity: 1 !important;
   position: relative !important;
-  z-index: 21 !important;
+  z-index: 2147483647 !important;
   min-height: 40px !important;
   height: 40px !important;
   max-height: 40px !important;
@@ -897,27 +901,48 @@ html[data-theme="light"] .eg-foot, html[data-theme="dark"] .eg-foot {
   background: #3b82f6 !important; color: #fff !important;
   -webkit-text-fill-color: #fff !important; border: 1.5px solid #60a5fa !important;
 }
-/* root flex so foot sits BELOW scroll area, never overlays */
-.eg-test-root, .mtk-test-root.allen-practice {
-  display: flex !important;
-  flex-direction: column !important;
-  min-height: 0 !important;
-}
+/* scroll clears fixed pills — foot height + 12px */
 .eg-test-root .eg-main, .eg-test-root .eg-q-card,
-.mtk-test-root .mtk-main, .allen-practice .mtk-main {
-  flex: 1 1 auto !important;
+.mtk-test-root .mtk-main, .allen-practice .mtk-main,
+.eg-main, .eg-q-card, .mtk-main, .mtk-body, #app-main {
+  padding-bottom: var(--eg-foot-pad) !important;
+  scroll-padding-bottom: var(--eg-foot-pad) !important;
   overflow-y: auto !important;
   overflow-x: hidden !important;
-  padding-bottom: 24px !important;
-  scroll-padding-bottom: 24px !important;
+  -webkit-overflow-scrolling: touch !important;
 }
-#app-main {
-  overflow-y: auto !important;
-  padding-bottom: 24px !important;
-  scroll-padding-bottom: 24px !important;
+.eg-test-root.eg-sol-showing .eg-main,
+.eg-test-root.qx-sol-showing .eg-main,
+.eg-test-root.eg-sol-showing .eg-q-card,
+.eg-test-root.qx-sol-showing .eg-q-card,
+.allen-practice.qx-sol-showing .mtk-main {
+  padding-bottom: calc(var(--eg-foot-h) + 12px + env(safe-area-inset-bottom, 0px)) !important;
+  scroll-padding-bottom: calc(var(--eg-foot-h) + 12px + env(safe-area-inset-bottom, 0px)) !important;
 }
-/* when foot lives inside scroll host, keep modest end pad so last lines clear pills */
+/* compact top chrome — maximize question area */
+.eg-test-root .eg-top, .mtk-test-root .eg-top, .allen-practice .eg-top,
+.eg-test-root.eg-qxmd182 > .eg-top, .eg-test-root.eg-qxtool8 .eg-top {
+  min-height: 40px !important;
+  max-height: 48px !important;
+  padding: 2px 6px !important;
+  flex: 0 0 auto !important;
+}
+.eg-test-root .eg-top-tools .eg-tool-btn,
+.eg-test-root .eg-top-tools .eg-ico,
+.mtk-test-root .eg-top-tools .eg-tool-btn,
+.allen-practice .eg-top-tools .eg-tool-btn {
+  min-height: 30px !important;
+  padding: 2px 6px !important;
+  font-size: 10px !important;
+  gap: 2px !important;
+}
+.eg-test-root .eg-subs, .eg-test-root .eg-info-strip {
+  min-height: 0 !important;
+  padding-top: 2px !important;
+  padding-bottom: 2px !important;
+}
 .eg-main #egFoot, .eg-q-card #egFoot, .mtk-main #egFoot, #app-main #egFoot {
-  margin-top: 16px !important;
-  margin-bottom: 20px !important;
+  /* if somehow nested, still fixed to viewport */
+  position: fixed !important;
+  margin: 0 !important;
 }

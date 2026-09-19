@@ -13,7 +13,7 @@
     } else if (!l.id) {
       l.id = "egTestUiCss";
     }
-    const href = "assets/examgoal-test-ui.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd215");
+    const href = "assets/examgoal-test-ui.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd216");
     if (l.getAttribute("href") !== href) l.href = href;
     let chrome = document.getElementById("qxPracChromeCss");
     if (!chrome) {
@@ -22,7 +22,7 @@
       chrome.rel = "stylesheet";
       document.head.appendChild(chrome);
     }
-    const ch = "assets/qx-prac-chrome.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd215");
+    const ch = "assets/qx-prac-chrome.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd216");
     if (chrome.getAttribute("href") !== ch) chrome.href = ch;
     let both = document.getElementById("qxBothThemesCss");
     if (!both) {
@@ -31,7 +31,7 @@
       both.rel = "stylesheet";
       document.head.appendChild(both);
     }
-    const bh = "assets/qx-both-themes.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd215");
+    const bh = "assets/qx-both-themes.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd216");
     if (both.getAttribute("href") !== bh) both.href = bh;
     let r = document.getElementById("qxPracticeReadCss");
     if (!r) {
@@ -40,7 +40,7 @@
       r.rel = "stylesheet";
       document.head.appendChild(r);
     }
-    const rh = "assets/qx-practice-read.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd215");
+    const rh = "assets/qx-practice-read.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd216");
     if (r.getAttribute("href") !== rh) r.href = rh;
   }
 
@@ -669,7 +669,7 @@
       "" +
       '" data-test-theme="' + theme + '" data-font-scale="' + fontScale +
       '" data-eg-mode="' + (practice ? "practice" : "test") + '" data-ui="examgoal" data-eg-cycle="' + (chromeOpen ? "1" : "0") + '">' +
-      '<header class="eg-top" style="display:flex!important;align-items:center!important;gap:8px!important;min-height:56px!important;padding:6px 10px!important;background:#1565C0!important;color:#fff!important;visibility:visible!important;opacity:1!important;position:relative!important;top:auto!important;bottom:auto!important;left:auto!important;right:auto!important;z-index:70!important;flex-shrink:0!important;">' +
+      '<header class="eg-top" style="display:flex!important;align-items:center!important;gap:8px!important;min-height:40px!important;padding:2px 6px!important;background:#1565C0!important;color:#fff!important;visibility:visible!important;opacity:1!important;position:relative!important;top:auto!important;bottom:auto!important;left:auto!important;right:auto!important;z-index:70!important;flex-shrink:0!important;">' +
       '<button type="button" class="eg-back" id="mtkExitBtn" data-qx-exit="1" title="Exit" aria-label="Exit">‹</button>' +
       '<div class="eg-top-title">' + titleEsc + ' <span class="eg-mode-pill">' + mode + "</span></div>" +
       '<div class="eg-top-tools qx-prac-tools" role="toolbar" aria-label="Question tools" style="display:flex!important;visibility:visible!important;opacity:1!important;flex-wrap:wrap!important;gap:6px!important;margin-left:auto!important;">' +
@@ -1420,15 +1420,15 @@
         if (!foot) return;
         var h = Math.ceil(foot.getBoundingClientRect().height || foot.offsetHeight || 64);
         if (!isFinite(h) || h < 40) h = 52;
-        if (h > 56) h = 56; /* qxmd215 inflow */
-        var pad = 24; /* qxmd215 inflow — foot not overlay */
+        if (h > 72) h = 72; /* qxmd216 compact fixed */
+        var pad = h + 12; /* qxmd216 fixed overlay clear */
         var solOpen = !!(host && host.classList && (host.classList.contains("qx-sol-showing") || host.classList.contains("eg-sol-showing")));
-        if (solOpen) pad = 28; /* qxmd215 */
+        if (solOpen) pad = h + 12; /* qxmd216 */
         var cssPad = "calc(" + pad + "px + env(safe-area-inset-bottom, 0px))";
         try {
           document.documentElement.style.setProperty("--eg-foot-h", h + "px");
           document.documentElement.style.setProperty("--eg-foot-pad", cssPad);
-      /* qxmd215-global-unlock */
+      /* qxmd216-global-unlock */
       try {
         var am2 = document.getElementById("app-main");
         if (am2 && document.body.classList.contains("allen-practice-active")) {
@@ -1468,13 +1468,13 @@
       try {
         const foot = root.querySelector("#egFoot, .eg-foot");
         if (!foot) return;
-        /* qxmd215: in-flow foot — NEVER fixed overlay strip */
-        foot.style.setProperty("position", "relative", "important");
-        foot.style.setProperty("left", "auto", "important");
-        foot.style.setProperty("right", "auto", "important");
-        foot.style.setProperty("bottom", "auto", "important");
+        /* qxmd216: FIXED transparent pills at true bottom — never reparent into scroll host */
+        foot.style.setProperty("position", "fixed", "important");
+        foot.style.setProperty("left", "0", "important");
+        foot.style.setProperty("right", "0", "important");
+        foot.style.setProperty("bottom", "0", "important");
         foot.style.setProperty("top", "auto", "important");
-        foot.style.setProperty("inset", "auto", "important");
+        foot.style.setProperty("inset", "auto 0 0 0", "important");
         foot.style.setProperty("transform", "none", "important");
         foot.style.setProperty("background", "transparent", "important");
         foot.style.setProperty("background-color", "transparent", "important");
@@ -1486,38 +1486,24 @@
         foot.style.setProperty("height", "auto", "important");
         foot.style.setProperty("backdrop-filter", "none", "important");
         foot.style.setProperty("-webkit-backdrop-filter", "none", "important");
-        foot.style.setProperty("z-index", "20", "important");
-        foot.style.setProperty("margin", "12px auto 16px", "important");
-        foot.style.setProperty("max-width", "720px", "important");
+        foot.style.setProperty("z-index", "2147483646", "important");
+        foot.style.setProperty("margin", "0", "important");
+        foot.style.setProperty("max-width", "none", "important");
         foot.style.setProperty("width", "100%", "important");
-        foot.classList.add("qxmd215-inflow");
-        try {
-          var main = root.querySelector(".eg-main, .mtk-main, .eg-q-card") || document.getElementById("app-main");
-          if (main && foot.parentElement && foot.parentElement !== main) {
-            /* move foot into scroll host so it never overlays */
-            main.appendChild(foot);
-          }
-        } catch (_m) {}
+        foot.classList.remove("qxmd215-inflow");
+        foot.classList.add("qxmd216-fixed");
+        foot.classList.add("qxmd216-noslab");
 
-        /* qxmd207: Marks practice = ONE horizontal white strip Previous | Check Answer | Next */
         const marksRow = !!(foot.classList.contains("eg-foot-marks") || foot.classList.contains("eg-foot-practice") || foot.querySelector("#egCheckBtn"));
         foot.style.setProperty("display", "grid", "important");
-        /* qxmd210: always one Marks row - never wrap into stacked bars */
         foot.style.setProperty("grid-template-columns", marksRow ? "1fr 1.2fr 1fr" : "1fr 1fr", "important");
         foot.style.setProperty("flex-direction", "row", "important");
         foot.style.setProperty("flex-wrap", "nowrap", "important");
         foot.style.setProperty("align-items", "center", "important");
         foot.style.setProperty("gap", "8px", "important");
-        foot.style.setProperty("background", "transparent", "important"); /* qxmd215b: kill foot slab */
-        foot.style.setProperty("background-color", "transparent", "important");
-        foot.style.setProperty("border-top", "none", "important"); /* qxmd215b foot border kill */
-        foot.style.setProperty("box-shadow", "none", "important");
-        foot.classList.add("qxmd215-noslab");
-        foot.style.setProperty("box-shadow", "none", "important");
-        foot.style.setProperty("border", "none", "important");
-        foot.style.setProperty("min-height", "0", "important");
         foot.style.setProperty("visibility", "visible", "important");
-        foot.style.setProperty("padding", "8px 12px calc(8px + env(safe-area-inset-bottom, 0px))", "important");
+        foot.style.setProperty("padding", "6px 10px calc(6px + env(safe-area-inset-bottom, 0px))", "important");
+        foot.style.setProperty("pointer-events", "none", "important");
         const nav = foot.querySelector(".eg-foot-nav, .eg-foot-right");
         if (nav) {
           nav.style.setProperty("display", "contents", "important");
@@ -1526,7 +1512,6 @@
         ["qxPrevBtn", "egCheckBtn", "qxNextBtn", "qxPracPrev", "qxPracSubmit", "qxPracNext"].forEach(function (id) {
           const b = foot.querySelector("#" + id) || document.getElementById(id);
           if (!b) return;
-          /* qxmd215: force nav always — never display:none after Check */
           try { b.hidden = false; b.removeAttribute("hidden"); } catch (_) {}
           b.style.setProperty("display", "inline-flex", "important");
           b.style.setProperty("visibility", "visible", "important");
@@ -1539,7 +1524,6 @@
           b.style.setProperty("width", "100%", "important");
           b.style.setProperty("z-index", "2147483647", "important");
           b.style.setProperty("position", "relative", "important");
-          /* qxmd215: pill contrast */
           try {
             var dark = !!(root && (root.getAttribute("data-test-theme") === "dark" || (document.documentElement.getAttribute("data-theme") === "dark" && root.getAttribute("data-test-theme") !== "light")));
             var isCheck = (id === "egCheckBtn" || id === "qxPracSubmit");
@@ -1557,19 +1541,21 @@
         });
         try { if (typeof syncEgFootPad === "function") syncEgFootPad(root); } catch (_) {}
         try { if (typeof root._egBindNavBtns === "function") root._egBindNavBtns(); } catch (_) {}
+        _egFootPainted = true;
+        _egFootLast = Date.now();
       } catch (_) { /* */ }
     }
-    function forceFootVisible(force) {
+function forceFootVisible(force) {
       /* qxeg7: debounce — at most one paint now + one coalesced RAF; skip if painted < 200ms ago */
       var now = Date.now();
-      if (!force && _egFootPainted && (now - _egFootLast) < 200) return;
+      if (!force && _egFootPainted && (now - _egFootLast) < 400) return;
       try { forceFootVisibleNow(!!force); } catch (_) {}
       if (_egFootRaf) return;
       _egFootRaf = (typeof requestAnimationFrame === "function"
         ? requestAnimationFrame
         : function (cb) { return setTimeout(cb, 16); })(function () {
         _egFootRaf = 0;
-        if (!force && _egFootPainted && (Date.now() - _egFootLast) < 200) return;
+        if (!force && _egFootPainted && (Date.now() - _egFootLast) < 400) return;
         try { forceFootVisibleNow(false); } catch (_) {}
       });
     }
@@ -2462,9 +2448,9 @@
       if (!foot) return;
       var h = Math.ceil(foot.getBoundingClientRect().height || 64);
       if (!isFinite(h) || h < 40) h = 52;
-      if (h > 90) h = 90; /* qxmd215 compact */
+      if (h > 72) h = 72; /* qxmd216 compact */
       var solOpen = !!(host.classList && (host.classList.contains("qx-sol-showing") || host.classList.contains("eg-sol-showing")));
-      var pad = solOpen ? h + 48 : h + 28;
+      var pad = h + 12; /* qxmd216 */
       var cssPad = "calc(" + pad + "px + env(safe-area-inset-bottom, 0px))";
       document.documentElement.style.setProperty("--eg-foot-h", h + "px");
       document.documentElement.style.setProperty("--eg-foot-pad", cssPad);
