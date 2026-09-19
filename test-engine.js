@@ -401,6 +401,11 @@ if (!window._qxZoomClickBound) {
     if (t.closest && t.closest(".qzrr-a11y-popover") && t.getAttribute("data-qzrr-zoom") == null
       && !t.classList.contains("qzrr-zoom-circle")) return;
     const id = t.id || "";
+    /* qxmd219: never steal Settings gear / Marks View menu as font A+/- */
+    if (id === "pracViewMenuBtn" || id === "egFmtBtn"
+      || (t.classList && (t.classList.contains("eg-settings-gear") || t.classList.contains("qx-prac-view-btn")))) {
+      return;
+    }
     if (id === "pracZoomReset") {
       e.preventDefault();
       e.stopPropagation();
@@ -439,7 +444,7 @@ if (!window._qxEgHdrBound) {
   window._qxEgHdrBound = true;
   document.addEventListener("click", function (e) {
     const t = e.target && e.target.closest
-      ? e.target.closest("#egFullBtn, #egStarBtn, #egQStar, #egFmtBtn, #mtkThemeBtn, #egPlusBtn")
+      ? e.target.closest("#egFullBtn, #egStarBtn, #egQStar, #mtkThemeBtn, #egPlusBtn")
       : null;
     if (!t) return;
     const root = t.closest(".eg-test-root") || t.closest(".mtk-test-root") || document;
@@ -477,32 +482,7 @@ if (!window._qxEgHdrBound) {
       if (qid != null && typeof toggleBmWithGroup === "function") toggleBmWithGroup(qid);
       return;
     }
-    if (id === "egFmtBtn") {
-      let pop = document.getElementById("egFmtPop");
-      if (pop) { pop.remove(); return; }
-      pop = document.createElement("div");
-      pop.id = "egFmtPop";
-      pop.className = "eg-fmt-pop";
-      const cur = (typeof getTestFontScale === "function" && getTestFontScale()) || "medium";
-      pop.innerHTML = "<h5>Text size</h5><div class=\"eg-fmt-row\">" +
-        ["small", "medium", "large", "xlarge"].map(function (s) {
-          return '<button type="button" class="eg-scale' + (cur === s ? " on" : "") + '" data-eg-scale="' + s + '">' +
-            (s === "small" ? "S" : s === "medium" ? "M" : s === "large" ? "L" : "XL") + "</button>";
-        }).join("") +
-        "</div><h5>Zoom</h5><div class=\"eg-fmt-row\">" +
-        '<button type="button" id="egZoomOut" class="qzrr-zoom-circle" data-qzrr-zoom="-1">−</button>' +
-        '<button type="button" id="egZoomIn" class="qzrr-zoom-circle qzrr-zoom-circle-plus" data-qzrr-zoom="1">+</button></div>';
-      (root.appendChild ? root : document.body).appendChild(pop);
-      pop.querySelectorAll("[data-eg-scale]").forEach(function (b) {
-        b.onclick = function (ev) {
-          ev.preventDefault();
-          ev.stopPropagation();
-          if (typeof setTestFontScale === "function") setTestFontScale(b.getAttribute("data-eg-scale"));
-          pop.querySelectorAll(".eg-scale").forEach(function (x) { x.classList.remove("on"); });
-          b.classList.add("on");
-        };
-      });
-    }
+    /* qxmd219: egFmtBtn owned by examgoal-test-ui (full Marks View Settings) - do not build Text-size-only pop here */
   }, true);
 }
 
@@ -801,8 +781,8 @@ const QuantrexTestEngine = (() => {
     return `<div class="mtk-numerical mtk-numerical-wrap qx-num-eg">
       <div class="qx-num-entry qx-num-eg-compact qx-num-qxeg1">
         <div class="qx-num-box-wrap">
-          <input type="text" class="qx-num-input eg-num-input" id="qxNumInput" inputmode="none" autocomplete="off" readonly
-            placeholder="" value="${esc}" aria-label="Numerical answer" maxlength="12" data-qx-num-keypad-only="1">
+          <input type="text" class="qx-num-input eg-num-input" id="qxNumInput" inputmode="decimal" autocomplete="off"
+            placeholder="" value="${esc}" aria-label="Numerical answer" maxlength="12">
         </div>
         <div class="qx-num-keypad qx-num-keypad-eg" id="qxNumKeypad" role="group" aria-label="Numeric keypad">
           <button type="button" class="qx-num-key qx-num-key-wide qx-num-key-back" data-num-key="back">⌫</button>
@@ -2708,7 +2688,24 @@ const QuantrexTestEngine = (() => {
     session.visited.add(session.idx);
     session.review.delete(session.idx);
     const main = getTestMountEl();
-    if (patchAnswerUI(main)) return;
+    if (patchAnswerUI(main)) {
+      try {
+        if (localStorage.getItem("qx_pref_haptic") !== "0" && navigator.vibrate) navigator.vibrate(12);
+      } catch (_) { /* */ }
+      try {
+        if (typeof ExamgoalTestUI !== "undefined" && ExamgoalTestUI.applyOptDecor) {
+          ExamgoalTestUI.applyOptDecor(main, session, q, session.idx);
+        }
+      } catch (_) { /* */ }
+      try {
+        if (session.practiceMode && localStorage.getItem("qx_pref_auto_next") === "1"
+          && !isMultiSelectQuestion(q) && session.idx < session.ids.length - 1) {
+          clearTimeout(session._qxAutoNextT);
+          session._qxAutoNextT = setTimeout(function () { goTo(session.idx + 1); }, 480);
+        }
+      } catch (_) { /* */ }
+      return;
+    }
     refresh();
   }
 
@@ -5489,7 +5486,8 @@ function qxClearBlockingMount() {
 
 function qxForceResetShell(opts) {
   const o = opts || {};
-  document.body.classList.remove("marks-test-active", "marks-instr-active", "allen-cbt-active", "allen-practice-active", "qzrr-instr-active", "ts-fmt-chooser-active", "eg-qxmd179-host");
+  document.body.classList.remove("marks-test-active", "marks-instr-active", "allen-cbt-active", "allen-practice-active", "qzrr-instr-active", "ts-fmt-chooser-active", "eg-qxmd179-host", "eg-qxmd179");
+  try { document.documentElement.classList.remove("qx-test-zoom"); } catch (_) {}
   document.body.style.overflow = "";
   ["marksInstrOverlay", "marksCountdownOverlay", "mtkStopModal", "mtkSubmitModal", "tsResumeModal", "pyqResumeModal", "pyqPreviewModal", "tsFormatChooser"].forEach(id => {
     const el = document.getElementById(id);
@@ -5540,7 +5538,9 @@ function qxShowTestMount(main) {
 }
 
 function enterMarksTestMode() {
-  document.body.classList.add("marks-test-active", "allen-cbt-active", "eg-qxmd179-host", "eg-qxmd179");
+  document.body.classList.add("marks-test-active", "allen-cbt-active");
+  document.body.classList.remove("eg-qxmd179-host", "eg-qxmd179");
+  try { document.documentElement.classList.add("qx-test-zoom"); } catch (_) {}
   const appMain = document.getElementById("app-main");
   qxShowTestMount(appMain);
   const sidebar = document.getElementById("sidebar");

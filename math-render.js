@@ -2760,6 +2760,68 @@ window.Mx = (() => {
    * e.g. oddodd → odd odd, eveneven → even even, sosymmetricrelation → so symmetric relation
    * Client-only — no bank JSON rewrite.
    */
+
+  /**
+   * qxmd219: unwrap $EnglishProse$ false math islands (KaTeX paints them as mord mathnormal).
+   * Only peels letter-heavy prose with no TeX commands / math operators. Never invents content.
+   */
+  function peelFalseProseMathIslands(s) {
+    let c = String(s || "");
+    if (!c || c.length < 8) return c;
+    if (/class=["'][^"']*katex/i.test(c) || looksLetterSpacedMarkup(c)) return c;
+    try {
+      c = c.replace(/\$([^$\n]{6,320})\$/g, function (_m, inner) {
+        const t = String(inner || "").trim();
+        if (!t) return _m;
+        if (/\\[a-zA-Z]|[_^{}]|[=<>]|\\mathbb|\\frac|\\sqrt|\\left|\\right|\\begin|\\mathrm|\\text|\\ce\b/.test(t)) return _m;
+        if (/\d\s*[+\-*/^=]/.test(t)) return _m;
+        if (/[+\-*/^=]{2,}/.test(t)) return _m;
+        const letters = (t.match(/[A-Za-z]/g) || []).length;
+        const nonspace = t.replace(/\s+/g, "").length;
+        if (letters < 8) return _m;
+        if (letters / Math.max(nonspace, 1) < 0.82) return _m;
+        if (!/^[A-Za-z0-9\s.,;:'"()\-\u2013\u2014]+$/.test(t)) return _m;
+        return t;
+      });
+    } catch (_) { /* */ }
+    return c;
+  }
+
+  /** qxmd219: if KaTeX already painted English as mathnormal letter spans, restore text nodes. */
+  function peelProseKatexInDom(root) {
+    const scope = root && root.querySelectorAll ? root : document;
+    const hosts = scope.querySelectorAll
+      ? scope.querySelectorAll(".eg-sol, #egSol, .sol-body, .qx-sol-body, .qx-sol-flow, .qx-sol-card, #qaSolReveal")
+      : [];
+    const list = hosts && hosts.length ? Array.prototype.slice.call(hosts) : (root && root.nodeType === 1 ? [root] : []);
+    list.forEach(function (host) {
+      if (!host || !host.querySelectorAll) return;
+      host.querySelectorAll(".katex").forEach(function (k) {
+        try {
+          if (!k || !k.parentNode) return;
+          let src = "";
+          const ann = k.querySelector('annotation[encoding="application/x-tex"]');
+          if (ann) src = String(ann.textContent || "").trim();
+          if (!src) {
+            const bits = [];
+            k.querySelectorAll(".mord.mathnormal, span.mathnormal").forEach(function (s) {
+              bits.push(s.textContent || "");
+            });
+            src = bits.join("");
+          }
+          if (!src || src.length < 8) return;
+          if (/\\[a-zA-Z]|[_^{}=<>]/.test(src)) return;
+          const letters = (src.match(/[A-Za-z]/g) || []).length;
+          const nonspace = src.replace(/\s+/g, "").length;
+          if (letters < 8 || letters / Math.max(nonspace, 1) < 0.82) return;
+          if (!/^[A-Za-z0-9\s.,;:'"()\-\u2013\u2014]+$/.test(src)) return;
+          const tn = document.createTextNode(src + (/\s$/.test(src) ? "" : " "));
+          k.parentNode.replaceChild(tn, k);
+        } catch (_) { /* */ }
+      });
+    });
+  }
+
   function unglueLowercaseMathProse(s) {
     let c = String(s || "");
     if (!c || c.length < 6) return c;
@@ -2809,16 +2871,16 @@ window.Mx = (() => {
       [/\bintheinterval\b/gi, "in the interval"],
       [/\bofthevertex\b/gi, "of the vertex"],
       [/\bx-coordinateofthe\b/gi, "x-coordinate of the"],
+      [/\bthecircuitsimplifiesto\b/gi, "The circuit simplifies to"],
+      [/\bcircuitsimplifiesto\b/gi, "circuit simplifies to"],
+      [/\bsimplifiesto\b/gi, "simplifies to"],
+      [/\bthecircuit\b/gi, "the circuit"],
       [/\by-coordinateofthe\b/gi, "y-coordinate of the"],
     ];
     pairs.forEach(function (pr) { c = c.replace(pr[0], pr[1]); });
     /* qxmd179: $-coordinateofthevertexmustliein$ → prose (false math island) */
-    try {
-      c = c.replace(/\$(\s*-?[a-z][a-z0-9\-]{12,})\$/g, function (_m, inner) {
-        if (/[\\^_{}=<>]|\\[a-zA-Z]|\d\s*[+\-*/]/.test(inner)) return _m;
-        return String(inner).replace(/-/g, "-");
-      });
-    } catch (_) { /* */ }
+        /* qxmd219: peel false prose math islands (Capital-start OCR too) */
+    try { c = peelFalseProseMathIslands(c); } catch (_) { /* */ }
     // Dictionary split: known token glued to another known token (lowercase)
     const TOK = (
       "odd|even|so|is|are|not|a|an|the|and|or|of|to|in|on|for|with|from|that|this|" +
@@ -4405,6 +4467,7 @@ window.Mx = (() => {
       const el = root || document.getElementById("app-main") || document.body;
       if (!el) return;
       try { fixSpacingInDom(el); } catch (_) { /* */ }
+      try { peelProseKatexInDom(el); } catch (_) { /* */ }
       try { beautifyMatchTablesInDom(el); } catch (_) { /* */ }
       try { upgradeBareTexInDom(el); } catch (_) { /* */ }
       // Typeset ALL question/option/solution surfaces for uniform math
@@ -4481,6 +4544,7 @@ window.Mx = (() => {
       const list = pickMathRoots();
       const run = () => {
         try { fixSpacingInDom(el); } catch (_) { /* */ }
+        try { peelProseKatexInDom(el); } catch (_) { /* */ }
         try { beautifyMatchTablesInDom(el); } catch (_) { /* */ }
         try { healStemDollarsInDom(); } catch (_) { /* */ }
         try { upgradeBareTexInDom(el); } catch (_) { /* */ }
@@ -4753,6 +4817,7 @@ window.Mx = (() => {
         out = repairLatexCommandSpaces(out);
       }
       out = ensureMathDelimiters(out);
+      try { out = peelFalseProseMathIslands(out); } catch (_) { /* */ }
       out = healBrokenEnglishWords(out);
       try { out = restoreAxisHyphenMath(out); } catch (_) { /* */ }
       // Safety: never leak private-use park tokens (tofu boxes) into student UI
@@ -4778,6 +4843,8 @@ window.Mx = (() => {
     cleanDom,
     fixWordSpacing,
     unglueLowercaseMathProse,
+    peelFalseProseMathIslands,
+    peelProseKatexInDom,
     fixSpacingInDom,
     cleanQuestionText,
     sanitizeIncoming: qxSanitizeIncoming,

@@ -1345,6 +1345,9 @@ const QuantrexSolution = (() => {
     raw = repairSolutionProse(raw);
     try { raw = repairSolutionDelimiters(raw); } catch (_) { /* */ }
     raw = polishScientificSymbols(raw);
+    try {
+      if (typeof Mx !== "undefined" && Mx.peelFalseProseMathIslands) raw = Mx.peelFalseProseMathIslands(raw);
+    } catch (_) { /* */ }
     if (typeof Mx !== "undefined" && Mx.upgradePlainMathNotation) {
       try { raw = Mx.upgradePlainMathNotation(raw); } catch (_) { /* */ }
     }

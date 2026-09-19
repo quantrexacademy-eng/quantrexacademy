@@ -1,10 +1,10 @@
 {
-    "cache": "qx-pwa-qxmd218",
-    "ts": 1789856829755,
-    "title": "qxmd218: Marks-like View Settings holds all practice toolbars",
+    "cache": "qx-pwa-qxmd219",
+    "ts": 1789859308438,
+    "title": "qxmd219: open Marks Settings from gear; fix sol prose KaTeX jam; Allen foot pad",
     "site": "https://www.quantrexacademy.com",
-    "build": "qxmd218",
-    "body": "Practice: only Settings gear on chrome. Question View Settings (Marks cards) holds Notes & Solutions, Practice Experience, Tools (Theme/All Q/Palette/Bookmark/Group/Fullscreen/Report/Note), Peer Insights. Wired to same actions. Examgoal+Allen. SOLUTION neat. Prev|Check|Next. Quantrex brand.",
+    "build": "qxmd219",
+    "body": "Gear opens full Marks Question View Settings (Examgoal+Allen). SOLUTION prose stays text (not KaTeX mathnormal). Text size S/M/L/XL scales stem+options+solution. Allen fixed Prev|Check|Next padded; transparent dark foot; no palette peek. Tools in Settings only.",
     "package": "com.quantrexacademy.app",
     "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }

@@ -1465,3 +1465,86 @@ html[data-theme="light"] .eg-foot, html[data-theme="dark"] .eg-foot {
   min-width: 36px !important;
   min-height: 36px !important;
 }
+
+
+/* ========== qxmd219: Allen foot pad; hide palette peek; no white bar after Check ========== */
+.allen-practice.qxmd219-allen,
+.allen-practice.qxmd218-allen {
+  --eg-foot-h: 56px;
+  --eg-foot-pad: calc(var(--eg-foot-h) + 28px + env(safe-area-inset-bottom, 0px));
+}
+html body.allen-practice-active #app-main,
+html body.allen-practice-active #app-main.content,
+html body.allen-practice-active .mtk-test-root.allen-practice .mtk-main,
+.allen-practice .mtk-main,
+.allen-practice.qxmd219-allen .mtk-main,
+.allen-practice.qxmd218-allen .mtk-main,
+.allen-practice.qx-sol-showing .mtk-main,
+.allen-practice #qaSolReveal,
+.allen-practice #qaResult,
+.allen-practice .sol-body,
+.allen-practice .qx-sol-card {
+  padding-bottom: var(--eg-foot-pad) !important;
+  scroll-padding-bottom: var(--eg-foot-pad) !important;
+  box-sizing: border-box !important;
+}
+/* Transparent foot in dark after Check — never a white slab */
+.allen-practice[data-test-theme="dark"] #egFoot,
+.allen-practice[data-test-theme="dark"] .eg-foot,
+.allen-practice[data-test-theme="dark"] .eg-foot-marks,
+.allen-practice.qxmd219-allen[data-test-theme="dark"] #egFoot,
+.mtk-test-root.allen-practice[data-test-theme="dark"] .eg-foot-marks,
+.allen-practice.qx-sol-showing[data-test-theme="dark"] #egFoot,
+.allen-practice.qx-sol-showing[data-test-theme="dark"] .eg-foot {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  border-top: none !important;
+}
+.allen-practice[data-test-theme="dark"] #egFoot::before,
+.allen-practice[data-test-theme="dark"] #egFoot::after,
+.allen-practice[data-test-theme="dark"] .eg-foot::before,
+.allen-practice[data-test-theme="dark"] .eg-foot::after {
+  content: none !important;
+  display: none !important;
+  background: none !important;
+}
+/* Hide palette peek under fixed footer */
+.allen-practice .mtk-palette,
+.allen-practice.qxmd219-allen .mtk-palette,
+.allen-practice.qxmd218-allen .mtk-palette,
+html body.allen-practice-active .mtk-test-root.allen-practice .mtk-palette {
+  bottom: var(--eg-foot-pad) !important;
+  max-height: calc(100dvh - var(--eg-foot-pad) - 72px) !important;
+  z-index: 2 !important;
+}
+html body.allen-practice-active .mtk-test-root.allen-practice .mtk-palette {
+  /* clip any bleed under transparent pills */
+  margin-bottom: 0 !important;
+}
+.allen-practice .eg-foot.eg-foot-marks,
+.allen-practice.qxmd219-allen #egFoot {
+  z-index: 2147483646 !important;
+}
+/* Settings gear only — no A± lobes beside gear */
+.allen-practice.qxmd219-allen .mtk-header-tools .mtk-font-btn:not(#pracViewMenuBtn),
+.allen-practice.qxmd219-allen .mtk-header-tools #mtkFontDown,
+.allen-practice.qxmd219-allen .mtk-header-tools #mtkFontUp,
+.allen-practice.qxmd219-allen .mtk-header-tools #pracZoomOut,
+.allen-practice.qxmd219-allen .mtk-header-tools #pracZoomIn {
+  display: none !important;
+}
+.eg-test-root.eg-qxmd219[data-eg-mode="practice"] .eg-top-tools .eg-tool-btn:not(.eg-settings-gear),
+.eg-test-root.eg-qxmd219[data-eg-mode="practice"] .eg-top-tools .eg-tool-hid {
+  display: none !important;
+}
+.eg-test-root.eg-qxmd219[data-eg-mode="practice"] .eg-top-tools .eg-settings-gear,
+.allen-practice.qxmd219-allen #pracViewMenuBtn,
+.allen-practice.qxmd219-allen .eg-settings-gear {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}

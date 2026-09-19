@@ -56,3 +56,41 @@ html[data-font-scale="xlarge"],
 .eg-test-root .sol-body .katex {
   font-size: var(--nta-math) !important;
 }
+
+
+/* qxmd219: text size S/M/L/XL scales stem + options + SOLUTION body */
+.eg-test-root .eg-sol,
+.eg-test-root #egSol,
+.eg-test-root .eg-sol-inline,
+.eg-test-root .qx-sol-card,
+.eg-test-root .qx-sol-flow,
+.eg-test-root .sol-body,
+.eg-test-root .qx-sol-card .qx-content,
+.eg-test-root .eg-sol .qx-content,
+.mtk-test-root .eg-sol,
+.mtk-test-root #egSol,
+.mtk-test-root .qx-sol-card,
+.mtk-test-root .sol-body,
+.mtk-test-root .qx-sol-flow,
+.mtk-test-root #qaSolReveal,
+.mtk-test-root .mtk-opt-text,
+.mtk-test-root .mtk-q-text,
+.allen-practice .sol-body,
+.allen-practice .qx-sol-card,
+.allen-practice .qx-sol-flow,
+.allen-practice #qaSolReveal,
+.allen-practice .mtk-opt-text,
+.allen-practice .mtk-q-text {
+  font-size: var(--nta-q) !important;
+  line-height: var(--nta-lh) !important;
+}
+.eg-test-root .eg-sol .katex,
+.eg-test-root #egSol .katex,
+.eg-test-root .qx-sol-card .katex,
+.eg-test-root .qx-sol-flow .katex,
+.mtk-test-root .sol-body .katex,
+.mtk-test-root .qx-sol-card .katex,
+.allen-practice .sol-body .katex,
+.allen-practice .qx-sol-card .katex {
+  font-size: var(--nta-math) !important;
+}
