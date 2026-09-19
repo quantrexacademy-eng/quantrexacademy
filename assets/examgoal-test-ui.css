@@ -6183,11 +6183,16 @@ body.allen-practice-active #app-main > :not(.eg-test-root):not(.mtk-test-root):n
 
 /* Fullscreen practice chrome: header locked at top; scroll content pane ONLY */
 body.marks-test-active.eg-qxmd179-host #app-main,
-body.allen-practice-active.eg-qxmd179-host #app-main,
 body.marks-test-active:has(.eg-test-root.eg-qxmd179) #app-main,
 body.allen-practice-active:has(.eg-test-root.eg-qxmd179) #app-main {
   overflow: hidden !important;
   overscroll-behavior: none !important;
+}
+/* qxmd211: Allen practice host must NOT trap #app-main (no eg-body scroll child) */
+body.allen-practice-active.eg-qxmd179-host #app-main {
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  overscroll-behavior-y: contain !important;
 }
 
 .eg-test-root.eg-qxmd179,
@@ -6481,41 +6486,40 @@ html body .eg-test-root #qxNumInput {
 }
 
 
-/* ========== qxmd210-sol-above-foot: SOLUTION clears Marks white strip ========== */
-.eg-test-root,
-.allen-practice,
-.qx-practice-page {
-  --eg-foot-h: 64px;
-  --eg-foot-pad: calc(var(--eg-foot-h) + 28px + env(safe-area-inset-bottom, 0px));
+/* ========== qxmd211: Allen/NEET unlock — do NOT trap #app-main when allen-practice ========== */
+html body.allen-practice-active.eg-qxmd179-host #app-main,
+html body.allen-practice-active.eg-qxmd179-host #app-main.content,
+html body.allen-practice-active #app-main,
+html body.marks-test-active.allen-practice-active #app-main,
+html body.marks-test-active:has(.mtk-test-root.allen-practice) #app-main {
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  overscroll-behavior-y: contain !important;
+  touch-action: pan-y pinch-zoom !important;
+  padding-bottom: var(--eg-foot-pad, calc(72px + env(safe-area-inset-bottom, 0px))) !important;
+  scroll-padding-bottom: var(--eg-foot-pad, 72px) !important;
 }
-.eg-test-root .eg-main,
-.eg-test-root .eg-q-card,
-.mtk-test-root.allen-practice .mtk-main,
-.qx-practice-page .eg-main {
-  padding-bottom: var(--eg-foot-pad) !important;
-  scroll-padding-bottom: var(--eg-foot-pad) !important;
-}
-.eg-test-root.qx-sol-showing .eg-q-card,
-.allen-practice.qx-sol-showing .mtk-main {
-  padding-bottom: calc(var(--eg-foot-h) + 48px + env(safe-area-inset-bottom, 0px)) !important;
-}
-#egSolPanel,
-.eg-sol-panel,
-.eg-sol-marks-way,
-#qaSolReveal {
+html body.allen-practice-active .mtk-test-root.allen-practice {
   position: relative !important;
-  bottom: auto !important;
-  margin-bottom: 16px !important;
+  inset: auto !important;
+  height: auto !important;
+  max-height: none !important;
+  min-height: 100% !important;
+  overflow: visible !important;
 }
-/* Keep foot one-row compact even if older mobile rules stacked it */
-@media (max-width: 900px) {
-  .eg-test-root .eg-foot.eg-foot-marks,
-  .eg-test-root .eg-foot-practice,
-  .allen-practice .eg-foot.eg-foot-marks,
-  .qx-prac-foot.eg-foot-marks {
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
-    display: grid !important;
-    grid-template-columns: 1fr 1.35fr 1fr !important;
-  }
+html body.allen-practice-active .mtk-test-root.allen-practice .mtk-body,
+html body.allen-practice-active .mtk-test-root.allen-practice .mtk-main {
+  overflow: visible !important;
+  height: auto !important;
+  max-height: none !important;
+}
+/* Minimal transparent foot (no white slab) on all practice paths */
+.eg-foot.eg-foot-marks,
+.eg-foot.eg-foot-practice,
+.qx-prac-foot.eg-foot-marks,
+.allen-practice .eg-foot.eg-foot-marks {
+  background: transparent !important;
+  border-top: none !important;
+  box-shadow: none !important;
 }

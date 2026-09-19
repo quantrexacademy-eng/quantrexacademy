@@ -13,7 +13,7 @@
     } else if (!l.id) {
       l.id = "egTestUiCss";
     }
-    const href = "assets/examgoal-test-ui.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd210");
+    const href = "assets/examgoal-test-ui.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd211");
     if (l.getAttribute("href") !== href) l.href = href;
     let chrome = document.getElementById("qxPracChromeCss");
     if (!chrome) {
@@ -22,7 +22,7 @@
       chrome.rel = "stylesheet";
       document.head.appendChild(chrome);
     }
-    const ch = "assets/qx-prac-chrome.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd210");
+    const ch = "assets/qx-prac-chrome.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd211");
     if (chrome.getAttribute("href") !== ch) chrome.href = ch;
     let both = document.getElementById("qxBothThemesCss");
     if (!both) {
@@ -31,7 +31,7 @@
       both.rel = "stylesheet";
       document.head.appendChild(both);
     }
-    const bh = "assets/qx-both-themes.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd210");
+    const bh = "assets/qx-both-themes.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd211");
     if (both.getAttribute("href") !== bh) both.href = bh;
     let r = document.getElementById("qxPracticeReadCss");
     if (!r) {
@@ -40,7 +40,7 @@
       r.rel = "stylesheet";
       document.head.appendChild(r);
     }
-    const rh = "assets/qx-practice-read.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd210");
+    const rh = "assets/qx-practice-read.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd211");
     if (r.getAttribute("href") !== rh) r.href = rh;
   }
 
@@ -1419,8 +1419,8 @@
         if (!foot) foot = document.querySelector("#egFoot, .eg-foot.eg-foot-marks");
         if (!foot) return;
         var h = Math.ceil(foot.getBoundingClientRect().height || foot.offsetHeight || 64);
-        if (!isFinite(h) || h < 48) h = 64;
-        if (h > 140) h = 140;
+        if (!isFinite(h) || h < 40) h = 52;
+        if (h > 90) h = 90; /* qxmd211 compact */
         var pad = h + 28;
         var solOpen = !!(host && host.classList && (host.classList.contains("qx-sol-showing") || host.classList.contains("eg-sol-showing")));
         if (solOpen) pad = h + 48;
@@ -1428,6 +1428,14 @@
         try {
           document.documentElement.style.setProperty("--eg-foot-h", h + "px");
           document.documentElement.style.setProperty("--eg-foot-pad", cssPad);
+      /* qxmd211-global-unlock */
+      try {
+        var am2 = document.getElementById("app-main");
+        if (am2 && document.body.classList.contains("allen-practice-active")) {
+          am2.style.setProperty("overflow-y", "auto", "important");
+          am2.style.setProperty("overflow-x", "hidden", "important");
+        }
+      } catch (_) {}
         } catch (_) {}
         var nodes = [];
         try {
@@ -1469,7 +1477,7 @@
         foot.style.setProperty("flex-wrap", "nowrap", "important");
         foot.style.setProperty("align-items", "center", "important");
         foot.style.setProperty("gap", "8px", "important");
-        foot.style.setProperty("background", "#ffffff", "important");
+        foot.style.setProperty("background", "transparent", "important"); /* qxmd211 no white slab */
         foot.style.setProperty("visibility", "visible", "important");
         foot.style.setProperty("padding", "8px 12px calc(8px + env(safe-area-inset-bottom, 0px))", "important");
         const nav = foot.querySelector(".eg-foot-nav, .eg-foot-right");
@@ -1483,8 +1491,8 @@
           b.style.setProperty("display", "inline-flex", "important");
           b.style.setProperty("visibility", "visible", "important");
           b.style.setProperty("opacity", "1", "important");
-          b.style.setProperty("min-height", "40px", "important");
-          b.style.setProperty("height", "40px", "important");
+          b.style.setProperty("min-height", "38px", "important");
+          b.style.setProperty("height", "38px", "important");
           b.style.setProperty("border-radius", "999px", "important");
           b.style.setProperty("width", "100%", "important");
         });
@@ -2394,8 +2402,8 @@
       var foot = (host.querySelector && host.querySelector("#egFoot, .eg-foot")) || document.querySelector("#egFoot");
       if (!foot) return;
       var h = Math.ceil(foot.getBoundingClientRect().height || 64);
-      if (!isFinite(h) || h < 48) h = 64;
-      if (h > 140) h = 140;
+      if (!isFinite(h) || h < 40) h = 52;
+      if (h > 90) h = 90; /* qxmd211 compact */
       var solOpen = !!(host.classList && (host.classList.contains("qx-sol-showing") || host.classList.contains("eg-sol-showing")));
       var pad = solOpen ? h + 48 : h + 28;
       var cssPad = "calc(" + pad + "px + env(safe-area-inset-bottom, 0px))";

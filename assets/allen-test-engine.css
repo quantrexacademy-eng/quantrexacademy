@@ -650,3 +650,29 @@ body.allen-cbt-active .marks-countdown-grab { color: #fff; }
     min-width: 32px;
   }
 }
+
+/* qxmd211-allen-scroll: #app-main scrolls; no overflow trap; no white foot slab */
+body.allen-practice-active.eg-qxmd179-host #app-main,
+body.allen-practice-active #app-main {
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  padding-bottom: var(--eg-foot-pad, calc(72px + env(safe-area-inset-bottom, 0px))) !important;
+  scroll-padding-bottom: var(--eg-foot-pad, 72px) !important;
+}
+body.allen-practice-active .mtk-test-root.allen-practice {
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+body.allen-practice-active .mtk-test-root.allen-practice .mtk-main {
+  overflow: visible !important;
+  max-height: none !important;
+  padding-bottom: var(--eg-foot-pad, 72px) !important;
+}
+body.allen-practice-active #egFoot,
+body.allen-practice-active .eg-foot-marks {
+  background: transparent !important;
+  border-top: none !important;
+  box-shadow: none !important;
+}

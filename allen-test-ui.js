@@ -999,6 +999,32 @@ window.showAllenInstructions = showAllenInstructions;
 (function () {
   function syncAllenFootPad() {
     try {
+      /* qxmd211-force-app-main-scroll */
+      try {
+        var am = document.getElementById("app-main");
+        if (am) {
+          am.style.setProperty("overflow-y", "auto", "important");
+          am.style.setProperty("overflow-x", "hidden", "important");
+          am.style.setProperty("-webkit-overflow-scrolling", "touch", "important");
+        }
+        var rootA = document.querySelector(".mtk-test-root.allen-practice");
+        if (rootA) {
+          rootA.style.setProperty("overflow", "visible", "important");
+          rootA.style.setProperty("height", "auto", "important");
+          rootA.style.setProperty("max-height", "none", "important");
+        }
+        var mainA = document.querySelector(".allen-practice .mtk-main");
+        if (mainA) {
+          mainA.style.setProperty("overflow", "visible", "important");
+          mainA.style.setProperty("max-height", "none", "important");
+        }
+        var footEl = document.querySelector("#egFoot, .eg-foot-marks");
+        if (footEl) {
+          footEl.style.setProperty("background", "transparent", "important");
+          footEl.style.setProperty("border-top", "none", "important");
+          footEl.style.setProperty("box-shadow", "none", "important");
+        }
+      } catch (_f) {}
       var foot = document.querySelector(".allen-practice #egFoot, .allen-practice .eg-foot-marks, #egFoot");
       if (!foot) return;
       var h = Math.ceil(foot.getBoundingClientRect().height || 64);

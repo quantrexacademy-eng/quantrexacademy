@@ -1,10 +1,10 @@
 {
-  "build": "qxmd210",
-  "cache": "qx-pwa-qxmd210",
-  "title": "qxmd210: keep SOLUTION above Marks footer; scroll padding so zoom does not hide Q/sol",
-  "body": "Marks-compact white Prev|Check|Next strip stays; measure foot height + padding-bottom so SOLUTION scrolls above strip (never jammed). Keep qxmd208 stem-free sol + qxmd209 one-row bar. Speed: chapter shard only, prefetch next-Q images 1 ahead, SW cache bump.",
+  "build": "qxmd211",
+  "cache": "qx-pwa-qxmd211",
+  "title": "qxmd211: no white foot slab; Allen #app-main scrolls; compact Prev|Check|Next",
+  "body": "Remove tall opaque white footer that hid Q+SOLUTION. Keep Marks Prev|Check|Next as compact pills on transparent/minimal bar. Unlock NEET Allen #app-main overflow (eg-qxmd179-host trap). Keep stem-free SOLUTION; chapter-shard speed.",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app",
   "site": "https://www.quantrexacademy.com",
   "package": "com.quantrexacademy.app",
-  "ts": 1789827637851
+  "ts": 1789828252103
 }
