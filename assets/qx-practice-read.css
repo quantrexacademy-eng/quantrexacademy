@@ -67,13 +67,13 @@ body.marks-test-active .eg-q-card,
   height: auto !important;
   min-height: 56px !important;
   padding: 8px 12px calc(8px + env(safe-area-inset-bottom, 0px)) !important;
-  background: #ffffff !important;
+  background: transparent !important;
   border-top: 1px solid #e5e7eb !important;
   box-shadow: none !important;
 }
 .eg-test-root.eg-qxmd182 .eg-foot-extra,
 .eg-test-root.eg-qxmd182 .eg-foot-left {
-  background: #ffffff !important;
+  background: transparent !important;
 }
 .eg-test-root.eg-qxmd182 .eg-foot-right,
 .eg-test-root.eg-qxmd182 .eg-foot #qxPrevBtn,
@@ -87,7 +87,7 @@ body.marks-test-active .eg-q-card,
   pointer-events: auto !important;
 }
 .eg-test-root.eg-qxmd182 .eg-foot #qxPrevBtn {
-  background: #ffffff !important;
+  background: transparent !important;
   color: #1565C0 !important;
   border: 2px solid #1565C0 !important;
 }

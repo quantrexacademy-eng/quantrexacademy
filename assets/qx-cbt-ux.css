@@ -403,7 +403,7 @@ body.allen-practice-active .qx-prac-foot.eg-foot {
   position: fixed !important;
   left: 0; right: 0; bottom: 0;
   z-index: 50;
-  background: #fff;
+  background: transparent;
   box-shadow: 0 -6px 18px rgba(15,23,42,.1);
   padding: 8px 12px calc(10px + env(safe-area-inset-bottom, 0px)) !important;
 }
@@ -478,6 +478,27 @@ html[data-theme="dark"] .eg-sol,
 html[data-theme="dark"] .sol-body {
   color: #e5e7eb !important;
   -webkit-text-fill-color: #e5e7eb !important;
+  background: #111827 !important;
+}
+.qzrr-q-area .qx-match-table,
+.mtk-q-text .qx-match-table,
+.eg-q-stem .qx-match-table,
+.qx-match-table {
+  border-collapse: collapse !important;
+  margin: 10px 0 14px !important;
+  width: 100% !important;
+  max-width: 680px !important;
+  background: #fff !important;
+  color: inherit !important;
+}
+.qx-match-table td, .qx-match-table th {
+  border: 1px solid #94a3b8 !important;
+  padding: 8px 10px !important;
+  vertical-align: top !important;
+  text-align: left !important;
+}
+html[data-theme="dark"] .qx-match-table,
+.qzrr-cbt[data-test-theme="dark"] .qx-match-table {
   background: #111827 !important;
 }
 .eg-test-root .katex-error,

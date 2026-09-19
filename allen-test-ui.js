@@ -999,7 +999,7 @@ window.showAllenInstructions = showAllenInstructions;
 (function () {
   function syncAllenFootPad() {
     try {
-      /* qxmd211-force-app-main-scroll */
+      /* qxmd212-force-app-main-scroll */
       try {
         var am = document.getElementById("app-main");
         if (am) {
@@ -1055,5 +1055,39 @@ window.showAllenInstructions = showAllenInstructions;
     setTimeout(syncAllenFootPad, 100);
   } catch (_) {}
   try { window._qxSyncAllenFootPad = syncAllenFootPad; } catch (_) {}
+})();
+
+
+
+/* qxmd212 foot transparent — kill white strip from inline styles */
+(function qxmd212ForceFootTransparent() {
+  function paint(foot) {
+    if (!foot) return;
+    try {
+      foot.style.setProperty("background", "transparent", "important");
+      foot.style.setProperty("background-color", "transparent", "important");
+      foot.style.setProperty("background-image", "none", "important");
+      foot.style.setProperty("box-shadow", "none", "important");
+      foot.style.setProperty("border", "none", "important");
+      foot.style.setProperty("min-height", "0", "important");
+      foot.style.setProperty("display", "grid", "important");
+      foot.style.setProperty("grid-template-columns", "1fr 1.2fr 1fr", "important");
+      foot.style.setProperty("padding", "8px 10px calc(8px + env(safe-area-inset-bottom, 0px))", "important");
+    } catch (_) {}
+  }
+  function run() {
+    paint(document.querySelector("#egFoot, .eg-foot-marks, .eg-foot"));
+  }
+  run();
+  try {
+    if (typeof MutationObserver !== "undefined") {
+      var mo = new MutationObserver(function () { run(); });
+      mo.observe(document.documentElement, { childList: true, subtree: true });
+      setTimeout(function () { try { mo.disconnect(); } catch (_) {} }, 15000);
+    }
+  } catch (_) {}
+  setTimeout(run, 0);
+  setTimeout(run, 300);
+  setTimeout(run, 1000);
 })();
 

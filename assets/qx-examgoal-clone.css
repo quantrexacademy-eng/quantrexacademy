@@ -127,7 +127,7 @@
     bottom: 0 !important;
     left: 0 !important;
     right: 0 !important;
-    background: #ffffff !important;
+    background: transparent !important;
     border-top: 1px solid #e0e0e0 !important;
     display: flex !important;
     flex-direction: column !important;
@@ -151,7 +151,7 @@
     display: flex !important;
     justify-content: space-between !important;
     padding: 8px 16px !important;
-    background: #fff !important;
+    background: transparent !important;
   }
   .eg-btn {
     background: transparent !important;

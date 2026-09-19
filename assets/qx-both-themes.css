@@ -4,7 +4,7 @@
   display: grid !important;
   grid-template-columns: 1fr 1.25fr 1fr !important;
   flex-direction: row !important;
-  background: #fff !important;
+  background: transparent !important;
   z-index: 2147483646 !important;
 }
 .eg-test-root .eg-foot-extra, .eg-test-root #egFootExtra, .eg-test-root .eg-foot-left, .eg-test-root label.eg-show {
@@ -205,4 +205,35 @@
   color: #ffffff !important;
   fill: #ffffff !important;
   stroke: currentColor;
+}
+
+
+/* qxmd212 both-themes foot force — must beat earlier white !important */
+#egFoot, .eg-foot, .eg-foot-practice, .eg-foot-marks, .mtk-controls, footer.eg-foot,
+.eg-test-root #egFoot, .eg-test-root .eg-foot, .eg-test-root .eg-foot-practice, .eg-test-root .eg-foot-marks {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  border-top: none !important;
+  min-height: 0 !important;
+  padding: 8px 10px calc(8px + env(safe-area-inset-bottom, 0px)) !important;
+}
+.eg-test-root[data-test-theme="dark"] .eg-foot,
+.eg-test-root[data-test-theme="dark"] #egFoot {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+/* no left line on solution */
+#egSol, .eg-sol, .qx-sol-card, .eg-sol .qx-sol-card {
+  border-left: none !important;
+}
+#egSol::before, .eg-sol::before, .qx-sol-card::before {
+  content: none !important; display: none !important; width: 0 !important;
+}
+.eg-test-root[data-test-theme="light"] .eg-sol,
+.eg-test-root[data-test-theme="dark"] .eg-sol {
+  border-left: none !important;
+  margin-top: 8px !important;
 }

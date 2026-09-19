@@ -53,7 +53,7 @@
   width: 100% !important;
   margin: 0 !important;
   padding: 8px 10px calc(10px + env(safe-area-inset-bottom, 0px)) !important;
-  background: var(--eg-card, #fff) !important;
+  background: transparent !important;
   border-top: 1px solid var(--eg-line, #e2e8f0) !important;
   box-shadow: 0 -6px 16px rgba(15, 23, 42, 0.12) !important;
   visibility: visible !important;

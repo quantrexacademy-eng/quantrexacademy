@@ -13,7 +13,7 @@
     } else if (!l.id) {
       l.id = "egTestUiCss";
     }
-    const href = "assets/examgoal-test-ui.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd211");
+    const href = "assets/examgoal-test-ui.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd212");
     if (l.getAttribute("href") !== href) l.href = href;
     let chrome = document.getElementById("qxPracChromeCss");
     if (!chrome) {
@@ -22,7 +22,7 @@
       chrome.rel = "stylesheet";
       document.head.appendChild(chrome);
     }
-    const ch = "assets/qx-prac-chrome.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd211");
+    const ch = "assets/qx-prac-chrome.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd212");
     if (chrome.getAttribute("href") !== ch) chrome.href = ch;
     let both = document.getElementById("qxBothThemesCss");
     if (!both) {
@@ -31,7 +31,7 @@
       both.rel = "stylesheet";
       document.head.appendChild(both);
     }
-    const bh = "assets/qx-both-themes.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd211");
+    const bh = "assets/qx-both-themes.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd212");
     if (both.getAttribute("href") !== bh) both.href = bh;
     let r = document.getElementById("qxPracticeReadCss");
     if (!r) {
@@ -40,7 +40,7 @@
       r.rel = "stylesheet";
       document.head.appendChild(r);
     }
-    const rh = "assets/qx-practice-read.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd211");
+    const rh = "assets/qx-practice-read.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd212");
     if (r.getAttribute("href") !== rh) r.href = rh;
   }
 
@@ -1420,7 +1420,7 @@
         if (!foot) return;
         var h = Math.ceil(foot.getBoundingClientRect().height || foot.offsetHeight || 64);
         if (!isFinite(h) || h < 40) h = 52;
-        if (h > 90) h = 90; /* qxmd211 compact */
+        if (h > 90) h = 90; /* qxmd212 compact */
         var pad = h + 28;
         var solOpen = !!(host && host.classList && (host.classList.contains("qx-sol-showing") || host.classList.contains("eg-sol-showing")));
         if (solOpen) pad = h + 48;
@@ -1428,7 +1428,7 @@
         try {
           document.documentElement.style.setProperty("--eg-foot-h", h + "px");
           document.documentElement.style.setProperty("--eg-foot-pad", cssPad);
-      /* qxmd211-global-unlock */
+      /* qxmd212-global-unlock */
       try {
         var am2 = document.getElementById("app-main");
         if (am2 && document.body.classList.contains("allen-practice-active")) {
@@ -1472,12 +1472,16 @@
         const marksRow = !!(foot.classList.contains("eg-foot-marks") || foot.classList.contains("eg-foot-practice") || foot.querySelector("#egCheckBtn"));
         foot.style.setProperty("display", "grid", "important");
         /* qxmd210: always one Marks row - never wrap into stacked bars */
-        foot.style.setProperty("grid-template-columns", marksRow ? "1fr 1.35fr 1fr" : "1fr 1fr", "important");
+        foot.style.setProperty("grid-template-columns", marksRow ? "1fr 1.2fr 1fr" : "1fr 1fr", "important");
         foot.style.setProperty("flex-direction", "row", "important");
         foot.style.setProperty("flex-wrap", "nowrap", "important");
         foot.style.setProperty("align-items", "center", "important");
         foot.style.setProperty("gap", "8px", "important");
-        foot.style.setProperty("background", "transparent", "important"); /* qxmd211 no white slab */
+        foot.style.setProperty("background", "transparent", "important"); /* qxmd212 no white slab */
+        foot.style.setProperty("background-color", "transparent", "important");
+        foot.style.setProperty("box-shadow", "none", "important");
+        foot.style.setProperty("border", "none", "important");
+        foot.style.setProperty("min-height", "0", "important");
         foot.style.setProperty("visibility", "visible", "important");
         foot.style.setProperty("padding", "8px 12px calc(8px + env(safe-area-inset-bottom, 0px))", "important");
         const nav = foot.querySelector(".eg-foot-nav, .eg-foot-right");
@@ -2403,7 +2407,7 @@
       if (!foot) return;
       var h = Math.ceil(foot.getBoundingClientRect().height || 64);
       if (!isFinite(h) || h < 40) h = 52;
-      if (h > 90) h = 90; /* qxmd211 compact */
+      if (h > 90) h = 90; /* qxmd212 compact */
       var solOpen = !!(host.classList && (host.classList.contains("qx-sol-showing") || host.classList.contains("eg-sol-showing")));
       var pad = solOpen ? h + 48 : h + 28;
       var cssPad = "calc(" + pad + "px + env(safe-area-inset-bottom, 0px))";

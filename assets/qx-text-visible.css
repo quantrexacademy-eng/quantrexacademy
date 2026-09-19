@@ -177,7 +177,7 @@ html[data-theme="light"] .qx-rfc-ch strong {
   visibility: visible !important;
 }
 html[data-theme="dark"] .eg-test-root[data-test-theme="light"] .eg-qbar {
-  background: #ffffff !important;
+  background: transparent !important;
   color: #0f172a !important;
 }
 html[data-theme="dark"] .dpp-set-card strong,

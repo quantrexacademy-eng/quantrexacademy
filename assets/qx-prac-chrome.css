@@ -16,7 +16,7 @@
   grid-auto-flow: row !important;
   gap: 8px !important;
   align-items: stretch !important;
-  background: #ffffff !important;
+  background: transparent !important;
   border-top: 1px solid #e5e7eb !important;
   box-shadow: none !important;
   position: fixed !important;
@@ -90,7 +90,7 @@
   grid-auto-flow: row !important;
   gap: 8px !important;
   align-items: stretch !important;
-  background: #ffffff !important;
+  background: transparent !important;
   border-top: 1px solid #e5e7eb !important;
   box-shadow: none !important;
   position: fixed !important;
@@ -273,7 +273,7 @@ body.allen-cbt-active #app-main {
   position: absolute !important;
   left: 0 !important; right: 0 !important; bottom: 0 !important;
   height: calc(100% + 12px) !important;
-  background: linear-gradient(to top, rgba(238, 242, 247, 0.92) 35%, rgba(238, 242, 247, 0)) !important;
+  background: transparent !important;
   pointer-events: none !important;
   z-index: -1 !important;
 }
@@ -324,7 +324,7 @@ body.allen-cbt-active #app-main {
 .allen-practice #egFoot #qxPracNext,
 .qx-prac-foot #qxPracPrev,
 .qx-prac-foot #qxPracNext {
-  background: #ffffff !important;
+  background: transparent !important;
   color: #334155 !important;
   border: 1px solid #d0d7de !important;
 }
@@ -468,4 +468,213 @@ html body.allen-practice-active {
   background: #1e293b !important;
   color: #e2e8f0 !important;
   border-color: #475569 !important;
+}
+
+
+/* ========== qxmd212: FORCE transparent footer — no white strip; Prev|Check|Next pills; sol tight ========== */
+#egFoot,
+.eg-foot,
+.eg-foot-practice,
+.eg-foot-marks,
+.mtk-controls,
+footer.eg-foot,
+.eg-test-root #egFoot,
+.eg-test-root .eg-foot,
+.eg-test-root .eg-foot-practice,
+.eg-test-root .eg-foot-marks,
+.eg-test-root.eg-mobile #egFoot,
+.eg-test-root.eg-mobile .eg-foot,
+.eg-test-root.eg-desktop-mode #egFoot,
+.eg-test-root.eg-desktop-mode .eg-foot,
+.eg-test-root.qx-sol-showing #egFoot,
+.eg-test-root.qx-sol-showing .eg-foot,
+.eg-test-root.eg-sol-showing #egFoot,
+.eg-test-root.eg-sol-showing .eg-foot,
+.eg-test-root.eg-qxmd182 > .eg-foot,
+.eg-test-root.eg-qxmd182 .eg-foot-left,
+.eg-test-root.eg-qxeg2 .eg-foot,
+.eg-test-root.eg-qxeg4 .eg-foot,
+.eg-test-root.eg-qxtool8 .eg-foot,
+.allen-practice .eg-foot.eg-foot-marks,
+.allen-practice .eg-foot-practice,
+.mtk-test-root.allen-practice #egFoot,
+.mtk-test-root.allen-practice .mtk-controls,
+.qx-practice-page .eg-foot-marks,
+.qx-prac-foot.eg-foot-marks,
+body.allen-practice-active .mtk-test-root.allen-practice .eg-foot,
+body.allen-practice-active .qx-prac-foot.eg-foot,
+html[data-theme="light"] .qx-prac-foot.eg-foot,
+html[data-theme="dark"] .eg-test-root[data-test-theme="light"] .eg-foot {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  border-top: none !important;
+  min-height: 0 !important;
+  height: auto !important;
+  max-height: none !important;
+  padding: 8px 10px calc(8px + env(safe-area-inset-bottom, 0px)) !important;
+}
+
+#egFoot::before,
+.eg-foot::before,
+.eg-foot-marks::before,
+.qx-prac-foot.eg-foot-marks::before,
+.allen-practice #egFoot::before {
+  content: none !important;
+  display: none !important;
+  background: transparent !important;
+  height: 0 !important;
+}
+
+/* Compact 3-pill row */
+.eg-test-root #egFoot,
+.allen-practice #egFoot,
+.qx-prac-foot.eg-foot-marks,
+.mtk-test-root.allen-practice #egFoot {
+  display: grid !important;
+  grid-template-columns: 1fr 1.2fr 1fr !important;
+  gap: 8px !important;
+  align-items: center !important;
+  pointer-events: none !important;
+  position: fixed !important;
+  left: 0 !important; right: 0 !important; bottom: 0 !important;
+  z-index: 2147483646 !important;
+}
+
+/* LIGHT mode pills — visible chips on page bg */
+.eg-test-root:not([data-test-theme="dark"]) #egFoot #qxPrevBtn,
+.eg-test-root:not([data-test-theme="dark"]) #egFoot #qxNextBtn,
+.allen-practice:not([data-test-theme="dark"]) #egFoot #qxPracPrev,
+.allen-practice:not([data-test-theme="dark"]) #egFoot #qxPracNext,
+.qx-prac-foot #qxPracPrev,
+.qx-prac-foot #qxPracNext,
+.mtk-test-root:not([data-test-theme="dark"]) #egFoot #qxPracPrev,
+.mtk-test-root:not([data-test-theme="dark"]) #egFoot #qxPracNext {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border: 1.5px solid #94a3b8 !important;
+  pointer-events: auto !important;
+  min-height: 40px !important;
+  height: 40px !important;
+  border-radius: 999px !important;
+  font-weight: 700 !important;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.14) !important;
+}
+.eg-test-root:not([data-test-theme="dark"]) #egFoot #egCheckBtn,
+.allen-practice:not([data-test-theme="dark"]) #egFoot #qxPracSubmit,
+.qx-prac-foot #qxPracSubmit,
+.mtk-test-root:not([data-test-theme="dark"]) #egFoot #qxPracSubmit {
+  background: #2563eb !important;
+  color: #ffffff !important;
+  border: 1.5px solid #1d4ed8 !important;
+  pointer-events: auto !important;
+  min-height: 40px !important;
+  height: 40px !important;
+  border-radius: 999px !important;
+  font-weight: 800 !important;
+  box-shadow: 0 2px 10px rgba(37, 99, 235, 0.35) !important;
+}
+
+/* DARK mode pills — readable contrast (not white-on-white, not invisible) */
+.eg-test-root[data-test-theme="dark"] #egFoot #qxPrevBtn,
+.eg-test-root[data-test-theme="dark"] #egFoot #qxNextBtn,
+.mtk-test-root[data-test-theme="dark"] #egFoot #qxPracPrev,
+.mtk-test-root[data-test-theme="dark"] #egFoot #qxPracNext,
+.allen-practice[data-test-theme="dark"] #egFoot #qxPracPrev,
+.allen-practice[data-test-theme="dark"] #egFoot #qxPracNext {
+  background: #1e293b !important;
+  color: #f1f5f9 !important;
+  border: 1.5px solid #64748b !important;
+  pointer-events: auto !important;
+  min-height: 40px !important;
+  height: 40px !important;
+  border-radius: 999px !important;
+  font-weight: 700 !important;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.45) !important;
+}
+.eg-test-root[data-test-theme="dark"] #egFoot #egCheckBtn,
+.mtk-test-root[data-test-theme="dark"] #egFoot #qxPracSubmit,
+.allen-practice[data-test-theme="dark"] #egFoot #qxPracSubmit {
+  background: #3b82f6 !important;
+  color: #ffffff !important;
+  border: 1.5px solid #60a5fa !important;
+  pointer-events: auto !important;
+  min-height: 40px !important;
+  height: 40px !important;
+  border-radius: 999px !important;
+  font-weight: 800 !important;
+  box-shadow: 0 2px 10px rgba(59, 130, 246, 0.4) !important;
+}
+
+/* SOLUTION: no left lining / accent bar */
+#egSol,
+.eg-sol,
+.eg-sol .qx-sol-card,
+.qx-sol-card,
+.qx-sol-reveal-box,
+#qaSolReveal,
+.eg-sol-marks-way,
+#egSolPanel,
+.eg-sol-panel {
+  border-left: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+#egSol::before,
+.eg-sol::before,
+.eg-sol .qx-sol-card::before,
+.qx-sol-card::before,
+.qx-sol-phys::before,
+.qx-sol-chem::before,
+.qx-sol-bio::before,
+.qx-sol-reveal-box::before {
+  content: none !important;
+  display: none !important;
+  width: 0 !important;
+  background: none !important;
+}
+
+/* SOLUTION tight under options — small gap, not far */
+.eg-q-card .eg-sol,
+.eg-q-card #egSol,
+.eg-main .eg-sol,
+.mtk-main .eg-sol,
+.mtk-main #egSol,
+#qaSolReveal,
+.qx-sol-reveal-box,
+.eg-sol-marks-way,
+#egSolPanel.eg-sol-inline,
+.eg-sol-panel {
+  margin-top: 8px !important;
+  margin-bottom: 8px !important;
+  padding-top: 8px !important;
+}
+.eg-opts + .eg-sol,
+.eg-options + .eg-sol,
+.mtk-opts + .eg-sol,
+.qx-opts + .eg-sol,
+.eg-opt-list + .eg-sol,
+.eg-opts + #egSol,
+.eg-options + #qaSolReveal {
+  margin-top: 6px !important;
+}
+/* reduce huge empty space before sol */
+.eg-q-card .eg-sol-spacer,
+.eg-sol-gap,
+.qx-sol-spacer {
+  display: none !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Keep Allen #app-main scroll unlock (from qxmd211) */
+html body.allen-practice-active.eg-qxmd179-host #app-main,
+html body.allen-practice-active #app-main,
+html body.marks-test-active.allen-practice-active #app-main {
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
 }

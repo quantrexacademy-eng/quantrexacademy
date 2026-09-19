@@ -290,7 +290,7 @@ body.qx-nav-open::before {
     bottom: 0;
     width: 100%;
     z-index: 90;
-    background: var(--eg-card, #fff);
+    background: transparent;
     padding: 8px 10px calc(10px + env(safe-area-inset-bottom, 0px));
     visibility: visible !important;
     pointer-events: auto !important;

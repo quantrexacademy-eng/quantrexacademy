@@ -413,7 +413,7 @@ body.marks-test-active::before { display: none !important; }
 .eg-foot {
   position: sticky; bottom: 0; flex-shrink: 0; display: flex; align-items: center;
   justify-content: space-between; gap: 10px;
-  padding: 10px 16px; background: var(--eg-card); border-top: 1px solid var(--eg-line);
+  padding: 10px 16px; background: transparent; border-top: 1px solid var(--eg-line);
   margin: 0; z-index: 30; flex-wrap: wrap;
 }
 .eg-btn-next {
@@ -675,7 +675,7 @@ html[data-theme="dark"] .qx-practice-page {
 }
 .allen-practice .eg-foot,
 .qx-practice-page .eg-foot {
-  background: var(--eg-card);
+  background: transparent;
   color: var(--eg-text);
 }
 .allen-practice .mtk-opt.eg-opt-right,
@@ -1393,7 +1393,7 @@ html.qx-immersive .eg-foot,
 .eg-test-root[data-test-theme="light"] .eg-foot,
 html[data-theme="light"] .eg-foot,
 html[data-theme="light"] .qx-prac-foot.eg-foot {
-  background: #ffffff !important;
+  background: transparent !important;
   color: #0f172a !important;
   border-top: 1px solid #e2e8f0 !important;
   box-shadow: 0 -6px 18px rgba(15, 23, 42, 0.1) !important;
@@ -1885,7 +1885,7 @@ html[data-theme="light"] .qx-prac-foot.eg-foot {
     visibility: visible !important;
     opacity: 1 !important;
     display: flex !important;
-    background: var(--eg-card, #fff) !important;
+    background: transparent !important;
     box-shadow: 0 -4px 18px rgba(15, 23, 42, 0.14) !important;
   }
   .eg-test-root.eg-side-open .eg-foot .eg-btn,
@@ -2049,7 +2049,7 @@ html[data-theme="light"] .qx-prac-foot.eg-foot {
   border-radius: 10px !important;
   border: 1px solid #dbeafe !important;
   border-left: 3px solid #2563eb !important;
-  background: linear-gradient(90deg, #eff6ff 0%, #fff7ed 100%) !important;
+  background: transparent !important;
   box-shadow: none !important;
 }
 .eg-test-root[data-test-theme="dark"] .eg-exam-meta.eg-paper-meta-compact {
@@ -2694,7 +2694,7 @@ html[data-theme="light"] .qx-prac-foot.eg-foot {
   gap: 8px !important;
   padding: 8px 12px !important;
   min-height: 44px !important;
-  background: var(--eg-card, #fff) !important;
+  background: transparent !important;
   border-bottom: 1px solid var(--eg-line, #e2e8f0) !important;
 }
 .eg-test-root.eg-qxtool8 .eg-info-strip .eg-q-num {
@@ -3595,7 +3595,7 @@ body.qx-immersive .eg-test-root.eg-qxeg2 .eg-foot {
 }
 .eg-test-root.eg-qxeg2:not([data-test-theme="dark"]) #egFoot,
 .eg-test-root.eg-qxeg2:not([data-test-theme="dark"]) .eg-foot {
-  background: #ffffff !important;
+  background: transparent !important;
   color: #0f172a !important;
   border-top: 2px solid #94a3b8 !important;
 }
@@ -3909,7 +3909,7 @@ body.qx-immersive .eg-test-root.eg-qxeg4 .eg-foot {
 }
 .eg-test-root.eg-qxeg4:not([data-test-theme="dark"]) #egFoot,
 .eg-test-root.eg-qxeg4:not([data-test-theme="dark"]) .eg-foot {
-  background: #ffffff !important;
+  background: transparent !important;
   color: #0f172a !important;
   border-top: 2px solid #94a3b8 !important;
 }
