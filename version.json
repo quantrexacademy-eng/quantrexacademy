@@ -1,10 +1,10 @@
 {
-  "build": "qxmd200",
-  "cache": "qx-pwa-qxmd200",
-  "title": "qxmd200 · locked Previous/Next footer after Check Answer",
-  "body": "Footer is two rows: extras then Previous|Next with inline styles so they cannot hide or go grey. Master prompt: QUANTREX_QUESTION_VIEW_100_PROMPT.txt",
+  "build": "qxmd201",
+  "cache": "qx-pwa-qxmd201",
+  "title": "qxmd201 · simple Previous/Next, stop footer rebuild, stop glued solution prose",
+  "body": "Check Answer no longer rebuilds the footer (that hid Next/Prev). White Previous|Next stay. Solution formatter no longer glues words like Thisisageometricseries.",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app",
   "site": "https://www.quantrexacademy.com",
   "package": "com.quantrexacademy.app",
-  "ts": 2000000000000
+  "ts": 2010000000000
 }

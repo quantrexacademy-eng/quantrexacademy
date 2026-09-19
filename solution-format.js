@@ -1201,9 +1201,7 @@ const QuantrexSolution = (() => {
     if (typeof Mx !== "undefined" && Mx.cleanQuestionText) {
       try { raw = Mx.cleanQuestionText(raw); } catch (_) { /* */ }
     }
-    try {
-      if (typeof Mx !== "undefined" && Mx.unglueLowercaseMathProse) raw = Mx.unglueLowercaseMathProse(raw);
-    } catch (_) { /* */ }
+    /* Do not unglue/glue prose here — it produced "Thisisageometricseries". */
     if (typeof QxProof !== "undefined" && QxProof.proofreadHtml) {
       try { raw = QxProof.proofreadHtml(raw); } catch (_) { /* */ }
     }
@@ -1213,7 +1211,7 @@ const QuantrexSolution = (() => {
     if (typeof Mx !== "undefined" && Mx.upgradePlainMathNotation) {
       try { raw = Mx.upgradePlainMathNotation(raw); } catch (_) { /* */ }
     }
-    raw = toCleanFlow(raw);
+    /* Keep original line structure; toCleanFlow was gluing words and dumping katex HTML. */
     let html;
     try {
       html = solRenderHtml(raw);

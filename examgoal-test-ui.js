@@ -1382,126 +1382,27 @@
     var _egFootPainted = false;
     function forceFootVisibleNow(force) {
       try {
-        let foot = root.querySelector("#egFoot, .eg-foot");
-        if (!foot) {
-          foot = document.createElement("div");
-          foot.id = "egFoot";
-          var prac = !!(root.getAttribute("data-eg-mode") === "practice");
-          foot.className = prac
-            ? "eg-foot eg-foot-practice eg-marks-foot"
-            : "eg-foot";
-          foot.innerHTML = '<div class="eg-foot-left"></div><div class="eg-foot-right">' +
-            '<button type="button" class="eg-btn" id="qxPrevBtn">Previous</button>' +
-            '<button type="button" class="eg-btn eg-btn-next" id="qxNextBtn">Next</button></div>';
-          root.appendChild(foot);
-          _egFootPainted = false;
+        const foot = root.querySelector("#egFoot, .eg-foot");
+        if (!foot) return;
+        foot.style.setProperty("display", "flex", "important");
+        foot.style.setProperty("flex-direction", "column", "important");
+        foot.style.setProperty("background", "#ffffff", "important");
+        foot.style.setProperty("visibility", "visible", "important");
+        const nav = foot.querySelector(".eg-foot-nav, .eg-foot-right");
+        if (nav) {
+          nav.style.setProperty("display", "grid", "important");
+          nav.style.setProperty("grid-template-columns", "1fr 1fr", "important");
+          nav.style.setProperty("width", "100%", "important");
+          nav.style.setProperty("visibility", "visible", "important");
         }
-        /* qxmd175: never lose practice foot classes (CSS Prev|Next + Clear-hide depend on them) */
-        try {
-          if (root.getAttribute("data-eg-mode") === "practice") {
-            foot.classList.add("eg-foot-practice", "eg-marks-foot");
-          }
-          foot.classList.add("eg-foot");
-        } catch (_) { /* */ }
-        foot.removeAttribute("hidden");
-        root.classList.add("eg-foot-ready", "eg-qxeg7", "eg-qxmd173", "eg-qxmd180", "eg-qxmd182");
-        root.classList.remove("eg-qxmd175", "eg-qxmd176", "eg-qxmd177", "eg-qxmd179");
-        /* Skip heavy inline cssText once CSS has painted foot (unless force) */
-        if (_egFootPainted && !force && foot.querySelector("#qxPrevBtn") && (foot.querySelector("#qxNextBtn") || foot.querySelector("#qxSaveBtn"))) {
-          var p0 = foot.querySelector("#qxPrevBtn");
-          if (p0) p0.textContent = "Previous";
-          var n0 = foot.querySelector("#qxNextBtn");
-          if (n0) n0.textContent = "Next";
-          _egFootLast = Date.now();
-          try { if (typeof root._egBindNavBtns === "function") root._egBindNavBtns(); } catch (_) {}
-          return;
-        }
-        var dark = (root.getAttribute("data-test-theme") === "dark");
-        /* One-shot nuclear inline backup (CSS is primary) */
-        /* qxmd173: bottom:0 + padding-bottom safe-area so Prev|Next never clipped under home indicator */
-        var sab = "env(safe-area-inset-bottom, 0px)";
-        foot.style.cssText = "display:flex!important;visibility:visible!important;opacity:1!important;" +
-          "pointer-events:auto!important;position:fixed!important;left:0!important;right:0!important;" +
-          "bottom:0!important;z-index:2147483000!important;transform:none!important;" +
-          "overflow:visible!important;clip:auto!important;max-height:none!important;" +
-          "flex-direction:column!important;flex-wrap:nowrap!important;gap:8px!important;" +
-          "padding:10px 12px calc(12px + " + sab + ")!important;" +
-          "background:#ffffff!important;border-top:1px solid #e5e7eb!important;width:100%!important;max-width:100vw!important;" +
-          "box-sizing:border-box!important;box-shadow:none!important;min-height:64px!important;";
-        let right = foot.querySelector(".eg-foot-right");
-        if (!right) {
-          right = document.createElement("div");
-          right.className = "eg-foot-right";
-          foot.appendChild(right);
-        }
-        var practiceFoot = !!(root.getAttribute("data-eg-mode") === "practice");
-        var narrow = !!(window.matchMedia && window.matchMedia("(max-width: 720px)").matches);
-        /* qxmd173: Prev|Next primary grid; Clear hidden on mobile via CSS (desktop Clear kept) */
-        if (practiceFoot && narrow) {
-          right.style.cssText = "display:grid!important;grid-template-columns:1fr 1fr!important;gap:8px!important;width:100%!important;visibility:visible!important;opacity:1!important;";
-        } else {
-          right.style.cssText = "display:grid!important;grid-template-columns:1fr 1fr!important;gap:8px!important;width:100%!important;visibility:visible!important;opacity:1!important;";
-        }
-        function ensureBtn(id, label, nextish) {
-          let b = foot.querySelector("#" + id);
-          if (!b) {
-            b = document.createElement("button");
-            b.type = "button";
-            b.id = id;
-            b.className = "eg-btn" + (nextish ? " eg-btn-next" : "") + (id === "egFootMore" ? " eg-btn-more" : "");
-            right.appendChild(b);
-          }
-          b.textContent = label;
-          try { b.setAttribute("aria-label", label); } catch (_) {}
-          var bg = nextish ? "#1565C0" : "#ffffff";
-          var fg = nextish ? "#ffffff" : "#1565C0";
-          var bd = "#1565C0";
-          b.style.cssText = "display:inline-flex!important;visibility:visible!important;opacity:1!important;" +
-            "pointer-events:auto!important;align-items:center!important;justify-content:center!important;" +
-            "min-height:48px!important;width:100%!important;border-radius:10px!important;font-weight:800!important;" +
-            "font-size:15px!important;border:2px solid " + bd +
-            "!important;background:" + bg + "!important;color:" + fg + "!important;-webkit-text-fill-color:" +
-            fg + "!important;text-shadow:none!important;filter:none!important;";
-          return b;
-        }
-        try {
-          Array.prototype.slice.call(foot.querySelectorAll("button, .eg-btn")).forEach(function (el) {
-            var t = String(el.textContent || "");
-            if (/saved\s*at\s*q/i.test(t) && el.id !== "qxPrevBtn" && el.id !== "qxNextBtn" && el.id !== "qxSaveBtn" && el.id !== "egFootMore") {
-              el.remove();
-            }
-          });
-        } catch (_) {}
-        /* qxmd173: More hidden; Clear hidden on mobile CSS; Prev|Next painted large */
-        ensureBtn("qxPrevBtn", "Previous", false);
-        var next;
-        if (practiceFoot) {
-          var saveLeftover = foot.querySelector("#qxSaveBtn");
-          if (saveLeftover) {
-            try { saveLeftover.id = "qxNextBtn"; saveLeftover.className = "eg-btn eg-btn-next"; } catch (_) {}
-          }
-          next = ensureBtn("qxNextBtn", "Next", true);
-          try {
-            var moreB = foot.querySelector("#egFootMore");
-            if (moreB) { moreB.setAttribute("hidden", ""); moreB.style.display = "none"; }
-          } catch (_) {}
-          /* qxmd173: hide Clear on mobile practice only (desktop ExamGoal Clear stays in DOM/CSS) */
-          if (narrow) {
-            try {
-              var clr = foot.querySelector("#qxClearBtn, .eg-btn-clear");
-              if (clr) { clr.style.display = "none"; clr.setAttribute("aria-hidden", "true"); }
-            } catch (_) {}
-            try {
-              var prevB = foot.querySelector("#qxPrevBtn");
-              if (prevB) prevB.textContent = "Previous";
-            } catch (_) {}
-          }
-        } else {
-          next = foot.querySelector("#qxSaveBtn") ? ensureBtn("qxSaveBtn", "Save & Next", true) : ensureBtn("qxNextBtn", "Next", true);
-        }
-        void next;
-        _egFootPainted = true;
-        _egFootLast = Date.now();
+        ["qxPrevBtn", "qxNextBtn"].forEach(function (id) {
+          const b = foot.querySelector("#" + id);
+          if (!b) return;
+          b.style.setProperty("display", "inline-flex", "important");
+          b.style.setProperty("visibility", "visible", "important");
+          b.style.setProperty("opacity", "1", "important");
+          b.style.setProperty("min-height", "48px", "important");
+        });
         try { if (typeof root._egBindNavBtns === "function") root._egBindNavBtns(); } catch (_) {}
       } catch (_) { /* */ }
     }
