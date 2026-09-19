@@ -560,8 +560,8 @@
       ? '<div class="eg-fmt-pop" id="egFmtPop"><h5>Text size</h5><div class="eg-fmt-row">' +
         '<button type="button" data-eg-scale="small"' + (fontScale === "small" ? ' class="on"' : "") + ">A−</button>" +
         '<button type="button" data-eg-scale="medium"' + (fontScale === "medium" ? ' class="on"' : "") + ">A</button>" +
-        '<button type="button" data-eg-scale="large"' + (fontScale === "large" ? ' class="on"' : "") + ">A+</button>' +
-        '<button type="button" data-eg-scale="xlarge"' + (fontScale === "xlarge" ? ' class="on"' : "") + ">XL</button>' +
+        '<button type="button" data-eg-scale="large"' + (fontScale === "large" ? ' class="on"' : "") + ">A+</button>" +
+        '<button type="button" data-eg-scale="xlarge"' + (fontScale === "xlarge" ? ' class="on"' : "") + ">XL</button>" +
         '</div><h5 class="eg-fmt-pal-h">Palette</h5><div class="eg-fmt-row eg-fmt-pal" role="group" aria-label="Palette layout">' +
         '<button type="button" data-eg-pal="side"' + (palPref === "side" ? ' class="on"' : "") + ' title="Right sidebar">Right</button>' +
         '<button type="button" data-eg-pal="strip"' + (palPref === "strip" ? ' class="on"' : "") + ' title="Top question bar">Top</button>' +
@@ -595,9 +595,9 @@
     const _egCheckedFoot = !!(session && session._egChecked && (session._egChecked[session.idx] || session._egChecked[String(session.idx)]));
     const foot = practice
       ? '<div class="eg-foot eg-foot-practice eg-foot-marks" id="egFoot">' +
-        '<button type="button" class="eg-btn" id="qxPrevBtn"' + (firstQ ? " disabled" : "") + ">Previous</button>' +
+        '<button type="button" class="eg-btn" id="qxPrevBtn"' + (firstQ ? " disabled" : "") + ">Previous</button>" +
         '<button type="button" class="eg-btn eg-btn-check" id="egCheckBtn"' + (_egCheckedFoot ? " disabled" : "") + '>' + (_egCheckedFoot ? "Checked" : "Check Answer") + '</button>' +
-        '<button type="button" class="eg-btn eg-btn-next" id="qxNextBtn"' + (lastQ ? " disabled" : "") + ">Next</button>' +
+        '<button type="button" class="eg-btn eg-btn-next" id="qxNextBtn"' + (lastQ ? " disabled" : "") + ">Next</button>" +
         "</div>"
       : '<div class="eg-foot" id="egFoot">' +
         '<div class="eg-foot-left">' +

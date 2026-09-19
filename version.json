@@ -1,10 +1,10 @@
 {
-  "build": "qxmd205",
-  "cache": "qx-pwa-qxmd205",
-  "title": "qxmd205 — stem-free solution; Prev|Check|Next one strip; Aa scales stem",
-  "body": "Solution drops question stem. Footer is Previous | Check Answer | Next on one white strip. Aa S/M/L/XL scales question stem, options, and solution.",
+  "build": "qxmd206",
+  "cache": "qx-pwa-qxmd206",
+  "title": "qxmd206 - fix examgoal-test-ui.js syntax so ExamgoalTestUI loads",
+  "body": "Repair broken quote strings in Aa scale and Prev/Next footer so ExamgoalTestUI parses and practice UI (Check Answer, SOLUTION, Marks strip, Aa stem scale) works again.",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app",
   "site": "https://www.quantrexacademy.com",
   "package": "com.quantrexacademy.app",
-  "ts": 1789821483127
+  "ts": 1789822854138
 }
