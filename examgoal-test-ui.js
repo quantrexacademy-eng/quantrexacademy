@@ -22,8 +22,17 @@
       chrome.rel = "stylesheet";
       document.head.appendChild(chrome);
     }
-    const ch = "assets/qx-prac-chrome.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd191");
+    const ch = "assets/qx-prac-chrome.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd202");
     if (chrome.getAttribute("href") !== ch) chrome.href = ch;
+    let both = document.getElementById("qxBothThemesCss");
+    if (!both) {
+      both = document.createElement("link");
+      both.id = "qxBothThemesCss";
+      both.rel = "stylesheet";
+      document.head.appendChild(both);
+    }
+    const bh = "assets/qx-both-themes.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd202");
+    if (both.getAttribute("href") !== bh) both.href = bh;
     let r = document.getElementById("qxPracticeReadCss");
     if (!r) {
       r = document.createElement("link");

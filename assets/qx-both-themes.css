@@ -1,0 +1,147 @@
+/* Light + dark: stem, options, icons, solution always visible. Load last. */
+
+.eg-test-root .eg-q-stem,
+.eg-test-root #egQArea,
+.eg-test-root .eg-opts,
+.eg-test-root #qxOpts,
+.eg-test-root .mtk-opt,
+.eg-test-root .eg-opt,
+.eg-test-root [data-opt],
+.eg-test-root .mtk-opt-text,
+.eg-test-root .eg-sol,
+.eg-test-root .eg-sol-panel,
+.eg-test-root .eg-top-tools,
+.eg-test-root .eg-top-tools .eg-tool-btn,
+.eg-test-root .eg-top-tools .eg-ico {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* LIGHT */
+.eg-test-root[data-test-theme="light"] .eg-q-card,
+.eg-test-root[data-test-theme="light"] .eg-main {
+  background: #ffffff !important;
+}
+.eg-test-root[data-test-theme="light"] .eg-q-stem,
+.eg-test-root[data-test-theme="light"] #egQArea,
+.eg-test-root[data-test-theme="light"] .mtk-opt-text,
+.eg-test-root[data-test-theme="light"] .eg-sol,
+.eg-test-root[data-test-theme="light"] .eg-sol .qx-content,
+.eg-test-root[data-test-theme="light"] .katex,
+.eg-test-root[data-test-theme="light"] .katex * {
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+}
+.eg-test-root[data-test-theme="light"] .mtk-opt,
+.eg-test-root[data-test-theme="light"] .eg-opt,
+.eg-test-root[data-test-theme="light"] [data-opt] {
+  display: flex !important;
+  background: #ffffff !important;
+  border: 1px solid #cbd5e1 !important;
+  color: #0f172a !important;
+}
+.eg-test-root[data-test-theme="light"] .mtk-opt.eg-opt-right,
+.eg-test-root[data-test-theme="light"] .mtk-opt.correct {
+  background: #dcfce7 !important;
+  border-color: #16a34a !important;
+  color: #14532d !important;
+}
+.eg-test-root[data-test-theme="light"] .mtk-opt.eg-opt-right .mtk-opt-text,
+.eg-test-root[data-test-theme="light"] .mtk-opt.correct .mtk-opt-text,
+.eg-test-root[data-test-theme="light"] .mtk-opt.eg-opt-right .katex,
+.eg-test-root[data-test-theme="light"] .mtk-opt.correct .katex,
+.eg-test-root[data-test-theme="light"] .mtk-opt.eg-opt-right .katex * {
+  color: #14532d !important;
+  -webkit-text-fill-color: #14532d !important;
+}
+.eg-test-root[data-test-theme="light"] .mtk-opt.eg-opt-wrong,
+.eg-test-root[data-test-theme="light"] .mtk-opt.wrong {
+  background: #fee2e2 !important;
+  border-color: #dc2626 !important;
+  color: #7f1d1d !important;
+}
+.eg-test-root[data-test-theme="light"] .mtk-opt.eg-opt-wrong .mtk-opt-text,
+.eg-test-root[data-test-theme="light"] .mtk-opt.wrong .mtk-opt-text,
+.eg-test-root[data-test-theme="light"] .mtk-opt.eg-opt-wrong .katex,
+.eg-test-root[data-test-theme="light"] .mtk-opt.wrong .katex * {
+  color: #7f1d1d !important;
+  -webkit-text-fill-color: #7f1d1d !important;
+}
+
+/* DARK */
+.eg-test-root[data-test-theme="dark"] .eg-q-card,
+.eg-test-root[data-test-theme="dark"] .eg-main,
+.eg-test-root[data-test-theme="dark"] .eg-body {
+  background: #0f172a !important;
+}
+.eg-test-root[data-test-theme="dark"] .eg-q-stem,
+.eg-test-root[data-test-theme="dark"] #egQArea,
+.eg-test-root[data-test-theme="dark"] .mtk-opt-text,
+.eg-test-root[data-test-theme="dark"] .eg-sol,
+.eg-test-root[data-test-theme="dark"] .eg-sol .qx-content,
+.eg-test-root[data-test-theme="dark"] .katex,
+.eg-test-root[data-test-theme="dark"] .katex * {
+  color: #f1f5f9 !important;
+  -webkit-text-fill-color: #f1f5f9 !important;
+}
+.eg-test-root[data-test-theme="dark"] .mtk-opt,
+.eg-test-root[data-test-theme="dark"] .eg-opt,
+.eg-test-root[data-test-theme="dark"] [data-opt] {
+  display: flex !important;
+  background: #1e293b !important;
+  border: 1px solid #475569 !important;
+  color: #f1f5f9 !important;
+}
+.eg-test-root[data-test-theme="dark"] .mtk-opt.eg-opt-right,
+.eg-test-root[data-test-theme="dark"] .mtk-opt.correct {
+  background: #14532d !important;
+  border-color: #22c55e !important;
+  color: #dcfce7 !important;
+}
+.eg-test-root[data-test-theme="dark"] .mtk-opt.eg-opt-right .mtk-opt-text,
+.eg-test-root[data-test-theme="dark"] .mtk-opt.correct .mtk-opt-text,
+.eg-test-root[data-test-theme="dark"] .mtk-opt.eg-opt-right .katex * {
+  color: #dcfce7 !important;
+  -webkit-text-fill-color: #dcfce7 !important;
+}
+.eg-test-root[data-test-theme="dark"] .mtk-opt.eg-opt-wrong,
+.eg-test-root[data-test-theme="dark"] .mtk-opt.wrong {
+  background: #7f1d1d !important;
+  border-color: #ef4444 !important;
+  color: #fecaca !important;
+}
+.eg-test-root[data-test-theme="dark"] .mtk-opt.eg-opt-wrong .mtk-opt-text,
+.eg-test-root[data-test-theme="dark"] .mtk-opt.wrong .mtk-opt-text,
+.eg-test-root[data-test-theme="dark"] .mtk-opt.eg-opt-wrong .katex * {
+  color: #fecaca !important;
+  -webkit-text-fill-color: #fecaca !important;
+}
+.eg-test-root[data-test-theme="dark"] .eg-foot {
+  background: #0f172a !important;
+  border-top-color: #334155 !important;
+}
+.eg-test-root[data-test-theme="dark"] .eg-foot-extra,
+.eg-test-root[data-test-theme="dark"] .eg-foot-left {
+  background: #0f172a !important;
+  color: #f1f5f9 !important;
+}
+
+/* A/B/C/D letters — white on blue in both modes */
+.eg-test-root .mtk-opt-letter,
+.eg-test-root .eg-opt-letter,
+.eg-test-root .qx-opt-circle {
+  background: #1565C0 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+/* Header icons always white on blue bar */
+.eg-test-root .eg-top,
+.eg-test-root .eg-top-tools .eg-tool-btn,
+.eg-test-root .eg-top-tools .eg-ico,
+.eg-test-root .eg-top-tools svg,
+.eg-test-root .eg-top-tools .eg-tip {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+  stroke: currentColor;
+}

@@ -1,10 +1,10 @@
 {
-  "build": "qxmd201",
-  "cache": "qx-pwa-qxmd201",
-  "title": "qxmd201 · simple Previous/Next, stop footer rebuild, stop glued solution prose",
-  "body": "Check Answer no longer rebuilds the footer (that hid Next/Prev). White Previous|Next stay. Solution formatter no longer glues words like Thisisageometricseries.",
+  "build": "qxmd202",
+  "cache": "qx-pwa-qxmd202",
+  "title": "qxmd202 · light and dark: options, text, icons visible",
+  "body": "Light: dark ink on white cards. Dark: light ink on slate cards. Correct/wrong keep readable contrast. Header icons stay white on blue.",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app",
   "site": "https://www.quantrexacademy.com",
   "package": "com.quantrexacademy.app",
-  "ts": 2010000000000
+  "ts": 2020000000000
 }
