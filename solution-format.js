@@ -1007,6 +1007,9 @@ const QuantrexSolution = (() => {
   function ensureNoStemHead(html, q) {
     let out = String(html || "");
     if (!out.trim()) return out;
+    /* qxmd208: always drop rescued/forced stem nodes before any early-return */
+    out = out.replace(/<(div|p|section)[^>]*class="[^"]*(?:qx-stem-rescued|qx-stem-forced)[^"]*"[\s\S]*?<\/\1>/gi, "");
+    if (!out.trim()) return out;
     if (/class=["'][^"']*qx-sol-card/.test(out) || /class=["'][^"']*qx-sol-card-h/.test(out)) {
       return out;
     }
@@ -1087,6 +1090,9 @@ const QuantrexSolution = (() => {
 
   function stripLeadingStemEcho(html, q) {
     let out = String(html || "");
+    if (!out.trim()) return out;
+    /* qxmd208: drop rescued stem wrappers even if present on a card string */
+    out = out.replace(/<(div|p|section)[^>]*class="[^"]*(?:qx-stem-rescued|qx-stem-forced)[^"]*"[\s\S]*?<\/\1>/gi, "");
     if (!out.trim()) return out;
     /* qxmd207: never run map-cut on a rendered solution card (destroys qx-sol-card-h) */
     if (/class=["'][^"']*qx-sol-card/.test(out) || /class=["'][^"']*qx-sol-card-h/.test(out)) {
@@ -1344,7 +1350,8 @@ const QuantrexSolution = (() => {
       .replace(/\n{3,}/g, "\n\n");
     try { html = stripLeadingStemEcho(html, q); } catch (_) { /* */ }
     try { html = ensureNoStemHead(html, q); } catch (_) { /* */ }
-    html = String(html || "").replace(/<(div|p|section)[^>]*class="[^"]*(?:eg-q-stem|mtk-q-text|qa-q|qx-question-body)[^"]*"[\s\S]*?<\/\1>/gi, "");
+    /* qxmd208: also drop qx-stem-rescued / qx-stem-forced if they sneak into solution HTML */
+    html = String(html || "").replace(/<(div|p|section)[^>]*class="[^"]*(?:eg-q-stem|mtk-q-text|qa-q|qx-question-body|qx-stem-rescued|qx-stem-forced)[^"]*"[\s\S]*?<\/\1>/gi, "");
     try {
       for (var _si = 0; _si < 12; _si++) {
         var _nx = dropRepeatedQuestionBlocks(html, q);

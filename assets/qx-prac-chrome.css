@@ -71,3 +71,9 @@
   padding-bottom: calc(72px + env(safe-area-inset-bottom,0px)) !important;
 }
 .eg-test-root .eg-action-row .eg-check-wrap { display: none !important; }
+
+/* qxmd208: never show stem-rescued inside SOLUTION */
+#egSol .qx-stem-rescued, #egSolPanel .qx-stem-rescued, .eg-sol .qx-stem-rescued,
+#egSol .qx-stem-forced, #egSolPanel .qx-stem-forced, .eg-sol .qx-stem-forced {
+  display: none !important; visibility: hidden !important; height: 0 !important; overflow: hidden !important;
+}

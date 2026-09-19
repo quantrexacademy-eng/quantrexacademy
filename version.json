@@ -1,10 +1,10 @@
 {
-  "build": "qxmd207",
-  "cache": "qx-pwa-qxmd207",
-  "title": "qxmd207: Marks one-row Prev|Check|Next; strip stem from SOLUTION header",
-  "body": "Fix forceFoot column→grid row for Previous|Check Answer|Next; stop re-stripping rendered solution cards (stem echo above Medium/Chemistry); viewport-aware eg-mobile; harden stem prefix match.",
+  "build": "qxmd208",
+  "cache": "qx-pwa-qxmd208",
+  "title": "qxmd208: never show qx-stem-rescued question text inside SOLUTION",
+  "body": "Root cause: afterRender(#egSol)->finalizeAll->ensureStemVisible injected .qx-stem-rescued into solution. Block sol-scope rescue, strip rescued nodes before paint, CSS hide under #egSol; keep one-row footer.",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app",
   "site": "https://www.quantrexacademy.com",
   "package": "com.quantrexacademy.app",
-  "ts": 1789824232343
+  "ts": 1789825085487
 }

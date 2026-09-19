@@ -5059,6 +5059,7 @@ window.QxImgClean = (() => {
         finalizeMarksNative(root, q);
         rewriteAllPoolImgs(scope);
         ensureStemVisible(scope, q);
+        stripStemRescuedFromSolution(scope);
       } catch (_) { /* */ }
       return;
     }
@@ -5070,6 +5071,7 @@ window.QxImgClean = (() => {
       rewriteAllPoolImgs(scope);
       scrubOptionSpillDom(scope);
       ensureStemVisible(scope, q);
+      stripStemRescuedFromSolution(scope);
       if (!inTestUi()) {
         scope.querySelectorAll(
           "#qxDiagramSlot img, .qx-diagram-slot img, .qx-opt-diagram-slot img, img.qx-pool-fig, .mtk-opt-text img, .qx-prac-opt-text img, .qx-prac-q img, .mtk-q-text img"
@@ -5203,33 +5205,103 @@ window.QxImgClean = (() => {
     return q;
   }
 
+  function isSolutionDomScope(el) {
+    if (!el || el.nodeType !== 1) return false;
+    try {
+      const id = el.id || "";
+      if (/^(egSol|egSolPanel|qaSolReveal|qaResult)$/.test(id)) return true;
+      const cls = (el.className && String(el.className)) || "";
+      if (/\b(?:eg-sol|eg-sol-panel|eg-sol-inline|eg-sol-marks-way|sol-body|qx-sol-flow|qx-sol-card|qx-sol-body|mk-sol-body)\b/.test(cls)) return true;
+      if (el.closest && el.closest("#egSol, #egSolPanel, .eg-sol, .eg-sol-panel, .sol-body, .qx-sol-flow, .qx-sol-card, #qaSolReveal, #qaResult")) return true;
+    } catch (_) { /* */ }
+    return false;
+  }
+
+  function stripStemRescuedFromSolution(scope) {
+    try {
+      const root = scope || (typeof document !== "undefined" ? document : null);
+      if (!root || !root.querySelectorAll) return;
+      const sols = root.querySelectorAll
+        ? root.querySelectorAll("#egSol, #egSolPanel, .eg-sol, .eg-sol-panel, .sol-body, .qx-sol-flow, .qx-sol-card")
+        : [];
+      const targets = sols.length ? Array.from(sols) : (isSolutionDomScope(root) ? [root] : []);
+      targets.forEach((sol) => {
+        try {
+          sol.querySelectorAll(".qx-stem-rescued, .qx-stem-forced").forEach((n) => {
+            try { if (n && n.parentNode) n.parentNode.removeChild(n); } catch (_) { /* */ }
+          });
+          /* also drop stray mtk-q-text that is a full stem echo (not solution card body) */
+          sol.querySelectorAll(".mtk-q-text, .qx-marks-native-q, .qx-q-seg-text, .qx-q-text-only").forEach((n) => {
+            try {
+              if (!n || n.closest(".qx-sol-flow, .sol-body, .qx-content.sol-body")) return;
+              if (/qx-stem-rescued|qx-stem-forced/.test(n.className || "")) {
+                if (n.parentNode) n.parentNode.removeChild(n);
+              }
+            } catch (_) { /* */ }
+          });
+        } catch (_) { /* */ }
+      });
+      if (isSolutionDomScope(root)) {
+        try {
+          root.querySelectorAll(".qx-stem-rescued, .qx-stem-forced").forEach((n) => {
+            try { if (n && n.parentNode) n.parentNode.removeChild(n); } catch (_) { /* */ }
+          });
+        } catch (_) { /* */ }
+      }
+    } catch (_) { /* */ }
+  }
+
   function ensureStemVisible(root, q) {
     try {
       if (!q) return;
+      /* qxmd208: NEVER inject question stem into SOLUTION panel.
+         afterRender(#egSol) -> finalizeAll(solEl) used to create .qx-stem-rescued under Solution. */
+      if (isSolutionDomScope(root)) {
+        stripStemRescuedFromSolution(root);
+        return;
+      }
       pinOriginalQuestion(q);
       restoreOptionsFromPin(q);
       const source = bestStemHtml(q, q.q);
       const want = stemPlainText(source);
       if (want.length < 12) return;
-      const scope = root || (typeof document !== "undefined" ? document.getElementById("app-main") : null);
+      let scope = root || (typeof document !== "undefined" ? document.getElementById("app-main") : null);
       if (!scope || !scope.querySelector) return;
-      const body = scope.querySelector(".qx-question-body, .mtk-main, .qx-prac-q, .qa-q") || scope;
+      /* Prefer QUESTION area only — never use #egSol as body host */
+      const qArea = scope.querySelector
+        ? (scope.querySelector("#egQArea, .eg-q-stem") || scope)
+        : scope;
+      if (isSolutionDomScope(qArea)) return;
+      const body =
+        (qArea.querySelector && qArea.querySelector(".qx-question-body, .mtk-main, .qx-prac-q, .qa-q")) ||
+        (scope.querySelector && scope.querySelector("#egQArea .qx-question-body, #egQArea, .eg-q-stem .qx-question-body, .qx-question-body, .mtk-main, .qx-prac-q, .qa-q")) ||
+        qArea;
+      if (isSolutionDomScope(body)) return;
       const hosts = Array.from(body.querySelectorAll(".mtk-q-text, .qx-q-seg-text, .qx-marks-native-q, .qx-q-text-only"))
-        .filter((el) => !el.closest(".mtk-opt, .qx-prac-opt, .qa-opt, .mtk-opt-text, .qx-prac-opt-text"));
+        .filter((el) => !el.closest(".mtk-opt, .qx-prac-opt, .qa-opt, .mtk-opt-text, .qx-prac-opt-text"))
+        .filter((el) => !isSolutionDomScope(el) && !(el.closest && el.closest("#egSol, #egSolPanel, .eg-sol")));
       const live = stemPlainText(hosts.map((el) => el.innerHTML || "").join(" "));
       const key = want.replace(/\$/g, " ").replace(/\s+/g, " ").slice(0, 28);
-      if (key.length >= 12 && live.replace(/\$/g, " ").toLowerCase().includes(key.slice(0, 20).toLowerCase())) return;
-      if (live.length >= want.length * 0.5) return;
+      if (key.length >= 12 && live.replace(/\$/g, " ").toLowerCase().includes(key.slice(0, 20).toLowerCase())) {
+        stripStemRescuedFromSolution(scope);
+        return;
+      }
+      if (live.length >= want.length * 0.5) {
+        stripStemRescuedFromSolution(scope);
+        return;
+      }
       const render = (typeof Mx !== "undefined" && Mx.html) ? (t) => Mx.html(t) : (t) => t;
       const html = safeRenderStem(stripDiagramTagsOutsideTables(source), render);
       if (!stemPlainText(html)) return;
-      const host = body.querySelector(".qx-question-body") || body;
+      const host = (body.querySelector && body.querySelector(".qx-question-body")) || body;
+      if (isSolutionDomScope(host)) return;
       const textEl = hosts[0];
-      if (textEl && stemPlainText(textEl.innerHTML).length < 12) {
+      if (textEl && !isSolutionDomScope(textEl) && stemPlainText(textEl.innerHTML).length < 12) {
         textEl.innerHTML = html;
         textEl.style.display = "block";
         textEl.style.visibility = "visible";
         textEl.style.opacity = "1";
+        stripStemRescuedFromSolution(scope);
         return;
       }
       const div = document.createElement("div");
@@ -5240,9 +5312,12 @@ window.QxImgClean = (() => {
       const firstFig = host.querySelector(".qx-fig, .qx-diagram-slot, #qxDiagramSlot, img.qx-pool-fig");
       if (firstFig && firstFig.parentNode === host) host.insertBefore(div, firstFig);
       else host.insertBefore(div, host.firstChild);
+      stripStemRescuedFromSolution(scope);
     } catch (_) { /* */ }
     try {
-      if (typeof Mx !== "undefined" && Mx.recoverHollowStemInDom) Mx.recoverHollowStemInDom(root);
+      if (root && !isSolutionDomScope(root) && typeof Mx !== "undefined" && Mx.recoverHollowStemInDom) {
+        Mx.recoverHollowStemInDom(root);
+      }
     } catch (_) { /* */ }
   }
 
@@ -5629,6 +5704,8 @@ window.QxImgClean = (() => {
     stemPlainText,
     restoreOptionsFromPin,
     ensureStemVisible,
+    stripStemRescuedFromSolution,
+    isSolutionDomScope,
     isMatchListOrTableFigureHtml,
     forceCleanProxyInHtml,
     stripSpilledFigUrls,

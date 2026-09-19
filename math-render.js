@@ -4273,6 +4273,8 @@ window.Mx = (() => {
     if (!src || stemLooksHollow(src) && !/<math\b|\\begin\{|\$/.test(String(src))) return;
     hosts.forEach((host) => {
       if (host.closest && host.closest(".mtk-opt, .qx-prac-opt, .qa-opt")) return;
+      /* qxmd208: never rewrite hosts inside SOLUTION */
+      if (host.closest && host.closest("#egSol, #egSolPanel, .eg-sol, .eg-sol-panel, .sol-body, .qx-sol-flow, .qx-sol-card, #qaSolReveal")) return;
       if (!stemLooksHollow(host.innerHTML || host.textContent || "")) return;
       let painted = "";
       try { painted = html(src); } catch (_) { painted = String(src); }
@@ -4364,6 +4366,19 @@ window.Mx = (() => {
             const q = QxImgClean.resolveCurrentQuestion ? QxImgClean.resolveCurrentQuestion(el) : null;
             QxImgClean.finalizeAll(el, q);
           }
+          try {
+            if (typeof QxImgClean !== "undefined" && QxImgClean.stripStemRescuedFromSolution) {
+              QxImgClean.stripStemRescuedFromSolution(el);
+            } else if (el && el.querySelectorAll) {
+              el.querySelectorAll("#egSol .qx-stem-rescued, #egSolPanel .qx-stem-rescued, .eg-sol .qx-stem-rescued, .qx-stem-rescued").forEach(function (n) {
+                try {
+                  if (n && n.closest && n.closest("#egSol, #egSolPanel, .eg-sol, .eg-sol-panel") && n.parentNode) {
+                    n.parentNode.removeChild(n);
+                  }
+                } catch (_) { /* */ }
+              });
+            }
+          } catch (_) { /* */ }
         } catch (_) { /* */ }
         try {
           if (window.QxSoftWm && typeof QxSoftWm.scan === "function") QxSoftWm.scan(el);
@@ -4457,6 +4472,11 @@ window.Mx = (() => {
         if (typeof QxImgClean !== "undefined" && QxImgClean.finalizeAll) {
           QxImgClean.finalizeAll(el, q);
         }
+        try {
+          if (typeof QxImgClean !== "undefined" && QxImgClean.stripStemRescuedFromSolution) {
+            QxImgClean.stripStemRescuedFromSolution(el);
+          }
+        } catch (_) { /* */ }
         if (typeof QxImgClean !== "undefined" && QxImgClean.dedupeDomFigures) {
           QxImgClean.dedupeDomFigures(el);
         }

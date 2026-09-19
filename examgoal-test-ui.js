@@ -347,7 +347,13 @@
            stem echo above Medium/Chemistry Solution while .qx-sol-flow still started at math. */
         solContent = QuantrexSolution.renderBlock(q);
         fromRenderBlock = !!solContent;
-        solContent = String(solContent || "").replace(/<(div|p|section)[^>]*class="[^"]*(?:eg-q-stem|mtk-q-text|qa-q)[^"]*"[sS]*?<\/\1>/gi, "");
+        /* qxmd208: drop any stem / rescued-stem wrappers that leaked into solution HTML */
+        solContent = String(solContent || "").replace(/<(div|p|section)[^>]*class="[^"]*(?:eg-q-stem|mtk-q-text|qa-q|qx-stem-rescued|qx-stem-forced|qx-question-body)[^"]*"[\s\S]*?<\/\1>/gi, "");
+        try {
+          if (typeof QuantrexSolution !== "undefined" && QuantrexSolution.stripLeadingStemEcho && !/qx-sol-card/.test(solContent)) {
+            /* only strip raw body echoes — never re-strip rendered cards (qxmd207) */
+          }
+        } catch (_) { /* */ }
       }
     } catch (_) { /* */ }
     if (!solContent) {
@@ -1010,6 +1016,25 @@
   }
 
 
+  function stripStemRescuedFromSolDom(root) {
+    try {
+      if (!root || !root.querySelectorAll) return;
+      const sols = root.querySelectorAll("#egSol, #egSolPanel .eg-sol, #egSolPanel, .eg-sol");
+      sols.forEach(function (sol) {
+        try {
+          sol.querySelectorAll(".qx-stem-rescued, .qx-stem-forced").forEach(function (n) {
+            try { if (n && n.parentNode) n.parentNode.removeChild(n); } catch (_) {}
+          });
+        } catch (_) {}
+      });
+      try {
+        if (typeof QxImgClean !== "undefined" && QxImgClean.stripStemRescuedFromSolution) {
+          QxImgClean.stripStemRescuedFromSolution(root);
+        }
+      } catch (_) {}
+    } catch (_) { /* */ }
+  }
+
   function revealPracticeSolution(root, api) {
     if (!root || !api || !api.session) return false;
     const session = api.session;
@@ -1172,13 +1197,17 @@
     try {
       if (panel) {
         const solEl = panel.querySelector("#egSol") || panel;
+        stripStemRescuedFromSolDom(panel);
+        stripStemRescuedFromSolDom(root);
         qxTypesetSol(solEl);
         qxTypesetSol(panel);
+        stripStemRescuedFromSolDom(panel);
         [50, 200, 500].forEach(function (ms) {
           setTimeout(function () {
             try {
               const live = root.querySelector("#egSolPanel #egSol") || root.querySelector("#egSolPanel");
               qxTypesetSol(live);
+              stripStemRescuedFromSolDom(root);
             } catch (_) { /* */ }
           }, ms);
         });

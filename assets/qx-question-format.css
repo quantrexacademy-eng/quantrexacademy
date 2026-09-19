@@ -859,3 +859,25 @@ img.qx-opt-fig-img,
   width: 100%;
   overflow-x: auto;
 }
+
+/* qxmd208: never show stem-rescued inside SOLUTION (QUESTION area only) */
+#egSol .qx-stem-rescued,
+#egSol .qx-stem-forced,
+#egSolPanel .qx-stem-rescued,
+#egSolPanel .qx-stem-forced,
+.eg-sol .qx-stem-rescued,
+.eg-sol .qx-stem-forced,
+.eg-sol-panel .qx-stem-rescued,
+.eg-sol-panel .qx-stem-forced,
+.sol-body > .qx-stem-rescued,
+.qx-sol-flow > .qx-stem-rescued {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+}
