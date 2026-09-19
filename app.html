@@ -13,7 +13,7 @@
       })();
     </script>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5, user-scalable=yes, viewport-fit=cover">
     <title>Quantrex Academy — JEE Main, NEET, NDA PYQs with Solutions</title>
     <meta name="description" content="Free JEE Main, JEE Advanced, NEET, NDA, BITSAT previous year questions with step-by-step solutions. Chapter-wise PYQ bank, mock tests, digital books. Practice on mobile or desktop.">
     <meta name="robots" content="index,follow,max-image-preview:large">
@@ -55,7 +55,7 @@
     <link rel="stylesheet" href="assets/qx-viewport.css?v=qxfix102">
     <link rel="stylesheet" href="assets/qx-touch-perf.css?v=qxfix102">
     <link rel="stylesheet" href="assets/qx-question-format.css?v=qxexam2">
-    <link rel="stylesheet" href="assets/qx-marks-practice.css?v=qxfigwm3">
+    <link rel="stylesheet" href="assets/qx-marks-practice.css?v=qxmd187">
     <link rel="stylesheet" href="assets/qx-text-visible.css?v=qxmd179">
     <link rel="stylesheet" href="assets/qx-site-contrast.css?v=qxmd179">
     <link rel="stylesheet" href="assets/qx-nav-foot.css?v=qxmd179">
@@ -183,6 +183,7 @@
         .main { flex: 1; margin-left: 250px; display: flex; flex-direction: column; min-height: 100vh; }
         /* Smooth UI: instant taps, no 300ms delay, big click targets (Next / cards) */
         html { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+        html.qx-test-zoom { touch-action: pan-y pinch-zoom; }
         button, a, .mth-card, .nav-item, .qx-top-exam, .mtk-btn, .qzrr-btn, .ct-wiz-next-btn,
         .cpyqb-ch-row, .pyqmock-year-card, .pyqmock-paper-card, [data-mg], [role="button"] {
           touch-action: manipulation; cursor: pointer; -webkit-user-select: none; user-select: none;
@@ -4243,7 +4244,7 @@
                     <span class="dot"></span>
                     <span id="examPill">Engineering</span>
                 </div>
-                <div class="qx-build-pill" id="qxBuildPill" title="App build · hard refresh if outdated">Build qxmd179</div>
+                <div class="qx-build-pill" id="qxBuildPill" title="App build · hard refresh if outdated">Build qxmd186</div>
             </div>
         </aside>
 
@@ -4285,7 +4286,7 @@
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js" defer></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js" defer></script>
     <script>
-      window.QX_BUILD = "qxmd179";
+      window.QX_BUILD = "qxmd187";
       (function () {
         try {
           var pill = document.getElementById("qxBuildPill");
@@ -4324,7 +4325,8 @@
         "assets/qx-fig-lock.css?v=qxiro2",
         "assets/qx-motion.css?v=qxfix105",
         "assets/examgoal-premium.css?v=qxfix56",
-        "assets/examgoal-test-ui.css?v=qxmd179",
+        "assets/examgoal-test-ui.css?v=qxmd186",
+        "assets/qx-practice-read.css?v=qxmd186",
         "assets/qx-nta-bright.css?v=qxqa1",
         "test-series-page.css?v=qxfix79",
         "assets/qx-rfc.css?v=qxqa1",
@@ -4359,7 +4361,7 @@
         "qx-leads.js?v=qxfix72",
         "qx-live-feed.js?v=qxfix93",
         "book-covers.js?v=qxmd179",
-        "allen-test-ui.js?v=qxmd179",
+        "allen-test-ui.js?v=qxmd187",
         "qx-premium-watermark.js?v=qxfull1",
         "qx-nowm-guard.js?v=qxfix116",
         "qx-watermark.js?v=qxnobrand1",
@@ -4424,8 +4426,8 @@
     <script src="qx-test-engine-perf.js?v=qxq861" defer></script>
     <script src="qx-math-sanitize.js?v=qxmd179" defer></script>
     <script src="math-render.js?v=qxmd179" defer></script>
-    <script src="question-format.js?v=qxmd179" defer></script>
-    <script src="solution-format.js?v=qxmd179" defer></script>
+    <script src="question-format.js?v=qxmd184" defer></script>
+    <script src="solution-format.js?v=qxmd186" defer></script>
     <script src="assets/qx-question-cache.js?v=qxfix17" defer></script>
     <script src="data.js?v=qxmd179" defer></script>
     <script src="firebase-db.js?v=qxfix115" defer></script>
@@ -4440,8 +4442,8 @@
     <!-- payments.js / premium.js omitted: all courses free -->
     <script src="marks-shell.js?v=qxvis4" defer></script>
     <script src="marks-live.js?v=qxvis4" defer></script>
-    <script src="marks-features.js?v=qxmd179" defer></script>
-    <script src="examgoal-test-ui.js?v=qxmd179" defer></script>
+    <script src="marks-features.js?v=qxmd187" defer></script>
+    <script src="examgoal-test-ui.js?v=qxmd186" defer></script>
     <script>
       window.TS_CFG = {
         seriesId: "jee_main_examgoal_2027",
@@ -4452,12 +4454,12 @@
       };
     </script>
     <script src="test-series.js?v=qxfix86" defer></script>
-    <script src="test-engine.js?v=qxmd179" defer></script>
+    <script src="test-engine.js?v=qxmd184" defer></script>
     <script src="bookmarks.js?v=qxfix58" defer></script>
     <script src="theme.js?v=qxmd179" defer></script>
     <script src="qx-guest-trial.js?v=qxfix115" defer></script>
-    <script src="app.js?v=qxmd179" defer></script>
-<script src="qx-settings.js?v=qxmd179" defer></script>
+    <script src="app.js?v=qxmd187" defer></script>
+<script src="qx-settings.js?v=qxmd187" defer></script>
 <script src="qx-cbt-ux.js?v=qxmd179" defer></script>
 <script src="qx-q-fast.js?v=qxmd179" defer></script>
     <script>

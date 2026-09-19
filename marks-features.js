@@ -148,57 +148,89 @@ function bindMarksGo(root) {
   });
 }
 
+function qxBankIndexCpyqbNav() {
+  if (typeof BANK_INDEX === "undefined") return [];
+  return Object.keys(BANK_INDEX).map(function (slug) {
+    const bi = BANK_INDEX[slug];
+    if (!bi || !bi.category || slug === "dpp") return null;
+    const exam = {
+      slug: slug,
+      title: bi.title || slug,
+      category: bi.category,
+      count: bi.count || 0,
+      subjects: [],
+      isComingSoon: !!bi.isComingSoon
+    };
+    return qxEnsureExamSubjects(exam);
+  }).filter(Boolean);
+}
+
+function qxEnsureExamSubjects(exam) {
+  if (!exam) return exam;
+  if (exam.subjects && exam.subjects.length) return exam;
+  const slug = String(exam.slug || "");
+  let names = ["Physics", "Chemistry", "Mathematics"];
+  if (slug === "neet" || exam.category === "Medical" || /neet|aiims|jipmer|mht_cet_medical/i.test(slug)) {
+    names = ["Physics", "Chemistry", "Biology", "Botany", "Zoology"];
+  } else if (slug === "nda" || exam.category === "Defence") {
+    names = ["Mathematics", "English", "GAT"];
+  }
+  const subs = [];
+  names.forEach(function (name) {
+    const raw = (typeof CHAPTERS !== "undefined" && CHAPTERS[name]) || [];
+    const chapters = (raw || []).map(function (n) {
+      const title = typeof n === "string" ? n : (n && (n.name || n.title)) || "";
+      return { name: title, title: title, count: 0, key: title };
+    }).filter(function (c) { return c.name; });
+    subs.push({ name: name, title: name, count: Number(exam.count) || 0, chapters: chapters });
+  });
+  exam.subjects = subs;
+  return exam;
+}
+
 async function fetchNav(name) {
-  if (_navCache[name] && _navCache[name].length) return _navCache[name];
+  if (_navCache[name] && _navCache[name].length && (name !== "cpyqb" || _navCache[name].some(function (e) { return e && e.subjects && e.subjects.length; }))) {
+    return _navCache[name];
+  }
+  if (name === "cpyqb") {
+    const instant = qxBankIndexCpyqbNav();
+    if (!_navCache[name] || !_navCache[name].length) _navCache[name] = instant;
+    const ver = (typeof QX_BUILD !== "undefined" && QX_BUILD) || "qxmd184";
+    fetch("data/nav/cpyqb.json?v=" + encodeURIComponent(ver), { cache: "default" }).then(function (res) {
+      if (!res || !res.ok) return null;
+      return res.json();
+    }).then(function (data) {
+      if (!Array.isArray(data) || !data.length) return;
+      let list = data;
+      if (typeof BANK_INDEX !== "undefined") {
+        list = data.map(function (e) {
+          if (!e || !e.slug) return e;
+          const bi = BANK_INDEX[e.slug];
+          if (!bi) return e;
+          return Object.assign({}, e, {
+            title: e.title || bi.title,
+            category: bi.category || e.category,
+            count: Math.max(Number(e.count) || 0, Number(bi.count) || 0),
+            isComingSoon: bi.isComingSoon === true || /^class_(7|8|10)$/.test(String(e.slug))
+          });
+        });
+      }
+      if (list.length) _navCache.cpyqb = list;
+    }).catch(function () { /* keep instant list */ });
+    return _navCache[name];
+  }
   try {
-    const ver = (typeof QX_BUILD !== "undefined" && QX_BUILD) || "qxmed6";
-    const bust = name === "cpyqb" ? "?v=qxfold1" : name === "rfc" ? "?v=qxrfc1" : ("?v=" + encodeURIComponent(ver));
+    const ver = (typeof QX_BUILD !== "undefined" && QX_BUILD) || "qxmd184";
     const ac = typeof AbortController !== "undefined" ? new AbortController() : null;
-    const to = setTimeout(() => { try { ac && ac.abort(); } catch (_) {} }, 8000);
-    const res = await fetch(`data/nav/${name}.json${bust}`, { signal: ac ? ac.signal : undefined });
+    const to = setTimeout(() => { try { ac && ac.abort(); } catch (_) {} }, 20000);
+    const res = await fetch("data/nav/" + name + ".json?v=" + encodeURIComponent(ver), { cache: "default", signal: ac ? ac.signal : undefined });
     clearTimeout(to);
     if (!res.ok) throw new Error(res.status);
     const data = await res.json();
-    let list = Array.isArray(data) ? data : [];
-    // Enrich from BANK_INDEX so tiles never look blank when banks have questions
-    if (name === "cpyqb" && typeof BANK_INDEX !== "undefined") {
-      list = list.map(e => {
-        if (!e || !e.slug) return e;
-        const bi = BANK_INDEX[e.slug];
-        if (!bi) return e;
-        const count = Math.max(Number(e.count) || 0, Number(bi.count) || 0);
-        const isComingSoon = bi.isComingSoon === true || (String(e.slug).match(/^class_(7|8|10)$/) != null);
-        return {
-          ...e,
-          title: e.title || bi.title,
-          // BANK_INDEX wins — cpyqb.json still tags NDA as Foundation
-          category: bi.category || e.category,
-          count,
-          isComingSoon
-        };
-      });
-      // Ensure every BANK_INDEX exam appears in nav (missing slugs)
-      const have = new Set(list.map(e => e && e.slug).filter(Boolean));
-      Object.keys(BANK_INDEX).forEach(slug => {
-        if (have.has(slug)) return;
-        if (slug === "dpp") return;
-        const bi = BANK_INDEX[slug];
-        if (!bi || !bi.category) return;
-        const added = {
-          slug,
-          title: bi.title || slug,
-          category: bi.category,
-          count: bi.count || 0,
-          subjects: [],
-          isComingSoon: !!bi.isComingSoon
-        };
-        list.push(slug === "class_9" ? qxClass9CpyqbExam(added) : added);
-      });
-    }
+    const list = Array.isArray(data) ? data : [];
     if (list.length) _navCache[name] = list;
     return list;
   } catch (e) {
-    // Do not cache empty forever — retry next open
     console.warn("fetchNav failed:", name, e);
     return _navCache[name] || [];
   }
@@ -2735,7 +2767,12 @@ async function viewCpyqb(payload) {
 
   // JEE banks opened from Academic class track must resolve even when track is Academic
   let exam = resolveCpyqbExam(nav, p.exam) || (await fetchNav("cpyqb")).find(e => e.slug === p.exam);
+  if (!exam && p.exam && typeof BANK_INDEX !== "undefined" && BANK_INDEX[p.exam]) {
+    const bi = BANK_INDEX[p.exam];
+    exam = { slug: p.exam, title: bi.title || p.exam, category: bi.category, count: bi.count || 0, subjects: [], isComingSoon: !!bi.isComingSoon };
+  }
   if (p.exam === "class_9") exam = qxClass9CpyqbExam(exam);
+  exam = qxEnsureExamSubjects(exam);
   if (!exam) {
     if (p.classSlug) {
       return viewCpyqb({ step: "classExams", classSlug: p.classSlug, exam: p.classSlug, forceExamList: false });
@@ -5629,7 +5666,7 @@ function viewTests() {
       </div>
       <div class="marks-tests-head"><span class="marks-tests-shield">🛡️</span><h1>Tests</h1></div>
       <div class="marks-tests-hero qx-med-test-stack">
-        <div class="mth-card" ${mg("pyqmock", { exam: "neet" })}>
+        <div class="mth-card" ${mg("pyqmock", { step: "modules", exam: "neet" })}>
           <div class="mth-body"><strong>Re-NEET Special PYQ Mock Tests</strong><small>Specially curated mocks to boost Re-NEET score</small></div>
           <span class="qx-new-pill">NEW</span>
           <span class="mth-arrow">›</span>
@@ -6910,7 +6947,7 @@ async function buildPyqPaperIndex(slug) {
 
   // 1) Lightweight paper index (instant — no 40MB bank parse). Built offline for PYQ mock list.
   try {
-    const res = await fetch(`data/nav/pyq_paper_index/${encodeURIComponent(slug)}.json?v=qxfix50`, { cache: "force-cache" });
+    const res = await fetch(`data/nav/pyq_paper_index/${encodeURIComponent(slug)}.json?v=${encodeURIComponent((typeof QX_BUILD !== "undefined" && QX_BUILD) || "qxmd184")}`, { cache: "no-cache" });
     if (res.ok) {
       const byYear = await res.json();
       if (byYear && typeof byYear === "object" && Object.keys(byYear).length) {
@@ -6948,6 +6985,7 @@ function pyqMockBackBar(step, exam, year) {
 
 async function viewPyqMock(payload) {
   const p = { ..._pyqMockPayload, ...(payload || {}) };
+  if (p.exam && !p.step) p.step = String(p.exam) === "neet" ? "modules" : "years";
   _pyqMockPayload = p;
   try {
     const locked = typeof qxAccessBlock === "function" ? qxAccessBlock("pyqmock", p) : "";
@@ -7441,8 +7479,8 @@ const QX_BOOKS_CATALOG = {
     { id: "a1b2c3d4e5f6010203040507", title: "Skills in Mathematics — Integral Calculus", cover: "assets/book-covers/skills-integral-calculus.png", subject: "Mathematics", badge: "Amit M Agarwal", exam: "JEE Main & Advanced", isComingSoon: true, bankSlug: "jee_advanced", redirectType: "module", count: 0, type: "curated", tag: "Coming Soon" }
   ],
   medical: [
-    { id: "qx_physchem_neet_2027", title: "Problems in Physical Chemistry for NEET 2027", cover: "assets/book-covers/physical-chemistry-neet.svg", description: "Physical Chemistry for NEET 2027", subject: "Chemistry", badge: "Physical Chemistry", exam: "NEET", isComingSoon: true, count: 0, type: "exam", tag: "Coming Soon" },
-    { id: "qx_mipyq_neet_2027", title: "Most Important PYQ Based Questions — NEET 2027", cover: "assets/book-covers/qx-pyq-important.jpg", description: "Most Important PYQ Based Questions for NEET 2027", subject: "PCB", badge: "Quantrex PYQ", exam: "NEET", isComingSoon: true, count: 4941, countBadge: "4941 Questions", marksBadge: "4941 Questions", type: "exam", tag: "Coming Soon" },
+    { id: "qx_physchem_neet_2027", title: "Problems in Physical Chemistry for NEET 2027", cover: "assets/book-covers/physical-chemistry-neet.svg", description: "Physical Chemistry for NEET 2027", subject: "Chemistry", badge: "Physical Chemistry", exam: "NEET", isComingSoon: false, count: 16863, countBadge: "16,863 Questions", type: "exam", bankSlug: "neet", redirectType: "cpyqb", cpyqbStep: "subjects" },
+    { id: "qx_mipyq_neet_2027", title: "Most Important PYQ Based Questions — NEET 2027", cover: "assets/book-covers/qx-pyq-important.jpg", description: "Most Important PYQ Based Questions for NEET 2027", subject: "PCB", badge: "Quantrex PYQ", exam: "NEET", isComingSoon: false, count: 4941, countBadge: "4941 Questions", marksBadge: "4941 Questions", type: "exam", bankSlug: "neet", redirectType: "cpyqb", cpyqbStep: "subjects", tag: "NEET PYQ" },
     { id: "6a0adb714b032b031e049a34", title: "Concepts Of Physics MCQ Edition [Volume 2]", cover: "assets/book-covers/hc-verma-v2.jpg", description: "Objective I · II · Exercises", subject: "Physics", badge: "HC Verma", exam: "NEET", isComingSoon: false, count: 1854, countBadge: "1854 Questions", type: "exam", aliasId: "6a0addba4b032b031e049a36" },
     { id: "6a507da9107f81233d9985c1", title: "Fundamentals of Organic Chemistry — NEET 2027", cover: "assets/book-covers/organic-chemistry.jpg", description: "for NEET 2027", subject: "Chemistry", badge: "Organic", exam: "NEET", isComingSoon: false, count: 1151, countBadge: "1151 Questions", type: "exam", aliasId: "6a4ce383c59a7b462185330f" },
     { id: "69a684ac213ecfafb0629c0d", title: "Biology 360/360 — NEET 2027", cover: "assets/book-covers/biology-360.jpg", description: "Botany + Zoology complete", subject: "Biology", badge: "NEET 2027", exam: "NEET", isComingSoon: false, count: 17415, countBadge: "17415 Questions", type: "exam", bankFallback: "neet" },
@@ -7490,10 +7528,9 @@ function booksForExam(catalog, examKey) {
   const isMed = key === "Medical" || /neet|medical/i.test(key);
   if (isMed) {
     const med = filterActiveBooks(c.medical || []);
-    // Never fall back to engineering when medical list exists but empty after filter — show medical (possibly empty) only if remote wiped; else engineering only as last resort
     if (med.length) return med;
-    const embedded = filterActiveBooks((QX_BOOKS_CATALOG.medical || []));
-    return embedded.length ? embedded : filterActiveBooks(c.engineering || []);
+    // Never mix Engineering books into Medical — empty Medical list stays empty.
+    return filterActiveBooks((QX_BOOKS_CATALOG.medical || []));
   }
   const eng = filterActiveBooks(c.engineering || []);
   const curated = filterActiveBooks(c.curated || []);
@@ -7516,34 +7553,30 @@ function resetBooksCache(opts) {
 try { if (typeof window !== "undefined") window.resetBooksCache = resetBooksCache; } catch (_) { /* */ }
 
 async function fetchBooks(force) {
+  const embedded = mergeBooksCatalog(_booksCache || {}, QX_BOOKS_CATALOG);
   if (_booksCache && !force) return _booksCache;
+  _booksCache = embedded;
   const bust = typeof QX_BUILD !== "undefined" ? QX_BUILD : Date.now();
-  const ctrl = typeof AbortController !== "undefined" ? new AbortController() : null;
-  const to = setTimeout(() => { try { ctrl && ctrl.abort(); } catch (_) { /* */ } }, 12000);
-  try {
-    const res = await fetch(`data/books.json?v=${bust}`, {
-      cache: force ? "no-store" : "default",
-      signal: ctrl ? ctrl.signal : undefined
-    });
-    clearTimeout(to);
-    if (!res.ok) throw new Error(String(res.status));
-    const data = await res.json();
-    if (!data || (!data.engineering && !data.medical && !data.curated)) throw new Error("empty catalog");
-    _booksCache = mergeBooksCatalog(data, QX_BOOKS_CATALOG);
-  } catch (e) {
-    clearTimeout(to);
-    console.warn("fetchBooks:", e.message || e);
-    // Always fall back to embedded + last good cache merge so list never stays empty
-    const fallback = mergeBooksCatalog({}, QX_BOOKS_CATALOG);
-    if (_booksCache) _booksCache = mergeBooksCatalog(_booksCache, fallback);
-    else _booksCache = fallback;
-  }
+  fetch(`data/qx-books.json?v=${bust}`, { cache: force ? "no-store" : "no-cache" }).then(function (res) {
+    if (!res || !res.ok) return null;
+    return res.json();
+  }).then(function (parsed) {
+    if (parsed && (parsed.engineering || parsed.medical || parsed.curated)) {
+      _booksCache = mergeBooksCatalog(parsed, QX_BOOKS_CATALOG);
+    }
+  }).catch(function (e) {
+    console.warn("fetchBooks:", e && e.message || e);
+  });
   return _booksCache;
 }
 
 function openDigitalBook(book) {
   if (!book || book.isComingSoon) {
     showToast("📚 This book is coming soon!");
+    return;
+  }
+  if (book.redirectType === "cpyqb" || book.id === "qx_mipyq_neet_2027" || book.id === "qx_physchem_neet_2027") {
+    go("cpyqb", { step: book.cpyqbStep || "subjects", exam: book.bankSlug || "neet", forceExamList: false });
     return;
   }
   if (book.redirectType === "allqs" && book.subject) {
@@ -7603,6 +7636,7 @@ async function viewBooks(payload) {
       const rec = recIds.map((id) => examBooks.find((b) => b.id === id)).filter(Boolean);
       const recCards = rec.map((b) => { try { return renderCard({ ...b, type: b.type || "exam" }); } catch (_) { return ""; } }).join("");
       return `${topbar("Quantrex Digital Books — NEET", "Expert-picked NEET books — practice on Quantrex Academy")}
+        ${countNote}
         <div class="qx-books-lib">
           <section class="qx-books-lib-sec">
             <h3>Recommended for You</h3>
@@ -7640,13 +7674,15 @@ async function viewBooks(payload) {
     console.warn("viewBooks nav", e);
   }
   if (!nav || !nav.modules || !nav.modules.length) {
-    return `${topbar("Digital Books", "")}
-      <div class="empty" style="padding:28px;text-align:center;max-width:420px;margin:24px auto">
-        <p style="font-weight:700;margin-bottom:8px">📚 Book catalog not loaded</p>
-        <p style="font-size:13px;color:var(--gray);margin:0 0 14px;line-height:1.45">Network timeout or missing nav file. Retry, or pick another book.</p>
-        <button type="button" class="btn-primary" onclick="resetBooksCache({bookId:'${String(p.bookId || "").replace(/'/g, "")}'});go('books',{step:'modules',bookId:'${String(p.bookId || "").replace(/'/g, "")}',forceReload:1})">Retry book</button>
-        <button type="button" class="btn-soft" ${mg("books", { step: "list" })} style="margin-left:8px">← All books</button>
-      </div>`;
+    let bank = "jee_main";
+    try {
+      const cat = catalog || (typeof QX_BOOKS_CATALOG !== "undefined" ? QX_BOOKS_CATALOG : null);
+      const all = [].concat((cat && cat.engineering) || [], (cat && cat.medical) || [], (cat && cat.curated) || []);
+      const b = all.find(function (x) { return x && (x.id === p.bookId || x.aliasId === p.bookId); });
+      if (b && (b.bankSlug || b.bankFallback)) bank = b.bankSlug || b.bankFallback;
+      else if (STATE && STATE.exam === "Medical") bank = "neet";
+    } catch (_) { /* */ }
+    return viewCpyqb({ step: "subjects", exam: bank, forceExamList: false });
   }
 
   const bookTitle = nav.title || "Digital Book";

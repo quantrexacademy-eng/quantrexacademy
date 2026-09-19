@@ -628,12 +628,42 @@ const AllenTestUI = (() => {
     return false;
   }
 
+  function qxMarksQSet() {
+    try {
+      if (typeof QxSettings !== "undefined" && QxSettings.getQuestionSettings) {
+        return QxSettings.getQuestionSettings();
+      }
+    } catch (_) { /* */ }
+    try {
+      return JSON.parse(localStorage.getItem("qx_marks_question_settings") || "{}") || {};
+    } catch (_) {
+      return {};
+    }
+  }
+
+  function hintTextOf(q) {
+    if (!q) return "";
+    const h = q.hint || q.hints || q.hintText || "";
+    if (Array.isArray(h)) return String(h.filter(Boolean).join("\n")).trim();
+    return String(h || "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+  }
+
   function practiceHtml(q, ctx, parts) {
     try {
       if (typeof ExamgoalTestUI !== "undefined" && ExamgoalTestUI.ensureCss) ExamgoalTestUI.ensureCss();
     } catch (_) { /* */ }
     const pc = ctx || window._qxPracticeCtx || { ids: [], idx: 0, done: {}, selected: {}, showAnswer: false };
     const partsSafe = parts || {};
+    const qs = qxMarksQSet();
+    const showTimer = qs.showTimer !== false;
+    const showHint = !!qs.showHint;
+    const hintTxt = hintTextOf(q);
+    const hintBtn = showHint
+      ? `<button type="button" class="eg-tool-btn qx-hint-btn" id="qxPracHint" ${hintTxt ? "" : "disabled"} data-tip="Hint" title="Hint" aria-label="Hint">Hint<span class="eg-tip">Hint</span></button>`
+      : "";
+    const timerHtml = showTimer
+      ? `<div class="mtk-prac-timer qx-best-timer" id="egmqQTime"><span id="egmqTimerSec">0s</span></div>`
+      : "";
     const total = (pc.ids && pc.ids.length) || 1;
     const pos = (pc.idx || 0) + 1;
     const done = !!(pc.done && pc.done[q.id]);
@@ -670,12 +700,12 @@ const AllenTestUI = (() => {
     const optsClass = partsSafe.optsClass || "mtk-options mtk-options-grid";
     const typeBadge = partsSafe.typeBadge || `<span class="qx-best-mcq">MCQ</span>`;
     const appShell = isQxAppShell();
-    /* qxmd165: stem gone whenever Show Answer / Check Answer solution is open */
+    /* qxmd185: Check Answer keeps stem; solution is extra below options — never wipe the question */
     const solOpen = !!(pc.showAnswer || (partsSafe.solReveal && String(partsSafe.solReveal).trim())
       || (partsSafe.resultHtml && /qx-sol-reveal-box|qx-sol-card|sol-body/i.test(String(partsSafe.resultHtml))));
-    const stemHtml = solOpen
-      ? `<div class="mtk-q-text qx-content eg-stem-sol-hidden qx-stem-sol-hidden" id="egQArea" hidden aria-hidden="true" style="display:none!important;visibility:hidden!important;opacity:0!important;height:0!important;overflow:hidden!important;margin:0!important;padding:0!important"></div>`
-      : null;
+    const stemHtml = String(qBody).includes("qx-question-body")
+      ? qBody
+      : `<div class="mtk-q-text qx-content" id="egQArea" data-qx-qid="${q.id}">${qBody}</div>`;
 
     // Website / desktop: keep classic Allen practice (do not force phone chrome)
     if (!appShell) {
@@ -699,7 +729,9 @@ const AllenTestUI = (() => {
             <div class="mtk-brand allen-brand"><span class="mtk-brand-text">Quantrex Academy · Practice</span></div>
           </div>
           <div class="mtk-prac-progress">Q${pos} / ${total}</div>
+          ${timerHtml}
           <div class="mtk-header-tools qx-prac-tools">
+            ${hintBtn}
             <button type="button" class="qx-bm-btn eg-tool-btn ${bmOn ? "on" : ""}" onclick="typeof toggleBm==='function'&&toggleBm(${qidAttr})" data-tip="Bookmark" title="Bookmark" aria-label="Bookmark">${BM_SVG}<span class="eg-tip">Bookmark</span></button>
             <button type="button" class="eg-tool-btn" onclick="typeof toggleBmWithGroup==='function'&&toggleBmWithGroup(${qidAttr})" data-tip="Create group" title="Create group" aria-label="Create group">+<span class="eg-tip">Group</span></button>
             <button type="button" class="qx-report-fab eg-tool-btn" onclick="typeof openQuestionReport==='function'&&openQuestionReport(${qidAttr})" data-tip="Report" title="Report" aria-label="Report">!<span class="eg-tip">Report</span></button>
@@ -713,11 +745,10 @@ const AllenTestUI = (() => {
             <div class="mtk-q-head"><span class="mtk-q-num">Q${pos}</span>${typeBadge}</div>
             ${partsSafe.paperMeta || ""}
             ${partsSafe.diagramSlot || ""}
-            ${stemHtml || (String(qBody).includes("qx-question-body") ? qBody : `<div class="mtk-q-text qx-content" data-qx-qid="${q.id}">${qBody}</div>`)}
-            ${/* qxmd175/176 Marks-way: solution replaces stem slot; no off-canvas stem */""}
-            <div id="qaSolReveal" class="${solOpen ? "eg-sol-marks-way eg-qxmd176-sol eg-qxmd177-sol eg-qxmd179-sol" : ""}">${partsSafe.solReveal || ""}</div>
-            <div id="qaResult" class="${solOpen ? "eg-sol-marks-way eg-qxmd176-sol eg-qxmd177-sol eg-qxmd179-sol" : ""}">${partsSafe.resultHtml || ""}</div>
+            ${stemHtml}
             <div class="${optsClass}" id="qaOpts">${opts}</div>
+            <div id="qaResult">${partsSafe.resultHtml || ""}</div>
+            <div id="qaSolReveal">${partsSafe.solReveal || ""}</div>
             <div class="eg-action-row">
               <div class="eg-check-wrap">${done || incomplete ? "" : `<button type="button" class="eg-check" id="qxPracSubmit" ${canSubmit ? "" : "disabled"}>Check Answer</button>`}</div>
               <button type="button" class="eg-note" id="qxPracNote">Add a Note</button>
@@ -780,9 +811,10 @@ const AllenTestUI = (() => {
       <div class="qx-best-exambar">${esc(paperText)}</div>
       <div class="qx-best-meta">
         <span class="qx-best-qno">${String(pos).padStart(2, "0")}</span>
-        <span class="qx-best-timer" id="egmqQTime"><span id="egmqTimerSec">0s</span></span>
+        ${showTimer ? `<span class="qx-best-timer" id="egmqQTime"><span id="egmqTimerSec">0s</span></span>` : ""}
         <span class="qx-best-marks"><b class="ok">+4</b><b class="bad">−1</b></span>
         <span class="qx-best-actions qx-prac-tools">
+          ${hintBtn}
           <button type="button" class="qx-best-ico eg-tool-btn ${bmOn ? "on" : ""}" onclick="typeof toggleBm==='function'&&toggleBm(${qidAttr})" data-tip="Bookmark" title="Bookmark" aria-label="Bookmark">☆<span class="eg-tip">Bookmark</span></button>
           <button type="button" class="qx-best-ico eg-tool-btn" onclick="typeof toggleBmWithGroup==='function'&&toggleBmWithGroup(${qidAttr})" data-tip="Create group" title="Create group" aria-label="Create group">+<span class="eg-tip">Group</span></button>
           <button type="button" class="qx-best-ico warn eg-tool-btn" onclick="typeof openQuestionReport==='function'&&openQuestionReport(${qidAttr})" data-tip="Report" title="Report" aria-label="Report">⚠<span class="eg-tip">Report</span></button>
@@ -794,9 +826,9 @@ const AllenTestUI = (() => {
         ${String(qBody).includes("qx-question-body")
           ? qBody
           : (stemHtml || `<div class="mtk-q-text qx-content mq-stem" data-qx-qid="${q.id}">${qBody}</div>`)}
-        <div id="qaSolReveal" class="${solOpen ? "eg-sol-marks-way eg-qxmd176-sol eg-qxmd177-sol eg-qxmd179-sol" : ""}">${partsSafe.solReveal || ""}</div>
-        <div id="qaResult" class="${solOpen ? "eg-sol-marks-way eg-qxmd176-sol eg-qxmd177-sol eg-qxmd179-sol" : ""}">${partsSafe.resultHtml || ""}</div>
         <div class="${optsClass} mq-opts egmq-opts" id="qaOpts">${opts}</div>
+        <div id="qaResult">${partsSafe.resultHtml || ""}</div>
+        <div id="qaSolReveal">${partsSafe.solReveal || ""}</div>
         ${partsSafe.solActions || ""}
         <button type="button" class="qx-best-note" id="qxPracNote">Add a Note</button>
       </div>
@@ -981,6 +1013,11 @@ const AllenTestUI = (() => {
       // Button shows the mode you can switch TO
       if (tbtn) tbtn.textContent = next === "dark" ? "Light" : "Dark";
     });
+
+    try {
+      const qs = qxMarksQSet();
+      if (qs.showTimer !== false) startEgmqTimers(root);
+    } catch (_) { /* */ }
   }
 
   return {
@@ -988,6 +1025,7 @@ const AllenTestUI = (() => {
     detectContext,
     practiceHtml,
     bindPractice,
+    startEgmqTimers,
     syncPracticeTheme,
     examTitle,
     jeeMainPattern,

@@ -7,13 +7,94 @@
 (function (global) {
   "use strict";
 
-  var PARITY = "qxmd179";
+  var PARITY = "qxmd187";
   var PREF = {
     push: "qx_pref_push_notif",
     email: "qx_pref_email_notif",
     font: "quantrex_test_font_scale",
-    palette: "qx_eg_palette_mode"
+    palette: "qx_eg_palette_mode",
+    autoNext: "qx_pref_auto_next",
+    haptic: "qx_pref_haptic",
+    awake: "qx_pref_keep_awake",
+    lang: "qx_pref_lang",
+    qset: "qx_marks_question_settings",
+    themePref: "quantrex_theme"
   };
+
+  /* MARKS /api/v4/user/me → user.questionSettings (exact keys) */
+  var QSET_DEFAULTS = {
+    alwaysShowMyNote: false,
+    dontShowCorrectAnswerImmediately: false,
+    isQuestionSolutionMode: false,
+    playSounds: true,
+    showAttemptInsight: true,
+    showHint: false,
+    showTimer: true,
+    textSize: 18,
+    showHintFeedbackPopup: true
+  };
+
+  function getQuestionSettings() {
+    var d = {};
+    Object.keys(QSET_DEFAULTS).forEach(function (k) { d[k] = QSET_DEFAULTS[k]; });
+    try {
+      var raw = JSON.parse(lsGet(PREF.qset, "{}") || "{}") || {};
+      Object.keys(QSET_DEFAULTS).forEach(function (k) {
+        if (typeof raw[k] === "boolean" || typeof raw[k] === "number") d[k] = raw[k];
+      });
+    } catch (_) { /* */ }
+    var font = getFont();
+    d.textSize = font === "small" ? 14 : font === "large" ? 20 : 18;
+    return d;
+  }
+
+  function setQuestionSetting(key, val) {
+    if (!Object.prototype.hasOwnProperty.call(QSET_DEFAULTS, key)) return getQuestionSettings();
+    var d = getQuestionSettings();
+    d[key] = typeof QSET_DEFAULTS[key] === "boolean" ? !!val : val;
+    try {
+      var store = {};
+      Object.keys(QSET_DEFAULTS).forEach(function (k) { store[k] = d[k]; });
+      lsSet(PREF.qset, JSON.stringify(store));
+    } catch (_) { /* */ }
+    return d;
+  }
+
+  function playAnswerSound(ok) {
+    var qs = getQuestionSettings();
+    if (!qs.playSounds) return;
+    try {
+      var AC = window.AudioContext || window.webkitAudioContext;
+      if (!AC) return;
+      playAnswerSound._ctx = playAnswerSound._ctx || new AC();
+      var ctx = playAnswerSound._ctx;
+      if (ctx.state === "suspended" && ctx.resume) ctx.resume();
+      var o = ctx.createOscillator();
+      var g = ctx.createGain();
+      o.type = "sine";
+      o.frequency.value = ok ? 880 : 220;
+      g.gain.setValueAtTime(0.0001, ctx.currentTime);
+      g.gain.exponentialRampToValueAtTime(0.07, ctx.currentTime + 0.02);
+      g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + (ok ? 0.14 : 0.2));
+      o.connect(g);
+      g.connect(ctx.destination);
+      o.start();
+      o.stop(ctx.currentTime + 0.22);
+    } catch (_) { /* */ }
+  }
+
+  var _qxWakeLock = null;
+  function applyKeepAwake(on) {
+    lsSet(PREF.awake, on ? "1" : "0");
+    try {
+      if (on && navigator.wakeLock && navigator.wakeLock.request) {
+        navigator.wakeLock.request("screen").then(function (lock) { _qxWakeLock = lock; }).catch(function () {});
+      } else if (_qxWakeLock && _qxWakeLock.release) {
+        _qxWakeLock.release();
+        _qxWakeLock = null;
+      }
+    } catch (_) { /* */ }
+  }
 
   function esc(s) {
     return String(s || "")
@@ -59,17 +140,34 @@
     lsSet(PREF.email, on ? "1" : "0");
   }
 
+  function getThemePref() {
+    var v = lsGet(PREF.themePref, "dark");
+    if (v === "light" || v === "dark" || v === "system") return v;
+    return "dark";
+  }
+
+  function resolveTheme(pref) {
+    var p = pref || getThemePref();
+    if (p === "system") {
+      try {
+        return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      } catch (_) { return "dark"; }
+    }
+    return p === "light" ? "light" : "dark";
+  }
+
   function getTheme() {
     if (typeof QuantrexTheme !== "undefined" && QuantrexTheme.get) return QuantrexTheme.get();
     return document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
   }
 
   function setTheme(mode) {
-    var m = mode === "light" ? "light" : "dark";
+    var pref = mode === "system" || mode === "light" || mode === "dark" ? mode : "dark";
+    lsSet(PREF.themePref, pref);
+    var m = resolveTheme(pref);
     if (typeof QuantrexTheme !== "undefined" && QuantrexTheme.apply) QuantrexTheme.apply(m);
     else {
       document.documentElement.setAttribute("data-theme", m);
-      lsSet("quantrex_theme", m);
     }
   }
 
@@ -98,8 +196,8 @@
 
   function getPaletteMode() {
     /* qxmd167: default side (right sidebar only) — simpler/faster than Both */
-    var v = lsGet(PREF.palette, "side");
-    return v === "side" || v === "strip" || v === "both" ? v : "side";
+    var v = lsGet(PREF.palette, "both");
+    return v === "side" || v === "strip" || v === "both" ? v : "both";
   }
 
   function setPaletteMode(mode) {
@@ -263,10 +361,33 @@
     );
   }
 
+  function questionSettingsHtml() {
+    var qs = getQuestionSettings();
+    function row(id, key, lab, hint) {
+      return '<div class="qx-set-row"><div class="qx-set-lab-wrap"><span class="qx-set-lab">' + lab + "</span>" +
+        '<span class="qx-set-hint">' + hint + "</span></div>" +
+        toggleHtml(id, !!qs[key]) + "</div>";
+    }
+    return (
+      '<div class="qx-set-sec qx-set-span" id="qxSetQuestionSec">' +
+      '<div class="qx-set-sec-h">Question</div>' +
+      '<p class="qx-set-sec-sub">Same question settings as MARKS — timer, sounds, hint, solution mode, notes.</p>' +
+      '<div class="qx-set-list">' +
+      row("qxSetShowTimer", "showTimer", "Show timer", "Per-question timer while you practise") +
+      row("qxSetPlaySounds", "playSounds", "Play sounds", "Correct / incorrect chime after Check Answer") +
+      row("qxSetShowHint", "showHint", "Show hint", "Hint button on each question when a hint exists") +
+      row("qxSetHintPopup", "showHintFeedbackPopup", "Hint feedback popup", "Open hint in a popup instead of a toast") +
+      row("qxSetNoImmediateAns", "dontShowCorrectAnswerImmediately", "Don't show correct answer immediately", "Check Answer grades you, but options stay unmarked until Show Answer") +
+      row("qxSetSolMode", "isQuestionSolutionMode", "Solution mode", "Open the official solution as soon as the question loads") +
+      row("qxSetAlwaysNote", "alwaysShowMyNote", "Always show my note", "Keep the note box open on every question") +
+      row("qxSetAttemptInsight", "showAttemptInsight", "Show attempt insight", "Time taken and result after you check") +
+      "</div></div>"
+    );
+  }
+
   function renderHtml() {
     injectCss();
     var p = profileData();
-    var theme = getTheme();
     var font = getFont();
     var year = targetYear(p);
     var name = p.name || "";
@@ -300,8 +421,8 @@
       '<div class="qx-set-sec-h">Appearance</div>' +
       '<div class="qx-set-list">' +
       '<div class="qx-set-row"><div class="qx-set-lab-wrap"><span class="qx-set-lab">Theme</span>' +
-      '<span class="qx-set-hint">Light or dark app theme</span></div>' +
-      segHtml("qxSetTheme", theme, [{ v: "light", l: "Light" }, { v: "dark", l: "Dark" }]) +
+      '<span class="qx-set-hint">Light, dark, or match device</span></div>' +
+      segHtml("qxSetTheme", getThemePref(), [{ v: "light", l: "Light" }, { v: "dark", l: "Dark" }, { v: "system", l: "Auto" }]) +
       "</div>" +
       '<div class="qx-set-row"><div class="qx-set-lab-wrap"><span class="qx-set-lab">Text size</span>' +
       '<span class="qx-set-hint">Question &amp; solution font</span></div>' +
@@ -309,7 +430,7 @@
       "</div>" +
       "</div></div>" +
 
-      /* Practice */
+      /* Practice — Exam Goal / Marks mobile */
       '<div class="qx-set-sec">' +
       '<div class="qx-set-sec-h">Practice</div>' +
       '<div class="qx-set-list">' +
@@ -317,7 +438,23 @@
       '<span class="qx-set-hint">Right sidebar, top bar, or both</span></div>' +
       segHtml("qxSetPalette", getPaletteMode(), [{ v: "side", l: "Right" }, { v: "strip", l: "Top" }, { v: "both", l: "Both" }]) +
       "</div>" +
+      '<div class="qx-set-row"><div class="qx-set-lab-wrap"><span class="qx-set-lab">Auto next</span>' +
+      '<span class="qx-set-hint">After you pick an option in practice</span></div>' +
+      toggleHtml("qxSetAutoNext", lsGet(PREF.autoNext, "0") === "1") + "</div>" +
+      '<div class="qx-set-row"><div class="qx-set-lab-wrap"><span class="qx-set-lab">Keep screen on</span>' +
+      '<span class="qx-set-hint">During a test on supported phones</span></div>' +
+      toggleHtml("qxSetAwake", lsGet(PREF.awake, "0") === "1") + "</div>" +
+      '<div class="qx-set-row"><div class="qx-set-lab-wrap"><span class="qx-set-lab">Haptic tap</span>' +
+      '<span class="qx-set-hint">Vibrate when you select an option</span></div>' +
+      toggleHtml("qxSetHaptic", lsGet(PREF.haptic, "1") !== "0") + "</div>" +
+      '<div class="qx-set-row"><div class="qx-set-lab-wrap"><span class="qx-set-lab">Language</span>' +
+      '<span class="qx-set-hint">App language</span></div>' +
+      segHtml("qxSetLang", lsGet(PREF.lang, "en"), [{ v: "en", l: "English" }]) +
+      "</div>" +
       "</div></div>" +
+
+      /* Question — MARKS user.questionSettings */
+      questionSettingsHtml() +
 
       /* Account */
       '<div class="qx-set-sec qx-set-span">' +
@@ -327,6 +464,9 @@
       '<div class="qx-set-lab-wrap"><span class="qx-set-lab">Edit Profile</span>' +
       '<span class="qx-set-hint">Name, exam, class, target year</span></div>' + pencilSvg() +
       "</button>" +
+      '<button type="button" class="qx-set-row" id="qxSetLogout">' +
+      '<div class="qx-set-lab-wrap"><span class="qx-set-lab">Sign out</span>' +
+      '<span class="qx-set-hint">Return to login</span></div></button>' +
       "</div></div>" +
 
       '<p class="qx-set-foot-note qx-set-span">Quantrex Academy · English UI · Free access</p>' +
@@ -375,6 +515,17 @@
         var next = !btn.classList.contains("on");
         if (btn.id === "qxSetPush") setPush(next);
         else if (btn.id === "qxSetEmail") setEmail(next);
+        else if (btn.id === "qxSetAutoNext") lsSet(PREF.autoNext, next ? "1" : "0");
+        else if (btn.id === "qxSetHaptic") lsSet(PREF.haptic, next ? "1" : "0");
+        else if (btn.id === "qxSetAwake") applyKeepAwake(next);
+        else if (btn.id === "qxSetShowTimer") setQuestionSetting("showTimer", next);
+        else if (btn.id === "qxSetPlaySounds") setQuestionSetting("playSounds", next);
+        else if (btn.id === "qxSetShowHint") setQuestionSetting("showHint", next);
+        else if (btn.id === "qxSetHintPopup") setQuestionSetting("showHintFeedbackPopup", next);
+        else if (btn.id === "qxSetNoImmediateAns") setQuestionSetting("dontShowCorrectAnswerImmediately", next);
+        else if (btn.id === "qxSetSolMode") setQuestionSetting("isQuestionSolutionMode", next);
+        else if (btn.id === "qxSetAlwaysNote") setQuestionSetting("alwaysShowMyNote", next);
+        else if (btn.id === "qxSetAttemptInsight") setQuestionSetting("showAttemptInsight", next);
         btn.classList.toggle("on", next);
         btn.setAttribute("aria-checked", next ? "true" : "false");
         if (typeof showToast === "function") showToast(next ? "Enabled" : "Disabled");
@@ -402,6 +553,13 @@
 
     wireToggle(root.querySelector("#qxSetPush"));
     wireToggle(root.querySelector("#qxSetEmail"));
+    wireToggle(root.querySelector("#qxSetAutoNext"));
+    wireToggle(root.querySelector("#qxSetHaptic"));
+    wireToggle(root.querySelector("#qxSetAwake"));
+    [
+      "qxSetShowTimer", "qxSetPlaySounds", "qxSetShowHint", "qxSetHintPopup",
+      "qxSetNoImmediateAns", "qxSetSolMode", "qxSetAlwaysNote", "qxSetAttemptInsight"
+    ].forEach(function (id) { wireToggle(root.querySelector("#" + id)); });
 
     function wireSeg(el, apply) {
       if (!el) return;
@@ -415,7 +573,9 @@
     }
     wireSeg(root.querySelector("#qxSetTheme"), function (v) {
       setTheme(v);
-      if (typeof showToast === "function") showToast(v === "dark" ? "Dark mode" : "Light mode");
+      if (typeof showToast === "function") {
+        showToast(v === "system" ? "Theme: Auto" : (v === "dark" ? "Dark mode" : "Light mode"));
+      }
     });
     wireSeg(root.querySelector("#qxSetFont"), function (v) {
       setFont(v);
@@ -434,6 +594,15 @@
       var h = page.querySelector(".qx-set-head h1");
       if (h) h.textContent = "Edit Profile";
     };
+    var logout = root.querySelector("#qxSetLogout");
+    if (logout) logout.onclick = function () {
+      try {
+        if (window.QxStudentAuth && typeof QxStudentAuth.logout === "function") QxStudentAuth.logout();
+        else if (window.QuantrexDB && QuantrexDB.signOut) QuantrexDB.signOut();
+      } catch (_) { /* */ }
+      try { location.href = "login.html"; } catch (_) { location.href = "index.html"; }
+    };
+    if (lsGet(PREF.awake, "0") === "1") applyKeepAwake(true);
     var cancel = root.querySelector("#qxSetCancelProf");
     if (cancel) cancel.onclick = function () {
       page.classList.remove("is-editing");
@@ -623,7 +792,12 @@
     getFont: getFont,
     setFont: setFont,
     getPaletteMode: getPaletteMode,
-    setPaletteMode: setPaletteMode
+    setPaletteMode: setPaletteMode,
+    getQuestionSettings: getQuestionSettings,
+    setQuestionSetting: setQuestionSetting,
+    playAnswerSound: playAnswerSound,
+    getThemePref: getThemePref,
+    PARITY: PARITY
   };
   global.QxSettings = api;
   global.viewSettings = viewSettings;

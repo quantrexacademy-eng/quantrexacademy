@@ -1,0 +1,21 @@
+{
+  "source": "MARKS user.questionSettings",
+  "build": "qxmd187",
+  "settings": {
+    "pushNotifications": true,
+    "emailNotifications": true,
+    "darkMode": false,
+    "theme": "system"
+  },
+  "questionSettings": {
+    "alwaysShowMyNote": false,
+    "dontShowCorrectAnswerImmediately": false,
+    "isQuestionSolutionMode": false,
+    "playSounds": true,
+    "showAttemptInsight": true,
+    "showHint": false,
+    "showTimer": true,
+    "textSize": 18,
+    "showHintFeedbackPopup": true
+  }
+}

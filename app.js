@@ -2370,24 +2370,42 @@ function qxSolutionBlockHtml(q) {
   </div>`;
 }
 
-function qxPracticeResultHtml(q, sel) {
+function qxMarksQuestionSettings() {
+  try {
+    if (typeof QxSettings !== "undefined" && QxSettings.getQuestionSettings) {
+      return QxSettings.getQuestionSettings();
+    }
+  } catch (_) { /* */ }
+  try {
+    return JSON.parse(localStorage.getItem("qx_marks_question_settings") || "{}") || {};
+  } catch (_) {
+    return {};
+  }
+}
+
+function qxPracticeResultHtml(q, sel, extra) {
+  const qs = qxMarksQuestionSettings();
   const graded = typeof QuantrexQFormat !== "undefined"
     ? QuantrexQFormat.grade(q, sel)
     : { correct: sel === q.answer, partial: false };
   const { correct, partial } = graded;
-  const ansLabel = typeof QuantrexQFormat !== "undefined"
+  const hideKey = extra && extra.hideCorrect;
+  const ansLabel = (!hideKey && typeof QuantrexQFormat !== "undefined")
     ? QuantrexQFormat.formatCorrectAnswer(q)
     : "";
-  const solBlock = qxHasSolution(q) ? qxSolutionBlockHtml(q) : "";
-  const title = correct ? "✅ Correct!" : (partial ? "⚠️ Partially Correct" : "❌ Incorrect");
-  const boxCls = correct ? "ok" : (partial ? "partial" : "no");
+  const title = hideKey
+    ? "Answer saved"
+    : (correct ? "✅ Correct!" : (partial ? "⚠️ Partially Correct" : "❌ Incorrect"));
+  const boxCls = hideKey ? "ok" : (correct ? "ok" : (partial ? "partial" : "no"));
+  const insight = (qs.showAttemptInsight && extra && extra.insight)
+    ? `<p class="qx-attempt-insight">${extra.insight}</p>`
+    : "";
   return `<div class="qx-prac-result-wrap">
     <div class="result-box ${boxCls}">
       <strong>${title}</strong>
-      ${!correct ? `<p class="qx-prac-correct-ans">Correct answer: <span class="qx-content">${ansLabel}</span></p>` : ""}
-      ${!solBlock ? `<p class="qx-no-sol-note">Solution not available for this question.</p>` : ""}
+      ${!hideKey && !correct && ansLabel ? `<p class="qx-prac-correct-ans">Correct answer: <span class="qx-content">${ansLabel}</span></p>` : ""}
+      ${insight}
     </div>
-    ${solBlock}
   </div>`;
 }
 
@@ -2434,6 +2452,9 @@ function qxPracticeWireExtra(scope, ctx, qid) {
     if (typeof ExamgoalTestUI !== "undefined" && ExamgoalTestUI.ensureCss) ExamgoalTestUI.ensureCss();
   } catch (_) { /* */ }
   const q = typeof getQ === "function" ? getQ(qid) : null;
+  const qs = qxMarksQuestionSettings();
+  ctx._qStartedAt = ctx._qStartedAt || {};
+  if (!ctx._qStartedAt[qid]) ctx._qStartedAt[qid] = Date.now();
 
   const show = scope.querySelector("#qxPracShowAns");
   if (show) {
@@ -2481,10 +2502,59 @@ function qxPracticeWireExtra(scope, ctx, qid) {
         ExamgoalTestUI.openNote(qid, note);
       }
     };
+    if (qs.alwaysShowMyNote && typeof ExamgoalTestUI !== "undefined" && ExamgoalTestUI.openNote) {
+      try { ExamgoalTestUI.openNote(qid, note); } catch (_) { /* */ }
+    }
+  }
+
+  const hintBtn = scope.querySelector("#qxPracHint");
+  if (hintBtn) {
+    hintBtn.onclick = function (e) {
+      if (e) { e.preventDefault(); e.stopPropagation(); }
+      if (hintBtn.disabled) {
+        if (typeof showToast === "function") showToast("No hint for this question");
+        return;
+      }
+      let text = "";
+      if (q) {
+        const h = q.hint || q.hints || q.hintText || "";
+        text = Array.isArray(h) ? h.filter(Boolean).join("\n") : String(h || "");
+        text = text.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+      }
+      if (!text) {
+        if (typeof showToast === "function") showToast("No hint for this question");
+        return;
+      }
+      if (qs.showHintFeedbackPopup !== false) {
+        try {
+          const old = document.getElementById("qxHintPop");
+          if (old) old.remove();
+          const pop = document.createElement("div");
+          pop.id = "qxHintPop";
+          pop.className = "eg-note-pop";
+          pop.innerHTML = '<div class="eg-note-pop-h">Hint</div><p style="margin:0;padding:12px 14px;line-height:1.5">' +
+            text.replace(/&/g, "&amp;").replace(/</g, "&lt;") +
+            '</p><div class="eg-note-pop-act"><button type="button" class="eg-btn eg-btn-next" id="qxHintOk">OK</button></div>';
+          (scope.querySelector(".mtk-test-root, .qx-practice-page, #app-main") || scope).appendChild(pop);
+          const ok = pop.querySelector("#qxHintOk");
+          if (ok) ok.onclick = function () { pop.remove(); };
+        } catch (_) {
+          if (typeof showToast === "function") showToast(text);
+        }
+      } else if (typeof showToast === "function") {
+        showToast(text);
+      }
+    };
+  }
+
+  if (qs.isQuestionSolutionMode && q && typeof qxHasSolution === "function" && qxHasSolution(q)
+    && typeof qxRevealSolution === "function") {
+    ctx.showAnswer = true;
+    try { qxRevealSolution(qid); } catch (_) { /* */ }
   }
 }
 
-/** qxmd165: hide practice stem whenever Solution is open (Allen + legacy + Medical/Engineering). */
+/** qxmd185: Check Answer keeps the stem. Never wipe or hide the question. */
 function qxHidePracticeStem(scope) {
   try {
     const root = scope || document.getElementById("app-main") || document;
@@ -2494,29 +2564,16 @@ function qxHidePracticeStem(scope) {
     hosts.forEach(function (el) {
       if (!el) return;
       if (el.closest("#qaSolReveal, #qaResult, .qx-sol-card, .eg-sol-panel, .result-box, #qaOpts, .mtk-options, .eg-opts")) return;
-      try { el.innerHTML = ""; } catch (_) { /* */ }
-      el.classList.add("eg-stem-sol-hidden", "qx-stem-sol-hidden");
-      el.setAttribute("hidden", "");
-      el.setAttribute("aria-hidden", "true");
-      try {
-        el.style.setProperty("display", "none", "important");
-        el.style.setProperty("visibility", "hidden", "important");
-        el.style.setProperty("opacity", "0", "important");
-        el.style.setProperty("height", "0", "important");
-        el.style.setProperty("max-height", "0", "important");
-        el.style.setProperty("overflow", "hidden", "important");
-        el.style.setProperty("margin", "0", "important");
-        el.style.setProperty("padding", "0", "important");
-        /* qxmd176: never absolute/left:-9999 (ghost stem above header) */
-        el.style.setProperty("position", "static", "important");
-        el.style.setProperty("left", "auto", "important");
-        el.style.setProperty("top", "auto", "important");
-        el.style.setProperty("clip", "auto", "important");
-      } catch (_) { /* */ }
+      el.classList.remove("eg-stem-sol-hidden", "qx-stem-sol-hidden");
+      el.removeAttribute("hidden");
+      el.setAttribute("aria-hidden", "false");
+      try { el.style.cssText = ""; } catch (_) { /* */ }
     });
     const wrap = root.querySelector(".mtk-test-root, .allen-practice, .qx-practice-page, .eg-test-root");
-    if (wrap) wrap.classList.add("eg-sol-showing", "qx-sol-showing", "eg-qxmd176", "eg-qxmd177", "eg-qxmd179");
-    try { document.body.classList.add("eg-qxmd179-host", "eg-qxmd179"); } catch (_) { /* */ }
+    if (wrap) {
+      wrap.classList.add("eg-sol-showing", "qx-sol-showing", "eg-qxmd182");
+      wrap.classList.remove("eg-qxmd175", "eg-qxmd176", "eg-qxmd177", "eg-qxmd179");
+    }
   } catch (_) { /* */ }
 }
 
@@ -2576,22 +2633,41 @@ async function answerQ(qid, response) {
   const ctx = window._qxPracticeCtx || { done: {}, selected: {} };
   ctx.done[qid] = true;
   ctx.selected[qid] = response;
+  const qs = qxMarksQuestionSettings();
+  const hideKey = !!qs.dontShowCorrectAnswerImmediately;
+  const started = ctx._qStartedAt && ctx._qStartedAt[qid];
+  const tookSec = started ? Math.max(0, Math.round((Date.now() - started) / 1000)) : null;
   const main = document.getElementById("app-main");
   const solActs = main.querySelector(".qx-sol-actions");
   if (solActs) solActs.remove();
   const solReveal = document.getElementById("qaSolReveal");
   if (solReveal) solReveal.innerHTML = "";
-  const graded = typeof QuantrexQFormat !== "undefined"
-    ? QuantrexQFormat.applyPracticeResult(main, q, response)
-    : { correct: response === q.answer, partial: false };
+  const graded = (hideKey
+    ? (typeof QuantrexQFormat !== "undefined" ? QuantrexQFormat.grade(q, response) : { correct: response === q.answer, partial: false })
+    : (typeof QuantrexQFormat !== "undefined"
+      ? QuantrexQFormat.applyPracticeResult(main, q, response)
+      : { correct: response === q.answer, partial: false }));
+  if (hideKey && main) {
+    try {
+      main.querySelectorAll("[data-prac-opt]").forEach(function (btn) { btn.disabled = true; });
+    } catch (_) { /* */ }
+  }
+  try {
+    if (typeof QxSettings !== "undefined" && QxSettings.playAnswerSound) {
+      QxSettings.playAnswerSound(!!(graded.correct || graded.partial));
+    }
+  } catch (_) { /* */ }
   STATE.markSolved(qid, graded.correct || graded.partial, {
     subject: q.subject,
     chapter: q.chapter,
     exam: (typeof STATE !== "undefined" && STATE.exam) || q.exam
   });
+  const insight = (qs.showAttemptInsight && tookSec != null)
+    ? ("Time: " + tookSec + "s" + (hideKey ? "" : (graded.correct ? " · Correct" : (graded.partial ? " · Partial" : " · Incorrect"))))
+    : "";
   const res = document.getElementById("qaResult");
   if (res) {
-    res.innerHTML = qxPracticeResultHtml(q, response);
+    res.innerHTML = qxPracticeResultHtml(q, response, { hideCorrect: hideKey, insight: insight });
     try {
       if (typeof Mx !== "undefined") {
         if (Mx.afterRender) Mx.afterRender(res);
@@ -2609,14 +2685,16 @@ async function answerQ(qid, response) {
   }
   /* qxmd176: Check Answer → Show Answer ON + sync toggle (Marks-like) */
   try {
-    ctx.showAnswer = true;
-    window._qxPracticeCtx = ctx;
-    var showEl = main && main.querySelector("#qxPracShowAns");
-    if (showEl) showEl.checked = true;
+    if (!hideKey) {
+      ctx.showAnswer = true;
+      window._qxPracticeCtx = ctx;
+      var showEl = main && main.querySelector("#qxPracShowAns");
+      if (showEl) showEl.checked = true;
+    }
   } catch (_) { /* */ }
   try { qxHidePracticeStem(main); } catch (_) { /* */ }
   try {
-    if (typeof qxHasSolution === "function" && qxHasSolution(q) && typeof qxRevealSolution === "function") {
+    if (!hideKey && typeof qxHasSolution === "function" && qxHasSolution(q) && typeof qxRevealSolution === "function") {
       qxRevealSolution(qid);
     }
   } catch (_) { /* */ }

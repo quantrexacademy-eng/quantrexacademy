@@ -393,3 +393,28 @@
 .mtk-test-root[data-test-theme="dark"] .mtk-q-text .qx-content {
   color: #e8eaed !important;
 }
+
+/* qxmd187 — MARKS question settings: timer + hint on practice chrome */
+.mtk-test-root.allen-practice .mtk-prac-timer,
+.mtk-test-root.allen-practice #egmqQTime {
+  min-width: 52px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  font-size: 13px;
+  color: inherit;
+  opacity: 0.92;
+}
+.mtk-test-root.allen-practice .qx-hint-btn[disabled] {
+  opacity: 0.4;
+  pointer-events: auto;
+}
+.qx-attempt-insight {
+  margin: 6px 0 0;
+  font-size: 13px;
+  font-weight: 600;
+  opacity: 0.85;
+}
+#qxHintPop {
+  z-index: 40;
+}

@@ -1,10 +1,10 @@
 {
-  "build": "qxmd179",
-  "cache": "qx-pwa-qxmd179",
-  "title": "qxmd179 \u00b7 Eng/Med Digital Books split + question-count badges (Marks parity)",
-  "body": "Medical no longer reuses Eng MIPYQ id/bank. Catalogs match Marks Eng vs Med lists; count badges on covers (Eng PYQ 4200+, Med PYQ 4941 coming-soon). PhysChem Eng/Med coming-soon until local packs exist. Keep Med Organic/HCV/Irodov aliases. Quantrex branding; no Vercel; no invented bank content.",
+  "build": "qxmd187",
+  "cache": "qx-pwa-qxmd187",
+  "title": "qxmd187 · MARKS question settings + Medical books split",
+  "body": "Settings match MARKS questionSettings (timer, sounds, hint, solution mode, notes, attempt insight). Medical Digital Books never fall back to Engineering. Deployed from USB.",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app",
   "site": "https://www.quantrexacademy.com",
   "package": "com.quantrexacademy.app",
-  "ts": 1790000000000
+  "ts": 1870000000000
 }
