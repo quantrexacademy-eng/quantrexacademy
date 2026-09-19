@@ -14554,7 +14554,8 @@ async function fetchBookNav(bookId) {
   } catch (e) {
     clearTimeout(to);
     console.warn("fetchBookNav fail", bookId, e);
-    _bookNavCache[bookId] = null;
+    try { delete _bookNavCache[bookId]; } catch (_) { /* */ }
+    return null;
   }
   return _bookNavCache[bookId];
 }
@@ -14665,7 +14666,11 @@ async function loadBookChapter(bookId, chapterKey) {
     console.warn("loadBookChapter JSON", bookId, chapterKey, e);
     return [];
   }
-  const qs = (data.questions || []).map(q => {
+  const qs = (data.questions || []).slice().sort(function (a, b) {
+    const oa = (typeof a._order === "number") ? a._order : 1e9;
+    const ob = (typeof b._order === "number") ? b._order : 1e9;
+    return oa - ob;
+  }).map(q => {
     let o = { ...q, _book: bookId, _bookId: bookId, _chapterKey: chapterKey };
     if (qxIsOrganicBook(bookId) || qxIsOrganicBook(resolvedId)) o = qxPatchOrganicBookQuestion(o);
     // IE Irodov + all books: rewrite figures to Quantrex Storage (never Marks CDN)

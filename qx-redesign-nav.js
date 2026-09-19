@@ -308,6 +308,14 @@
         payload: revisionPayload
       },
       {
+        id: "flash",
+        icon: "🃏",
+        title: "Flash Cards",
+        sub: "Revision flash cards for this subject",
+        soon: false,
+        payload: (typeof mg === "function") ? mg("flashcards", { step: "chapters", subject: subject || "" }) : ""
+      },
+      {
         id: "pyq",
         icon: "🎯",
         title: "Previous Year Questions",

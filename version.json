@@ -1,10 +1,10 @@
 {
-  "build": "qxmd187",
-  "cache": "qx-pwa-qxmd187",
-  "title": "qxmd187 · MARKS question settings + Medical books split",
-  "body": "Settings match MARKS questionSettings (timer, sounds, hint, solution mode, notes, attempt insight). Medical Digital Books never fall back to Engineering. Deployed from USB.",
+  "build": "qxmd188",
+  "cache": "qx-pwa-qxmd188",
+  "title": "qxmd188 · missing MARKS books + visible revision/flash cards",
+  "body": "Extracted Physical Chemistry JEE/NEET (1045 each) and NEET MIPYQ (4941) in MARKS chapter and question order. Flash Cards and Revision Notes on main nav. Medical RFC no longer times out empty.",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app",
   "site": "https://www.quantrexacademy.com",
   "package": "com.quantrexacademy.app",
-  "ts": 1870000000000
+  "ts": 1880000000000
 }

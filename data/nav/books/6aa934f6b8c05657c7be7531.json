@@ -1,0 +1,90 @@
+{
+  "id": "6aa934f6b8c05657c7be7531",
+  "title": "Physical Chemistry for NEET 2027",
+  "type": "exam",
+  "exam": "NEET",
+  "banner": "assets/book-covers/physical-chemistry-neet.svg",
+  "redirectType": "subject",
+  "count": 1045,
+  "stream": "Medical",
+  "modules": [
+    {
+      "id": "6aa93b7f25c310c04441f844",
+      "title": "Physical Chemistry for NEET 2027",
+      "count": 1045,
+      "subjects": [
+        {
+          "id": "6aa93b7f25c310c04441f847",
+          "name": "Chemistry",
+          "count": 1045,
+          "position": 0,
+          "chapters": [
+            {
+              "id": "6aa93b7f25c310c04441f848",
+              "name": "Some Basic Concepts of Chemistry",
+              "count": 146,
+              "position": 0,
+              "key": "6aa934f6b8c05657c7be7531__6aa93b7f25c310c04441f844__6aa93b7f25c310c04441f847__6aa93b7f25c310c04441f848"
+            },
+            {
+              "id": "6aa93b7f25c310c04441fadb",
+              "name": "Structure of Atom",
+              "count": 132,
+              "position": 1,
+              "key": "6aa934f6b8c05657c7be7531__6aa93b7f25c310c04441f844__6aa93b7f25c310c04441f847__6aa93b7f25c310c04441fadb"
+            },
+            {
+              "id": "6aa93b7f25c310c04441fd14",
+              "name": "Thermodynamics",
+              "count": 162,
+              "position": 2,
+              "key": "6aa934f6b8c05657c7be7531__6aa93b7f25c310c04441f844__6aa93b7f25c310c04441f847__6aa93b7f25c310c04441fd14"
+            },
+            {
+              "id": "6aa93b7f25c310c04441ffa3",
+              "name": "Chemical Equilibrium",
+              "count": 85,
+              "position": 3,
+              "key": "6aa934f6b8c05657c7be7531__6aa93b7f25c310c04441f844__6aa93b7f25c310c04441f847__6aa93b7f25c310c04441ffa3"
+            },
+            {
+              "id": "6aa93b7f25c310c0444200a9",
+              "name": "Ionic Equilibrium",
+              "count": 108,
+              "position": 4,
+              "key": "6aa934f6b8c05657c7be7531__6aa93b7f25c310c04441f844__6aa93b7f25c310c04441f847__6aa93b7f25c310c0444200a9"
+            },
+            {
+              "id": "6aa93b7f25c310c04442023a",
+              "name": "Redox Reactions",
+              "count": 111,
+              "position": 5,
+              "key": "6aa934f6b8c05657c7be7531__6aa93b7f25c310c04441f844__6aa93b7f25c310c04441f847__6aa93b7f25c310c04442023a"
+            },
+            {
+              "id": "6aa93b7f25c310c0444202fe",
+              "name": "Chemical Kinetics",
+              "count": 88,
+              "position": 6,
+              "key": "6aa934f6b8c05657c7be7531__6aa93b7f25c310c04441f844__6aa93b7f25c310c04441f847__6aa93b7f25c310c0444202fe"
+            },
+            {
+              "id": "6aa93b7f25c310c04442040f",
+              "name": "Electrochemistry",
+              "count": 120,
+              "position": 7,
+              "key": "6aa934f6b8c05657c7be7531__6aa93b7f25c310c04441f844__6aa93b7f25c310c04441f847__6aa93b7f25c310c04442040f"
+            },
+            {
+              "id": "6aa93b7f25c310c044420578",
+              "name": "Solutions",
+              "count": 93,
+              "position": 8,
+              "key": "6aa934f6b8c05657c7be7531__6aa93b7f25c310c04441f844__6aa93b7f25c310c04441f847__6aa93b7f25c310c044420578"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "id": "6a7db25c02198edab586feff",
+  "title": "Physical Chemistry for JEE Main 2027",
+  "type": "exam",
+  "exam": "JEE Main 2027",
+  "banner": "assets/book-covers/physical-chemistry-jee.svg",
+  "redirectType": "subject",
+  "count": 1045,
+  "stream": "Engineering",
+  "modules": [
+    {
+      "id": "6aa93b7f25c310c04441e9a2",
+      "title": "Physical Chemistry for JEE Main 2027",
+      "count": 1045,
+      "subjects": [
+        {
+          "id": "6aa93b7f25c310c04441e9a5",
+          "name": "Chemistry",
+          "count": 1045,
+          "position": 0,
+          "chapters": [
+            {
+              "id": "6aa93b7f25c310c04441e9a6",
+              "name": "Some Basic Concepts of Chemistry",
+              "count": 146,
+              "position": 0,
+              "key": "6a7db25c02198edab586feff__6aa93b7f25c310c04441e9a2__6aa93b7f25c310c04441e9a5__6aa93b7f25c310c04441e9a6"
+            },
+            {
+              "id": "6aa93b7f25c310c04441ec39",
+              "name": "Structure of Atom",
+              "count": 132,
+              "position": 1,
+              "key": "6a7db25c02198edab586feff__6aa93b7f25c310c04441e9a2__6aa93b7f25c310c04441e9a5__6aa93b7f25c310c04441ec39"
+            },
+            {
+              "id": "6aa93b7f25c310c04441ee72",
+              "name": "Thermodynamics",
+              "count": 162,
+              "position": 2,
+              "key": "6a7db25c02198edab586feff__6aa93b7f25c310c04441e9a2__6aa93b7f25c310c04441e9a5__6aa93b7f25c310c04441ee72"
+            },
+            {
+              "id": "6aa93b7f25c310c04441f101",
+              "name": "Chemical Equilibrium",
+              "count": 85,
+              "position": 3,
+              "key": "6a7db25c02198edab586feff__6aa93b7f25c310c04441e9a2__6aa93b7f25c310c04441e9a5__6aa93b7f25c310c04441f101"
+            },
+            {
+              "id": "6aa93b7f25c310c04441f207",
+              "name": "Ionic Equilibrium",
+              "count": 108,
+              "position": 4,
+              "key": "6a7db25c02198edab586feff__6aa93b7f25c310c04441e9a2__6aa93b7f25c310c04441e9a5__6aa93b7f25c310c04441f207"
+            },
+            {
+              "id": "6aa93b7f25c310c04441f398",
+              "name": "Redox Reactions",
+              "count": 111,
+              "position": 5,
+              "key": "6a7db25c02198edab586feff__6aa93b7f25c310c04441e9a2__6aa93b7f25c310c04441e9a5__6aa93b7f25c310c04441f398"
+            },
+            {
+              "id": "6aa93b7f25c310c04441f45c",
+              "name": "Chemical Kinetics",
+              "count": 88,
+              "position": 6,
+              "key": "6a7db25c02198edab586feff__6aa93b7f25c310c04441e9a2__6aa93b7f25c310c04441e9a5__6aa93b7f25c310c04441f45c"
+            },
+            {
+              "id": "6aa93b7f25c310c04441f56d",
+              "name": "Electrochemistry",
+              "count": 120,
+              "position": 7,
+              "key": "6a7db25c02198edab586feff__6aa93b7f25c310c04441e9a2__6aa93b7f25c310c04441e9a5__6aa93b7f25c310c04441f56d"
+            },
+            {
+              "id": "6aa93b7f25c310c04441f6d6",
+              "name": "Solutions",
+              "count": 93,
+              "position": 8,
+              "key": "6a7db25c02198edab586feff__6aa93b7f25c310c04441e9a2__6aa93b7f25c310c04441e9a5__6aa93b7f25c310c04441f6d6"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

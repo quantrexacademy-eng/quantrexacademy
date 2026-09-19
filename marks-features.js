@@ -5329,7 +5329,12 @@ async function viewRfcMarks(payload) {
       { label: QX_UX.flash, view: "flashcards", payload: { step: "subjects" } },
       { label: p.subject }
     ]);
-    const chs = subj.chapters || [];
+    const chs = (subj.chapters || []).slice().sort((a, b) => {
+      const pa = (typeof a.position === "number") ? a.position : 9999;
+      const pb = (typeof b.position === "number") ? b.position : 9999;
+      if (pa !== pb) return pa - pb;
+      return String(a.name || "").localeCompare(String(b.name || ""));
+    });
     const cards = chs.map((c) => {
       const ic = (typeof QxCardIcons !== "undefined" && QxCardIcons.chapterIconHtml)
         ? QxCardIcons.chapterIconHtml(c.name, p.subject, c)
@@ -7463,7 +7468,7 @@ const QX_BOOKS_CATALOG = {
   title: "Quantrex Digital Books — Engineering",
   subtitle: "Expert-picked question banks — practice on Quantrex Academy",
   engineering: [
-    { id: "qx_physchem_jee_2027", title: "Problems in Physical Chemistry for JEE Main 2027", cover: "assets/book-covers/physical-chemistry-jee.svg", subject: "Chemistry", badge: "Physical Chemistry", exam: "JEE Main 2027", isComingSoon: true, count: 0, type: "exam", tag: "Coming Soon" },
+    { id: "6a7db25c02198edab586feff", title: "Physical Chemistry for JEE Main 2027", cover: "assets/book-covers/physical-chemistry-jee.svg", subject: "Chemistry", badge: "Physical Chemistry", exam: "JEE Main 2027", isComingSoon: false, bankSlug: "jee_main", redirectType: "subject", moduleId: "6aa93b7f25c310c04441e9a2", count: 1045, countBadge: "1045 Questions", type: "exam", tag: "1045 PYQ" },
     { id: "6a91185f41ab5aba084f4d30", title: "Most Important PYQ Based Questions", cover: "assets/book-covers/qx-pyq-important.jpg", subject: "PCM", badge: "Quantrex PYQ", exam: "JEE Main 2027", isComingSoon: false, bankSlug: "jee_main", redirectType: "subject", moduleId: "6a916235cb18ffc9d00d5aa1", count: 4289, countBadge: "4200+ Questions", type: "exam", tag: "PYQ 2022–2026" },
     { id: "6a0addba4b032b031e049a36", title: "Concepts Of Physics MCQ Edition [Volume 2]", cover: "assets/book-covers/hc-verma-v2.jpg", subject: "Physics", badge: "HC Verma", exam: "Physics", isComingSoon: false, bankSlug: "jee_main", redirectType: "module", count: 1854, countBadge: "1854 Questions", type: "exam" },
     { id: "6a4ce383c59a7b462185330f", title: "Fundamentals of Organic Chemistry — JEE Mains & Advanced", cover: "assets/book-covers/organic-chemistry.jpg", subject: "Chemistry", badge: "Organic", exam: "JEE Main", isComingSoon: false, bankSlug: "jee_main", redirectType: "subject", moduleId: "6a4e21aea2f0a1af5a74e192", count: 1151, countBadge: "1151 Questions", type: "exam" },
@@ -7479,8 +7484,8 @@ const QX_BOOKS_CATALOG = {
     { id: "a1b2c3d4e5f6010203040507", title: "Skills in Mathematics — Integral Calculus", cover: "assets/book-covers/skills-integral-calculus.png", subject: "Mathematics", badge: "Amit M Agarwal", exam: "JEE Main & Advanced", isComingSoon: true, bankSlug: "jee_advanced", redirectType: "module", count: 0, type: "curated", tag: "Coming Soon" }
   ],
   medical: [
-    { id: "qx_physchem_neet_2027", title: "Problems in Physical Chemistry for NEET 2027", cover: "assets/book-covers/physical-chemistry-neet.svg", description: "Physical Chemistry for NEET 2027", subject: "Chemistry", badge: "Physical Chemistry", exam: "NEET", isComingSoon: false, count: 16863, countBadge: "16,863 Questions", type: "exam", bankSlug: "neet", redirectType: "cpyqb", cpyqbStep: "subjects" },
-    { id: "qx_mipyq_neet_2027", title: "Most Important PYQ Based Questions — NEET 2027", cover: "assets/book-covers/qx-pyq-important.jpg", description: "Most Important PYQ Based Questions for NEET 2027", subject: "PCB", badge: "Quantrex PYQ", exam: "NEET", isComingSoon: false, count: 4941, countBadge: "4941 Questions", marksBadge: "4941 Questions", type: "exam", bankSlug: "neet", redirectType: "cpyqb", cpyqbStep: "subjects", tag: "NEET PYQ" },
+    { id: "6aa934f6b8c05657c7be7531", title: "Physical Chemistry for NEET 2027", cover: "assets/book-covers/physical-chemistry-neet.svg", description: "Physical Chemistry Qs Bank · 1045 PYQ", subject: "Chemistry", badge: "Physical Chemistry", exam: "NEET", isComingSoon: false, count: 1045, countBadge: "1045 Questions", type: "exam", redirectType: "subject", moduleId: "6aa93b7f25c310c04441f844", tag: "1045 PYQ" },
+    { id: "6a9158833d351af582b98369", title: "Most Important PYQ Based Questions — NEET 2027", cover: "assets/book-covers/qx-pyq-important.jpg", description: "Phy 1344 · Chem 1184 · Bot 1079 · Zoo 1334", subject: "PCB", badge: "Quantrex PYQ", exam: "NEET", isComingSoon: false, count: 4941, countBadge: "4941 Questions", type: "exam", redirectType: "subject", moduleId: "6a9161f1a69a205613f39f1b", tag: "NEET PYQ" },
     { id: "6a0adb714b032b031e049a34", title: "Concepts Of Physics MCQ Edition [Volume 2]", cover: "assets/book-covers/hc-verma-v2.jpg", description: "Objective I · II · Exercises", subject: "Physics", badge: "HC Verma", exam: "NEET", isComingSoon: false, count: 1854, countBadge: "1854 Questions", type: "exam", aliasId: "6a0addba4b032b031e049a36" },
     { id: "6a507da9107f81233d9985c1", title: "Fundamentals of Organic Chemistry — NEET 2027", cover: "assets/book-covers/organic-chemistry.jpg", description: "for NEET 2027", subject: "Chemistry", badge: "Organic", exam: "NEET", isComingSoon: false, count: 1151, countBadge: "1151 Questions", type: "exam", aliasId: "6a4ce383c59a7b462185330f" },
     { id: "69a684ac213ecfafb0629c0d", title: "Biology 360/360 — NEET 2027", cover: "assets/book-covers/biology-360.jpg", description: "Botany + Zoology complete", subject: "Biology", badge: "NEET 2027", exam: "NEET", isComingSoon: false, count: 17415, countBadge: "17415 Questions", type: "exam", bankFallback: "neet" },
@@ -7575,7 +7580,7 @@ function openDigitalBook(book) {
     showToast("📚 This book is coming soon!");
     return;
   }
-  if (book.redirectType === "cpyqb" || book.id === "qx_mipyq_neet_2027" || book.id === "qx_physchem_neet_2027") {
+  if (book.redirectType === "cpyqb") {
     go("cpyqb", { step: book.cpyqbStep || "subjects", exam: book.bankSlug || "neet", forceExamList: false });
     return;
   }
@@ -7632,7 +7637,7 @@ async function viewBooks(payload) {
 
     if (isMed) {
       // qxmd179: Marks order Recommended = PhysChem · MIPYQ(4941 coming-soon) · HCV2; no Eng-only books
-      const recIds = ["qx_physchem_neet_2027", "qx_mipyq_neet_2027", "6a0adb714b032b031e049a34"];
+      const recIds = ["6aa934f6b8c05657c7be7531", "6a9158833d351af582b98369", "6a0adb714b032b031e049a34"];
       const rec = recIds.map((id) => examBooks.find((b) => b.id === id)).filter(Boolean);
       const recCards = rec.map((b) => { try { return renderCard({ ...b, type: b.type || "exam" }); } catch (_) { return ""; } }).join("");
       return `${topbar("Quantrex Digital Books — NEET", "Expert-picked NEET books — practice on Quantrex Academy")}
@@ -7740,7 +7745,13 @@ async function viewBooks(payload) {
       { label: subj.name }
     ]);
     const hasEx = !!(nav.hasExercises || (subj.chapters || []).some(c => c.exercises && c.exercises.length));
-    const cards = (subj.chapters || []).map((c, idx) => {
+    const chSorted = (subj.chapters || []).slice().sort((a, b) => {
+      const pa = (typeof a.position === "number") ? a.position : 9999;
+      const pb = (typeof b.position === "number") ? b.position : 9999;
+      if (pa !== pb) return pa - pb;
+      return String(a.name || "").localeCompare(String(b.name || ""));
+    });
+    const cards = chSorted.map((c, idx) => {
       const n = Number(c.count) || 0;
       const g = ["g0", "g1", "g2", "g3", "g4", "g5", "g6", "g7"][idx % 8];
       // Black Book style: open chapter → Exercise 1–5 list
@@ -8358,11 +8369,12 @@ function renderMedicalMarksHomeExtras(rfcNav) {
 
 async function marksDashboardSections() {
   try { if (typeof qxEnsureFormulaCardSkin === "function") qxEnsureFormulaCardSkin(); } catch (_) { /* */ }
+  try { if (typeof qxEnsureRfcSkin === "function") qxEnsureRfcSkin(); } catch (_) { /* */ }
   // Medical: Marks-style full home first
   if (STATE.exam === "Medical") {
     try {
       const bookCatalog = (typeof QX_BOOKS_CATALOG !== "undefined") ? QX_BOOKS_CATALOG : null;
-      const rfcNavEarly = await Promise.race([fetchNav("rfc").catch(function () { return []; }), new Promise(function (r) { setTimeout(function () { r([]); }, 1200); })]);
+      const rfcNavEarly = await fetchNav("rfc").catch(function () { return []; });
       const med = renderMedicalMarksHomeExtras(rfcNavEarly);
       const [cpyqbNav, formulaNav, rfcNav] = await Promise.all([
         fetchNav("cpyqb").catch(() => []),
