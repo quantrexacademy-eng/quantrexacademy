@@ -5686,9 +5686,21 @@ function viewTests() {
         </div>
       </div>
       <div class="marks-ts-section">
-        <h3>India's Most Trusted Test Series · NTA FORMAT</h3>
-        <div class="mth-card" ${mg("testseries", {})}>
-          <div class="mth-body"><strong>NEET 2027 Test Series</strong><small>Full mocks · part tests · NCERT aligned</small></div>
+        <h3>PYQ Mock Tests · official papers</h3>
+        <div class="mth-card" ${mg("pyqmock", { step: "modules", exam: "neet" })}>
+          <div class="mth-body"><strong>NEET PYQ Mock Tests</strong><small>92 official NEET papers on USB</small></div>
+          <span class="mth-arrow">›</span>
+        </div>
+        <div class="mth-card" ${mg("pyqmock", { step: "modules", exam: "aiims" })}>
+          <div class="mth-body"><strong>AIIMS PYQ Mock Tests</strong><small>21 official papers</small></div>
+          <span class="mth-arrow">›</span>
+        </div>
+        <div class="mth-card" ${mg("pyqmock", { step: "modules", exam: "jipmer" })}>
+          <div class="mth-body"><strong>JIPMER PYQ Mock Tests</strong><small>16 official papers</small></div>
+          <span class="mth-arrow">›</span>
+        </div>
+        <div class="mth-card" ${mg("cpyqb", { step: "exams", forceExamList: true })}>
+          <div class="mth-body"><strong>Chapter-wise PYQ</strong><small>NEET · AIIMS · JIPMER · NTA Abhyas · MHT CET Medical</small></div>
           <span class="mth-arrow">›</span>
         </div>
       </div>
@@ -5722,8 +5734,12 @@ function viewTests() {
     </div>
     <div class="marks-ts-section">
       <h3>Test Series · NTA FORMAT</h3>
-      <p class="marks-ts-sub">Exact NTA CBT shell (timer, palette, Save &amp; Next). Optional Quantrex layout at start.</p>
+      <p class="marks-ts-sub">JEE Main 2027 series · 562 live papers · 370 PYQ chapter tests · 266 upcoming scheduled</p>
       <div class="marks-ts-grid">${marksTestSeriesCards()}</div>
+      <div class="mth-card" ${mg("cpyqb", { step: "exams", forceExamList: true })} style="margin-top:12px">
+        <div class="mth-body"><strong>Chapter-wise PYQ (all exams)</strong><small>JEE Main · Advanced · BITSAT · MHT CET · WBJEE · KCET · and more</small></div>
+        <span class="mth-arrow">›</span>
+      </div>
     </div>
     <div class="marks-ts-section">
       <h3>Quantrex For Teachers</h3>
@@ -7502,7 +7518,11 @@ const QX_BOOKS_CATALOG = {
 };
 
 function filterActiveBooks(list) {
-  return (list || []).filter(b => b && b.id && !QX_REMOVED_BOOK_IDS.has(b.id));
+  return (list || []).filter(function (b) {
+    if (!b || !b.id || QX_REMOVED_BOOK_IDS.has(b.id)) return false;
+    if (b.isComingSoon && !(Number(b.count) > 0)) return false;
+    return true;
+  });
 }
 
 function mergeBooksCatalog(remote, base) {
