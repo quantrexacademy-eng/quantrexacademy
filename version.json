@@ -1,10 +1,10 @@
 {
-  "build": "qxmd208",
-  "cache": "qx-pwa-qxmd208",
-  "title": "qxmd208: never show qx-stem-rescued question text inside SOLUTION",
-  "body": "Root cause: afterRender(#egSol)->finalizeAll->ensureStemVisible injected .qx-stem-rescued into solution. Block sol-scope rescue, strip rescued nodes before paint, CSS hide under #egSol; keep one-row footer.",
+  "build": "qxmd209",
+  "cache": "qx-pwa-qxmd209",
+  "title": "qxmd209: Marks footer Prev|Check|Next only on all practice paths",
+  "body": "Root cause: NEET/Medical chapter practice used AllenTestUI.practiceHtml (and app.js fallback) with Show Answer|Clear|Prev|Next strip and Check Answer outside the fixed bar. Lock Marks one-row Previous|Check Answer|Next on allen + fallback; keep examgoal path; keep qxmd208 stem-rescue guards.",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app",
   "site": "https://www.quantrexacademy.com",
   "package": "com.quantrexacademy.app",
-  "ts": 1789825085487
+  "ts": 1789826364938
 }

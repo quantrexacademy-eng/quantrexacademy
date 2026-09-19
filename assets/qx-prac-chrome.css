@@ -77,3 +77,135 @@
 #egSol .qx-stem-forced, #egSolPanel .qx-stem-forced, .eg-sol .qx-stem-forced {
   display: none !important; visibility: hidden !important; height: 0 !important; overflow: hidden !important;
 }
+
+
+/* ========== qxmd209: Allen/NEET/Medical practice = same Marks strip ========== */
+.allen-practice .eg-foot.eg-foot-marks,
+.allen-practice .eg-foot-practice,
+.mtk-test-root.allen-practice #egFoot,
+.qx-practice-page .eg-foot-marks,
+.qx-prac-foot.eg-foot-marks {
+  display: grid !important;
+  grid-template-columns: 1fr 1.25fr 1fr !important;
+  grid-auto-flow: row !important;
+  gap: 8px !important;
+  align-items: stretch !important;
+  background: #ffffff !important;
+  border-top: 1px solid #e5e7eb !important;
+  box-shadow: none !important;
+  position: fixed !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 2147483646 !important;
+  padding: 10px 12px calc(10px + env(safe-area-inset-bottom, 0px)) !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  transform: none !important;
+}
+.allen-practice .eg-foot-left,
+.allen-practice .eg-foot-right,
+.allen-practice label.eg-show,
+.allen-practice #qxPracClear,
+.allen-practice #qxPracShowAns,
+.qx-practice-page .eg-foot-left,
+.qx-practice-page .eg-foot-right,
+.qx-practice-page label.eg-show,
+.qx-practice-page #qxPracClear {
+  display: none !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  width: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: 0 !important;
+}
+.allen-practice .eg-action-row .eg-check-wrap,
+.qx-practice-page .eg-action-row .eg-check-wrap {
+  display: none !important;
+}
+.allen-practice #egFoot #qxPracPrev,
+.allen-practice #egFoot #qxPracSubmit,
+.allen-practice #egFoot #qxPracNext,
+.qx-prac-foot #qxPracPrev,
+.qx-prac-foot #qxPracSubmit,
+.qx-prac-foot #qxPracNext {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  min-height: 48px !important;
+  border-radius: 10px !important;
+  font-weight: 800 !important;
+  width: 100% !important;
+  margin: 0 !important;
+}
+.allen-practice #egFoot #qxPracPrev,
+.qx-prac-foot #qxPracPrev {
+  background: #fff !important;
+  color: #1565C0 !important;
+  border: 2px solid #1565C0 !important;
+}
+.allen-practice #egFoot #qxPracSubmit,
+.allen-practice #egFoot #qxPracNext,
+.qx-prac-foot #qxPracSubmit,
+.qx-prac-foot #qxPracNext {
+  background: #1565C0 !important;
+  color: #fff !important;
+  border: 2px solid #1565C0 !important;
+}
+.allen-practice #egFoot #qxPracSubmit:disabled,
+.qx-prac-foot #qxPracSubmit:disabled {
+  background: #94a3b8 !important;
+  border-color: #94a3b8 !important;
+  color: #fff !important;
+}
+.allen-practice .mtk-main,
+.allen-practice .mtk-body,
+.qx-practice-page {
+  padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)) !important;
+}
+/* Allow solution area to scroll under fixed foot without #app-main clipping forever */
+body.allen-practice-active #app-main,
+body.allen-cbt-active #app-main {
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+.allen-practice.mtk-test-root {
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 100dvh !important;
+  overflow: hidden !important;
+}
+.allen-practice .mtk-body {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  display: flex !important;
+}
+.allen-practice .mtk-main {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+@media (max-width: 360px) {
+  .allen-practice .eg-foot.eg-foot-marks,
+  .qx-prac-foot.eg-foot-marks {
+    grid-template-columns: 1fr !important;
+  }
+}
+.mtk-test-root[data-test-theme="dark"].allen-practice #egFoot,
+.mtk-test-root[data-test-theme="dark"] .eg-foot-marks {
+  background: #0f172a !important;
+  border-top-color: #334155 !important;
+}

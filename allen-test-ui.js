@@ -746,21 +746,18 @@ const AllenTestUI = (() => {
             <div class="${optsClass}" id="qaOpts">${opts}</div>
             <div id="qaResult">${partsSafe.resultHtml || ""}</div>
             <div id="qaSolReveal">${partsSafe.solReveal || ""}</div>
-            <div class="eg-action-row">
-              <div class="eg-check-wrap">${done || incomplete ? "" : `<button type="button" class="eg-check" id="qxPracSubmit" ${canSubmit ? "" : "disabled"}>Check Answer</button>`}</div>
+            <div class="eg-action-row eg-action-note-only">
               <button type="button" class="eg-note" id="qxPracNote">Add a Note</button>
             </div>
             ${partsSafe.solActions || ""}
-            <div class="eg-foot mtk-controls">
-              <div class="eg-foot-left"><label class="eg-show"><span class="eg-switch"><input type="checkbox" id="qxPracShowAns"${solOpen ? " checked" : ""}><span class="eg-switch-knob" aria-hidden="true"></span></span> Show Answer</label></div>
-              <div class="eg-foot-right">
-                <button type="button" class="eg-btn" id="qxPracClear">Clear</button>
-                <button type="button" class="eg-btn" id="qxPracPrev" ${pc.idx <= 0 ? "disabled" : ""}>Previous</button>
-                <button type="button" class="eg-btn eg-btn-next" id="qxPracNext" ${pc.idx >= total - 1 ? "disabled" : ""}>Next</button>
-              </div>
+            <div class="eg-foot eg-foot-practice eg-foot-marks mtk-controls" id="egFoot">
+              <button type="button" class="eg-btn" id="qxPracPrev" ${pc.idx <= 0 ? "disabled" : ""}>Previous</button>
+              <button type="button" class="eg-btn eg-btn-check eg-check" id="qxPracSubmit" ${(done || incomplete) ? "disabled" : (canSubmit ? "" : "disabled")}>${done ? "Checked" : "Check Answer"}</button>
+              <button type="button" class="eg-btn eg-btn-next" id="qxPracNext" ${pc.idx >= total - 1 ? "disabled" : ""}>Next</button>
             </div>
           </div>
-          <aside class="mtk-palette"><div class="mtk-pal-grp-grid flat">${cells}</div></aside>
+          
+<aside class="mtk-palette"><div class="mtk-pal-grp-grid flat">${cells}</div></aside>
         </div>
         <div class="qx-prac-view-panel" id="pracViewPanel" hidden>
           <div class="qx-prac-view-sec"><div class="qx-prac-view-label">Text size</div>

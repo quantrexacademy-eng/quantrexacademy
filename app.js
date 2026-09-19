@@ -2330,21 +2330,15 @@ function viewQuestion(id) {
       ? qBody
       : `<div class="qx-prac-q qx-content qx-q-text-only" data-qx-qid="${q.id}">${qBody}</div>`}
     <div class="${optsClass}" id="qaOpts">${opts}</div>
-    <div class="eg-action-row">
-      <div class="eg-check-wrap">${done || incomplete ? "" : `<button type="button" class="eg-check qx-prac-submit" id="qxPracSubmit" ${canSubmit ? "" : "disabled"}>Check Answer</button>`}</div>
+    <div class="eg-action-row eg-action-note-only">
       <button type="button" class="eg-note" id="qxPracNote">Add a Note</button>
     </div>
     <div id="qaSolReveal">${solReveal}</div>
     <div id="qaResult">${resultHtml}</div>
-    <div class="qx-prac-foot eg-foot">
-      <div class="eg-foot-left">
-        <label class="eg-show"><span class="eg-switch"><input type="checkbox" id="qxPracShowAns"${pc.showAnswer ? " checked" : ""}><span class="eg-switch-knob" aria-hidden="true"></span></span> Show Answer</label>
-      </div>
-      <div class="eg-foot-right">
-        <button type="button" class="eg-btn" id="qxPracClear">Clear Response</button>
-        <button type="button" class="eg-btn" onclick="qxPracticeNav(-1)" ${pc.idx <= 0 ? "disabled" : ""}>← Previous</button>
-        <button type="button" class="eg-btn eg-btn-next" onclick="qxPracticeNav(1)" ${pc.idx >= total - 1 ? "disabled" : ""}>Next →</button>
-      </div>
+    <div class="qx-prac-foot eg-foot eg-foot-practice eg-foot-marks" id="egFoot">
+      <button type="button" class="eg-btn" id="qxPracPrev" ${pc.idx <= 0 ? "disabled" : ""}>Previous</button>
+      <button type="button" class="eg-btn eg-btn-check eg-check qx-prac-submit" id="qxPracSubmit" ${(done || incomplete) ? "disabled" : (canSubmit ? "" : "disabled")}>${done ? "Checked" : "Check Answer"}</button>
+      <button type="button" class="eg-btn eg-btn-next" id="qxPracNext" ${pc.idx >= total - 1 ? "disabled" : ""}>Next</button>
     </div>
   </div>`;
 }
@@ -2483,7 +2477,24 @@ function qxPracticeWireExtra(scope, ctx, qid) {
     };
   }
 
-  const clear = scope.querySelector("#qxPracClear");
+    const prevBtn = scope.querySelector("#qxPracPrev");
+  if (prevBtn && !prevBtn._qxWired) {
+    prevBtn._qxWired = true;
+    prevBtn.onclick = function (e) {
+      if (e) { e.preventDefault(); e.stopPropagation(); }
+      if (typeof qxPracticeNav === "function") qxPracticeNav(-1);
+    };
+  }
+  const nextBtn = scope.querySelector("#qxPracNext");
+  if (nextBtn && !nextBtn._qxWired) {
+    nextBtn._qxWired = true;
+    nextBtn.onclick = function (e) {
+      if (e) { e.preventDefault(); e.stopPropagation(); }
+      if (typeof qxPracticeNav === "function") qxPracticeNav(1);
+    };
+  }
+
+const clear = scope.querySelector("#qxPracClear");
   if (clear) {
     clear.onclick = function (e) {
       if (e) { e.preventDefault(); e.stopPropagation(); }

@@ -6461,3 +6461,21 @@ html body .eg-test-root #qxNumInput {
   visibility: visible !important;
   opacity: 1 !important;
 }
+
+
+/* qxmd209-allen-marks: override legacy mobile Show/Clear column foot for practice */
+@media (max-width: 720px) {
+  .allen-practice .eg-foot.eg-foot-marks,
+  .allen-practice .mtk-controls.eg-foot-marks,
+  .allen-practice .mtk-controls.eg-foot-practice {
+    display: grid !important;
+    flex-direction: row !important;
+    grid-template-columns: 1fr 1.25fr 1fr !important;
+    align-items: stretch !important;
+    gap: 8px !important;
+  }
+  .allen-practice .eg-foot.eg-foot-marks .eg-foot-left,
+  .allen-practice .eg-foot.eg-foot-marks .eg-foot-right {
+    display: none !important;
+  }
+}
