@@ -1,5 +1,5 @@
 {
-  "built": 1788344207951,
+  "built": 1789623067868,
   "banks": [
     {
       "slug": "aiims",
@@ -10,11 +10,6 @@
       "slug": "ap_eamcet",
       "questions": 14960,
       "files": 98
-    },
-    {
-      "slug": "bitsat",
-      "questions": 2225,
-      "files": 100
     },
     {
       "slug": "class_9",
@@ -35,16 +30,6 @@
       "slug": "iat_iiser",
       "questions": 600,
       "files": 118
-    },
-    {
-      "slug": "jee_advanced",
-      "questions": 2418,
-      "files": 93
-    },
-    {
-      "slug": "jee_main",
-      "questions": 17925,
-      "files": 99
     },
     {
       "slug": "jipmer",
@@ -115,6 +100,21 @@
       "slug": "viteee",
       "questions": 2046,
       "files": 100
+    },
+    {
+      "slug": "bitsat",
+      "questions": 2225,
+      "files": 100
+    },
+    {
+      "slug": "jee_advanced",
+      "questions": 2418,
+      "files": 93
+    },
+    {
+      "slug": "jee_main",
+      "questions": 17925,
+      "files": 99
     }
   ]
 }

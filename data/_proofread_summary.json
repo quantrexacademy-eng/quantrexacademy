@@ -1,0 +1,437 @@
+{
+  "when": "2026-09-24T02:52:28.954Z",
+  "root": "E:\\QUANTREX\\website",
+  "note": "USB-only summary. Not 100% of 367k unique IDs (chapter/book/pyq/test shards). No C: copies.",
+  "counts": {
+    "files": 4625,
+    "qs": 361679,
+    "emptyStem": 21,
+    "emptySol": 9787,
+    "stemEcho": 3503,
+    "katexDump": 8,
+    "gluedProse": 4,
+    "emptyOpts": 2299,
+    "oddDollar": 868,
+    "brokenTex": 5,
+    "flagged": 16357
+  },
+  "samples": {
+    "emptyStem": [
+      {
+        "id": 3724,
+        "file": "data/banks/chapters/ap_eamcet/chemistry/environmental-chemistry.json",
+        "flags": [
+          "emptyStem"
+        ]
+      },
+      {
+        "id": 21303,
+        "file": "data/banks/chapters/comedk/mathematics/determinants.json",
+        "flags": [
+          "emptyStem"
+        ]
+      },
+      {
+        "id": 37202,
+        "file": "data/banks/chapters/jee_main/mathematics/sequences-and-series.json",
+        "flags": [
+          "emptyStem"
+        ]
+      },
+      {
+        "id": 45104,
+        "file": "data/banks/chapters/jipmer/botany/photosynthesis-in-higher-plants.json",
+        "flags": [
+          "emptyStem"
+        ]
+      },
+      {
+        "id": 47313,
+        "file": "data/banks/chapters/kcet/chemistry/alcohols-phenols-and-ethers.json",
+        "flags": [
+          "emptyStem"
+        ]
+      },
+      {
+        "id": 95934,
+        "file": "data/banks/chapters/nta_abhyas_neet/botany/biological-classification.json",
+        "flags": [
+          "emptyStem"
+        ]
+      },
+      {
+        "id": 97956,
+        "file": "data/banks/chapters/nta_abhyas_neet/botany/transport-in-plants.json",
+        "flags": [
+          "emptyStem"
+        ]
+      },
+      {
+        "id": 104742,
+        "file": "data/banks/chapters/nta_abhyas_neet/zoology/chemical-coordination-and-integration.json",
+        "flags": [
+          "emptyStem"
+        ]
+      }
+    ],
+    "emptySol": [
+      {
+        "id": 2287,
+        "file": "data/banks/chapters/ap_eamcet/chemistry/alcohols-phenols-and-ethers.json",
+        "flags": [
+          "emptySol"
+        ]
+      },
+      {
+        "id": 2288,
+        "file": "data/banks/chapters/ap_eamcet/chemistry/alcohols-phenols-and-ethers.json",
+        "flags": [
+          "emptySol"
+        ]
+      },
+      {
+        "id": 2289,
+        "file": "data/banks/chapters/ap_eamcet/chemistry/alcohols-phenols-and-ethers.json",
+        "flags": [
+          "emptySol"
+        ]
+      },
+      {
+        "id": 2290,
+        "file": "data/banks/chapters/ap_eamcet/chemistry/alcohols-phenols-and-ethers.json",
+        "flags": [
+          "emptySol"
+        ]
+      },
+      {
+        "id": 2291,
+        "file": "data/banks/chapters/ap_eamcet/chemistry/alcohols-phenols-and-ethers.json",
+        "flags": [
+          "emptySol"
+        ]
+      },
+      {
+        "id": 2292,
+        "file": "data/banks/chapters/ap_eamcet/chemistry/alcohols-phenols-and-ethers.json",
+        "flags": [
+          "emptySol"
+        ]
+      },
+      {
+        "id": 2293,
+        "file": "data/banks/chapters/ap_eamcet/chemistry/alcohols-phenols-and-ethers.json",
+        "flags": [
+          "emptySol"
+        ]
+      },
+      {
+        "id": 2294,
+        "file": "data/banks/chapters/ap_eamcet/chemistry/alcohols-phenols-and-ethers.json",
+        "flags": [
+          "emptySol"
+        ]
+      }
+    ],
+    "stemEcho": [
+      {
+        "id": 157,
+        "file": "data/banks/chapters/aiims/botany/biomolecules-b.json",
+        "flags": [
+          "stemEcho"
+        ]
+      },
+      {
+        "id": 366,
+        "file": "data/banks/chapters/aiims/botany/transport-in-plants.json",
+        "flags": [
+          "stemEcho"
+        ]
+      },
+      {
+        "id": 663,
+        "file": "data/banks/chapters/aiims/chemistry/d-and-f-block-elements.json",
+        "flags": [
+          "stemEcho"
+        ]
+      },
+      {
+        "id": 709,
+        "file": "data/banks/chapters/aiims/chemistry/electrochemistry.json",
+        "flags": [
+          "stemEcho"
+        ]
+      },
+      {
+        "id": 1040,
+        "file": "data/banks/chapters/aiims/chemistry/structure-of-atom.json",
+        "flags": [
+          "stemEcho"
+        ]
+      },
+      {
+        "id": 1394,
+        "file": "data/banks/chapters/aiims/physics/electromagnetic-waves.json",
+        "flags": [
+          "stemEcho"
+        ]
+      },
+      {
+        "id": 1613,
+        "file": "data/banks/chapters/aiims/physics/magnetic-effects-of-current.json",
+        "flags": [
+          "stemEcho"
+        ]
+      },
+      {
+        "id": 1626,
+        "file": "data/banks/chapters/aiims/physics/magnetic-effects-of-current.json",
+        "flags": [
+          "stemEcho"
+        ]
+      }
+    ],
+    "katexDump": [
+      {
+        "id": 19046,
+        "file": "data/banks/chapters/bitsat/physics/laws-of-motion.json",
+        "flags": [
+          "katexDump"
+        ]
+      },
+      {
+        "id": 126274,
+        "file": "data/banks/chapters/dpp/physics/laws-of-motion.json",
+        "flags": [
+          "katexDump"
+        ]
+      },
+      {
+        "id": 312588,
+        "file": "data/books/chapters/68f1ce4cc729e5251bd00430/68f1ce4cc729e5251bd00430__68f8d633530ed81e1968d783__68f8d682530ed81e1968d7b5__68f8d684530ed81e1968d7b8.json",
+        "flags": [
+          "katexDump"
+        ]
+      },
+      {
+        "id": 312593,
+        "file": "data/books/chapters/68f1ce4cc729e5251bd00430/68f1ce4cc729e5251bd00430__68f8d633530ed81e1968d783__68f8d682530ed81e1968d7b5__68f8d684530ed81e1968d7b8.json",
+        "flags": [
+          "katexDump"
+        ]
+      },
+      {
+        "id": 19046,
+        "file": "data/nav/pyq_papers/bitsat/bitsat-2015.json",
+        "flags": [
+          "katexDump"
+        ]
+      },
+      {
+        "id": 27275,
+        "file": "data/nav/pyq_papers/jee_main/jee-main-2023-25-jan-shift-1.json",
+        "flags": [
+          "katexDump"
+        ]
+      },
+      {
+        "id": 87945,
+        "file": "data/nav/pyq_papers/nta_abhyas_jee_main/nta-abhyas-jee-main-2020.json",
+        "flags": [
+          "katexDump"
+        ]
+      },
+      {
+        "id": "qz_69de4f532ee0e063d926aafb",
+        "file": "data/tests/jee_main_quizrr_pyq_chapter/questions/qz-69de21fa7e39d99b57bc5ba6.json",
+        "flags": [
+          "katexDump"
+        ]
+      }
+    ],
+    "gluedProse": [
+      {
+        "id": 25630,
+        "file": "data/nav/pyq_papers/jee_advanced/jee-advanced-2019-paper-1.json",
+        "flags": [
+          "gluedProse"
+        ]
+      },
+      {
+        "id": 27390,
+        "file": "data/nav/pyq_papers/jee_main/jee-main-2013-07-apr.json",
+        "flags": [
+          "gluedProse"
+        ]
+      },
+      {
+        "id": 95033,
+        "file": "data/nav/pyq_papers/nta_abhyas_jee_main/nta-abhyas-jee-main-2020.json",
+        "flags": [
+          "gluedProse"
+        ]
+      },
+      {
+        "id": 110583,
+        "file": "data/nav/pyq_papers/ts_eamcet/ts-eamcet-2021-04-aug-shift-1.json",
+        "flags": [
+          "gluedProse"
+        ]
+      }
+    ],
+    "emptyOpts": [
+      {
+        "id": "qz_69de4f4c2ee0e063d9265392",
+        "file": "data/tests/jee_main_quizrr_pyq_chapter/questions/qz-69de21e97e39d99b57bc5a8d.json",
+        "flags": [
+          "emptyOpts"
+        ]
+      },
+      {
+        "id": "qz_69de4f4c2ee0e063d9265397",
+        "file": "data/tests/jee_main_quizrr_pyq_chapter/questions/qz-69de21e97e39d99b57bc5a8d.json",
+        "flags": [
+          "emptyOpts"
+        ]
+      },
+      {
+        "id": "qz_69de4f4c2ee0e063d926539c",
+        "file": "data/tests/jee_main_quizrr_pyq_chapter/questions/qz-69de21e97e39d99b57bc5a8d.json",
+        "flags": [
+          "emptyOpts"
+        ]
+      },
+      {
+        "id": "qz_69de4f4c2ee0e063d92653a1",
+        "file": "data/tests/jee_main_quizrr_pyq_chapter/questions/qz-69de21e97e39d99b57bc5a8d.json",
+        "flags": [
+          "emptyOpts"
+        ]
+      },
+      {
+        "id": "qz_69de4f4c2ee0e063d92653a6",
+        "file": "data/tests/jee_main_quizrr_pyq_chapter/questions/qz-69de21e97e39d99b57bc5a8d.json",
+        "flags": [
+          "emptyOpts"
+        ]
+      },
+      {
+        "id": "qz_69de4f59c677dc36a891a0e9",
+        "file": "data/tests/jee_main_quizrr_pyq_chapter/questions/qz-69de21e97e39d99b57bc5a8e.json",
+        "flags": [
+          "emptyOpts"
+        ]
+      },
+      {
+        "id": "qz_69de4f59c677dc36a891a0ee",
+        "file": "data/tests/jee_main_quizrr_pyq_chapter/questions/qz-69de21e97e39d99b57bc5a8e.json",
+        "flags": [
+          "emptyOpts"
+        ]
+      },
+      {
+        "id": "qz_69de4f59c677dc36a891a0f3",
+        "file": "data/tests/jee_main_quizrr_pyq_chapter/questions/qz-69de21e97e39d99b57bc5a8e.json",
+        "flags": [
+          "emptyOpts"
+        ]
+      }
+    ],
+    "oddDollar": [
+      {
+        "id": 2353,
+        "file": "data/banks/chapters/ap_eamcet/chemistry/alcohols-phenols-and-ethers.json",
+        "flags": [
+          "oddDollar"
+        ]
+      },
+      {
+        "id": 3649,
+        "file": "data/banks/chapters/ap_eamcet/chemistry/electrochemistry.json",
+        "flags": [
+          "oddDollar"
+        ]
+      },
+      {
+        "id": 4238,
+        "file": "data/banks/chapters/ap_eamcet/chemistry/hydrocarbons.json",
+        "flags": [
+          "oddDollar"
+        ]
+      },
+      {
+        "id": 6469,
+        "file": "data/banks/chapters/ap_eamcet/mathematics/basic-of-mathematics.json",
+        "flags": [
+          "oddDollar"
+        ]
+      },
+      {
+        "id": 6502,
+        "file": "data/banks/chapters/ap_eamcet/mathematics/basic-of-mathematics.json",
+        "flags": [
+          "oddDollar"
+        ]
+      },
+      {
+        "id": 6506,
+        "file": "data/banks/chapters/ap_eamcet/mathematics/basic-of-mathematics.json",
+        "flags": [
+          "oddDollar"
+        ]
+      },
+      {
+        "id": 6507,
+        "file": "data/banks/chapters/ap_eamcet/mathematics/basic-of-mathematics.json",
+        "flags": [
+          "oddDollar"
+        ]
+      },
+      {
+        "id": 7390,
+        "file": "data/banks/chapters/ap_eamcet/mathematics/complex-number.json",
+        "flags": [
+          "oddDollar"
+        ]
+      }
+    ],
+    "brokenTex": [
+      {
+        "id": 48901,
+        "file": "data/banks/chapters/kcet/mathematics/differential-equations.json",
+        "flags": [
+          "brokenTex"
+        ]
+      },
+      {
+        "id": 109636,
+        "file": "data/banks/chapters/ts_eamcet/chemistry/states-of-matter.json",
+        "flags": [
+          "brokenTex"
+        ]
+      },
+      {
+        "id": 310481,
+        "file": "data/books/chapters/6894d29d3156b1f3ca5ad0be/6894d29d3156b1f3ca5ad0be__6894d2f5d0af19a8bc64156f__6894d33c18eb3f485019e6e5__6894e0c92fc1de50ab8874c8.json",
+        "flags": [
+          "oddDollar",
+          "brokenTex"
+        ]
+      },
+      {
+        "id": 312272,
+        "file": "data/books/chapters/68f1ce4cc729e5251bd00430/68f1ce4cc729e5251bd00430__68f8d633530ed81e1968d783__68f8d634530ed81e1968d786__68f8d642530ed81e1968d795.json",
+        "flags": [
+          "oddDollar",
+          "brokenTex"
+        ]
+      },
+      {
+        "id": 109636,
+        "file": "data/nav/pyq_papers/ts_eamcet/ts-eamcet-2022-20-jul-shift-2.json",
+        "flags": [
+          "brokenTex"
+        ]
+      }
+    ]
+  }
+}

@@ -1,10 +1,10 @@
 {
-    "cache": "qx-pwa-qxmd221",
-    "ts": 1789862210000,
-    "title": "qxmd221: strip question from solution DOM; readable font/spacing",
+    "cache": "qx-pwa-qxmd222",
+    "ts": 1789862220000,
+    "title": "qxmd222: permanent USB proofread — stem-echo cut, Marks restore",
     "site": "https://www.quantrexacademy.com",
-    "build": "qxmd221",
-    "body": "After Check Answer, leading solution nodes that copy the stem are removed in the DOM. Stem/options/solution use normal letter-spacing and 16px body. Website+app+Firebase+GitHub.",
+    "build": "qxmd222",
+    "body": "Stored solutions no longer start with the question. Empty Q/opts/sols restored from official Marks cache on USB. Website+app Firebase Hosting + GitHub.",
     "package": "com.quantrexacademy.app",
     "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }
