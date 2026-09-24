@@ -1318,6 +1318,42 @@ const QuantrexSolution = (() => {
     return rest || out;
   }
 
+  function stripStemFromDom(root, q) {
+    try {
+      if (!root || !q) return;
+      const host = root.querySelector
+        ? (root.querySelector(".qx-sol-flow, .sol-body, #egSol, .eg-sol") || root)
+        : root;
+      const stemP = stemComparePlain((q.q || q.question || q.questionText || q._qxOrigStem || "")).toLowerCase();
+      const head = stemP.slice(0, 36);
+      if (head.length < 16) return;
+      const kids = Array.prototype.slice.call(host.childNodes || []);
+      for (let i = 0; i < kids.length && i < 12; i++) {
+        const n = kids[i];
+        if (!n) continue;
+        if (n.nodeType === 3) {
+          const t = String(n.textContent || "").replace(/\s+/g, " ").trim().toLowerCase();
+          if (!t) { try { n.parentNode.removeChild(n); } catch (_) {} continue; }
+          if (t.indexOf(head.slice(0, 20)) === 0 || head.indexOf(t.slice(0, 20)) === 0) {
+            try { n.parentNode.removeChild(n); } catch (_) {}
+            continue;
+          }
+          break;
+        }
+        if (n.nodeType !== 1) continue;
+        const cls = String(n.className || "");
+        if (/eg-sol-panel-head|eg-sol-diff|tag-diff|qx-sol-card-h|eg-sol-panel-close/i.test(cls)) continue;
+        const t = String(n.textContent || "").replace(/\s+/g, " ").trim().toLowerCase();
+        if (t.length < 8) continue;
+        if (t.indexOf(head.slice(0, 20)) === 0 || head.indexOf(t.slice(0, 20)) === 0) {
+          try { n.parentNode.removeChild(n); } catch (_) {}
+          continue;
+        }
+        break;
+      }
+    } catch (_) { /* */ }
+  }
+
   function solRenderHtml(raw) {
     const s = String(raw || "");
     try {
@@ -1572,6 +1608,7 @@ const QuantrexSolution = (() => {
     cleanSolutionFigHtml, handleSolImgErr, polishScientificSymbols, extractEasyExplain, renderEasyExplain,
     solutionLooksRelevant, isMatchQuestion, structureSolutionBody, formatShortcutLine,
     flattenMarksSolTables, renderTeacherWrap, looksHollowStem,
-    stripLeadingStemEcho, stripLeadingSolMeta, stemComparePlain, ensureNoStemHead, pickStemPlain
+    stripLeadingStemEcho, stripLeadingSolMeta, stemComparePlain, ensureNoStemHead, pickStemPlain,
+    stripStemFromDom
   };
 })();

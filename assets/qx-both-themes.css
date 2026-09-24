@@ -23,6 +23,29 @@
   min-height: 48px !important;
 }
 
+/* Readable type: no letter-spaced dumps, consistent size */
+.eg-test-root #egQArea,
+.eg-test-root .eg-q-stem,
+.eg-test-root .mtk-opt-text,
+.eg-test-root .eg-sol,
+.eg-test-root .sol-body,
+.eg-test-root .qx-sol-flow {
+  letter-spacing: normal !important;
+  word-spacing: normal !important;
+  white-space: normal !important;
+  font-family: "Inter", "Segoe UI", system-ui, sans-serif !important;
+  font-size: var(--nta-q, 16px) !important;
+  line-height: 1.65 !important;
+}
+.eg-test-root .katex {
+  font-size: 1.08em !important;
+  letter-spacing: normal !important;
+}
+.eg-test-root .katex-error,
+.eg-test-root .katex-error * {
+  display: none !important;
+}
+
 /* Number strip must NOT cover options. Hidden unless All Q is on. */
 .eg-test-root .eg-qbar,
 .eg-test-root .eg-qbar.eg-strip,

@@ -1248,6 +1248,12 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
       requestAnimationFrame(function () { egRestoreScroll(_egScrollSnap); });
     } catch (_) { /* */ }
 
+    try {
+      const solHost = root.querySelector("#egSol, .eg-sol, .qx-sol-flow, .sol-body");
+      if (solHost && typeof QuantrexSolution !== "undefined" && QuantrexSolution.stripStemFromDom) {
+        QuantrexSolution.stripStemFromDom(solHost, q);
+      }
+    } catch (_) { /* */ }
     const panel = root.querySelector("#egSolPanel");
     const solClose = root.querySelector("#egSolClose");
     if (solClose) {

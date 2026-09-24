@@ -1,10 +1,10 @@
 {
-    "cache": "qx-pwa-qxmd220",
-    "ts": 1789861318818,
-    "title": "qxmd220: peel SOLUTION prose from KaTeX; scale sol body with text size",
+    "cache": "qx-pwa-qxmd221",
+    "ts": 1789862210000,
+    "title": "qxmd221: strip question from solution DOM; readable font/spacing",
     "site": "https://www.quantrexacademy.com",
-    "build": "qxmd220",
-    "body": "SOLUTION English prose is peeled from KaTeX mathnormal / $\u2026$ islands (real math kept). Text size S/M/L/XL scales solution body with stem/options. Settings gear, Allen foot pad, tools-in-Settings preserved.",
+    "build": "qxmd221",
+    "body": "After Check Answer, leading solution nodes that copy the stem are removed in the DOM. Stem/options/solution use normal letter-spacing and 16px body. Website+app+Firebase+GitHub.",
     "package": "com.quantrexacademy.app",
     "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }
