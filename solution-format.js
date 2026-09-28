@@ -890,6 +890,11 @@ const QuantrexSolution = (() => {
     r = r.replace(/^<\/(?:p|div|span)>\s*/i, "");
     r = stripLeadingSolMeta(r);
     r = repairLeadingOrphanDollar(r);
+    try {
+      if (typeof QxMathSanitize !== "undefined" && QxMathSanitize.healOddDollars) {
+        r = QxMathSanitize.healOddDollars(r);
+      }
+    } catch (_) { /* */ }
     // Trailing punctuation crumbs only (keep "\\frac", "|sin", "$…$")
     r = r.replace(/^[,;:\-–—)'"\]]+/u, "");
     r = r.replace(/^(?:\s|&nbsp;|<br\s*\/?\s*>)+/i, "");
@@ -1403,6 +1408,11 @@ const QuantrexSolution = (() => {
     raw = repairSolutionProse(raw);
     try { raw = repairSolutionDelimiters(raw); } catch (_) { /* */ }
     raw = polishScientificSymbols(raw);
+    try {
+      if (typeof QxMathSanitize !== "undefined" && QxMathSanitize.healOddDollars) {
+        raw = QxMathSanitize.healOddDollars(raw);
+      }
+    } catch (_) { /* */ }
     try {
       if (typeof Mx !== "undefined" && Mx.peelFalseProseMathIslands) raw = Mx.peelFalseProseMathIslands(raw);
     } catch (_) { /* */ }

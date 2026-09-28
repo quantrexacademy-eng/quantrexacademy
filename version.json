@@ -1,10 +1,10 @@
 {
-    "cache": "qx-pwa-qxmd231",
-    "ts": 1789862310000,
-    "title": "qxmd231: proofread all Q/sol format; repair figure tags",
+    "cache": "qx-pwa-qxmd232",
+    "ts": 1789862320000,
+    "title": "qxmd232: heal question and solution math dollars",
     "site": "https://www.quantrexacademy.com",
-    "build": "qxmd231",
-    "body": "Every student question and solution was run through the live formatters. Broken figure tags are repaired. Stem-echo stripping stays in the solution renderer. Official empty solutions are not invented.",
+    "build": "qxmd232",
+    "body": "All student questions and solutions were re-checked. Unpaired $ from stem-cut math is healed in stems, options, and solutions. Formatters run on every field. Official empty solutions are not invented. Firebase Hosting + GitHub only.",
     "package": "com.quantrexacademy.app",
     "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }

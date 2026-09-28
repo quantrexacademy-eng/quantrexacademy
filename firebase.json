@@ -87,6 +87,8 @@
       "data/qid_marks/**",
       "data/qid_quizrr/**",
       "data/quizrr/**",
+      "data/books.json",
+      "**/data/books.json",
       "data/books/_bb_ocr_cache/**",
       "node_modules/**",
       "*.apk",

@@ -254,7 +254,34 @@
     s = s.replace(/(^|[^$])\$\s+\$(?!\$)/g, "$1"); // empty inline $  $ (needs whitespace)
     s = s.replace(/\\\(\s*\\\)/g, "");
     s = s.replace(/\\\[\s*\\\]/g, "");
+    s = healOddDollars(s);
     return s;
+  }
+
+  /** Stem-echo cuts often eat the opening `$` of the next math island. Pair or drop the leftover. */
+  function healOddDollars(html) {
+    let s = String(html || "");
+    if (!s) return s;
+    const n = (s.match(/\$/g) || []).length;
+    if (n % 2 === 0) return s;
+    const m = /^((?:(?:\s|&nbsp;|<br\s*\/?\s*>|<\/?(?:p|div|span)[^>]*>)*)?)/i.exec(s);
+    const prefix = m ? m[0] : "";
+    const body = s.slice(prefix.length);
+    const count = (body.match(/\$/g) || []).length;
+    if (count % 2 === 0) return s;
+    if (!body.startsWith("$") && /^(?:\\(?:mathrm|mathbf|text|frac|dfrac|tfrac|sqrt|left|right|begin|end|sin|cos|tan|log|ln|cdot|times|pm|infty|alpha|beta|gamma|theta|overline|underline|hat|vec)|\\[a-zA-Z]+|\\end\{)/.test(body)) {
+      return prefix + "$" + body;
+    }
+    if (body.startsWith("$") && count === 1) return prefix + body + "$";
+    if (count === 1 && !body.startsWith("$") && /\$\s*(?:<|$)/.test(body)) {
+      return prefix + body.replace(/\$(\s*)(?=<|$)/, "$1");
+    }
+    if (count === 1 && /(?:\\[a-zA-Z]+|[A-Za-z])\$-(?=[A-Za-z])/.test(body)) {
+      return prefix + body.replace(/\$-(?=[A-Za-z])/g, "-");
+    }
+    if (body.startsWith("$")) return prefix + body + "$";
+    if (/\\[a-zA-Z]/.test(body)) return prefix + "$" + body;
+    return prefix + body.replace(/\$(\s*)(?=<|$)/, "$1");
   }
 
   /**
@@ -395,6 +422,7 @@
     // qxmd163: also collapse \\{ before letters already done; repair Marks braces/U+2061
     try { s = repairMarksExportTex(s); } catch (_) { /* */ }
     s = normalizeDelimiters(s);
+    try { s = healOddDollars(s); } catch (_) { /* */ }
     s = tidyWhitespace(s);
 
     // If still leaking katex class tokens as visible source, strip tags aggressively
@@ -549,6 +577,7 @@
     detectBrokenKatex,
     detectRawHtml,
     detectUnbalancedLatex,
+    healOddDollars,
     recoverKatexHtml,
     normalizeMathContent,
     normalizeLatex: normalizeDelimiters,
