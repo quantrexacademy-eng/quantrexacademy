@@ -356,18 +356,18 @@
     return false;
   }
 
-  function viewSettingsPopHtml(session, practice, fontScale) {
-    var qsFmt = {};
+  function egQsetOn(key, defVal) {
     try {
-      qsFmt = (typeof QxSettings !== "undefined" && QxSettings.getQuestionSettings)
-        ? QxSettings.getQuestionSettings()
-        : {};
-    } catch (_qs) { qsFmt = {}; }
+      if (typeof QxSettings !== "undefined" && QxSettings.getQuestionSettings) {
+        var qs = QxSettings.getQuestionSettings();
+        if (qs && typeof qs[key] === "boolean") return qs[key];
+      }
+    } catch (_) { /* */ }
+    return !!defVal;
+  }
+
+  function viewSettingsPopHtml(session, practice, fontScale) {
     var palPref = getPaletteModeSafe();
-    function egQsetOn(key, defVal) {
-      if (qsFmt && typeof qsFmt[key] === "boolean") return qsFmt[key];
-      return !!defVal;
-    }
     function egToggleRow(key, lab, hint, defVal) {
       var on = egQsetOn(key, defVal);
       return '<div class="eg-vs-row">' +
