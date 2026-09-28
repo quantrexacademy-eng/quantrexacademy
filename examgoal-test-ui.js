@@ -31,7 +31,16 @@
       both.rel = "stylesheet";
       document.head.appendChild(both);
     }
-    const bh = "assets/qx-both-themes.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd220");
+    const bh = "assets/qx-both-themes.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd225");
+    let icons = document.getElementById("qxUiIconsCss");
+    if (!icons) {
+      icons = document.createElement("link");
+      icons.id = "qxUiIconsCss";
+      icons.rel = "stylesheet";
+      document.head.appendChild(icons);
+    }
+    const ih = "assets/qx-ui-icons.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd225");
+    if (icons.getAttribute("href") !== ih) icons.href = ih;
     if (both.getAttribute("href") !== bh) both.href = bh;
     let r = document.getElementById("qxPracticeReadCss");
     if (!r) {
@@ -48,11 +57,8 @@
       var s218 = document.createElement("style");
       s218.id = "qxmd219EgCss";
       s218.textContent = [
-        '.eg-test-root[data-eg-mode="practice"] .eg-top-tools.eg-tools-settings-only .eg-tool-btn:not(.eg-settings-gear),',
-        '.eg-test-root[data-eg-mode="practice"] .eg-top-tools .eg-tool-hid,',
-        '.eg-test-root.eg-qxmd220 eg-qxmd219 eg-qxmd218[data-eg-mode="practice"] .eg-top-tools .eg-tool-btn:not(.eg-settings-gear){display:none!important;width:0!important;height:0!important;min-width:0!important;min-height:0!important;padding:0!important;margin:0!important;border:0!important;overflow:hidden!important;opacity:0!important;pointer-events:none!important;position:absolute!important;left:-9999px!important}',
-        '.eg-test-root[data-eg-mode="practice"] .eg-top-tools.eg-tools-settings-only{display:flex!important;flex-wrap:nowrap!important;gap:6px!important;margin-left:auto!important;align-items:center!important}',
-        '.eg-test-root[data-eg-mode="practice"] .eg-top-tools .eg-settings-gear{display:inline-flex!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important;position:relative!important;left:auto!important;width:36px!important;height:36px!important;min-width:36px!important;min-height:36px!important}',
+        '.eg-test-root[data-eg-mode="practice"] .eg-top-tools{display:flex!important;flex-wrap:nowrap!important;gap:4px!important;margin-left:auto!important;align-items:center!important}',
+        '.eg-test-root[data-eg-mode="practice"] .eg-top-tools .eg-tool-btn{display:inline-flex!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important;position:relative!important;left:auto!important}',
         '.eg-fmt-pop.eg-vs-marks{max-width:min(420px,94vw)!important;max-height:min(78vh,640px)!important;overflow:auto!important;padding:12px 14px 16px!important;border-radius:16px!important;box-shadow:0 18px 48px rgba(15,23,42,.28)!important;z-index:2147483000!important;background:var(--qx-card,#fff)!important;color:var(--qx-fg,#0f172a)!important;border:1px solid #e2e8f0!important}',
         'html[data-theme=dark] .eg-fmt-pop.eg-vs-marks,.eg-test-root[data-test-theme=dark] .eg-fmt-pop.eg-vs-marks{background:#111827!important;color:#f1f5f9!important;border-color:#334155!important}',
         '.eg-vs-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 0 8px}',
@@ -769,7 +775,9 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
       (!practice ? timer : "") +
       /* qxmd218: practice keeps ONLY Settings gear visible; other tools stay in DOM (hidden) for Settings proxies */
       (practice
-        ? ('<button type="button" class="eg-ico eg-tool-btn eg-tool-pri eg-settings-gear" id="egFmtBtn" data-tip="Settings" title="Question View Settings" aria-label="Question View Settings">\u2699<span class="eg-tip">Settings</span></button>' +
+        ? ('<button type="button" class="eg-ico eg-tool-btn eg-tool-pri eg-settings-gear" id="egFmtBtn" data-tip="Settings" title="Question View Settings" aria-label="Question View Settings">' +
+          ico('<circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>') +
+          '<span class="eg-tip">Settings</span></button>' +
           '<button type="button" class="eg-ico mtk-theme-btn eg-tool-btn eg-tool-pri' + (theme === "light" ? " eg-moon" : "") + '" id="mtkThemeBtn" data-tip="Theme" title="Light / dark" aria-label="Light / dark">' +
           (theme === "dark"
             ? ico('<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>')
@@ -780,12 +788,17 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
           '<button type="button" class="eg-ico eg-tool-btn eg-menu-btn eg-lines-btn eg-tool-pri' + (sideOpen ? " on" : "") + '" id="egMenuBtn" data-tip="Palette" title="' + sideTitle + '" aria-label="' + sideTitle + '" aria-expanded="' + (sideOpen ? "true" : "false") + '">' +
           menuIco + '<span class="eg-tip">Palette</span></button>' +
           '<button type="button" class="eg-ico star eg-tool-btn eg-tool-sec' + (bmOn ? " on" : "") + '" id="egStarBtn" data-tip="Bookmark" title="Bookmark" aria-label="Bookmark">' +
-          (bmOn ? "\u2605" : "\u2606") + '<span class="eg-tip">Bookmark</span></button>' +
+          ico(bmOn
+            ? '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z" fill="currentColor" stroke="none"/>'
+            : '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z" fill="none" stroke="currentColor" stroke-width="1.7"/>') +
+          '<span class="eg-tip">Bookmark</span></button>' +
           '<button type="button" class="eg-ico eg-tool-btn eg-tool-sec" id="egPlusBtn" data-tip="Group" title="Create group" aria-label="Create group">' +
           groupIco + '<span class="eg-tip">Group</span></button>' +
           '<button type="button" class="eg-ico eg-tool-btn eg-tool-sec" id="egFullBtn" data-tip="Fullscreen" title="Fullscreen" aria-label="Fullscreen">' +
           ico('<path d="M8 3H3v5M16 3h5v5M8 21H3v-5M21 16v5h-5"/>') + '<span class="eg-tip">Full</span></button>' +
-          '<button type="button" class="eg-ico warn eg-tool-btn eg-tool-sec" id="mtkReportBtn" data-tip="Report" title="Report question" aria-label="Report">!<span class="eg-tip">Report</span></button>')
+          '<button type="button" class="eg-ico warn eg-tool-btn eg-tool-sec" id="mtkReportBtn" data-tip="Report" title="Report question" aria-label="Report">' +
+          ico('<path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/>') +
+          '<span class="eg-tip">Report</span></button>')
         : ('<button type="button" class="eg-ico mtk-theme-btn eg-tool-btn eg-tool-pri' + (theme === "light" ? " eg-moon" : "") + '" id="mtkThemeBtn" data-tip="Theme" title="Light / dark" aria-label="Light / dark">' +
           (theme === "dark"
             ? ico('<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>')

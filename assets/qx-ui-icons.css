@@ -1,0 +1,117 @@
+/* Quantrex practice chrome — clean icon toolbar + footer */
+.eg-test-root > .eg-top {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  min-height: 48px !important;
+  padding: 4px 8px 4px 6px !important;
+  background: #1565C0 !important;
+  color: #fff !important;
+}
+.eg-test-root .eg-back {
+  width: 36px !important;
+  height: 36px !important;
+  border-radius: 10px !important;
+  border: 0 !important;
+  background: rgba(255,255,255,.16) !important;
+  color: #fff !important;
+  font-size: 22px !important;
+  line-height: 1 !important;
+  cursor: pointer !important;
+}
+.eg-test-root .eg-top-title {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  font-weight: 700 !important;
+  font-size: 14px !important;
+  color: #fff !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+.eg-test-root .eg-mode-pill {
+  font-size: 10px !important;
+  font-weight: 800 !important;
+  letter-spacing: .04em !important;
+  background: rgba(255,255,255,.2) !important;
+  color: #fff !important;
+  border-radius: 999px !important;
+  padding: 2px 7px !important;
+  margin-left: 6px !important;
+}
+.eg-test-root .eg-top-tools {
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  margin-left: auto !important;
+  flex-shrink: 0 !important;
+}
+.eg-test-root .eg-top-tools .eg-tool-btn,
+.eg-test-root .eg-top-tools .eg-ico {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 36px !important;
+  height: 36px !important;
+  min-width: 36px !important;
+  min-height: 36px !important;
+  padding: 0 !important;
+  border-radius: 10px !important;
+  border: 0 !important;
+  background: rgba(255,255,255,.14) !important;
+  color: #ffffff !important;
+  fill: #ffffff !important;
+  cursor: pointer !important;
+  position: relative !important;
+  left: auto !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+.eg-test-root .eg-top-tools .eg-tool-btn:hover,
+.eg-test-root .eg-top-tools .eg-ico:hover,
+.eg-test-root .eg-top-tools .eg-tool-btn.on {
+  background: rgba(255,255,255,.28) !important;
+}
+.eg-test-root .eg-top-tools svg {
+  width: 20px !important;
+  height: 20px !important;
+  stroke: currentColor !important;
+  fill: none !important;
+  stroke-width: 1.8 !important;
+}
+.eg-test-root .eg-top-tools .star.on svg,
+.eg-test-root .eg-top-tools .star svg[fill="currentColor"] {
+  fill: #fff !important;
+  stroke: none !important;
+}
+.eg-test-root .eg-top-tools .eg-tip {
+  display: none !important;
+  position: absolute !important;
+  top: calc(100% + 6px) !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  background: #0f172a !important;
+  color: #fff !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  padding: 4px 8px !important;
+  border-radius: 6px !important;
+  white-space: nowrap !important;
+  z-index: 80 !important;
+  pointer-events: none !important;
+}
+.eg-test-root .eg-top-tools .eg-tool-btn:hover > .eg-tip {
+  display: block !important;
+}
+
+.eg-test-root #egFoot,
+.eg-test-root .eg-foot-practice {
+  background: #ffffff !important;
+  border-top: 1px solid #e5e7eb !important;
+}
+.eg-test-root[data-test-theme="dark"] #egFoot,
+.eg-test-root[data-test-theme="dark"] .eg-foot-practice {
+  background: #0f172a !important;
+  border-top-color: #334155 !important;
+}
