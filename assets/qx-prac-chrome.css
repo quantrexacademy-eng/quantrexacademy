@@ -258,9 +258,9 @@ body.allen-cbt-active #app-main {
   flex-wrap: nowrap !important;
   visibility: visible !important;
   opacity: 1 !important;
-  pointer-events: none !important; /* bar itself click-through; buttons re-enable */
+  pointer-events: auto !important;
   transform: none !important;
-  min-height: 0 !important;
+  min-height: 56px !important;
   height: auto !important;
   max-height: none !important;
 }
@@ -537,7 +537,7 @@ html[data-theme="dark"] .eg-test-root[data-test-theme="light"] .eg-foot {
   grid-template-columns: 1fr 1.2fr 1fr !important;
   gap: 8px !important;
   align-items: center !important;
-  pointer-events: none !important;
+  pointer-events: auto !important;
   position: fixed !important; /* qxmd216 fixed */
   left: 0 !important; right: 0 !important; bottom: 0 !important;
   z-index: 2147483646 !important;
@@ -703,8 +703,8 @@ html[data-theme="light"] .eg-foot, html[data-theme="dark"] .eg-foot,
   z-index: 2147483646 !important;
   visibility: visible !important;
   opacity: 1 !important;
-  pointer-events: none !important;
-  padding: 6px 10px calc(6px + env(safe-area-inset-bottom, 0px)) !important;
+  pointer-events: auto !important;
+  padding: 8px 10px calc(12px + env(safe-area-inset-bottom, 0px)) !important;
   transform: none !important;
 }
 #egFoot::before, .eg-foot::before, .eg-foot-marks::before { content: none !important; display: none !important; height: 0 !important; }
@@ -1301,15 +1301,15 @@ html[data-theme="light"] .eg-foot, html[data-theme="dark"] .eg-foot {
   top: auto !important;
   inset: auto 0 0 0 !important;
   transform: none !important;
-  background: transparent !important;
-  background-color: transparent !important;
+  background: #ffffff !important;
+  background-color: #ffffff !important;
   background-image: none !important;
-  box-shadow: none !important;
+  box-shadow: 0 -8px 24px rgba(15,23,42,.12) !important;
   border: none !important;
-  border-top: none !important;
+  border-top: 1px solid #e5e7eb !important;
   border-bottom: none !important;
   outline: none !important;
-  min-height: 0 !important;
+  min-height: 56px !important;
   max-height: none !important;
   height: auto !important;
   backdrop-filter: none !important;
@@ -1322,8 +1322,8 @@ html[data-theme="light"] .eg-foot, html[data-theme="dark"] .eg-foot {
   width: 100% !important;
   max-width: none !important;
   margin: 0 !important;
-  padding: 6px 10px calc(6px + env(safe-area-inset-bottom, 0px)) !important;
-  pointer-events: none !important;
+  padding: 8px 10px calc(12px + env(safe-area-inset-bottom, 0px)) !important;
+  pointer-events: auto !important;
   visibility: visible !important;
   opacity: 1 !important;
   flex: 0 0 auto !important;
@@ -1430,26 +1430,20 @@ html[data-theme="light"] .eg-foot, html[data-theme="dark"] .eg-foot {
 }
 
 
-/* ========== qxmd218: practice tools ONLY inside Settings ========== */
-.eg-test-root[data-eg-mode="practice"].eg-qxmd218 .eg-top-tools .eg-tool-btn:not(.eg-settings-gear),
-.eg-test-root[data-eg-mode="practice"] .eg-top-tools.eg-tools-settings-only .eg-tool-btn:not(.eg-settings-gear),
-.eg-test-root[data-eg-mode="practice"] .eg-top-tools .eg-tool-hid,
-.allen-practice.qxmd218-allen .mtk-header-tools .eg-tool-btn:not(.eg-settings-gear):not(#pracViewMenuBtn):not(.qx-prac-view-btn),
-.allen-practice.qxmd218-allen .qx-prac-tools .eg-tool-hid {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-  position: absolute !important;
-  left: -9999px !important;
-  width: 0 !important;
-  height: 0 !important;
-  min-width: 0 !important;
-  min-height: 0 !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  border: 0 !important;
-  overflow: hidden !important;
+/* qxmd230: practice tools stay on the blue bar; Settings panel still opens */
+.eg-test-root[data-eg-mode="practice"].eg-qxmd218 .eg-top-tools .eg-tool-btn,
+.eg-test-root[data-eg-mode="practice"] .eg-top-tools .eg-tool-btn,
+.eg-test-root[data-eg-mode="practice"] .eg-top-tools .eg-tool-hid {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  position: relative !important;
+  left: auto !important;
+  width: 36px !important;
+  height: 36px !important;
+  min-width: 36px !important;
+  min-height: 36px !important;
 }
 .eg-test-root[data-eg-mode="practice"] .eg-top-tools .eg-settings-gear,
 .allen-practice.qxmd218-allen .eg-settings-gear,

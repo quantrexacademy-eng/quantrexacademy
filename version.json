@@ -1,10 +1,10 @@
 {
-    "cache": "qx-pwa-qxmd229",
-    "ts": 1789862290000,
-    "title": "qxmd229: fast figures + smoother app and website",
+    "cache": "qx-pwa-qxmd230",
+    "ts": 1789862300000,
+    "title": "qxmd230: Prev/Next always visible; Settings sheet; solution card light/dark",
     "site": "https://www.quantrexacademy.com",
-    "build": "qxmd229",
-    "body": "Digital book and solution figures load from Quantrex Storage on first paint. The 1.4MB figure map is off the critical path. Practice and home stay smooth on web and the Android app.",
+    "build": "qxmd230",
+    "body": "Practice Previous, Check Answer and Next stay on a solid bar in the app before and after the solution. The Settings gear opens a light/dark sheet. Solution cards are readable in both themes for exams and digital books.",
     "package": "com.quantrexacademy.app",
     "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }

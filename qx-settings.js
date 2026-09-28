@@ -7,7 +7,7 @@
 (function (global) {
   "use strict";
 
-  var PARITY = "qxmd224";
+  var PARITY = "qxmd230";
   var PREF = {
     push: "qx_pref_push_notif",
     email: "qx_pref_email_notif",
@@ -197,8 +197,8 @@
 
   function getPaletteMode() {
     /* qxmd167: default side (right sidebar only) — simpler/faster than Both */
-    var v = lsGet(PREF.palette, "both");
-    return v === "side" || v === "strip" || v === "both" ? v : "both";
+    var v = lsGet(PREF.palette, "side");
+    return v === "side" || v === "strip" || v === "both" ? v : "side";
   }
 
   function setPaletteMode(mode) {

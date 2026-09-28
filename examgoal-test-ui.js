@@ -356,6 +356,86 @@
     return false;
   }
 
+  function viewSettingsPopHtml(session, practice, fontScale) {
+    var qsFmt = {};
+    try {
+      qsFmt = (typeof QxSettings !== "undefined" && QxSettings.getQuestionSettings)
+        ? QxSettings.getQuestionSettings()
+        : {};
+    } catch (_qs) { qsFmt = {}; }
+    var palPref = getPaletteModeSafe();
+    function egQsetOn(key, defVal) {
+      if (qsFmt && typeof qsFmt[key] === "boolean") return qsFmt[key];
+      return !!defVal;
+    }
+    function egToggleRow(key, lab, hint, defVal) {
+      var on = egQsetOn(key, defVal);
+      return '<div class="eg-vs-row">' +
+        '<div class="eg-vs-lab"><span class="eg-vs-lab-t">' + lab + '</span>' +
+        (hint ? '<span class="eg-vs-hint">' + hint + '</span>' : '') +
+        '</div>' +
+        '<button type="button" class="eg-vs-tog' + (on ? ' on' : '') + '" data-eg-qset="' + key + '" aria-pressed="' + (on ? 'true' : 'false') + '" role="switch">' +
+        '<span class="eg-vs-knob" aria-hidden="true"></span></button></div>';
+    }
+    var tools = practice
+      ? ('<section class="eg-vs-sec"><h5 class="eg-vs-h">Tools</h5>' +
+        '<div class="eg-fmt-row eg-fmt-more eg-vs-tools" role="group" aria-label="Question tools">' +
+        '<button type="button" data-eg-fmt-act="theme">Theme</button>' +
+        '<button type="button" data-eg-fmt-act="allq">All Q</button>' +
+        '<button type="button" data-eg-fmt-act="palette">Palette</button>' +
+        '<button type="button" data-eg-fmt-act="star">Bookmark</button>' +
+        '<button type="button" data-eg-fmt-act="plus">Group</button>' +
+        '<button type="button" data-eg-fmt-act="full">Fullscreen</button>' +
+        '<button type="button" data-eg-fmt-act="report">Report</button>' +
+        '<button type="button" data-eg-fmt-act="note">Note</button>' +
+        '</div></section>')
+      : "";
+    var body = practice
+      ? ('<section class="eg-vs-sec"><h5 class="eg-vs-h">Notes &amp; Solutions</h5>' +
+        egToggleRow("showHint", "Show hint", "Hint button when the question has a hint", false) +
+        egToggleRow("alwaysShowMyNote", "Always show My note", "Keep the note box open", false) +
+        egToggleRow("isQuestionSolutionMode", "Question Solution Mode", "Open the official solution when the question loads", false) +
+        '</section>' +
+        '<section class="eg-vs-sec"><h5 class="eg-vs-h">Practice Experience</h5>' +
+        egToggleRow("showTimer", "Start timer auto", "Timer on every practice question", true) +
+        egToggleRow("playSounds", "Play sounds", "Sound after you check an answer", true) +
+        egToggleRow("dontShowCorrectAnswerImmediately", "Don\u2019t show correct immediately", "Grade first; mark options only when Show Answer is on", false) +
+        '<div class="eg-vs-row eg-vs-sizes"><div class="eg-vs-lab"><span class="eg-vs-lab-t">Text Size</span>' +
+        '<span class="eg-vs-hint">Question &amp; solution font</span></div>' +
+        '<div class="eg-fmt-row eg-vs-size-row">' +
+        '<button type="button" data-eg-scale="small"' + (fontScale === "small" ? ' class="on"' : "") + ">S</button>" +
+        '<button type="button" data-eg-scale="medium"' + (fontScale === "medium" ? ' class="on"' : "") + ">M</button>" +
+        '<button type="button" data-eg-scale="large"' + (fontScale === "large" ? ' class="on"' : "") + ">L</button>" +
+        '<button type="button" data-eg-scale="xlarge"' + (fontScale === "xlarge" ? ' class="on"' : "") + ">XL</button>" +
+        '</div></div></section>' +
+        '<section class="eg-vs-sec"><h5 class="eg-vs-h">Peer Insights</h5>' +
+        egToggleRow("showAttemptInsight", "Show attempt insight", "Time taken after Check Answer", true) +
+        '</section>')
+      : ('<h5>Text size</h5><div class="eg-fmt-row">' +
+        '<button type="button" data-eg-scale="small"' + (fontScale === "small" ? ' class="on"' : "") + ">S</button>" +
+        '<button type="button" data-eg-scale="medium"' + (fontScale === "medium" ? ' class="on"' : "") + ">M</button>" +
+        '<button type="button" data-eg-scale="large"' + (fontScale === "large" ? ' class="on"' : "") + ">L</button>" +
+        '<button type="button" data-eg-scale="xlarge"' + (fontScale === "xlarge" ? ' class="on"' : "") + ">XL</button></div>");
+    return '<div class="eg-fmt-scrim" id="egFmtScrim" hidden></div>' +
+      '<div class="eg-fmt-pop eg-view-settings eg-vs-marks" id="egFmtPop" role="dialog" aria-label="Question View Settings">' +
+      '<div class="eg-vs-head"><h5 class="eg-fmt-title">Question View Settings</h5>' +
+      '<button type="button" class="eg-vs-close" id="egFmtClose" aria-label="Close">\u00d7</button></div>' +
+      body +
+      '<section class="eg-vs-sec"><h5 class="eg-vs-h">Palette</h5><div class="eg-fmt-row eg-fmt-pal" role="group" aria-label="Palette layout">' +
+      '<button type="button" data-eg-pal="side"' + (palPref === "side" ? ' class="on"' : "") + ' title="Right sidebar">Right</button>' +
+      '<button type="button" data-eg-pal="strip"' + (palPref === "strip" ? ' class="on"' : "") + ' title="Top question bar">Top</button>' +
+      '<button type="button" data-eg-pal="both"' + (palPref === "both" ? ' class="on"' : "") + ' title="Right sidebar and top bar">Both</button>' +
+      '</div></section>' +
+      tools +
+      '</div>';
+  }
+  function getPaletteModeSafe() {
+    try {
+      if (typeof QxSettings !== "undefined" && QxSettings.getPaletteMode) return QxSettings.getPaletteMode();
+    } catch (_) {}
+    return getPalettePref();
+  }
+
   function wantShowSol(session, idx) {
     if (!session || !session.practiceMode) return false;
     var i = idx != null ? idx : session.idx;
@@ -605,77 +685,7 @@
     const timer = '<span class="eg-timer" id="egTimer">' +
       formatClock(session.remainingSec != null ? session.remainingSec : 0) + "</span>";
     const palPref = getPalettePref();
-    ﻿    /* qxmd218: Marks-like View Settings holds ALL practice toolbars */
-    var qsFmt = {};
-    try {
-      qsFmt = (typeof QxSettings !== "undefined" && QxSettings.getQuestionSettings)
-        ? QxSettings.getQuestionSettings()
-        : {};
-    } catch (_qs) { qsFmt = {}; }
-    function egQsetOn(key, defVal) {
-      if (qsFmt && typeof qsFmt[key] === "boolean") return qsFmt[key];
-      return !!defVal;
-    }
-    function egToggleRow(key, lab, hint, defVal) {
-      var on = egQsetOn(key, defVal);
-      return '<div class="eg-vs-row">' +
-        '<div class="eg-vs-lab"><span class="eg-vs-lab-t">' + lab + '</span>' +
-        (hint ? '<span class="eg-vs-hint">' + hint + '</span>' : '') +
-        '</div>' +
-        '<button type="button" class="eg-vs-tog' + (on ? ' on' : '') + '" data-eg-qset="' + key + '" aria-pressed="' + (on ? 'true' : 'false') + '" role="switch">' +
-        '<span class="eg-vs-knob" aria-hidden="true"></span></button></div>';
-    }
-    const fmtSec = practice
-      ? '<section class="eg-vs-sec"><h5 class="eg-vs-h">Tools</h5>' +
-        '<div class="eg-fmt-row eg-fmt-more eg-vs-tools" role="group" aria-label="Question tools">' +
-        '<button type="button" data-eg-fmt-act="theme" title="Theme">Theme</button>' +
-        '<button type="button" data-eg-fmt-act="allq" title="All questions">All Q</button>' +
-        '<button type="button" data-eg-fmt-act="palette" title="Palette">Palette</button>' +
-        '<button type="button" data-eg-fmt-act="star" title="Bookmark">Bookmark</button>' +
-        '<button type="button" data-eg-fmt-act="plus" title="Create group">Group</button>' +
-        '<button type="button" data-eg-fmt-act="full" title="Fullscreen">Fullscreen</button>' +
-        '<button type="button" data-eg-fmt-act="report" title="Report question">Report</button>' +
-        '<button type="button" data-eg-fmt-act="note" title="Add a note">Note</button>' +
-        '</div></section>'
-      : "";
-    const fmt = fmtOpen
-      ? '<div class="eg-fmt-pop eg-view-settings eg-vs-marks" id="egFmtPop" role="dialog" aria-label="Question View Settings">' +
-        '<div class="eg-vs-head"><h5 class="eg-fmt-title">Question View Settings</h5>' +
-        '<button type="button" class="eg-vs-close" id="egFmtClose" aria-label="Close">\u00d7</button></div>' +
-        (practice
-          ? ('<section class="eg-vs-sec"><h5 class="eg-vs-h">Notes &amp; Solutions</h5>' +
-            egToggleRow("showHint", "Show hint", "Hint button when the question has a hint", false) +
-            egToggleRow("alwaysShowMyNote", "Always show My note", "Keep the note box open", false) +
-            egToggleRow("isQuestionSolutionMode", "Question Solution Mode", "Open the official solution when the question loads", false) +
-            '</section>' +
-            '<section class="eg-vs-sec"><h5 class="eg-vs-h">Practice Experience</h5>' +
-            egToggleRow("showTimer", "Start timer auto", "Timer on every practice question", true) +
-            egToggleRow("playSounds", "Play sounds", "Sound after you check an answer", true) +
-            egToggleRow("dontShowCorrectAnswerImmediately", "Don\u2019t show correct immediately", "Grade first; mark options only when Show Answer is on", false) +
-            '<div class="eg-vs-row eg-vs-sizes"><div class="eg-vs-lab"><span class="eg-vs-lab-t">Text Size</span>' +
-            '<span class="eg-vs-hint">Question &amp; solution font</span></div>' +
-            '<div class="eg-fmt-row eg-vs-size-row">' +
-            '<button type="button" data-eg-scale="small"' + (fontScale === "small" ? ' class="on"' : "") + ">S</button>" +
-            '<button type="button" data-eg-scale="medium"' + (fontScale === "medium" ? ' class="on"' : "") + ">M</button>" +
-            '<button type="button" data-eg-scale="large"' + (fontScale === "large" ? ' class="on"' : "") + ">L</button>" +
-            '<button type="button" data-eg-scale="xlarge"' + (fontScale === "xlarge" ? ' class="on"' : "") + ">XL</button>" +
-            '</div></div></section>' +
-            '<section class="eg-vs-sec"><h5 class="eg-vs-h">Peer Insights</h5>' +
-            egToggleRow("showAttemptInsight", "Show attempt insight", "Time taken after Check Answer", true) +
-            '</section>')
-          : ('<h5>Text size</h5><div class="eg-fmt-row">' +
-            '<button type="button" data-eg-scale="small"' + (fontScale === "small" ? ' class="on"' : "") + ">S</button>" +
-            '<button type="button" data-eg-scale="medium"' + (fontScale === "medium" ? ' class="on"' : "") + ">M</button>" +
-            '<button type="button" data-eg-scale="large"' + (fontScale === "large" ? ' class="on"' : "") + ">L</button>" +
-            '<button type="button" data-eg-scale="xlarge"' + (fontScale === "xlarge" ? ' class="on"' : "") + ">XL</button></div>")) +
-        '<section class="eg-vs-sec"><h5 class="eg-vs-h">Palette</h5><div class="eg-fmt-row eg-fmt-pal" role="group" aria-label="Palette layout">' +
-        '<button type="button" data-eg-pal="side"' + (palPref === "side" ? ' class="on"' : "") + ' title="Right sidebar">Right</button>' +
-        '<button type="button" data-eg-pal="strip"' + (palPref === "strip" ? ' class="on"' : "") + ' title="Top question bar">Top</button>' +
-        '<button type="button" data-eg-pal="both"' + (palPref === "both" ? ' class="on"' : "") + ' title="Right sidebar and top bar">Both</button>' +
-        '</div></section>' +
-        fmtSec +
-        '</div>'
-      : "";
+    const fmt = fmtOpen ? viewSettingsPopHtml(session, practice, fontScale) : "";
 const checkRow = ""; /* qxmd217: Note moved into View Settings */
     const hiddenNote = '<button type="button" class="eg-note" id="egNoteBtn" style="display:none!important" aria-hidden="true">Note</button>';
 
@@ -1586,7 +1596,7 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
         foot.style.setProperty("box-shadow", "none", "important");
         foot.style.setProperty("border", "none", "important");
         foot.style.setProperty("border-top", "1px solid #e5e7eb", "important");
-        foot.style.setProperty("min-height", "0", "important");
+        foot.style.setProperty("min-height", "56px", "important");
         foot.style.setProperty("height", "auto", "important");
         foot.style.setProperty("backdrop-filter", "none", "important");
         foot.style.setProperty("-webkit-backdrop-filter", "none", "important");
@@ -1606,7 +1616,7 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
         foot.style.setProperty("align-items", "center", "important");
         foot.style.setProperty("gap", "8px", "important");
         foot.style.setProperty("visibility", "visible", "important");
-        foot.style.setProperty("padding", "6px 10px calc(6px + env(safe-area-inset-bottom, 0px))", "important");
+        foot.style.setProperty("padding", "8px 10px calc(12px + env(safe-area-inset-bottom, 0px))", "important");
         foot.style.setProperty("pointer-events", "auto", "important");
         const nav = foot.querySelector(".eg-foot-nav, .eg-foot-right");
         if (nav) {
@@ -1621,9 +1631,9 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
           b.style.setProperty("visibility", "visible", "important");
           b.style.setProperty("opacity", "1", "important");
           b.style.setProperty("pointer-events", "auto", "important");
-          b.style.setProperty("min-height", "40px", "important");
-          b.style.setProperty("height", "40px", "important");
-          b.style.setProperty("max-height", "40px", "important");
+          b.style.setProperty("min-height", "48px", "important");
+          b.style.setProperty("height", "48px", "important");
+          b.style.setProperty("max-height", "48px", "important");
           b.style.setProperty("border-radius", "999px", "important");
           b.style.setProperty("width", "100%", "important");
           b.style.setProperty("z-index", "2147483647", "important");
@@ -1697,7 +1707,7 @@ function forceFootVisible(force) {
         root.classList.toggle("eg-preview-open", previewOpen);
         root.classList.toggle("eg-preview-collapsed", !previewOpen);
         root.classList.remove("eg-tools-closed", "eg-tools-open", "eg-sol-showing", "eg-qxmd175", "eg-qxmd176", "eg-qxmd177", "eg-qxmd179");
-        root.classList.add("eg-tools-open", "eg-qxmd217 eg-qxmd220 eg-qxmd219 eg-qxmd218", "eg-qxmd167", "eg-qxmd170", "eg-qxmd171", "eg-qxmd173", "eg-qxmd180", "eg-qxmd182", "eg-qxtool8", "eg-qxeg1", "eg-qxeg2", "eg-qxeg3", "eg-qxeg4", "eg-qxeg5", "eg-qxeg6", "eg-qxeg7", "eg-foot-ready");
+        root.classList.add("eg-tools-open", "eg-qxmd217", "eg-qxmd220", "eg-qxmd219", "eg-qxmd218", "eg-qxmd167", "eg-qxmd170", "eg-qxmd171", "eg-qxmd173", "eg-qxmd180", "eg-qxmd182", "eg-qxtool8", "eg-qxeg1", "eg-qxeg2", "eg-qxeg3", "eg-qxeg4", "eg-qxeg5", "eg-qxeg6", "eg-qxeg7", "eg-foot-ready");
         root.setAttribute("data-eg-cycle", bothOpen ? "1" : "0");
         const strip = root.querySelector("#egQBar");
         if (strip) {
@@ -2120,18 +2130,106 @@ function forceFootVisible(force) {
         localStorage.setItem("qx_test_theme", th);
       } catch (_) { /* */ }
     };
+    function closeFmtPop() {
+      session._egFmtOpen = false;
+      try { var p0 = root.querySelector("#egFmtPop"); if (p0) p0.remove(); } catch (_) {}
+      try { var s0 = root.querySelector("#egFmtScrim"); if (s0) s0.remove(); } catch (_) {}
+    }
+    function wireFmtPopNow() {
+      root.querySelectorAll("[data-eg-qset]").forEach(function (b) {
+        b.onclick = function (e) {
+          if (e) { e.preventDefault(); e.stopPropagation(); }
+          var key = b.getAttribute("data-eg-qset");
+          if (!key) return;
+          var next = !b.classList.contains("on");
+          try {
+            if (typeof QxSettings !== "undefined" && QxSettings.setQuestionSetting) {
+              QxSettings.setQuestionSetting(key, next);
+            } else {
+              var raw = {};
+              try { raw = JSON.parse(localStorage.getItem("qx_marks_question_settings") || "{}") || {}; } catch (_) { raw = {}; }
+              raw[key] = next;
+              localStorage.setItem("qx_marks_question_settings", JSON.stringify(raw));
+            }
+          } catch (_) { /* */ }
+          b.classList.toggle("on", next);
+          b.setAttribute("aria-pressed", next ? "true" : "false");
+          if (key === "showTimer") {
+            var tEl = root.querySelector("#egQTime");
+            if (tEl) tEl.style.display = next ? "" : "none";
+          }
+        };
+      });
+      var fmtClose = root.querySelector("#egFmtClose");
+      if (fmtClose) fmtClose.onclick = function (e) {
+        if (e) { e.preventDefault(); e.stopPropagation(); }
+        closeFmtPop();
+      };
+      var scrim = root.querySelector("#egFmtScrim");
+      if (scrim) {
+        scrim.removeAttribute("hidden");
+        scrim.onclick = function (e) {
+          if (e) { e.preventDefault(); e.stopPropagation(); }
+          closeFmtPop();
+        };
+      }
+      root.querySelectorAll("[data-eg-scale]").forEach(function (b) {
+        b.onclick = function (e) {
+          if (e) { e.preventDefault(); e.stopPropagation(); }
+          if (typeof setTestFontScale === "function") setTestFontScale(b.getAttribute("data-eg-scale"));
+          root.querySelectorAll("[data-eg-scale]").forEach(function (x) {
+            x.classList.toggle("on", x.getAttribute("data-eg-scale") === b.getAttribute("data-eg-scale"));
+          });
+        };
+      });
+      root.querySelectorAll("[data-eg-pal]").forEach(function (b) {
+        b.onclick = function (e) {
+          if (e) { e.preventDefault(); e.stopPropagation(); }
+          var mode = b.getAttribute("data-eg-pal");
+          setPalettePref(mode);
+          root.querySelectorAll("[data-eg-pal]").forEach(function (x) {
+            x.classList.toggle("on", x.getAttribute("data-eg-pal") === mode);
+          });
+          applyPalettePrefOpen(session);
+          if (mode === "side") { session._egStripOpen = false; session._egSideOpen = true; }
+          else if (mode === "strip") { session._egStripOpen = true; session._egSideOpen = false; }
+          else { session._egStripOpen = true; session._egSideOpen = true; }
+          session._egSideCollapsed = !session._egSideOpen;
+          syncCycleBtn();
+        };
+      });
+      root.querySelectorAll("[data-eg-fmt-act]").forEach(function (b) {
+        b.onclick = function (e) {
+          if (e) { e.preventDefault(); e.stopPropagation(); }
+          var act = b.getAttribute("data-eg-fmt-act");
+          var map = { star: "#egStarBtn", plus: "#egPlusBtn", full: "#egFullBtn", report: "#mtkReportBtn", theme: "#mtkThemeBtn", allq: "#egAllQBtn", palette: "#egMenuBtn", note: "#egNoteBtn" };
+          var tgt = map[act] && root.querySelector(map[act]);
+          closeFmtPop();
+          if (tgt) {
+            try { tgt.click(); } catch (_) {
+              try { if (typeof tgt.onclick === "function") tgt.onclick(); } catch (_2) { /* */ }
+            }
+          }
+        };
+      });
+    }
+    root._egWireFmtPop = wireFmtPopNow;
     const fmtBtn = root.querySelector("#egFmtBtn");
     if (fmtBtn) fmtBtn.onclick = function (e) {
       if (e) { e.preventDefault(); e.stopPropagation(); }
-      if (window._egFmtLock && Date.now() - window._egFmtLock < 120) return;
+      if (window._egFmtLock && Date.now() - window._egFmtLock < 180) return;
       window._egFmtLock = Date.now();
-      session._egFmtOpen = !session._egFmtOpen;
       var existing = root.querySelector("#egFmtPop");
-      if (!session._egFmtOpen) {
-        if (existing) try { existing.remove(); } catch (_) {}
+      if (existing) {
+        closeFmtPop();
         return;
       }
+      session._egFmtOpen = true;
+      var host = root.querySelector(".eg-top") || root;
+      host.insertAdjacentHTML("afterend", viewSettingsPopHtml(session, !!session.practiceMode, (typeof getTestFontScale === "function" ? getTestFontScale() : "medium")));
+      wireFmtPopNow();
     };
+    wireFmtPopNow();
     /* qxmd218: Marks settings toggles + close */
     root.querySelectorAll("[data-eg-qset]").forEach(function (b) {
       b.onclick = function (e) {

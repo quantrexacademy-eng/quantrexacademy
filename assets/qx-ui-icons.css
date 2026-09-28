@@ -204,11 +204,180 @@
   color: #ffffff !important;
 }
 
+.eg-test-root #egFoot,
+.eg-test-root .eg-foot,
+.eg-test-root .eg-foot-practice,
+.eg-test-root .eg-foot-marks {
+  display: grid !important;
+  grid-template-columns: 1fr 1.2fr 1fr !important;
+  align-items: center !important;
+  gap: 8px !important;
+  position: fixed !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 2147483646 !important;
+  pointer-events: auto !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  min-height: 56px !important;
+  padding: 8px 10px calc(12px + env(safe-area-inset-bottom, 0px)) !important;
+  background: #ffffff !important;
+  border-top: 1px solid #e5e7eb !important;
+  box-shadow: 0 -8px 24px rgba(15,23,42,.12) !important;
+}
+.eg-test-root[data-test-theme="dark"] #egFoot,
+.eg-test-root[data-test-theme="dark"] .eg-foot {
+  background: #0f172a !important;
+  border-top-color: #334155 !important;
+  box-shadow: 0 -8px 24px rgba(0,0,0,.4) !important;
+}
+.eg-test-root #egFoot #qxPrevBtn,
+.eg-test-root #egFoot #qxNextBtn,
+.eg-test-root #egFoot #egCheckBtn {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 48px !important;
+  height: 48px !important;
+  border-radius: 999px !important;
+  font-weight: 800 !important;
+  font-size: 14px !important;
+}
+.eg-test-root[data-test-theme="light"] #egFoot #qxPrevBtn,
+.eg-test-root:not([data-test-theme="dark"]) #egFoot #qxPrevBtn {
+  background: #ffffff !important;
+  color: #1565C0 !important;
+  border: 2px solid #1565C0 !important;
+}
+.eg-test-root[data-test-theme="light"] #egFoot #qxNextBtn,
+.eg-test-root[data-test-theme="light"] #egFoot #egCheckBtn,
+.eg-test-root:not([data-test-theme="dark"]) #egFoot #qxNextBtn,
+.eg-test-root:not([data-test-theme="dark"]) #egFoot #egCheckBtn {
+  background: #1565C0 !important;
+  color: #ffffff !important;
+  border: 2px solid #1565C0 !important;
+}
+.eg-test-root[data-test-theme="dark"] #egFoot #qxPrevBtn {
+  background: #1e293b !important;
+  color: #93c5fd !important;
+  border: 2px solid #3b82f6 !important;
+}
+.eg-test-root[data-test-theme="dark"] #egFoot #qxNextBtn,
+.eg-test-root[data-test-theme="dark"] #egFoot #egCheckBtn {
+  background: #2563eb !important;
+  color: #ffffff !important;
+  border: 2px solid #2563eb !important;
+}
+.eg-test-root .eg-main,
+.eg-test-root .eg-q-card,
+.eg-test-root #app-main,
+#app-main.eg-test-root,
+.eg-test-root.eg-body {
+  padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)) !important;
+}
+
+/* Settings sheet — light + dark */
+.eg-fmt-scrim {
+  position: fixed !important;
+  inset: 0 !important;
+  background: rgba(15,23,42,.45) !important;
+  z-index: 2147483600 !important;
+}
+.eg-fmt-pop.eg-vs-marks {
+  position: fixed !important;
+  left: 50% !important;
+  top: 56px !important;
+  transform: translateX(-50%) !important;
+  width: min(420px, 94vw) !important;
+  max-height: min(78vh, 640px) !important;
+  overflow: auto !important;
+  z-index: 2147483601 !important;
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 16px !important;
+  box-shadow: 0 18px 48px rgba(15,23,42,.28) !important;
+  padding: 14px 16px 18px !important;
+}
+.eg-test-root[data-test-theme="dark"] .eg-fmt-pop.eg-vs-marks,
+html[data-theme="dark"] .eg-fmt-pop.eg-vs-marks {
+  background: #111827 !important;
+  color: #f1f5f9 !important;
+  border-color: #334155 !important;
+}
+.eg-vs-sec {
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+  color: inherit !important;
+}
+.eg-test-root[data-test-theme="dark"] .eg-vs-sec,
+html[data-theme="dark"] .eg-vs-sec {
+  background: #0b1220 !important;
+  border-color: #1e293b !important;
+}
+.eg-vs-lab-t { color: inherit !important; }
+.eg-vs-hint { color: #64748b !important; }
+.eg-test-root[data-test-theme="dark"] .eg-vs-hint { color: #94a3b8 !important; }
+
+/* Solution card — exams + digital books, both themes */
+.eg-sol-panel {
+  display: block !important;
+  margin: 14px 0 88px !important;
+  border-radius: 14px !important;
+  overflow: hidden !important;
+  border: 1px solid #cbd5e1 !important;
+}
+.eg-sol-panel-head {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  background: #1565C0 !important;
+  color: #ffffff !important;
+  padding: 10px 14px !important;
+  font-weight: 800 !important;
+}
+.eg-sol-panel-close { color: #fff !important; background: transparent !important; border: 0 !important; font-size: 18px !important; }
+.eg-test-root[data-test-theme="light"] .eg-sol,
+.eg-test-root[data-test-theme="light"] .qx-sol-card,
+.eg-test-root[data-test-theme="light"] .sol-body,
+.eg-test-root[data-test-theme="light"] .qx-sol-flow {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  letter-spacing: normal !important;
+  line-height: 1.65 !important;
+  font-size: 16px !important;
+}
+.eg-test-root[data-test-theme="dark"] .eg-sol,
+.eg-test-root[data-test-theme="dark"] .qx-sol-card,
+.eg-test-root[data-test-theme="dark"] .sol-body,
+.eg-test-root[data-test-theme="dark"] .qx-sol-flow,
+.eg-test-root[data-test-theme="dark"] .eg-sol-panel {
+  background: #111827 !important;
+  color: #f1f5f9 !important;
+  border-color: #334155 !important;
+  letter-spacing: normal !important;
+  line-height: 1.65 !important;
+  font-size: 16px !important;
+}
+.eg-sol img, .qx-sol-flow img, #egSol img, .sol-body img {
+  display: block !important;
+  visibility: visible !important;
+  max-width: 100% !important;
+  height: auto !important;
+  margin: 10px auto !important;
+  background: #fff !important;
+}
+.katex-error { display: none !important; }
+
 @media (max-width: 900px) {
   .eg-test-root #egFoot,
   .eg-test-root .eg-foot-practice,
   .eg-test-root .eg-foot {
-    padding-bottom: calc(22px + env(safe-area-inset-bottom, 0px)) !important;
+    padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px)) !important;
     min-height: 64px !important;
     display: grid !important;
     grid-template-columns: 1fr 1.2fr 1fr !important;

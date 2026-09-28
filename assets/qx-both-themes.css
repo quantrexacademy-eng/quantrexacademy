@@ -248,14 +248,15 @@
 /* qxmd212 both-themes foot force — must beat earlier white !important */
 #egFoot, .eg-foot, .eg-foot-practice, .eg-foot-marks, .mtk-controls, footer.eg-foot,
 .eg-test-root #egFoot, .eg-test-root .eg-foot, .eg-test-root .eg-foot-practice, .eg-test-root .eg-foot-marks {
-  background: transparent !important;
-  background-color: transparent !important;
+  background: #ffffff !important;
+  background-color: #ffffff !important;
   background-image: none !important;
-  box-shadow: none !important;
+  box-shadow: 0 -8px 24px rgba(15,23,42,.12) !important;
   border: none !important;
-  border-top: none !important;
-  min-height: 0 !important;
-  padding: 8px 10px calc(8px + env(safe-area-inset-bottom, 0px)) !important;
+  border-top: 1px solid #e5e7eb !important;
+  min-height: 56px !important;
+  pointer-events: auto !important;
+  padding: 8px 10px calc(10px + env(safe-area-inset-bottom, 0px)) !important;
 }
 .eg-test-root[data-test-theme="dark"] .eg-foot,
 .eg-test-root[data-test-theme="dark"] #egFoot {
@@ -283,25 +284,33 @@
 html[data-theme="light"] .eg-foot, html[data-theme="dark"] .eg-foot,
 .eg-test-root[data-test-theme="light"] .eg-foot, .eg-test-root[data-test-theme="dark"] .eg-foot,
 .mtk-test-root[data-test-theme="light"] .eg-foot, .mtk-test-root[data-test-theme="dark"] .eg-foot {
-  background: transparent !important;
-  background-color: transparent !important;
+  background: #ffffff !important;
+  background-color: #ffffff !important;
   background-image: none !important;
-  box-shadow: none !important;
+  box-shadow: 0 -8px 24px rgba(15,23,42,.12) !important;
   border: none !important;
-  border-top: none !important;
-  min-height: 0 !important;
+  border-top: 1px solid #e5e7eb !important;
+  min-height: 56px !important;
   display: grid !important;
   grid-template-columns: 1fr 1.2fr 1fr !important;
   gap: 8px !important;
   align-items: center !important;
-  position: fixed !important; /* qxmd216 fixed */
+  position: fixed !important;
   left: 0 !important; right: 0 !important; bottom: 0 !important;
   z-index: 2147483646 !important;
   visibility: visible !important;
   opacity: 1 !important;
-  pointer-events: none !important;
-  padding: 6px 10px calc(6px + env(safe-area-inset-bottom, 0px)) !important;
+  pointer-events: auto !important;
+  padding: 8px 10px calc(10px + env(safe-area-inset-bottom, 0px)) !important;
   transform: none !important;
+}
+.eg-test-root[data-test-theme="dark"] #egFoot,
+.eg-test-root[data-test-theme="dark"] .eg-foot,
+html[data-theme="dark"] .eg-test-root[data-test-theme="dark"] #egFoot {
+  background: #0f172a !important;
+  background-color: #0f172a !important;
+  border-top-color: #334155 !important;
+  box-shadow: 0 -8px 24px rgba(0,0,0,.4) !important;
 }
 #egFoot::before, .eg-foot::before, .eg-foot-marks::before { content: none !important; display: none !important; height: 0 !important; }
 
@@ -877,7 +886,7 @@ html[data-theme="light"] .eg-foot, html[data-theme="dark"] .eg-foot {
   max-width: none !important;
   margin: 0 !important;
   padding: 6px 10px calc(6px + env(safe-area-inset-bottom, 0px)) !important;
-  pointer-events: none !important;
+  pointer-events: auto !important;
   visibility: visible !important;
   opacity: 1 !important;
   flex: 0 0 auto !important;
