@@ -551,9 +551,13 @@ window.QxImgClean = (() => {
   /** Rewrite CDN / broken hosts → local clean diagrams (Irodov, HCV, …) */
   function rewriteBookFigureHtml(html) {
     let out = String(html || "");
+    if (typeof QxOwnedFigs !== "undefined" && typeof QxOwnedFigs.rewriteHtml === "function") {
+      try { out = QxOwnedFigs.rewriteHtml(out); } catch (_) { /* keep */ }
+    }
     // Never expand broken Marks hosts to getmarks.app.
     out = out.replace(/\bsrc=(["'])([^"']+)\1/gi, (m, q, src) => {
       try {
+        if (/firebasestorage|quantrexacademy-app\.firebasestorage/i.test(src)) return m;
         const fixed = fixUrl(src);
         const iro = (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.irodovStorageUrl)
           ? (QxOwnedFigs.irodovStorageUrl(fixed) || QxOwnedFigs.irodovStorageUrl(src))
@@ -561,8 +565,18 @@ window.QxImgClean = (() => {
         if (iro) {
           return "src=" + q + iro + q + " class=\"qx-irodov-stem qx-no-wm qx-pool-fig\" data-qx-orig-src=" + q + iro + q;
         }
-        if (/\/assets\/diagrams\/(?:qx-(?:book|self|org)-|hcv-)/i.test(fixed) && !/qx-irodov-/i.test(fixed)) {
-          return m;
+        if (/qx-(?:book|self|org)-|\/assets\/diagrams\/qx-(?:book|self|org|hcv)-/i.test(fixed + src) && !/qx-irodov-/i.test(fixed)) {
+          const disp = (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.displaySrc)
+            ? (QxOwnedFigs.displaySrc(fixed) || QxOwnedFigs.displaySrc(src))
+            : "";
+          if (disp && disp !== src) {
+            const stored = (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.ownedFigureUrl)
+              ? (QxOwnedFigs.qxBookStorageSrc ? QxOwnedFigs.qxBookStorageSrc(fixed) : QxOwnedFigs.ownedFigureUrl(fixed))
+              : disp;
+            return "src=" + q + disp + q + " data-qx-orig-src=" + q + (fixed || src) + q
+              + (stored ? " data-qx-storage-src=" + q + stored + q : "")
+              + " class=\"qx-pool-fig qx-no-wm\"";
+          }
         }
         const local = resolveLocalFigureSrcSync(fixed) || resolveLocalFigureSrcSync(src);
         if (local && local !== src) {
@@ -3056,13 +3070,18 @@ window.QxImgClean = (() => {
     ]);
     // Rewrite in-memory HTML to local figures when map is ready (Irodov etc.)
     try {
-      if (q.q && /cdn-question-pool|cdn\.quizrr|https?:\/\/\.app|2026_modules/i.test(String(q.q))) {
+      const NEED_FIG = /cdn-question-pool|cdn\.quizrr|https?:\/\/\.app|2026_modules|assets\/diagrams|proxy-image|getmarks\.app/i;
+      if (q.q && NEED_FIG.test(String(q.q))) {
         const rw = rewriteHtmlFigures(q.q);
         if (rw && rw !== q.q) q.q = rw;
       }
+      if (q.solution && NEED_FIG.test(String(q.solution))) {
+        const rw = rewriteHtmlFigures(q.solution);
+        if (rw && rw !== q.solution) q.solution = rw;
+      }
       if (Array.isArray(q.options)) {
         q.options = q.options.map(o => {
-          if (!o || !/cdn-question-pool|cdn\.quizrr|https?:\/\/\.app|2026_modules/i.test(String(o))) return o;
+          if (!o || !NEED_FIG.test(String(o))) return o;
           return rewriteHtmlFigures(o);
         });
       }

@@ -270,3 +270,27 @@
 .books-scroll .qx-book-card {
   overflow: visible !important;
 }
+
+/* Question + solution figures always paint, Storage-first */
+.mtk-q-text img,
+.eg-q img,
+#egQArea img,
+#egSol img,
+.eg-sol img,
+.qx-sol-flow img,
+.sol-body img,
+.qx-prac-q img,
+.qx-prac-opt img,
+.mtk-opt-text img,
+img.qx-pool-fig,
+img.qx-sol-fig,
+img.qx-no-wm {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  content-visibility: visible !important;
+  max-width: 100% !important;
+  height: auto !important;
+  object-fit: contain !important;
+  background: #fff !important;
+}

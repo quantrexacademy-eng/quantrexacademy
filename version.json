@@ -1,10 +1,10 @@
 {
-    "cache": "qx-pwa-qxmd228",
-    "ts": 1789862280000,
-    "title": "qxmd228: Digital Book covers visible in Medical and Engineering",
+    "cache": "qx-pwa-qxmd229",
+    "ts": 1789862290000,
+    "title": "qxmd229: fast figures + smoother app and website",
     "site": "https://www.quantrexacademy.com",
-    "build": "qxmd228",
-    "body": "Book cover images load on first paint for Medical and Engineering. Physical Chemistry and PYQ books have cover icons. Covers stay face-on and are not collapsed by lazy paint.",
+    "build": "qxmd229",
+    "body": "Digital book and solution figures load from Quantrex Storage on first paint. The 1.4MB figure map is off the critical path. Practice and home stay smooth on web and the Android app.",
     "package": "com.quantrexacademy.app",
     "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }

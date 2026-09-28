@@ -24,7 +24,7 @@
     return m;
   })();
   const UI_KEEP = /ic_content_exam_|cpyqb\/subjects|ncert_toolbox|app_assets\/img\/exams\//i;
-  const FIG_VER = "qxfig136";
+  const FIG_VER = "qxmd229";
   const POOL_RX = /cdn-question-pool\.getmarks|cdn\.quizrr|watermarked_images|\/pyq\/|AKCR2_|2026_modules/i;
   let LOCAL_FIG_MAP = {};
   try {
@@ -114,7 +114,7 @@
     if (/firebasestorage\.googleapis\.com|quantrexacademy-app\.firebasestorage/i.test(raw)) {
       return raw.split("#")[0];
     }
-    if (/^\/?assets\/(?!diagrams\/qx-irodov)/i.test(raw) || /^\/images\//i.test(raw)) {
+    if (/^\/?assets\/(?:book-covers|folder-icons|exam-logos)\//i.test(raw) || /^\/images\//i.test(raw)) {
       return raw.split("?")[0] || raw;
     }
     let path = "";
@@ -151,51 +151,53 @@
   }
 
   function qxBookLocalSrc(raw) {
-    const m = String(raw || "").match(/(qx-(?:book|self)-[a-f0-9]+)(?:\.(png|webp|jpe?g|gif))?/i);
+    const m = String(raw || "").match(/(qx-(?:book|self|org)-[a-f0-9]+)(?:\.(png|webp|jpe?g|gif))?/i);
     if (!m) return "";
     const ext = m[2] ? m[2].toLowerCase() : "png";
     return "/assets/diagrams/" + m[1] + "." + ext;
   }
   function qxBookStorageSrc(raw) {
-    const m = String(raw || "").match(/(qx-(?:book|self)-[a-f0-9]+)(?:\.(png|webp|jpe?g|gif))?/i);
+    const m = String(raw || "").match(/(qx-(?:book|self|org)-[a-f0-9]+)(?:\.(png|webp|jpe?g|gif))?/i);
     if (!m) return "";
     const ext = m[2] ? m[2].toLowerCase() : "png";
-    return storageUrlForPath("questions/figs/diagrams/" + m[1] + "." + ext) + "&v=qxmd168";
+    const name = m[1] + "." + ext;
+    if (/^qx-org-/i.test(m[1])) return storageUrlForPath("questions/figs/org/" + name) + "&v=" + FIG_VER;
+    return storageUrlForPath("questions/figs/diagrams/" + name) + "&v=" + FIG_VER;
   }
   function displaySrc(src) {
     const raw = unwrap(src);
     if (!raw) return "";
     if (/^data:/i.test(raw)) return raw;
     if (UI_KEEP.test(raw) && !FOREIGN.test(raw) && !isCardArt(raw)) return raw;
+    const irodovDisp = irodovStorageUrl(raw);
+    if (irodovDisp) return irodovDisp;
+    const bookStore = qxBookStorageSrc(raw);
+    if (bookStore) return bookStore;
     const mappedLocal = localDiagramRemote(raw);
     if (mappedLocal) {
+      if (/firebasestorage/i.test(mappedLocal) && !(needsWipe(mappedLocal) || isCardArt(mappedLocal))) {
+        return mappedLocal;
+      }
       if (needsWipe(mappedLocal) || isCardArt(mappedLocal)) {
         return "/api/proxy-image?url=" + encodeURIComponent(mappedLocal) + "&clean=1&v=" + FIG_VER;
       }
-      return mappedLocal;
+      if (/firebasestorage/i.test(mappedLocal)) return mappedLocal;
     }
-    const irodovDisp = irodovStorageUrl(raw);
-    if (irodovDisp) return irodovDisp;
-    // qxmd168: prefer local /assets/diagrams/qx-book-* ; Firebase on storage/error path
-    const bookLocal = qxBookLocalSrc(raw);
-    const bookStore = qxBookStorageSrc(raw);
-    if (bookLocal && bookStore) {
-      if (/firebasestorage|questions(?:%2F|\/)figs(?:%2F|\/)diagrams/i.test(raw)) return bookStore;
-      return bookLocal;
-    }
-    if (/\/assets\/(book-covers|folder-icons|qx-figures|exam-logos)\//i.test(raw) && !isForeignHost(raw)) {
-      return raw.split("?")[0] || raw;
-    }
-    if (/\/assets\/diagrams\/qx-org-/i.test(raw) && !isForeignHost(raw)) {
+    if (/\/assets\/(book-covers|folder-icons|exam-logos)\//i.test(raw) && !isForeignHost(raw)) {
       return raw.split("?")[0] || raw;
     }
     if (/\/images\/[^?\s]+\.(png|jpe?g|webp|gif)/i.test(raw) && !isForeignHost(raw)) {
       return raw.split("?")[0] || raw;
     }
+    if (/\/assets\/(?:diagrams|qx-figures\/perm|clean-diagrams)\//i.test(raw)) {
+      const mapped = localDiagramRemote(raw) || ownedFigureUrl(raw);
+      if (mapped) return mapped;
+    }
     const owned = ownedFigureUrl(raw) || raw;
     const inner = (isForeignHost(owned) ? ownedFigureUrl(owned) : "") || owned;
     const card = isCardArt(raw) || isCardArt(inner);
     const pool = POOL_RX.test(raw) || POOL_RX.test(inner);
+    if (/firebasestorage/i.test(inner) && !card) return inner.split("#")[0];
     if (needsWipe(inner) || needsWipe(raw) || card) {
       let fetchUrl = isForeignHost(inner) ? (ownedFigureUrl(inner) || inner) : inner;
       if (isForeignHost(fetchUrl)) {
@@ -266,18 +268,41 @@
   }
 
   function rewriteHtml(html) {
-    const s = String(html || "");
+    let s = String(html || "");
     if (!s || !/<img\b/i.test(s)) return s;
-    return s.replace(/\bsrc=(["'])([^"']+)\1/gi, (all, q, url) => {
-      if (/^data:/i.test(url)) return all;
-      const disp = displaySrc(url);
-      const bookStore = qxBookStorageSrc(url) || qxBookStorageSrc(disp);
-      const stored = bookStore || ownedFigureUrl(url) || (disp && /firebasestorage/i.test(disp) ? disp : "") || disp;
-      if (!disp) return all;
-      if (disp === url && !bookStore) return all;
-      return "src=" + q + disp + q
-        + (url ? " data-qx-orig-src=" + q + url + q : "")
-        + (stored ? " data-qx-storage-src=" + q + stored + q : "");
+    s = s.replace(/https?:\/\/\.app\//gi, "https://cdn-question-pool.getmarks.app/");
+    s = s.replace(/<img\b([^>]*?)\/\s+(data-qx-[^>]*?)>/gi, "<img$1 $2>");
+    return s.replace(/<img\b([^>]*)>/gi, (full, attrs) => {
+      let a = String(attrs || "").replace(/\/\s*$/, " ");
+      const srcM = a.match(/\bsrc=(["'])([^"']*)\1/i);
+      const origM = a.match(/\bdata-qx-orig-src=(["'])([^"']*)\1/i);
+      const src = srcM ? srcM[2] : "";
+      if (/^data:/i.test(src)) return full;
+      const hint = (origM && origM[2]) || src;
+      const disp = displaySrc(hint) || displaySrc(src);
+      if (!disp) return "<img" + a + ">";
+      const stored = qxBookStorageSrc(hint) || qxBookStorageSrc(src) || ownedFigureUrl(hint) || ownedFigureUrl(src) || disp;
+      if (srcM) a = a.replace(/\bsrc=(["'])[^"']*\1/i, "src=$1" + disp + "$1");
+      else a += ' src="' + disp + '"';
+      if (!/\bdata-qx-orig-src=/i.test(a)) {
+        a += ' data-qx-orig-src="' + String(hint).replace(/"/g, "&quot;") + '"';
+      }
+      if (stored) {
+        if (/\bdata-qx-storage-src=/i.test(a)) {
+          a = a.replace(/\bdata-qx-storage-src=(["'])[^"']*\1/i, "data-qx-storage-src=$1" + stored + "$1");
+        } else {
+          a += ' data-qx-storage-src="' + String(stored).replace(/"/g, "&quot;") + '"';
+        }
+      }
+      if (!/\bonerror=/i.test(a)) {
+        a += ' onerror="if(window.QxOwnedFigs&&QxOwnedFigs.retryOnError)QxOwnedFigs.retryOnError(this)"';
+      }
+      if (!/\bclass=/i.test(a)) a += ' class="qx-pool-fig qx-no-wm qx-sol-fig"';
+      else if (!/qx-pool-fig|qx-sol-fig|qx-book-photo/i.test(a)) {
+        a = a.replace(/\bclass=(["'])([^"']*)\1/i, "class=$1$2 qx-pool-fig qx-no-wm$1");
+      }
+      if (!/\bdecoding=/i.test(a)) a += ' decoding="async"';
+      return "<img" + a + ">";
     });
   }
 
@@ -287,6 +312,7 @@
     irodovStorageUrl,
     displaySrc,
     rewriteHtml,
+    qxBookStorageSrc,
     retryOnError,
     storageUrlForPath,
     needsWipe,

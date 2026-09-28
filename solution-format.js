@@ -502,8 +502,7 @@ const QuantrexSolution = (() => {
         src = src.replace(/https?:\/\/\.app\//gi, "https://cdn-question-pool.getmarks.app/");
         a = a.replace(/\bsrc=(["'])[^"']+\1/i, `src=$1${src}$1`);
       }
-      const isLocalBook = /qx-book-|qx-org-|\/assets\/diagrams\/qx-(?:book|org)-/i.test(src);
-      const disp = (!isLocalBook && typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.displaySrc)
+      const disp = (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.displaySrc)
         ? QxOwnedFigs.displaySrc(src)
         : "";
       const stored = (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.ownedFigureUrl)

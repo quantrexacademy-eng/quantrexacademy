@@ -79,7 +79,7 @@
         html { scroll-behavior: auto; }
         @media (hover:hover) and (pointer:fine) { html { scroll-behavior: smooth; } }
         body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--dark); }
-        .content.qx-fade-in { animation: qxFadeIn .18s ease-out; }
+        .content.qx-fade-in { animation: qxFadeIn .08s ease-out; }
         @keyframes qxFadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
         img[loading="lazy"]:not(.qx-diagram-img):not(.qx-book-photo-img) { content-visibility: auto; }
         /* Skeleton while JS boots */
@@ -4292,7 +4292,7 @@
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js" defer></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js" defer></script>
     <script>
-      window.QX_BUILD = "qxmd228";
+      window.QX_BUILD = "qxmd229";
       (function () {
         try {
           var pill = document.getElementById("qxBuildPill");
@@ -4368,6 +4368,7 @@
         "qx-india-geo.js?v=qxfix68",
         "qx-leads.js?v=qxfix72",
         "qx-live-feed.js?v=qxfix93",
+        "assets/qx-local-fig-map.js?v=qxmd229",
         "qx-premium-watermark.js?v=qxfull1",
         "qx-nowm-guard.js?v=qxfix116",
         "qx-watermark.js?v=qxnobrand1",
@@ -4426,14 +4427,13 @@
     <script src="exam-logos.js?v=qxfull1" defer></script>
     <script src="qx-redesign-nav.js?v=qxmd220" defer></script>
     <script src="qx-card-icons.js?v=qxfix116" defer></script>
-    <script src="assets/qx-local-fig-map.js?v=qxfig111" defer></script>
-    <script src="qx-owned-figures.js?v=qxmd220" defer></script>
-    <script src="qx-image-clean.js?v=qxmd220" defer></script>
+    <script src="qx-owned-figures.js?v=qxmd229" defer></script>
+    <script src="qx-image-clean.js?v=qxmd229" defer></script>
     <script src="qx-test-engine-perf.js?v=qxq861" defer></script>
     <script src="qx-math-sanitize.js?v=qxmd220" defer></script>
     <script src="math-render.js?v=qxmd220" defer></script>
     <script src="question-format.js?v=qxmd220" defer></script>
-    <script src="solution-format.js?v=qxmd222" defer></script>
+    <script src="solution-format.js?v=qxmd229" defer></script>
     <script src="assets/qx-question-cache.js?v=qxfix17" defer></script>
     <script src="data.js?v=qxmd220" defer></script>
     <script src="firebase-db.js?v=qxfix115" defer></script>
@@ -4450,6 +4450,7 @@
     <script src="marks-live.js?v=qxvis4" defer></script>
     <script src="book-covers.js?v=qxmd228" defer></script>
     <script src="marks-features.js?v=qxmd228" defer></script>
+    <!-- qx-local-fig-map.js is 1.4MB — idle secondary, Storage URLs work without it -->
     <script src="assets/qx-rfc.js?v=qxmd227" defer></script>
     <script src="assets/qx-formula-cards.js?v=qxmd227" defer></script>
     <script src="examgoal-test-ui.js?v=qxmd227" defer></script>
@@ -4499,7 +4500,7 @@
 <link rel="stylesheet" href="assets/qx-nav-foot.css?v=qxmd220">
 <link rel="stylesheet" href="assets/qx-prac-chrome.css?v=qxmd220">
 <link rel="stylesheet" href="assets/qx-both-themes.css?v=qxmd225">
-<link rel="stylesheet" href="assets/qx-ui-icons.css?v=qxmd228">
-<script src="pwa-register.js?v=qxmd228"></script>
+<link rel="stylesheet" href="assets/qx-ui-icons.css?v=qxmd229">
+<script src="pwa-register.js?v=qxmd229"></script>
 </body>
 </html>
