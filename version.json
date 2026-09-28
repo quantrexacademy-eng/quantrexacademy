@@ -1,10 +1,10 @@
 {
-    "cache": "qx-pwa-qxmd222",
-    "ts": 1789862220000,
-    "title": "qxmd222: permanent USB proofread — stem-echo cut, Marks restore",
+    "cache": "qx-pwa-qxmd223",
+    "ts": 1789862230000,
+    "title": "qxmd223: Check Answer never refreshes; footer always Previous/Next",
     "site": "https://www.quantrexacademy.com",
-    "build": "qxmd222",
-    "body": "Stored solutions no longer start with the question. Empty Q/opts/sols restored from official Marks cache on USB. Website+app Firebase Hosting + GitHub.",
+    "build": "qxmd223",
+    "body": "No api.refresh after Check/Show/Close solution. Footer stays white with Previous and Next. Extra stem-echo cut on USB JSON.",
     "package": "com.quantrexacademy.app",
     "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }

@@ -1296,9 +1296,7 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
             try { el.style.removeProperty("display"); } catch (_) { /* */ }
           });
         } catch (_) { /* */ }
-        if (typeof api.refresh === "function") {
-          try { api.refresh(); } catch (_) { /* */ }
-        }
+        try { if (typeof forceFootVisible === "function") forceFootVisible(true); } catch (_) { /* */ }
       };
     }
 
@@ -1464,24 +1462,8 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
       } else {
         hidePracticeSolutionDom(root);
       }
-      if (typeof api.refresh === "function") {
-        try {
-          var _refRet2 = api.refresh();
-          var _restore2 = function () {
-            try { egRestoreScroll(_showSnap); egLockScrollJump(root, false); } catch (_) { /* */ }
-          };
-          if (_refRet2 && typeof _refRet2.then === "function") {
-            _refRet2.then(_restore2).catch(_restore2);
-          } else {
-            setTimeout(_restore2, 0);
-            setTimeout(_restore2, 80);
-            setTimeout(_restore2, 200);
-          }
-        } catch (_) { egRestoreScroll(_showSnap); }
-      } else {
-        egRestoreScroll(_showSnap);
-        egLockScrollJump(root, false);
-      }
+      try { egRestoreScroll(_showSnap); egLockScrollJump(root, false); } catch (_) { /* */ }
+      try { if (typeof forceFootVisible === "function") forceFootVisible(true); } catch (_) { /* */ }
     };
     const solClose = root.querySelector("#egSolClose");
     if (solClose) solClose.onclick = function (e) {
@@ -1494,16 +1476,8 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
       }
       if (show) show.checked = false;
       hidePracticeSolutionDom(root);
-      if (typeof api.refresh === "function") {
-        try {
-          var _refRet3 = api.refresh();
-          var _restore3 = function () { try { egRestoreScroll(_closeSnap); } catch (_) { /* */ } };
-          if (_refRet3 && typeof _refRet3.then === "function") _refRet3.then(_restore3).catch(_restore3);
-          else { setTimeout(_restore3, 0); setTimeout(_restore3, 80); }
-        } catch (_) { egRestoreScroll(_closeSnap); }
-      } else {
-        egRestoreScroll(_closeSnap);
-      }
+      try { egRestoreScroll(_closeSnap); } catch (_) { /* */ }
+      try { if (typeof forceFootVisible === "function") forceFootVisible(true); } catch (_) { /* */ }
     };
     // Typeset inline bottom solution panel math
     try {
@@ -1586,12 +1560,12 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
         foot.style.setProperty("top", "auto", "important");
         foot.style.setProperty("inset", "auto 0 0 0", "important");
         foot.style.setProperty("transform", "none", "important");
-        foot.style.setProperty("background", "transparent", "important");
-        foot.style.setProperty("background-color", "transparent", "important");
+        foot.style.setProperty("background", "var(--eg-card, #ffffff)", "important");
+        foot.style.setProperty("background-color", "var(--eg-card, #ffffff)", "important");
         foot.style.setProperty("background-image", "none", "important");
         foot.style.setProperty("box-shadow", "none", "important");
         foot.style.setProperty("border", "none", "important");
-        foot.style.setProperty("border-top", "none", "important");
+        foot.style.setProperty("border-top", "1px solid #e5e7eb", "important");
         foot.style.setProperty("min-height", "0", "important");
         foot.style.setProperty("height", "auto", "important");
         foot.style.setProperty("backdrop-filter", "none", "important");
@@ -1613,7 +1587,7 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
         foot.style.setProperty("gap", "8px", "important");
         foot.style.setProperty("visibility", "visible", "important");
         foot.style.setProperty("padding", "6px 10px calc(6px + env(safe-area-inset-bottom, 0px))", "important");
-        foot.style.setProperty("pointer-events", "none", "important");
+        foot.style.setProperty("pointer-events", "auto", "important");
         const nav = foot.querySelector(".eg-foot-nav, .eg-foot-right");
         if (nav) {
           nav.style.setProperty("display", "contents", "important");
