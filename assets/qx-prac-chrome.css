@@ -1532,7 +1532,9 @@ html body.allen-practice-active .mtk-test-root.allen-practice .mtk-palette {
 }
 .eg-test-root.eg-qxmd219[data-eg-mode="practice"] .eg-top-tools .eg-tool-btn:not(.eg-settings-gear),
 .eg-test-root.eg-qxmd219[data-eg-mode="practice"] .eg-top-tools .eg-tool-hid {
-  display: none !important;
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 .eg-test-root.eg-qxmd219[data-eg-mode="practice"] .eg-top-tools .eg-settings-gear,
 .allen-practice.qxmd219-allen #pracViewMenuBtn,

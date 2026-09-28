@@ -39,15 +39,26 @@
   padding: 2px 7px !important;
   margin-left: 6px !important;
 }
-.eg-test-root .eg-top-tools {
+.eg-test-root .eg-top-tools,
+.eg-test-root[data-eg-mode="practice"] .eg-top-tools,
+.eg-test-root.eg-qxmd219 .eg-top-tools,
+.eg-test-root.eg-qxmd218 .eg-top-tools {
   display: flex !important;
   align-items: center !important;
   gap: 4px !important;
   margin-left: auto !important;
-  flex-shrink: 0 !important;
+  flex-shrink: 1 !important;
+  flex-wrap: nowrap !important;
+  overflow-x: auto !important;
+  max-width: min(72vw, 420px) !important;
+  -webkit-overflow-scrolling: touch !important;
 }
 .eg-test-root .eg-top-tools .eg-tool-btn,
-.eg-test-root .eg-top-tools .eg-ico {
+.eg-test-root .eg-top-tools .eg-ico,
+.eg-test-root[data-eg-mode="practice"] .eg-top-tools .eg-tool-btn,
+.eg-test-root[data-eg-mode="practice"] .eg-top-tools .eg-tool-hid,
+.eg-test-root.eg-qxmd219[data-eg-mode="practice"] .eg-top-tools .eg-tool-btn,
+.eg-test-root.eg-qxmd218[data-eg-mode="practice"] .eg-top-tools .eg-tool-btn:not(.eg-settings-gear) {
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -202,6 +213,15 @@
 .eg-test-root .eg-opt-letter {
   background: #1565C0 !important;
   color: #ffffff !important;
+}
+#qxRfcPrev, #qxRfcNext, #qxRfcZoomOut, #qxRfcZoomIn, #qxRfcClose,
+#qxFcPrev, #qxFcNext, #qxFcClose {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  min-height: 44px !important;
+  z-index: 2147483001 !important;
 }
 
 .eg-test-root #egFoot,
