@@ -1,10 +1,10 @@
 {
-    "cache": "qx-pwa-qxmd226",
-    "ts": 1789862260000,
-    "title": "qxmd226: light and dark contrast lock",
+    "cache": "qx-pwa-qxmd227",
+    "ts": 1789862270000,
+    "title": "qxmd227: app Previous/Next visible; RFC/formula toolbar works",
     "site": "https://www.quantrexacademy.com",
-    "build": "qxmd226",
-    "body": "Light: dark ink on white cards. Dark: light ink on slate cards, dark footer. Theme toggle syncs html + practice. Options A/B/C/D letters stay white on blue.",
+    "build": "qxmd227",
+    "body": "App footer has extra safe padding so Previous/Next are not under Android chrome. Flash cards and Formula readers load their JS and bind Prev/Next/zoom on touch.",
     "package": "com.quantrexacademy.app",
     "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }

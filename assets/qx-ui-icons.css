@@ -203,3 +203,21 @@
   background: #1565C0 !important;
   color: #ffffff !important;
 }
+
+@media (max-width: 900px) {
+  .eg-test-root #egFoot,
+  .eg-test-root .eg-foot-practice,
+  .eg-test-root .eg-foot {
+    padding-bottom: calc(22px + env(safe-area-inset-bottom, 0px)) !important;
+    min-height: 64px !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1.2fr 1fr !important;
+  }
+  .eg-test-root #egFoot #qxPrevBtn,
+  .eg-test-root #egFoot #qxNextBtn,
+  .eg-test-root #egFoot #egCheckBtn {
+    display: inline-flex !important;
+    visibility: visible !important;
+    min-height: 48px !important;
+  }
+}

@@ -4646,13 +4646,13 @@ function qxEnsureFormulaCardSkin() {
     const link = document.createElement("link");
     link.id = "qxFcCardCss";
     link.rel = "stylesheet";
-    link.href = "assets/qx-formula-cards.css?v=qxfix110";
+    link.href = "assets/qx-formula-cards.css?v=qxmd227";
     document.head.appendChild(link);
   }
   if (!document.getElementById("qxFcCardJs")) {
     const s = document.createElement("script");
     s.id = "qxFcCardJs";
-    s.src = "assets/qx-formula-cards.js?v=qxfix110";
+    s.src = "assets/qx-formula-cards.js?v=qxmd227";
     document.head.appendChild(s);
   }
   setTimeout(function () {
@@ -5213,11 +5213,11 @@ function qxEnsureRfcSkin() {
     link.rel = "stylesheet";
     document.head.appendChild(link);
   }
-  link.href = "assets/qx-rfc.css?v=qxeg7";
+  link.href = "assets/qx-rfc.css?v=qxmd227";
   if (!document.getElementById("qxRfcJs")) {
     const s = document.createElement("script");
     s.id = "qxRfcJs";
-    s.src = "assets/qx-rfc.js?v=qxeg7";
+    s.src = "assets/qx-rfc.js?v=qxmd227";
     s.onload = function () { window._qxRfcReady = true; };
     document.head.appendChild(s);
   } else {

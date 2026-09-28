@@ -244,8 +244,18 @@
     wrap.querySelector("#qxFcZoomOut").onclick = function (e) { e.stopPropagation(); zoom = Math.max(0.55, zoom - 0.2); applyXform(); };
     wrap.querySelector("#qxFcRot").onclick = function (e) { e.stopPropagation(); rot = (rot + 90) % 360; applyXform(); };
     wrap.querySelector("#qxFcClose").onclick = function (e) { e.stopPropagation(); closeReader(); };
-    wrap.querySelector("#qxFcPrev").onclick = function (e) { e.stopPropagation(); go(-1); };
-    wrap.querySelector("#qxFcNext").onclick = function (e) { e.stopPropagation(); go(1); };
+    function bindFcNav(id, dir) {
+      var b = wrap.querySelector(id);
+      if (!b) return;
+      var fire = function (e) {
+        if (e) { e.preventDefault(); e.stopPropagation(); }
+        go(dir);
+      };
+      b.onclick = fire;
+      b.ontouchend = fire;
+    }
+    bindFcNav("#qxFcPrev", -1);
+    bindFcNav("#qxFcNext", 1);
     wrap.querySelector("#qxFcHitPrev").onclick = function (e) { e.stopPropagation(); go(-1); };
     wrap.querySelector("#qxFcHitNext").onclick = function (e) { e.stopPropagation(); go(1); };
     wrap.querySelector("#qxFcStage").addEventListener("wheel", function (e) {

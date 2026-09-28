@@ -609,8 +609,10 @@ button.qx-dash-fc-cover.qx-fc-folder {
 .qx-fc-reader-nav {
   display: flex;
   gap: 10px;
-  padding: 10px 14px 14px;
+  padding: 10px 14px calc(16px + env(safe-area-inset-bottom, 0px));
   background: rgba(15, 23, 42, 0.8);
+  z-index: 5;
+  pointer-events: auto;
 }
 .qx-fc-nav-btn {
   flex: 1;

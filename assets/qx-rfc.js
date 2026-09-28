@@ -373,14 +373,18 @@
       e.stopPropagation();
       close();
     };
-    wrap.querySelector("#qxRfcPrev").onclick = function (e) {
-      e.stopPropagation();
-      go(-1);
-    };
-    wrap.querySelector("#qxRfcNext").onclick = function (e) {
-      e.stopPropagation();
-      go(1);
-    };
+    function bindNav(id, dir) {
+      var b = wrap.querySelector(id);
+      if (!b) return;
+      var fire = function (e) {
+        if (e) { e.preventDefault(); e.stopPropagation(); }
+        go(dir);
+      };
+      b.onclick = fire;
+      b.ontouchend = fire;
+    }
+    bindNav("#qxRfcPrev", -1);
+    bindNav("#qxRfcNext", 1);
     wrap.querySelector("#qxRfcHitPrev").onclick = function (e) {
       e.stopPropagation();
       if (zoom > 1.05) return;
