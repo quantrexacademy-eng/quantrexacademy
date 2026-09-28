@@ -9,8 +9,10 @@ html {
   touch-action: manipulation;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
-  /* Faster paint: avoid scroll-linked work */
   scroll-padding-top: 0;
+}
+html.qx-test-zoom {
+  touch-action: pan-y pinch-zoom;
 }
 
 /* GPU compositing only where it helps scroll FPS */
@@ -231,11 +233,18 @@ body.qx-nav-open::before {
 .qx-topic-grid > *,
 .ch-grid > *,
 .subj-grid > *,
-.books-grid > *,
 .marks-ts-grid > * {
   content-visibility: auto;
   contain-intrinsic-size: auto 100px;
   contain: layout style paint;
+}
+.books-grid > *,
+.books-scroll > *,
+.qx-book-card,
+.book-card {
+  content-visibility: visible !important;
+  contain: none !important;
+  contain-intrinsic-size: none;
 }
 
 /* ── Reduce paint cost ── */

@@ -7510,7 +7510,7 @@ const QX_BOOKS_CATALOG = {
   title: "Quantrex Digital Books — Engineering",
   subtitle: "Expert-picked question banks — practice on Quantrex Academy",
   engineering: [
-    { id: "6a7db25c02198edab586feff", title: "Physical Chemistry for JEE Main 2027", cover: "assets/book-covers/physical-chemistry-jee.svg", subject: "Chemistry", badge: "Physical Chemistry", exam: "JEE Main 2027", isComingSoon: false, bankSlug: "jee_main", redirectType: "subject", moduleId: "6aa93b7f25c310c04441e9a2", count: 1045, countBadge: "1045 Questions", type: "exam", tag: "1045 PYQ" },
+    { id: "6a7db25c02198edab586feff", title: "Physical Chemistry for JEE Main 2027", cover: "assets/book-covers/physical-chemistry-jee.jpg", subject: "Chemistry", badge: "Physical Chemistry", exam: "JEE Main 2027", isComingSoon: false, bankSlug: "jee_main", redirectType: "subject", moduleId: "6aa93b7f25c310c04441e9a2", count: 1045, countBadge: "1045 Questions", type: "exam", tag: "1045 PYQ" },
     { id: "6a91185f41ab5aba084f4d30", title: "Most Important PYQ Based Questions", cover: "assets/book-covers/qx-pyq-important.jpg", subject: "PCM", badge: "Quantrex PYQ", exam: "JEE Main 2027", isComingSoon: false, bankSlug: "jee_main", redirectType: "subject", moduleId: "6a916235cb18ffc9d00d5aa1", count: 4289, countBadge: "4200+ Questions", type: "exam", tag: "PYQ 2022–2026" },
     { id: "6a0addba4b032b031e049a36", title: "Concepts Of Physics MCQ Edition [Volume 2]", cover: "assets/book-covers/hc-verma-v2.jpg", subject: "Physics", badge: "HC Verma", exam: "Physics", isComingSoon: false, bankSlug: "jee_main", redirectType: "module", count: 1854, countBadge: "1854 Questions", type: "exam" },
     { id: "6a4ce383c59a7b462185330f", title: "Fundamentals of Organic Chemistry — JEE Mains & Advanced", cover: "assets/book-covers/organic-chemistry.jpg", subject: "Chemistry", badge: "Organic", exam: "JEE Main", isComingSoon: false, bankSlug: "jee_main", redirectType: "subject", moduleId: "6a4e21aea2f0a1af5a74e192", count: 1151, countBadge: "1151 Questions", type: "exam" },
@@ -7526,7 +7526,7 @@ const QX_BOOKS_CATALOG = {
     { id: "a1b2c3d4e5f6010203040507", title: "Skills in Mathematics — Integral Calculus", cover: "assets/book-covers/skills-integral-calculus.png", subject: "Mathematics", badge: "Amit M Agarwal", exam: "JEE Main & Advanced", isComingSoon: true, bankSlug: "jee_advanced", redirectType: "module", count: 0, type: "curated", tag: "Coming Soon" }
   ],
   medical: [
-    { id: "6aa934f6b8c05657c7be7531", title: "Physical Chemistry for NEET 2027", cover: "assets/book-covers/physical-chemistry-neet.svg", description: "Physical Chemistry Qs Bank · 1045 PYQ", subject: "Chemistry", badge: "Physical Chemistry", exam: "NEET", isComingSoon: false, count: 1045, countBadge: "1045 Questions", type: "exam", redirectType: "subject", moduleId: "6aa93b7f25c310c04441f844", tag: "1045 PYQ" },
+    { id: "6aa934f6b8c05657c7be7531", title: "Physical Chemistry for NEET 2027", cover: "assets/book-covers/physical-chemistry-neet.jpg", description: "Physical Chemistry Qs Bank · 1045 PYQ", subject: "Chemistry", badge: "Physical Chemistry", exam: "NEET", isComingSoon: false, count: 1045, countBadge: "1045 Questions", type: "exam", redirectType: "subject", moduleId: "6aa93b7f25c310c04441f844", tag: "1045 PYQ" },
     { id: "6a9158833d351af582b98369", title: "Most Important PYQ Based Questions — NEET 2027", cover: "assets/book-covers/qx-pyq-important.jpg", description: "Phy 1344 · Chem 1184 · Bot 1079 · Zoo 1334", subject: "PCB", badge: "Quantrex PYQ", exam: "NEET", isComingSoon: false, count: 4941, countBadge: "4941 Questions", type: "exam", redirectType: "subject", moduleId: "6a9161f1a69a205613f39f1b", tag: "NEET PYQ" },
     { id: "6a0adb714b032b031e049a34", title: "Concepts Of Physics MCQ Edition [Volume 2]", cover: "assets/book-covers/hc-verma-v2.jpg", description: "Objective I · II · Exercises", subject: "Physics", badge: "HC Verma", exam: "NEET", isComingSoon: false, count: 1854, countBadge: "1854 Questions", type: "exam", aliasId: "6a0addba4b032b031e049a36" },
     { id: "6a507da9107f81233d9985c1", title: "Fundamentals of Organic Chemistry — NEET 2027", cover: "assets/book-covers/organic-chemistry.jpg", description: "for NEET 2027", subject: "Chemistry", badge: "Organic", exam: "NEET", isComingSoon: false, count: 1151, countBadge: "1151 Questions", type: "exam", aliasId: "6a4ce383c59a7b462185330f" },
@@ -7542,6 +7542,63 @@ const QX_BOOKS_CATALOG = {
     { id: "67656d13c83ed0673b8b7b68", title: "Top 250 Single Correct Qs of JEE Main 2023-2020", cover: "assets/book-covers/top-250.jpg", subject: "PCM", badge: "PYQ", exam: "JEE Main", isComingSoon: false, bankSlug: "jee_main", count: 750, countBadge: "750 Questions", type: "curated", tag: "PYQ" }
   ]
 };
+
+function qxBookCoverSrc(book) {
+  if (!book) return "";
+  var map = {
+    "6a7db25c02198edab586feff": "assets/book-covers/physical-chemistry-jee.jpg",
+    "6aa934f6b8c05657c7be7531": "assets/book-covers/physical-chemistry-neet.jpg",
+    "6a9158833d351af582b98369": "assets/book-covers/qx-pyq-important.jpg",
+    "qx_physchem_jee_2027": "assets/book-covers/physical-chemistry-jee.jpg",
+    "qx_physchem_neet_2027": "assets/book-covers/physical-chemistry-neet.jpg",
+    "qx_mipyq_neet_2027": "assets/book-covers/qx-pyq-important.jpg"
+  };
+  var id = String(book.id || "");
+  var alias = String(book.aliasId || "");
+  if (map[id]) return map[id];
+  if (alias && map[alias]) return map[alias];
+  var cover = book.cover || book.banner || "";
+  if (cover && !/getmarks/i.test(cover)) return cover;
+  return "";
+}
+
+function qxBookCardClickAttr(book) {
+  if (!book || book.isComingSoon) return "";
+  if (typeof QX_REMOVED_BOOK_IDS !== "undefined" && QX_REMOVED_BOOK_IDS.has(book.id)) return "";
+  if (book.redirectType === "allqs" || book.redirectType === "formula") {
+    return "role=\"button\" tabindex=\"0\" onclick=\"typeof openDigitalBook==='function'&&openDigitalBook({id:'" + book.id + "',redirectType:'" + book.redirectType + "',subject:'" + String(book.subject || "").replace(/'/g, "") + "',isComingSoon:false})\"";
+  }
+  var payload = book.type === "curated"
+    ? { step: "subjects", bookId: book.id, moduleId: book.id }
+    : { step: "modules", bookId: book.id };
+  return "data-mg=\"books\" data-mgp='" + JSON.stringify(payload).replace(/'/g, "&#39;") + "'";
+}
+
+function qxRenderBookCardSafe(book, extraClass) {
+  if (typeof renderBookCard === "function") {
+    try { return renderBookCard(book, extraClass); } catch (_) { /* fallback below */ }
+  }
+  if (!book || (typeof QX_REMOVED_BOOK_IDS !== "undefined" && QX_REMOVED_BOOK_IDS.has(book.id))) return "";
+  var title = String(book.title || "Digital Book");
+  var esc = title.replace(/"/g, "&quot;");
+  var src = qxBookCoverSrc(book);
+  var img = src
+    ? "<div class=\"qx-book-photo\"><div class=\"qx-book-photo-frame\"><img class=\"qx-book-photo-img\" src=\"" + src + "\" alt=\"" + esc + "\" loading=\"eager\" decoding=\"async\"></div></div>"
+    : "<div class=\"qx-book-photo\"><div class=\"qx-book-photo-frame qx-book-cover-empty\" aria-hidden=\"true\"></div></div>";
+  var metaBits = [book.badge, book.subject, book.countBadge || (book.count ? (Number(book.count).toLocaleString() + " questions") : "")].filter(Boolean);
+  return "<div class=\"book-card qx-book-card " + (book.isComingSoon ? "soon " : "") + (extraClass || "") + "\" " + qxBookCardClickAttr(book) + ">" +
+    img +
+    "<div class=\"book-info\"><strong title=\"" + esc + "\">" + title + "</strong><small>" + metaBits.join(" · ") + "</small></div></div>";
+}
+
+function qxRenderBookScrollSafe(books, limit) {
+  if (typeof renderBookScroll === "function") {
+    try { return renderBookScroll(books, limit); } catch (_) { /* fallback below */ }
+  }
+  var slice = (books || []).slice(0, limit || 8);
+  if (!slice.length) return "";
+  return "<div class=\"books-scroll\">" + slice.map(function (b) { return qxRenderBookCardSafe(b, "qx-book-card-compact"); }).join("") + "</div>";
+}
 
 function filterActiveBooks(list) {
   return (list || []).filter(function (b) {
@@ -7669,7 +7726,7 @@ async function viewBooks(payload) {
     const examBooks = booksForExam(catalog, isMed ? "Medical" : STATE.exam);
     const title = isMed ? "NEET Digital Books" : (catalog.title || "Digital Books");
     const subtitle = catalog.subtitle || "Expert-picked question banks — one tap to practice";
-    const renderCard = typeof renderBookCard === "function" ? renderBookCard : (b) => `<div class="book-card">${b.title || "Book"}</div>`;
+    const renderCard = qxRenderBookCardSafe;
     const bookCards = examBooks.map(b => {
       try { return renderCard({ ...b, type: b.type || "exam" }); }
       catch (e) { return `<div class="book-card"><div class="book-info"><strong>${b.title || "Book"}</strong></div></div>`; }
@@ -7701,7 +7758,7 @@ async function viewBooks(payload) {
     }
 
     /* qxmd172: Engineering Recommended + All (Marks content parity, Quantrex brand) */
-    const engRecIds = ["qx_physchem_jee_2027", "6a91185f41ab5aba084f4d30", "6a0addba4b032b031e049a36"];
+    const engRecIds = ["6a7db25c02198edab586feff", "6a91185f41ab5aba084f4d30", "6a0addba4b032b031e049a36"];
     const engRec = engRecIds.map((id) => examBooks.find((b) => b.id === id)).filter(Boolean);
     const engRecCards = engRec.map((b) => { try { return renderCard({ ...b, type: b.type || "exam" }); } catch (_) { return ""; } }).join("");
     return `${topbar(title || "Quantrex Digital Books — Engineering", subtitle)}
@@ -8432,7 +8489,7 @@ async function marksDashboardSections() {
         : (cpyqbNav || []).filter((e) => e.category === "Medical");
       const examScroll = typeof renderDashExamScroll === "function" ? renderDashExamScroll(dashExams) : "";
       const dashBooks = typeof booksForExam === "function" ? booksForExam(bookCatalog, "Medical") : [];
-      const bookScroll = typeof renderBookScroll === "function" ? renderBookScroll(dashBooks, 12) : "";
+      const bookScroll = qxRenderBookScrollSafe(dashBooks, 12);
       const fcNav = (typeof qxEnsureMedicalFormulaNav === "function")
         ? await qxEnsureMedicalFormulaNav(formulaNav || [])
         : (formulaNav || []);
@@ -8501,7 +8558,7 @@ async function marksDashboardSections() {
     </div>`).join("");
   const dashBooks = booksForExam(bookCatalog, STATE.exam);
   // Show enough cards so Organic + BITSAT always appear on dashboard
-  const bookScroll = typeof renderBookScroll === "function" ? renderBookScroll(dashBooks, 12) : "";
+  const bookScroll = qxRenderBookScrollSafe(dashBooks, 12);
   const examLabel = EXAMS[STATE.exam].name;
   const board = dashBoardSelected();
   const boards = [

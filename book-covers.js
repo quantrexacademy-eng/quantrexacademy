@@ -21,9 +21,12 @@ const BOOK_COVER_PRESETS = {
   "6894d29d3156b1f3ca5ad0be": { brand: "Backlog Booster", line: "Selective Qs", vol: "Backlog Clear", subject: "PCM", badge: "Backlog Booster", colors: ["#9a3412", "#ea580c", "#fb923c"], icon: "⚡", pattern: "diagonal" },
   "69048808ef55966cf1d71f1d": { brand: "Olympiad", line: "Workbook", vol: "Competitive", subject: "PCM", badge: "Olympiad", colors: ["#134e4a", "#0d9488", "#5eead4"], icon: "🏅", pattern: "grid" },
   "6a91185f41ab5aba084f4d30": { brand: "Quantrex Academy", line: "Most Important PYQ", vol: "JEE Main 2027", subject: "PCM", badge: "Quantrex PYQ", colors: ["#0b1b4a", "#1d4ed8", "#fbbf24"], icon: "⭐", pattern: "shine", tag: "PYQ 2022–2026" },
+  "6a9158833d351af582b98369": { brand: "Quantrex Academy", line: "Most Important PYQ", vol: "NEET 2027", subject: "PCB", badge: "Quantrex PYQ", colors: ["#0b1b4a", "#1d4ed8", "#fbbf24"], icon: "⭐", pattern: "shine", tag: "4941 Questions" },
   "qx_mipyq_neet_2027": { brand: "Quantrex Academy", line: "Most Important PYQ", vol: "NEET 2027", subject: "PCB", badge: "Quantrex PYQ", colors: ["#0b1b4a", "#1d4ed8", "#fbbf24"], icon: "⭐", pattern: "shine", tag: "4941 Questions" },
+  "6a7db25c02198edab586feff": { brand: "Quantrex Academy", line: "Physical Chemistry", vol: "JEE Main 2027", subject: "Chemistry", badge: "Physical Chemistry", colors: ["#0f172a", "#1e3a8a", "#dc2626"], icon: "⚗️", pattern: "waves" },
+  "6aa934f6b8c05657c7be7531": { brand: "Quantrex Academy", line: "Physical Chemistry", vol: "NEET 2027", subject: "Chemistry", badge: "Physical Chemistry", colors: ["#0f172a", "#14532d", "#16a34a"], icon: "⚗️", pattern: "waves" },
   "qx_physchem_jee_2027": { brand: "Quantrex Academy", line: "Physical Chemistry", vol: "JEE Main 2027", subject: "Chemistry", badge: "Physical Chemistry", colors: ["#0f172a", "#1e3a8a", "#dc2626"], icon: "⚗️", pattern: "waves" },
-  "qx_physchem_neet_2027": { brand: "Quantrex Academy", line: "Physical Chemistry", vol: "NEET 2027", subject: "Chemistry", badge: "Physical Chemistry", colors: ["#0f172a", "#1e3a8a", "#dc2626"], icon: "⚗️", pattern: "waves" },
+  "qx_physchem_neet_2027": { brand: "Quantrex Academy", line: "Physical Chemistry", vol: "NEET 2027", subject: "Chemistry", badge: "Physical Chemistry", colors: ["#0f172a", "#14532d", "#16a34a"], icon: "⚗️", pattern: "waves" },
   "6a916235cb18ffc9d00d5aa1": { brand: "Quantrex Academy", line: "Most Important PYQ", vol: "JEE Main 2027", subject: "PCM", badge: "Quantrex PYQ", colors: ["#0b1b4a", "#1d4ed8", "#fbbf24"], icon: "⭐", pattern: "shine", tag: "PYQ 2022–2026" },
   "69968cee494a12a5771e3455": { brand: "Biology 360", line: "NEET Biology", vol: "2026 Edition", subject: "Biology", badge: "NEET Biology", colors: ["#14532d", "#16a34a", "#86efac"], icon: "🧬", pattern: "waves" },
   "67656ccf18ff438b6c18cc4c": { brand: "Must Do 2024", line: "Top PYQs", vol: "2024 Edition", subject: "PCM", badge: "PYQ 2024", colors: ["#881337", "#e11d48", "#fda4af"], icon: "⭐", pattern: "shine", tag: "New" },
@@ -43,8 +46,11 @@ const BOOK_COVER_PHOTO = {
   "69cfb5366ecf5579037d96a4": "assets/book-covers/irodov.jpg",
   "69cfb4af611e9b07b5d55e79": "assets/book-covers/irodov.jpg",
   "69a684ac213ecfafb0629c0d": "assets/book-covers/biology-360.jpg",
-  "qx_physchem_jee_2027": "assets/book-covers/physical-chemistry-jee.svg",
-  "qx_physchem_neet_2027": "assets/book-covers/physical-chemistry-neet.svg",
+  "6a7db25c02198edab586feff": "assets/book-covers/physical-chemistry-jee.jpg",
+  "6aa934f6b8c05657c7be7531": "assets/book-covers/physical-chemistry-neet.jpg",
+  "6a9158833d351af582b98369": "assets/book-covers/qx-pyq-important.jpg",
+  "qx_physchem_jee_2027": "assets/book-covers/physical-chemistry-jee.jpg",
+  "qx_physchem_neet_2027": "assets/book-covers/physical-chemistry-neet.jpg",
   "qx_mipyq_neet_2027": "assets/book-covers/qx-pyq-important.jpg",
   "69a6ea53213ecfafb0629c18": "assets/book-covers/top500-physics.jpg",
   "69a6eaf1213ecfafb0629c19": "assets/book-covers/top500-chemistry.jpg",
@@ -76,6 +82,9 @@ const BOOK_COVER_SVG = {
   "68946f70ebd145663de38728": "assets/book-covers/99-percentile.svg",
   "6894d29d3156b1f3ca5ad0be": "assets/book-covers/backlog-booster.svg",
   "69048808ef55966cf1d71f1d": "assets/book-covers/olympiad.svg",
+  "6a7db25c02198edab586feff": "assets/book-covers/physical-chemistry-jee.svg",
+  "6aa934f6b8c05657c7be7531": "assets/book-covers/physical-chemistry-neet.svg",
+  "6a9158833d351af582b98369": "assets/book-covers/qx-pyq-important.jpg",
   "6a91185f41ab5aba084f4d30": "assets/book-covers/qx-pyq-important.jpg",
   "6a916235cb18ffc9d00d5aa1": "assets/book-covers/qx-pyq-important.jpg",
   "69968cee494a12a5771e3455": "assets/book-covers/biology-360.svg",
@@ -152,7 +161,7 @@ function inferBookCoverStyle(book) {
   return style;
 }
 
-const BOOK_COVER_VER = "qxfix105";
+const BOOK_COVER_VER = "qxmd228";
 
 function withCoverVer(path) {
   if (!path) return null;
@@ -162,9 +171,11 @@ function withCoverVer(path) {
 function bookCoverImage(book) {
   if (!book) return null;
   if (BOOK_COVER_PHOTO[book.id]) return withCoverVer(BOOK_COVER_PHOTO[book.id]);
+  if (book.aliasId && BOOK_COVER_PHOTO[book.aliasId]) return withCoverVer(BOOK_COVER_PHOTO[book.aliasId]);
   const cover = book.cover || book.banner || "";
   if (cover && !/getmarks\.app/i.test(cover)) return withCoverVer(cover);
   if (BOOK_COVER_SVG[book.id]) return withCoverVer(BOOK_COVER_SVG[book.id]);
+  if (book.aliasId && BOOK_COVER_SVG[book.aliasId]) return withCoverVer(BOOK_COVER_SVG[book.aliasId]);
   return null;
 }
 
@@ -212,7 +223,7 @@ function renderBookPhotoCover(book, size) {
 
   return `<div class="qx-book-photo${sz}">
     <div class="qx-book-photo-frame">
-      <img class="qx-book-photo-img" src="${img}" alt="${esc}" loading="lazy"
+      <img class="qx-book-photo-img" src="${img}" alt="${esc}" loading="eager" decoding="async" fetchpriority="high"
         onerror="if(this.dataset.fallback){this.src=this.dataset.fallback;this.dataset.fallback=''}else{this.closest('.qx-book-photo').classList.add('qx-photo-broken');this.style.display='none';const fb=this.closest('.qx-book-photo').querySelector('.qx-book-photo-fallback');if(fb)fb.style.display='block'}"
         ${fb ? `data-fallback="${fb}"` : ""}>
       <div class="qx-book-photo-fallback" style="display:none">${renderBookArtCover(book, size, true)}</div>

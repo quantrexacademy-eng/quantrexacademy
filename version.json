@@ -1,10 +1,10 @@
 {
-    "cache": "qx-pwa-qxmd227",
-    "ts": 1789862270000,
-    "title": "qxmd227: app Previous/Next visible; RFC/formula toolbar works",
+    "cache": "qx-pwa-qxmd228",
+    "ts": 1789862280000,
+    "title": "qxmd228: Digital Book covers visible in Medical and Engineering",
     "site": "https://www.quantrexacademy.com",
-    "build": "qxmd227",
-    "body": "App footer has extra safe padding so Previous/Next are not under Android chrome. Flash cards and Formula readers load their JS and bind Prev/Next/zoom on touch.",
+    "build": "qxmd228",
+    "body": "Book cover images load on first paint for Medical and Engineering. Physical Chemistry and PYQ books have cover icons. Covers stay face-on and are not collapsed by lazy paint.",
     "package": "com.quantrexacademy.app",
     "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }

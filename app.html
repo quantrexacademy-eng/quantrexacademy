@@ -53,7 +53,7 @@
     <link rel="stylesheet" href="assets/qx-premium-ui.css?v=qxmd220">
     <link rel="stylesheet" href="assets/qx-mobile.css?v=qxmd220">
     <link rel="stylesheet" href="assets/qx-viewport.css?v=qxfix102">
-    <link rel="stylesheet" href="assets/qx-touch-perf.css?v=qxfix102">
+    <link rel="stylesheet" href="assets/qx-touch-perf.css?v=qxmd228">
     <link rel="stylesheet" href="assets/qx-question-format.css?v=qxmd220">
     <link rel="stylesheet" href="assets/qx-marks-practice.css?v=qxmd220">
     <link rel="stylesheet" href="assets/qx-text-visible.css?v=qxmd220">
@@ -81,7 +81,7 @@
         body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--dark); }
         .content.qx-fade-in { animation: qxFadeIn .18s ease-out; }
         @keyframes qxFadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
-        img[loading="lazy"]:not(.qx-diagram-img) { content-visibility: auto; }
+        img[loading="lazy"]:not(.qx-diagram-img):not(.qx-book-photo-img) { content-visibility: auto; }
         /* Skeleton while JS boots */
         #app-main:empty::before {
           content: ""; display: block; height: 120px; margin: 16px;
@@ -191,7 +191,7 @@
         button:active, .mtk-btn:active, .qzrr-btn:active, .mth-card:active {
           transform: scale(0.98); opacity: 0.92;
         }
-        img[loading="lazy"] { content-visibility: auto; }
+        img[loading="lazy"]:not(.qx-book-photo-img) { content-visibility: auto; }
         .topbar { background: var(--white); border-bottom: 1px solid var(--border); padding: 10px 16px; display: flex; align-items: center; gap: 10px; position: sticky; top: 0; z-index: 80; flex-wrap: nowrap; min-height: 56px; overflow: visible; }
         .menu-btn { display: none; background: none; border: none; font-size: 24px; cursor: pointer; flex-shrink: 0; }
         .topbar-right { display: flex; align-items: center; gap: 10px; margin-left: auto; flex-shrink: 0; position: relative; }
@@ -1070,17 +1070,15 @@
         .book-info strong { display: block; font-size: 14px; font-weight: 700; margin-bottom: 5px; line-height: 1.4; color: var(--dark); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
         .book-info small { color: #475569; font-size: 11px; font-weight: 600; line-height: 1.45; }
         .qx-book-cover {
-          position: relative; aspect-ratio: 3 / 4;
+          position: relative; aspect-ratio: 3 / 4; min-height: 200px; width: 100%;
           background: linear-gradient(145deg, var(--cover-c1), var(--cover-c2) 55%, var(--cover-c3));
-          overflow: hidden; border-radius: 4px 12px 12px 4px;
-          transform: rotateY(-12deg) rotateX(2deg); transform-origin: left center;
-          perspective: 1000px;
-          box-shadow: 12px 16px 28px rgba(15,23,42,.28), 3px 4px 10px rgba(15,23,42,.16);
+          overflow: hidden; border-radius: 10px;
+          box-shadow: 0 10px 24px rgba(15,23,42,.22);
           transition: transform .28s ease, box-shadow .28s ease;
         }
         .qx-book-card:hover:not(.soon) .qx-book-cover {
-          transform: rotateY(-5deg) translateY(-5px) scale(1.02);
-          box-shadow: 18px 24px 40px rgba(15,23,42,.32);
+          transform: translateY(-4px) scale(1.02);
+          box-shadow: 0 16px 32px rgba(15,23,42,.28);
         }
         .qx-book-cover.qx-cover-sm { aspect-ratio: 3 / 3.6; }
         .qx-book-cover.qx-cover-lg { aspect-ratio: 3 / 4.2; }
@@ -1101,7 +1099,7 @@
         .qx-book-photo-fallback .qx-book-cover { height: 100%; border-radius: 10px 14px 14px 10px; }
         .qx-photo-broken .qx-book-photo-fallback { display: block !important; }
         /* 3D book covers ÃƒÆ’Ã†'Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†'ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†'Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†'Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†'ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†'Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†'Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†'ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â thick spine + perspective stand */
-        .qx-book-photo { position: relative; aspect-ratio: 3 / 4; perspective: 1200px; perspective-origin: 50% 40%; }
+        .qx-book-photo { position: relative; aspect-ratio: 3 / 4; min-height: 200px; width: 100%; }
         /* Premium HD book covers ÃƒÆ’Ã†'Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â full face, sharp, high visibility */
         .qx-book-photo-img {
           width: 100% !important;
@@ -1149,30 +1147,23 @@
         .qx-book-photo.qx-cover-sm { aspect-ratio: 3 / 3.6; }
         .qx-book-photo.qx-cover-lg { aspect-ratio: 3 / 4.2; }
         .qx-book-photo-frame {
-          position: relative; width: 100%; height: 100%;
-          border-radius: 4px 12px 12px 4px; overflow: hidden;
-          transform: rotateY(-14deg) rotateX(2deg) translateZ(0);
-          transform-origin: left center;
-          box-shadow:
-            14px 18px 32px rgba(15,23,42,.28),
-            4px 6px 12px rgba(15,23,42,.18),
-            inset -3px 0 0 rgba(255,255,255,.18),
-            inset 0 0 0 1px rgba(0,0,0,.06);
-          transition: transform .28s cubic-bezier(.2,.8,.2,1), box-shadow .28s;
+          position: relative; width: 100%; height: 100%; min-height: 200px;
+          border-radius: 10px; overflow: hidden;
+          transform: none;
+          box-shadow: 0 10px 24px rgba(15,23,42,.22), inset 0 0 0 1px rgba(0,0,0,.06);
+          transition: transform .22s ease, box-shadow .22s;
           background: linear-gradient(145deg, #f8fafc, #e2e8f0);
         }
         .qx-book-card:hover:not(.soon) .qx-book-photo-frame {
-          transform: rotateY(-6deg) rotateX(0deg) translateY(-6px) scale(1.02);
-          box-shadow:
-            20px 28px 48px rgba(15,23,42,.32),
-            6px 10px 18px rgba(15,23,42,.2),
-            inset -3px 0 0 rgba(255,255,255,.22);
+          transform: translateY(-4px);
+          box-shadow: 0 16px 32px rgba(15,23,42,.28);
         }
         .qx-book-photo-img {
-          width: 100%; height: 100%; object-fit: cover; object-position: center;
-          display: block; box-sizing: border-box;
-          filter: contrast(1.08) brightness(1.04) saturate(1.05);
-          -webkit-backface-visibility: hidden; backface-visibility: hidden;
+          width: 100% !important; height: 100% !important; min-height: 200px !important;
+          object-fit: cover !important; object-position: center top !important;
+          display: block !important; visibility: visible !important; opacity: 1 !important;
+          content-visibility: visible !important; box-sizing: border-box;
+          filter: contrast(1.06) brightness(1.03) saturate(1.04);
         }
         .qx-book-photo-spine {
           position: absolute; left: 0; top: 0; bottom: 0; width: 14px;
@@ -1566,9 +1557,9 @@
           display: block !important; visibility: visible !important; opacity: 1 !important;
           max-width: 100% !important; width: 100% !important; height: auto !important; margin: 0 auto !important;
         }
-        img[src*="cdn-assets.getmarks"]:not([src*="proxy-image"]):not([src*="restore-image"]):not(.qx-marks-icon):not([src*="ic_content_exam_"]):not([src*="cpyqb/subjects/"]):not([src*="ncert_toolbox/"]):not([src*="app_assets/img/exams/"]):not(.qx-pool-fig):not(.qx-opt-fig-img):not(.fc-img):not(.qx-fc-img):not(.qx-rfc-img):not(.qx-sol-fig),
-        img[src*="marks_selected"]:not([src*="proxy-image"]):not(.qx-pool-fig),
-        img[src*="web_assets"]:not([src*="proxy-image"]):not(.qx-pool-fig):not(.qx-opt-fig-img), img[alt*="Get Marks App"] { display: none !important; }
+        img[src*="cdn-assets.getmarks"]:not([src*="proxy-image"]):not([src*="restore-image"]):not(.qx-marks-icon):not([src*="ic_content_exam_"]):not([src*="cpyqb/subjects/"]):not([src*="ncert_toolbox/"]):not([src*="app_assets/img/exams/"]):not(.qx-pool-fig):not(.qx-opt-fig-img):not(.fc-img):not(.qx-fc-img):not(.qx-rfc-img):not(.qx-sol-fig):not(.qx-book-photo-img),
+        img[src*="marks_selected"]:not([src*="proxy-image"]):not(.qx-pool-fig):not(.qx-book-photo-img),
+        img[src*="web_assets"]:not([src*="proxy-image"]):not(.qx-pool-fig):not(.qx-opt-fig-img):not(.qx-book-photo-img), img[alt*="Get Marks App"] { display: none !important; }
         #qxDiagramSlot img, .qx-diagram-slot img, .qx-opt-diagram-slot img,
         .mtk-opt-text img, .qx-prac-opt-text img, .qx-opt-pair-struct img, .qx-opt-direct-img img {
           max-height: none !important; min-height: 72px !important; overflow: visible !important;
@@ -4301,7 +4292,7 @@
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js" defer></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js" defer></script>
     <script>
-      window.QX_BUILD = "qxmd227";
+      window.QX_BUILD = "qxmd228";
       (function () {
         try {
           var pill = document.getElementById("qxBuildPill");
@@ -4377,7 +4368,6 @@
         "qx-india-geo.js?v=qxfix68",
         "qx-leads.js?v=qxfix72",
         "qx-live-feed.js?v=qxfix93",
-        "book-covers.js?v=qxmd220",
         "qx-premium-watermark.js?v=qxfull1",
         "qx-nowm-guard.js?v=qxfix116",
         "qx-watermark.js?v=qxnobrand1",
@@ -4458,7 +4448,8 @@
     <!-- payments.js / premium.js omitted: all courses free -->
     <script src="marks-shell.js?v=qxvis4" defer></script>
     <script src="marks-live.js?v=qxvis4" defer></script>
-    <script src="marks-features.js?v=qxmd220" defer></script>
+    <script src="book-covers.js?v=qxmd228" defer></script>
+    <script src="marks-features.js?v=qxmd228" defer></script>
     <script src="assets/qx-rfc.js?v=qxmd227" defer></script>
     <script src="assets/qx-formula-cards.js?v=qxmd227" defer></script>
     <script src="examgoal-test-ui.js?v=qxmd227" defer></script>
@@ -4508,7 +4499,7 @@
 <link rel="stylesheet" href="assets/qx-nav-foot.css?v=qxmd220">
 <link rel="stylesheet" href="assets/qx-prac-chrome.css?v=qxmd220">
 <link rel="stylesheet" href="assets/qx-both-themes.css?v=qxmd225">
-<link rel="stylesheet" href="assets/qx-ui-icons.css?v=qxmd227">
-<script src="pwa-register.js?v=qxmd227"></script>
+<link rel="stylesheet" href="assets/qx-ui-icons.css?v=qxmd228">
+<script src="pwa-register.js?v=qxmd228"></script>
 </body>
 </html>
