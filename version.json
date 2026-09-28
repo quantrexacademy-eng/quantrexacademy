@@ -1,10 +1,10 @@
 {
-    "cache": "qx-pwa-qxmd223",
-    "ts": 1789862230000,
-    "title": "qxmd223: Check Answer never refreshes; footer always Previous/Next",
+    "cache": "qx-pwa-qxmd224",
+    "ts": 1789862240000,
+    "title": "qxmd224: practice toolbar + settings actually apply",
     "site": "https://www.quantrexacademy.com",
-    "build": "qxmd223",
-    "body": "No api.refresh after Check/Show/Close solution. Footer stays white with Previous and Next. Extra stem-echo cut on USB JSON.",
+    "build": "qxmd224",
+    "body": "Practice shows Theme/All Q/Palette/Bookmark tools again. Timer follows Settings. Format pop does not refresh the page. Settings persist in localStorage.",
     "package": "com.quantrexacademy.app",
     "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }

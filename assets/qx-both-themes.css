@@ -4,8 +4,21 @@
   display: grid !important;
   grid-template-columns: 1fr 1.25fr 1fr !important;
   flex-direction: row !important;
-  background: transparent !important;
+  background: #ffffff !important;
   z-index: 2147483646 !important;
+}
+.eg-test-root[data-eg-mode="practice"] .eg-top-tools .eg-tool-btn,
+.eg-test-root[data-eg-mode="practice"] .eg-top-tools .eg-ico {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: relative !important;
+  left: auto !important;
+  width: 38px !important;
+  height: 38px !important;
+  min-width: 38px !important;
+  min-height: 38px !important;
+  pointer-events: auto !important;
 }
 .eg-test-root .eg-foot-extra, .eg-test-root #egFootExtra, .eg-test-root .eg-foot-left, .eg-test-root label.eg-show {
   display: none !important;
