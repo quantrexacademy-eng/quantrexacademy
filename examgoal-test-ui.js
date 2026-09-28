@@ -2533,7 +2533,13 @@ function forceFootVisible(force) {
 
   function syncTheme(mode) {
     const m = mode === "dark" ? "dark" : "light";
-    try { localStorage.setItem("quantrex_test_theme", m); } catch (_) { /* */ }
+    try {
+      localStorage.setItem("quantrex_test_theme", m);
+      localStorage.setItem("quantrex_theme", m);
+      localStorage.setItem("qx_test_theme", m);
+      document.documentElement.setAttribute("data-theme", m);
+      if (typeof QuantrexTheme !== "undefined" && QuantrexTheme.apply) QuantrexTheme.apply(m);
+    } catch (_) { /* */ }
     document.querySelectorAll(".eg-test-root, .mtk-test-root").forEach(function (root) {
       try {
         root.setAttribute("data-test-theme", m);

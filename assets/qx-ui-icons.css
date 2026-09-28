@@ -111,7 +111,95 @@
   border-top: 1px solid #e5e7eb !important;
 }
 .eg-test-root[data-test-theme="dark"] #egFoot,
-.eg-test-root[data-test-theme="dark"] .eg-foot-practice {
+.eg-test-root[data-test-theme="dark"] .eg-foot-practice,
+.eg-test-root[data-test-theme="dark"] .eg-foot {
   background: #0f172a !important;
   border-top-color: #334155 !important;
+}
+
+/* LIGHT — ink on white */
+.eg-test-root[data-test-theme="light"] .eg-body,
+.eg-test-root[data-test-theme="light"] .eg-main,
+.eg-test-root[data-test-theme="light"] .eg-q-card {
+  background: #f8fafc !important;
+  color: #0f172a !important;
+}
+.eg-test-root[data-test-theme="light"] .eg-q-card {
+  background: #ffffff !important;
+}
+.eg-test-root[data-test-theme="light"] #egQArea,
+.eg-test-root[data-test-theme="light"] .eg-q-stem,
+.eg-test-root[data-test-theme="light"] .mtk-opt-text,
+.eg-test-root[data-test-theme="light"] .eg-sol,
+.eg-test-root[data-test-theme="light"] .eg-info-strip {
+  color: #0f172a !important;
+}
+.eg-test-root[data-test-theme="light"] .mtk-opt,
+.eg-test-root[data-test-theme="light"] .eg-opt {
+  background: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+.eg-test-root[data-test-theme="light"] #egFoot #qxPrevBtn {
+  background: #ffffff !important;
+  color: #1565C0 !important;
+  border: 2px solid #1565C0 !important;
+}
+.eg-test-root[data-test-theme="light"] #egFoot #qxNextBtn,
+.eg-test-root[data-test-theme="light"] #egFoot #egCheckBtn {
+  background: #1565C0 !important;
+  color: #ffffff !important;
+}
+
+/* DARK — light ink on slate */
+.eg-test-root[data-test-theme="dark"] .eg-body,
+.eg-test-root[data-test-theme="dark"] .eg-main {
+  background: #0b1220 !important;
+  color: #f1f5f9 !important;
+}
+.eg-test-root[data-test-theme="dark"] .eg-q-card,
+.eg-test-root[data-test-theme="dark"] .eg-sol-panel,
+.eg-test-root[data-test-theme="dark"] .eg-sol {
+  background: #111827 !important;
+  color: #f1f5f9 !important;
+}
+.eg-test-root[data-test-theme="dark"] #egQArea,
+.eg-test-root[data-test-theme="dark"] .eg-q-stem,
+.eg-test-root[data-test-theme="dark"] .mtk-opt-text,
+.eg-test-root[data-test-theme="dark"] .eg-info-strip,
+.eg-test-root[data-test-theme="dark"] .eg-type,
+.eg-test-root[data-test-theme="dark"] .eg-paper-line {
+  color: #f1f5f9 !important;
+}
+.eg-test-root[data-test-theme="dark"] .mtk-opt,
+.eg-test-root[data-test-theme="dark"] .eg-opt {
+  background: #1e293b !important;
+  border-color: #475569 !important;
+  color: #f1f5f9 !important;
+}
+.eg-test-root[data-test-theme="dark"] .mtk-opt.correct,
+.eg-test-root[data-test-theme="dark"] .mtk-opt.eg-opt-right {
+  background: #14532d !important;
+  color: #dcfce7 !important;
+}
+.eg-test-root[data-test-theme="dark"] .mtk-opt.wrong,
+.eg-test-root[data-test-theme="dark"] .mtk-opt.eg-opt-wrong {
+  background: #7f1d1d !important;
+  color: #fecaca !important;
+}
+.eg-test-root[data-test-theme="dark"] #egFoot #qxPrevBtn {
+  background: #1e293b !important;
+  color: #93c5fd !important;
+  border: 2px solid #3b82f6 !important;
+}
+.eg-test-root[data-test-theme="dark"] #egFoot #qxNextBtn,
+.eg-test-root[data-test-theme="dark"] #egFoot #egCheckBtn {
+  background: #2563eb !important;
+  color: #ffffff !important;
+  border: 2px solid #2563eb !important;
+}
+.eg-test-root .mtk-opt-letter,
+.eg-test-root .eg-opt-letter {
+  background: #1565C0 !important;
+  color: #ffffff !important;
 }

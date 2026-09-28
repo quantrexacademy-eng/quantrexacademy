@@ -1,10 +1,10 @@
 {
-    "cache": "qx-pwa-qxmd225",
-    "ts": 1789862250000,
-    "title": "qxmd225: clean SVG toolbar icons on blue header",
+    "cache": "qx-pwa-qxmd226",
+    "ts": 1789862260000,
+    "title": "qxmd226: light and dark contrast lock",
     "site": "https://www.quantrexacademy.com",
-    "build": "qxmd225",
-    "body": "Practice toolbar uses 36px round SVG icons (settings, theme, all Q, palette, bookmark, group, full, report) on Quantrex blue. White footer Previous/Check/Next.",
+    "build": "qxmd226",
+    "body": "Light: dark ink on white cards. Dark: light ink on slate cards, dark footer. Theme toggle syncs html + practice. Options A/B/C/D letters stay white on blue.",
     "package": "com.quantrexacademy.app",
     "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }
