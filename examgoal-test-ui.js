@@ -1274,8 +1274,22 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
         checkRow.style.cssText = "";
       }
     } catch (_) { /* */ }
+    try { egLockScrollJump(root, false); } catch (_) { /* */ }
     try {
-      requestAnimationFrame(function () { egRestoreScroll(_egScrollSnap); });
+      requestAnimationFrame(function () {
+        var panelLive = root.querySelector("#egSolPanel");
+        if (!panelLive) return;
+        try {
+          panelLive.style.scrollMarginTop = "8px";
+          panelLive.style.scrollMarginBottom = "96px";
+          panelLive.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "nearest" });
+        } catch (_) {
+          var card = root.querySelector(".eg-q-card");
+          if (card && panelLive) {
+            try { card.scrollTop = Math.max(0, panelLive.offsetTop - 12); } catch (_2) { /* */ }
+          }
+        }
+      });
     } catch (_) { /* */ }
 
     try {
@@ -1458,18 +1472,38 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
     const check = root.querySelector("#egCheckBtn");
     if (check) check.onclick = function (e) {
       if (e) { e.preventDefault(); e.stopPropagation(); }
+      var qNow = null;
+      try { qNow = api.getQ(session.ids[session.idx]); } catch (_) { qNow = null; }
       var ok = false;
-      try { ok = !!checkAnswer(session, api.getQ); } catch (_) { ok = false; }
-      if (ok) {
-        try {
-          if (typeof QuantrexQFormat !== "undefined" && QuantrexQFormat.applyPracticeResult) {
-            QuantrexQFormat.applyPracticeResult(root, api.getQ(session.ids[session.idx]), session.answers[session.idx]);
-          } else if (typeof ExamgoalTestUI !== "undefined" && ExamgoalTestUI.applyOptDecor) {
-            ExamgoalTestUI.applyOptDecor(root, session, api.getQ(session.ids[session.idx]), session.idx);
-          }
-        } catch (_) { /* */ }
-        try { revealPracticeSolution(root, api); } catch (_) { /* */ }
+      var answered = false;
+      try {
+        answered = qNow && typeof QuantrexQFormat !== "undefined"
+          ? QuantrexQFormat.isAnswered(qNow, session.answers[session.idx])
+          : (session.answers[session.idx] != null && session.answers[session.idx] !== "");
+      } catch (_) { answered = false; }
+      if (answered) {
+        try { ok = !!checkAnswer(session, api.getQ); } catch (_) { ok = false; }
       }
+      if (!session._egChecked) session._egChecked = {};
+      session._egChecked[session.idx] = true;
+      try { session._egChecked[String(session.idx)] = true; } catch (_) { /* */ }
+      try {
+        if (typeof QuantrexQFormat !== "undefined" && QuantrexQFormat.applyPracticeResult && qNow) {
+          QuantrexQFormat.applyPracticeResult(root, qNow, session.answers[session.idx]);
+        } else if (typeof ExamgoalTestUI !== "undefined" && ExamgoalTestUI.applyOptDecor) {
+          ExamgoalTestUI.applyOptDecor(root, session, qNow, session.idx);
+        }
+      } catch (_) { /* */ }
+      try {
+        if (ok && typeof QxSettings !== "undefined" && QxSettings.playAnswerSound) {
+          QxSettings.playAnswerSound(!!(session._egCorrect && session._egCorrect[session.idx]));
+        }
+      } catch (_) { /* */ }
+      try { revealPracticeSolution(root, api); } catch (_) { /* */ }
+      try {
+        check.textContent = "Checked";
+        check.setAttribute("disabled", "disabled");
+      } catch (_) { /* */ }
       try { if (typeof forceFootVisible === "function") forceFootVisible(true); } catch (_) { /* */ }
     };
     const show = root.querySelector("#egShowAns");

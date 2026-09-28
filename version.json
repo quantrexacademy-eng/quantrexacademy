@@ -1,10 +1,10 @@
 {
-    "cache": "qx-pwa-qxmd233",
-    "ts": 1789862330000,
-    "title": "qxmd233: questions load — chrome render crash fixed",
+    "cache": "qx-pwa-qxmd234",
+    "ts": 1789862340000,
+    "title": "qxmd234: solution opens after Check Answer",
     "site": "https://www.quantrexacademy.com",
-    "build": "qxmd233",
-    "body": "Practice and test questions load again. The Settings helper is in scope so question chrome renders.",
+    "build": "qxmd234",
+    "body": "Check Answer grades the option and opens the official solution under the question. The solution scrolls into view. Previous and Next stay on the bar.",
     "package": "com.quantrexacademy.app",
     "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }

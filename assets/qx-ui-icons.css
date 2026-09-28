@@ -373,6 +373,28 @@ html[data-theme="dark"] .eg-vs-sec {
 }
 .katex-error { display: none !important; }
 
+/* Solution after Check Answer — always in-flow under options */
+.eg-test-root.eg-qxmd182 .eg-q-card,
+.eg-test-root.qx-sol-showing .eg-q-card {
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)) !important;
+}
+.eg-test-root #egSolPanel,
+.eg-test-root.qx-sol-showing #egSolPanel,
+.eg-test-root .eg-sol-panel {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: relative !important;
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+  margin: 18px 0 28px !important;
+  scroll-margin-top: 12px;
+  scroll-margin-bottom: 96px;
+}
+
 @media (max-width: 900px) {
   .eg-test-root #egFoot,
   .eg-test-root .eg-foot-practice,
