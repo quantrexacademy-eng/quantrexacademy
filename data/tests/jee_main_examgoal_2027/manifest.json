@@ -1,17 +1,17 @@
 {
   "id": "jee_main_examgoal_2027",
   "title": "JEE Main New Question Test Series 2027",
-  "subtitle": "New Questions + Quizrr PYQ Chapterwise (PCM) · JEE Main 2027",
+  "subtitle": "New Questions + Quantrex PYQ Chapterwise (PCM) · JEE Main 2027",
   "exam": "JEE Main",
   "year": 2027,
   "tagline": "Quantrex Ultimate · New Q Series + Free PYQ Chapterwise",
   "syncedFrom": "examgoal_2027",
-  "syncedAt": "2026-08-23T09:23:01.672Z",
+  "syncedAt": "2026-09-16T13:09:35.633Z",
   "examgoalSeriesId": "tsr-19g61mnpryz1v",
   "totalTests": 828,
-  "availableTests": 534,
-  "upcomingTests": 294,
-  "questionShards": 164,
+  "availableTests": 562,
+  "upcomingTests": 266,
+  "questionShards": 192,
   "sections": [
     "PYQ Chapterwise",
     "Chapter and Topic Wise Tests",
@@ -773,7 +773,7 @@
     },
     {
       "id": "tst-19g61mo7n5hri",
-      "title": "ExamGOAL Part Test (EPT) - 1",
+      "title": "Quantrex Part Test (EPT) - 1",
       "categoryId": "ept",
       "file": "categories/ept.json",
       "testIndex": 6,
@@ -1163,7 +1163,7 @@
     },
     {
       "id": "tst-19g61mpiy6byf",
-      "title": "ExamGOAL Part Test (EPT) - 2",
+      "title": "Quantrex Part Test (EPT) - 2",
       "categoryId": "ept",
       "file": "categories/ept.json",
       "testIndex": 7,
@@ -1463,7 +1463,7 @@
     },
     {
       "id": "tst-19g61mpiy6cqy",
-      "title": "ExamGOAL Part Test (EPT) - 3",
+      "title": "Quantrex Part Test (EPT) - 3",
       "categoryId": "ept",
       "file": "categories/ept.json",
       "testIndex": 8,
@@ -1558,7 +1558,7 @@
       "file": "categories/chemistry.json",
       "testIndex": 48,
       "scheduledDate": "2026-08-06",
-      "status": "upcoming",
+      "status": "available",
       "totalQs": 15
     },
     {
@@ -1638,7 +1638,7 @@
       "file": "categories/chemistry.json",
       "testIndex": 51,
       "scheduledDate": "2026-08-07",
-      "status": "upcoming",
+      "status": "available",
       "totalQs": 15
     },
     {
@@ -1688,7 +1688,7 @@
       "file": "categories/physics.json",
       "testIndex": 45,
       "scheduledDate": "2026-08-08",
-      "status": "upcoming",
+      "status": "available",
       "totalQs": 15
     },
     {
@@ -1718,7 +1718,7 @@
       "file": "categories/chemistry.json",
       "testIndex": 53,
       "scheduledDate": "2026-08-08",
-      "status": "upcoming",
+      "status": "available",
       "totalQs": 15
     },
     {
@@ -1768,7 +1768,7 @@
       "file": "categories/physics.json",
       "testIndex": 47,
       "scheduledDate": "2026-08-09",
-      "status": "upcoming",
+      "status": "available",
       "totalQs": 15
     },
     {
@@ -1788,7 +1788,7 @@
       "file": "categories/chemistry.json",
       "testIndex": 55,
       "scheduledDate": "2026-08-09",
-      "status": "upcoming",
+      "status": "available",
       "totalQs": 15
     },
     {
@@ -1798,7 +1798,7 @@
       "file": "categories/chemistry.json",
       "testIndex": 56,
       "scheduledDate": "2026-08-10",
-      "status": "upcoming",
+      "status": "available",
       "totalQs": 15
     },
     {
@@ -1808,7 +1808,7 @@
       "file": "categories/physics.json",
       "testIndex": 49,
       "scheduledDate": "2026-08-10",
-      "status": "upcoming",
+      "status": "available",
       "totalQs": 15
     },
     {
@@ -1848,7 +1848,7 @@
       "file": "categories/chemistry.json",
       "testIndex": 57,
       "scheduledDate": "2026-08-10",
-      "status": "upcoming",
+      "status": "available",
       "totalQs": 15
     },
     {
@@ -1888,7 +1888,7 @@
       "file": "categories/physics.json",
       "testIndex": 52,
       "scheduledDate": "2026-08-11",
-      "status": "upcoming",
+      "status": "available",
       "totalQs": 25
     },
     {
@@ -1988,7 +1988,7 @@
       "file": "categories/chemistry.json",
       "testIndex": 61,
       "scheduledDate": "2026-08-13",
-      "status": "upcoming",
+      "status": "available",
       "totalQs": 15
     },
     {
@@ -2033,12 +2033,12 @@
     },
     {
       "id": "tst-19g61mpiy6dm0",
-      "title": "ExamGOAL Part Test (EPT) - 4",
+      "title": "Quantrex Part Test (EPT) - 4",
       "categoryId": "ept",
       "file": "categories/ept.json",
       "testIndex": 9,
       "scheduledDate": "2026-08-15",
-      "status": "upcoming",
+      "status": "available",
       "totalQs": 75
     },
     {
@@ -2048,7 +2048,7 @@
       "file": "categories/physics.json",
       "testIndex": 59,
       "scheduledDate": "2026-08-15",
-      "status": "upcoming",
+      "status": "available",
       "totalQs": 15
     },
     {
@@ -2058,7 +2058,7 @@
       "file": "categories/physics.json",
       "testIndex": 60,
       "scheduledDate": "2026-08-15",
-      "status": "upcoming",
+      "status": "available",
       "totalQs": 25
     },
     {
@@ -2088,7 +2088,7 @@
       "file": "categories/physics.json",
       "testIndex": 62,
       "scheduledDate": "2026-08-16",
-      "status": "upcoming",
+      "status": "available",
       "totalQs": 15
     },
     {
@@ -2138,7 +2138,7 @@
       "file": "categories/physics.json",
       "testIndex": 64,
       "scheduledDate": "2026-08-17",
-      "status": "upcoming",
+      "status": "available",
       "totalQs": 15
     },
     {
@@ -2178,7 +2178,7 @@
       "file": "categories/physics.json",
       "testIndex": 66,
       "scheduledDate": "2026-08-18",
-      "status": "upcoming",
+      "status": "available",
       "totalQs": 15
     },
     {
@@ -2248,7 +2248,7 @@
       "file": "categories/physics.json",
       "testIndex": 69,
       "scheduledDate": "2026-08-20",
-      "status": "upcoming",
+      "status": "available",
       "totalQs": 25
     },
     {
@@ -2258,7 +2258,7 @@
       "file": "categories/mathematics.json",
       "testIndex": 66,
       "scheduledDate": "2026-08-20",
-      "status": "upcoming",
+      "status": "available",
       "totalQs": 15
     },
     {
@@ -2308,7 +2308,7 @@
       "file": "categories/mathematics.json",
       "testIndex": 69,
       "scheduledDate": "2026-08-21",
-      "status": "upcoming",
+      "status": "available",
       "totalQs": 15
     },
     {
@@ -2348,7 +2348,7 @@
       "file": "categories/mathematics.json",
       "testIndex": 71,
       "scheduledDate": "2026-08-22",
-      "status": "upcoming",
+      "status": "available",
       "totalQs": 15
     },
     {
@@ -2388,7 +2388,7 @@
       "file": "categories/mathematics.json",
       "testIndex": 73,
       "scheduledDate": "2026-08-23",
-      "status": "upcoming",
+      "status": "available",
       "totalQs": 15
     },
     {
@@ -2538,7 +2538,7 @@
       "file": "categories/mathematics.json",
       "testIndex": 82,
       "scheduledDate": "2026-08-26",
-      "status": "upcoming",
+      "status": "available",
       "totalQs": 15
     },
     {
@@ -2598,7 +2598,7 @@
       "file": "categories/mathematics.json",
       "testIndex": 86,
       "scheduledDate": "2026-08-27",
-      "status": "upcoming",
+      "status": "available",
       "totalQs": 15
     },
     {
@@ -2663,12 +2663,12 @@
     },
     {
       "id": "tst-19g61mpiy6eie",
-      "title": "ExamGOAL Part Test (EPT) - 5",
+      "title": "Quantrex Part Test (EPT) - 5",
       "categoryId": "ept",
       "file": "categories/ept.json",
       "testIndex": 10,
       "scheduledDate": "2026-08-29",
-      "status": "upcoming",
+      "status": "available",
       "totalQs": 75
     },
     {
@@ -2678,7 +2678,7 @@
       "file": "categories/chemistry.json",
       "testIndex": 76,
       "scheduledDate": "2026-08-29",
-      "status": "upcoming",
+      "status": "available",
       "totalQs": 15
     },
     {
@@ -2903,7 +2903,7 @@
     },
     {
       "id": "tst-19g61mpiy6fbk",
-      "title": "ExamGOAL Part Test (EPT) - 6",
+      "title": "Quantrex Part Test (EPT) - 6",
       "categoryId": "ept",
       "file": "categories/ept.json",
       "testIndex": 11,
@@ -3128,7 +3128,7 @@
       "file": "categories/mathematics.json",
       "testIndex": 108,
       "scheduledDate": "2026-09-10",
-      "status": "upcoming",
+      "status": "available",
       "totalQs": 15
     },
     {
@@ -3158,7 +3158,7 @@
       "file": "categories/mathematics.json",
       "testIndex": 109,
       "scheduledDate": "2026-09-11",
-      "status": "upcoming",
+      "status": "available",
       "totalQs": 15
     },
     {
@@ -3173,7 +3173,7 @@
     },
     {
       "id": "tst-19g61mpiy6gb2",
-      "title": "ExamGOAL Part Test (EPT) - 7",
+      "title": "Quantrex Part Test (EPT) - 7",
       "categoryId": "ept",
       "file": "categories/ept.json",
       "testIndex": 12,
@@ -3583,7 +3583,7 @@
     },
     {
       "id": "tst-19g61mpiy6h05",
-      "title": "ExamGOAL Part Test (EPT) - 8",
+      "title": "Quantrex Part Test (EPT) - 8",
       "categoryId": "ept",
       "file": "categories/ept.json",
       "testIndex": 13,
@@ -4133,7 +4133,7 @@
     },
     {
       "id": "tst-19g61mpiy6hye",
-      "title": "ExamGOAL Part Test (EPT) - 9",
+      "title": "Quantrex Part Test (EPT) - 9",
       "categoryId": "ept",
       "file": "categories/ept.json",
       "testIndex": 14,
@@ -4373,7 +4373,7 @@
     },
     {
       "id": "tst-19g61mpiy6iwi",
-      "title": "ExamGOAL Part Test (EPT) - 10",
+      "title": "Quantrex Part Test (EPT) - 10",
       "categoryId": "ept",
       "file": "categories/ept.json",
       "testIndex": 15,
@@ -4383,7 +4383,7 @@
     },
     {
       "id": "tst-19g61mpoegvhw",
-      "title": "ExamGOAL Full Syllabus Test - 1",
+      "title": "Quantrex Full Syllabus Test - 1",
       "categoryId": "eft",
       "file": "categories/eft.json",
       "testIndex": 0,
@@ -4393,7 +4393,7 @@
     },
     {
       "id": "tst-19g61mpoegw9n",
-      "title": "ExamGOAL Full Syllabus Test - 2",
+      "title": "Quantrex Full Syllabus Test - 2",
       "categoryId": "eft",
       "file": "categories/eft.json",
       "testIndex": 1,
@@ -4403,7 +4403,7 @@
     },
     {
       "id": "tst-19g61mpoegx0z",
-      "title": "ExamGOAL Full Syllabus Test - 3",
+      "title": "Quantrex Full Syllabus Test - 3",
       "categoryId": "eft",
       "file": "categories/eft.json",
       "testIndex": 2,
@@ -4413,7 +4413,7 @@
     },
     {
       "id": "tst-19g61mpoegyjs",
-      "title": "ExamGOAL Full Syllabus Test - 4",
+      "title": "Quantrex Full Syllabus Test - 4",
       "categoryId": "eft",
       "file": "categories/eft.json",
       "testIndex": 3,
@@ -4423,7 +4423,7 @@
     },
     {
       "id": "tst-19g61mpoeh01w",
-      "title": "ExamGOAL Full Syllabus Test - 5",
+      "title": "Quantrex Full Syllabus Test - 5",
       "categoryId": "eft",
       "file": "categories/eft.json",
       "testIndex": 4,
@@ -4433,7 +4433,7 @@
     },
     {
       "id": "tst-19g61mpoeh77y",
-      "title": "ExamGOAL Full Syllabus Test - 6",
+      "title": "Quantrex Full Syllabus Test - 6",
       "categoryId": "eft",
       "file": "categories/eft.json",
       "testIndex": 5,
@@ -4443,7 +4443,7 @@
     },
     {
       "id": "tst-19g61mpoeh89c",
-      "title": "ExamGOAL Full Syllabus Test - 7",
+      "title": "Quantrex Full Syllabus Test - 7",
       "categoryId": "eft",
       "file": "categories/eft.json",
       "testIndex": 6,
@@ -4453,7 +4453,7 @@
     },
     {
       "id": "tst-19g61mpoeh95g",
-      "title": "ExamGOAL Full Syllabus Test - 8",
+      "title": "Quantrex Full Syllabus Test - 8",
       "categoryId": "eft",
       "file": "categories/eft.json",
       "testIndex": 7,
@@ -4463,7 +4463,7 @@
     },
     {
       "id": "tst-19g61mpoehalo",
-      "title": "ExamGOAL Full Syllabus Test - 9",
+      "title": "Quantrex Full Syllabus Test - 9",
       "categoryId": "eft",
       "file": "categories/eft.json",
       "testIndex": 8,
@@ -4473,7 +4473,7 @@
     },
     {
       "id": "tst-19g61mpoehby3",
-      "title": "ExamGOAL Full Syllabus Test - 10",
+      "title": "Quantrex Full Syllabus Test - 10",
       "categoryId": "eft",
       "file": "categories/eft.json",
       "testIndex": 9,
@@ -4483,7 +4483,7 @@
     },
     {
       "id": "tst-19g61mpoehd9z",
-      "title": "ExamGOAL Full Syllabus Test - 11",
+      "title": "Quantrex Full Syllabus Test - 11",
       "categoryId": "eft",
       "file": "categories/eft.json",
       "testIndex": 10,
@@ -4493,7 +4493,7 @@
     },
     {
       "id": "tst-19g61mpoehe00",
-      "title": "ExamGOAL Full Syllabus Test - 12",
+      "title": "Quantrex Full Syllabus Test - 12",
       "categoryId": "eft",
       "file": "categories/eft.json",
       "testIndex": 11,
@@ -4503,7 +4503,7 @@
     },
     {
       "id": "tst-19g61mpoehfd9",
-      "title": "ExamGOAL Full Syllabus Test - 13",
+      "title": "Quantrex Full Syllabus Test - 13",
       "categoryId": "eft",
       "file": "categories/eft.json",
       "testIndex": 12,
@@ -4513,7 +4513,7 @@
     },
     {
       "id": "tst-19g61mpoehgjr",
-      "title": "ExamGOAL Full Syllabus Test - 14",
+      "title": "Quantrex Full Syllabus Test - 14",
       "categoryId": "eft",
       "file": "categories/eft.json",
       "testIndex": 13,
@@ -4523,7 +4523,7 @@
     },
     {
       "id": "tst-19g61mpoehhm4",
-      "title": "ExamGOAL Full Syllabus Test - 15",
+      "title": "Quantrex Full Syllabus Test - 15",
       "categoryId": "eft",
       "file": "categories/eft.json",
       "testIndex": 14,
@@ -4533,7 +4533,7 @@
     },
     {
       "id": "tst-19g61mpoehqg1",
-      "title": "ExamGOAL Full Syllabus Test - 16",
+      "title": "Quantrex Full Syllabus Test - 16",
       "categoryId": "eft",
       "file": "categories/eft.json",
       "testIndex": 15,
@@ -4543,7 +4543,7 @@
     },
     {
       "id": "tst-19g61mpoehr4n",
-      "title": "ExamGOAL Full Syllabus Test - 17",
+      "title": "Quantrex Full Syllabus Test - 17",
       "categoryId": "eft",
       "file": "categories/eft.json",
       "testIndex": 16,
@@ -4553,7 +4553,7 @@
     },
     {
       "id": "tst-19g61mpoehspl",
-      "title": "ExamGOAL Full Syllabus Test - 18",
+      "title": "Quantrex Full Syllabus Test - 18",
       "categoryId": "eft",
       "file": "categories/eft.json",
       "testIndex": 17,
@@ -4563,7 +4563,7 @@
     },
     {
       "id": "tst-19g61mpoehtzt",
-      "title": "ExamGOAL Full Syllabus Test - 19",
+      "title": "Quantrex Full Syllabus Test - 19",
       "categoryId": "eft",
       "file": "categories/eft.json",
       "testIndex": 18,
@@ -4573,7 +4573,7 @@
     },
     {
       "id": "tst-19g61mpoehvb5",
-      "title": "ExamGOAL Full Syllabus Test - 20",
+      "title": "Quantrex Full Syllabus Test - 20",
       "categoryId": "eft",
       "file": "categories/eft.json",
       "testIndex": 19,
@@ -4583,7 +4583,7 @@
     },
     {
       "id": "tst-19g71mq12072m",
-      "title": "ExamGOAL Full Syllabus Test - 21",
+      "title": "Quantrex Full Syllabus Test - 21",
       "categoryId": "eft",
       "file": "categories/eft.json",
       "testIndex": 20,
@@ -4593,7 +4593,7 @@
     },
     {
       "id": "tst-19g71mq1208qx",
-      "title": "ExamGOAL Full Syllabus Test - 22",
+      "title": "Quantrex Full Syllabus Test - 22",
       "categoryId": "eft",
       "file": "categories/eft.json",
       "testIndex": 21,
@@ -4603,7 +4603,7 @@
     },
     {
       "id": "tst-19g71mq120alw",
-      "title": "ExamGOAL Full Syllabus Test - 23",
+      "title": "Quantrex Full Syllabus Test - 23",
       "categoryId": "eft",
       "file": "categories/eft.json",
       "testIndex": 22,
@@ -4613,7 +4613,7 @@
     },
     {
       "id": "tst-19g71mq120cm9",
-      "title": "ExamGOAL Full Syllabus Test - 24",
+      "title": "Quantrex Full Syllabus Test - 24",
       "categoryId": "eft",
       "file": "categories/eft.json",
       "testIndex": 23,
@@ -4623,7 +4623,7 @@
     },
     {
       "id": "tst-19g71mq120diz",
-      "title": "ExamGOAL Full Syllabus Test - 25",
+      "title": "Quantrex Full Syllabus Test - 25",
       "categoryId": "eft",
       "file": "categories/eft.json",
       "testIndex": 24,
@@ -4633,7 +4633,7 @@
     },
     {
       "id": "tst-19g71mq120f3a",
-      "title": "ExamGOAL Full Syllabus Test - 26",
+      "title": "Quantrex Full Syllabus Test - 26",
       "categoryId": "eft",
       "file": "categories/eft.json",
       "testIndex": 25,
@@ -4643,7 +4643,7 @@
     },
     {
       "id": "tst-19g71mq120gsf",
-      "title": "ExamGOAL Full Syllabus Test - 27",
+      "title": "Quantrex Full Syllabus Test - 27",
       "categoryId": "eft",
       "file": "categories/eft.json",
       "testIndex": 26,
@@ -4653,7 +4653,7 @@
     },
     {
       "id": "tst-19g71mq120ig8",
-      "title": "ExamGOAL Full Syllabus Test - 28",
+      "title": "Quantrex Full Syllabus Test - 28",
       "categoryId": "eft",
       "file": "categories/eft.json",
       "testIndex": 27,
@@ -4663,7 +4663,7 @@
     },
     {
       "id": "tst-19g71mq120jzc",
-      "title": "ExamGOAL Full Syllabus Test - 29",
+      "title": "Quantrex Full Syllabus Test - 29",
       "categoryId": "eft",
       "file": "categories/eft.json",
       "testIndex": 28,
@@ -4673,7 +4673,7 @@
     },
     {
       "id": "tst-19g71mq120ljs",
-      "title": "ExamGOAL Full Syllabus Test - 30",
+      "title": "Quantrex Full Syllabus Test - 30",
       "categoryId": "eft",
       "file": "categories/eft.json",
       "testIndex": 29,

@@ -1364,9 +1364,32 @@ const QuantrexSolution = (() => {
     return s;
   }
 
+    function unwrapKatexDump(html) {
+      const s = String(html || "");
+      if (!/\bclass=["'][^"']*\bkatex\b/i.test(s)) return s;
+      const bits = [];
+      const re = /<annotation[^>]*encoding=["']application\/x-tex["'][^>]*>([\s\S]*?)<\/annotation>/gi;
+      let m;
+      while ((m = re.exec(s))) {
+        const t = String(m[1] || "").replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">").trim();
+        if (t) bits.push("$" + t + "$");
+      }
+      if (!bits.length) return s;
+      let i = 0;
+      let out = s.replace(/<span(?=[^>]*\bkatex\b)[^>]*>/gi, function () {
+        const t = bits[i] || "";
+        i += 1;
+        return "<!--qxtex-->" + t + "<!--/qxtex-->";
+      });
+      out = out.replace(/<!--qxtex-->([\s\S]*?)<!--\/qxtex-->[\s\S]*?(?=(?:<!--qxtex-->)|$)/g, "$1 ");
+      out = out.replace(/<span[^>]*>\s*<\/span>/gi, "");
+      return out;
+    }
+
     function formatBody(solution, q) {
     const _qxSolSrc = String(solution || "");
     let raw = flattenMarksSolTables(_qxSolSrc);
+    try { raw = unwrapKatexDump(raw); } catch (_) { /* */ }
     raw = stripLeadingStemEcho(raw, q);
     try { raw = ensureNoStemHead(raw, q); } catch (_) { /* */ }
     // Same deep TeX/symbol repair as stems/options (solutions were missing shatter/tofu fixes)

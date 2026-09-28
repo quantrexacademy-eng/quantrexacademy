@@ -1538,10 +1538,11 @@
                     "isPremium": true,
                     "keyValuePairs": {},
                     "languages": [
-                      "en"
+                      "en",
+                      "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-20T03:30:00.000Z",
+                    "liveAt": "2026-09-11T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 100,
                     "maxNegMarks": 25,
@@ -1553,7 +1554,7 @@
                     "type": "chapter",
                     "isWatermarkEnabled": true,
                     "percentileId": "prc-19g61mlq40gq7",
-                    "isUpcoming": true,
+                    "isUpcoming": false,
                     "seriesId": "tsr-19g61mnpryz1v"
                   }
                 ],
@@ -1660,10 +1661,11 @@
                     "isPremium": true,
                     "keyValuePairs": {},
                     "languages": [
-                      "en"
+                      "en",
+                      "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-10T03:30:00.000Z",
+                    "liveAt": "2026-09-12T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 100,
                     "maxNegMarks": 25,
@@ -1676,7 +1678,7 @@
                     "isWatermarkEnabled": true,
                     "percentileId": "prc-19g61mlq40gq7",
                     "seriesId": "tsr-19g61mnpryz1v",
-                    "isUpcoming": true
+                    "isUpcoming": false
                   }
                 ],
                 "groupId": "b8be9baa-5970-40dd-a708-c897733c4d1d",
@@ -1699,7 +1701,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-03T03:30:00.000Z",
+                    "liveAt": "2026-09-06T12:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -1712,7 +1714,7 @@
                     "isWatermarkEnabled": true,
                     "percentileId": "prc-19g61mlq40gq7",
                     "seriesId": "tsr-19g61mnpryz1v",
-                    "isUpcoming": true
+                    "isUpcoming": false
                   },
                   {
                     "testId": "tst-19g61mp5vetqu",
@@ -1728,7 +1730,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-05T03:30:00.000Z",
+                    "liveAt": "2026-09-07T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -1741,7 +1743,7 @@
                     "isWatermarkEnabled": true,
                     "percentileId": "prc-19g61mlq40gq7",
                     "seriesId": "tsr-19g61mnpryz1v",
-                    "isUpcoming": true
+                    "isUpcoming": false
                   },
                   {
                     "testId": "tst-19g61mp5veukk",
@@ -1757,7 +1759,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-07T03:30:00.000Z",
+                    "liveAt": "2026-09-08T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -1770,7 +1772,7 @@
                     "isWatermarkEnabled": true,
                     "percentileId": "prc-19g61mlq40gq7",
                     "seriesId": "tsr-19g61mnpryz1v",
-                    "isUpcoming": true
+                    "isUpcoming": false
                   },
                   {
                     "testId": "tst-19g61mp5vew2t",
@@ -1786,7 +1788,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-09T03:30:00.000Z",
+                    "liveAt": "2026-09-10T12:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -1799,7 +1801,7 @@
                     "isWatermarkEnabled": true,
                     "percentileId": "prc-19g61mlq40gq7",
                     "seriesId": "tsr-19g61mnpryz1v",
-                    "isUpcoming": true
+                    "isUpcoming": false
                   },
                   {
                     "testId": "tst-19g61mp5vewts",
@@ -1811,7 +1813,8 @@
                     "isPremium": true,
                     "keyValuePairs": {},
                     "languages": [
-                      "en"
+                      "en",
+                      "hi"
                     ],
                     "layout": "nta",
                     "liveAt": "2026-09-14T03:30:00.000Z",
@@ -1827,7 +1830,7 @@
                     "isWatermarkEnabled": true,
                     "percentileId": "prc-19g61mlq40gq7",
                     "seriesId": "tsr-19g61mnpryz1v",
-                    "isUpcoming": true
+                    "isUpcoming": false
                   }
                 ],
                 "groupId": "b8be9baa-5970-40dd-a708-c897733c4d1d",
@@ -1850,7 +1853,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-10T03:30:00.000Z",
+                    "liveAt": "2026-10-15T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -1879,7 +1882,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-10T03:30:00.000Z",
+                    "liveAt": "2026-10-16T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -1908,7 +1911,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-11T03:30:00.000Z",
+                    "liveAt": "2026-10-17T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -1937,7 +1940,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-12T03:30:00.000Z",
+                    "liveAt": "2026-10-18T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -1966,7 +1969,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-13T03:30:00.000Z",
+                    "liveAt": "2026-10-19T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -1995,7 +1998,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-14T03:30:00.000Z",
+                    "liveAt": "2026-10-20T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 100,
                     "maxNegMarks": 25,
@@ -2031,7 +2034,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-17T03:30:00.000Z",
+                    "liveAt": "2026-10-22T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -2060,7 +2063,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-18T03:30:00.000Z",
+                    "liveAt": "2026-10-23T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -2089,7 +2092,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-19T03:30:00.000Z",
+                    "liveAt": "2026-10-25T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -2118,7 +2121,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-20T03:30:00.000Z",
+                    "liveAt": "2026-10-26T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -2147,7 +2150,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-21T03:30:00.000Z",
+                    "liveAt": "2026-10-27T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 100,
                     "maxNegMarks": 25,
@@ -2183,7 +2186,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-16T03:30:00.000Z",
+                    "liveAt": "2026-10-28T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -2212,7 +2215,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-18T03:30:00.000Z",
+                    "liveAt": "2026-10-29T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -2241,7 +2244,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-19T03:30:00.000Z",
+                    "liveAt": "2026-10-30T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -2270,7 +2273,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-20T03:30:00.000Z",
+                    "liveAt": "2026-10-31T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 100,
                     "maxNegMarks": 25,
@@ -2306,7 +2309,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-06T03:30:00.000Z",
+                    "liveAt": "2026-10-10T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -2335,7 +2338,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-07T03:30:00.000Z",
+                    "liveAt": "2026-10-11T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -2364,7 +2367,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-08T03:30:00.000Z",
+                    "liveAt": "2026-10-12T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -2392,7 +2395,7 @@
                       "en"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-10T03:30:00.000Z",
+                    "liveAt": "2026-10-14T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 100,
                     "maxNegMarks": 25,
@@ -2551,7 +2554,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-20T03:30:00.000Z",
+                    "liveAt": "2026-09-17T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -2580,7 +2583,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-21T03:30:00.000Z",
+                    "liveAt": "2026-09-19T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -2609,7 +2612,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-22T03:30:00.000Z",
+                    "liveAt": "2026-09-21T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -2731,7 +2734,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-06T03:30:00.000Z",
+                    "liveAt": "2026-09-20T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -2760,7 +2763,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-07T03:30:00.000Z",
+                    "liveAt": "2026-09-21T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -2789,7 +2792,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-08T03:30:00.000Z",
+                    "liveAt": "2026-09-22T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -2818,7 +2821,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-09T03:30:00.000Z",
+                    "liveAt": "2026-09-23T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -2847,7 +2850,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-10T03:30:00.000Z",
+                    "liveAt": "2026-09-24T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -2876,7 +2879,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-11T03:30:00.000Z",
+                    "liveAt": "2026-09-25T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -2905,7 +2908,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-12T03:30:00.000Z",
+                    "liveAt": "2026-09-27T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 100,
                     "maxNegMarks": 25,
@@ -2941,7 +2944,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-13T03:30:00.000Z",
+                    "liveAt": "2026-09-24T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -2970,7 +2973,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-14T03:30:00.000Z",
+                    "liveAt": "2026-09-25T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -2999,7 +3002,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-15T03:30:00.000Z",
+                    "liveAt": "2026-09-26T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -3028,7 +3031,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-16T03:30:00.000Z",
+                    "liveAt": "2026-09-27T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -3057,7 +3060,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-17T03:30:00.000Z",
+                    "liveAt": "2026-09-30T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 100,
                     "maxNegMarks": 25,
@@ -6352,7 +6355,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-12T03:30:00.000Z",
+                    "liveAt": "2026-10-14T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 100,
                     "maxNegMarks": 25,
@@ -6442,10 +6445,11 @@
                     "isPremium": true,
                     "keyValuePairs": {},
                     "languages": [
-                      "en"
+                      "en",
+                      "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-10T03:30:00.000Z",
+                    "liveAt": "2026-09-09T04:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -6458,7 +6462,7 @@
                     "isWatermarkEnabled": true,
                     "percentileId": "prc-19g61mlq40gq7",
                     "seriesId": "tsr-19g61mnpryz1v",
-                    "isUpcoming": true
+                    "isUpcoming": false
                   },
                   {
                     "testId": "tst-19g61moo5w8xf",
@@ -6470,11 +6474,10 @@
                     "isPremium": true,
                     "keyValuePairs": {},
                     "languages": [
-                      "en",
-                      "hi"
+                      "en"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-12T03:30:00.000Z",
+                    "liveAt": "2026-09-16T12:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -6487,7 +6490,7 @@
                     "isWatermarkEnabled": true,
                     "percentileId": "prc-19g61mlq40gq7",
                     "seriesId": "tsr-19g61mnpryz1v",
-                    "isUpcoming": true
+                    "isUpcoming": false
                   },
                   {
                     "testId": "tst-19g61moo5waed",
@@ -6502,7 +6505,7 @@
                       "en"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-13T03:30:00.000Z",
+                    "liveAt": "2026-09-18T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -6531,7 +6534,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-15T03:30:00.000Z",
+                    "liveAt": "2026-09-19T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -6559,7 +6562,7 @@
                       "en"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-16T03:30:00.000Z",
+                    "liveAt": "2026-09-19T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -6588,7 +6591,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-17T03:30:00.000Z",
+                    "liveAt": "2026-09-30T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 100,
                     "maxNegMarks": 25,
@@ -6747,7 +6750,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-05T03:30:00.000Z",
+                    "liveAt": "2026-10-10T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -6776,7 +6779,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-06T03:30:00.000Z",
+                    "liveAt": "2026-10-11T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -6805,7 +6808,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-07T03:30:00.000Z",
+                    "liveAt": "2026-10-12T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -6834,7 +6837,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-08T03:30:00.000Z",
+                    "liveAt": "2026-10-13T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 100,
                     "maxNegMarks": 25,
@@ -6870,7 +6873,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-05T03:30:00.000Z",
+                    "liveAt": "2026-09-17T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -6899,7 +6902,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-06T03:30:00.000Z",
+                    "liveAt": "2026-09-18T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -6928,7 +6931,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-07T03:30:00.000Z",
+                    "liveAt": "2026-09-19T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -6957,7 +6960,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-08T03:30:00.000Z",
+                    "liveAt": "2026-09-20T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 100,
                     "maxNegMarks": 25,
@@ -7203,7 +7206,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-02T03:30:00.000Z",
+                    "liveAt": "2026-10-02T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -7232,7 +7235,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-03T03:30:00.000Z",
+                    "liveAt": "2026-10-03T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -7261,7 +7264,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-04T03:30:00.000Z",
+                    "liveAt": "2026-10-04T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 100,
                     "maxNegMarks": 25,
@@ -7293,8 +7296,7 @@
                     "isPremium": true,
                     "keyValuePairs": {},
                     "languages": [
-                      "en",
-                      "hi"
+                      "en"
                     ],
                     "layout": "nta",
                     "liveAt": "2026-10-01T03:30:00.000Z",
@@ -7351,8 +7353,7 @@
                     "isPremium": true,
                     "keyValuePairs": {},
                     "languages": [
-                      "en",
-                      "hi"
+                      "en"
                     ],
                     "layout": "nta",
                     "liveAt": "2026-10-03T03:30:00.000Z",
@@ -7904,7 +7905,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-10T03:30:00.000Z",
+                    "liveAt": "2026-09-11T12:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -7917,7 +7918,7 @@
                     "isWatermarkEnabled": true,
                     "percentileId": "prc-19g61mlq40gq7",
                     "seriesId": "tsr-19g61mnpryz1v",
-                    "isUpcoming": true
+                    "isUpcoming": false
                   },
                   {
                     "testId": "tst-19g71mp3td7mb",
@@ -7933,7 +7934,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-11T03:30:00.000Z",
+                    "liveAt": "2026-09-14T14:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -7946,7 +7947,7 @@
                     "isWatermarkEnabled": true,
                     "percentileId": "prc-19g61mlq40gq7",
                     "seriesId": "tsr-19g61mnpryz1v",
-                    "isUpcoming": true
+                    "isUpcoming": false
                   },
                   {
                     "testId": "tst-19g71mp3td8e2",
@@ -7962,7 +7963,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-12T03:30:00.000Z",
+                    "liveAt": "2026-09-17T12:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -7991,7 +7992,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-13T03:30:00.000Z",
+                    "liveAt": "2026-09-30T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 100,
                     "maxNegMarks": 25,
@@ -8027,7 +8028,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-14T03:30:00.000Z",
+                    "liveAt": "2026-09-28T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -8056,7 +8057,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-15T03:30:00.000Z",
+                    "liveAt": "2026-09-29T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -8085,7 +8086,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-16T03:30:00.000Z",
+                    "liveAt": "2026-09-30T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -8114,7 +8115,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-17T03:30:00.000Z",
+                    "liveAt": "2026-10-01T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -8143,7 +8144,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-18T03:30:00.000Z",
+                    "liveAt": "2026-10-02T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -8172,7 +8173,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-20T03:30:00.000Z",
+                    "liveAt": "2026-10-05T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 100,
                     "maxNegMarks": 25,
@@ -10455,7 +10456,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-02T03:30:00.000Z",
+                    "liveAt": "2026-09-02T14:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -10468,7 +10469,7 @@
                     "isWatermarkEnabled": true,
                     "percentileId": "prc-19g61mlq40gq7",
                     "seriesId": "tsr-19g61mnpryz1v",
-                    "isUpcoming": true
+                    "isUpcoming": false
                   },
                   {
                     "testId": "tst-19g61mpe6u7qm",
@@ -10484,7 +10485,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-03T03:30:00.000Z",
+                    "liveAt": "2026-09-05T04:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -10497,7 +10498,7 @@
                     "isWatermarkEnabled": true,
                     "percentileId": "prc-19g61mlq40gq7",
                     "seriesId": "tsr-19g61mnpryz1v",
-                    "isUpcoming": true
+                    "isUpcoming": false
                   },
                   {
                     "testId": "tst-19g61mpe6u8nw",
@@ -10513,7 +10514,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-04T03:30:00.000Z",
+                    "liveAt": "2026-09-05T15:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -10526,7 +10527,7 @@
                     "isWatermarkEnabled": true,
                     "percentileId": "prc-19g61mlq40gq7",
                     "seriesId": "tsr-19g61mnpryz1v",
-                    "isUpcoming": true
+                    "isUpcoming": false
                   },
                   {
                     "testId": "tst-19g61mpe6u9ju",
@@ -10542,7 +10543,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-05T03:30:00.000Z",
+                    "liveAt": "2026-09-08T04:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -10555,7 +10556,7 @@
                     "isWatermarkEnabled": true,
                     "percentileId": "prc-19g61mlq40gq7",
                     "seriesId": "tsr-19g61mnpryz1v",
-                    "isUpcoming": true
+                    "isUpcoming": false
                   },
                   {
                     "testId": "tst-19g61mpe6ubey",
@@ -10571,7 +10572,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-06T03:30:00.000Z",
+                    "liveAt": "2026-09-09T15:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -10584,7 +10585,7 @@
                     "isWatermarkEnabled": true,
                     "percentileId": "prc-19g61mlq40gq7",
                     "seriesId": "tsr-19g61mnpryz1v",
-                    "isUpcoming": true
+                    "isUpcoming": false
                   },
                   {
                     "testId": "tst-19g61mpe6ud78",
@@ -10600,7 +10601,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-07T03:30:00.000Z",
+                    "liveAt": "2026-09-16T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -10613,7 +10614,7 @@
                     "isWatermarkEnabled": true,
                     "percentileId": "prc-19g61mlq40gq7",
                     "seriesId": "tsr-19g61mnpryz1v",
-                    "isUpcoming": true
+                    "isUpcoming": false
                   },
                   {
                     "testId": "tst-19g61mpe6uew9",
@@ -10629,7 +10630,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-08T03:30:00.000Z",
+                    "liveAt": "2026-09-18T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 100,
                     "maxNegMarks": 25,
@@ -10665,7 +10666,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-03T03:30:00.000Z",
+                    "liveAt": "2026-09-13T15:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -10678,7 +10679,7 @@
                     "isWatermarkEnabled": true,
                     "percentileId": "prc-19g61mlq40gq7",
                     "seriesId": "tsr-19g61mnpryz1v",
-                    "isUpcoming": true
+                    "isUpcoming": false
                   },
                   {
                     "testId": "tst-19g61mpgx4jgy",
@@ -10694,7 +10695,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-05T03:30:00.000Z",
+                    "liveAt": "2026-09-21T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -10723,7 +10724,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-08T03:30:00.000Z",
+                    "liveAt": "2026-09-22T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -10752,7 +10753,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-10T03:30:00.000Z",
+                    "liveAt": "2026-09-23T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 100,
                     "maxNegMarks": 25,
@@ -10788,7 +10789,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-06T03:30:00.000Z",
+                    "liveAt": "2026-09-28T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -10817,7 +10818,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-07T03:30:00.000Z",
+                    "liveAt": "2026-09-29T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -10846,7 +10847,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-08T03:30:00.000Z",
+                    "liveAt": "2026-09-30T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -10875,7 +10876,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-09T03:30:00.000Z",
+                    "liveAt": "2026-10-01T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -10904,7 +10905,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-10T03:30:00.000Z",
+                    "liveAt": "2026-10-02T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -10933,7 +10934,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-11T03:30:00.000Z",
+                    "liveAt": "2026-10-03T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -10962,7 +10963,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-12T03:30:00.000Z",
+                    "liveAt": "2026-10-04T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -10991,7 +10992,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-14T03:30:00.000Z",
+                    "liveAt": "2026-10-05T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 100,
                     "maxNegMarks": 25,
@@ -11027,7 +11028,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-16T03:30:00.000Z",
+                    "liveAt": "2026-11-01T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -11056,7 +11057,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-18T03:30:00.000Z",
+                    "liveAt": "2026-11-02T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -11085,7 +11086,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-20T03:30:00.000Z",
+                    "liveAt": "2026-11-03T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 100,
                     "maxNegMarks": 25,
@@ -11121,7 +11122,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-11T03:30:00.000Z",
+                    "liveAt": "2026-09-08T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -11134,7 +11135,7 @@
                     "isWatermarkEnabled": true,
                     "percentileId": "prc-19g61mlq40gq7",
                     "seriesId": "tsr-19g61mnpryz1v",
-                    "isUpcoming": true
+                    "isUpcoming": false
                   },
                   {
                     "testId": "tst-19g61mphagidw",
@@ -11150,7 +11151,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-12T03:30:00.000Z",
+                    "liveAt": "2026-09-17T12:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -11179,7 +11180,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-13T03:30:00.000Z",
+                    "liveAt": "2026-09-18T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -11208,7 +11209,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-14T03:30:00.000Z",
+                    "liveAt": "2026-09-19T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -11237,7 +11238,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-15T03:30:00.000Z",
+                    "liveAt": "2026-09-20T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -11266,7 +11267,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-16T03:30:00.000Z",
+                    "liveAt": "2026-09-20T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -11295,7 +11296,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-17T03:30:00.000Z",
+                    "liveAt": "2026-09-21T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -11324,7 +11325,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-18T03:30:00.000Z",
+                    "liveAt": "2026-09-22T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -11353,7 +11354,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-20T03:30:00.000Z",
+                    "liveAt": "2026-09-22T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 100,
                     "maxNegMarks": 25,
@@ -11389,7 +11390,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-08T03:30:00.000Z",
+                    "liveAt": "2026-09-20T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -11418,7 +11419,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-09T03:30:00.000Z",
+                    "liveAt": "2026-09-21T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -11447,7 +11448,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-10T03:30:00.000Z",
+                    "liveAt": "2026-09-22T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -11476,7 +11477,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-11T03:30:00.000Z",
+                    "liveAt": "2026-09-23T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -11505,7 +11506,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-13T03:30:00.000Z",
+                    "liveAt": "2026-09-25T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 100,
                     "maxNegMarks": 25,
@@ -11541,7 +11542,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-14T03:30:00.000Z",
+                    "liveAt": "2026-10-17T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -11570,7 +11571,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-15T03:30:00.000Z",
+                    "liveAt": "2026-10-18T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -11599,7 +11600,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-16T03:30:00.000Z",
+                    "liveAt": "2026-10-19T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -11628,7 +11629,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-17T03:30:00.000Z",
+                    "liveAt": "2026-10-20T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -11657,7 +11658,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-18T03:30:00.000Z",
+                    "liveAt": "2026-10-21T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 60,
                     "maxNegMarks": 15,
@@ -11686,7 +11687,7 @@
                       "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-19T03:30:00.000Z",
+                    "liveAt": "2026-10-22T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 100,
                     "maxNegMarks": 25,
@@ -13799,22 +13800,23 @@
                   {
                     "testId": "tst-19g61mpiy6eie",
                     "defaultLanguage": "en",
-                    "description": "Physics - Flid Mechanic, Current Electricity, Geometrical Optics<br/>\nChemistry - p-Block Elements, d and f Block Elements, IUPAC Nomenclature<br/>\nMathematics - Statistics, Function, Inverse Trigonometric Functions",
+                    "description": "Physics - Fluid Mechanic, Current Electricity, Geometrical Optics<br/>\nChemistry - p-Block Elements, d and f Block Elements, IUPAC Nomenclature<br/>\nMathematics - Statistics, Function, Inverse Trigonometric Functions",
                     "difficulty": null,
                     "instructions": null,
                     "isAnalysisDeletable": false,
                     "isPremium": true,
                     "keyValuePairs": {},
                     "languages": [
-                      "en"
+                      "en",
+                      "hi"
                     ],
                     "layout": "nta",
-                    "liveAt": "2026-09-10T03:30:00.000Z",
+                    "liveAt": "2026-09-15T03:30:00.000Z",
                     "maxAttempt": 2,
                     "maxMarks": 300,
                     "maxNegMarks": 75,
                     "policy": "jee-main",
-                    "syllabus": "Physics - Flid Mechanic, Current Electricity, Geometrical Optics<br/>\nChemistry - p-Block Elements, d and f Block Elements, IUPAC Nomenclature<br/>\nMathematics - Statistics, Function, Inverse Trigonometric Functions",
+                    "syllabus": "Physics - Fluid Mechanic, Current Electricity, Geometrical Optics<br/>\nChemistry - p-Block Elements, d and f Block Elements, IUPAC Nomenclature<br/>\nMathematics - Statistics, Function, Inverse Trigonometric Functions",
                     "timeAllotted": 10800000,
                     "title": "ExamGOAL Part Test (EPT) - 5",
                     "totalQuestions": 75,
@@ -13822,12 +13824,12 @@
                     "isWatermarkEnabled": true,
                     "percentileId": "prc-19g61mlq40gq7",
                     "seriesId": "tsr-19g61mnpryz1v",
-                    "isUpcoming": true
+                    "isUpcoming": false
                   },
                   {
                     "testId": "tst-19g61mpiy6fbk",
                     "defaultLanguage": "en",
-                    "description": "Physics - Fluid Mechanics, Simple Harmonic Motion, Waves<br/>\nChemistry - Salt Analysis, IUPAC Nomenclature, General Organic Chemistry(GOC)<br/>\nMathematics - Straight Line, Circle, Parabola, Ellipse, Hyperbola",
+                    "description": "Physics - Thermal Properties of Matter, Kinetic Theory of Gases, Capacitor<br/>\nChemistry - Salt Analysis, IUPAC Nomenclature, General Organic Chemistry(GOC)<br/>\nMathematics - Straight Line, Circle, Parabola, Ellipse, Hyperbola",
                     "difficulty": null,
                     "instructions": null,
                     "isAnalysisDeletable": false,
@@ -13842,7 +13844,7 @@
                     "maxMarks": 300,
                     "maxNegMarks": 75,
                     "policy": "jee-main",
-                    "syllabus": "Physics - Fluid Mechanics, Simple Harmonic Motion, Waves<br/>\nChemistry - Salt Analysis, IUPAC Nomenclature, General Organic Chemistry(GOC)<br/>\nMathematics - Straight Line, Circle, Parabola, Ellipse, Hyperbola",
+                    "syllabus": "Physics - Thermal Properties of Matter, Kinetic Theory of Gases, Capacitor<br/>\nChemistry - Salt Analysis, IUPAC Nomenclature, General Organic Chemistry(GOC)<br/>\nMathematics - Straight Line, Circle, Parabola, Ellipse, Hyperbola",
                     "timeAllotted": 10800000,
                     "title": "ExamGOAL Part Test (EPT) - 6",
                     "totalQuestions": 75,
@@ -13855,7 +13857,7 @@
                   {
                     "testId": "tst-19g61mpiy6gb2",
                     "defaultLanguage": "en",
-                    "description": "Physics - Current Electricity, Capacitor, Magnetic Effect of Current<br/>\nChemistry - Isomerism, Hydrocarbon<br/>\nMathematics - Functions, Limits, Continuity and Differentiability",
+                    "description": "Physics - Thermodynamics, Magnetic Effect of Current, Wave Optics<br/>\nChemistry - Isomerism, Hydrocarbon<br/>\nMathematics - Functions, Limits, Continuity and Differentiability",
                     "difficulty": null,
                     "instructions": null,
                     "isAnalysisDeletable": false,
@@ -13871,7 +13873,7 @@
                     "maxMarks": 300,
                     "maxNegMarks": 75,
                     "policy": "jee-main",
-                    "syllabus": "Physics - Current Electricity, Capacitor, Magnetic Effect of Current<br/>\nChemistry - Isomerism, Hydrocarbon<br/>\nMathematics - Functions, Limits, Continuity and Differentiability",
+                    "syllabus": "Physics - Thermodynamics, Magnetic Effect of Current, Wave Optics<br/>\nChemistry - Isomerism, Hydrocarbon<br/>\nMathematics - Functions, Limits, Continuity and Differentiability",
                     "timeAllotted": 10800000,
                     "title": "ExamGOAL Part Test (EPT) - 7",
                     "totalQuestions": 75,
@@ -13884,7 +13886,7 @@
                   {
                     "testId": "tst-19g61mpiy6h05",
                     "defaultLanguage": "en",
-                    "description": "Physics - Magnetic Properties of Matter, Electromagnetic Induction, Alternating Current<br/>\nChemistry - Haloalkanes and Haloarenes, Alcohols, Phenols and Ethers<br/>\nMathematics - Differentiation, Application of Derivatives",
+                    "description": "Physics - Simple Harmonic Motion, Magnetic Properties of Matter, Electromagnetic Induction, Dual Nature Of Radiation<br/>\nChemistry - Haloalkanes and Haloarenes, Alcohols, Phenols and Ethers<br/>\nMathematics - Differentiation, Application of Derivatives",
                     "difficulty": null,
                     "instructions": null,
                     "isAnalysisDeletable": false,
@@ -13900,7 +13902,7 @@
                     "maxMarks": 300,
                     "maxNegMarks": 75,
                     "policy": "jee-main",
-                    "syllabus": "Physics - Magnetic Properties of Matter, Electromagnetic Induction, Alternating Current<br/>\nChemistry - Haloalkanes and Haloarenes, Alcohols, Phenols and Ethers<br/>\nMathematics - Differentiation, Application of Derivatives",
+                    "syllabus": "Physics - Simple Harmonic Motion, Magnetic Properties of Matter, Electromagnetic Induction, Dual Nature Of Radiation<br/>\nChemistry - Haloalkanes and Haloarenes, Alcohols, Phenols and Ethers<br/>\nMathematics - Differentiation, Application of Derivatives",
                     "timeAllotted": 10800000,
                     "title": "ExamGOAL Part Test (EPT) - 8",
                     "totalQuestions": 75,
@@ -13913,7 +13915,7 @@
                   {
                     "testId": "tst-19g61mpiy6hye",
                     "defaultLanguage": "en",
-                    "description": "Physics - Electromagnetic Waves, Geometrical Optics, Wave Optics<br/>\nChemistry - Carboxylic Acids and Their Darivatives, Compounds Containing Nitrogen<br/>\nMathematics - Indefinite Integration, Definite Integration",
+                    "description": "Physics - Waves, Alternating Current, Atoms<br/>\nChemistry - Carboxylic Acids and Their Darivatives, Compounds Containing Nitrogen<br/>\nMathematics - Indefinite Integration, Definite Integration",
                     "difficulty": null,
                     "instructions": null,
                     "isAnalysisDeletable": false,
@@ -13929,7 +13931,7 @@
                     "maxMarks": 300,
                     "maxNegMarks": 75,
                     "policy": "jee-main",
-                    "syllabus": "Physics - Electromagnetic Waves, Geometrical Optics, Wave Optics<br/>\nChemistry - Carboxylic Acids and Their Darivatives, Compounds Containing Nitrogen<br/>\nMathematics - Indefinite Integration, Definite Integration",
+                    "syllabus": "Physics - Waves, Alternating Current, Atoms<br/>\nChemistry - Carboxylic Acids and Their Darivatives, Compounds Containing Nitrogen<br/>\nMathematics - Indefinite Integration, Definite Integration",
                     "timeAllotted": 10800000,
                     "title": "ExamGOAL Part Test (EPT) - 9",
                     "totalQuestions": 75,
@@ -13942,7 +13944,7 @@
                   {
                     "testId": "tst-19g61mpiy6iwi",
                     "defaultLanguage": "en",
-                    "description": "Physics - Dual Nature of Radiation, Atoms, Nuclei, Semiconductors<br/>\nChemistry - Biomolecules, Purification of Organic Compounds, Practical Organic Chemistry<br/>\nMathematics - Area Under The Curves, Differential Equations",
+                    "description": "Physics - Electromagnetic Waves, Nuclei, Semiconductors<br/>\nChemistry - Biomolecules, Purification of Organic Compounds, Practical Organic Chemistry<br/>\nMathematics - Area Under The Curves, Differential Equations",
                     "difficulty": null,
                     "instructions": null,
                     "isAnalysisDeletable": false,
@@ -13958,7 +13960,7 @@
                     "maxMarks": 300,
                     "maxNegMarks": 75,
                     "policy": "jee-main",
-                    "syllabus": "Physics - Dual Nature of Radiation, Atoms, Nuclei, Semiconductors<br/>\nChemistry - Biomolecules, Purification of Organic Compounds, Practical Organic Chemistry<br/>\nMathematics - Area Under The Curves, Differential Equations",
+                    "syllabus": "Physics - Electromagnetic Waves, Nuclei, Semiconductors<br/>\nChemistry - Biomolecules, Purification of Organic Compounds, Practical Organic Chemistry<br/>\nMathematics - Area Under The Curves, Differential Equations",
                     "timeAllotted": 10800000,
                     "title": "ExamGOAL Part Test (EPT) - 10",
                     "totalQuestions": 75,
