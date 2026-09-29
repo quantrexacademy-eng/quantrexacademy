@@ -5626,6 +5626,11 @@ window.Mx = (() => {
       out = healBrokenEnglishWords(out);
       out = repairBrokenLatex(out);
       out = repairLatexCommandSpaces(out);
+      try {
+        if (typeof QxMathSanitize !== "undefined" && QxMathSanitize.repairMarksExportTex) {
+          out = QxMathSanitize.repairMarksExportTex(out);
+        }
+      } catch (_) { /* */ }
       out = fixWordSpacing(out);
       try { out = unglueLowercaseMathProse(out); } catch (_) { /* */ }
       if (/\\le\s*ft|\\pithen|\\textb\{|unknown node/i.test(out)) {

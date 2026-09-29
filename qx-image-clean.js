@@ -33,6 +33,20 @@ window.QxImgClean = (() => {
   const SKIP_RX = /marks-premium|ic_marks|marks_selected|getmarks-brand|web_assets|ic_content_exam_|cpyqb\/subjects\/|(?:^|\/)watermark(?:\.png|\.svg|overlay|_logo|_badge|_layer)(?:\b|$)|(?:^|\/)watermarks?\//i;
   const CARD_ART_RX = /formula_cards|revision_flash_cards|another_formula_card/i;
 
+  function figSrcLocked(img) {
+    if (!img) return true;
+    const s = String(img.getAttribute("src") || "").replace(/&amp;/gi, "&");
+    const stable = (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.isStableFigSrc)
+      ? QxOwnedFigs.isStableFigSrc(s)
+      : (/firebasestorage|\/api\/proxy-image/i.test(s) && !/getmarks\.app|quizrr\.in/i.test(s) && !/\/assets\/diagrams\//i.test(s));
+    if (stable) {
+      img.dataset.qxFigLock = "1";
+      try { img.removeAttribute("crossorigin"); } catch (_) { /* */ }
+      return true;
+    }
+    return img.dataset.qxFigLock === "1";
+  }
+
   function keepWipeProxy(src) {
     const s = String(src || "");
     if (CARD_ART_RX.test(s)) return true;
@@ -2718,6 +2732,15 @@ window.QxImgClean = (() => {
         || img.classList.contains("qx-ui-brand-logo")) {
         return;
       }
+      if (figSrcLocked(img)) {
+        try {
+          img.removeAttribute("crossorigin");
+          img.style.opacity = "1";
+          img.style.visibility = "visible";
+          img.style.display = "block";
+        } catch (_) { /* */ }
+        return;
+      }
       let cur = fixUrl(img.getAttribute("src") || "");
       // Fix broken host on the attribute itself
       if (/https?:\/\/\.app\//i.test(String(img.getAttribute("src") || ""))) {
@@ -3585,35 +3608,11 @@ window.QxImgClean = (() => {
       }
     });
     img.addEventListener("error", () => {
-      const cdn = canonicalCdnSrc(img.dataset.qxOrigSrc || "") || fixUrl(img.dataset.qxOrigSrc || poolCdnSrc(img) || "");
-      if (!cdn) {
-        hideFigureLoading(img);
-        img.style.opacity = "1";
-        img.style.display = "block";
-        if (window.QxOwnedFigs && QxOwnedFigs.retryOnError) QxOwnedFigs.retryOnError(img);
-        return;
-      }
       revealFigure(img);
-      // NEVER fall back to raw Marks CDN (brings baked MARKS watermark).
-      // Max 2 clean-proxy retries then stop (prevents hang / infinite error loop).
-      if (img.dataset.qxProxyRetryA !== "1") {
-        img.dataset.qxProxyRetryA = "1";
-        img.dataset.qxOrigSrc = cdn;
-        img.removeAttribute("crossorigin");
-        img.setAttribute("src", proxyImageUrl(cdn));
-        return;
-      }
-      if (img.dataset.qxProxyRetryB !== "1") {
-        img.dataset.qxProxyRetryB = "1";
-        img.setAttribute("src", proxyImageUrl(cdn) + "&r=" + Date.now());
-        return;
-      }
-      // Give up cleanly — show placeholder, no more retries
-      img.dataset.qxImgFailed = "1";
-      hideFigureLoading(img);
       img.style.opacity = "1";
       img.style.display = "block";
       img.style.background = "#fff";
+      img.removeAttribute("crossorigin");
       if (window.QxOwnedFigs && QxOwnedFigs.retryOnError) QxOwnedFigs.retryOnError(img);
     });
   }
@@ -3859,6 +3858,15 @@ window.QxImgClean = (() => {
 
   function processImage(img) {
     if (!img) return;
+    if (figSrcLocked(img)) {
+      try {
+        img.removeAttribute("crossorigin");
+        img.style.opacity = "1";
+        img.style.visibility = "visible";
+        img.style.display = "block";
+      } catch (_) { /* */ }
+      return;
+    }
     let curSrc = fixUrl(img.getAttribute("src") || "");
     // Organic / already-clean local maps — never strip
     if (/\/api\/proxy-image/i.test(curSrc) && /[?&]clean=1\b/i.test(curSrc) && /[?&]v=qxfig110\b/i.test(curSrc)) {
@@ -4693,7 +4701,7 @@ window.QxImgClean = (() => {
   }
 
   // Retry Quantrex proxy/storage — never hide, never raw Marks CDN.
-  const FIG_ONERROR = "if(window.QxOwnedFigs&&QxOwnedFigs.retryOnError){QxOwnedFigs.retryOnError(this);return;}this.removeAttribute('crossorigin');this.style.opacity='1';this.style.display='block';this.style.background='#fff';var t=+this.dataset.qxTries||0;var o=this.getAttribute('data-qx-orig-src')||this.getAttribute('data-qx-storage-src')||'';if(t<3&&o){this.dataset.qxTries=t+1;this.src='/api/proxy-image?url='+encodeURIComponent(o)+'&clean=1&v=qxfig110&r='+Date.now();}";
+  const FIG_ONERROR = "if(window.QxOwnedFigs&&QxOwnedFigs.retryOnError){QxOwnedFigs.retryOnError(this);return;}this.removeAttribute('crossorigin');this.style.opacity='1';this.style.display='block';this.style.background='#fff';";
 
   function poolFigureHtml(cdn, displayW) {
     const src = normalizeAssetSrc(canonicalCdnSrc(cdn) || cdn);
@@ -5094,7 +5102,14 @@ window.QxImgClean = (() => {
 
   function finalizeAll(root, q) {
     const scope = root || document;
-    // Ensure Irodov/book local map is loading (non-blocking; re-run after resolve)
+    try {
+      if (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.paintDom) QxOwnedFigs.paintDom(scope);
+    } catch (_) { /* */ }
+    const isBook = !!(q && (q._book || q._bookId || isMarksNativeBook(q)));
+    if (!isBook) {
+      try { if (q) rememberQuestionRaw(q); } catch (_) { /* */ }
+      return;
+    }
     try {
       if (!bookFigureMap || !bookFigureMap.size) {
         void loadBookFigureMaps().then(() => {
@@ -5102,7 +5117,6 @@ window.QxImgClean = (() => {
         });
       }
     } catch (_) { /* */ }
-    // Digital books: keep previous native finalize (no canvas strip storms)
     if (isMarksNativeBook(q)) {
       try {
         finalizeMarksNative(root, q);
@@ -5112,7 +5126,6 @@ window.QxImgClean = (() => {
       } catch (_) { /* */ }
       return;
     }
-    // PYQ practice: one light pass only (anti-hang)
     if (q) {
       try { rememberQuestionRaw(q); } catch (_) { /* */ }
     }
@@ -5121,19 +5134,6 @@ window.QxImgClean = (() => {
       scrubOptionSpillDom(scope);
       ensureStemVisible(scope, q);
       stripStemRescuedFromSolution(scope);
-      if (!inTestUi()) {
-        scope.querySelectorAll(
-          "#qxDiagramSlot img, .qx-diagram-slot img, .qx-opt-diagram-slot img, img.qx-pool-fig, .mtk-opt-text img, .qx-prac-opt-text img, .qx-prac-q img, .mtk-q-text img"
-        ).forEach(img => {
-          if (img.dataset.qxFigFrozen === "1" && img.naturalWidth > 0) {
-            queueFigLayout(img);
-            return;
-          }
-          processImage(img);
-          queueFigLayout(img);
-        });
-        arrangePortraitFigures(scope);
-      }
     } catch (e) {
       console.warn("finalizeAll", e);
     }
@@ -5720,25 +5720,15 @@ window.QxImgClean = (() => {
   function scan(root) {
     const scope = root || document.body;
     if (!scope) return;
-    // Lightweight Marks-native path only (no premium canvas, no multi-pass rewrite)
     try {
-      rewriteAllPoolImgs(scope);
-      scope.querySelectorAll(
-        "img[src*='cdn-question-pool'], img[src*='/pyq/'], img[src*='cdn.quizrr'], img.qx-pool-fig, #qxDiagramSlot img, .qx-diagram-slot img, .mtk-opt-text img, .qx-prac-opt-text img"
-      ).forEach(img => {
-        if (img.dataset.qxProcessedVer === String(CLEAN_VER) && img.dataset.qxFigFrozen === "1") return;
-        processImage(img);
-      });
-      // Remove overlay chrome only (cheap)
+      if (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.paintDom) QxOwnedFigs.paintDom(scope);
+      else rewriteAllPoolImgs(scope);
       scope.querySelectorAll(
         ".qx-premium-wm-sheet, .qx-quantrex-wm-overlay, .qx-brand-overlay, .qx-diag-watermark, canvas.qx-premium-wm-canvas, canvas.qx-marks-scrub-canvas"
       ).forEach(el => el.remove());
-      arrangePortraitFigures(scope);
     } catch (e) {
       console.warn("QxImgClean.scan", e);
     }
-    // Observer only for newly added images — throttled
-    startObserver();
   }
 
   return {

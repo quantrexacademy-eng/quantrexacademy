@@ -1496,6 +1496,11 @@ const QuantrexSolution = (() => {
     if (typeof Mx !== "undefined" && Mx.cleanQuestionText) {
       try { raw = Mx.cleanQuestionText(raw); } catch (_) { /* */ }
     }
+    try {
+      if (typeof QxMathSanitize !== "undefined" && QxMathSanitize.repairMarksExportTex) {
+        raw = QxMathSanitize.repairMarksExportTex(raw);
+      }
+    } catch (_) { /* */ }
     /* Do not unglue/glue prose here — it produced "Thisisageometricseries". */
     if (typeof QxProof !== "undefined" && QxProof.proofreadHtml) {
       try { raw = QxProof.proofreadHtml(raw); } catch (_) { /* */ }

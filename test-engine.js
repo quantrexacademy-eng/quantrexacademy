@@ -699,12 +699,9 @@ const QuantrexTestEngine = (() => {
 
   function finalizeDiagrams(main) {
     if (!main) return;
-    let q = null;
     try {
-      q = session && typeof getQ === "function" ? getQ(session.ids[session.idx]) : null;
-      if (q && typeof QxImgClean !== "undefined" && QxImgClean.finalizeAll) QxImgClean.finalizeAll(main, q);
+      if (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.paintDom) QxOwnedFigs.paintDom(main);
     } catch (_) { /* */ }
-    try { fixRowFigures(main, q); } catch (_) { /* */ }
   }
 
   function marksNativeHtmlFn(q) {

@@ -24,7 +24,7 @@
     return m;
   })();
   const UI_KEEP = /ic_content_exam_|cpyqb\/subjects|ncert_toolbox|app_assets\/img\/exams\//i;
-  const FIG_VER = "qxmd247";
+  const FIG_VER = "qxmd248";
   const POOL_RX = /cdn-question-pool\.getmarks|cdn\.quizrr|watermarked_images|\/pyq\/|AKCR2_|2026_modules/i;
   let LOCAL_FIG_MAP = {};
   try {
@@ -240,6 +240,11 @@
     return /firebasestorage|\/api\/proxy-image/i.test(s);
   }
 
+  function sameFig(a, b) {
+    const n = (u) => String(u || "").replace(/&amp;/gi, "&").replace(/[?&](?:v|r)=[^&]*/g, "");
+    return n(a) === n(b);
+  }
+
   function retryOnError(el) {
     if (!el) return;
     try {
@@ -259,14 +264,15 @@
     const cur = el.getAttribute("src") || "";
     if (t === 0) {
       const disp = displaySrc(orig || cur);
-      if (disp && disp !== cur) {
+      if (disp && !sameFig(disp, cur)) {
         el.src = disp;
         return;
       }
     }
     const inner = orig || unwrap(el.getAttribute("data-qx-storage-src") || cur);
     if (inner && !/\/api\/proxy-image/i.test(cur)) {
-      el.src = "/api/proxy-image?url=" + encodeURIComponent(inner) + "&clean=1&v=" + FIG_VER;
+      const proxyInner = (/firebasestorage/i.test(inner) && orig && !/firebasestorage/i.test(orig)) ? orig : inner;
+      el.src = "/api/proxy-image?url=" + encodeURIComponent(proxyInner) + "&clean=1&v=" + FIG_VER;
       return;
     }
     stopFigRetry(el);
@@ -382,7 +388,7 @@
         if (isStableFigSrc(src)) continue;
         const orig = img.getAttribute("data-qx-orig-src") || src;
         const disp = displaySrc(orig) || displaySrc(src);
-        if (!disp || disp === src) continue;
+        if (!disp || sameFig(disp, src)) continue;
         if (!img.getAttribute("data-qx-orig-src") && orig) img.setAttribute("data-qx-orig-src", orig);
         const stored = qxBookStorageSrc(orig) || ownedFigureUrl(orig) || disp;
         if (stored && !img.getAttribute("data-qx-storage-src")) img.setAttribute("data-qx-storage-src", stored);
@@ -420,6 +426,8 @@
     paintDom,
     qxBookStorageSrc,
     retryOnError,
+    isStableFigSrc,
+    sameFig,
     storageUrlForPath,
     needsWipe,
     isForeignHost,

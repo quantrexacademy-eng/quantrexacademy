@@ -1,10 +1,10 @@
 {
-  "cache": "qx-pwa-qxmd247",
+  "cache": "qx-pwa-qxmd248",
   "ts": 1790712000000,
-  "title": "qxmd247: fast figures, no hang",
+  "title": "qxmd248: smooth figures, no hang",
   "site": "https://www.quantrexacademy.com",
-  "build": "qxmd247",
-  "body": "Question and solution figures load once from Storage. Extra paint loops that froze the page are removed. Official answers are unchanged.",
+  "build": "qxmd248",
+  "body": "Figures load once and stay. Extra image rewrites that froze the site are off. Official answers are unchanged.",
   "package": "com.quantrexacademy.app",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }

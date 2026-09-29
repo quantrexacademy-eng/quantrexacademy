@@ -548,8 +548,8 @@
     // qxmd167/170: glued trig/log words — sinx / cosx / tanx (lookahead: end or non-letter)
     t = t.replace(/(^|[^\\A-Za-z])(sin|cos|tan|cot|sec|csc|log|ln)(x|y|z|t|u|v)(?![A-Za-z])/gi,
       (_, pre, fn, v) => pre + "\\" + fn.toLowerCase() + " " + v);
-    // Bare fn before digit/paren: sin 2x / cos( → \sin
-    t = t.replace(/(^|[^\\A-Za-z])(sin|cos|tan|cot|sec|csc|log|ln)\s*(?=[0-9(])/gi,
+    // Bare fn before digit/paren/\left: sin 2x / log\left( → \sin / \log\left
+    t = t.replace(/(^|[^\\A-Za-z])(sin|cos|tan|cot|sec|csc|log|ln)\s*(?=[0-9(]|\\left)/gi,
       (_, pre, fn) => pre + "\\" + fn.toLowerCase() + " ");
     // Bare log/ln before subscript: log _{1/2} → \log_{1/2}
     t = t.replace(/(^|[^\\A-Za-z])(log|ln)\s+(_\{)/gi,

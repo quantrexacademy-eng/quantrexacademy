@@ -496,6 +496,11 @@
     const cdn = unwrap(m[1]);
     if (!cdn || (!POOL_RX.test(cdn) && !/2026_modules|modules\/ms|AKCR2_/i.test(cdn))) return;
     const img = stem.querySelector("img");
+    if (img) {
+      const s = img.getAttribute("src") || "";
+      if (!img.complete) return;
+      if (/firebasestorage|\/api\/proxy-image/i.test(s) && !/getmarks\.app|quizrr\.in/i.test(s)) return;
+    }
     const txt = String(stem.textContent || "").replace(/\s+/g, " ").trim();
     const tiny = !!(img && img.complete && img.naturalWidth > 0 && (img.naturalWidth < 140 || img.naturalHeight < 48));
     const broken = !img || (img.complete && img.naturalWidth < 8)

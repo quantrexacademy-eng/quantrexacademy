@@ -1231,7 +1231,8 @@ async function qxHydrateQuestion(q, toast) {
 
 
 function qxPrepareFiguresFast(q) {
-  if (!q || typeof QxImgClean === "undefined" || !QxImgClean.prepareQuestionFigures) return Promise.resolve();
+  if (!q || !(q._book || q._bookId)) return Promise.resolve();
+  if (typeof QxImgClean === "undefined" || !QxImgClean.prepareQuestionFigures) return Promise.resolve();
   return qxRace(QxImgClean.prepareQuestionFigures(q), 600);
 }
 
@@ -1338,12 +1339,7 @@ function qxRenderPracticeQuestion(id) {
         } : null);
       }
     } catch (_) { /* */ }
-    // Light figure pin only (NO multi-pass thrash — was hanging browser)
-    try {
-      window._qxSoftWmQid = id;
-      if (window.QxSoftWm && typeof QxSoftWm.scan === "function") QxSoftWm.scan(main);
-      if (typeof QxNoWmGuard !== "undefined" && QxNoWmGuard.schedulePass) QxNoWmGuard.schedulePass(main);
-    } catch (_) { /* */ }
+    try { window._qxSoftWmQid = id; } catch (_) { /* */ }
     if (typeof syncQuestionFontScale === "function") syncQuestionFontScale(main);
     else if (typeof applyTestFontScaleToDom === "function") applyTestFontScaleToDom(typeof getTestFontScale === "function" ? getTestFontScale() : "medium");
     // One math pass after paint — extra typeset froze low-end phones
@@ -1477,7 +1473,7 @@ async function qxRetryPracticeLoad() {
     q = await qxHydrateQuestion(q, false);
   }
   q._marksFillTried = true;
-  if (q && typeof QxImgClean !== "undefined" && QxImgClean.prepareQuestionFigures) {
+  if (q && (q._book || q._bookId) && typeof QxImgClean !== "undefined" && QxImgClean.prepareQuestionFigures) {
     try {
       await Promise.race([
         QxImgClean.prepareQuestionFigures(q),
