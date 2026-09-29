@@ -1087,9 +1087,10 @@ window.Mx = (() => {
         /\$([^$\n]{0,240}?)\$\s*(\\mathrm\s*\{[^}]*\})/g,
         (_, a, m) => {
           const inner = String(a);
-          // "$A$ and $\mathrm{B}=…$" — do not treat English between islands as math
+          // Gap is English (any length): keep the two $\mathrm$ islands apart.
+          // A 28-char cap used to swallow "be the number of elements in".
           if (/^\s*(?:and|or|then|of|to|is|as|if|with|,|\.)\s*$/i.test(inner)
-            || (/^[A-Za-z.\s,]+$/.test(inner) && /[A-Za-z]{2,}/.test(inner) && inner.length < 28)) {
+            || (/[A-Za-z]{2,}/.test(inner) && !/\\[a-zA-Z]/.test(inner) && !/[=^_{}]/.test(inner))) {
             return "$" + inner + "$" + m;
           }
           return "$" + inner.replace(/\s+$/, "") + " " + m + "$";
@@ -1600,8 +1601,13 @@ window.Mx = (() => {
       return "\\mathrm{" + name + "}" + (sub || "");
     });
 
-    // Bare {Cl}_{2} / {H}_{2} chem (capital start, short)
-    out = out.replace(/(^|[^\\$A-Za-z])\{([A-Z][A-Za-z0-9]{0,8})\}(_\{[0-9]+\}|_[0-9])/g, "$1\\mathrm{$2}$3");
+    // Bare {Cl}_{2} / {H}_{2} chem. Never {R}_{1} / {A}_{1} / {A}_{i} relation names.
+    out = out.replace(/(^|[^\\$A-Za-z])\{([A-Z][A-Za-z0-9]{0,8})\}(_\{[0-9]+\}|_[0-9])/g, (m, pre, name, sub) => {
+      const n = String(sub).replace(/\D/g, "");
+      if (name.length === 1 && (n === "1" || n === "0")) return m;
+      if (name.length === 1 && !/^[HCONFISBK]$/.test(name)) return m;
+      return pre + "\\mathrm{" + name + "}" + sub;
+    });
 
     // Normalize chem state spacing: \left( l \right) → \left(l\right)
     out = out.replace(/\\left\s*\(\s*([lgsaq]|aq|sol|liq)\s*\\right\s*\)/gi, "\\left($1\\right)");
@@ -2053,9 +2059,15 @@ window.Mx = (() => {
       c = c.replace(/(^|[^$\\])(\d+(?:\.\d+)?\s*\^\s*\{?\\circ\}?)/g, (m, pre, tex) => pre + park("$" + tex.replace(/\s+/g, "") + "$"));
       // \angle ABC
       c = c.replace(/(^|[^$\\])(\\angle\s*[A-Za-z]{0,4})/g, (m, pre, tex) => pre + park("$" + tex.trim() + "$"));
-      // Set chains BEFORE bare-symbol wrap: A \subseteq B \cup C · x \in \mathbb{N}
+      // x_1 \leq x_2  (subscripted vars) before the digit-chain wrap
       c = c.replace(
-        /(^|[^$\\])((?:[A-Za-z0-9]+|\\mathbb\{[A-Za-z0-9]+\})(?:\s*\\(?:subseteq|supseteq|subset|supset|in|notin|cup|cap|setminus|times|leq|geq|le|ge|neq|equiv)\s*(?:[A-Za-z0-9]+|\\mathbb\{[A-Za-z0-9]+\})){1,10})/g,
+        /(^|[^$\\])((?:[A-Za-z]_\{?\d\}?|[A-Za-z]\d)\s*\\(?:leq|geq|le|ge|neq|ne|leqslant|geqslant|lt|gt)\s*(?:[A-Za-z]_\{?\d\}?|[A-Za-z]\d))/g,
+        (m, pre, tex) => pre + park("$" + tex.trim() + "$")
+      );
+      // Set chains BEFORE bare-symbol wrap: A \subseteq B \cup C · x \in \mathbb{N}
+      // Never start at a subscript digit (_1 \leq x would steal the 1).
+      c = c.replace(
+        /(^|[^$\\_^])((?:[A-Za-z][A-Za-z0-9]*|\\mathbb\{[A-Za-z0-9]+\})(?:\s*\\(?:subseteq|supseteq|subset|supset|in|notin|cup|cap|setminus|times|leq|geq|le|ge|neq|equiv)\s*(?:[A-Za-z][A-Za-z0-9]*|\\mathbb\{[A-Za-z0-9]+\})){1,10})/g,
         (m, pre, tex) => {
           if (/\uE100/.test(tex) || tex.length > 140) return m;
           return pre + park("$" + tex.replace(/\s+/g, " ").trim() + "$");
@@ -2896,6 +2908,7 @@ window.Mx = (() => {
         [/∞/g, "\\infty "], [/≤/g, "\\le "], [/≥/g, "\\ge "], [/≠/g, "\\ne "], [/≈/g, "\\approx "],
         [/→/g, "\\rightarrow "], [/⇒/g, "\\Rightarrow "], [/↔/g, "\\leftrightarrow "], [/∘/g, "\\circ "],
         [/∈/g, "\\in "], [/∀/g, "\\forall "], [/∃/g, "\\exists "],
+        [/∪/g, "\\cup "], [/∩/g, "\\cap "], [/∅/g, "\\emptyset "],
         [/α/g, "\\alpha "], [/β/g, "\\beta "], [/γ/g, "\\gamma "], [/θ/g, "\\theta "],
         [/π/g, "\\pi "], [/Δ/g, "\\Delta "], [/μ/g, "\\mu "], [/λ/g, "\\lambda "],
         [/σ/g, "\\sigma "], [/φ|ϕ/g, "\\phi "], [/°/g, "^\\circ "]
@@ -2913,7 +2926,11 @@ window.Mx = (() => {
     c = c.replace(/\\left\s+/g, "\\left");
     c = c.replace(/\\right\s+/g, "\\right");
     c = c.replace(/\\(sin|cos|tan|cot|sec|csc|log|ln|exp|lim|max|min|sup|inf|det|dim|ker|deg|gcd|Hom|Pr|sgn|sign)\s*(?=[\^_{(])/g, "\\$1");
-    c = c.replace(/\\text\s*\{\s*/g, "\\text{");
+    c = c.replace(/\\text\s*\{\s+/g, (m, off, full) => {
+      const next = full.slice(off + m.length, off + m.length + 1);
+      if (/[A-Za-z]/.test(next)) return "\\text{ ";
+      return "\\text{";
+    });
     c = c.replace(/\\mathrm\s*\{\s*/g, "\\mathrm{");
     c = c.replace(/\\(begin|end)\{([^}]*)\}/g, (_, cmd, name) => "\\" + cmd + "{" + String(name).replace(/\s+/g, "") + "}");
     // Brace padding only for short math groups (not English sentences in \text)
@@ -5331,6 +5348,30 @@ window.Mx = (() => {
       try { out = peelFalseProseMathIslands(out); } catch (_) { /* */ }
       out = out.replace(/\$\}([A-Za-z])/g, "$} $1");
       out = out.replace(/([a-z]{2,})\$(\{[A-Za-z])/g, "$1 $$$2");
+      out = out.replace(/\s+or\$\$/g, " or $");
+      out = out.replace(/Let R = \\\{\s*\$(\\left)/g, "Let $R = \\{$1");
+      out = out.replace(/\\mid\$\s*(\\text)/g, "\\mid $1");
+      out = out.replace(/\$Let \$R/g, "Let $R");
+      out = out.replace(/\$Let \$/g, "Let $");
+      out = out.replace(/\\\}(\$)\$+(?=\s)/g, "\\}$1");
+      out = out.replace(/\\text\{is a multiple of/g, "\\text{ is a multiple of");
+      out = out.replace(/\$\$\\cup\$\$/g, " \\cup ");
+      out = out.replace(/\$\$\\cap\$\$/g, " \\cap ");
+      out = out.replace(/on P \\left\(S \\right\)/g, "on $P\\left(S\\right)$");
+      out = out.replace(
+        /\$([A-Z]) \\in P\$\s*\\left\s*\(\s*S\s*\\right\s*\)\$/g,
+        "$$$1 \\in P\\left(S\\right)$"
+      );
+      out = out.replace(/\\in P\$\s*\\left\s*\(\s*S\s*\\right\s*\)\$/g, "\\in P\\left(S\\right)$");
+      out = out.replace(
+        /\$([xy]_\{?\d\}?[^$\n]{0,40}?)\s+or \$([xy]_)/g,
+        "$$$1$ or $$$2"
+      );
+      try {
+        out = replaceOutsideMathFn(out, (chunk) =>
+          chunk.replace(/(^|[^$\\])(\\mathrm\s*\{[A-Za-z]\})(?!\$)/g, "$1$$$2$")
+        );
+      } catch (_) { /* */ }
       out = healBrokenEnglishWords(out);
       try { out = restoreAxisHyphenMath(out); } catch (_) { /* */ }
       // Safety: never leak private-use park tokens (tofu boxes) into student UI

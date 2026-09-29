@@ -311,8 +311,22 @@
       }
     );
 
-    // False closer in set-builder: $| P$ and Q are … origin$
-    s = s.replace(/(\\\left\s*\([\s\S]{0,80}?\\right\))\s*\|?\s*([A-Z])\s*\$(\s+and\s+[A-Z]\b)/g, "$1 \\mid $2$3");
+    // Unicode set/logic ops → TeX (safe inside and outside $…$)
+    s = s.replace(/∪/g, "\\cup ");
+    s = s.replace(/∩/g, "\\cap ");
+    s = s.replace(/∀/g, "\\forall ");
+
+    // False closer in set-builder: $| P$ and Q are … origin$} → \text{…}
+    s = s.replace(
+      /\$R\s*=\s*\{\s*(\\left\s*\([^}]*?\\right\))\s*\|\s*([A-Z])\s*\$(\s+and\s+[A-Z][^$]{8,120}?)\s*\$\s*\}/g,
+      (_, a, p, eng) => "$R = \\{" + a + " \\mid \\text{" + p + eng + "}\\}$"
+    );
+    // Extra $ after the set closer (}$$) opens a false $Let$ / $be a$ island
+    s = s.replace(/\\\}(\$)\$+(?=\s)/g, "\\}$1");
+    s = s.replace(/\$Let \$R/g, "Let $R");
+    s = s.replace(/\$Let \$/g, "Let $");
+    // Keep P$ and Q as two islands when the set-builder \text wrap did not fire
+    s = s.replace(/(\\\left\s*\([\s\S]{0,80}?\\right\))\s*\|?\s*([A-Z])\s*\$(\s+and\s+)/g, "$1 \\mid $2$$$3");
     // Marks split \left. \right. across "and"
     s = s.replace(/\\right\.\s*\$(\s+(?:and|or|,)\s+)\$\\left\./g, "\\right.$1\\left.");
     // ${R}_{1} and {R}_{2}$ → two islands
@@ -320,6 +334,87 @@
     s = s.replace(/\$\}([A-Za-z])/g, "$} $1");
     s = s.replace(/\\geq\s*slant\b/g, "\\geqslant");
     s = s.replace(/\\leq\s*slant\b/g, "\\leqslant");
+
+    // Close math before trailing English: ) if$  / ) denote$
+    s = s.replace(/(\\right\s*\)|\))(\s*)(if|denote|and|then|of|as)\s*\$/gi, "$1$$$2$3 ");
+    // ifx_1 / only ifx_1
+    s = s.replace(/\b(only if|if)([A-Za-z])_(\d)/g, "$1 $2_$3");
+    // $R =${$  / $R =$ {$  split set braces
+    s = s.replace(/\$R\s*=\{\s*\$/g, "$R = \\{");
+    s = s.replace(/\$R\s*=\$\s*\{\s*\$/g, "$R = \\{");
+    s = s.replace(/\$R\s*=\$\s*\{/g, "$R = \\{");
+    // $A to A$ → $A$ to $A$
+    s = s.replace(/\$([A-Z])\s+to\s+([A-Z])\$/g, "$$$1$ to $$$2$");
+    // A{R}_{1}B$ if — skip when already wrapped ($A{R}_{1}B$)
+    s = s.replace(/(^|[^$])([A-Z])\{R\}_\{(\d+)\}([A-Z])\s*\$/g,
+      (_, pre, a, n, b) => pre + "$" + a + "{R}_{" + n + "}" + b + "$");
+    // $A{R}_{2}B if A  →  $A{R}_{2}B$ if A
+    s = s.replace(/\$([A-Z]\{R\}_\{\d+\}[A-Z])\s+if\s+(?=[A-Z])/g, "$$$1$ if ");
+    // $two statements: (I) \mathrm{R} is … (II)$
+    s = s.replace(
+      /\$((?:two|the)\s+statements:\s*)(\(I\))\s*(\\mathrm\s*\{[^}]+\})\s*(is reflexive but not symmetric\.\s*\(II\))\s*\$/gi,
+      " $1$2 $$$3$ $4 "
+    );
+    // Wrap leftover x_1 \leq x_2 outside existing $…$ (second soup pass must not split a good island)
+    {
+      const parts = s.split(/(\$\$[\s\S]+?\$\$|\$[^$]*\$|\\\([\s\S]*?\\\)|\\\[[\s\S]*?\\\])/g);
+      for (let i = 0; i < parts.length; i++) {
+        if (i % 2 === 1) continue;
+        parts[i] = parts[i].replace(
+          /(^|[^$\\])((?:[xy])_\{?\d\}?\s*\\(?:leq|geq|le|ge|leqslant|geqslant)\s*(?:[xy])_\{?\d\}?(?:\s+or\s+(?:[xy])_\{?\d\}?\s*\\(?:leq|geq|le|ge|leqslant|geqslant)\s*(?:[xy])_\{?\d\}?)?)/g,
+          (m, pre, tex) => pre + "$" + tex.trim() + "$"
+        );
+      }
+      s = parts.join("");
+    }
+    // Prefer two islands: $x_1 \leq x_2$ or $y_1 \leq y_2$
+    s = s.replace(
+      /\$([xy]_\{?\d\}?\s*\\(?:leq|geq|le|ge)\s*[xy]_\{?\d\}?)\s+or\s+([xy]_\{?\d\}?\s*\\(?:leq|geq|le|ge)\s*[xy]_\{?\d\}?)\$/g,
+      "$$$1$ or $$$2$"
+    );
+    // ofS / ofA glued
+    s = s.replace(/\bof([A-Z])\b/g, "of $1");
+    // English "is a multiple of" inside a LONG set-builder island only.
+    // Never join well-formed $\alpha$ is a multiple of $4$.
+    s = s.replace(
+      /(\$[^$]{12,})\$(\s*is a multiple of\s*)\$(\d+)\s*\$(\s*\})?/gi,
+      (_, a, _w, n, br) => a + " \\text{ is a multiple of }" + n + (br ? "\\}" : "") + "$"
+    );
+    s = s.replace(/<gwmw\b[^>]*>[\s\S]*?<\/gwmw>/gi, "");
+    s = s.replace(
+      /\$((?:two|the)\s+statements:[^$]{0,220}?)\$/gi,
+      (_, inner) => " " + String(inner).replace(/(\\mathrm\s*\{[^}]+\})/g, "$$$1$") + " "
+    );
+    s = s.replace(/\$R\$ is transitive Then which one of the following is true\?\$/gi,
+      "$R$ is transitive. Then which one of the following is true?");
+    s = s.replace(/R\$ is transitive Then which one of the following is true\?\$/gi,
+      "$R$ is transitive. Then which one of the following is true?");
+    s = s.replace(/([^$]) if \\left/g, "$1 if $\\left");
+    s = s.replace(/\$if\s+\\left/g, "$ if $\\left");
+    s = s.replace(/\$ if \\left/g, "$ if $\\left");
+    s = s.replace(/=\s*[ϕφ]\s+and\s+\$/g, "= \\phi$ and $");
+    s = s.replace(/=\s*\\phi\s+and\s+\$/g, "= \\phi$ and $");
+    s = s.replace(/([A-Z])\$(\\left\s*\([^)]*\\right\))\$/g, "$$$1$2$");
+    s = s.replace(/\s+or\$\$/g, " or $");
+    s = s.replace(
+      /\\mid\s*([A-Z])\s*\$(\s+and\s+[A-Z][^$]{8,120}?)\s*\$(\s*\})?/g,
+      (_, p, eng, br) => "\\mid \\text{" + p + eng + "}" + (br || "")
+    );
+    // Join $\left(A \cap …\right)$ \cup $\left(B \cap …\right)$ into one island
+    s = s.replace(/(\\right\s*\))\s*\$\s*\\cup\s*\$\s*(\\left)/g, "$1 \\cup $2");
+    s = s.replace(/(\\right\s*\))\s*\$\s*\\cap\s*\$\s*(\\left)/g, "$1 \\cap $2");
+    // if A \cup {B}^{c} = B \cup {A}^{c}
+    s = s.replace(
+      /(if)\s+([A-Z])\s*\\cup\s*(\{[A-Z]\}\^\{c\})\s*=\s*([A-Z])\s*\\cup\s*(\{[A-Z]\}\^\{c\})/g,
+      "$1 $$$2 \\cup $3 = $4 \\cup $5$"
+    );
+    // \in $P\left(S\right)$  /  \in P$\left(S\right)$
+    s = s.replace(/\\in\s*\$P\\left/g, "\\in P\\left");
+    s = s.replace(/\\in\s*P\$(\\left)/g, "\\in P$1");
+    // 1 \le i \le k$}  (set-builder missing backslash on last brace)
+    s = s.replace(/(1\s*\\le\s*i(?:\s*,\s*j)?\s*\\le\s*k)\s*\$\}/g, "$1\\}$");
+    s = s.replace(/\\\}(\$)\$+(?=\s)/g, "\\}$1");
+    s = s.replace(/\\text\{\s*is a multiple of/gi, "\\text{ is a multiple of");
 
     return s;
   }
@@ -347,6 +442,21 @@
     const count = (body.match(/\$/g) || []).length;
     if (count % 2 === 0) return s;
     const mix = mixedProseLen(body);
+    // Never prepend $ before English ("$Let $R" smashed set-builders).
+    if (/^(Let|If|Then|Consider|Define|For|The|Given|Which|When)\b/.test(body)) {
+      const collapsed = body.replace(/\\\}(\$)\$+(?=\s)/g, "\\}$1").replace(/\$Let \$R/g, "Let $R");
+      if ((collapsed.match(/\$/g) || []).length % 2 === 0) return prefix + collapsed;
+      const drop = collapsed.replace(/\$(\s+(?:be a |then |is the |and |or ))/i, "$1");
+      if ((drop.match(/\$/g) || []).length % 2 === 0) return prefix + drop;
+      const idx = collapsed.lastIndexOf("$");
+      if (idx >= 0) {
+        const after = collapsed.slice(idx + 1);
+        if (/^\s*(?:be a |is the |then |and |or |of |is )/i.test(after) || !String(after).trim()) {
+          return prefix + collapsed.slice(0, idx) + collapsed.slice(idx + 1);
+        }
+      }
+      return prefix + collapsed;
+    }
     if (mix.mixed) {
       if (body.startsWith("$") && mix.plainLen > 80) {
         return prefix + body.replace(/^\$/, "");
@@ -395,6 +505,8 @@
     // Bare sin/cos after | : |sin x|
     t = t.replace(/(\|)\s*(sin|cos|tan|cot|sec|csc)\s+(?=[A-Za-z])/gi,
       (_, bar, fn) => bar + "\\" + String(fn).toLowerCase() + " ");
+    // Bare gcd( → \gcd(
+    t = t.replace(/(^|[^\\A-Za-z])gcd\s*(\(|\\left)/g, "$1\\gcd $2");
 
     // qxmd170: {lncos}^{2}x / {lnsin} → \ln\cos^{2} x / \ln\sin (before bare glue)
     t = t.replace(/\{(ln|log)(sin|cos|tan|cot|sec|csc)\}(\^\{[^}]*\}|\^\d)?([A-Za-z0-9]?)/gi,

@@ -60,7 +60,7 @@
     } else {
       try { document.head.appendChild(lock); } catch (_) {}
     }
-    const lh = "assets/qx-foot-lock.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd240");
+    const lh = "assets/qx-foot-lock.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd241");
     if (lock.getAttribute("href") !== lh) lock.href = lh;
 
     /* qxmd218: practice chrome — only Settings gear; Marks-like settings cards */
