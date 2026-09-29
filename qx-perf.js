@@ -90,6 +90,13 @@ window.QxPerf = (() => {
     const css = (window.QX_SECONDARY_CSS || []);
     const js = (window.QX_SECONDARY_JS || []);
     css.forEach(loadCss);
+    try {
+      var bust = (typeof window.QX_BUILD === "string" && window.QX_BUILD) || "qxmd239";
+      loadCss("assets/qx-foot-lock.css?v=" + encodeURIComponent(bust));
+    } catch (_) { /* */ }
+    setTimeout(function () {
+      try { window.dispatchEvent(new Event("qx:secondary-css")); } catch (_) {}
+    }, 600);
     // Stagger scripts so main thread stays free
     let i = 0;
     const next = () => {

@@ -19,7 +19,7 @@ body.marks-test-active .eg-q-card,
   flex-direction: column !important;
   height: 100dvh !important;
   max-height: 100dvh !important;
-  overflow: hidden !important;
+  overflow: visible !important;
 }
 .eg-test-root.eg-qxmd182 > .eg-top {
   position: relative !important;
@@ -61,15 +61,17 @@ body.marks-test-active .eg-q-card,
   right: 0 !important;
   bottom: 0 !important;
   flex-shrink: 0 !important;
-  z-index: 2147483000 !important;
-  display: flex !important;
-  flex-direction: column !important;
+  z-index: 2147483646 !important;
+  display: grid !important;
+  grid-template-columns: 1fr 1.2fr 1fr !important;
+  flex-direction: row !important;
   height: auto !important;
   min-height: 56px !important;
   padding: 8px 12px calc(8px + env(safe-area-inset-bottom, 0px)) !important;
-  background: transparent !important;
+  background: #ffffff !important;
+  background-color: #ffffff !important;
   border-top: 1px solid #e5e7eb !important;
-  box-shadow: none !important;
+  box-shadow: 0 -8px 24px rgba(15, 23, 42, 0.12) !important;
 }
 .eg-test-root.eg-qxmd182 .eg-foot-extra,
 .eg-test-root.eg-qxmd182 .eg-foot-left {
@@ -87,15 +89,15 @@ body.marks-test-active .eg-q-card,
   pointer-events: auto !important;
 }
 .eg-test-root.eg-qxmd182 .eg-foot #qxPrevBtn {
-  background: transparent !important;
-  color: #1565C0 !important;
-  border: 2px solid #1565C0 !important;
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border: 1.5px solid #94a3b8 !important;
 }
 .eg-test-root.eg-qxmd182 .eg-foot #qxNextBtn,
 .eg-test-root.eg-qxmd182 .eg-foot .eg-btn-next {
-  background: #1565C0 !important;
-  color: #ffffff !important;
-  border: 2px solid #1565C0 !important;
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border: 1.5px solid #94a3b8 !important;
 }
 .eg-test-root.eg-qxmd182 .eg-foot-sheet-scrim {
   display: none !important;

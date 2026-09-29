@@ -6673,3 +6673,24 @@ html body .eg-test-root.eg-qxmd167[data-eg-mode="practice"] .eg-top-tools .eg-to
   visibility: visible !important;
   opacity: 1 !important;
 }
+
+/* qxmd239: do not clip Prev/Next or wrapping toolbar */
+html body .eg-test-root,
+html body .eg-test-root.eg-qxmd182 {
+  overflow: visible !important;
+}
+html body .eg-test-root.eg-qxmd182 .eg-body,
+html body .eg-test-root.eg-qxmd182 .eg-main {
+  overflow: hidden !important;
+}
+html body .eg-test-root.eg-qxmd182 > #egFoot,
+html body .eg-test-root.eg-qxmd182 > .eg-foot {
+  display: grid !important;
+  grid-template-columns: 1fr 1.2fr 1fr !important;
+  position: fixed !important;
+  bottom: 0 !important;
+  min-height: 56px !important;
+  background: #ffffff !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}

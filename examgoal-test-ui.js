@@ -51,6 +51,17 @@
     }
     const rh = "assets/qx-practice-read.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd220");
     if (r.getAttribute("href") !== rh) r.href = rh;
+    let lock = document.getElementById("qxFootLockCss");
+    if (!lock) {
+      lock = document.createElement("link");
+      lock.id = "qxFootLockCss";
+      lock.rel = "stylesheet";
+      document.head.appendChild(lock);
+    } else {
+      try { document.head.appendChild(lock); } catch (_) {}
+    }
+    const lh = "assets/qx-foot-lock.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd239");
+    if (lock.getAttribute("href") !== lh) lock.href = lh;
 
     /* qxmd218: practice chrome — only Settings gear; Marks-like settings cards */
     if (!document.getElementById("qxmd219EgCss")) {
@@ -124,6 +135,36 @@
       ].join("");
       document.head.appendChild(s238);
     }
+    if (!document.getElementById("qxmd239EgCss")) {
+      var s239 = document.createElement("style");
+      s239.id = "qxmd239EgCss";
+      s239.textContent = [
+        'html body .eg-test-root,html body .eg-test-root.eg-qxmd182,html body .eg-test-root.eg-qxtool8{overflow:visible!important}',
+        'html body .eg-test-root.eg-qxmd182 .eg-body,html body .eg-test-root.eg-qxmd182 .eg-main{overflow:hidden!important;min-height:0!important}',
+        'html body .eg-test-root.eg-qxmd182 .eg-q-card{overflow-x:hidden!important;overflow-y:auto!important}',
+        'html body .eg-test-root.eg-qxmd182 > #egFoot,html body .eg-test-root.eg-qxmd182 > .eg-foot,html body .eg-test-root > #egFoot,html body .eg-test-root #egFoot,html body .eg-test-root .eg-foot,html body #egFoot{display:grid!important;grid-template-columns:1fr 1.2fr 1fr!important;flex-direction:row!important;position:fixed!important;left:0!important;right:0!important;bottom:0!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important;min-height:56px!important;max-height:none!important;height:auto!important;z-index:2147483646!important;background:#ffffff!important;background-color:#ffffff!important;border-top:1px solid #e5e7eb!important;overflow:visible!important}',
+        'html body .eg-test-root[data-test-theme="dark"].eg-qxmd182 > .eg-foot,html body .eg-test-root[data-test-theme="dark"] #egFoot,html body .eg-test-root[data-test-theme="dark"] .eg-foot{background:#0f172a!important;background-color:#0f172a!important;border-top:1px solid #334155!important}',
+        'html body .eg-test-root.eg-qxmd182 .eg-foot #qxPrevBtn,html body .eg-test-root.eg-qxmd182 .eg-foot #qxNextBtn,html body .eg-test-root.eg-qxmd182 .eg-foot #egCheckBtn,html body .eg-test-root.qx-sol-showing .eg-foot #qxPrevBtn,html body .eg-test-root.qx-sol-showing .eg-foot #qxNextBtn,html body .eg-test-root #egFoot #qxPrevBtn,html body .eg-test-root #egFoot #qxNextBtn,html body .eg-test-root #egFoot #egCheckBtn{display:inline-flex!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important;min-height:48px!important;height:48px!important}',
+        'html body .eg-test-root.eg-qxmd182 > .eg-top,html body .eg-test-root .eg-top{max-height:none!important;overflow:visible!important;flex-wrap:wrap!important}',
+        'html body .eg-test-root .eg-top-tools .eg-tool-btn,html body .eg-test-root[data-eg-mode="practice"] .eg-top-tools .eg-tool-btn,html body .eg-test-root.eg-qxmd167[data-eg-mode="practice"] .eg-top-tools .eg-tool-sec{display:inline-flex!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important}'
+      ].join("");
+      document.head.appendChild(s239);
+    } else {
+      try { document.head.appendChild(document.getElementById("qxmd239EgCss")); } catch (_) {}
+    }
+    try {
+      if (!global._qxmd239SecCssBound) {
+        global._qxmd239SecCssBound = true;
+        window.addEventListener("qx:secondary-css", function () {
+          try {
+            var lockEl = document.getElementById("qxFootLockCss");
+            if (lockEl) document.head.appendChild(lockEl);
+            var st = document.getElementById("qxmd239EgCss");
+            if (st) document.head.appendChild(st);
+          } catch (_) {}
+        });
+      }
+    } catch (_) {}
   }
 
   function isExamgoalUi(session) {
@@ -811,7 +852,7 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
     return '<div class="eg-test-root mtk-test-root' +
       (sideOpen ? " eg-side-open" : " eg-side-collapsed") +
       (stripOpen ? " eg-strip-open" : " eg-strip-collapsed") +
-      " eg-tools-open eg-compact eg-qxmd167 eg-qxmd170 eg-qxmd171 eg-qxmd173 eg-qxmd180 eg-qxmd182 eg-qxmd220 eg-qxmd237 eg-qxmd238 eg-qxtool8 eg-qxeg1 eg-qxeg2 eg-qxeg3 eg-qxeg4 eg-qxeg5 eg-qxeg6 eg-qxeg7" +
+      " eg-tools-open eg-compact eg-qxmd167 eg-qxmd170 eg-qxmd171 eg-qxmd173 eg-qxmd180 eg-qxmd182 eg-qxmd220 eg-qxmd237 eg-qxmd238 eg-qxmd239 eg-qxtool8 eg-qxeg1 eg-qxeg2 eg-qxeg3 eg-qxeg4 eg-qxeg5 eg-qxeg6 eg-qxeg7" +
       (previewOpen ? " eg-preview-open" : " eg-preview-collapsed") +
       (desktopMode ? " eg-desktop-mode" : " eg-mobile") +
       (!desktopMode && isMobileEg ? " eg-mobile-vp" : "") +
@@ -1740,6 +1781,9 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
         });
         try { if (typeof syncEgFootPad === "function") syncEgFootPad(root); } catch (_) {}
         try { if (typeof root._egBindNavBtns === "function") root._egBindNavBtns(); } catch (_) {}
+        try {
+          root.style.setProperty("overflow", "visible", "important");
+        } catch (_) {}
         _egFootPainted = true;
         _egFootLast = Date.now();
       } catch (_) { /* */ }
@@ -1769,6 +1813,12 @@ function forceFootVisible(force) {
         }
         window.addEventListener("resize", _onPad, { passive: true });
         window.addEventListener("orientationchange", _onPad, { passive: true });
+        window.addEventListener("qx:secondary-css", function () {
+          try { forceFootVisibleNow(true); } catch (_) {}
+        });
+        window.addEventListener("pageshow", function () {
+          try { forceFootVisibleNow(true); } catch (_) {}
+        });
         try { syncEgFootPad(root); } catch (_) {}
       }
     } catch (_) { /* qxmd210-foot-pad-resize */ }
@@ -1792,7 +1842,7 @@ function forceFootVisible(force) {
         root.classList.toggle("eg-preview-open", previewOpen);
         root.classList.toggle("eg-preview-collapsed", !previewOpen);
         root.classList.remove("eg-tools-closed", "eg-tools-open", "eg-sol-showing", "eg-qxmd175", "eg-qxmd176", "eg-qxmd177", "eg-qxmd179");
-        root.classList.add("eg-tools-open", "eg-qxmd220", "eg-qxmd237", "eg-qxmd238", "eg-qxmd167", "eg-qxmd170", "eg-qxmd171", "eg-qxmd173", "eg-qxmd180", "eg-qxmd182", "eg-qxtool8", "eg-qxeg1", "eg-qxeg2", "eg-qxeg3", "eg-qxeg4", "eg-qxeg5", "eg-qxeg6", "eg-qxeg7", "eg-foot-ready");
+        root.classList.add("eg-tools-open", "eg-qxmd220", "eg-qxmd237", "eg-qxmd238", "eg-qxmd239", "eg-qxmd167", "eg-qxmd170", "eg-qxmd171", "eg-qxmd173", "eg-qxmd180", "eg-qxmd182", "eg-qxtool8", "eg-qxeg1", "eg-qxeg2", "eg-qxeg3", "eg-qxeg4", "eg-qxeg5", "eg-qxeg6", "eg-qxeg7", "eg-foot-ready");
         try { root.classList.remove("eg-qxmd217", "eg-qxmd218", "eg-qxmd219"); } catch (_) {}
         root.classList.remove("eg-qxmd218", "eg-qxmd219");
         root.setAttribute("data-eg-cycle", bothOpen ? "1" : "0");

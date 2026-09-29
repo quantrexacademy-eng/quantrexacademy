@@ -1075,6 +1075,26 @@ window.Mx = (() => {
   function restoreAxisHyphenMath(s) {
     return String(s || "").replace(/\uE410((?:\\mathrm\s*\{[A-Za-z]\}|[A-Za-z]))\uE411/g, "$$$1$-");
   }
+  /** Join split unit islands: $\mathrm{M} \times$\mathrm{u}$ → $\mathrm{M} \times \mathrm{u}$ */
+  function stitchSplitMathrm(s) {
+    let out = String(s || "");
+    out = out.replace(
+      /(\\mathrm\s*\{[^}]{0,24}\})\s*\$(\s*(?:\\times|\\cdot|\\div|\\pm)\s*)\$\s*(\\mathrm\s*\{[^}]{0,24}\})/g,
+      "$$$1 $2 $3$"
+    );
+    for (let n = 0; n < 8; n++) {
+      const next = out.replace(
+        /\$([^$\n]{0,240}?)\$\s*(\\mathrm\s*\{[^}]*\})/g,
+        (_, a, m) => "$" + String(a).replace(/\s+$/, "") + " " + m + "$"
+      );
+      if (next === out) break;
+      out = next;
+    }
+    out = out.replace(/\$([^$\n]{1,240})\$\$=(?=\s|$|[.,;])/g, "$$$1$ =");
+    out = out.replace(/(\\mathrm\s*\{[^}]{0,24}\})\s*\$\$+\^/g, "$$$1^");
+    out = out.replace(/\$\$+\^/g, "$^");
+    return out;
+  }
   function spaceGluedDollars(s) {
     let out = parkAxisHyphenMath(s);
     let acc = "";
@@ -1097,6 +1117,7 @@ window.Mx = (() => {
     out = out.replace(/([A-Za-z])\\\[/g, "$1 \\[");
     // Official Marks export: $(3î+2ĵ-k)$$\mathrm{m}$  and  $E=$$\mathrm{m}_{e}c^{2}$
     out = out.replace(/\$([^$\n]{0,160})\$\$(\\mathrm\{)/g, "$$$1 $2");
+    try { out = stitchSplitMathrm(out); } catch (_) { /* */ }
     return restoreAxisHyphenMath(out);
   }
   /** Drop `$   $` empty islands. Keep `$a$ $b$` (adjacent) and `$$display$$`. */
@@ -1958,6 +1979,11 @@ window.Mx = (() => {
         }
       );
 
+      // Units / products stay one island: \mathrm{M} \times \mathrm{u}
+      c = c.replace(
+        /(^|[^$\\])((?:[A-Za-z0-9]\s*=\s*)?\\mathrm\s*\{[^}]{0,24}\}(?:\s*(?:\\times|\\cdot|\\div|\\pm)\s*\\mathrm\s*\{[^}]{0,24}\})+)/g,
+        (m, pre, tex) => pre + park("$" + tex.trim() + "$")
+      );
       // Bare TeX symbols WITHOUT braces — KaTeX only sees $…$ delimiters.
       // Fixes options like "P \rightarrow 2" and stems with \alpha, \leq, \infty, etc.
       const BARE_SYM =
@@ -2019,6 +2045,7 @@ window.Mx = (() => {
         if (!/\\|[α-ωΑ-Ω0-9=+\-*/^_{}()]/.test(a + b)) return full;
         return "$" + a.trim() + " " + b.trim() + "$";
       });
+      try { c = stitchSplitMathrm(c); } catch (_) { /* */ }
       return c;
     }
     let out = replaceOutsideMathFn(s, wrapChunk);
@@ -2044,6 +2071,7 @@ window.Mx = (() => {
     out = acc;
     // Operators between adjacent math islands: $a$+$b$ → $a$ + $b$
     out = out.replace(/\$\s*([+\-–=×÷·])\s*\$/g, "$ $1 $");
+    try { out = stitchSplitMathrm(out); } catch (_) { /* */ }
     return out;
   }
 

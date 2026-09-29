@@ -1064,13 +1064,15 @@ html[data-theme="dark"] .qx-sol-ans-lab {
   -webkit-text-fill-color: #e2e8f0 !important;
 }
 
-/* Keep: transparent footer (no slab) */
+/* qxmd239: solid footer (do not leave a transparent landmine) */
 #egFoot, .eg-foot, .eg-foot-practice, .eg-foot-marks, .mtk-controls, footer.eg-foot {
-  background: transparent !important;
-  background-color: transparent !important;
+  background: #ffffff !important;
+  background-color: #ffffff !important;
   background-image: none !important;
-  box-shadow: none !important;
+  box-shadow: 0 -8px 24px rgba(15, 23, 42, 0.12) !important;
   border: none !important;
+  border-top: 1px solid #e5e7eb !important;
+  min-height: 56px !important;
 }
 
 /* ========== qxmd214b: no bottom slab + toolbar/options never hide (light+dark) ========== */
@@ -1086,17 +1088,19 @@ html[data-theme="dark"] .qx-sol-ans-lab {
 .eg-test-root.eg-mobile .eg-foot, .eg-test-root.eg-desktop-mode .eg-foot,
 html[data-theme="light"] .eg-foot, html[data-theme="dark"] .eg-foot,
 html[data-theme="light"] #egFoot, html[data-theme="dark"] #egFoot {
-  background: transparent !important;
-  background-color: transparent !important;
+  background: #ffffff !important;
+  background-color: #ffffff !important;
   background-image: none !important;
-  box-shadow: none !important;
+  box-shadow: 0 -8px 24px rgba(15, 23, 42, 0.12) !important;
   border: none !important;
-  border-top: none !important;
+  border-top: 1px solid #e5e7eb !important;
   border-bottom: none !important;
   outline: none !important;
-  min-height: 0 !important;
+  min-height: 56px !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
+  pointer-events: auto !important;
+  visibility: visible !important;
 }
 #egFoot::before, #egFoot::after, .eg-foot::before, .eg-foot::after,
 .eg-foot-marks::before, .eg-foot-marks::after, .eg-foot-practice::before,

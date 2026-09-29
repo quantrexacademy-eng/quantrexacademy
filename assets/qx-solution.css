@@ -1495,11 +1495,13 @@ html[data-theme="dark"] .qx-sol-ans-lab {
   -webkit-text-fill-color: #e2e8f0 !important;
 }
 
-/* Keep: transparent footer (no slab) */
+/* qxmd239: solid footer (Prev|Check|Next stay tappable) */
 #egFoot, .eg-foot, .eg-foot-practice, .eg-foot-marks, .mtk-controls, footer.eg-foot {
-  background: transparent !important;
-  background-color: transparent !important;
+  background: #ffffff !important;
+  background-color: #ffffff !important;
   background-image: none !important;
-  box-shadow: none !important;
+  box-shadow: 0 -8px 24px rgba(15, 23, 42, 0.12) !important;
   border: none !important;
+  border-top: 1px solid #e5e7eb !important;
+  min-height: 56px !important;
 }
