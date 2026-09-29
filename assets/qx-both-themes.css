@@ -260,8 +260,8 @@
 }
 .eg-test-root[data-test-theme="dark"] .eg-foot,
 .eg-test-root[data-test-theme="dark"] #egFoot {
-  background: transparent !important;
-  background-color: transparent !important;
+  background: #0f172a !important;
+  background-color: #0f172a !important;
 }
 /* no left line on solution */
 #egSol, .eg-sol, .qx-sol-card, .eg-sol .qx-sol-card {
@@ -627,18 +627,20 @@ html[data-theme="dark"] .qx-sol-ans-lab {
   -webkit-text-fill-color: #e2e8f0 !important;
 }
 
-/* Keep: transparent footer (no slab) */
+/* qxmd238: solid footer (Prev|Check|Next always tappable) */
 #egFoot, .eg-foot, .eg-foot-practice, .eg-foot-marks, .mtk-controls, footer.eg-foot {
-  background: transparent !important;
-  background-color: transparent !important;
+  background: #ffffff !important;
+  background-color: #ffffff !important;
   background-image: none !important;
-  box-shadow: none !important;
+  box-shadow: 0 -8px 24px rgba(15,23,42,.12) !important;
   border: none !important;
+  border-top: 1px solid #e5e7eb !important;
+  min-height: 56px !important;
 }
 
 /* ========== qxmd214b: no bottom slab + toolbar/options never hide (light+dark) ========== */
 
-/* 1) Kill remaining bottom white/grey strip — transparent foot; pills only */
+/* 1) Solid Prev|Check|Next bar — never transparent, never min-height 0 */
 #egFoot, .eg-foot, .eg-foot-practice, .eg-foot-marks, .mtk-controls, footer.eg-foot,
 .eg-test-root #egFoot, .eg-test-root .eg-foot, .eg-test-root .eg-foot-practice, .eg-test-root .eg-foot-marks,
 .mtk-test-root #egFoot, .mtk-test-root .eg-foot, .allen-practice #egFoot, .allen-practice .eg-foot,
@@ -649,17 +651,29 @@ html[data-theme="dark"] .qx-sol-ans-lab {
 .eg-test-root.eg-mobile .eg-foot, .eg-test-root.eg-desktop-mode .eg-foot,
 html[data-theme="light"] .eg-foot, html[data-theme="dark"] .eg-foot,
 html[data-theme="light"] #egFoot, html[data-theme="dark"] #egFoot {
-  background: transparent !important;
-  background-color: transparent !important;
+  background: #ffffff !important;
+  background-color: #ffffff !important;
   background-image: none !important;
-  box-shadow: none !important;
+  box-shadow: 0 -8px 24px rgba(15,23,42,.12) !important;
   border: none !important;
-  border-top: none !important;
+  border-top: 1px solid #e5e7eb !important;
   border-bottom: none !important;
   outline: none !important;
-  min-height: 0 !important;
+  min-height: 56px !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
+  pointer-events: auto !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+.eg-test-root[data-test-theme="dark"] #egFoot,
+.eg-test-root[data-test-theme="dark"] .eg-foot,
+.eg-test-root.eg-qxtool8[data-test-theme="dark"] .eg-foot,
+html[data-theme="dark"] #egFoot,
+html[data-theme="dark"] .eg-foot {
+  background: #0f172a !important;
+  background-color: #0f172a !important;
+  border-top: 1px solid #334155 !important;
 }
 #egFoot::before, #egFoot::after, .eg-foot::before, .eg-foot::after,
 .eg-foot-marks::before, .eg-foot-marks::after, .eg-foot-practice::before,
@@ -864,19 +878,22 @@ html[data-theme="light"] .eg-foot, html[data-theme="dark"] .eg-foot {
   top: auto !important;
   inset: auto 0 0 0 !important;
   transform: none !important;
-  background: transparent !important;
-  background-color: transparent !important;
+  background: #ffffff !important;
+  background-color: #ffffff !important;
   background-image: none !important;
-  box-shadow: none !important;
+  box-shadow: 0 -8px 24px rgba(15,23,42,.12) !important;
   border: none !important;
-  border-top: none !important;
+  border-top: 1px solid #e5e7eb !important;
   border-bottom: none !important;
   outline: none !important;
-  min-height: 0 !important;
+  min-height: 56px !important;
   max-height: none !important;
   height: auto !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
+  pointer-events: auto !important;
+  visibility: visible !important;
+  opacity: 1 !important;
   z-index: 2147483646 !important;
   display: grid !important;
   grid-template-columns: 1fr 1.2fr 1fr !important;
@@ -964,11 +981,13 @@ html[data-theme="light"] .eg-foot, html[data-theme="dark"] .eg-foot {
   padding-bottom: calc(var(--eg-foot-h) + 12px + env(safe-area-inset-bottom, 0px)) !important;
   scroll-padding-bottom: calc(var(--eg-foot-h) + 12px + env(safe-area-inset-bottom, 0px)) !important;
 }
-/* compact top chrome — maximize question area */
+/* compact top chrome — wrap tools, never clip Prev/Next or toolbar */
 .eg-test-root .eg-top, .mtk-test-root .eg-top, .allen-practice .eg-top,
 .eg-test-root.eg-qxmd182 > .eg-top, .eg-test-root.eg-qxtool8 .eg-top {
   min-height: 40px !important;
-  max-height: 48px !important;
+  max-height: none !important;
+  overflow: visible !important;
+  flex-wrap: wrap !important;
   padding: 2px 6px !important;
   flex: 0 0 auto !important;
 }
@@ -990,4 +1009,48 @@ html[data-theme="light"] .eg-foot, html[data-theme="dark"] .eg-foot {
   /* if somehow nested, still fixed to viewport */
   position: fixed !important;
   margin: 0 !important;
+}
+
+/* qxmd238: solid Prev|Check|Next + unclipped toolbar */
+html body .eg-test-root #egFoot,
+html body .eg-test-root .eg-foot,
+html body .eg-test-root.eg-qxtool8[data-test-theme="dark"] .eg-foot,
+html body .eg-test-root.eg-qxtool8[data-test-theme="dark"] #egFoot.eg-foot.eg-foot-marks,
+html body #egFoot.eg-foot.eg-foot-marks {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  min-height: 56px !important;
+  pointer-events: auto !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  display: grid !important;
+  grid-template-columns: 1fr 1.2fr 1fr !important;
+  position: fixed !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 2147483646 !important;
+  border-top: 1px solid #e5e7eb !important;
+}
+html body .eg-test-root[data-test-theme="dark"] #egFoot,
+html body .eg-test-root[data-test-theme="dark"] .eg-foot,
+html body .eg-test-root.eg-qxtool8[data-test-theme="dark"] #egFoot,
+html body .eg-test-root.eg-qxtool8[data-test-theme="dark"] .eg-foot {
+  background: #0f172a !important;
+  background-color: #0f172a !important;
+  border-top: 1px solid #334155 !important;
+}
+html body .eg-test-root .eg-top,
+html body .eg-test-root.eg-qxtool8 .eg-top {
+  max-height: none !important;
+  overflow: visible !important;
+  flex-wrap: wrap !important;
+}
+html body .eg-test-root #egFoot #qxPrevBtn,
+html body .eg-test-root #egFoot #qxNextBtn,
+html body .eg-test-root #egFoot #egCheckBtn {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
 }

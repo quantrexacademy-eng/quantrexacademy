@@ -727,13 +727,13 @@ const AllenTestUI = (() => {
           </div>
           <div class="mtk-prac-progress">Q${pos} / ${total}</div>
           ${timerHtml}
-          <div class="mtk-header-tools qx-prac-tools eg-tools-settings-only">
+          <div class="mtk-header-tools qx-prac-tools">
             ${hintBtn}
-            <button type="button" class="qx-bm-btn eg-tool-btn eg-tool-hid ${bmOn ? "on" : ""}" id="pracBmBtn" onclick="typeof toggleBm==='function'&&toggleBm(${qidAttr})" data-tip="Bookmark" title="Bookmark" aria-label="Bookmark" tabindex="-1" aria-hidden="true">${BM_SVG}</button>
-            <button type="button" class="eg-tool-btn eg-tool-hid" id="pracGroupBtn" onclick="typeof toggleBmWithGroup==='function'&&toggleBmWithGroup(${qidAttr})" data-tip="Create group" title="Create group" aria-label="Create group" tabindex="-1" aria-hidden="true">+</button>
-            <button type="button" class="qx-report-fab eg-tool-btn eg-tool-hid" id="pracReportBtn" onclick="typeof openQuestionReport==='function'&&openQuestionReport(${qidAttr})" data-tip="Report" title="Report" aria-label="Report" tabindex="-1" aria-hidden="true">!</button>
-            <button type="button" class="mtk-font-btn qx-prac-theme-btn eg-tool-btn eg-tool-hid" id="pracThemeToggle" data-tip="Theme" title="Theme" tabindex="-1" aria-hidden="true">${themeLbl}</button>
-            <button type="button" class="eg-tool-btn eg-tool-hid" id="pracFullBtn" data-tip="Fullscreen" title="Fullscreen" aria-label="Fullscreen" tabindex="-1" aria-hidden="true">Full</button>
+            <button type="button" class="qx-bm-btn eg-tool-btn ${bmOn ? "on" : ""}" id="pracBmBtn" onclick="typeof toggleBm==='function'&&toggleBm(${qidAttr})" data-tip="Bookmark" title="Bookmark" aria-label="Bookmark">${BM_SVG}</button>
+            <button type="button" class="eg-tool-btn" id="pracGroupBtn" onclick="typeof toggleBmWithGroup==='function'&&toggleBmWithGroup(${qidAttr})" data-tip="Create group" title="Create group" aria-label="Create group">+</button>
+            <button type="button" class="qx-report-fab eg-tool-btn" id="pracReportBtn" onclick="typeof openQuestionReport==='function'&&openQuestionReport(${qidAttr})" data-tip="Report" title="Report" aria-label="Report">!</button>
+            <button type="button" class="mtk-font-btn qx-prac-theme-btn eg-tool-btn" id="pracThemeToggle" data-tip="Theme" title="Theme">${themeLbl}</button>
+            <button type="button" class="eg-tool-btn" id="pracFullBtn" data-tip="Fullscreen" title="Fullscreen" aria-label="Fullscreen">Full</button>
             <button type="button" class="qx-prac-view-btn eg-tool-btn eg-settings-gear" id="pracViewMenuBtn" data-tip="Settings" title="Question View Settings" aria-expanded="false" aria-controls="pracViewPanel" aria-label="Question View Settings">⚙<span class="eg-tip">Settings</span></button>
           </div>
         </header>
@@ -1116,11 +1116,17 @@ window.showAllenInstructions = showAllenInstructions;
           mainA.style.setProperty("overflow", "visible", "important");
           mainA.style.setProperty("max-height", "none", "important");
         }
-        var footEl = document.querySelector("#egFoot, .eg-foot-marks");
+        var footEl = document.querySelector(".allen-practice #egFoot, .allen-practice .eg-foot-marks");
         if (footEl) {
-          footEl.style.setProperty("background", "transparent", "important");
-          footEl.style.setProperty("border-top", "none", "important");
-          footEl.style.setProperty("box-shadow", "none", "important");
+          var rootPad = document.querySelector(".allen-practice, .eg-test-root, .mtk-test-root");
+          var darkPad = !!(rootPad && (rootPad.getAttribute("data-test-theme") === "dark" ||
+            (document.documentElement.getAttribute("data-theme") === "dark" && rootPad.getAttribute("data-test-theme") !== "light")));
+          footEl.style.setProperty("background", darkPad ? "#0f172a" : "#ffffff", "important");
+          footEl.style.setProperty("background-color", darkPad ? "#0f172a" : "#ffffff", "important");
+          footEl.style.setProperty("border-top", darkPad ? "1px solid #334155" : "1px solid #e5e7eb", "important");
+          footEl.style.setProperty("pointer-events", "auto", "important");
+          footEl.style.setProperty("visibility", "visible", "important");
+          footEl.style.setProperty("opacity", "1", "important");
         }
       } catch (_f) {}
       var foot = document.querySelector(".allen-practice #egFoot, .allen-practice .eg-foot-marks, #egFoot");
@@ -1158,7 +1164,7 @@ window.showAllenInstructions = showAllenInstructions;
   if (document.getElementById("qxmd219AllenCss")) return;
   var s = document.createElement("style");
   s.id = "qxmd219AllenCss";
-  s.textContent = '.allen-practice.qxmd220-allen qxmd219-allen qxmd218-allen .mtk-header-tools .eg-tool-btn:not(#pracViewMenuBtn):not(.qx-prac-view-btn):not(.eg-settings-gear),.allen-practice.qxmd220-allen qxmd219-allen qxmd218-allen .qx-prac-tools .eg-tool-hid,.allen-practice.qxmd220-allen qxmd219-allen qxmd218-allen .qx-prac-tools .qx-bm-btn,.allen-practice.qxmd220-allen qxmd219-allen qxmd218-allen .qx-prac-tools .qx-prac-theme-btn,.allen-practice.qxmd220-allen qxmd219-allen qxmd218-allen .eg-action-row.eg-action-note-only{display:none!important}.allen-practice.qxmd220-allen qxmd219-allen qxmd218-allen .mtk-header-tools{display:flex!important;margin-left:auto!important}.allen-practice.qxmd220-allen qxmd219-allen qxmd218-allen .eg-settings-gear{display:inline-flex!important;visibility:visible!important;opacity:1!important}.allen-practice .qx-prac-view-panel.eg-vs-marks{max-width:min(420px,94vw);max-height:min(78vh,640px);overflow:auto;padding:12px 14px 16px;border-radius:16px;z-index:2147483000;position:fixed;right:10px;top:56px;background:#fff;color:#0f172a;border:1px solid #e2e8f0;box-shadow:0 18px 48px rgba(15,23,42,.28)}html[data-theme=dark] .allen-practice .qx-prac-view-panel.eg-vs-marks{background:#111827;color:#f1f5f9;border-color:#334155}.allen-practice .eg-vs-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 0 8px}.allen-practice .eg-vs-h{margin:0 0 8px;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#64748b}.allen-practice .eg-vs-sec{margin:10px 0 6px;padding:10px;border-radius:12px;background:#f8fafc;border:1px solid #e2e8f0}html[data-theme=dark] .allen-practice .eg-vs-sec{background:#0b1220;border-color:#1e293b}.allen-practice .eg-vs-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 2px;min-height:44px}.allen-practice .eg-vs-lab{display:flex;flex-direction:column;gap:2px;min-width:0}.allen-practice .eg-vs-lab-t{font-size:14px;font-weight:650}.allen-practice .eg-vs-hint{font-size:11px;color:#64748b}.allen-practice .eg-vs-tog{appearance:none;border:0;width:46px;height:28px;border-radius:999px;background:#cbd5e1;position:relative;cursor:pointer}.allen-practice .eg-vs-tog.on{background:#2563eb}.allen-practice .eg-vs-knob{position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:999px;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:left .15s}.allen-practice .eg-vs-tog.on .eg-vs-knob{left:21px}.allen-practice .eg-vs-tools{display:flex;flex-wrap:wrap;gap:8px}.allen-practice .eg-vs-tools button{appearance:none;border:1px solid #cbd5e1;background:#fff;border-radius:10px;padding:8px 12px;font-size:13px;font-weight:650;cursor:pointer}html[data-theme=dark] .allen-practice .eg-vs-tools button{background:#1e293b;color:#f1f5f9;border-color:#475569}.allen-practice .eg-vs-close{appearance:none;border:0;background:#e2e8f0;width:32px;height:32px;border-radius:999px;font-size:18px;cursor:pointer}';
+  s.textContent = '.allen-practice .mtk-header-tools,.allen-practice .qx-prac-tools{display:flex!important;flex-wrap:wrap!important;align-items:center!important;gap:4px!important;margin-left:auto!important;overflow:visible!important}.allen-practice .mtk-header-tools .eg-tool-btn,.allen-practice .qx-prac-tools .eg-tool-btn{display:inline-flex!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important;width:36px!important;height:36px!important}.allen-practice .eg-action-row.eg-action-note-only{display:none!important}.allen-practice .qx-prac-view-panel.eg-vs-marks{max-width:min(420px,94vw);max-height:min(78vh,640px);overflow:auto;padding:12px 14px 16px;border-radius:16px;z-index:2147483000;position:fixed;right:10px;top:56px;background:#fff;color:#0f172a;border:1px solid #e2e8f0;box-shadow:0 18px 48px rgba(15,23,42,.28)}html[data-theme=dark] .allen-practice .qx-prac-view-panel.eg-vs-marks{background:#111827;color:#f1f5f9;border-color:#334155}.allen-practice .eg-vs-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 0 8px}.allen-practice .eg-vs-h{margin:0 0 8px;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#64748b}.allen-practice .eg-vs-sec{margin:10px 0 6px;padding:10px;border-radius:12px;background:#f8fafc;border:1px solid #e2e8f0}html[data-theme=dark] .allen-practice .eg-vs-sec{background:#0b1220;border-color:#1e293b}.allen-practice .eg-vs-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 2px;min-height:44px}.allen-practice .eg-vs-lab{display:flex;flex-direction:column;gap:2px;min-width:0}.allen-practice .eg-vs-lab-t{font-size:14px;font-weight:650}.allen-practice .eg-vs-hint{font-size:11px;color:#64748b}.allen-practice .eg-vs-tog{appearance:none;border:0;width:46px;height:28px;border-radius:999px;background:#cbd5e1;position:relative;cursor:pointer}.allen-practice .eg-vs-tog.on{background:#2563eb}.allen-practice .eg-vs-knob{position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:999px;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:left .15s}.allen-practice .eg-vs-tog.on .eg-vs-knob{left:21px}.allen-practice .eg-vs-tools{display:flex;flex-wrap:wrap;gap:8px}.allen-practice .eg-vs-tools button{appearance:none;border:1px solid #cbd5e1;background:#fff;border-radius:10px;padding:8px 12px;font-size:13px;font-weight:650;cursor:pointer}html[data-theme=dark] .allen-practice .eg-vs-tools button{background:#1e293b;color:#f1f5f9;border-color:#475569}.allen-practice .eg-vs-close{appearance:none;border:0;background:#e2e8f0;width:32px;height:32px;border-radius:999px;font-size:18px;cursor:pointer}';
   document.head.appendChild(s);
 })();
 
@@ -1177,13 +1183,15 @@ window.showAllenInstructions = showAllenInstructions;
       foot.style.setProperty("right", "0", "important");
       foot.style.setProperty("bottom", "0", "important");
       foot.style.setProperty("top", "auto", "important");
-      foot.style.setProperty("background", "transparent", "important");
-      foot.style.setProperty("background-color", "transparent", "important");
+      var rootEl = document.querySelector(".eg-test-root, .mtk-test-root, .allen-practice");
+      var darkFoot = !!(rootEl && (rootEl.getAttribute("data-test-theme") === "dark" || (document.documentElement.getAttribute("data-theme") === "dark" && rootEl.getAttribute("data-test-theme") !== "light")));
+      foot.style.setProperty("background", darkFoot ? "#0f172a" : "#ffffff", "important");
+      foot.style.setProperty("background-color", darkFoot ? "#0f172a" : "#ffffff", "important");
       foot.style.setProperty("background-image", "none", "important");
-      foot.style.setProperty("box-shadow", "none", "important");
+      foot.style.setProperty("box-shadow", "0 -8px 24px rgba(15,23,42,.12)", "important");
       foot.style.setProperty("border", "none", "important");
-      foot.style.setProperty("border-top", "none", "important");
-      foot.style.setProperty("min-height", "0", "important");
+      foot.style.setProperty("border-top", darkFoot ? "1px solid #334155" : "1px solid #e5e7eb", "important");
+      foot.style.setProperty("min-height", "56px", "important");
       foot.style.setProperty("height", "auto", "important");
       foot.style.setProperty("margin", "0", "important");
       foot.style.setProperty("max-width", "none", "important");
@@ -1191,8 +1199,10 @@ window.showAllenInstructions = showAllenInstructions;
       foot.style.setProperty("z-index", "2147483646", "important");
       foot.style.setProperty("display", "grid", "important");
       foot.style.setProperty("grid-template-columns", "1fr 1.2fr 1fr", "important");
-      foot.style.setProperty("pointer-events", "none", "important");
-      foot.style.setProperty("padding", "6px 10px calc(6px + env(safe-area-inset-bottom, 0px))", "important");
+      foot.style.setProperty("pointer-events", "auto", "important");
+      foot.style.setProperty("visibility", "visible", "important");
+      foot.style.setProperty("opacity", "1", "important");
+      foot.style.setProperty("padding", "8px 10px calc(12px + env(safe-area-inset-bottom, 0px))", "important");
       foot.classList.remove("qxmd215-inflow");
       foot.classList.add("qxmd216-fixed");
       ["qxPrevBtn","egCheckBtn","qxNextBtn","qxPracPrev","qxPracSubmit","qxPracNext"].forEach(function(id){

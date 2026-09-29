@@ -2254,16 +2254,14 @@ html[data-theme="light"] .qx-prac-foot.eg-foot {
 .eg-test-root.eg-qxtool8 .eg-top-tools {
   display: flex !important;
   flex: 1 1 auto !important;
-  flex-wrap: nowrap !important;
+  flex-wrap: wrap !important;
   align-items: center !important;
   justify-content: flex-end !important;
   gap: 2px !important;
   max-width: none !important;
-  overflow-x: auto !important;
-  overflow-y: visible !important;
+  overflow: visible !important;
   pointer-events: auto !important;
   z-index: 13010 !important;
-  -webkit-overflow-scrolling: touch;
 }
 /* Labeled tool buttons — name text always visible under icon */
 .eg-test-root.eg-qxtool8 .eg-top-tools .eg-tool-btn,
@@ -2448,7 +2446,7 @@ html[data-theme="light"] .qx-prac-foot.eg-foot {
   text-transform: none !important;
 }
 .eg-test-root.eg-qxtool8[data-test-theme="dark"] .eg-foot {
-  background: transparent !important; /* qxmd214b */
+  background: #0f172a !important; /* qxmd238 solid foot */
   border-top-color: #1e293b !important;
 }
 .eg-test-root.eg-qxtool8[data-test-theme="dark"] .eg-foot #qxPrevBtn,
@@ -2825,7 +2823,7 @@ html[data-theme="light"] .qx-prac-foot.eg-foot {
   border-color: #1d4ed8 !important;
 }
 .eg-test-root.eg-qxtool8[data-test-theme="dark"] .eg-foot {
-  background: transparent !important; /* qxmd214b */
+  background: #0f172a !important; /* qxmd238 solid foot */
   border-top-color: #334155 !important;
 }
 .eg-test-root.eg-qxtool8[data-test-theme="dark"] .eg-foot #qxPrevBtn,
@@ -2947,7 +2945,7 @@ html[data-theme="dark"] .eg-test-root.eg-qxtool8[data-test-theme="light"] .eg-fo
 }
 .eg-test-root.eg-qxtool8[data-test-theme="dark"] .eg-foot,
 html[data-theme="dark"] .eg-test-root.eg-qxtool8[data-test-theme="dark"] .eg-foot {
-  background: transparent !important; /* qxmd214b */
+  background: #0f172a !important; /* qxmd238 solid foot */
   border-top-color: #334155 !important;
 }
 .eg-test-root.eg-qxtool8 .eg-foot-right {
@@ -5058,9 +5056,11 @@ html .eg-test-root[data-test-theme="light"] .eg-sol .katex {
   .eg-test-root.eg-qxmd167.eg-qxtool8 .eg-top-tools .eg-tip {
     font-size: 8px !important;
   }
-  /* Practice: tuck Bookmark/Full into Aa More; Report+Group stay (qxmd170 reach) */
+  /* Practice: keep Bookmark/Full/Report/Group on the blue bar */
   .eg-test-root.eg-qxmd167[data-eg-mode="practice"] .eg-top-tools .eg-tool-sec:not(.eg-tool-reach) {
-    display: none !important;
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
   .eg-test-root.eg-qxmd167[data-eg-mode="practice"] .eg-top-tools .eg-tool-reach,
   .eg-test-root.eg-qxmd170[data-eg-mode="practice"] .eg-top-tools #egPlusBtn,
@@ -6514,23 +6514,43 @@ html body.allen-practice-active .mtk-test-root.allen-practice .mtk-main {
   height: auto !important;
   max-height: none !important;
 }
-/* Minimal transparent foot (no white slab) on all practice paths */
+/* qxmd238: solid tappable Prev|Check|Next bar on all practice paths */
 .eg-foot.eg-foot-marks,
 .eg-foot.eg-foot-practice,
 .qx-prac-foot.eg-foot-marks,
 .allen-practice .eg-foot.eg-foot-marks {
-  background: transparent !important;
-  border-top: none !important;
-  box-shadow: none !important;
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  border-top: 1px solid #e5e7eb !important;
+  box-shadow: 0 -8px 24px rgba(15,23,42,.12) !important;
+}
+.eg-test-root[data-test-theme="dark"] .eg-foot.eg-foot-marks,
+.eg-test-root[data-test-theme="dark"] .eg-foot.eg-foot-practice,
+.allen-practice[data-test-theme="dark"] .eg-foot.eg-foot-marks {
+  background: #0f172a !important;
+  background-color: #0f172a !important;
+  border-top: 1px solid #334155 !important;
 }
 
 
 /* qxmd213: examgoal foot + dark chips */
 .eg-foot, .qx-prac-foot.eg-foot, .allen-practice .eg-foot, .allen-practice .mtk-controls {
-  background: transparent !important;
-  background-color: transparent !important;
-  box-shadow: none !important;
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  box-shadow: 0 -8px 24px rgba(15,23,42,.12) !important;
   border: none !important;
+  border-top: 1px solid #e5e7eb !important;
+  pointer-events: auto !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+.eg-test-root[data-test-theme="dark"] .eg-foot,
+.eg-test-root[data-test-theme="dark"] .qx-prac-foot.eg-foot,
+.allen-practice[data-test-theme="dark"] .eg-foot,
+.allen-practice[data-test-theme="dark"] .mtk-controls {
+  background: #0f172a !important;
+  background-color: #0f172a !important;
+  border-top: 1px solid #334155 !important;
 }
 .eg-foot #qxPrevBtn, .eg-foot #egCheckBtn, .eg-foot #qxNextBtn,
 .eg-foot #qxPracPrev, .eg-foot #qxPracSubmit, .eg-foot #qxPracNext {
@@ -6602,4 +6622,54 @@ html .eg-test-root .mtk-opt-text,
 html .eg-test-root .eg-opts {
   font-size: var(--nta-q, 16px) !important;
   line-height: var(--nta-lh, 1.55) !important;
+}
+
+/* qxmd238: solid Prev|Check|Next + unclipped toolbar */
+html body .eg-test-root #egFoot,
+html body .eg-test-root .eg-foot,
+html body .eg-test-root.eg-qxtool8[data-test-theme="dark"] .eg-foot,
+html body .eg-test-root.eg-qxtool8[data-test-theme="dark"] #egFoot.eg-foot.eg-foot-marks {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  min-height: 56px !important;
+  pointer-events: auto !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  display: grid !important;
+  grid-template-columns: 1fr 1.2fr 1fr !important;
+  position: fixed !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 2147483646 !important;
+  border-top: 1px solid #e5e7eb !important;
+}
+html body .eg-test-root[data-test-theme="dark"] #egFoot,
+html body .eg-test-root[data-test-theme="dark"] .eg-foot,
+html body .eg-test-root.eg-qxtool8[data-test-theme="dark"] #egFoot,
+html body .eg-test-root.eg-qxtool8[data-test-theme="dark"] .eg-foot {
+  background: #0f172a !important;
+  background-color: #0f172a !important;
+  border-top: 1px solid #334155 !important;
+}
+html body .eg-test-root #egFoot #qxPrevBtn,
+html body .eg-test-root #egFoot #qxNextBtn,
+html body .eg-test-root #egFoot #egCheckBtn {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  min-height: 48px !important;
+}
+html body .eg-test-root .eg-top,
+html body .eg-test-root.eg-qxtool8 .eg-top {
+  max-height: none !important;
+  overflow: visible !important;
+  flex-wrap: wrap !important;
+}
+html body .eg-test-root[data-eg-mode="practice"] .eg-top-tools .eg-tool-btn,
+html body .eg-test-root.eg-qxmd167[data-eg-mode="practice"] .eg-top-tools .eg-tool-sec:not(.eg-tool-reach) {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
 }

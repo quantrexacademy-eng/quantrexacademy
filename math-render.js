@@ -596,19 +596,57 @@ window.Mx = (() => {
   /** Multi-line cases/matrix inside $…$ → $$…$$ for KaTeX display */
   function promoteCasesToDisplay(s) {
     let c = String(s || "");
-    // Promote the WHOLE island (sgn(t)=cases) — do not wrap cases inside an existing $
-    c = c.replace(
-      /\$([^$]*\\begin\{(?:cases|matrix|pmatrix|bmatrix|vmatrix|Vmatrix|aligned|array|smallmatrix)\}[\s\S]*?\\end\{(?:cases|matrix|pmatrix|bmatrix|vmatrix|Vmatrix|aligned|array|smallmatrix)\}[^$]*)\$/g,
-      (_, body) => "$$" + body.trim() + "$$"
-    );
-    // Bare cases not already in math
+    /* Pair $…$ left-to-right, then wrap an island that already holds
+       array/cases/aligned as \[…\]. Never $$…$$ (pairwise $ treats that
+       as empty islands and later wraps \Rightarrow again). Never start
+       at a previous closer — `[^$]*\\begin` used to swallow " True ". */
+    const envRe = /\\begin\{(cases|matrix|pmatrix|bmatrix|vmatrix|Vmatrix|aligned|array|smallmatrix)\}[\s\S]*?\\end\{\1\}/;
+    let out = "";
+    let i = 0;
+    const n = c.length;
+    while (i < n) {
+      if (c[i] === "$" && (i === 0 || c[i - 1] !== "\\")) {
+        const display = c[i + 1] === "$";
+        const dlen = display ? 2 : 1;
+        let j = i + dlen;
+        let found = -1;
+        while (j < n) {
+          if (c[j] === "$" && (j === 0 || c[j - 1] !== "\\")) {
+            if (display) {
+              if (c[j + 1] === "$") { found = j; break; }
+            } else if (c[j + 1] !== "$") {
+              found = j;
+              break;
+            }
+          }
+          j++;
+        }
+        if (found < 0) { out += c.slice(i); break; }
+        const body = c.slice(i + dlen, found);
+        if (!display && envRe.test(body)) out += "\\[" + body.trim() + "\\]";
+        else out += c.slice(i, found + dlen);
+        i = found + dlen;
+        continue;
+      }
+      out += c[i];
+      i++;
+    }
+    c = out;
     c = replaceOutsideMathFn(c, (chunk) => chunk.replace(
-      /(^|[^$\\])(\\begin\{(?:cases|matrix|pmatrix|bmatrix)\}[\s\S]*?\\end\{(?:cases|matrix|pmatrix|bmatrix)\})/g,
+      /(^|[^$\\])(\\begin\{(?:cases|matrix|pmatrix|bmatrix|vmatrix|Vmatrix|aligned|array|smallmatrix)\}[\s\S]*?\\end\{(?:cases|matrix|pmatrix|bmatrix|vmatrix|Vmatrix|aligned|array|smallmatrix)\})/g,
       (m, pre, tex) => {
-        if (/\$\$/.test(m)) return m;
-        return pre + "$$" + tex + "$$";
+        if (/\\\[|\$\$/.test(m)) return m;
+        return pre + "\\[" + tex + "\\]";
       }
     ));
+    return flattenDisplayMath(c);
+  }
+  function flattenDisplayMath(s) {
+    let c = String(s || "");
+    c = c.replace(/\\\[\s*\$+/g, "\\[");
+    c = c.replace(/\$+\s*\\\]/g, "\\]");
+    c = c.replace(/\\\]([A-Za-z])/g, "\\] $1");
+    c = c.replace(/([A-Za-z])\\\[/g, "$1 \\[");
     return c;
   }
 
@@ -1039,11 +1077,36 @@ window.Mx = (() => {
   }
   function spaceGluedDollars(s) {
     let out = parkAxisHyphenMath(s);
-    out = out.replace(/([A-Za-z]{2,})\$(?=[(\\[A-Za-z])/g, "$1 $");
-    out = out.replace(/\$([^$]+)\$([A-Za-z])/g, "$$$1$ $2");
+    let acc = "";
+    let parity = 0;
+    for (let i = 0; i < out.length; i++) {
+      const ch = out[i];
+      if (ch === "$" && (i === 0 || out[i - 1] !== "\\")) {
+        if (parity === 0 && i >= 2 && /[A-Za-z]{2}$/.test(out.slice(Math.max(0, i - 8), i)) && /[(\\[A-Za-z=+\-]/.test(out[i + 1] || "")) {
+          acc += " ";
+        }
+        acc += ch;
+        parity ^= 1;
+        if (parity === 0 && i + 1 < out.length && /[A-Za-z]/.test(out[i + 1])) acc += " ";
+        continue;
+      }
+      acc += ch;
+    }
+    out = acc;
+    out = out.replace(/\\\]([A-Za-z])/g, "\\] $1");
+    out = out.replace(/([A-Za-z])\\\[/g, "$1 \\[");
     // Official Marks export: $(3î+2ĵ-k)$$\mathrm{m}$  and  $E=$$\mathrm{m}_{e}c^{2}$
     out = out.replace(/\$([^$\n]{0,160})\$\$(\\mathrm\{)/g, "$$$1 $2");
     return restoreAxisHyphenMath(out);
+  }
+  /** Drop `$   $` empty islands. Keep `$a$ $b$` (adjacent) and `$$display$$`. */
+  function dropEmptyDollarIslands(s) {
+    return String(s || "").replace(/\$(\s*)\$/g, (full, inner, idx, src) => {
+      const around = src.slice(Math.max(0, idx - 1), idx + full.length + 1);
+      if (/\$\$/.test(around)) return full;
+      if ((src.slice(0, idx).match(/\$/g) || []).length % 2 === 1) return full;
+      return inner || " ";
+    });
   }
   function stripLatexPtJunk(s) {
     return String(s || "")
@@ -1301,15 +1364,13 @@ window.Mx = (() => {
     out = out.replace(/\\operatorname(?:\s*\{\s*)+(?:\\operatorname\s*\{\s*)*sgn\s*\}+/g, "\\operatorname{sgn}");
     out = out.replace(/\$(\\operatorname\{sgn\})\$\s*\(\s*\$(\\mathrm\{[A-Za-z]\})\$\s*\)/g, "$$$1($2)$");
     out = out.replace(
-      /\$(\\operatorname\{sgn\}\([^)]+\))\$\s*=\s*\$(\\begin\{cases\}[\s\S]*?\\end\{cases\})\$/g,
-      "$$$$$1=$2$$$$"
+      /\$(\\operatorname\{sgn\}\([^)]+\))\$\s*=\s*\$(\\begin\{cases\}[^$]*\\end\{cases\})\$/g,
+      "\\[$1=$2\\]"
     );
-    // Keep piecewise as display math (textbook cases)
     out = out.replace(
-      /(?!\$)\$([^$\n]*\\begin\{cases\}[\s\S]*?\\end\{cases\}[^$\n]*)\$(?!\$)/g,
-      "$$$$$1$$$$"
+      /(?!\$)\$([^$\n]*\\begin\{cases\}[^$]*\\end\{cases\}[^$\n]*)\$(?!\$)/g,
+      "\\[$1\\]"
     );
-    out = out.replace(/\$\$\$+/g, "$$");
     return out;
   }
 
@@ -1338,7 +1399,11 @@ window.Mx = (() => {
       }
     );
 
-    out = out.replace(/\$\$+(?=\\(?:left|begin)\b)/g, "$");
+    out = out.replace(/\$\$+(?=\\(?:left|begin)\b)/g, (full, idx, src) => {
+      const n = (src.slice(0, idx).match(/\$/g) || []).length;
+      if (n % 2 === 0 && full === "$$") return full;
+      return "$";
+    });
 
     // Chem label: $A = $ CH_3… → $A =$ CH_3…
     out = out.replace(/\$([A-Z])\s*=\s*\$\s*(?=[A-Z])/g, "$$$1 =$ ");
@@ -1830,6 +1895,8 @@ window.Mx = (() => {
         return "\uE100" + (slots.length - 1) + "\uE101";
       };
       const protect = (str) => str
+        .replace(/\\\[[\s\S]+?\\\]/g, park)
+        .replace(/\\\([\s\S]+?\\\)/g, park)
         .replace(/\$\$[\s\S]+?\$\$/g, park)
         .replace(/\$[^$]+\$/g, park);
       const restore = (str) => str.replace(/\uE100(\d+)\uE101/g, (_, i) => slots[+i] || "");
@@ -1863,7 +1930,10 @@ window.Mx = (() => {
       // \textbf / \mathrm / \text{...} — AFTER outer accents so nested stay intact
       c = c.replace(
         /(^|[^\\])(\\(?:mathrm|textbf|text|mathbf|mathsf|textrm|textit|boldsymbol|operatorname|ce)\s*\{[^}]*\}(?:\s*[\^_]\s*\{?[^}\s\\]+\}?)?(?:\s*\/\s*[A-Za-zµμ°]+(?:\s*[\^_]\s*\{?[^}\s\\]+\}?)?)*)/g,
-        (m, pre, tex) => pre + park("$" + tex.trim() + "$")
+        (m, pre, tex) => {
+          if (/^\\mathrm\s*\{[^}]{1,6}\}$/.test(String(tex).trim())) return m;
+          return pre + park("$" + tex.trim() + "$");
+        }
       );
       // other \cmd{...}
       c = c.replace(
@@ -1891,8 +1961,9 @@ window.Mx = (() => {
       // Bare TeX symbols WITHOUT braces — KaTeX only sees $…$ delimiters.
       // Fixes options like "P \rightarrow 2" and stems with \alpha, \leq, \infty, etc.
       const BARE_SYM =
-        "rightarrow|leftarrow|leftrightarrow|Leftrightarrow|Rightarrow|Leftarrow|" +
-        "longrightarrow|longleftarrow|longleftrightarrow|Longleftrightarrow|" +
+        "Leftrightarrow|Rightarrow|Leftarrow|Longleftrightarrow|" +
+        "longleftrightarrow|longrightarrow|longleftarrow|" +
+        "leftrightarrow|rightarrow|leftarrow|" +
         "overrightarrow|overleftarrow|overleftrightarrow|" +
         "to|gets|mapsto|uparrow|downarrow|updownarrow|Uparrow|Downarrow|" +
         "infty|pm|mp|times|div|cdot|cdots|ldots|vdots|ddots|" +
@@ -1941,28 +2012,28 @@ window.Mx = (() => {
         if (flat === c) break;
         c = flat;
       }
-      // Collapse only empty $$ crumbs — never $$cases$$ / $$matrix$$
+      // Empty crumbs only. Never join $\rightarrow$ onto a previous island.
       c = c.replace(/\$\$+(?=\$)/g, "$");
-      c = c.replace(/\$\s*\$/g, " ");
-      // Collapse adjacent short math islands "$a$ $b$" → "$a b$"
       c = c.replace(/\$([^$]{1,40})\$\s*\$([^$]{1,40})\$/g, (full, a, b) => {
-        if (/\\begin|\\end/.test(a + b)) return full;
+        if (/\\begin|\\end|\\(?:Rightarrow|Leftarrow|rightarrow|leftarrow|to)\b/.test(a + b)) return full;
         if (!/\\|[α-ωΑ-Ω0-9=+\-*/^_{}()]/.test(a + b)) return full;
         return "$" + a.trim() + " " + b.trim() + "$";
       });
       return c;
     }
     let out = replaceOutsideMathFn(s, wrapChunk);
-    // Space around $math$ glued to English/digits (FULL string — not outside-math chunks):
-    // Let$\vec{a}$be → Let $\vec{a}$ be · 3$\times$4 → 3 $\times$ 4
-    out = out.replace(/([A-Za-z0-9,.;:=)])\$(?=\\|[A-Za-z0-9])/g, "$1 $");
+    // Space around $math$ glued to English/digits, only at island
+    // boundaries. A global `letter$` replace used to fire inside `$…$`.
     let acc = "";
     let dollarParity = 0;
     for (let i = 0; i < out.length; i++) {
       const ch = out[i];
-      if (ch === "$") {
-        dollarParity ^= 1;
+      if (ch === "$" && (i === 0 || out[i - 1] !== "\\")) {
+        if (dollarParity === 0 && i > 0 && /[A-Za-z0-9,.;:=)]/.test(out[i - 1]) && /[\\A-Za-z0-9]/.test(out[i + 1] || "")) {
+          acc += " ";
+        }
         acc += ch;
+        dollarParity ^= 1;
         if (dollarParity === 0 && i + 1 < out.length && /[A-Za-z0-9]/.test(out[i + 1])) {
           acc += " ";
         }
@@ -2345,7 +2416,8 @@ window.Mx = (() => {
     // Longest first — never split \left → \le + ft (screenshot 864)
     const cmds = [
       "varepsilon", "vartheta", "varrho", "varsigma", "varphi", "varpi",
-      "leftrightarrow", "rightarrow", "leftarrow", "subseteq", "notin",
+      "leftrightarrow", "longrightarrow", "longleftarrow", "Rightarrow", "Leftarrow",
+      "rightarrow", "leftarrow", "subseteq", "notin",
       "infty", "forall", "exists", "partial", "alpha", "beta", "gamma",
       "delta", "epsilon", "theta", "lambda", "omega", "sigma", "Gamma",
       "Delta", "Theta", "Lambda", "Omega", "times", "cdot", "leq", "geq",
@@ -2405,14 +2477,18 @@ window.Mx = (() => {
       return restoreAngleQuoteTags(s);
     }
     return String(s || "").replace(/\$([^$]*)\$/g, (full, inner) => {
-      let t = inner
-        .replace(/&lt;/gi, " \\lt ")
-        .replace(/&gt;/gi, " \\gt ")
-        .replace(/‹/g, " \\lt ")
-        .replace(/›/g, " \\gt ")
-        // bare < > that are comparisons (not HTML tags)
-        .replace(/(^|[^<\\\/])<(?![a-zA-Z\/!])/g, "$1 \\lt ")
-        .replace(/(^|[^>])>(?![=])/g, "$1 \\gt ");
+      let t = inner;
+      if (/<\/?[a-zA-Z]/.test(inner)) {
+        t = t.replace(/(\s)<(\s)/g, "$1 \\lt $2").replace(/(\s)>(\s)/g, "$1 \\gt $2");
+      } else {
+        t = t
+          .replace(/&lt;/gi, " \\lt ")
+          .replace(/&gt;/gi, " \\gt ")
+          .replace(/‹/g, " \\lt ")
+          .replace(/›/g, " \\gt ")
+          .replace(/(^|[^<\\\/])<(?![a-zA-Z\/!])/g, "$1 \\lt ")
+          .replace(/(^|[^>])>(?![=])/g, "$1 \\gt ");
+      }
       t = t.replace(/\s{2,}/g, " ").trim();
       return `$${t}$`;
     });
@@ -2647,15 +2723,14 @@ window.Mx = (() => {
     c = replaceOutsideMath(c, /÷/g, " $\\div$ ");
     c = replaceOutsideMath(c, /√/g, " $\\sqrt{}$ ");
 
-    c = c.replace(/\$\s*\$/g, " ");
-    // Merge adjacent math: $a$$b$ → $a b$ (never collapse $$cases$$)
-    for (let k = 0; k < 4; k++) {
-      c = c.replace(/\$([^$]+)\$\s*\$([^$]+)\$/g, (full, a, b) => {
-        if (/\\begin\{(?:cases|matrix|pmatrix|bmatrix)/.test(a + b)) return full;
-        return "$" + a + " " + b + "$";
-      });
-    }
-    c = c.replace(/\s{2,}/g, " ").trim();
+    c = dropEmptyDollarIslands(c);
+    c = c.replace(/\$([^$]+)\$\$([^$]+)\$/g, (full, a, b) => {
+      if (/\\begin\{(?:cases|matrix|pmatrix|bmatrix|aligned|array)/.test(a + b)) return full;
+      if (/\\(?:Rightarrow|Leftarrow|rightarrow|leftarrow|to)\b/.test(a + b)) return full;
+      if (/^\\[A-Za-z]+$/.test(String(b).trim()) || /^\\[A-Za-z]+$/.test(String(a).trim())) return full;
+      return "$" + a + " " + b + "$";
+    });
+    c = c.replace(/\s{2,}/g, " ");
     return c;
   }
 
@@ -2851,7 +2926,12 @@ window.Mx = (() => {
           const inner = c.slice(start, found);
           const p = peelInner(inner);
           if (p != null) rebuilt += p;
-          else rebuilt += c.slice(i, found + delimLen);
+          else {
+            const trail = String(inner).match(/^(.*(?:\\right\s*(?:\\[)\]}|.]|[)\]}|.])|\}|\)))((?:\s+[A-Za-z]{3,}){1,8})\s*$/);
+            if (trail && isRealMath(trail[1]) && !/\\[a-zA-Z]/.test(trail[2])) {
+              rebuilt += c.slice(i, start) + trail[1].trim() + c.slice(found, found + delimLen) + trail[2];
+            } else rebuilt += c.slice(i, found + delimLen);
+          }
           i = found + delimLen;
           continue;
         }
@@ -2859,11 +2939,36 @@ window.Mx = (() => {
         i++;
       }
       c = rebuilt;
-      // \( ... \)
-      c = c.replace(/\\\(([\s\S]{6,400}?)\\\)/g, function (_m, inner) {
-        const p = peelInner(inner);
-        return p != null ? p : _m;
-      });
+      /* \( ... \) and \[ ... \] — same left-to-right pairing. A length-skip
+         regex skipped short \(l\) and glued English to the next closer. */
+      const pairParen = (open, close) => {
+        let out = "";
+        let k = 0;
+        const n2 = c.length;
+        const oLen = open.length;
+        const cLen = close.length;
+        while (k < n2) {
+          if (c.startsWith(open, k) && (k === 0 || c[k - 1] !== "\\")) {
+            const start = k + oLen;
+            const found = c.indexOf(close, start);
+            if (found < 0) {
+              out += c.slice(k);
+              break;
+            }
+            const inner = c.slice(start, found);
+            const p = peelInner(inner);
+            if (p != null) out += p;
+            else out += c.slice(k, found + cLen);
+            k = found + cLen;
+            continue;
+          }
+          out += c[k];
+          k++;
+        }
+        c = out;
+      };
+      pairParen("\\(", "\\)");
+      pairParen("\\[", "\\]");
     } catch (_) { /* */ }
     return c;
   }
@@ -3463,6 +3568,7 @@ window.Mx = (() => {
       return rest;
     });
     out = protectMathComparisons(out);
+    try { out = flattenDisplayMath(out); } catch (_) { /* */ }
     return out;
   }
 
@@ -4320,10 +4426,12 @@ window.Mx = (() => {
     try { s = stripLatexPtJunk(s); } catch (_) { /* */ }
     try { s = professionalizeSgnPiecewise(s); } catch (_) { /* */ }
     try { s = healShatteredTex(s); } catch (_) { /* */ }
+    try { s = flattenDisplayMath(s); } catch (_) { /* */ }
     // HTML content: still protect math comparisons; math already upgraded in normalizeLatex
     if (isHtml(s) || /<table\b/i.test(s) || /<\/t(?:able|d|h|r)\b/i.test(s)) {
       s = protectMathComparisons(s);
       try { s = healShatteredTex(s); } catch (_) { /* */ }
+      try { s = flattenDisplayMath(s); } catch (_) { /* */ }
       try { s = professionalizeSgnPiecewise(s); } catch (_) { /* */ }
       try { s = katexRenderIslands(s); } catch (_) { /* */ }
       try { s = repairSpacedKatexTags(s); } catch (_) { /* */ }
@@ -4359,6 +4467,7 @@ window.Mx = (() => {
     out = out.replace(/√/g, "√");
     out = out.replace(/\n/g, "<br>");
     try { out = healShatteredTex(out); } catch (_) { /* */ }
+    try { out = flattenDisplayMath(out); } catch (_) { /* */ }
     try { out = katexRenderIslands(out); } catch (_) { /* */ }
     try { out = repairSpacedKatexTags(out); } catch (_) { /* */ }
     try { out = recoverLetterSpacedKatexHtml(out); } catch (_) { /* */ }
@@ -5042,6 +5151,9 @@ window.Mx = (() => {
           out = QxMathSanitize.repairMarksDollarSoup(out);
         }
       } catch (_) { /* */ }
+      /* Turn < > inside $…$ into \lt/\gt BEFORE any HTML pass. Otherwise
+         `$4x^2 + y^2 < 52$` is split at `<` and smashed into `$4$ x^{2}$+$ y^{2}$`. */
+      try { out = protectMathComparisons(out); } catch (_) { /* */ }
       try { out = convertAllMathML(out); } catch (_) { /* */ }
       out = proofreadExamText(out);
       out = healBrokenEnglishWords(out);

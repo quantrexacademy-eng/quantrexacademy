@@ -108,6 +108,22 @@
       ].join("");
       document.head.appendChild(s237);
     }
+    if (!document.getElementById("qxmd238EgCss")) {
+      var s238 = document.createElement("style");
+      s238.id = "qxmd238EgCss";
+      s238.textContent = [
+        'html body .eg-test-root > .eg-top,html body .eg-test-root.eg-compact .eg-top,html body .eg-test-root.eg-qxmd182 .eg-top,html body .eg-test-root.eg-qxtool8 .eg-top{overflow:visible!important;flex-wrap:wrap!important;max-height:none!important;min-height:40px!important}',
+        'html body .eg-test-root .eg-top-title{flex:0 1 auto!important;max-width:min(42vw,260px)!important}',
+        'html body .eg-test-root .eg-top-tools,html body .eg-test-root[data-eg-mode="practice"] .eg-top-tools,html body .eg-test-root.eg-qxmd167 .eg-top-tools,html body .eg-test-root.eg-qxtool8 .eg-top-tools{display:flex!important;flex-wrap:wrap!important;overflow:visible!important;max-width:none!important;flex-shrink:0!important}',
+        'html body .eg-test-root .eg-top-tools .eg-tool-btn,html body .eg-test-root .eg-top-tools .eg-ico{display:inline-flex!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important;flex:0 0 auto!important}',
+        'html body .eg-test-root #egFoot,html body .eg-test-root .eg-foot,html body .eg-test-root .eg-foot.eg-foot-marks,html body .eg-test-root.eg-qxtool8 #egFoot,html body .eg-test-root.eg-qxtool8 .eg-foot,html body .eg-test-root.eg-qxtool8[data-test-theme="dark"] .eg-foot,html body .eg-test-root.eg-qxtool8[data-test-theme="dark"] #egFoot.eg-foot.eg-foot-marks,html body #egFoot,html body .eg-foot{display:grid!important;grid-template-columns:1fr 1.2fr 1fr!important;position:fixed!important;left:0!important;right:0!important;bottom:0!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important;min-height:56px!important;max-height:none!important;height:auto!important;z-index:2147483646!important}',
+        'html body .eg-test-root[data-test-theme="dark"] #egFoot,html body .eg-test-root[data-test-theme="dark"] .eg-foot,html body .eg-test-root.eg-qxtool8[data-test-theme="dark"] #egFoot,html body .eg-test-root.eg-qxtool8[data-test-theme="dark"] .eg-foot,html body .eg-test-root.eg-qxtool8[data-test-theme="dark"] #egFoot.eg-foot.eg-foot-marks{background:#0f172a!important;background-color:#0f172a!important;border-top:1px solid #334155!important;box-shadow:0 -8px 24px rgba(0,0,0,.4)!important}',
+        'html body .eg-test-root:not([data-test-theme="dark"]) #egFoot,html body .eg-test-root:not([data-test-theme="dark"]) .eg-foot,html body .eg-test-root.eg-qxtool8:not([data-test-theme="dark"]) .eg-foot{background:#ffffff!important;background-color:#ffffff!important;border-top:1px solid #e5e7eb!important;box-shadow:0 -8px 24px rgba(15,23,42,.12)!important}',
+        'html body .eg-test-root #egFoot #qxPrevBtn,html body .eg-test-root #egFoot #qxNextBtn,html body .eg-test-root #egFoot #egCheckBtn,html body #egFoot #qxPrevBtn,html body #egFoot #qxNextBtn,html body #egFoot #egCheckBtn{display:inline-flex!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important;min-height:48px!important;height:48px!important}',
+        'html body .eg-test-root[data-eg-mode="practice"] .eg-top-tools .eg-tool-btn,html body .eg-test-root.eg-qxmd167[data-eg-mode="practice"] .eg-top-tools .eg-tool-sec,html body .eg-test-root.eg-qxmd167[data-eg-mode="practice"] .eg-top-tools .eg-tool-sec:not(.eg-tool-reach){display:inline-flex!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important}'
+      ].join("");
+      document.head.appendChild(s238);
+    }
   }
 
   function isExamgoalUi(session) {
@@ -795,7 +811,7 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
     return '<div class="eg-test-root mtk-test-root' +
       (sideOpen ? " eg-side-open" : " eg-side-collapsed") +
       (stripOpen ? " eg-strip-open" : " eg-strip-collapsed") +
-      " eg-tools-open eg-compact eg-qxmd167 eg-qxmd170 eg-qxmd171 eg-qxmd173 eg-qxmd180 eg-qxmd182 eg-qxmd220 eg-qxmd237 eg-qxtool8 eg-qxeg1 eg-qxeg2 eg-qxeg3 eg-qxeg4 eg-qxeg5 eg-qxeg6 eg-qxeg7" +
+      " eg-tools-open eg-compact eg-qxmd167 eg-qxmd170 eg-qxmd171 eg-qxmd173 eg-qxmd180 eg-qxmd182 eg-qxmd220 eg-qxmd237 eg-qxmd238 eg-qxtool8 eg-qxeg1 eg-qxeg2 eg-qxeg3 eg-qxeg4 eg-qxeg5 eg-qxeg6 eg-qxeg7" +
       (previewOpen ? " eg-preview-open" : " eg-preview-collapsed") +
       (desktopMode ? " eg-desktop-mode" : " eg-mobile") +
       (!desktopMode && isMobileEg ? " eg-mobile-vp" : "") +
@@ -807,7 +823,7 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
       '<div class="eg-top-title">' + titleEsc + ' <span class="eg-mode-pill">' + mode + "</span></div>" +
       '<div class="eg-top-tools qx-prac-tools" role="toolbar" aria-label="Question tools">' +
       (!practice ? timer : "") +
-      /* qxmd218: practice keeps ONLY Settings gear visible; other tools stay in DOM (hidden) for Settings proxies */
+      /* practice toolbar: Theme, All Q, Palette, Bookmark, Group, Full, Report, Settings */
       (practice
         ? ('<button type="button" class="eg-ico mtk-theme-btn eg-tool-btn eg-tool-pri' + (theme === "light" ? " eg-moon" : "") + '" id="mtkThemeBtn" data-tip="Theme" title="Light / dark" aria-label="Light / dark">' +
           (theme === "dark"
@@ -1658,12 +1674,13 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
         foot.style.setProperty("top", "auto", "important");
         foot.style.setProperty("inset", "auto 0 0 0", "important");
         foot.style.setProperty("transform", "none", "important");
-        foot.style.setProperty("background", "var(--eg-card, #ffffff)", "important");
-        foot.style.setProperty("background-color", "var(--eg-card, #ffffff)", "important");
+        var _darkFoot = !!(root && (root.getAttribute("data-test-theme") === "dark" || (document.documentElement.getAttribute("data-theme") === "dark" && root.getAttribute("data-test-theme") !== "light")));
+        foot.style.setProperty("background", _darkFoot ? "#0f172a" : "#ffffff", "important");
+        foot.style.setProperty("background-color", _darkFoot ? "#0f172a" : "#ffffff", "important");
         foot.style.setProperty("background-image", "none", "important");
-        foot.style.setProperty("box-shadow", "none", "important");
+        foot.style.setProperty("box-shadow", _darkFoot ? "0 -8px 24px rgba(0,0,0,.4)" : "0 -8px 24px rgba(15,23,42,.12)", "important");
         foot.style.setProperty("border", "none", "important");
-        foot.style.setProperty("border-top", "1px solid #e5e7eb", "important");
+        foot.style.setProperty("border-top", _darkFoot ? "1px solid #334155" : "1px solid #e5e7eb", "important");
         foot.style.setProperty("min-height", "56px", "important");
         foot.style.setProperty("height", "auto", "important");
         foot.style.setProperty("backdrop-filter", "none", "important");
@@ -1775,7 +1792,7 @@ function forceFootVisible(force) {
         root.classList.toggle("eg-preview-open", previewOpen);
         root.classList.toggle("eg-preview-collapsed", !previewOpen);
         root.classList.remove("eg-tools-closed", "eg-tools-open", "eg-sol-showing", "eg-qxmd175", "eg-qxmd176", "eg-qxmd177", "eg-qxmd179");
-        root.classList.add("eg-tools-open", "eg-qxmd220", "eg-qxmd237", "eg-qxmd167", "eg-qxmd170", "eg-qxmd171", "eg-qxmd173", "eg-qxmd180", "eg-qxmd182", "eg-qxtool8", "eg-qxeg1", "eg-qxeg2", "eg-qxeg3", "eg-qxeg4", "eg-qxeg5", "eg-qxeg6", "eg-qxeg7", "eg-foot-ready");
+        root.classList.add("eg-tools-open", "eg-qxmd220", "eg-qxmd237", "eg-qxmd238", "eg-qxmd167", "eg-qxmd170", "eg-qxmd171", "eg-qxmd173", "eg-qxmd180", "eg-qxmd182", "eg-qxtool8", "eg-qxeg1", "eg-qxeg2", "eg-qxeg3", "eg-qxeg4", "eg-qxeg5", "eg-qxeg6", "eg-qxeg7", "eg-foot-ready");
         try { root.classList.remove("eg-qxmd217", "eg-qxmd218", "eg-qxmd219"); } catch (_) {}
         root.classList.remove("eg-qxmd218", "eg-qxmd219");
         root.setAttribute("data-eg-cycle", bothOpen ? "1" : "0");

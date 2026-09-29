@@ -1,10 +1,10 @@
 {
-    "cache": "qx-pwa-qxmd237",
-    "ts": 1789862370000,
-    "title": "qxmd237: stems, solutions and toolbar on every question",
+    "cache": "qx-pwa-qxmd238",
+    "ts": 1789900000000,
+    "title": "qxmd238: Prev/Next stay on screen; question and solution math stay intact",
     "site": "https://www.quantrexacademy.com",
-    "build": "qxmd237",
-    "body": "Short math like $l$ no longer swallows the rest of the question. Check Answer shows the official solution. Theme, All Q, Palette, Bookmark and Settings stay visible on every practice question.",
+    "build": "qxmd238",
+    "body": "Previous and Next stay on the bottom bar. Array/aligned solutions no longer smash later math. Official solution text keeps spaces around $ and arrows.",
     "package": "com.quantrexacademy.app",
     "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }

@@ -1,6 +1,6 @@
 (function () {
   if (!("serviceWorker" in navigator)) return;
-  var bust = (typeof window.QX_BUILD === "string" && window.QX_BUILD) || "qxmd237";
+  var bust = (typeof window.QX_BUILD === "string" && window.QX_BUILD) || "qxmd238";
 
   function hardReload() {
     try {

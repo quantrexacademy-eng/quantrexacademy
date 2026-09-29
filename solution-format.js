@@ -549,15 +549,40 @@ const QuantrexSolution = (() => {
    * Repair mashed official solutions (screenshot 990 style).
    * Never invents academic content. No numbered Step 1/2.
    */
+  function mapOutsideMath(s, fn) {
+    const slots = [];
+    const park = (m) => {
+      const k = "\uE710" + slots.length + "\uE711";
+      slots.push(m);
+      return k;
+    };
+    let t = String(s || "");
+    t = t.replace(/\$\$[\s\S]+?\$\$/g, park);
+    t = t.replace(/\$[^$]+\$/g, park);
+    t = t.replace(/\\\[[\s\S]+?\\\]/g, park);
+    t = t.replace(/\\\([\s\S]+?\\\)/g, park);
+    t = t.replace(/\\begin\{([a-zA-Z*]{1,16})\}[\s\S]*?\\end\{\1\}/g, park);
+    try { t = fn(t); } catch (_) { /* keep */ }
+    for (let r = 0; r < 8 && /\uE710\d+\uE711/.test(t); r++) {
+      t = t.replace(/\uE710(\d+)\uE711/g, (_, i) => slots[+i] || "");
+    }
+    return t;
+  }
+
   function repairSolutionProse(html) {
     let s = String(html || "");
     if (!s.trim()) return s;
     if (/class=["'][^"']*katex|<\/?math[\s>]/i.test(s)) return s;
 
-    s = s.replace(/\\because/gi, " because ");
-    s = s.replace(/\\therefore/gi, " so ");
-    s = s.replace(/\\forall/g, " for all ");
-    s = s.replace(/\\in(?![A-Za-z])/g, " in ");
+    s = mapOutsideMath(s, (t) => {
+      t = t.replace(/\\because/gi, " because ");
+      t = t.replace(/\\therefore/gi, " so ");
+      t = t.replace(/\\forall/g, " for all ");
+      t = t.replace(/\\in(?![A-Za-z])/g, " in ");
+      t = t.replace(/&#38;|&amp;/gi, " and ");
+      t = t.replace(/(^|[^\\$A-Za-z\uE710\uE711])&(?![#a-zA-Z])/g, "$1 and ");
+      return t;
+    });
     s = s.replace(/\\mathbb\s*\{\s*R\s*\}/g, "\\mathbb{R}");
     s = s.replace(/\\R(?![A-Za-z])/g, "\\mathbb{R}");
     s = s.replace(/\\Rightarrow/g, "\\Rightarrow");
@@ -572,22 +597,29 @@ const QuantrexSolution = (() => {
     s = s.replace(/(^|[^$A-Za-z\\])([ab])R([ab])(?![A-Za-z])/g, "$1$$$2R$3$");
 
     s = s.replace(/Since\s*,\s*/gi, "Since ");
-    /* qxmd165: never inject $ around | that belongs to \left| / \right| / \lvert / \rvert */
-    s = s.replace(/(^|[^$\\])(?<!\\left)(?<!\\right)(?<!\\l)(?<!\\r),\s*\|(?!\s*(?:right|\\))/g, "$1, $|");
-    s = s.replace(/(^|[^$\\|])\|\s*,(?!\s*\$)/g, (all, pre) => {
-      if (/\\(?:left|right|lvert|rvert)\s*$/.test(pre)) return all;
-      return pre + "|$,";
-    });
-
-    // Absolute-value prose |x| only — skip TeX delimiters \left| … \right|
-    s = s.replace(/(^|[^$\\])(?<!\\left)(?<!\\right)(?<!\\lvert)(?<!\\rvert)\|([a-zA-Z0-9+\-−=\s]{1,40})\|(?!\$)/g, (all, pre, inner) => {
-      if (/\$/.test(inner)) return all;
-      if (/\\/.test(inner)) return all; // already TeX — leave for delimiter repair
-      return pre + "$|" + inner.trim() + "|$";
+    /* qxmd165: never inject $ around | that belongs to \left| / \right| / \lvert / \rvert
+       and never wrap |y| that is already inside $…$. */
+    s = mapOutsideMath(s, (t) => {
+      t = t.replace(/(^|[^$\\])(?<!\\left)(?<!\\right)(?<!\\l)(?<!\\r),\s*\|(?!\s*(?:right|\\))/g, "$1, $|");
+      t = t.replace(/(^|[^$\\|])\|\s*,(?!\s*\$)/g, (all, pre) => {
+        if (/\\(?:left|right|lvert|rvert)\s*$/.test(pre)) return all;
+        return pre + "|$,";
+      });
+      t = t.replace(/(^|[^$\\])(?<!\\left)(?<!\\right)(?<!\\lvert)(?<!\\rvert)\|([a-zA-Z0-9+\-−=\s]{1,40})\|(?!\$)/g, (all, pre, inner) => {
+        if (/\$/.test(inner)) return all;
+        if (/\\/.test(inner)) return all;
+        return pre + "$|" + inner.trim() + "|$";
+      });
+      return t;
     });
 
     s = s.replace(/\${3,}/g, "$$");
-    s = s.replace(/\$\s+\$/g, " ");
+    s = s.replace(/\$(\s*)\$/g, (full, inner, idx, src) => {
+      const around = src.slice(Math.max(0, idx - 1), idx + full.length + 1);
+      if (/\$\$/.test(around)) return full;
+      if ((src.slice(0, idx).match(/\$/g) || []).length % 2 === 1) return full;
+      return inner || " ";
+    });
 
     s = s.replace(/\bNow\s*,/g, "\nNow,");
     s = s.replace(/\bBut\s+(?=[A-Z$\\])/g, "\nBut ");
@@ -616,8 +648,6 @@ const QuantrexSolution = (() => {
       s = plain.replace(new RegExp(String.fromCharCode(0xE600) + "(\\d+)" + String.fromCharCode(0xE601), "g"), (_, i) => park[+i] || "");
     }
     s = s.replace(/([a-zA-Z])(\\(?:left|right|in|mathbb|frac|text|mathrm|begin|end|cdot|times|leq|geq|neq|subset|forall|exists|alpha|beta|gamma|theta|pi|infty))(?![a-zA-Z])/g, "$1 $2");
-    s = s.replace(/&#38;|&amp;/gi, " and ");
-    s = s.replace(/(^|[^\\$A-Za-z])&(?![#a-zA-Z])/g, "$1 and ");
     return s.trim();
   }
 
@@ -647,35 +677,62 @@ const QuantrexSolution = (() => {
     // Trailing display junk: $$\s*\\ → $$  or  $\dfrac{1}{2}$$\s*\\ → $\dfrac{1}{2}$
     s = s.replace(/\$\$\s*\\\\\s*/g, "$$ ");
     s = s.replace(/\$\$\s*\\(?![a-zA-Z])/g, "$$ ");
-    // Half-open: … $\dfrac{1}{2}$$ → … $\dfrac{1}{2}$
-    s = s.replace(/\$([^$\n]{1,200})\$\$/g, "$$$1$");
-    // Orphan leading $$ before inline content
-    s = s.replace(/\$\$\s*(?=\\[a-zA-Z]|[A-Za-z0-9])/g, "$");
-    // Collapse $$$+
-    s = s.replace(/\${3,}/g, "$$");
-    s = s.replace(/\$\s+\$/g, " ");
+    // Half-open inline: … $\dfrac{1}{2}$$ → … $\dfrac{1}{2}$
+    // Never eat $$ / \[ before \begin, \left, arrows
+    s = s.replace(/\$([^$\n]{1,200})\$\$(?!\\(?:begin|left|right|Rightarrow|Leftarrow))/g, "$$$1$");
+    s = s.replace(/\$\$\s*(?=\\(?!begin|end|left|right|Rightarrow|Leftarrow|frac|dfrac|sqrt)[a-zA-Z]|[A-Za-z0-9])/g, "$");
+    s = s.replace(/\$(\s*)\$/g, (full, inner, idx, src) => {
+      const around = src.slice(Math.max(0, idx - 1), idx + full.length + 1);
+      if (/\$\$/.test(around)) return full;
+      if ((src.slice(0, idx).match(/\$/g) || []).length % 2 === 1) return full;
+      return inner || " ";
+    });
+    s = s.replace(/\$\$\s*\$(?!\$)/g, "$");
 
-    // qxmd170: kill $$\n$ / leading $$ before ⇒ / mashed display openers after stem strip
-    s = s.replace(/\$\$\s*\$/g, "$");
-    s = s.replace(/\$\$\s*(?=⇒|=>|⟹)/g, "$");
-    s = s.replace(/(^|>)\s*\$\$\s*(?=\\|[A-Za-z0-9|])/gm, "$1$");
 
-
-    function lineHasEnglishProse(L) {
-      const plain = String(L || "")
+    function textOutsideMath(L) {
+      return String(L || "")
+        .replace(/<[^>]+>/g, " ")
+        .replace(/\$\$[\s\S]*?\$\$/g, " ")
+        .replace(/\\begin\{([a-zA-Z*]{1,16})\}[\s\S]*?\\end\{\1\}/g, " ")
+        .replace(/\\\[[\s\S]*?\\\]/g, " ")
+        .replace(/\\\([\s\S]*?\\\)/g, " ")
         .replace(/\$[^$]*\$/g, " ")
         .replace(/\\(?:text|mathrm|mathbf|textbf)\{[^}]*\}/g, " ")
         .replace(/\\[a-zA-Z]+/g, " ")
         .replace(/[{}^_]/g, " ");
-      if (/\b(?:Reflexive|Symmetric|Transitive|Hence|Statement|True|False|Define|Let|For|the set|so False|so True)\b/i.test(plain)) return true;
-      return (plain.match(/[A-Za-z]{4,}/g) || []).length >= 2;
+    }
+    function lineHasEnglishProse(L) {
+      const plain = textOutsideMath(L);
+      if (/\b(?:Given|Reflexive|Symmetric|Transitive|Hence|Therefore|Statement|True|False|Define|Let|For|Then|So|the set|pairs|whose|relation|number|elements|required|because|since|consider|option|correct|minimum|equal|iff)\b/i.test(plain)) return true;
+      return (plain.match(/[A-Za-z]{3,}/g) || []).length >= 1;
+    }
+    function wrapTexFragments(L) {
+      let t = String(L || "");
+      t = t.replace(
+        /\\left\s*(?:\\[{}()[\].|]|[()\[\]{}.|])[\s\S]{0,240}?\\right\s*(?:\\[{}()[\].|]|[()\[\]{}.|])/g,
+        (m) => (/\$/.test(m) ? m : ("$" + m + "$"))
+      );
+      t = t.replace(
+        /\\(?:frac|dfrac|tfrac|sqrt|mathrm|mathbf|textbf|text|mathbb|operatorname|ce)(?:\s*\[[^\]]*\])?(?:\s*\{[^{}]*\}){1,3}(?:\s*[_^](?:\{[^{}]*\}|[A-Za-z0-9]+))?/g,
+        (m) => (/\$/.test(m) ? m : ("$" + m + "$"))
+      );
+      t = t.replace(
+        /\\(?:sin|cos|tan|log|ln|leq|geq|neq|rightarrow|leftarrow|infty|subseteq|subset|cdot|times|pm)(?![a-zA-Z])/g,
+        (m) => (/\$/.test(m) ? m : ("$" + m + "$"))
+      );
+      return t;
     }
 
-    // Wrap bare TeX lines so KaTeX sees them; also close half-open bare+$\dfrac$ mixes
+    // Wrap bare TeX lines so KaTeX sees them; never smash English + math into one island
     function wrapBareLine(line) {
       let L = String(line || "").trim();
       if (!L) return line;
       if (/class=["'][^"']*katex|<math[\s>]/i.test(L)) return line;
+      if (/\\begin\{(?:cases|matrix|pmatrix|bmatrix|vmatrix|Vmatrix|aligned|array|smallmatrix)\}/.test(L)) {
+        if (/\$|\\\[|\\\]/.test(L)) return L;
+        return "\\[" + L.trim() + "\\]";
+      }
       try {
         if (typeof QxMathSanitize !== "undefined" && QxMathSanitize.repairMarksDollarSoup) {
           L = QxMathSanitize.repairMarksDollarSoup(L);
@@ -691,8 +748,8 @@ const QuantrexSolution = (() => {
         }
         return L;
       }
-      // Mixed English + $math$ (Reflexive : $\left(a_1…$ True) — never smash into one island
-      if (lineHasEnglishProse(L) && /\$/.test(L)) {
+      if (lineHasEnglishProse(L)) {
+        if (/\\[a-zA-Z]/.test(L) && !/\$|\\\(|\\\[/.test(L)) L = wrapTexFragments(L);
         return L;
       }
       // Bare operators: sin 2x → \sin 2x inside upcoming math
@@ -716,23 +773,15 @@ const QuantrexSolution = (() => {
       if (!/\\[a-zA-Z]/.test(L) && !/\\left|\\right|\\frac|\\dfrac|\\sqrt/.test(L)) return L;
       const plain = L.replace(/\\[a-zA-Z]+\s*\{?[^{}]*\}?/g, " ").replace(/[{}^_|&]/g, " ").replace(/\s+/g, " ").trim();
       if (plain.length > 48 && /[A-Za-z]{4,}/.test(plain) && !/^(?:sin|cos|tan|log|ln|sec|csc|cot)\b/i.test(plain)) {
-        L = L.replace(
-          /((?:\\(?:left|right|frac|dfrac|tfrac|sqrt|log|ln|sin|cos|tan|pm|mp|cdot|times|le|ge|neq|in|cup|cap|mathbb|mathrm|text)|[=+\-−]|\\[a-zA-Z]+)[^<\n]{0,160})/g,
-          (m) => {
-            if (/\$/.test(m)) return m;
-            if (!/\\[a-zA-Z]|[=]/.test(m)) return m;
-            return "$" + m.trim() + "$";
-          }
-        );
-        return L;
+        return wrapTexFragments(L);
       }
       return "$" + L.trim() + "$";
     }
 
     // Process by <br>/newline segments outside existing math (simple split)
-    const parts = s.split(/(<br\s*\/?\s*>|\n+)/i);
+    const parts = s.split(/(<br\s*\/?\s*>|\n+|<\/(?:p|div)>)/i);
     for (let i = 0; i < parts.length; i++) {
-      if (/^<br/i.test(parts[i]) || /^\n+$/.test(parts[i])) continue;
+      if (/^<br/i.test(parts[i]) || /^\n+$/.test(parts[i]) || /^<\/(?:p|div)>$/i.test(parts[i])) continue;
       parts[i] = wrapBareLine(parts[i]);
     }
     s = parts.join("");
@@ -1083,7 +1132,9 @@ const QuantrexSolution = (() => {
       const before = out;
       const m = /^(?:\s|&nbsp;|<br\s*\/?>|<(?:p|div|span|h[1-6]|li|section)[^>]*>[\s\S]*?<\/(?:p|div|span|h[1-6]|li|section)>)+/i.exec(out);
       if (m && m[0].length >= 8 && m[0].length < out.length - 4) {
-        out = tidyAfterStemCut(out.slice(m[0].length));
+        const cut = tidyAfterStemCut(out.slice(m[0].length));
+        if (!String(cut).replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim()) break;
+        out = cut;
         if (out !== before) continue;
       }
       let i = 0, emitted = 0, cutAt = -1;
@@ -1139,7 +1190,7 @@ const QuantrexSolution = (() => {
     // Drop common wrappers that precede a stem echo in Marks/bank solutions
     // qxmd164: also swallow the closing </p> after "Given," so defs start clean
     out = out.replace(
-      /^(?:(?:\s|&nbsp;|<br\s*\/?\s*>|<\/?(?:p|div|span)[^>]*>)*)(?:given(?:\s+that)?|as\s+given|from\s+the\s+(?:given\s+)?question|according\s+to\s+the\s+question|question)\s*(?:<[^>]+>)*\s*[,:\-–]?\s*(?:<\/(?:p|div|span)>\s*)*/i,
+      /^(?:(?:\s|&nbsp;|<br\s*\/?\s*>|<\/?(?:p|div|span)[^>]*>)*)(?:given(?:\s+that)?|as\s+given|from\s+the\s+(?:given\s+)?question|according\s+to\s+the\s+question)\s*(?:<[^>]+>)*\s*[,:\-–]\s*(?:<\/(?:p|div|span)>\s*)*/i,
       ""
     );
     out = stripLeadingSolMeta(out);
@@ -1442,7 +1493,11 @@ const QuantrexSolution = (() => {
       if (typeof Mx !== "undefined" && Mx.peelFalseProseMathIslands) raw = Mx.peelFalseProseMathIslands(raw);
     } catch (_) { /* */ }
     if (typeof Mx !== "undefined" && Mx.upgradePlainMathNotation) {
-      try { raw = Mx.upgradePlainMathNotation(raw); } catch (_) { /* */ }
+      try {
+        const alreadyTex = /\$[^$]+\$|\\\(|\\\[|\\begin\{/.test(raw);
+        const plainFn = /(?:^|[^\\$])(?:log|sin|cos|tan)\s*\(/i.test(String(raw).replace(/\$[^$]*\$/g, " "));
+        if (!alreadyTex || plainFn) raw = Mx.upgradePlainMathNotation(raw);
+      } catch (_) { /* */ }
     }
     /* Keep original line structure; toCleanFlow was gluing words and dumping katex HTML. */
     let html;
@@ -1457,16 +1512,25 @@ const QuantrexSolution = (() => {
     html = String(html || "")
       .replace(/(<br\s*\/?>\s*){3,}/gi, "<br><br>")
       .replace(/\n{3,}/g, "\n\n");
-    try { html = stripLeadingStemEcho(html, q); } catch (_) { /* */ }
-    try { html = ensureNoStemHead(html, q); } catch (_) { /* */ }
+    try {
+      var _preStem = html;
+      html = stripLeadingStemEcho(html, q);
+      html = ensureNoStemHead(html, q);
+      var _plainStem = String(html || "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+      if (!_plainStem && String(_preStem || "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim()) html = _preStem;
+    } catch (_) { /* */ }
     /* qxmd208: also drop qx-stem-rescued / qx-stem-forced if they sneak into solution HTML */
     html = String(html || "").replace(/<(div|p|section)[^>]*class="[^"]*(?:eg-q-stem|mtk-q-text|qa-q|qx-question-body|qx-stem-rescued|qx-stem-forced)[^"]*"[\s\S]*?<\/\1>/gi, "");
     try {
+      var _preDrop = html;
       for (var _si = 0; _si < 12; _si++) {
         var _nx = dropRepeatedQuestionBlocks(html, q);
         if (_nx === html) break;
         html = _nx;
       }
+      var _plainDrop = String(html || "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+      var _srcPlain = String(_qxSolSrc || "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+      if (!_plainDrop && _srcPlain.length > 20) html = _preDrop;
     } catch (_) { /* */ }
     // Never re-polish after KaTeX HTML exists (would space class="katex-display")
     if (!/class=["'][^"']*katex/i.test(html)) {
@@ -1514,9 +1578,11 @@ const QuantrexSolution = (() => {
       const hit = toks.filter(function (t) { return stemP.indexOf(t) >= 0; }).length;
       const echo = (head.length >= 8 && stemP.indexOf(head) === 0)
         || (stemP.slice(0, 24) && bp.indexOf(stemP.slice(0, 24)) === 0)
-        || (toks.length >= 4 && hit / toks.length >= 0.62);
+        || (toks.length >= 6 && hit / toks.length >= 0.88);
       if (echo) {
-        s = s.slice(m[0].length);
+        const next = s.slice(m[0].length);
+        if (!String(next).replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim()) break;
+        s = next;
         continue;
       }
       break;
