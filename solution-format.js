@@ -661,11 +661,26 @@ const QuantrexSolution = (() => {
     s = s.replace(/(^|>)\s*\$\$\s*(?=\\|[A-Za-z0-9|])/gm, "$1$");
 
 
+    function lineHasEnglishProse(L) {
+      const plain = String(L || "")
+        .replace(/\$[^$]*\$/g, " ")
+        .replace(/\\(?:text|mathrm|mathbf|textbf)\{[^}]*\}/g, " ")
+        .replace(/\\[a-zA-Z]+/g, " ")
+        .replace(/[{}^_]/g, " ");
+      if (/\b(?:Reflexive|Symmetric|Transitive|Hence|Statement|True|False|Define|Let|For|the set|so False|so True)\b/i.test(plain)) return true;
+      return (plain.match(/[A-Za-z]{4,}/g) || []).length >= 2;
+    }
+
     // Wrap bare TeX lines so KaTeX sees them; also close half-open bare+$\dfrac$ mixes
     function wrapBareLine(line) {
       let L = String(line || "").trim();
       if (!L) return line;
       if (/class=["'][^"']*katex|<math[\s>]/i.test(L)) return line;
+      try {
+        if (typeof QxMathSanitize !== "undefined" && QxMathSanitize.repairMarksDollarSoup) {
+          L = QxMathSanitize.repairMarksDollarSoup(L);
+        }
+      } catch (_) { /* */ }
       // qxmd170: never merge "Key step:" / prose tips into one $…$ island
       if (/^(?:key\s*step|final\s*answer|correct\s*(?:option|mapping)|round|select|apply|choose|write|draw|track|look|recall|step\s*\d)\b/i.test(L)) {
         if (!/\$/.test(L) && /\\[a-zA-Z]/.test(L)) {
@@ -676,12 +691,17 @@ const QuantrexSolution = (() => {
         }
         return L;
       }
+      // Mixed English + $math$ (Reflexive : $\left(a_1…$ True) — never smash into one island
+      if (lineHasEnglishProse(L) && /\$/.test(L)) {
+        return L;
+      }
       // Bare operators: sin 2x → \sin 2x inside upcoming math
       L = L.replace(/(^|[^\\A-Za-z])(sin|cos|tan|cot|sec|csc|log|ln)(?=\s*[0-9A-Za-z(_{])/g,
         (_, pre, fn) => pre + "\\" + fn);
       // Half-open: bare TeX … = ± $\dfrac{1}{2}$ → one island
       if (/\\[a-zA-Z]/.test(L) && /\$/.test(L)) {
         const dollars = (L.match(/\$/g) || []).length;
+        if (lineHasEnglishProse(L)) return L;
         if (dollars % 2 === 1) {
           // odd $ — prepend opener if starts with TeX
           if (/^\\|^[|=]/.test(L) || /\\left|\\frac|\\dfrac/.test(L)) L = "$" + L.replace(/\$/g, "");
@@ -1406,6 +1426,11 @@ const QuantrexSolution = (() => {
       try { raw = QxProof.proofreadHtml(raw); } catch (_) { /* */ }
     }
     raw = repairSolutionProse(raw);
+    try {
+      if (typeof QxMathSanitize !== "undefined" && QxMathSanitize.repairMarksDollarSoup) {
+        raw = QxMathSanitize.repairMarksDollarSoup(raw);
+      }
+    } catch (_) { /* */ }
     try { raw = repairSolutionDelimiters(raw); } catch (_) { /* */ }
     raw = polishScientificSymbols(raw);
     try {

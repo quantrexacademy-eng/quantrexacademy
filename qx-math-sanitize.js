@@ -254,8 +254,63 @@
     s = s.replace(/(^|[^$])\$\s+\$(?!\$)/g, "$1"); // empty inline $  $ (needs whitespace)
     s = s.replace(/\\\(\s*\\\)/g, "");
     s = s.replace(/\\\[\s*\\\]/g, "");
+    try { s = repairMarksDollarSoup(s); } catch (_) { /* */ }
     s = healOddDollars(s);
     return s;
+  }
+
+  /**
+   * Marks nested-$ dumps: $ inside \begin{array}/\begin{aligned}, $\left.$, $\right\}$,
+   * and $\mathrm{y}$=$\mathrm{b}$. Meaning-preserving delimiter repair only.
+   */
+  function repairMarksDollarSoup(html) {
+    let s = String(html || "");
+    if (!s) return s;
+    if (/class=["'][^"']*katex|<\/?math[\s>]/i.test(s)) return s;
+
+    s = s.replace(/\$\\left\.\s*\$/g, "");
+    s = s.replace(/\$\\left\./g, "\\left.");
+    s = s.replace(/\$\\right\\\}?\$/g, "");
+    s = s.replace(/\$\\right\}?\$/g, "");
+    s = s.replace(/\\right\\\}/g, "\\right.");
+    s = s.replace(/\$\\\}/g, "");
+    s = s.replace(/\\text\{\s*True\s*\}\s*\$/g, "\\text{ True }");
+
+    s = s.replace(/\$\\mathrm\{([^}]+)\}\$(\s*=\s*)\$\\mathrm\{([^}]+)\}\$/g,
+      "$\\mathrm{$1}$2\\mathrm{$3}$");
+    s = s.replace(/(\\mathrm\{[^}]+\})\$(\s*=\s*)\$(\\mathrm\{[^}]+\})\$?/g,
+      "$$$1$2$3$");
+    s = s.replace(/\$\s*=\s*\$/g, "=");
+    s = s.replace(/\$\s*-\s*\$\s*(\\mathrm\{(?:I{1,3}|II|III)\})/g, "- $1");
+    s = s.replace(/-\s*\$(\\mathrm\{(?:I{1,3}|II|III)\})/g, "- $1");
+    s = s.replace(/(^|[^$])(\\mathrm\{(?:I{1,3}|II|III)\})(?!\$)/g, "$1$$$2$");
+    s = s.replace(/(^|[^$])(\\mathrm\{[A-Za-z0-9]+\}(?:\s*=\s*\\mathrm\{[A-Za-z0-9]+\}))(?!\$)/g, "$1$$$2$");
+
+    s = s.replace(/\\begin\{([a-zA-Z*]{1,16})\}([\s\S]*?)\\end\{\1\}/g, function (full, env, inner) {
+      const t = String(inner).replace(/\$/g, "");
+      return "\\begin{" + env + "}" + t + "\\end{" + env + "}";
+    });
+
+    s = s.replace(
+      /(^|[^$])(\\begin\{(?:array|aligned|align\*?|cases)\}[\s\S]*?\\end\{(?:array|aligned|align\*?|cases)\})/g,
+      function (_m, pre, tex) {
+        if (/\$\s*$/.test(pre)) return _m;
+        return pre + "$" + tex + "$";
+      }
+    );
+
+    return s;
+  }
+
+  function mixedProseLen(body) {
+    const plain = String(body || "")
+      .replace(/\$[^$]*\$/g, " ")
+      .replace(/\\[a-zA-Z]+/g, " ")
+      .replace(/[\\{}^_]/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+    const words = (plain.match(/[A-Za-z]{3,}/g) || []).length;
+    return { plainLen: plain.length, words: words, mixed: plain.length > 80 || words >= 6 };
   }
 
   /** Stem-echo cuts often eat the opening `$` of the next math island. Pair or drop the leftover. */
@@ -269,6 +324,15 @@
     const body = s.slice(prefix.length);
     const count = (body.match(/\$/g) || []).length;
     if (count % 2 === 0) return s;
+    const mix = mixedProseLen(body);
+    if (mix.mixed) {
+      if (body.startsWith("$") && mix.plainLen > 80) {
+        return prefix + body.replace(/^\$/, "");
+      }
+      const idx = body.lastIndexOf("$");
+      if (idx >= 0) return prefix + body.slice(0, idx) + body.slice(idx + 1);
+      return s;
+    }
     if (!body.startsWith("$") && /^(?:\\(?:mathrm|mathbf|text|frac|dfrac|tfrac|sqrt|left|right|begin|end|sin|cos|tan|log|ln|cdot|times|pm|infty|alpha|beta|gamma|theta|overline|underline|hat|vec)|\\[a-zA-Z]+|\\end\{)/.test(body)) {
       return prefix + "$" + body;
     }
@@ -280,7 +344,7 @@
       return prefix + body.replace(/\$-(?=[A-Za-z])/g, "-");
     }
     if (body.startsWith("$")) return prefix + body + "$";
-    if (/\\[a-zA-Z]/.test(body)) return prefix + "$" + body;
+    if (/\\[a-zA-Z]/.test(body) && mix.plainLen <= 80) return prefix + "$" + body;
     return prefix + body.replace(/\$(\s*)(?=<|$)/, "$1");
   }
 
@@ -578,6 +642,7 @@
     detectRawHtml,
     detectUnbalancedLatex,
     healOddDollars,
+    repairMarksDollarSoup,
     recoverKatexHtml,
     normalizeMathContent,
     normalizeLatex: normalizeDelimiters,

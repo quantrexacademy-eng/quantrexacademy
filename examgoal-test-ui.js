@@ -57,8 +57,13 @@
       var s218 = document.createElement("style");
       s218.id = "qxmd219EgCss";
       s218.textContent = [
-        '.eg-test-root[data-eg-mode="practice"] .eg-top-tools{display:flex!important;flex-wrap:nowrap!important;gap:4px!important;margin-left:auto!important;align-items:center!important}',
+        '.eg-test-root[data-eg-mode="practice"] .eg-top-tools{display:flex!important;flex-wrap:wrap!important;gap:4px!important;margin-left:auto!important;align-items:center!important;overflow:visible!important;max-width:none!important;flex-shrink:0!important}',
+        '.eg-test-root[data-eg-mode="practice"] .eg-top-title{flex:0 1 auto!important;max-width:min(42vw,280px)!important}',
         '.eg-test-root[data-eg-mode="practice"] .eg-top-tools .eg-tool-btn{display:inline-flex!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important;position:relative!important;left:auto!important}',
+        '.eg-test-root .eg-subs:has(.eg-sub:only-child){display:none!important;height:0!important;overflow:hidden!important}',
+        '.eg-test-root #egSol,.eg-test-root .eg-sol-inline{min-height:48px!important;overflow:visible!important;display:block!important}',
+        '.eg-test-root .eg-sol-panel{overflow:visible!important}',
+        '.qx-tex-fallback,.qx-tex-code{font-family:inherit!important;background:transparent!important;color:inherit!important;white-space:pre-wrap!important;font-size:inherit!important}',
         '.eg-fmt-pop.eg-vs-marks{max-width:min(420px,94vw)!important;max-height:min(78vh,640px)!important;overflow:auto!important;padding:12px 14px 16px!important;border-radius:16px!important;box-shadow:0 18px 48px rgba(15,23,42,.28)!important;z-index:2147483000!important;background:var(--qx-card,#fff)!important;color:var(--qx-fg,#0f172a)!important;border:1px solid #e2e8f0!important}',
         'html[data-theme=dark] .eg-fmt-pop.eg-vs-marks,.eg-test-root[data-test-theme=dark] .eg-fmt-pop.eg-vs-marks{background:#111827!important;color:#f1f5f9!important;border-color:#334155!important}',
         '.eg-vs-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 0 8px}',
@@ -785,10 +790,7 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
       (!practice ? timer : "") +
       /* qxmd218: practice keeps ONLY Settings gear visible; other tools stay in DOM (hidden) for Settings proxies */
       (practice
-        ? ('<button type="button" class="eg-ico eg-tool-btn eg-tool-pri eg-settings-gear" id="egFmtBtn" data-tip="Settings" title="Question View Settings" aria-label="Question View Settings">' +
-          ico('<circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>') +
-          '<span class="eg-tip">Settings</span></button>' +
-          '<button type="button" class="eg-ico mtk-theme-btn eg-tool-btn eg-tool-pri' + (theme === "light" ? " eg-moon" : "") + '" id="mtkThemeBtn" data-tip="Theme" title="Light / dark" aria-label="Light / dark">' +
+        ? ('<button type="button" class="eg-ico mtk-theme-btn eg-tool-btn eg-tool-pri' + (theme === "light" ? " eg-moon" : "") + '" id="mtkThemeBtn" data-tip="Theme" title="Light / dark" aria-label="Light / dark">' +
           (theme === "dark"
             ? ico('<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>')
             : '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>') +
@@ -808,7 +810,10 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
           ico('<path d="M8 3H3v5M16 3h5v5M8 21H3v-5M21 16v5h-5"/>') + '<span class="eg-tip">Full</span></button>' +
           '<button type="button" class="eg-ico warn eg-tool-btn eg-tool-sec" id="mtkReportBtn" data-tip="Report" title="Report question" aria-label="Report">' +
           ico('<path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/>') +
-          '<span class="eg-tip">Report</span></button>')
+          '<span class="eg-tip">Report</span></button>' +
+          '<button type="button" class="eg-ico eg-tool-btn eg-tool-pri eg-settings-gear" id="egFmtBtn" data-tip="Settings" title="Question View Settings" aria-label="Question View Settings">' +
+          ico('<circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>') +
+          '<span class="eg-tip">Settings</span></button>')
         : ('<button type="button" class="eg-ico mtk-theme-btn eg-tool-btn eg-tool-pri' + (theme === "light" ? " eg-moon" : "") + '" id="mtkThemeBtn" data-tip="Theme" title="Light / dark" aria-label="Light / dark">' +
           (theme === "dark"
             ? ico('<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>')
@@ -829,7 +834,7 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
       "</div>" + fmt +
 
       "</header>" +
-      '<div class="eg-subs">' + tabs + "</div>" +
+      ((groups && groups.length > 1) ? ('<div class="eg-subs">' + tabs + "</div>") : "") +
       '<div class="eg-qbar eg-strip' + (stripOpen ? "" : " eg-strip-collapsed") + '" id="egQBar" role="navigation" aria-label="Question numbers" aria-hidden="' + (stripOpen ? "false" : "true") + '"' + (stripOpen ? '' : ' hidden') + '>' +
       '<button type="button" class="eg-strip-close" id="egStripClose" title="Close top questions" aria-label="Close top questions">✕</button>' +
       '<div class="eg-qbar-scroll">' + qbar + "</div></div>" +
@@ -1169,6 +1174,10 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
     } catch (_) { /* */ }
   }
 
+  function egHideOptsAfterSol() {
+    /* Marks-way: keep options visible under the solution. */
+  }
+
   function revealPracticeSolution(root, api) {
     if (!root || !api || !api.session) return false;
     const session = api.session;
@@ -1361,6 +1370,12 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
         stripStemRescuedFromSolDom(root);
         qxTypesetSol(solEl);
         qxTypesetSol(panel);
+        try {
+          if (solEl && String(solEl.textContent || "").replace(/\s+/g, " ").trim().length < 12 && solInner) {
+            solEl.innerHTML = solInner;
+            qxTypesetSol(solEl);
+          }
+        } catch (_) { /* */ }
         stripStemRescuedFromSolDom(panel);
         [50, 200, 500].forEach(function (ms) {
           setTimeout(function () {

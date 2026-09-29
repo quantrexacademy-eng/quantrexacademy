@@ -20,8 +20,9 @@
   cursor: pointer !important;
 }
 .eg-test-root .eg-top-title {
-  flex: 1 1 auto !important;
+  flex: 0 1 auto !important;
   min-width: 0 !important;
+  max-width: min(42vw, 280px) !important;
   font-weight: 700 !important;
   font-size: 14px !important;
   color: #fff !important;
@@ -47,10 +48,10 @@
   align-items: center !important;
   gap: 4px !important;
   margin-left: auto !important;
-  flex-shrink: 1 !important;
-  flex-wrap: nowrap !important;
-  overflow-x: auto !important;
-  max-width: min(72vw, 420px) !important;
+  flex-shrink: 0 !important;
+  flex-wrap: wrap !important;
+  overflow: visible !important;
+  max-width: none !important;
   -webkit-overflow-scrolling: touch !important;
 }
 .eg-test-root .eg-top-tools .eg-tool-btn,
@@ -348,8 +349,33 @@ html[data-theme="dark"] .eg-vs-sec {
   display: block !important;
   margin: 14px 0 88px !important;
   border-radius: 14px !important;
-  overflow: hidden !important;
+  overflow: visible !important;
   border: 1px solid #cbd5e1 !important;
+}
+.eg-test-root .eg-subs:has(.eg-sub:only-child) {
+  display: none !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.eg-test-root #egSol,
+.eg-test-root .eg-sol-inline,
+.eg-test-root .qx-sol-flow {
+  min-height: 48px !important;
+  overflow: visible !important;
+  display: block !important;
+  visibility: visible !important;
+}
+.qx-tex-fallback,
+.qx-tex-code.qx-tex-fallback {
+  font-family: inherit !important;
+  font-size: inherit !important;
+  background: transparent !important;
+  color: inherit !important;
+  white-space: pre-wrap !important;
+  word-break: break-word !important;
+  padding: 0 !important;
 }
 .eg-sol-panel-head {
   display: flex !important;

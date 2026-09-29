@@ -753,7 +753,8 @@ const QuantrexTestEngine = (() => {
       try { if (QxImgClean.pinOriginalQuestion) QxImgClean.pinOriginalQuestion(q); } catch (_) { /* */ }
       return QxImgClean.buildQuestionBodyHtml(q.id, stemSrc, paint, q);
     }
-    return `<div class="mtk-q-text qx-content" data-qx-qid="${q.id}">${paint(stemSrc)}</div>`;
+    const stemAttr = String(stemSrc || "").slice(0, 8000).replace(/&/g, "&amp;").replace(/"/g, "&quot;");
+    return `<div class="mtk-q-text qx-content" data-qx-qid="${q.id}" data-qx-stem-src="${stemAttr}">${paint(stemSrc)}</div>`;
   }
 
   /** True when this Q must show integer keypad (type OR current NUM section) */

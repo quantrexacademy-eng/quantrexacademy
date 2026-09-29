@@ -1124,12 +1124,12 @@ window.Mx = (() => {
         const html = window.katex.renderToString(t, Object.assign({ displayMode: !!display }, KATEX_OPTS));
         if (/class=["'][^"']*katex-error|ParseError|Can't use function/i.test(html)) {
           const esc = t.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-          return '<code class="qx-tex-code qx-tex-fallback" title="TeX">' + esc + "</code>";
+          return '<span class="qx-tex-fallback" title="TeX">' + esc + "</span>";
         }
         return html;
       } catch (_) {
         const esc = t.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-        return '<code class="qx-tex-code qx-tex-fallback" title="TeX">' + esc + "</code>";
+        return '<span class="qx-tex-fallback" title="TeX">' + esc + "</span>";
       }
     };
     out = out.replace(/\$\$([\s\S]+?)\$\$/g, (_, tex) => paint(tex, true));
@@ -1486,8 +1486,10 @@ window.Mx = (() => {
     // and making signed options look like duplicates (Q14 / Q22 PYQ).
     // Only peel mid-reaction orphan $ when more chem continues after \right.
     const looksChemReaction =
-      /\\rightarrow|\\longrightarrow|\\ce\{/.test(out) ||
-      (/\\mathrm\{[A-Z][A-Za-z0-9]*\}/.test(out) && /\\left\s*\(/.test(out) && /\\right\s*\)/.test(out));
+      /\\ce\{/.test(out) ||
+      ((/\\rightarrow|\\longrightarrow/.test(out)) &&
+        /\\mathrm\{[A-Z][a-z]?[A-Za-z0-9]*\}/.test(out) &&
+        /\\left\s*\(/.test(out));
 
     if (looksChemReaction) {
       // \right) $ \left( / \right) $ + / \right) $ \mathrm{…}  (mid-reaction shatter)
@@ -1523,7 +1525,9 @@ window.Mx = (() => {
         out = out.replace(/\$\$+/g, "$");
         if (!/\$/.test(out) || (out.match(/\$/g) || []).length % 2 !== 0) {
           const plain = out.replace(/\$/g, "");
-          if (/\\left/.test(plain) && /\\rightarrow|\\mathrm\{/.test(plain)) {
+          const tooLong = plain.replace(/\s+/g, " ").trim().length > 120;
+          const mixedEn = /\b(?:Statement|Define a relation|In the light|choose the correct|equivalence relation)\b/i.test(plain);
+          if (!tooLong && !mixedEn && /\\left/.test(plain) && /\\rightarrow|\\mathrm\{/.test(plain)) {
             out = "$" + plain.trim() + "$";
           }
         }
@@ -1651,7 +1655,13 @@ window.Mx = (() => {
     out = out.replace(/\$([^$]*)\bexists\b([^$]*)\$/g, (_, a, b) => "$" + a + "\\exists" + b + "$");
     out = out.replace(/(^|[^\\a-zA-Z])nabla\b/g, "$1\\nabla");
     out = out.replace(/(^|[^\\a-zA-Z])perp\b/g, "$1\\perp");
-    out = out.replace(/(^|[^\\a-zA-Z])parallel\b/g, "$1\\parallel");
+    // English "parallel to y=x" must stay prose; only TeX-adjacent parallel → \parallel
+    out = out.replace(/(^|[^\\a-zA-Z])parallel\b(?!\s+to\b)/g, function (m, pre, offset, full) {
+      const after = String(full || "").slice(offset + m.length);
+      if (/^\s+to\b/i.test(after)) return pre + "parallel";
+      if (/^\s*[.,;:]/.test(after) || /^\s*$/.test(after)) return pre + "parallel";
+      return pre + "\\parallel";
+    });
     // geometry angle token (not English "angle of incidence" mid-sentence alone)
     out = out.replace(/(^|[^\\a-zA-Z])angle\s+([A-Z]{1,4})\b/g, "$1\\angle $2");
     out = out.replace(/(^|[^\\a-zA-Z])oplus\b/g, "$1\\oplus");
@@ -2836,7 +2846,7 @@ window.Mx = (() => {
    */
   function peelProseKatexInDom(root) {
     const scope = root && root.querySelectorAll ? root : document;
-    const HOST_SEL = "#egSol, .eg-sol, .eg-sol-inline, .eg-sol-panel, .sol-body, .qx-sol-body, .qx-sol-flow, .qx-sol-card, #qaSolReveal, #qaResult, .mk-sol-body, .allen-sol";
+    const HOST_SEL = "#egSol, .eg-sol, .eg-sol-inline, .eg-sol-panel, .sol-body, .qx-sol-body, .qx-sol-flow, .qx-sol-card, #qaSolReveal, #qaResult, .mk-sol-body, .allen-sol, .eg-q-stem, #egQArea, .mtk-q-text, .qx-q-seg-text, .qx-q-text-only, .qx-marks-native-q";
     let hosts = [];
     try {
       if (scope.querySelectorAll) hosts = Array.prototype.slice.call(scope.querySelectorAll(HOST_SEL));
@@ -4340,6 +4350,7 @@ window.Mx = (() => {
       ".qx-prac-opt-text", ".qa-opt .qx-content", ".qx-content", ".qx-opt-text-only",
       ".qx-opt-pair-struct", ".qx-opt-pair-name",
       ".sol-body", ".sol p", ".mtk-sol .qx-content", ".qx-sol-body",
+      ".eg-q-stem", "#egQArea",
       ".qx-marks-native", ".qx-marks-native-opt", ".qx-marks-native-q", ".qx-prac-correct-ans",
       ".mtk-main .mtk-opt", ".mtk-main .qx-prac-opt", "#qaOpts", "#qxOpts",
       ".qx-question-body", ".qx-q-seg-text"
@@ -4534,6 +4545,56 @@ window.Mx = (() => {
     return /\bLet\s+[.,;:]\s|\bLet\s+\.\s|Let\s+Consider/i.test(t);
   }
 
+  function stemLooksGlued(html) {
+    const t = String(html || "").replace(/<[^>]+>/g, " ").replace(/\u00a0/g, " ").replace(/\s+/g, " ").trim();
+    const compact = t.replace(/\s+/g, "");
+    if (/LetX=|Definearelation|Risanequivalence|Inthelightof|choosethecorrect|representsaline|Forsome\(/i.test(compact)) return true;
+    const spaces = (t.match(/ /g) || []).length;
+    if (compact.length > 70 && spaces < compact.length / 22 && /[A-Za-z]{18,}/.test(compact)) return true;
+    return false;
+  }
+
+  function recoverGluedStemInDom(root) {
+    const el = root || (typeof document !== "undefined" ? document.getElementById("app-main") : null);
+    if (!el || !el.querySelectorAll) return;
+    const hosts = el.querySelectorAll(".eg-q-stem, #egQArea, .mtk-q-text, .qx-q-seg-text, .qx-marks-native-q, .qx-q-text-only");
+    if (!hosts.length) return;
+    let q = null;
+    try {
+      if (typeof QxImgClean !== "undefined" && QxImgClean.resolveCurrentQuestion) {
+        q = QxImgClean.resolveCurrentQuestion(el);
+      }
+    } catch (_) { /* */ }
+    if (!q && typeof getQ === "function" && window.QuantrexTestEngine && QuantrexTestEngine.getSession) {
+      try {
+        const sess = QuantrexTestEngine.getSession();
+        if (sess && sess.ids && sess.ids[sess.idx] != null) q = getQ(sess.ids[sess.idx]);
+      } catch (_) { /* */ }
+    }
+    hosts.forEach((host) => {
+      if (host.closest && host.closest("#egSol, #egSolPanel, .eg-sol, .eg-sol-panel, .sol-body, .qx-sol-flow, .qx-sol-card, #qaSolReveal")) return;
+      if (host.closest && host.closest(".mtk-opt, .qx-prac-opt, .qa-opt")) return;
+      if (!stemLooksGlued(host.innerHTML || host.textContent || "")) return;
+      let src = "";
+      try { src = host.getAttribute("data-qx-stem-src") || ""; } catch (_) { src = ""; }
+      if (!src && q) {
+        src = (typeof QxImgClean !== "undefined" && QxImgClean.bestStemHtml)
+          ? QxImgClean.bestStemHtml(q, q._qxOrigStem || q._qxBankQ || q.q)
+          : (q._qxOrigStem || q._qxBankQ || q.q || "");
+      }
+      if (!src) return;
+      let painted = "";
+      try { painted = html(src); } catch (_) { painted = String(src); }
+      if (painted && !stemLooksGlued(painted)) {
+        host.innerHTML = painted;
+        try { peelProseKatexInDom(host); } catch (_) { /* */ }
+      } else if (painted && painted !== host.innerHTML) {
+        host.innerHTML = painted;
+        try { peelProseKatexInDom(host); } catch (_) { /* */ }
+      }
+    });
+  }
+
   function recoverHollowStemInDom(root) {
     const el = root || (typeof document !== "undefined" ? document.getElementById("app-main") : null);
     if (!el || !el.querySelectorAll) return;
@@ -4718,7 +4779,9 @@ window.Mx = (() => {
             }).catch(() => typesetKatex(live))
           : Promise.resolve();
         pass2.finally(() => {
+          try { peelProseKatexInDom(el); } catch (_) { /* */ }
           try { recoverHollowStemInDom(el); } catch (_) { /* */ }
+          try { recoverGluedStemInDom(el); } catch (_) { /* */ }
           try {
             if (typeof QxImgClean !== "undefined" && QxImgClean.arrangePortraitFigures
               && !(document.body && document.body.classList.contains("marks-test-active"))) {
@@ -4806,6 +4869,9 @@ window.Mx = (() => {
         const need2 = /\$|\\\(|\\\[|\\[a-zA-Z]|<math[\s>]/i.test(el.innerHTML || "");
         const pass2 = need2 ? typeset(el) : Promise.resolve();
         pass2.finally(() => {
+          try { peelProseKatexInDom(el); } catch (_) { /* */ }
+          try { recoverHollowStemInDom(el); } catch (_) { /* */ }
+          try { recoverGluedStemInDom(el); } catch (_) { /* */ }
           // Only process images that exist — skip full-tree diagram scrub when empty
           const poolImgs = el.querySelectorAll("#qxDiagramSlot img, .qx-diagram-slot img, img.qx-pool-fig");
           if (!marksNative && poolImgs.length && typeof QxImgClean !== "undefined" && QxImgClean.processImage) {
@@ -4865,6 +4931,15 @@ window.Mx = (() => {
     out = out.replace(/\bchoosethe\b/gi, "choose the");
     out = out.replace(/\bcorrectoption\b/gi, "correct option");
     out = out.replace(/\bcorrectanswer\b/gi, "correct answer");
+    out = out.replace(/\bDefinearelation\b/gi, "Define a relation");
+    out = out.replace(/\bequivalencerelation\b/gi, "equivalence relation");
+    out = out.replace(/\bInthelightoftheabovestatements\b/gi, "In the light of the above statements");
+    out = out.replace(/\bchoosethecorrectanswerfromtheoptionsgivenbelow\b/gi, "choose the correct answer from the options given below");
+    out = out.replace(/\brepresentsaline\b/gi, "represents a line");
+    out = out.replace(/\bForsome\b/g, "For some");
+    out = out.replace(/\bthesetS\b/gi, "the set S");
+    out = out.replace(/\bStatementI\b/g, "Statement I");
+    out = out.replace(/\bStatementII\b/g, "Statement II");
     // Common PCM English glue / OCR (JEE Advanced banks)
     out = out.replace(/\bwhichofthefollowing\b/gi, "which of the following");
     out = out.replace(/\bthefollowing\b/gi, "the following");
@@ -4933,6 +5008,11 @@ window.Mx = (() => {
     if (s == null || s === "") return s;
     try {
       let out = qxSanitizeIncoming(String(s));
+      try {
+        if (typeof QxMathSanitize !== "undefined" && QxMathSanitize.repairMarksDollarSoup) {
+          out = QxMathSanitize.repairMarksDollarSoup(out);
+        }
+      } catch (_) { /* */ }
       try { out = convertAllMathML(out); } catch (_) { /* */ }
       out = proofreadExamText(out);
       out = healBrokenEnglishWords(out);
@@ -4968,6 +5048,7 @@ window.Mx = (() => {
     afterRender,
     afterRenderLight,
     recoverHollowStemInDom,
+    recoverGluedStemInDom,
     cleanDom,
     fixWordSpacing,
     unglueLowercaseMathProse,
