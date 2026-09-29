@@ -763,89 +763,17 @@ html[data-theme="dark"] .eg-stem {
   opacity: 1 !important;
 }
 
-/* qxmd164 — Practice Solution open: kill stem even against theme visibility:visible !important */
-html .eg-test-root.eg-sol-showing .eg-q-stem,
-html .eg-test-root.eg-sol-showing .eg-q-stem.eg-stem-sol-hidden,
-html .eg-test-root.eg-sol-showing #egQArea,
-html .eg-test-root.eg-sol-showing #egQArea *,
-html[data-theme="dark"] .eg-test-root.eg-sol-showing .eg-q-stem,
-html[data-theme="dark"] .eg-test-root.eg-sol-showing .eg-q-stem *,
-html[data-theme="dark"] .eg-test-root.eg-sol-showing .eg-q-stem .qx-content,
-html[data-theme="light"] .eg-test-root.eg-sol-showing .eg-q-stem,
-html[data-theme="light"] .eg-test-root.eg-sol-showing .eg-q-stem *,
-html[data-theme="dark"] .eg-test-root[data-test-theme="dark"].eg-sol-showing .eg-q-stem,
-html[data-theme="dark"] .eg-test-root[data-test-theme="dark"].eg-sol-showing .eg-q-stem *,
-html[data-theme="dark"] .eg-test-root[data-test-theme="light"].eg-sol-showing .eg-q-stem,
-html[data-theme="dark"] .eg-test-root[data-test-theme="light"].eg-sol-showing .eg-q-stem *,
-html[data-theme="light"] .eg-test-root[data-test-theme="dark"].eg-sol-showing .eg-q-stem,
-html[data-theme="light"] .eg-test-root[data-test-theme="light"].eg-sol-showing .eg-q-stem,
-.eg-test-root.eg-sol-showing .eg-q-stem .katex,
-.eg-test-root.eg-sol-showing .eg-q-stem .katex * {
+/* qxmd244 — MARKS keeps stem visible. Do not smash #egQArea * / .katex. */
+html .eg-test-root .eg-stem-sol-hidden,
+html .eg-test-root .qx-stem-sol-hidden {
   display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  height: 0 !important;
-  max-height: 0 !important;
-  overflow: hidden !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  border: 0 !important;
-  /* qxmd179: no absolute — ghost stem above header */
-  position: static !important;
-  left: auto !important;
-  top: auto !important;
-  width: auto !important;
-  clip: auto !important;
-  clip-path: none !important;
-  pointer-events: none !important;
 }
 
 
-/* ========== qxmd165: stem hide sitewide (Practice + Allen + Examgoal) dark/light ========== */
-html .eg-test-root.eg-sol-showing .eg-q-stem,
-html .eg-test-root.eg-sol-showing #egQArea,
-html .eg-test-root.eg-sol-showing .mtk-q-text.eg-stem-sol-hidden,
-html .mtk-test-root.eg-sol-showing .mtk-q-text,
-html .mtk-test-root.eg-sol-showing .mq-stem,
-html .mtk-test-root.eg-sol-showing .qx-prac-q,
-html .mtk-test-root.qx-sol-showing .mtk-q-text,
-html .allen-practice.eg-sol-showing .mtk-q-text,
-html .allen-practice.qx-sol-showing .mtk-q-text,
-html .qx-practice-page.eg-sol-showing .qx-prac-q,
-html .qx-practice-page.qx-sol-showing .qx-prac-q,
+/* qxmd244: stem stays visible (MARKS). Hide only explicit stem-sol-hidden. */
 html .eg-stem-sol-hidden,
-html .qx-stem-sol-hidden,
-html[data-theme="dark"] .eg-test-root.eg-sol-showing .eg-q-stem,
-html[data-theme="dark"] .eg-test-root.eg-sol-showing #egQArea,
-html[data-theme="dark"] .mtk-test-root.eg-sol-showing .mtk-q-text,
-html[data-theme="dark"] .allen-practice.eg-sol-showing .mtk-q-text,
-html[data-theme="light"] .eg-test-root.eg-sol-showing .eg-q-stem,
-html[data-theme="light"] .eg-test-root.eg-sol-showing #egQArea,
-html[data-theme="light"] .mtk-test-root.eg-sol-showing .mtk-q-text,
-html[data-theme="light"] .allen-practice.eg-sol-showing .mtk-q-text,
-html .eg-test-root[data-test-theme="dark"].eg-sol-showing .eg-q-stem,
-html .eg-test-root[data-test-theme="light"].eg-sol-showing .eg-q-stem,
-html .mtk-test-root[data-test-theme="dark"].eg-sol-showing .mtk-q-text,
-html .mtk-test-root[data-test-theme="light"].eg-sol-showing .mtk-q-text {
+html .qx-stem-sol-hidden {
   display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  height: 0 !important;
-  max-height: 0 !important;
-  overflow: hidden !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  border: 0 !important;
-  clip: auto !important;
-  clip-path: none !important;
-  /* qxmd179: no absolute — ghost stem above header */
-  position: static !important;
-  left: auto !important;
-  top: auto !important;
-  pointer-events: none !important;
-  color: transparent !important;
-  font-size: 0 !important;
-  line-height: 0 !important;
 }
 
 /* Solution math readable in both themes */

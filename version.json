@@ -1,10 +1,10 @@
 {
-    "cache": "qx-pwa-qxmd243",
-    "ts": 1790700000000,
-    "title": "qxmd243: squares, cubes and math layout match MARKS",
+    "cache": "qx-pwa-qxmd244",
+    "ts": 1790701200000,
+    "title": "qxmd244: squares and cubes stay raised like MARKS",
     "site": "https://www.quantrexacademy.com",
-    "build": "qxmd243",
-    "body": "KaTeX superscripts stay raised. USB TeX is kept over MathML dumps. Glued LetN recovery only fires on real glue. Official answers are unchanged.",
+    "build": "qxmd244",
+    "body": "KaTeX superscripts keep engine height. Stem stays visible. Official answers are unchanged.",
     "package": "com.quantrexacademy.app",
     "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }

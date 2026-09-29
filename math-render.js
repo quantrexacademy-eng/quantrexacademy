@@ -119,7 +119,7 @@ window.Mx = (() => {
       const lock = document.createElement("link");
       lock.id = "qxKatexLockCss";
       lock.rel = "stylesheet";
-      lock.href = "assets/qx-katex-lock.css?v=" + encodeURIComponent((typeof window !== "undefined" && window.QX_BUILD) || "qxmd243");
+      lock.href = "assets/qx-katex-lock.css?v=" + encodeURIComponent((typeof window !== "undefined" && window.QX_BUILD) || "qxmd244");
       document.head.appendChild(lock);
     } else {
       try { document.head.appendChild(document.getElementById("qxKatexLockCss")); } catch (_) { /* */ }
@@ -128,11 +128,12 @@ window.Mx = (() => {
       const s = document.createElement("style");
       s.id = "qxWorldMathCss";
       s.textContent = [
+        ".katex,.katex *{box-sizing:content-box!important}",
         ".katex{font-size:1.08em;line-height:1.2;padding:0 .1em}",
         ".katex .vlist-t{display:inline-table!important;border-collapse:collapse!important}",
         ".katex .vlist-r{display:table-row!important}",
         ".katex .vlist{display:table-cell!important;position:relative!important;vertical-align:bottom!important}",
-        ".katex .vlist>span{display:block!important;height:0!important;position:relative!important}",
+        ".katex .vlist>span{display:block!important;position:relative!important}",
         ".katex .vlist>span>span{display:inline-block!important}",
         ".katex .pstrut{overflow:hidden!important;width:0!important}",
         ".katex .strut,.katex .base{display:inline-block!important}",
@@ -3705,7 +3706,8 @@ window.Mx = (() => {
     const hosts = el.querySelectorAll(
       ".mtk-q-text, .qx-q-text-only, .mtk-opt-text, .qx-prac-opt-text, .qa-q, .qx-prac-q, " +
       ".qx-content, .sol-body, .qx-sol-body, .q-text, .qx-q-seg-text, .qx-marks-native-q, " +
-      ".qx-marks-native-opt, .allen-q-body, .mtk-numerical, .qx-prac-correct-ans, .allen-q-body"
+      ".qx-marks-native-opt, .allen-q-body, .mtk-numerical, .qx-prac-correct-ans, " +
+      ".eg-q-stem, #egQArea"
     );
     const list = hosts.length ? hosts : [el];
     const skipSel = "script, style, .katex, .katex-html, mjx-container, .MathJax, " +

@@ -730,89 +730,18 @@ html[data-theme="dark"] .qx-sum-compare-eq {
   -webkit-text-fill-color: #e2e8f0 !important;
 }
 
-/* qxmd164 — Practice Solution open: kill stem even against theme visibility:visible !important */
-html .eg-test-root.eg-sol-showing .eg-q-stem,
-html .eg-test-root.eg-sol-showing .eg-q-stem.eg-stem-sol-hidden,
-html .eg-test-root.eg-sol-showing #egQArea,
-html .eg-test-root.eg-sol-showing #egQArea *,
-html[data-theme="dark"] .eg-test-root.eg-sol-showing .eg-q-stem,
-html[data-theme="dark"] .eg-test-root.eg-sol-showing .eg-q-stem *,
-html[data-theme="dark"] .eg-test-root.eg-sol-showing .eg-q-stem .qx-content,
-html[data-theme="light"] .eg-test-root.eg-sol-showing .eg-q-stem,
-html[data-theme="light"] .eg-test-root.eg-sol-showing .eg-q-stem *,
-html[data-theme="dark"] .eg-test-root[data-test-theme="dark"].eg-sol-showing .eg-q-stem,
-html[data-theme="dark"] .eg-test-root[data-test-theme="dark"].eg-sol-showing .eg-q-stem *,
-html[data-theme="dark"] .eg-test-root[data-test-theme="light"].eg-sol-showing .eg-q-stem,
-html[data-theme="dark"] .eg-test-root[data-test-theme="light"].eg-sol-showing .eg-q-stem *,
-html[data-theme="light"] .eg-test-root[data-test-theme="dark"].eg-sol-showing .eg-q-stem,
-html[data-theme="light"] .eg-test-root[data-test-theme="light"].eg-sol-showing .eg-q-stem,
-.eg-test-root.eg-sol-showing .eg-q-stem .katex,
-.eg-test-root.eg-sol-showing .eg-q-stem .katex * {
+/* qxmd244 — MARKS keeps stem+options while solution is open.
+   Never display:none / height:0 on #egQArea * or .katex (flattens x^2 / x^3). */
+html .eg-test-root .eg-stem-sol-hidden,
+html .eg-test-root .qx-stem-sol-hidden {
   display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  height: 0 !important;
-  max-height: 0 !important;
-  overflow: hidden !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  border: 0 !important;
-  /* qxmd179: no absolute — ghost stem above header */
-  position: static !important;
-  left: auto !important;
-  top: auto !important;
-  width: auto !important;
-  clip: auto !important;
-  clip-path: none !important;
-  pointer-events: none !important;
 }
 
 
-/* ========== qxmd165: stem hide sitewide (Practice + Allen + Examgoal) dark/light ========== */
-html .eg-test-root.eg-sol-showing .eg-q-stem,
-html .eg-test-root.eg-sol-showing #egQArea,
-html .eg-test-root.eg-sol-showing .mtk-q-text.eg-stem-sol-hidden,
-html .mtk-test-root.eg-sol-showing .mtk-q-text,
-html .mtk-test-root.eg-sol-showing .mq-stem,
-html .mtk-test-root.eg-sol-showing .qx-prac-q,
-html .mtk-test-root.qx-sol-showing .mtk-q-text,
-html .allen-practice.eg-sol-showing .mtk-q-text,
-html .allen-practice.qx-sol-showing .mtk-q-text,
-html .qx-practice-page.eg-sol-showing .qx-prac-q,
-html .qx-practice-page.qx-sol-showing .qx-prac-q,
+/* qxmd244: MARKS keeps stem. Hide only explicit stem-sol-hidden. */
 html .eg-stem-sol-hidden,
-html .qx-stem-sol-hidden,
-html[data-theme="dark"] .eg-test-root.eg-sol-showing .eg-q-stem,
-html[data-theme="dark"] .eg-test-root.eg-sol-showing #egQArea,
-html[data-theme="dark"] .mtk-test-root.eg-sol-showing .mtk-q-text,
-html[data-theme="dark"] .allen-practice.eg-sol-showing .mtk-q-text,
-html[data-theme="light"] .eg-test-root.eg-sol-showing .eg-q-stem,
-html[data-theme="light"] .eg-test-root.eg-sol-showing #egQArea,
-html[data-theme="light"] .mtk-test-root.eg-sol-showing .mtk-q-text,
-html[data-theme="light"] .allen-practice.eg-sol-showing .mtk-q-text,
-html .eg-test-root[data-test-theme="dark"].eg-sol-showing .eg-q-stem,
-html .eg-test-root[data-test-theme="light"].eg-sol-showing .eg-q-stem,
-html .mtk-test-root[data-test-theme="dark"].eg-sol-showing .mtk-q-text,
-html .mtk-test-root[data-test-theme="light"].eg-sol-showing .mtk-q-text {
+html .qx-stem-sol-hidden {
   display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  height: 0 !important;
-  max-height: 0 !important;
-  overflow: hidden !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  border: 0 !important;
-  clip: auto !important;
-  clip-path: none !important;
-  /* qxmd179: no absolute — ghost stem above header */
-  position: static !important;
-  left: auto !important;
-  top: auto !important;
-  pointer-events: none !important;
-  color: transparent !important;
-  font-size: 0 !important;
-  line-height: 0 !important;
 }
 
 /* Solution math readable in both themes */
@@ -922,114 +851,12 @@ html .mtk-test-root[data-test-theme="dark"] .mtk-opt-text img {
   border-radius: 8px;
 }
 
-/* Stem-hide must still win (do not regress qxmd165) */
-html .eg-test-root.eg-sol-showing .eg-q-stem,
-html .eg-test-root.eg-sol-showing #egQArea,
-html .eg-test-root.eg-sol-showing .eg-q-stem img,
-html .eg-test-root.eg-sol-showing #egQArea img,
-html .mtk-test-root.eg-sol-showing .mtk-q-text,
-html .allen-practice.eg-sol-showing .mtk-q-text,
+/* qxmd244: MARKS keeps stem visible. Hide only explicit stem-sol-hidden. */
 html .eg-stem-sol-hidden,
 html .qx-stem-sol-hidden {
   display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-}
-
-/* qxmd175: stem-hide wins over qxmd167 visibility:visible on .eg-q-stem */
-html .eg-test-root.eg-sol-showing .eg-q-stem,
-html .eg-test-root.eg-sol-showing #egQArea,
-html .eg-test-root.eg-sol-showing .eg-q-stem *,
-html .eg-test-root.eg-sol-showing #egQArea *,
-html[data-theme="light"] .eg-test-root.eg-sol-showing .eg-q-stem,
-html[data-theme="dark"] .eg-test-root.eg-sol-showing .eg-q-stem,
-html .eg-test-root[data-test-theme="light"].eg-sol-showing .eg-q-stem,
-html .eg-test-root[data-test-theme="dark"].eg-sol-showing .eg-q-stem,
-html .eg-stem-sol-hidden,
-html .qx-stem-sol-hidden {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  -webkit-text-fill-color: transparent !important;
-  color: transparent !important;
-  height: 0 !important;
-  max-height: 0 !important;
-  overflow: hidden !important;
-  pointer-events: none !important;
-}
-
-
-/* qxmd176: stem-hide without off-canvas absolute (ghost-above-header fix) */
-html .eg-test-root.eg-sol-showing.eg-qxmd176 .eg-q-stem,
-html .eg-test-root.eg-sol-showing.eg-qxmd176 #egQArea,
-html .eg-test-root.eg-sol-showing.eg-qxmd176 .eg-q-stem *,
-html .eg-test-root.eg-sol-showing.eg-qxmd176 #egQArea *,
-html[data-theme="light"] .eg-test-root.eg-sol-showing.eg-qxmd176 .eg-q-stem,
-html[data-theme="dark"] .eg-test-root.eg-sol-showing.eg-qxmd176 .eg-q-stem,
-html .eg-test-root[data-test-theme="light"].eg-sol-showing.eg-qxmd176 .eg-q-stem,
-html .eg-test-root[data-test-theme="dark"].eg-sol-showing.eg-qxmd176 .eg-q-stem,
-html .eg-test-root.eg-qxmd176 .eg-stem-sol-hidden,
-html .eg-test-root.eg-qxmd176 .qx-stem-sol-hidden {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  height: 0 !important;
-  max-height: 0 !important;
-  overflow: hidden !important;
-  pointer-events: none !important;
-  position: static !important;
-  left: auto !important;
-  clip: auto !important;
-  clip-path: none !important;
-  -webkit-text-fill-color: transparent !important;
-  color: transparent !important;
-}
-
-
-/* qxmd177: stem-hide + no scroll-anchoring jump (pairs with examgoal qxmd177) */
-html .eg-test-root.eg-sol-showing.eg-qxmd177 .eg-q-stem,
-html .eg-test-root.eg-sol-showing.eg-qxmd177 #egQArea,
-html .eg-test-root.eg-qxmd177 .eg-stem-sol-hidden,
-html .eg-test-root.eg-qxmd177 .qx-stem-sol-hidden {
-  display: none !important;
-  visibility: hidden !important;
-  height: 0 !important;
-  max-height: 0 !important;
-  overflow: hidden !important;
-  position: static !important;
-  left: auto !important;
-  clip: auto !important;
-  clip-path: none !important;
-  pointer-events: none !important;
 }
 html .eg-test-root.eg-qxmd177,
 html .eg-test-root.eg-qxmd177 .eg-body {
   overflow-anchor: none !important;
-}
-
-
-/* qxmd179: vis stem — display:none wins; never absolute/top:0 */
-html .eg-test-root.eg-sol-showing.eg-qxmd179 #egQArea,
-html .eg-test-root.eg-sol-showing.eg-qxmd179 .eg-q-stem,
-html .eg-test-root.eg-sol-showing.eg-qxmd179 .eg-q-stem *,
-html .eg-test-root.eg-sol-showing.eg-qxmd179 #egQArea *,
-html .eg-test-root.eg-qxmd179 .eg-stem-sol-hidden,
-html .eg-test-root.eg-qxmd179 .qx-stem-sol-hidden,
-html[data-theme="light"] .eg-test-root.eg-sol-showing.eg-qxmd179 .eg-q-stem,
-html[data-theme="dark"] .eg-test-root.eg-sol-showing.eg-qxmd179 .eg-q-stem {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  height: 0 !important;
-  max-height: 0 !important;
-  overflow: hidden !important;
-  pointer-events: none !important;
-  position: static !important;
-  left: auto !important;
-  top: auto !important;
-  clip: auto !important;
-  clip-path: none !important;
-  -webkit-text-fill-color: transparent !important;
-  color: transparent !important;
 }
