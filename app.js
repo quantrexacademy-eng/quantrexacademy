@@ -1282,11 +1282,14 @@ function qxRenderPracticeQuestion(id) {
       }
     } catch (_) { /* */ }
     try {
-      if (qPre && typeof QxImgClean !== "undefined" && QxImgClean.rewriteHtmlFigures) {
+      if (qPre && typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.paintQuestion) {
+        QxOwnedFigs.paintQuestion(qPre);
+      } else if (qPre && typeof QxImgClean !== "undefined" && QxImgClean.rewriteHtmlFigures) {
         if (qPre.q) qPre.q = QxImgClean.rewriteHtmlFigures(qPre.q);
+        if (qPre.solution && /<img/i.test(String(qPre.solution))) qPre.solution = QxImgClean.rewriteHtmlFigures(qPre.solution);
         if (Array.isArray(qPre.options)) {
           qPre.options = qPre.options.map(o =>
-            (o && /cdn-question-pool|cdn\.quizrr|https?:\/\/\.app|2026_modules/i.test(String(o)))
+            (o && /<img|cdn-question-pool|cdn\.quizrr|https?:\/\/\.app|2026_modules/i.test(String(o)))
               ? QxImgClean.rewriteHtmlFigures(o) : o
           );
         }
@@ -1370,7 +1373,11 @@ function qxRenderPracticeQuestion(id) {
           if (QxImgClean.loadBookFigureMaps) await QxImgClean.loadBookFigureMaps();
           if (QxImgClean.prepareQuestionFigures) await QxImgClean.prepareQuestionFigures(q);
           const before = String(q.q || "");
-          if (QxImgClean.rewriteHtmlFigures) q.q = QxImgClean.rewriteHtmlFigures(q.q);
+          if (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.paintQuestion) QxOwnedFigs.paintQuestion(q);
+          else if (QxImgClean.rewriteHtmlFigures) {
+            q.q = QxImgClean.rewriteHtmlFigures(q.q);
+            if (q.solution) q.solution = QxImgClean.rewriteHtmlFigures(q.solution);
+          }
           if (q.q !== before && /\/assets\/diagrams\//i.test(String(q.q))
             && !/qx-irodov|AKCR2_|2026_modules\/jee_advanced_physics/i.test(String(q.q))) {
             try {
@@ -1380,12 +1387,16 @@ function qxRenderPracticeQuestion(id) {
             } catch (_) { /* */ }
           }
           if (QxImgClean.rewriteAllPoolImgs) QxImgClean.rewriteAllPoolImgs(main);
+          if (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.paintDom) QxOwnedFigs.paintDom(main);
         } catch (_) { /* */ }
       };
       void figPass();
     } else if (main && typeof QxImgClean !== "undefined" && QxImgClean.rewriteAllPoolImgs) {
-      // One lightweight pin of pool imgs to CDN
+      // One lightweight pin of pool imgs to Storage/proxy
       try { QxImgClean.rewriteAllPoolImgs(main); } catch (_) { /* */ }
+      try {
+        if (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.paintDom) QxOwnedFigs.paintDom(main);
+      } catch (_) { /* */ }
     }
   } catch (e) {
     console.error("Practice render failed:", id, e);

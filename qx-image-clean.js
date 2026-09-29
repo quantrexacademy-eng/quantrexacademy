@@ -570,11 +570,12 @@ window.QxImgClean = (() => {
             ? (QxOwnedFigs.displaySrc(fixed) || QxOwnedFigs.displaySrc(src))
             : "";
           if (disp && disp !== src) {
+            const escU = (u) => String(u || "").replace(/&/g, "&amp;").replace(/"/g, "&quot;");
             const stored = (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.ownedFigureUrl)
               ? (QxOwnedFigs.qxBookStorageSrc ? QxOwnedFigs.qxBookStorageSrc(fixed) : QxOwnedFigs.ownedFigureUrl(fixed))
               : disp;
-            return "src=" + q + disp + q + " data-qx-orig-src=" + q + (fixed || src) + q
-              + (stored ? " data-qx-storage-src=" + q + stored + q : "")
+            return "src=" + q + escU(disp) + q + " data-qx-orig-src=" + q + escU(fixed || src) + q
+              + (stored ? " data-qx-storage-src=" + q + escU(stored) + q : "")
               + " class=\"qx-pool-fig qx-no-wm\"";
           }
         }
@@ -590,10 +591,11 @@ window.QxImgClean = (() => {
             ? QxOwnedFigs.displaySrc(fixed)
             : (typeof proxyImageUrl === "function" ? proxyImageUrl(fixed) : "");
           if (disp) {
+            const escU = (u) => String(u || "").replace(/&/g, "&amp;").replace(/"/g, "&quot;");
             const stored = (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.ownedFigureUrl)
               ? (QxOwnedFigs.ownedFigureUrl(fixed) || fixed)
               : fixed;
-            return `src=${q}${disp}${q} data-qx-orig-src=${q}${fixed}${q} data-qx-storage-src=${q}${stored}${q}`;
+            return `src=${q}${escU(disp)}${q} data-qx-orig-src=${q}${escU(fixed)}${q} data-qx-storage-src=${q}${escU(stored)}${q}`;
           }
         }
         if (fixed && fixed !== src) return `src=${q}${fixed}${q}`;
@@ -2509,8 +2511,10 @@ window.QxImgClean = (() => {
       qx-self PYQ bakes still carry Marks haze and MUST go through pale wipe. */
   function isAlreadyCleanFigure(src) {
     const s = String(src || "");
-    return /qx-org-|qx-smiles|pubchem\.ncbi|cactus\.nci|quantrex-wm|quantrex-logo/i.test(s)
-      || /\/assets\/diagrams\/qx-(?:org|book)-/i.test(s);
+    // Hosting does not serve /assets/diagrams/** — those must remap to Storage.
+    if (/\/assets\/diagrams\//i.test(s)) return false;
+    return /qx-smiles|pubchem\.ncbi|cactus\.nci|quantrex-wm|quantrex-logo/i.test(s)
+      || (/firebasestorage/i.test(s) && /qx-(?:org|book|self|irodov)-/i.test(s));
   }
 
   /** Needs MARKS wipe (CDN pool OR Firebase copies of Marks pool figs) */
@@ -2552,12 +2556,24 @@ window.QxImgClean = (() => {
       } catch (_) { /* keep */ }
       return fixed;
     }
-    // Organic / smiles / local baked books: never proxy (HCV Vol 2 was blanking)
-    if (isAlreadyCleanFigure(fixed) || /\/assets\/diagrams\/qx-(?:book|org)-/i.test(fixed)) {
+    // Organic / smiles / local baked books: Storage-first (Hosting 404s /assets/diagrams)
+    if (isAlreadyCleanFigure(fixed) || /\/assets\/diagrams\/qx-(?:book|org|self)-/i.test(fixed)) {
+      if (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.displaySrc) {
+        const mapped = QxOwnedFigs.displaySrc(fixed);
+        if (mapped && !/\/assets\/diagrams\//i.test(mapped)) return mapped;
+      }
       const rel = String(cdnSrc || fixed);
+      if (/firebasestorage/i.test(rel)) return rel;
       if (/^https?:/i.test(rel) && /\/assets\/diagrams\//i.test(rel)) {
         const i = rel.indexOf("/assets/diagrams/");
-        if (i >= 0) return rel.slice(i).split("?")[0];
+        if (i >= 0) {
+          const local = rel.slice(i).split("?")[0];
+          if (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.displaySrc) {
+            const mapped2 = QxOwnedFigs.displaySrc(local);
+            if (mapped2 && !/\/assets\/diagrams\//i.test(mapped2)) return mapped2;
+          }
+          return local;
+        }
       }
       return fixUrl(rel).split("?")[0] || rel;
     }
@@ -2693,7 +2709,7 @@ window.QxImgClean = (() => {
     if (!scope || !scope.querySelectorAll) return 0;
     let n = 0;
     const STRIP_VER = "32";
-    const FIG_SEL = "img.qx-pool-fig, img.qx-opt-fig-img, img.qx-irodov-stem, img.qx-match-fig, #qxDiagramSlot img, .qx-diagram-slot img, .mtk-q-text img, .mtk-opt-text img, .qx-prac-q img, .qx-prac-opt-text img, .sol-body img, .qx-content img[src*='proxy-image'], .qx-content img[src*='firebasestorage'], .qx-content img[src*='getmarks'], .qx-content img[src*='quizrr']";
+    const FIG_SEL = "img.qx-pool-fig, img.qx-opt-fig-img, img.qx-irodov-stem, img.qx-match-fig, img.qx-sol-fig, #qxDiagramSlot img, .qx-diagram-slot img, .mtk-q-text img, .mtk-opt-text img, .qx-prac-q img, .qx-prac-opt-text img, .sol-body img, #egSol img, .eg-sol img, #egSolPanel img, #egQArea img, .qx-content img[src*='proxy-image'], .qx-content img[src*='firebasestorage'], .qx-content img[src*='getmarks'], .qx-content img[src*='quizrr'], .qx-content img[src*='diagrams']";
     scope.querySelectorAll(FIG_SEL).forEach((img) => {
       if (!img) return;
       if (SKIP_RX.test(fixUrl(img.getAttribute("src") || ""))
@@ -2786,9 +2802,18 @@ window.QxImgClean = (() => {
         return;
       }
 
-      // Local clean already showing — keep visible
-      if (isAlreadyCleanFigure(cur) || isPermanentCleanSrc(cur)
-        || /hcv-|qx-irodov|qx-perm-|qx-alc-|\/assets\/diagrams\/qx-(?:book|self|org)-|\/assets\/diagrams\//i.test(cur)) {
+      // Local /assets/diagrams 404 on Firebase Hosting — Storage-first
+      if (/\/assets\/diagrams\//i.test(cur) && typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.displaySrc) {
+        const mappedLocal = QxOwnedFigs.displaySrc(cur);
+        if (mappedLocal && mappedLocal !== cur && !/\/assets\/diagrams\//i.test(mappedLocal)) {
+          if (!img.getAttribute("data-qx-orig-src")) img.setAttribute("data-qx-orig-src", src || cur);
+          img.setAttribute("src", mappedLocal);
+          cur = mappedLocal;
+        }
+      }
+      // Already on Storage / permanent clean — keep visible (never revert to Hosting-404)
+      if (/firebasestorage/i.test(cur) || isPermanentCleanSrc(cur)
+        || /hcv-|qx-irodov|qx-perm-|qx-alc-/i.test(cur)) {
         img.dataset.qxSoftStrip = "2";
         img.dataset.qxSoftVer = STRIP_VER;
         img.dataset.qxFigFrozen = "1";
@@ -2796,6 +2821,8 @@ window.QxImgClean = (() => {
         img.style.opacity = "1";
         img.style.visibility = "visible";
         img.style.display = "block";
+        img.removeAttribute("crossorigin");
+        img.crossOrigin = null;
         return;
       }
 
@@ -2810,7 +2837,10 @@ window.QxImgClean = (() => {
       img.removeAttribute("crossorigin");
       img.crossOrigin = null;
       if (disp && fixUrl(img.getAttribute("src") || "") !== fixUrl(disp)) {
-        img.setAttribute("src", disp);
+        const nowSrc = img.getAttribute("src") || "";
+        const nowStore = /firebasestorage/i.test(nowSrc);
+        const dispLocal = /\/assets\/diagrams\//i.test(disp);
+        if (!(nowStore && dispLocal)) img.setAttribute("src", disp);
       }
       // Fallback chain: local miss → proxy → direct CDN
       if (!img.getAttribute("onerror") || !/data-qx-orig-src|qxOrigSrc/i.test(img.getAttribute("onerror") || "")) {
@@ -2934,7 +2964,7 @@ window.QxImgClean = (() => {
     if (/\/assets\/diagrams\/qx-(?:book|self|org)-/i.test(cdn)) {
       if (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.displaySrc) {
         const d = QxOwnedFigs.displaySrc(cdn);
-        if (d && d !== cdn) return d;
+        if (d && d !== cdn && !/\/assets\/diagrams\//i.test(d)) return d;
       }
       return cdn.split("?")[0] || cdn;
     }

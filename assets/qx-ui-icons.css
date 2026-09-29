@@ -514,6 +514,7 @@ html[data-theme="dark"] .eg-vs-sec {
 #egQArea img,
 #egSol img,
 .eg-sol img,
+#egSolPanel img,
 .qx-sol-flow img,
 .sol-body img,
 .qx-prac-q img,
@@ -528,6 +529,7 @@ img.qx-no-wm {
   content-visibility: visible !important;
   max-width: 100% !important;
   height: auto !important;
+  min-height: 32px;
   object-fit: contain !important;
   background: #fff !important;
 }

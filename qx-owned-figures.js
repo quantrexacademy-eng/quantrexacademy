@@ -24,7 +24,7 @@
     return m;
   })();
   const UI_KEEP = /ic_content_exam_|cpyqb\/subjects|ncert_toolbox|app_assets\/img\/exams\//i;
-  const FIG_VER = "qxmd229";
+  const FIG_VER = "qxmd246";
   const POOL_RX = /cdn-question-pool\.getmarks|cdn\.quizrr|watermarked_images|\/pyq\/|AKCR2_|2026_modules/i;
   let LOCAL_FIG_MAP = {};
   try {
@@ -57,7 +57,10 @@
   }
 
   function unwrap(url) {
-    let s = String(url || "").trim();
+    let s = String(url || "").trim()
+      .replace(/&amp;/gi, "&")
+      .replace(/&quot;/gi, "\"")
+      .replace(/&#39;/g, "'");
     for (let i = 0; i < 4; i++) {
       if (!/proxy-image|restore-image/i.test(s)) break;
       try {
@@ -190,7 +193,7 @@
       return raw.split("?")[0] || raw;
     }
     if (/\/assets\/(?:diagrams|qx-figures\/perm|clean-diagrams)\//i.test(raw)) {
-      const mapped = localDiagramRemote(raw) || ownedFigureUrl(raw);
+      const mapped = localDiagramRemote(raw) || ownedFigureUrl(raw) || qxBookStorageSrc(raw);
       if (mapped) return mapped;
     }
     const owned = ownedFigureUrl(raw) || raw;
@@ -204,11 +207,20 @@
         const mapped = ownedFigureUrl(fetchUrl);
         if (mapped) fetchUrl = mapped;
         else if (card || pool) fetchUrl = raw;
-        else return "";
+        else {
+          const proxyInner = ownedFigureUrl(raw) || raw;
+          return "/api/proxy-image?url=" + encodeURIComponent(proxyInner) + "&clean=1&v=" + FIG_VER;
+        }
       }
-      if (!fetchUrl) return "";
+      if (!fetchUrl) {
+        return "/api/proxy-image?url=" + encodeURIComponent(raw) + "&clean=1&v=" + FIG_VER;
+      }
       const fc = card || isCardArt(fetchUrl) ? "&fc=1" : "";
       return "/api/proxy-image?url=" + encodeURIComponent(fetchUrl) + "&clean=1" + fc + "&v=" + FIG_VER;
+    }
+    if (/\/assets\/diagrams\//i.test(inner)) {
+      const fb = qxBookStorageSrc(inner) || localDiagramRemote(inner);
+      if (fb) return fb;
     }
     return inner;
   }
@@ -261,10 +273,31 @@
       el.src = o;
       return;
     }
-    if (t === 2 && o) {
-      el.src = "/api/proxy-image?url=" + encodeURIComponent(o) + "&clean=1&v=" + FIG_VER + "&r=" + Date.now();
-      return;
+    if (t === 2) {
+      const origHint = unwrap(el.getAttribute("data-qx-orig-src") || o || cur);
+      if (origHint && /getmarks\.app|quizrr\.in|watermarked_images|\/pyq\//i.test(origHint)) {
+        el.src = "/api/proxy-image?url=" + encodeURIComponent(origHint) + "&clean=1&v=" + FIG_VER + "&r=" + Date.now();
+        return;
+      }
+      if (o) {
+        el.src = "/api/proxy-image?url=" + encodeURIComponent(o) + "&clean=1&v=" + FIG_VER + "&r=" + Date.now();
+        return;
+      }
     }
+    if (t >= 3) {
+      const origHint = unwrap(el.getAttribute("data-qx-orig-src") || o || "");
+      const last = "/api/proxy-image?url=" + encodeURIComponent(origHint || o || cur) + "&clean=1&v=" + FIG_VER + "&r=" + Date.now();
+      if (last && last !== cur) el.src = last;
+      try {
+        el.style.display = "block";
+        el.style.visibility = "visible";
+        el.style.opacity = "1";
+      } catch (_) { /* */ }
+    }
+  }
+
+  function escAttr(s) {
+    return String(s || "").replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
   }
 
   function rewriteHtml(html) {
@@ -274,26 +307,33 @@
     s = s.replace(/<img\b([^>]*?)\/\s+(data-qx-[^>]*?)>/gi, "<img$1 $2>");
     return s.replace(/<img\b([^>]*)>/gi, (full, attrs) => {
       let a = String(attrs || "").replace(/\/\s*$/, " ");
-      const srcM = a.match(/\bsrc=(["'])([^"']*)\1/i);
+      if (/qx-marks-icon|qx-exam-logo|qx-book-photo|qx-ui-brand-logo/i.test(a)) return full;
+      const srcM = a.match(/\bsrc=(["'])([^"']*)\1/i) || a.match(/\bsrc=([^\s>]+)/i);
       const origM = a.match(/\bdata-qx-orig-src=(["'])([^"']*)\1/i);
-      const src = srcM ? srcM[2] : "";
+      const src = srcM ? (srcM[2] != null ? srcM[2] : srcM[1]) : "";
       if (/^data:/i.test(src)) return full;
+      if (UI_KEEP.test(src) && !FOREIGN.test(src)) return full;
       const hint = (origM && origM[2]) || src;
-      const disp = displaySrc(hint) || displaySrc(src);
+      const disp = displaySrc(hint) || displaySrc(src) || (
+        src ? "/api/proxy-image?url=" + encodeURIComponent(src) + "&clean=1&v=" + FIG_VER : ""
+      );
       if (!disp) return "<img" + a + ">";
       const stored = qxBookStorageSrc(hint) || qxBookStorageSrc(src) || ownedFigureUrl(hint) || ownedFigureUrl(src) || disp;
-      if (srcM) a = a.replace(/\bsrc=(["'])[^"']*\1/i, "src=$1" + disp + "$1");
-      else a += ' src="' + disp + '"';
-      if (!/\bdata-qx-orig-src=/i.test(a)) {
-        a += ' data-qx-orig-src="' + String(hint).replace(/"/g, "&quot;") + '"';
-      }
+      const dispEsc = escAttr(disp);
+      const storedEsc = escAttr(stored);
+      const hintEsc = escAttr(hint || src);
+      if (srcM && srcM[0]) a = a.replace(srcM[0], 'src="' + dispEsc + '"');
+      else if (/\bsrc=/i.test(a)) a = a.replace(/\bsrc=(["'])[^"']*\1/i, 'src="' + dispEsc + '"').replace(/\bsrc=([^\s"'>]+)/i, 'src="' + dispEsc + '"');
+      else a += ' src="' + dispEsc + '"';
+      if (!/\bdata-qx-orig-src=/i.test(a)) a += ' data-qx-orig-src="' + hintEsc + '"';
       if (stored) {
         if (/\bdata-qx-storage-src=/i.test(a)) {
-          a = a.replace(/\bdata-qx-storage-src=(["'])[^"']*\1/i, "data-qx-storage-src=$1" + stored + "$1");
+          a = a.replace(/\bdata-qx-storage-src=(["'])[^"']*\1/i, "data-qx-storage-src=$1" + storedEsc + "$1");
         } else {
-          a += ' data-qx-storage-src="' + String(stored).replace(/"/g, "&quot;") + '"';
+          a += ' data-qx-storage-src="' + storedEsc + '"';
         }
       }
+      a = a.replace(/\s*crossorigin(?:\s*=\s*(["'])[^"']*\1)?/gi, "");
       if (!/\bonerror=/i.test(a)) {
         a += ' onerror="if(window.QxOwnedFigs&&QxOwnedFigs.retryOnError)QxOwnedFigs.retryOnError(this)"';
       }
@@ -302,8 +342,106 @@
         a = a.replace(/\bclass=(["'])([^"']*)\1/i, "class=$1$2 qx-pool-fig qx-no-wm$1");
       }
       if (!/\bdecoding=/i.test(a)) a += ' decoding="async"';
+      if (!/\bloading=/i.test(a)) a += ' loading="eager"';
+      if (/\bstyle=/i.test(a)) {
+        a = a.replace(/\bstyle=(["'])([^"']*)\1/i, (mm, q, st) => {
+          let ns = String(st || "").replace(/height\s*:\s*[^;]+;?/gi, "height:auto;");
+          if (!/max-width/i.test(ns)) ns += "max-width:100%;";
+          if (!/height\s*:/i.test(ns)) ns += "height:auto;";
+          if (!/display\s*:/i.test(ns)) ns += "display:block;";
+          if (!/background/i.test(ns)) ns += "background:#fff;";
+          return "style=" + q + ns + q;
+        });
+      } else {
+        a += ' style="max-width:100%;height:auto;display:block;margin:10px auto;background:#fff;object-fit:contain"';
+      }
       return "<img" + a + ">";
     });
+  }
+
+  function paintQuestion(q) {
+    if (!q) return q;
+    try {
+      if (q.q && /<img/i.test(String(q.q))) q.q = rewriteHtml(q.q);
+      if (q.question && q.question !== q.q && /<img/i.test(String(q.question))) q.question = rewriteHtml(q.question);
+      if (q.solution && /<img/i.test(String(q.solution))) q.solution = rewriteHtml(q.solution);
+      if (q.explanation && /<img/i.test(String(q.explanation))) q.explanation = rewriteHtml(q.explanation);
+      if (Array.isArray(q.options)) {
+        q.options = q.options.map((o) =>
+          (typeof o === "string" && /<img/i.test(o)) ? rewriteHtml(o) : o
+        );
+      }
+    } catch (_) { /* */ }
+    return q;
+  }
+
+  function isUiImg(img) {
+    if (!img) return true;
+    try {
+      if (img.closest && img.closest(".eg-top, .qx-book-photo, .qx-book-cover, header, .eg-foot, #egFoot")) return true;
+    } catch (_) { /* */ }
+    const cls = String(img.className || "");
+    if (/qx-marks-icon|qx-exam-logo|qx-book-photo|qx-ui-brand-logo|subj-ic-img|dash-tool-logo/i.test(cls)) return true;
+    const src = img.getAttribute("src") || "";
+    if (UI_KEEP.test(src) && !FOREIGN.test(src) && !POOL_RX.test(src)) return true;
+    return false;
+  }
+
+  function paintDom(root) {
+    if (!root || !root.querySelectorAll) return 0;
+    let n = 0;
+    try {
+      root.querySelectorAll("img").forEach((img) => {
+        if (!img || isUiImg(img)) return;
+        try {
+          img.removeAttribute("crossorigin");
+          img.crossOrigin = null;
+        } catch (_) { /* */ }
+        let src = img.getAttribute("src") || "";
+        const orig = img.getAttribute("data-qx-orig-src") || src;
+        const disp = displaySrc(orig) || displaySrc(src);
+        if (disp && disp !== src) {
+          if (!img.getAttribute("data-qx-orig-src") && orig) img.setAttribute("data-qx-orig-src", orig);
+          const stored = qxBookStorageSrc(orig) || ownedFigureUrl(orig) || disp;
+          if (stored && !img.getAttribute("data-qx-storage-src")) img.setAttribute("data-qx-storage-src", stored);
+          img.setAttribute("src", disp);
+          src = disp;
+          n++;
+        }
+        img.classList.add("qx-pool-fig", "qx-no-wm");
+        img.classList.remove("qx-img-hidden");
+        img.style.display = "block";
+        img.style.visibility = "visible";
+        img.style.opacity = "1";
+        img.style.maxWidth = "100%";
+        img.style.height = "auto";
+        img.style.background = "#fff";
+        img.style.objectFit = "contain";
+        if (!img.getAttribute("onerror")) {
+          img.setAttribute("onerror", "if(window.QxOwnedFigs&&QxOwnedFigs.retryOnError)QxOwnedFigs.retryOnError(this)");
+        }
+      });
+    } catch (_) { /* */ }
+    return n;
+  }
+
+  if (typeof document !== "undefined" && document.addEventListener) {
+    const paintEvt = function (e) {
+      try {
+        const d = e && e.detail;
+        const root = (d && (d.root || d.el))
+          || (typeof document !== "undefined" && (
+            document.getElementById("egSolPanel")
+            || document.getElementById("egQArea")
+            || document.getElementById("app-main")
+          ));
+        if (root) paintDom(root);
+        const sol = typeof document !== "undefined" && document.getElementById("egSolPanel");
+        if (sol && sol !== root) paintDom(sol);
+      } catch (_) { /* */ }
+    };
+    document.addEventListener("qx:question-rendered", paintEvt);
+    document.addEventListener("qx:practice-ready", paintEvt);
   }
 
   return {
@@ -312,6 +450,8 @@
     irodovStorageUrl,
     displaySrc,
     rewriteHtml,
+    paintQuestion,
+    paintDom,
     qxBookStorageSrc,
     retryOnError,
     storageUrlForPath,

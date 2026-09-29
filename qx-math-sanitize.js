@@ -617,6 +617,12 @@
     };
     let s = String(raw == null ? "" : raw);
     if (!s) return { html: s, meta };
+    const figSlots = [];
+    s = s.replace(/<img\b[^>]*>/gi, (m) => {
+      const k = "__QXMSFIG" + figSlots.length + "__";
+      figSlots.push(m);
+      return k;
+    });
 
     meta.hadRawKatex = detectBrokenKatex(s);
     meta.hadUnsafe = /<(?:script|iframe)\b/i.test(s);
@@ -665,6 +671,11 @@
       }
     }
 
+    if (figSlots.length) {
+      figSlots.forEach((tag, i) => {
+        s = String(s).split("__QXMSFIG" + i + "__").join(tag);
+      });
+    }
     return { html: s, meta };
   }
 

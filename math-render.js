@@ -305,7 +305,7 @@ window.Mx = (() => {
   ];
   const PYQ_CDN = "https://cdn-question-pool.getmarks.app/";
   const BROKEN_CDN_RX = /https?:\/\/\.app\//gi;
-  const PROTECTED_IMG_RX = /cdn-question-pool\.getmarks|cdn\.quizrr\.in|\/pyq\/|formula_cards|cbse\/|NEET\/NCERT|ap_eamcet|assets\/diagrams\/qx-match/i;
+  const PROTECTED_IMG_RX = /cdn-question-pool\.getmarks|cdn\.quizrr\.in|\/pyq\/|formula_cards|cbse\/|NEET\/NCERT|ap_eamcet|assets\/diagrams|firebasestorage|proxy-image|qx-book-|qx-self-|qx-org-|qx-irodov-/i;
   // NEVER match Quizrr path "watermarked_images" — that wiped List-I/II figures (stripBranding).
   const BRAND_IMG_RX = /(?:watermark(?!ed_images|_improved)|branding|marks-premium|ic_marks|marks_selected|getmarks-brand|web_assets|scoremarks)/i;
   const BRAND_LOGO_RX = /(?:watermark(?!ed_images|_improved)|marks-premium|ic_marks|marks_selected|getmarks-brand|web_assets|scoremarks)/i;
@@ -469,7 +469,7 @@ window.Mx = (() => {
   function protectImgUrls(str) {
     const slots = [];
     const safe = String(str).replace(/(<img[^>]+src=["'])([^"']+)(["'])/gi, (m, pre, url, post) => {
-      if (!PROTECTED_IMG_RX.test(url) && !FORMULA_IMG_RX.test(url)) return m;
+      if (!PROTECTED_IMG_RX.test(url) && !FORMULA_IMG_RX.test(url) && !/^https?:/i.test(url) && !/\/assets\//i.test(url)) return m;
       const key = `__QXIMG${slots.length}__`;
       slots.push(url);
       return `${pre}${key}${post}`;
@@ -481,6 +481,35 @@ window.Mx = (() => {
     let out = str;
     slots.forEach((url, i) => { out = out.split(`__QXIMG${i}__`).join(url); });
     return out;
+  }
+
+  function parkAllFigTags(str) {
+    const slots = [];
+    const safe = String(str || "").replace(/<img\b[^>]*>/gi, (m) => {
+      const k = "__QXFIGTAG" + slots.length + "__";
+      slots.push(m);
+      return k;
+    });
+    return { safe, slots };
+  }
+
+  function restoreAllFigTags(str, slots) {
+    let out = String(str || "");
+    (slots || []).forEach((tag, i) => {
+      out = out.split("__QXFIGTAG" + i + "__").join(tag);
+    });
+    return out;
+  }
+
+  function texifyBareFnsInMath(s) {
+    return String(s || "").replace(/\$([^$]+)\$/g, (full, inner) => {
+      if (/\\begin\{|\\ce\{/.test(inner)) return full;
+      const t = String(inner).replace(
+        /(^|[^\\])\b(log|ln|sin|cos|tan|sec|csc|cot|exp|lim|det|min|max)\b(?=\s*(?:\\left|\(|_|\^))/g,
+        "$1\\$2"
+      );
+      return "$" + t + "$";
+    });
   }
 
   function fixBrokenImgUrls(str) {
@@ -4127,8 +4156,8 @@ window.Mx = (() => {
             ? QxOwnedFigs.displaySrc(orig)
             : "/api/proxy-image?url=" + encodeURIComponent(orig) + "&clean=1&v=qxfig110")
           : orig;
-        const safe = disp.replace(/"/g, "&quot;");
-        const safeOrig = orig.replace(/"/g, "&quot;");
+        const safe = disp.replace(/&/g, "&amp;").replace(/"/g, "&quot;");
+        const safeOrig = orig.replace(/&/g, "&amp;").replace(/"/g, "&quot;");
         return `<img class="qx-pool-fig qx-match-fig qx-no-wm qx-fig-ready qx-wm-clean" src="${safe}" data-qx-orig-src="${safeOrig}" alt="" loading="eager" decoding="async" style="max-width:min(100%,260px);max-height:150px;width:auto;height:auto;display:block;margin:6px auto;object-fit:contain;background:#fff;border-radius:8px">`;
       });
     }
@@ -4687,10 +4716,15 @@ window.Mx = (() => {
     if (typeof QxImgClean !== "undefined" && QxImgClean.stripSpilledFigUrls) {
       try { s = QxImgClean.stripSpilledFigUrls(s); } catch (_) { /* */ }
     }
-    s = s.replace(/\bsrc=(["'])(https?:\/\/[^"']+)\1/gi, (m, q, url) => {
-      if (/data:|assets\/diagrams|assets\/qx-figures/i.test(url)) return m;
+    s = s.replace(/\bsrc=(["'])([^"']+)\1/gi, (m, q, url) => {
+      if (/^data:/i.test(url)) return m;
       const esc = (u) => String(u || "").replace(/&/g, "&amp;").replace(/"/g, "&quot;");
-      if (/proxy-image/i.test(url) && /clean=1/i.test(url)) {
+      if (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.displaySrc
+        && /cdn-question-pool|cdn\.quizrr|getmarks\.app|\/pyq\/|watermarked_images|\/assets\/diagrams\/|qx-book-|qx-self-|qx-org-|qx-irodov-|firebasestorage|proxy-image/i.test(url)) {
+        const d = QxOwnedFigs.displaySrc(url);
+        if (d) return `src="${esc(d)}"`;
+      }
+      if (/proxy-image/i.test(url) && /clean=1/i.test(url) && !/getmarks|quizrr/i.test(url)) {
         return `src="${esc(url)}"`;
       }
       if (/proxy-image|restore-image/i.test(url)) {
@@ -4713,7 +4747,7 @@ window.Mx = (() => {
         if (typeof QxImgClean !== "undefined" && QxImgClean.proxyImageUrl) {
           return `src="${esc(QxImgClean.proxyImageUrl(url))}"`;
         }
-        return `src="${esc("/api/proxy-image?url=" + encodeURIComponent(url) + "&clean=1&v=qxfig110")}"`;
+        return `src="${esc("/api/proxy-image?url=" + encodeURIComponent(url) + "&clean=1&v=qxmd246")}"`;
       }
       return m;
     });
@@ -4966,7 +5000,8 @@ window.Mx = (() => {
         { left: "$", right: "$", display: false },
         { left: "\\(", right: "\\)", display: false }
       ],
-      ignoredClasses: ["mathjax_ignore", "tex2jax_ignore", "qx-diagram-slot", "qx-fig", "katex", "qx-tex-code"]
+      ignoredClasses: ["mathjax_ignore", "tex2jax_ignore", "qx-diagram-slot", "qx-fig", "katex", "qx-tex-code", "qx-pool-fig", "qx-sol-fig", "qx-fig-flat"],
+      ignoredTags: ["script", "noscript", "style", "textarea", "pre", "code", "option", "img", "svg"]
     }, KATEX_OPTS);
     list.forEach(node => {
       try {
@@ -5576,7 +5611,8 @@ window.Mx = (() => {
   function cleanQuestionText(s) {
     if (s == null || s === "") return s;
     try {
-      let out = qxSanitizeIncoming(String(s));
+      const parked = parkAllFigTags(String(s));
+      let out = qxSanitizeIncoming(parked.safe);
       try {
         if (typeof QxMathSanitize !== "undefined" && QxMathSanitize.repairMarksDollarSoup) {
           out = QxMathSanitize.repairMarksDollarSoup(out);
@@ -5626,6 +5662,7 @@ window.Mx = (() => {
       } catch (_) { /* */ }
       out = healBrokenEnglishWords(out);
       try { out = restoreAxisHyphenMath(out); } catch (_) { /* */ }
+      try { out = texifyBareFnsInMath(out); } catch (_) { /* */ }
       // Safety: never leak private-use park tokens (tofu boxes) into student UI
       if (/[\uE100-\uE111\uE200-\uE211\uE410-\uE411]/.test(out)) {
         out = out.replace(/\uE100\d+\uE101/g, "");
@@ -5633,6 +5670,7 @@ window.Mx = (() => {
         out = out.replace(/\uE410([^\uE411]*)\uE411/g, "$$$1$-");
         out = out.replace(/[\uE000-\uF8FF]/g, "");
       }
+      out = restoreAllFigTags(out, parked.slots);
       return out;
     } catch (e) {
       return s;

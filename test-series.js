@@ -59,10 +59,16 @@ window.tsClearActiveQMap = tsClearActiveQMap;
 
 function tsFixUrls(val) {
   if (val == null) return val;
-  const fix = s => String(s)
-    .replace(/https?:\/\/\.app\//gi, "https://cdn-question-pool.getmarks.app/")
-    .replace(/\/fly\/@width\//gi, "/fly/640/")
-    .replace(/@width/g, "640");
+  const fix = s => {
+    let t = String(s)
+      .replace(/https?:\/\/\.app\//gi, "https://cdn-question-pool.getmarks.app/")
+      .replace(/\/fly\/@width\//gi, "/fly/640/")
+      .replace(/@width/g, "640");
+    if (/<img/i.test(t) && typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.rewriteHtml) {
+      try { t = QxOwnedFigs.rewriteHtml(t); } catch (_) { /* */ }
+    }
+    return t;
+  };
   if (typeof val === "string") return fix(val);
   if (Array.isArray(val)) return val.map(tsFixUrls);
   return val;

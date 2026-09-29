@@ -103,6 +103,16 @@ const QuantrexSolution = (() => {
     s = s.replace(/‹\s*(\/?\s*math\b[^›]*)›/gi, "<$1>");
     s = s.replace(/‹\s*(\/?\s*[a-z][a-z0-9]*\b[^›]*)›/gi, "<$1>");
 
+    // Bare log/sin inside $…$ → TeX commands (screenshot 1161: "l o g")
+    s = s.replace(/\$([^$]+)\$/g, (full, inner) => {
+      if (/\\begin\{|\\ce\{/.test(inner)) return full;
+      const t = String(inner).replace(
+        /(^|[^\\])\b(log|ln|sin|cos|tan|sec|csc|cot|exp|lim|det|min|max)\b(?=\s*(?:\\left|\(|_|\^))/g,
+        "$1\\$2"
+      );
+      return "$" + t + "$";
+    });
+
     return s;
   }
 
@@ -502,6 +512,7 @@ const QuantrexSolution = (() => {
         src = src.replace(/https?:\/\/\.app\//gi, "https://cdn-question-pool.getmarks.app/");
         a = a.replace(/\bsrc=(["'])[^"']+\1/i, `src=$1${src}$1`);
       }
+      const escU = (u) => String(u || "").replace(/&/g, "&amp;").replace(/"/g, "&quot;");
       const disp = (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.displaySrc)
         ? QxOwnedFigs.displaySrc(src)
         : "";
@@ -509,10 +520,10 @@ const QuantrexSolution = (() => {
         ? (QxOwnedFigs.ownedFigureUrl(src) || src)
         : src;
       if (disp && disp !== src) {
-        if (!/\bdata-qx-orig-src=/i.test(a)) a += ` data-qx-orig-src="${String(stored).replace(/"/g, "&quot;")}"`;
-        a = a.replace(/\bsrc=(["'])[^"']+\1/i, `src=$1${disp}$1`);
+        if (!/\bdata-qx-orig-src=/i.test(a)) a += ` data-qx-orig-src="${escU(stored)}"`;
+        a = a.replace(/\bsrc=(["'])[^"']+\1/i, `src=$1${escU(disp)}$1`);
       } else if (src && !/\bdata-qx-orig-src=/i.test(a)) {
-        a += ` data-qx-orig-src="${String(stored).replace(/"/g, "&quot;")}"`;
+        a += ` data-qx-orig-src="${escU(stored)}"`;
       }
       if (!/\breferrerpolicy=/i.test(a)) a += ' referrerpolicy="no-referrer"';
       if (!/\bonerror=/i.test(a)) {
@@ -534,15 +545,22 @@ const QuantrexSolution = (() => {
 
   function handleSolImgErr(img) {
     if (!img) return;
-    const orig = img.getAttribute("data-qx-orig-src") || img.src;
+    try {
+      img.classList.remove("qx-img-hidden");
+      img.style.display = "block";
+      img.style.visibility = "visible";
+      img.style.opacity = "1";
+      img.style.background = "#fff";
+      img.removeAttribute("crossorigin");
+    } catch (_) { /* */ }
+    if (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.retryOnError) {
+      try { QxOwnedFigs.retryOnError(img); return; } catch (_) { /* */ }
+    }
+    const orig = img.getAttribute("data-qx-storage-src") || img.getAttribute("data-qx-orig-src") || img.src;
     if (!img.dataset.retried && orig && !orig.startsWith("data:")) {
       img.dataset.retried = "1";
-      if (!orig.includes("/api/proxy-image")) {
-        img.src = "/api/proxy-image?clean=1&url=" + encodeURIComponent(orig);
-        return;
-      }
+      img.src = "/api/proxy-image?clean=1&url=" + encodeURIComponent(orig);
     }
-    img.classList.add("qx-img-hidden"); img.style.display = "none";
   }
 
   /**
@@ -1468,6 +1486,12 @@ const QuantrexSolution = (() => {
     try { raw = unwrapKatexDump(raw); } catch (_) { /* */ }
     raw = stripLeadingStemEcho(raw, q);
     try { raw = ensureNoStemHead(raw, q); } catch (_) { /* */ }
+    const _figSlots = [];
+    raw = String(raw || "").replace(/<img\b[^>]*>/gi, (m) => {
+      const k = "__QXSOLFIG" + _figSlots.length + "__";
+      _figSlots.push(m);
+      return k;
+    });
     // Same deep TeX/symbol repair as stems/options (solutions were missing shatter/tofu fixes)
     if (typeof Mx !== "undefined" && Mx.cleanQuestionText) {
       try { raw = Mx.cleanQuestionText(raw); } catch (_) { /* */ }
@@ -1500,6 +1524,15 @@ const QuantrexSolution = (() => {
       } catch (_) { /* */ }
     }
     /* Keep original line structure; toCleanFlow was gluing words and dumping katex HTML. */
+    if (_figSlots.length) {
+      _figSlots.forEach((tag, i) => {
+        raw = String(raw).split("__QXSOLFIG" + i + "__").join(tag);
+      });
+    }
+    try {
+      if (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.rewriteHtml) raw = QxOwnedFigs.rewriteHtml(raw);
+      else if (typeof QxImgClean !== "undefined" && QxImgClean.rewriteHtmlFigures) raw = QxImgClean.rewriteHtmlFigures(raw);
+    } catch (_) { /* */ }
     let html;
     try {
       html = solRenderHtml(raw);

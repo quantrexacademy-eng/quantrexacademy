@@ -770,6 +770,21 @@ async function loadChapterBank(slug, subject, chapter) {
         }
       } catch (_) { /* */ }
       _qxBrandQuestionMeta(q);
+      try {
+        if (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.paintQuestion) {
+          QxOwnedFigs.paintQuestion(q);
+        } else if (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.rewriteHtml) {
+          const rw = QxOwnedFigs.rewriteHtml;
+          if (q.q && /<img/i.test(String(q.q))) q.q = rw(q.q);
+          if (q.solution && /<img/i.test(String(q.solution))) q.solution = rw(q.solution);
+          if (q.explanation && /<img/i.test(String(q.explanation))) q.explanation = rw(q.explanation);
+          if (Array.isArray(q.options)) {
+            q.options = q.options.map((o) =>
+              (typeof o === "string" && /<img/i.test(o)) ? rw(o) : o
+            );
+          }
+        }
+      } catch (_) { /* */ }
       if (q.id != null && have[String(q.id)]) continue;
       add.push(q);
     }
@@ -14706,6 +14721,9 @@ async function loadBookChapter(bookId, chapterKey) {
     if (o.q && !o._qxOrigStem) o._qxOrigStem = o.q;
     if (Array.isArray(o.options) && !o._qxBankOptions) o._qxBankOptions = o.options.slice();
     if (Array.isArray(o.options) && !o._qxOrigOptions) o._qxOrigOptions = o.options.slice();
+    try {
+      if (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.paintQuestion) QxOwnedFigs.paintQuestion(o);
+    } catch (_) { /* */ }
     try {
       if (typeof QxImgClean !== "undefined" && QxImgClean.pinOriginalQuestion) QxImgClean.pinOriginalQuestion(o);
     } catch (_) { /* */ }

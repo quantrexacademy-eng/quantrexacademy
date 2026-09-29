@@ -1293,7 +1293,7 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
       '<strong>Solution</strong>' +
       '<button type="button" class="eg-sol-panel-close" id="egSolClose" title="Close">✕</button>' +
       '</header>' +
-      '<div class="eg-sol eg-sol-inline" id="egSol">' + solInner + '</div>' +
+      '<div class="eg-sol eg-sol-inline qx-content" id="egSol">' + solInner + '</div>' +
       '</div>';
 
     try {
@@ -1466,9 +1466,20 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
         qxTypesetSol(solEl);
         qxTypesetSol(panel);
         try {
+          if (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.paintDom) {
+            QxOwnedFigs.paintDom(panel);
+            if (solEl) QxOwnedFigs.paintDom(solEl);
+          } else if (typeof QxImgClean !== "undefined" && QxImgClean.rewriteAllPoolImgs) {
+            QxImgClean.rewriteAllPoolImgs(panel);
+          }
+        } catch (_) { /* */ }
+        try {
           if (solEl && String(solEl.textContent || "").replace(/\s+/g, " ").trim().length < 12 && solInner) {
             solEl.innerHTML = solInner;
             qxTypesetSol(solEl);
+            try {
+              if (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.paintDom) QxOwnedFigs.paintDom(solEl);
+            } catch (_p) { /* */ }
           }
         } catch (_) { /* */ }
         stripStemRescuedFromSolDom(panel);
@@ -1478,6 +1489,9 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
               const live = root.querySelector("#egSolPanel #egSol") || root.querySelector("#egSolPanel");
               qxTypesetSol(live);
               stripStemRescuedFromSolDom(root);
+              if (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.paintDom) {
+                QxOwnedFigs.paintDom(live || root);
+              }
             } catch (_) { /* */ }
           }, ms);
         });

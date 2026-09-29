@@ -121,8 +121,11 @@ const QuantrexCatalog = (() => {
         q._qxBankOptions = recOpts.slice();
       }
     }
-    if (rec.solution && (!q.solution || String(q.solution).length < 20)) q.solution = rec.solution;
-    if (rec.explanation && !q.explanation) q.explanation = rec.explanation;
+    if (rec.solution && (!q.solution || String(q.solution).length < 20)) q.solution = proofHtml(rec.solution);
+    if (rec.explanation && !q.explanation) q.explanation = proofHtml(rec.explanation);
+    try {
+      if (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.paintQuestion) QxOwnedFigs.paintQuestion(q);
+    } catch (_) { /* */ }
     if (q.answer == null && rec.answer != null) q.answer = rec.answer;
     if (q.answer == null && rec.correctAnswer != null) q.answer = rec.correctAnswer;
     if (!q.answers && rec.answers) q.answers = rec.answers;

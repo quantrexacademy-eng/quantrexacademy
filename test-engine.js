@@ -2387,11 +2387,14 @@ const QuantrexTestEngine = (() => {
       } catch (_) { /* */ }
       try {
         // Sync rewrite CDN → local Irodov/book maps when already loaded
-        if (typeof QxImgClean !== "undefined" && QxImgClean.rewriteHtmlFigures) {
+        if (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.paintQuestion) {
+          QxOwnedFigs.paintQuestion(q);
+        } else if (typeof QxImgClean !== "undefined" && QxImgClean.rewriteHtmlFigures) {
           if (q.q) q.q = QxImgClean.rewriteHtmlFigures(q.q);
+          if (q.solution && /<img/i.test(String(q.solution))) q.solution = QxImgClean.rewriteHtmlFigures(q.solution);
           if (Array.isArray(q.options)) {
             q.options = q.options.map(o =>
-              (o && /cdn-question-pool|cdn\.quizrr|https?:\/\/\.app|2026_modules/i.test(String(o)))
+              (o && /<img|cdn-question-pool|cdn\.quizrr|https?:\/\/\.app|2026_modules/i.test(String(o)))
                 ? QxImgClean.rewriteHtmlFigures(o) : o
             );
           }
@@ -2408,10 +2411,12 @@ const QuantrexTestEngine = (() => {
     try { applyTestZoomToDom(getTestZoom()); } catch (_) { /* */ }
     try { finalizeDiagrams(main); } catch (_) { /* */ }
     try {
+      if (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.paintDom) QxOwnedFigs.paintDom(main);
       if (typeof QxImgClean !== "undefined") {
         if (QxImgClean.rewriteAllPoolImgs) QxImgClean.rewriteAllPoolImgs(main);
         if (QxImgClean.finalizeAll) QxImgClean.finalizeAll(main, q);
       }
+      if (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.paintDom) QxOwnedFigs.paintDom(main);
     } catch (_) { /* */ }
     // Light math path only in CBT — never block Next on watermark/img scrub
     try {
@@ -2445,17 +2450,22 @@ const QuantrexTestEngine = (() => {
         // Re-paint only if stem gained local figures and still on same Q
         try {
           if (!session || getQ(session.ids[session.idx]) !== q) return;
-          if (QxImgClean.rewriteHtmlFigures) {
+          if (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.paintQuestion) {
+            QxOwnedFigs.paintQuestion(q);
+          } else if (QxImgClean.rewriteHtmlFigures) {
             const before = q.q;
             q.q = QxImgClean.rewriteHtmlFigures(q.q);
+            if (q.solution) q.solution = QxImgClean.rewriteHtmlFigures(q.solution);
             // Re-paint only when we swapped CDN → local clean asset
             if (q.q !== before && /\/assets\/(diagrams|qx-figures|clean-diagrams)\//i.test(String(q.q))) {
               paintQuestionNow(main, q);
               return;
             }
           }
+          if (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.paintDom) QxOwnedFigs.paintDom(main);
           if (QxImgClean.rewriteAllPoolImgs) QxImgClean.rewriteAllPoolImgs(main);
           if (QxImgClean.finalizeAll) QxImgClean.finalizeAll(main, q);
+          if (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.paintDom) QxOwnedFigs.paintDom(main);
           if (typeof QxTestEnginePerf !== "undefined") {
             QxTestEnginePerf.prioritizeVisibleFigures(main);
           }
@@ -5169,11 +5179,14 @@ function organizeMarksPaper(questionIds, opts) {
           q._advSection = "MC";
         }
         // Fix blank option figures: rewrite pool imgs
-        if (typeof QxImgClean !== "undefined" && QxImgClean.rewriteHtmlFigures) {
+        if (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.paintQuestion) {
+          QxOwnedFigs.paintQuestion(q);
+        } else if (typeof QxImgClean !== "undefined" && QxImgClean.rewriteHtmlFigures) {
           if (q.q) q.q = QxImgClean.rewriteHtmlFigures(q.q);
+          if (q.solution && /<img/i.test(String(q.solution))) q.solution = QxImgClean.rewriteHtmlFigures(q.solution);
           if (Array.isArray(q.options)) {
             q.options = q.options.map(op =>
-              (op && /cdn-question-pool|cdn\.quizrr|img/i.test(String(op)))
+              (op && /<img|cdn-question-pool|cdn\.quizrr/i.test(String(op)))
                 ? QxImgClean.rewriteHtmlFigures(String(op)) : op
             );
           }
