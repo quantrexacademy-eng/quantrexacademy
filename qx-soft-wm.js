@@ -83,15 +83,25 @@
         try {
           if (!img) return;
           if (img.classList.contains("qx-ui-brand-logo") || img.classList.contains("qx-marks-icon")) return;
-          if (img.dataset.qxPinnedClean === "1" && isCleanProxy(img.getAttribute("src") || "")
-            && /[?&]v=qxfig110(?:&|$)/i.test(img.getAttribute("src") || "")) {
+          const src = img.getAttribute("src") || "";
+          if (/firebasestorage|\/api\/proxy-image/i.test(src) && !/getmarks\.app|quizrr\.in/i.test(src)) {
             forceVisible(img);
             return;
           }
-          const src = img.getAttribute("src") || "";
+          if (img.dataset.qxPinnedClean === "1" && isCleanProxy(src)
+            && /[?&]v=qxfig110(?:&|$)/i.test(src)) {
+            forceVisible(img);
+            return;
+          }
           const orig = img.dataset.qxOrigSrc || src;
-          // Never replace a local baked figure with a proxy — figures must stay.
           if (/\/assets\/diagrams\//i.test(src) && !/org-src/i.test(src)) {
+            const mapped = (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.displaySrc)
+              ? QxOwnedFigs.displaySrc(src)
+              : "";
+            if (mapped && mapped !== src && !/\/assets\/diagrams\//i.test(mapped)) {
+              if (!img.dataset.qxOrigSrc) img.dataset.qxOrigSrc = src;
+              img.setAttribute("src", mapped);
+            }
             img.classList.add("qx-fig-ready", "qx-no-wm", "qx-pool-fig");
             forceVisible(img);
             return;
@@ -538,14 +548,18 @@
     clearTimeout(t);
     t = setTimeout(() => {
       try {
-        scan();
+        const root = document.getElementById("egQArea")
+          || document.getElementById("egSolPanel")
+          || document.getElementById("app-main");
+        if (root) scan(root);
       } catch (_) { /* */ }
     }, ms == null ? 60 : ms);
   }
 
   function boot() {
-    schedule(40);
-    schedule(350);
+    try {
+      hideMarksChrome(document.getElementById("app-main") || document);
+    } catch (_) { /* */ }
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);

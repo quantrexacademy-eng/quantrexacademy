@@ -125,6 +125,12 @@
   function pinCleanSrc(img) {
     if (!img) return;
     try {
+      const cur0 = img.getAttribute("src") || "";
+      if (/firebasestorage|\/api\/proxy-image/i.test(cur0) && !/getmarks\.app|quizrr\.in/i.test(cur0)) {
+        img.removeAttribute("crossorigin");
+        forceVisible(img);
+        return;
+      }
       if (img.dataset.qxPinnedClean === "1" && isCleanProxy(img.getAttribute("src") || "")
         && /[?&]v=qxfig110(?:&|$)/i.test(img.getAttribute("src") || "")) {
         forceVisible(img);
@@ -150,8 +156,8 @@
       const owned = (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.ownedFigureUrl)
         ? (QxOwnedFigs.ownedFigureUrl(cdn) || cdn)
         : cdn;
-      img.dataset.qxOrigSrc = owned;
-      img.dataset.qxStorageSrc = owned;
+      if (!img.dataset.qxOrigSrc) img.dataset.qxOrigSrc = cdn;
+      if (owned) img.dataset.qxStorageSrc = owned;
       if (isCleanProxy(cur) && /[?&]v=qxfig110(?:&|$)/i.test(cur) && !/getmarks|quizrr/i.test(cur)) {
         img.dataset.qxPinnedClean = "1";
         img.removeAttribute("crossorigin");
@@ -238,18 +244,12 @@
     schedulePass(root);
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", () => schedulePass(document.getElementById("app-main")));
-  } else {
-    schedulePass(document.getElementById("app-main"));
+  function onFigEvt(e) {
+    const root = e && e.detail && (e.detail.root || e.detail.el);
+    if (root) schedulePass(root);
   }
-
-  window.addEventListener("qx:question-rendered", () => {
-    setTimeout(() => schedulePass(document.getElementById("app-main")), 50);
-  });
-  window.addEventListener("qx:practice-ready", () => {
-    setTimeout(() => schedulePass(document.getElementById("app-main")), 90);
-  });
+  window.addEventListener("qx:question-rendered", onFigEvt);
+  window.addEventListener("qx:practice-ready", onFigEvt);
 
   window.QxNoWmGuard = { pass, schedulePass, nukeDom, forceVisible, pinCleanSrc, stripCache: new Map() };
 })();

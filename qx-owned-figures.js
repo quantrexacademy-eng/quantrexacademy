@@ -24,7 +24,7 @@
     return m;
   })();
   const UI_KEEP = /ic_content_exam_|cpyqb\/subjects|ncert_toolbox|app_assets\/img\/exams\//i;
-  const FIG_VER = "qxmd246";
+  const FIG_VER = "qxmd247";
   const POOL_RX = /cdn-question-pool\.getmarks|cdn\.quizrr|watermarked_images|\/pyq\/|AKCR2_|2026_modules/i;
   let LOCAL_FIG_MAP = {};
   try {
@@ -225,75 +225,51 @@
     return inner;
   }
 
+  function stopFigRetry(el) {
+    try {
+      el.onerror = null;
+      el.removeAttribute("onerror");
+    } catch (_) { /* */ }
+  }
+
+  function isStableFigSrc(src) {
+    const s = String(src || "").replace(/&amp;/gi, "&");
+    if (!s) return false;
+    if (/getmarks\.app|quizrr\.in/i.test(s) && !/\/api\/proxy-image/i.test(s)) return false;
+    if (/\/assets\/diagrams\//i.test(s)) return false;
+    return /firebasestorage|\/api\/proxy-image/i.test(s);
+  }
+
   function retryOnError(el) {
     if (!el) return;
     try {
+      el.removeAttribute("crossorigin");
       el.style.display = "block";
       el.style.visibility = "visible";
       el.style.opacity = "1";
       el.style.background = "#fff";
-      el.style.minHeight = "";
-      el.removeAttribute("crossorigin");
     } catch (_) { /* */ }
     const t = parseInt(el.dataset.qxFigTry || "0", 10);
-    let o = el.getAttribute("data-qx-storage-src") || el.getAttribute("data-qx-orig-src") || "";
-    const cur = el.getAttribute("src") || "";
-    try {
-      if (/proxy-image|restore-image/i.test(o)) {
-        const u = new URL(o, "https://www.quantrexacademy.com");
-        const inner = u.searchParams.get("url");
-        if (inner) o = inner;
-      }
-    } catch (_) { /* */ }
-    if (/getmarks\.app|quizrr\.in/i.test(o)) {
-      const mapped = ownedFigureUrl(o);
-      if (mapped) o = mapped;
+    if (t >= 2) {
+      stopFigRetry(el);
+      return;
     }
-    const nextTry = String(t + 1);
-    el.dataset.qxFigTry = nextTry;
+    el.dataset.qxFigTry = String(t + 1);
+    const orig = unwrap(el.getAttribute("data-qx-orig-src") || "");
+    const cur = el.getAttribute("src") || "";
     if (t === 0) {
-      const bookFb = qxBookStorageSrc(o || cur) || qxBookStorageSrc(el.getAttribute("data-qx-storage-src") || "");
-      if (bookFb && bookFb !== cur) {
-        el.src = bookFb;
-        return;
-      }
-      const disp = displaySrc(o || cur);
-      if (disp && disp !== cur && !/\/assets\/diagrams\/qx-book-/i.test(disp)) {
+      const disp = displaySrc(orig || cur);
+      if (disp && disp !== cur) {
         el.src = disp;
         return;
       }
-      if (bookFb) { el.src = bookFb; return; }
-      if (disp && disp !== cur) { el.src = disp; return; }
-      if (o) {
-        el.src = "/api/proxy-image?url=" + encodeURIComponent(o) + "&clean=1&v=" + FIG_VER;
-        return;
-      }
     }
-    if (t === 1 && o && /\/api\/proxy-image/i.test(cur) && !/getmarks\.app|quizrr\.in/i.test(o)) {
-      el.src = o;
+    const inner = orig || unwrap(el.getAttribute("data-qx-storage-src") || cur);
+    if (inner && !/\/api\/proxy-image/i.test(cur)) {
+      el.src = "/api/proxy-image?url=" + encodeURIComponent(inner) + "&clean=1&v=" + FIG_VER;
       return;
     }
-    if (t === 2) {
-      const origHint = unwrap(el.getAttribute("data-qx-orig-src") || o || cur);
-      if (origHint && /getmarks\.app|quizrr\.in|watermarked_images|\/pyq\//i.test(origHint)) {
-        el.src = "/api/proxy-image?url=" + encodeURIComponent(origHint) + "&clean=1&v=" + FIG_VER + "&r=" + Date.now();
-        return;
-      }
-      if (o) {
-        el.src = "/api/proxy-image?url=" + encodeURIComponent(o) + "&clean=1&v=" + FIG_VER + "&r=" + Date.now();
-        return;
-      }
-    }
-    if (t >= 3) {
-      const origHint = unwrap(el.getAttribute("data-qx-orig-src") || o || "");
-      const last = "/api/proxy-image?url=" + encodeURIComponent(origHint || o || cur) + "&clean=1&v=" + FIG_VER + "&r=" + Date.now();
-      if (last && last !== cur) el.src = last;
-      try {
-        el.style.display = "block";
-        el.style.visibility = "visible";
-        el.style.opacity = "1";
-      } catch (_) { /* */ }
-    }
+    stopFigRetry(el);
   }
 
   function escAttr(s) {
@@ -359,16 +335,21 @@
     });
   }
 
+  function needsFigRewrite(s) {
+    const t = String(s || "");
+    return /<img/i.test(t) && /getmarks|quizrr|\/assets\/diagrams\/|cdn-question-pool|\.app\//i.test(t);
+  }
+
   function paintQuestion(q) {
     if (!q) return q;
     try {
-      if (q.q && /<img/i.test(String(q.q))) q.q = rewriteHtml(q.q);
-      if (q.question && q.question !== q.q && /<img/i.test(String(q.question))) q.question = rewriteHtml(q.question);
-      if (q.solution && /<img/i.test(String(q.solution))) q.solution = rewriteHtml(q.solution);
-      if (q.explanation && /<img/i.test(String(q.explanation))) q.explanation = rewriteHtml(q.explanation);
+      if (needsFigRewrite(q.q)) q.q = rewriteHtml(q.q);
+      if (q.question && q.question !== q.q && needsFigRewrite(q.question)) q.question = rewriteHtml(q.question);
+      if (needsFigRewrite(q.solution)) q.solution = rewriteHtml(q.solution);
+      if (needsFigRewrite(q.explanation)) q.explanation = rewriteHtml(q.explanation);
       if (Array.isArray(q.options)) {
         q.options = q.options.map((o) =>
-          (typeof o === "string" && /<img/i.test(o)) ? rewriteHtml(o) : o
+          (typeof o === "string" && needsFigRewrite(o)) ? rewriteHtml(o) : o
         );
       }
     } catch (_) { /* */ }
@@ -391,36 +372,26 @@
     if (!root || !root.querySelectorAll) return 0;
     let n = 0;
     try {
-      root.querySelectorAll("img").forEach((img) => {
-        if (!img || isUiImg(img)) return;
-        try {
-          img.removeAttribute("crossorigin");
-          img.crossOrigin = null;
-        } catch (_) { /* */ }
-        let src = img.getAttribute("src") || "";
+      const imgs = root.querySelectorAll("img");
+      for (let i = 0; i < imgs.length; i++) {
+        const img = imgs[i];
+        if (!img || isUiImg(img)) continue;
+        if (img.naturalWidth > 0) continue;
+        try { img.removeAttribute("crossorigin"); } catch (_) { /* */ }
+        const src = img.getAttribute("src") || "";
+        if (isStableFigSrc(src)) continue;
         const orig = img.getAttribute("data-qx-orig-src") || src;
         const disp = displaySrc(orig) || displaySrc(src);
-        if (disp && disp !== src) {
-          if (!img.getAttribute("data-qx-orig-src") && orig) img.setAttribute("data-qx-orig-src", orig);
-          const stored = qxBookStorageSrc(orig) || ownedFigureUrl(orig) || disp;
-          if (stored && !img.getAttribute("data-qx-storage-src")) img.setAttribute("data-qx-storage-src", stored);
-          img.setAttribute("src", disp);
-          src = disp;
-          n++;
-        }
-        img.classList.add("qx-pool-fig", "qx-no-wm");
-        img.classList.remove("qx-img-hidden");
-        img.style.display = "block";
-        img.style.visibility = "visible";
-        img.style.opacity = "1";
-        img.style.maxWidth = "100%";
-        img.style.height = "auto";
-        img.style.background = "#fff";
-        img.style.objectFit = "contain";
+        if (!disp || disp === src) continue;
+        if (!img.getAttribute("data-qx-orig-src") && orig) img.setAttribute("data-qx-orig-src", orig);
+        const stored = qxBookStorageSrc(orig) || ownedFigureUrl(orig) || disp;
+        if (stored && !img.getAttribute("data-qx-storage-src")) img.setAttribute("data-qx-storage-src", stored);
+        img.setAttribute("src", disp);
         if (!img.getAttribute("onerror")) {
           img.setAttribute("onerror", "if(window.QxOwnedFigs&&QxOwnedFigs.retryOnError)QxOwnedFigs.retryOnError(this)");
         }
-      });
+        n++;
+      }
     } catch (_) { /* */ }
     return n;
   }
@@ -429,14 +400,9 @@
     const paintEvt = function (e) {
       try {
         const d = e && e.detail;
-        const root = (d && (d.root || d.el))
-          || (typeof document !== "undefined" && (
-            document.getElementById("egSolPanel")
-            || document.getElementById("egQArea")
-            || document.getElementById("app-main")
-          ));
+        const root = d && (d.root || d.el);
         if (root) paintDom(root);
-        const sol = typeof document !== "undefined" && document.getElementById("egSolPanel");
+        const sol = document.getElementById("egSolPanel");
         if (sol && sol !== root) paintDom(sol);
       } catch (_) { /* */ }
     };

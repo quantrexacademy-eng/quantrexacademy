@@ -2412,11 +2412,6 @@ const QuantrexTestEngine = (() => {
     try { finalizeDiagrams(main); } catch (_) { /* */ }
     try {
       if (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.paintDom) QxOwnedFigs.paintDom(main);
-      if (typeof QxImgClean !== "undefined") {
-        if (QxImgClean.rewriteAllPoolImgs) QxImgClean.rewriteAllPoolImgs(main);
-        if (QxImgClean.finalizeAll) QxImgClean.finalizeAll(main, q);
-      }
-      if (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.paintDom) QxOwnedFigs.paintDom(main);
     } catch (_) { /* */ }
     // Light math path only in CBT — never block Next on watermark/img scrub
     try {
@@ -2440,38 +2435,22 @@ const QuantrexTestEngine = (() => {
         document.dispatchEvent(new CustomEvent("qx:question-rendered", { detail: { root: main, q } }));
       } catch (_) { /* */ }
     } catch (_) { /* */ }
-    // Background: load book figure maps + prepare + second finalize (Irodov / CDN)
-    if (q && typeof QxImgClean !== "undefined") {
+    // Books only: local figure maps. PYQ already Storage-first from paintQuestion.
+    if (q && (q._book || q._bookId) && typeof QxImgClean !== "undefined") {
       const runFig = async () => {
         try {
           if (QxImgClean.loadBookFigureMaps) await QxImgClean.loadBookFigureMaps();
           if (QxImgClean.prepareQuestionFigures) await QxImgClean.prepareQuestionFigures(q);
         } catch (_) { /* */ }
-        // Re-paint only if stem gained local figures and still on same Q
         try {
           if (!session || getQ(session.ids[session.idx]) !== q) return;
           if (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.paintQuestion) {
             QxOwnedFigs.paintQuestion(q);
-          } else if (QxImgClean.rewriteHtmlFigures) {
-            const before = q.q;
-            q.q = QxImgClean.rewriteHtmlFigures(q.q);
-            if (q.solution) q.solution = QxImgClean.rewriteHtmlFigures(q.solution);
-            // Re-paint only when we swapped CDN → local clean asset
-            if (q.q !== before && /\/assets\/(diagrams|qx-figures|clean-diagrams)\//i.test(String(q.q))) {
-              paintQuestionNow(main, q);
-              return;
-            }
           }
           if (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.paintDom) QxOwnedFigs.paintDom(main);
-          if (QxImgClean.rewriteAllPoolImgs) QxImgClean.rewriteAllPoolImgs(main);
-          if (QxImgClean.finalizeAll) QxImgClean.finalizeAll(main, q);
-          if (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.paintDom) QxOwnedFigs.paintDom(main);
-          if (typeof QxTestEnginePerf !== "undefined") {
-            QxTestEnginePerf.prioritizeVisibleFigures(main);
-          }
         } catch (_) { /* */ }
       };
-      Promise.race([runFig(), new Promise(r => setTimeout(r, 4000))]).catch(() => {});
+      Promise.race([runFig(), new Promise(r => setTimeout(r, 2500))]).catch(() => {});
     }
     } finally {
       if (main) {

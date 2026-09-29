@@ -1355,48 +1355,19 @@ function qxRenderPracticeQuestion(id) {
         try {
           const raw = /(?:^|>)[^<]{0,40}\$[^$]{1,120}\$/.test(main.innerHTML || "");
           if (raw && Mx.typeset) Mx.typeset(main);
-          if (window.QxSoftWm && QxSoftWm.scan) QxSoftWm.scan(main);
         } catch (_) { /* */ }
       };
       if (typeof requestIdleCallback === "function") requestIdleCallback(settle, { timeout: 700 });
       else setTimeout(settle, 220);
     }
     try {
-      window.dispatchEvent(new CustomEvent("qx:question-rendered", { detail: { id: id } }));
-      window.dispatchEvent(new CustomEvent("qx:practice-ready", { detail: { id: id } }));
+      window.dispatchEvent(new CustomEvent("qx:question-rendered", { detail: { id: id, root: main } }));
+      window.dispatchEvent(new CustomEvent("qx:practice-ready", { detail: { id: id, root: main } }));
     } catch (_) { /* */ }
     const q = typeof getQ === "function" ? getQ(id) : null;
     // Books/Irodov only: heavy figure map. PYQ uses CDN native (no prepare/finalize loops).
-    if (q && (q._book || q._bookId) && typeof QxImgClean !== "undefined") {
-      const figPass = async () => {
-        try {
-          if (QxImgClean.loadBookFigureMaps) await QxImgClean.loadBookFigureMaps();
-          if (QxImgClean.prepareQuestionFigures) await QxImgClean.prepareQuestionFigures(q);
-          const before = String(q.q || "");
-          if (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.paintQuestion) QxOwnedFigs.paintQuestion(q);
-          else if (QxImgClean.rewriteHtmlFigures) {
-            q.q = QxImgClean.rewriteHtmlFigures(q.q);
-            if (q.solution) q.solution = QxImgClean.rewriteHtmlFigures(q.solution);
-          }
-          if (q.q !== before && /\/assets\/diagrams\//i.test(String(q.q))
-            && !/qx-irodov|AKCR2_|2026_modules\/jee_advanced_physics/i.test(String(q.q))) {
-            try {
-              main.innerHTML = viewQuestion(id);
-              if (typeof bindPracticeQuestion === "function") bindPracticeQuestion(main);
-              if (typeof Mx !== "undefined" && Mx.afterRenderLight) Mx.afterRenderLight(main);
-            } catch (_) { /* */ }
-          }
-          if (QxImgClean.rewriteAllPoolImgs) QxImgClean.rewriteAllPoolImgs(main);
-          if (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.paintDom) QxOwnedFigs.paintDom(main);
-        } catch (_) { /* */ }
-      };
-      void figPass();
-    } else if (main && typeof QxImgClean !== "undefined" && QxImgClean.rewriteAllPoolImgs) {
-      // One lightweight pin of pool imgs to Storage/proxy
-      try { QxImgClean.rewriteAllPoolImgs(main); } catch (_) { /* */ }
-      try {
-        if (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.paintDom) QxOwnedFigs.paintDom(main);
-      } catch (_) { /* */ }
+    if (main && typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.paintDom) {
+      try { QxOwnedFigs.paintDom(main); } catch (_) { /* */ }
     }
   } catch (e) {
     console.error("Practice render failed:", id, e);

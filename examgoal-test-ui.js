@@ -1464,13 +1464,9 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
         stripStemRescuedFromSolDom(panel);
         stripStemRescuedFromSolDom(root);
         qxTypesetSol(solEl);
-        qxTypesetSol(panel);
         try {
           if (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.paintDom) {
             QxOwnedFigs.paintDom(panel);
-            if (solEl) QxOwnedFigs.paintDom(solEl);
-          } else if (typeof QxImgClean !== "undefined" && QxImgClean.rewriteAllPoolImgs) {
-            QxImgClean.rewriteAllPoolImgs(panel);
           }
         } catch (_) { /* */ }
         try {
@@ -1483,18 +1479,6 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
           }
         } catch (_) { /* */ }
         stripStemRescuedFromSolDom(panel);
-        [50, 200, 500].forEach(function (ms) {
-          setTimeout(function () {
-            try {
-              const live = root.querySelector("#egSolPanel #egSol") || root.querySelector("#egSolPanel");
-              qxTypesetSol(live);
-              stripStemRescuedFromSolDom(root);
-              if (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.paintDom) {
-                QxOwnedFigs.paintDom(live || root);
-              }
-            } catch (_) { /* */ }
-          }, ms);
-        });
       }
     } catch (_) { /* */ }
     try {
