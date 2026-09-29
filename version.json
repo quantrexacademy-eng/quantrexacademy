@@ -1,10 +1,10 @@
 {
-    "cache": "qx-pwa-qxmd239",
-    "ts": 1789900000001,
-    "title": "qxmd239: Prev/Next stay visible; question and solution format lock",
+    "cache": "qx-pwa-qxmd240",
+    "ts": 1790665629742,
+    "title": "qxmd240: question, option, and solution math format",
     "site": "https://www.quantrexacademy.com",
-    "build": "qxmd239",
-    "body": "Bottom Previous and Next stay on a solid bar after Check Answer, theme change, and CSS load. Practice tools stay on the blue header. Unit math like M times u stays one formula. Official answers are unchanged.",
+    "build": "qxmd240",
+    "body": "Relation names stay as R1/R2 instead of match chips. Stems keep dollars around sets and inequalities. KaTeX HTML is not dumped as text. Official answers are unchanged.",
     "package": "com.quantrexacademy.app",
     "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }

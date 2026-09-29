@@ -1085,7 +1085,15 @@ window.Mx = (() => {
     for (let n = 0; n < 8; n++) {
       const next = out.replace(
         /\$([^$\n]{0,240}?)\$\s*(\\mathrm\s*\{[^}]*\})/g,
-        (_, a, m) => "$" + String(a).replace(/\s+$/, "") + " " + m + "$"
+        (_, a, m) => {
+          const inner = String(a);
+          // "$A$ and $\mathrm{B}=…$" — do not treat English between islands as math
+          if (/^\s*(?:and|or|then|of|to|is|as|if|with|,|\.)\s*$/i.test(inner)
+            || (/^[A-Za-z.\s,]+$/.test(inner) && /[A-Za-z]{2,}/.test(inner) && inner.length < 28)) {
+            return "$" + inner + "$" + m;
+          }
+          return "$" + inner.replace(/\s+$/, "") + " " + m + "$";
+        }
       );
       if (next === out) break;
       out = next;
@@ -1093,6 +1101,8 @@ window.Mx = (() => {
     out = out.replace(/\$([^$\n]{1,240})\$\$=(?=\s|$|[.,;])/g, "$$$1$ =");
     out = out.replace(/(\\mathrm\s*\{[^}]{0,24}\})\s*\$\$+\^/g, "$$$1^");
     out = out.replace(/\$\$+\^/g, "$^");
+    // \mathrm{B}$=\{  → $\mathrm{B}=\{  (keep the opener)
+    out = out.replace(/\$?(\\mathrm\s*\{[^}]{1,24}\})\s*\$(\s*=\s*)/g, "$$$1$2");
     return out;
   }
   function spaceGluedDollars(s) {
@@ -1102,12 +1112,12 @@ window.Mx = (() => {
     for (let i = 0; i < out.length; i++) {
       const ch = out[i];
       if (ch === "$" && (i === 0 || out[i - 1] !== "\\")) {
-        if (parity === 0 && i >= 2 && /[A-Za-z]{2}$/.test(out.slice(Math.max(0, i - 8), i)) && /[(\\[A-Za-z=+\-]/.test(out[i + 1] || "")) {
+        if (parity === 0 && i >= 2 && /[A-Za-z]{2}$/.test(out.slice(Math.max(0, i - 8), i)) && /[(\\{\\[A-Za-z=+\-]/.test(out[i + 1] || "")) {
           acc += " ";
         }
         acc += ch;
         parity ^= 1;
-        if (parity === 0 && i + 1 < out.length && /[A-Za-z]/.test(out[i + 1])) acc += " ";
+        if (parity === 0 && i + 1 < out.length && /[A-Za-z{]/.test(out[i + 1])) acc += " ";
         continue;
       }
       acc += ch;
@@ -1118,6 +1128,8 @@ window.Mx = (() => {
     // Official Marks export: $(3î+2ĵ-k)$$\mathrm{m}$  and  $E=$$\mathrm{m}_{e}c^{2}$
     out = out.replace(/\$([^$\n]{0,160})\$\$(\\mathrm\{)/g, "$$$1 $2");
     try { out = stitchSplitMathrm(out); } catch (_) { /* */ }
+    out = out.replace(/\$\}([A-Za-z])/g, "$} $1");
+    out = out.replace(/([a-z]{2,})\$(\{[A-Za-z])/g, "$1 $$$2");
     return restoreAxisHyphenMath(out);
   }
   /** Drop `$   $` empty islands. Keep `$a$ $b$` (adjacent) and `$$display$$`. */
@@ -1231,11 +1243,17 @@ window.Mx = (() => {
 
   function looksLetterSpacedMarkup(s) {
     const t = String(s || "");
+    if (!t) return false;
+    // Real KaTeX HTML is NOT letter-spaced (mord mathnormal is a real class).
+    if (/<span\b[^>]*class=["'][^"']*\bkatex\b/i.test(t) && !/spanclass/i.test(t)
+      && !/<\s*[a-zA-Z]\s+[a-zA-Z]\s+[a-zA-Z]/.test(t)) {
+      return false;
+    }
     return /<\s*[a-zA-Z]\s+[a-zA-Z]\s+[a-zA-Z]/.test(t)
       || /c\s+l\s+a\s+s\s+s\s*=/.test(t)
       || /k\s+a\s+t\s+e\s+x/.test(t)
       || /s\s+t\s+r\s+u\s+t/.test(t)
-      || /spanclass|mordmathnormal/i.test(t);
+      || /spanclass/i.test(t);
   }
 
   function withParkedHtmlTags(s, fn) {
@@ -1287,6 +1305,14 @@ window.Mx = (() => {
 
   function recoverLetterSpacedKatexHtml(html) {
     let s = String(html || "");
+    if (!s) return s;
+    // Escaped KaTeX dump: &lt;span class="katex-display"&gt;
+    if (/&lt;\s*span[^&]*katex/i.test(s) || /&lt;spanclass/i.test(s)) {
+      s = s.replace(/&lt;/gi, "<").replace(/&gt;/gi, ">").replace(/&quot;/gi, '"').replace(/&amp;/gi, "&");
+    }
+    if (/<span\b[^>]*class=["'][^"']*\bkatex\b/i.test(s) && !/spanclass/i.test(s)) {
+      return repairSpacedKatexTags(s);
+    }
     if (!looksLetterSpacedMarkup(s)) return repairSpacedKatexTags(s);
     s = repairSpacedKatexTags(s);
     if (looksLetterSpacedMarkup(s)) {
@@ -1298,7 +1324,9 @@ window.Mx = (() => {
       } catch (_) { /* */ }
       s = repairSpacedKatexTags(s);
     }
-    if (looksLetterSpacedMarkup(s)) {
+    // Still spaced tags: drop markup only when it is clearly dumped class soup
+    if (looksLetterSpacedMarkup(s) && /spanclass|katex\s*-\s*display/i.test(s)
+      && !/<span\b[^>]*class=["'][^"']*\bkatex\b/i.test(s)) {
       s = s.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
     }
     return s;
@@ -1373,8 +1401,20 @@ window.Mx = (() => {
     );
     // Join glued islands: $(vec)$$\mathrm{m}$  /  $E=$$\mathrm{m}_{e}c^{2}$
     out = out.replace(/\$([^$\n]{0,160})\$\$(\\mathrm\{)/g, "$$$1 $2");
-    // $ \gt $ leftover comparison islands next to mathrm
-    out = out.replace(/\$\s*(\\gt|\\lt|\\ge|\\le|\\neq|\\ne)\s*\$/g, " $1 ");
+    // Join leftover comparison islands onto neighbors: $A$ $\le$ $B$ → $A \le B$
+    // Never unwrap $\le$ / $\ge$ / $\ne$ into raw TeX (ss 1138–1149).
+    out = out.replace(
+      /\$([^$]{0,160})\$\s*\$\s*(\\gt|\\lt|\\ge|\\le|\\neq|\\ne|\\geq|\\leq)\s*\$\s*\$([^$]{0,160})\$/g,
+      "$$$1 $2 $3$"
+    );
+    out = out.replace(
+      /\$([^$]{0,160})\$\s*\$\s*(\\gt|\\lt|\\ge|\\le|\\neq|\\ne|\\geq|\\leq)\s*\$/g,
+      "$$$1 $2$"
+    );
+    out = out.replace(
+      /\$\s*(\\gt|\\lt|\\ge|\\le|\\neq|\\ne|\\geq|\\leq)\s*\$\s*\$([^$]{0,160})\$/g,
+      "$$$1 $2$"
+    );
     // Join only tiny adjacent crumbs: $\mathrm{A}$ $\mathrm{a}$
     out = out.replace(
       /\$(\\mathrm\{[A-Za-z0-9]+\})\$\s*\$(\\mathrm\{[A-Za-z0-9]+\})\$/g,
@@ -1729,11 +1769,13 @@ window.Mx = (() => {
     out = out.replace(/(^|[^\\a-zA-Z])nmid\b/g, "$1\\nmid");
     out = out.replace(/(^|[^\\a-zA-Z])mathbb\s*\{/g, "$1\\mathbb{");
     out = out.replace(/(^|[^\\a-zA-Z])mathcal\s*\{/g, "$1\\mathcal{");
-    // Number sets after membership/subset: \in N → \in \mathbb{N} (not set variable C/A/B)
-    out = out.replace(/(\\in|\\notin|\\subset|\\subseteq|\\supset|\\supseteq)\s*([NZQR])\b/g, "$1 \\mathbb{$2}");
-    out = out.replace(/\\mathbb\{([NZQR])\}\s*\\times\s*([NZQR])\b/g, "\\mathbb{$1}\\times\\mathbb{$2}");
-    // set membership: "x in N" / "x in R" (not English "in the")
-    out = out.replace(/(^|[^\\a-zA-Z])([A-Za-z])\s+in\s+([NZQR])\b/g, "$1$2 \\in \\mathbb{$3}");
+    // Number sets after membership/subset: \in N → \in \mathbb{N}.
+    // Do NOT auto-promote R — it is usually the relation name "(x,y) \in R".
+    out = out.replace(/(\\in|\\notin|\\subset|\\subseteq|\\supset|\\supseteq)\s*([NZQ])\b/g, "$1 \\mathbb{$2}");
+    out = out.replace(/\\mathbb\{([NZQ])\}\s*\\times\s*([NZQ])\b/g, "\\mathbb{$1}\\times\\mathbb{$2}");
+    out = out.replace(/(\\in|\\notin)\s*\\mathrm\{R\}/g, "$1 \\mathbb{R}");
+    // set membership: "x in N" / "x in Z" (not English "in the"; not relation R)
+    out = out.replace(/(^|[^\\a-zA-Z])([A-Za-z])\s+in\s+([NZQ])\b/g, "$1$2 \\in \\mathbb{$3}");
     out = out.replace(/(^|[^\\a-zA-Z])emptyset\b/g, "$1\\emptyset");
     out = out.replace(/(^|[^\\a-zA-Z])varnothing\b/g, "$1\\varnothing");
     out = out.replace(/(^|[^\\a-zA-Z])forall\b/g, "$1\\forall");
@@ -1948,6 +1990,9 @@ window.Mx = (() => {
       );
       // Bare A^{100} / B^{n} still outside math
       c = c.replace(/(^|[^$\\])([A-Za-z])\s*\^\s*\{(\d+)\}/g, (m, pre, v, n) => pre + park("$" + v + "^{" + n + "}$"));
+      // Relation names {R}_{1} / {x}^{2} still outside math
+      c = c.replace(/(^|[^$\\])\{([A-Za-z])\}_\{(\d+)\}/g, (m, pre, v, n) => pre + park("$" + "{" + v + "}_{" + n + "}$"));
+      c = c.replace(/(^|[^$\\])\{([A-Za-z])\}\s*\^\s*\{(\d+)\}/g, (m, pre, v, n) => pre + park("$" + "{" + v + "}^{" + n + "}$"));
       // \textbf / \mathrm / \text{...} — AFTER outer accents so nested stay intact
       c = c.replace(
         /(^|[^\\])(\\(?:mathrm|textbf|text|mathbf|mathsf|textrm|textit|boldsymbol|operatorname|ce)\s*\{[^}]*\}(?:\s*[\^_]\s*\{?[^}\s\\]+\}?)?(?:\s*\/\s*[A-Za-zµμ°]+(?:\s*[\^_]\s*\{?[^}\s\\]+\}?)?)*)/g,
@@ -2056,12 +2101,12 @@ window.Mx = (() => {
     for (let i = 0; i < out.length; i++) {
       const ch = out[i];
       if (ch === "$" && (i === 0 || out[i - 1] !== "\\")) {
-        if (dollarParity === 0 && i > 0 && /[A-Za-z0-9,.;:=)]/.test(out[i - 1]) && /[\\A-Za-z0-9]/.test(out[i + 1] || "")) {
+        if (dollarParity === 0 && i > 0 && /[A-Za-z0-9,.;:=)]/.test(out[i - 1]) && /[\\A-Za-z0-9{]/.test(out[i + 1] || "")) {
           acc += " ";
         }
         acc += ch;
         dollarParity ^= 1;
-        if (dollarParity === 0 && i + 1 < out.length && /[A-Za-z0-9]/.test(out[i + 1])) {
+        if (dollarParity === 0 && i + 1 < out.length && /[A-Za-z0-9{]/.test(out[i + 1])) {
           acc += " ";
         }
         continue;
@@ -2444,18 +2489,40 @@ window.Mx = (() => {
     // Longest first — never split \left → \le + ft (screenshot 864)
     const cmds = [
       "varepsilon", "vartheta", "varrho", "varsigma", "varphi", "varpi",
-      "leftrightarrow", "longrightarrow", "longleftarrow", "Rightarrow", "Leftarrow",
-      "rightarrow", "leftarrow", "subseteq", "notin",
+      "leftrightarrow", "longrightarrow", "longleftarrow", "Leftrightarrow",
+      "geqslant", "leqslant", "subseteq", "supseteq", "rightarrow", "leftarrow",
+      "Rightarrow", "Leftarrow", "notin",
       "infty", "forall", "exists", "partial", "alpha", "beta", "gamma",
       "delta", "epsilon", "theta", "lambda", "omega", "sigma", "Gamma",
       "Delta", "Theta", "Lambda", "Omega", "times", "cdot", "leq", "geq",
-      "neq", "subset", "nabla", "left", "right", "sin", "cos", "tan",
+      "neq", "subset", "supset", "nabla", "left", "right", "sin", "cos", "tan",
       "log", "lim", "sum", "int", "phi", "psi", "rho", "tau", "chi",
-      "pi", "mu", "nu", "xi", "pm", "div", "cup", "cap", "ell", "hbar", "ln"
+      "pi", "mu", "nu", "xi", "pm", "div", "cup", "cap", "ell", "hbar", "ln",
+      "le", "ge", "ne"
     ].join("|");
     let c = String(s || "");
     c = c.replace(new RegExp("([A-Za-z0-9])(\\\\(?:" + cmds + "))(?![a-zA-Z])", "g"), "$1 $2");
-    c = c.replace(new RegExp("(\\\\(?:" + cmds + "))(?=[A-Za-z])", "g"), "$1 ");
+    {
+      const cmdList = cmds.split("|");
+      c = c.replace(new RegExp("(\\\\(?:" + cmds + "))(?=[A-Za-z])", "g"), function (full, cmd, offset, src) {
+        const name = String(cmd || full).replace(/^\\/, "");
+        const after = src.slice(offset + full.length);
+        for (let i = 0; i < cmdList.length; i++) {
+          const longer = cmdList[i];
+          if (longer.length > name.length && (name + after).toLowerCase().startsWith(longer.toLowerCase())) {
+            return full;
+          }
+        }
+        return cmd + " ";
+      });
+    }
+    c = c.replace(/\\ne\s+q\b/g, "\\neq");
+    c = c.replace(/\\le\s+q\b/g, "\\leq");
+    c = c.replace(/\\ge\s+q\b/g, "\\geq");
+    c = c.replace(/\\geq\s*slant\b/g, "\\geqslant");
+    c = c.replace(/\\leq\s*slant\b/g, "\\leqslant");
+    c = c.replace(/\\ge\s*qslant\b/g, "\\geqslant");
+    c = c.replace(/\\le\s*qslant\b/g, "\\leqslant");
     c = c.replace(/\\le\s*ft\b/g, "\\left");
     c = c.replace(/\\ri\s*ght\b/g, "\\right");
     c = c.replace(/\\right(\s*[\]\}])([A-Za-z])/g, "\\right$1 $2");
@@ -2896,7 +2963,9 @@ window.Mx = (() => {
     };
     const isProseIsland = (raw) => {
       let t = String(raw || "").trim();
-      if (!t || t.length < 6) return false;
+      if (!t) return false;
+      if (/^(Let|and|or|Then|If|of|is|the|on|to|for|by|as|be|a|an|but|not|nor)$/i.test(t)) return true;
+      if (t.length < 6) return false;
       // Strip \text{...} / \mathrm{...} wrapper when that IS the whole island
       const textWrap = t.match(/^\\(?:text|mathrm|textbf|textit)\s*\{([\s\S]*)\}$/);
       if (textWrap) t = String(textWrap[1] || "").trim();
@@ -2920,7 +2989,7 @@ window.Mx = (() => {
       let out = t;
       const textWrap = out.match(/^\\(?:text|mathrm|textbf|textit)\s*\{([\s\S]*)\}$/);
       if (textWrap) out = String(textWrap[1] || "").trim();
-      return out;
+      return " " + out + " ";
     };
     try {
       /* Pair $…$ left-to-right. A length-skip regex was matching the CLOSER of
@@ -3148,7 +3217,7 @@ window.Mx = (() => {
       [/\ballof\b/gi, "all of"],
       [/\bnoneof\b/gi, "none of"],
       [/\bifandonlyif\b/gi, "if and only if"],
-      [/\bforall\b/gi, "for all"],
+      [/(^|[^\\A-Za-z])forall\b/gi, "$1for all"],
       [/\bthereexists\b/gi, "there exists"],
       /* qxmd179: lim / vertex prose glues ($-coordinateofthevertexmustliein$) */
       [/\bcoordinateofthevertex\b/gi, "coordinate of the vertex"],
@@ -3164,8 +3233,25 @@ window.Mx = (() => {
       [/\bsimplifiesto\b/gi, "simplifies to"],
       [/\bthecircuit\b/gi, "the circuit"],
       [/\by-coordinateofthe\b/gi, "y-coordinate of the"],
+      [/\bLet(?=[A-Z])/g, "Let "],
+      [/\bIf(?=[A-Z])/g, "If "],
+      [/\bThen(?=[A-Z])/g, "Then "],
+      [/\bof(?=[A-Z])/g, "of "],
+      [/\bon(?=[A-Z])/g, "on "],
+      [/\brelation(?=[A-Z])/g, "relation "],
+      [/\bneither(?=[A-Z])/g, "neither "],
+      [/\bonly(?=[A-Z])/g, "only "],
+      [/(\d)is\b/g, "$1 is"],
+      [/(\d)then\b/gi, "$1 then"],
     ];
+    const parkedCmds = [];
+    c = c.replace(/\\[a-zA-Z]+/g, function (m) {
+      const k = "\uE220" + parkedCmds.length + "\uE221";
+      parkedCmds.push(m);
+      return k;
+    });
     pairs.forEach(function (pr) { c = c.replace(pr[0], pr[1]); });
+    c = c.replace(/\uE220(\d+)\uE221/g, function (_, i) { return parkedCmds[+i] || ""; });
     /* qxmd179: $-coordinateofthevertexmustliein$ → prose (false math island) */
         /* qxmd219: peel false prose math islands (Capital-start OCR too) */
     try { c = peelFalseProseMathIslands(c); } catch (_) { /* */ }
@@ -3181,7 +3267,8 @@ window.Mx = (() => {
     const reTok = new RegExp("\\b(" + TOK + ")(" + TOK + ")\\b", "gi");
     // Iterate a few times for triple glues like sosymmetricrelation → so+symmetricrelation → so+symmetric+relation
     for (let i = 0; i < 4; i++) {
-      const next = c.replace(reTok, function (_, a, b) {
+      const next = c.replace(reTok, function (full, a, b, offset, src) {
+        if (offset > 0 && src[offset - 1] === "\\") return full;
         // avoid splitting real compounds already correct
         const joined = (a + b).toLowerCase();
         if (joined === "antisymmetric" || joined === "into" || joined === "onto") return a + b;
@@ -3360,6 +3447,8 @@ window.Mx = (() => {
 
     // English stems glued to Capital / function letter+(
     c = c.replace(/\bLet(?=[A-Z])/g, "Let ");
+    c = c.replace(/\bof(?=[A-Z])/g, "of ");
+    c = c.replace(/\bon(?=[A-Z])/g, "on ");
     c = c.replace(/\bGiven(?=[A-Z])/g, "Given ");
     c = c.replace(/\bSuppose(?=[A-Za-z])/g, "Suppose ");
     c = c.replace(/\bThen(?=[A-Z])/g, "Then ");
@@ -3507,6 +3596,21 @@ window.Mx = (() => {
           (/[}\]]/.test(end) && /[a-zA-Z]/.test(start));
         if (need) cur.nodeValue = " " + b;
       }
+
+      // 2b) Space between English text and a neighboring KaTeX node (Let[N], relation[R])
+      try {
+        host.querySelectorAll(".katex, .katex-display").forEach((k) => {
+          if (!k || (k.closest && k.closest(".katex .katex"))) return;
+          const prev = k.previousSibling;
+          if (prev && prev.nodeType === 3 && /[A-Za-z]$/.test(prev.nodeValue || "")) {
+            prev.nodeValue += " ";
+          }
+          const next = k.nextSibling;
+          if (next && next.nodeType === 3 && /^[A-Za-z]/.test(next.nodeValue || "")) {
+            next.nodeValue = " " + next.nodeValue;
+          }
+        });
+      } catch (_) { /* */ }
 
       // 3) Merge host full text once more if still obviously broken
       try {
@@ -4447,14 +4551,34 @@ window.Mx = (() => {
     // Normalize any remaining broken self-closing mid-attribute: `src="x" / data-`
     s = s.replace(/<img\b([^>]*?)\s\/\s+([a-z-]+)=/gi, "<img$1 $2=");
     s = s.replace(/<img\b([^>]*?)\s\/>/gi, "<img$1>");
+    s = s.replace(/&amp;#(x?[0-9A-Fa-f]+);/g, "&#$1;");
     s = s.replace(/&nbsp;|&#160;|&#x0*A0;/gi, " ");
+    s = s.replace(/&#(\d+);/g, (m, n) => {
+      const code = +n;
+      if (code === 60 || code === 62 || code === 34 || code === 39) return m;
+      if (code === 160 || code === 173) return " ";
+      try { return String.fromCharCode(code); } catch (e) { return m; }
+    });
+    s = s.replace(/&#x([0-9A-Fa-f]+);/gi, (m, h) => {
+      const code = parseInt(h, 16);
+      if (code === 60 || code === 62 || code === 34 || code === 39) return m;
+      if (code === 0xA0) return " ";
+      try { return String.fromCharCode(code); } catch (e) { return m; }
+    });
     s = s.replace(/\\le\s*ft\b/g, "\\left").replace(/\\ri\s*ght\b/g, "\\right");
+    s = s.replace(/\\geq\s*slant\b/g, "\\geqslant").replace(/\\leq\s*slant\b/g, "\\leqslant");
     // Space before OPENING $ only (Let$x$ → Let $x$). Never split $x$-axis.
     try { s = spaceGluedDollars(s); } catch (_) { /* */ }
     try { s = stripLatexPtJunk(s); } catch (_) { /* */ }
     try { s = professionalizeSgnPiecewise(s); } catch (_) { /* */ }
     try { s = healShatteredTex(s); } catch (_) { /* */ }
     try { s = flattenDisplayMath(s); } catch (_) { /* */ }
+    try {
+      s = replaceOutsideMathFn(s, (chunk) => chunk.replace(
+        /(^|[^\\$a-zA-Z])(\\(?:leqslant|geqslant|leftrightarrow|Leftrightarrow|subseteq|notin|infty|alpha|beta|gamma|theta|leq|geq|neq|le|ge|ne|in|subset|times|cup|cap|pi))\b/g,
+        "$1$$$2$"
+      ));
+    } catch (_) { /* */ }
     // HTML content: still protect math comparisons; math already upgraded in normalizeLatex
     if (isHtml(s) || /<table\b/i.test(s) || /<\/t(?:able|d|h|r)\b/i.test(s)) {
       s = protectMathComparisons(s);
@@ -4496,6 +4620,12 @@ window.Mx = (() => {
     out = out.replace(/\n/g, "<br>");
     try { out = healShatteredTex(out); } catch (_) { /* */ }
     try { out = flattenDisplayMath(out); } catch (_) { /* */ }
+    try {
+      out = replaceOutsideMathFn(out, (chunk) => chunk.replace(
+        /(^|[^\\$a-zA-Z])(\\(?:leqslant|geqslant|leftrightarrow|Leftrightarrow|subseteq|notin|infty|alpha|beta|gamma|theta|leq|geq|neq|le|ge|ne|in|subset|times|cup|cap|pi))\b/g,
+        "$1$$$2$"
+      ));
+    } catch (_) { /* */ }
     try { out = katexRenderIslands(out); } catch (_) { /* */ }
     try { out = repairSpacedKatexTags(out); } catch (_) { /* */ }
     try { out = recoverLetterSpacedKatexHtml(out); } catch (_) { /* */ }
@@ -4845,7 +4975,10 @@ window.Mx = (() => {
       const healStemDollarsInDom = () => {
         el.querySelectorAll(".mtk-q-text, .qx-q-seg-text, .qx-marks-native-q, .qx-q-text-only, .qx-given-box, .mtk-opt-text, .qx-prac-opt-text, .eg-q-stem, #egQArea, .eg-sol, #egSol, .mk-sol-stem, .qc-ex-q, .sol-body, .qx-sol-body").forEach((node) => {
           if (!node || node.closest(".katex, mjx-container")) return;
+          // Never re-process already-typeset KaTeX (annotation TeX looks like \mathrm).
+          if (node.querySelector && node.querySelector(".katex, .katex-html, .katex-display, math, mjx-container")) return;
           const before = node.innerHTML || "";
+          if (/class=["'][^"']*\bkatex\b/i.test(before) && /<span\b/i.test(before) && !/spanclass/i.test(before)) return;
           if (!/\$|\\mathrm|\\begin\{|\\left\\\{/.test(before)) return;
           try {
             let h = parkAxisHyphenMath(before);
@@ -4862,11 +4995,12 @@ window.Mx = (() => {
       };
       try { healStemDollarsInDom(); } catch (_) { /* */ }
       try {
-        el.querySelectorAll(".eg-sol, #egSol, .sol-body, .qx-sol-body, .qx-sol-flow, .qx-sol-card").forEach((node) => {
+        el.querySelectorAll(".eg-sol, #egSol, .sol-body, .qx-sol-body, .qx-sol-flow, .qx-sol-card, .mtk-q-text, .eg-q-stem, #egQArea, .qx-prac-opt-text, .mtk-opt-text").forEach((node) => {
           if (!node) return;
           const before = node.innerHTML || "";
-          if (!looksLetterSpacedMarkup(before)) return;
-          const orig = node.getAttribute("data-qx-sol-src");
+          if (!looksLetterSpacedMarkup(before) && !/&lt;\s*span[^&]*katex/i.test(before)) return;
+          if (/<span\b[^>]*class=["'][^"']*\bkatex\b/i.test(before) && !/spanclass/i.test(before)) return;
+          const orig = node.getAttribute("data-qx-sol-src") || node.getAttribute("data-qx-stem-src");
           let fixed = recoverLetterSpacedKatexHtml(before);
           if (orig && looksLetterSpacedMarkup(fixed)) {
             try { fixed = html(orig); } catch (_) { /* */ }
@@ -5195,6 +5329,8 @@ window.Mx = (() => {
       }
       out = ensureMathDelimiters(out);
       try { out = peelFalseProseMathIslands(out); } catch (_) { /* */ }
+      out = out.replace(/\$\}([A-Za-z])/g, "$} $1");
+      out = out.replace(/([a-z]{2,})\$(\{[A-Za-z])/g, "$1 $$$2");
       out = healBrokenEnglishWords(out);
       try { out = restoreAxisHyphenMath(out); } catch (_) { /* */ }
       // Safety: never leak private-use park tokens (tofu boxes) into student UI

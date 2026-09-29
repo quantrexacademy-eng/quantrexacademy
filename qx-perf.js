@@ -91,7 +91,7 @@ window.QxPerf = (() => {
     const js = (window.QX_SECONDARY_JS || []);
     css.forEach(loadCss);
     try {
-      var bust = (typeof window.QX_BUILD === "string" && window.QX_BUILD) || "qxmd239";
+      var bust = (typeof window.QX_BUILD === "string" && window.QX_BUILD) || "qxmd240";
       loadCss("assets/qx-foot-lock.css?v=" + encodeURIComponent(bust));
     } catch (_) { /* */ }
     setTimeout(function () {

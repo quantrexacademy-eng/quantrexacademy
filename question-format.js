@@ -599,8 +599,11 @@ const QuantrexQFormat = (() => {
     if (!hasList && /column|match.?list|matrix.?match/i.test(tField) && imgCount >= 1) return false;
     if (/column|match.?list|matrix.?match/i.test(tField) && hasList) return true;
     // Image-only MCQ options are not match codes — but List stem with image options can still be match
-    const mapOpts = opts.filter((o) => looksLikeMatchOption(o));
+    const mapOpts = opts.filter((o) => looksLikeMatchOption(o) && hasRealMatchArrows(o));
     if (!hasList && imgCount >= 2) return false;
+    const proseRel = opts.filter((o) => isRelationSubscriptText(o)
+      || /\b(both|neither|range of|domain of|equivalence relation)\b/i.test(String(o || ""))).length;
+    if (!hasList && proseRel >= Math.max(2, Math.ceil(opts.length * 0.5))) return false;
     if (mapOpts.length >= Math.max(2, Math.ceil(opts.length * 0.5))) return true;
     // List-I/II stem + majority mapping options
     if (hasList && mapOpts.length >= 2) return true;
@@ -911,6 +914,26 @@ const QuantrexQFormat = (() => {
     ).join("")}</span>`;
   }
 
+  /** Relation names {R}_{1} / R_1 — never List-I map codes. */
+  function isRelationSubscriptText(opt) {
+    const raw = String(opt || "");
+    if (!raw) return false;
+    if (hasRealMatchArrows(raw)) return false;
+    const relName = /\{?\s*R\s*\}?\s*(?:_\{?\s*\d+\s*\}?|\d\b)/.test(raw)
+      || /\$\{R\}_\{\s*\d+\s*\}\$/.test(raw)
+      || /\$R_\{?\d\}?\$/.test(raw);
+    if (!relName) return false;
+    return /\b(both|neither|either|range of|domain of|equivalence|transitive|symmetric|reflexive|only|but not)\b/i.test(raw)
+      || /\{R\}_\{\s*\d+\s*\}/.test(raw);
+  }
+
+  function hasRealMatchArrows(opt) {
+    const raw = String(opt || "");
+    return /(?:\b[PQRS]\b|\\mathrm\s*\{\s*[PQRS]\s*\})\s*(?:→|->|⟶|\\(?:long)?rightarrow|\$\\(?:long)?rightarrow\$)\s*\(?\d/.test(raw)
+      || /\b[PQRS]\s*[-–]\s*\d{1,2}\b/.test(raw)
+      || /\b[PQRS]\s*\(\s*\d{1,2}\s*\)/.test(raw);
+  }
+
   /**
    * Extract mapping pairs from any known match-code bank format.
    * Returns [{lab, val}, ...]
@@ -918,6 +941,7 @@ const QuantrexQFormat = (() => {
   function extractMatchPairs(opt) {
     const raw = String(opt || "").replace(/<img\b[^>]*>/gi, " ").trim();
     if (!raw) return [];
+    if (isRelationSubscriptText(raw) && !hasRealMatchArrows(raw)) return [];
     const pairsEarly = [];
     const seenEarly = new Set();
     const pushEarly = (lab, val) => {
@@ -962,7 +986,7 @@ const QuantrexQFormat = (() => {
 
     let m;
     // 1) P → 2 | P-3 | P:2 | (P)→(2) | P - iv | A-III | (A)-(IV)
-    const re1 = /(?:\(?([PQRS]|[A-Da-d]|[pqrs])\)?)\s*(?:→|->|–|—|-|:|=)\s*\(?(\d{1,2}|[IVXivx]{1,5}|[pqrsPQRS])\)?/g;
+    const re1 = /(?:\(?([PQRS]|[A-Da-d]|[pqrs])\)?)\s*(?:→|->|–|—|-|:|=)\s*\(?(\d{1,2}|[IVXivx]{1,5}|[pqrsPQRS])\)?(?!\s*-[A-Za-z])/g;
     while ((m = re1.exec(t)) !== null) pushPair(m[1], m[2]);
 
     // 2) P (3), Q (1), R (2), S(4)
@@ -995,15 +1019,18 @@ const QuantrexQFormat = (() => {
       while ((m = re6.exec(t)) !== null) pushPair(m[1], m[2]);
     }
 
-    // 7) P 2 Q 4 (space only)
-    if (pairs.length < 2) {
+    // 7) P 2 Q 4 (space only) — never R 1 from {R}_{1} / R_1
+    if (pairs.length < 2 && hasRealMatchArrows(raw)) {
       const re7 = /\b([PQRS])\s+(\d{1,2})\b/gi;
-      while ((m = re7.exec(t)) !== null) pushPair(m[1], m[2]);
+      while ((m = re7.exec(t)) !== null) {
+        if (/^[R]$/i.test(m[1]) && /\{R\}_\{/.test(raw)) continue;
+        pushPair(m[1], m[2]);
+      }
     }
 
-    // 8) "i and r; ii and t" style (roman/lowercase codes)
-    if (pairs.length < 2 && /\band\b/i.test(t)) {
-      const re8 = /\b(i{1,3}|iv|v|[1-4])\s+and\s+([a-z]|[pqrstu]|[1-9])/gi;
+    // 8) "i and r; ii and t" style (roman → letter codes only, never "1 and R")
+    if (pairs.length < 2 && /\band\b/i.test(t) && !isRelationSubscriptText(raw)) {
+      const re8 = /\b(i{1,3}|iv|v)\s+and\s+([pqrstu])\b/gi;
       while ((m = re8.exec(t)) !== null) pushPair(m[1], m[2]);
     }
 
@@ -1023,6 +1050,9 @@ const QuantrexQFormat = (() => {
   function formatMatchCombo(opt) {
     const raw = String(opt || "").trim();
     if (!raw) return `<span class="qx-match-combo mathjax_ignore">—</span>`;
+    if (isRelationSubscriptText(raw) && !hasRealMatchArrows(raw)) {
+      return htmlContent(raw);
+    }
     // Pure image option (rare for match codes)
     const textOnly = raw.replace(/<img\b[^>]*>/gi, " ");
     if (/<img\b/i.test(raw) && extractMatchPairs(textOnly).length < 2) {
@@ -1030,22 +1060,28 @@ const QuantrexQFormat = (() => {
     }
 
     const pairs = extractMatchPairs(raw);
-    if (pairs.length >= 2) return renderMatchPairsHtml(pairs);
-    if (pairs.length === 1) return renderMatchPairsHtml(pairs);
-
-    // Fallback: readable plain mapping — never empty / raw \rightarrow / raw MathML
-    let safe = normalizeMatchOptionText(raw);
-    if (!safe || safe.length < 2) {
-      safe = flattenMatchHtml(raw).replace(/\s+/g, " ").trim();
+    if (pairs.length >= 2 && hasRealMatchArrows(raw)) return renderMatchPairsHtml(pairs);
+    if (pairs.length >= 2 && !/\b(both|neither|range of|domain of|equivalence|transitive|symmetric)\b/i.test(raw)) {
+      return renderMatchPairsHtml(pairs);
     }
-    safe = safe
-      .replace(/\\(?:long)?rightarrow/gi, "→")
-      .replace(/→/g, "&#8594;")
-      .replace(/\\[a-zA-Z]+/g, "")
-      .replace(/\$+/g, "")
-      .trim();
-    if (!safe) safe = "Option mapping";
-    return `<span class="qx-match-combo mathjax_ignore tex2jax_ignore">${safe.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</span>`;
+    if (pairs.length === 1 && hasRealMatchArrows(raw) && raw.replace(/<[^>]+>/g, "").length < 40) {
+      return renderMatchPairsHtml(pairs);
+    }
+
+    // Fallback: keep math/prose (never flatten {R}_{1} / set braces into chips)
+    if (hasRealMatchArrows(raw)) {
+      let safe = normalizeMatchOptionText(raw);
+      if (!safe || safe.length < 2) safe = flattenMatchHtml(raw).replace(/\s+/g, " ").trim();
+      safe = safe
+        .replace(/\\(?:long)?rightarrow/gi, "→")
+        .replace(/→/g, "&#8594;")
+        .replace(/\\[a-zA-Z]+/g, "")
+        .replace(/\$+/g, "")
+        .trim();
+      if (!safe) safe = "Option mapping";
+      return `<span class="qx-match-combo mathjax_ignore tex2jax_ignore">${safe.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</span>`;
+    }
+    return htmlContent(raw);
   }
 
   /**
@@ -1054,6 +1090,8 @@ const QuantrexQFormat = (() => {
   function looksLikeMatchOption(opt) {
     const raw = String(opt || "");
     if (!raw) return false;
+    if (isRelationSubscriptText(raw) && !hasRealMatchArrows(raw)) return false;
+    if (/\b(both|neither|either|range of|domain of)\b/i.test(raw) && !hasRealMatchArrows(raw)) return false;
     const withoutImg = raw.replace(/<img\b[^>]*>/gi, " ");
     if (/<img\b/i.test(raw) && !/[PQRS]|List|match/i.test(withoutImg)) return false;
     if (/<img\b/i.test(raw) && extractMatchPairs(withoutImg).length < 2) return false;
@@ -1311,22 +1349,21 @@ const QuantrexQFormat = (() => {
         else if (!multi && selectedSet.has(i)) cls += " wrong";
       }
       let optBody;
-      // Column-match question → always chips with arrows (incl. \mathrm{P} → 2 bank form)
-      const looksMap = !rawHasImg && (looksLikeMatchOption(raw)
+      // Column-match question → chips with arrows (incl. \mathrm{P} → 2). Never {R}_{1} relation names.
+      const looksMap = !rawHasImg && !isRelationSubscriptText(raw) && (looksLikeMatchOption(raw)
         || /[PQRS]\s*(?:→|\$\\(?:long)?rightarrow\$|\\(?:long)?rightarrow)\s*\d/i.test(raw)
         || /\\mathrm\{[PQRS]\}\s*(?:→|\\rightarrow)/i.test(raw)
         || (normalizeMatchOptionText(raw).match(/\b[PQRS]\s*→\s*\d/gi) || []).length >= 2);
-      // mapLike must be defined here — was undefined (ReferenceError → "Options error")
       const mapLike = !!(match || looksMap);
       if (mapLike) {
         optBody = formatMatchCombo(raw);
-        if (!/qx-match-pair|qx-match-combo/.test(String(optBody || ""))) {
+        if (match && !/qx-match-pair|qx-match-combo/.test(String(optBody || ""))) {
           optBody = formatMatchCombo(String(raw).replace(/\$/g, " ").replace(/\\/g, " "));
         }
-        // Absolute fallback: hand-build from P/Q/R/S + digits
-        if (!/qx-match-pair/.test(String(optBody || ""))) {
+        // Absolute fallback only for true column-match (arrow forms). Never R1/R_1.
+        if (match && !/qx-match-pair/.test(String(optBody || ""))) {
           const pairs = [];
-          const re = /([PQRS])\D{0,12}?(\d)/gi;
+          const re = /([PQRS])\s*(?:→|->|\\(?:long)?rightarrow)\s*(\d)/gi;
           let mm;
           while ((mm = re.exec(String(raw))) !== null) pairs.push({ lab: mm[1].toUpperCase(), val: mm[2] });
           if (pairs.length >= 2) {
@@ -1335,7 +1372,11 @@ const QuantrexQFormat = (() => {
             ).join("<span class=\"qx-match-sep\">;</span>")}</span>`;
           }
         }
-        cls += " qx-prac-opt-match";
+        if (!/qx-match-pair/.test(String(optBody || ""))) {
+          try { optBody = optionContent(q, raw, i); } catch (_) { optBody = htmlContent(protectMathLtGt(raw)); }
+        } else {
+          cls += " qx-prac-opt-match";
+        }
       } else if (/^[ABCD]$/i.test(plain) && !rawHasImg && !/[\\$]|C_\{|\^\{|\\binom/.test(raw)) {
         optBody = `<span class="qx-letter-opt">${plain.toUpperCase()}</span>`;
       } else if (isFigStubHtml(raw) && !rawHasImg) {
@@ -1443,7 +1484,7 @@ const QuantrexQFormat = (() => {
       }
       const on = selectedSet.has(i);
       let optBody;
-      const mapLike = looksLikeMatchOption(raw) && !/<img\b/i.test(raw);
+      const mapLike = looksLikeMatchOption(raw) && !isRelationSubscriptText(raw) && !/<img\b/i.test(raw);
       if (/^(figure|fig\.?|diagram|image|structure|photo)$/i.test(plain) || (isFigStubHtml(raw) && !rawHasImg) || (!rawHasImg && isFigPlaceholderTag(raw))) {
         optBody = prepareOptionBody((q._qxBankOptions && q._qxBankOptions[i]) || raw, q, i, render);
         if (isFigStubHtml(optBody) && !/<img\b/i.test(String(optBody || ""))) {

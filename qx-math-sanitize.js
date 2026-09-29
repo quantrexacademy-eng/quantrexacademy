@@ -251,7 +251,12 @@
     // qxmd175: require WHITESPACE inside empty display — /\$\$\s*\$\$/ also matched
     // the boundary of adjacent blocks $$x$$$$y$$ and glued them into $$xy$$ (raw broken math).
     s = s.replace(/\$\$[ \t\n\r]+\$\$/g, ""); // empty display $$ $$ only (not adjacent $$$$ )
-    s = s.replace(/(^|[^$])\$\s+\$(?!\$)/g, "$1"); // empty inline $  $ (needs whitespace)
+    s = s.replace(/\$(\s+)\$/g, (full, inner, idx, src) => {
+      const around = src.slice(Math.max(0, idx - 1), idx + full.length + 1);
+      if (/\$\$/.test(around)) return full;
+      if ((src.slice(0, idx).match(/\$/g) || []).length % 2 === 1) return full;
+      return inner;
+    });
     s = s.replace(/\\\(\s*\\\)/g, "");
     s = s.replace(/\\\[\s*\\\]/g, "");
     try { s = repairMarksDollarSoup(s); } catch (_) { /* */ }
@@ -268,11 +273,15 @@
     if (!s) return s;
     if (/class=["'][^"']*katex|<\/?math[\s>]/i.test(s)) return s;
 
+    // Join split \left. \right. BEFORE stripping lone $\left.
+    s = s.replace(/\\right\.\s*\$(\s+(?:and|or|,)\s+)\$\\left\./g, "\\right.$1\\left.");
+    s = s.replace(/\\right\.\s*\$(\s+(?:and|or|,)\s+)\\left\./g, "\\right.$1\\left.");
+
     s = s.replace(/\$\\left\.\s*\$/g, "");
     s = s.replace(/\$\\left\./g, "\\left.");
     s = s.replace(/\$\\right\\\}?\$/g, "");
     s = s.replace(/\$\\right\}?\$/g, "");
-    s = s.replace(/\\right\\\}/g, "\\right.");
+    /* Never rewrite \right\} globally — that is the closer of \left\{ … \right\}. */
     s = s.replace(/\$\\\}/g, "");
     s = s.replace(/\\text\{\s*True\s*\}\s*\$/g, "\\text{ True }");
 
@@ -287,7 +296,10 @@
     s = s.replace(/(^|[^$])(\\mathrm\{[A-Za-z0-9]+\}(?:\s*=\s*\\mathrm\{[A-Za-z0-9]+\}))(?!\$)/g, "$1$$$2$");
 
     s = s.replace(/\\begin\{([a-zA-Z*]{1,16})\}([\s\S]*?)\\end\{\1\}/g, function (full, env, inner) {
-      const t = String(inner).replace(/\$/g, "");
+      let t = String(inner).replace(/\$/g, "");
+      if (/^(?:array|aligned|align\*?|cases|matrix|pmatrix|bmatrix|vmatrix|smallmatrix)$/.test(env)) {
+        t = t.replace(/\\&/g, "&");
+      }
       return "\\begin{" + env + "}" + t + "\\end{" + env + "}";
     });
 
@@ -298,6 +310,16 @@
         return pre + "$" + tex + "$";
       }
     );
+
+    // False closer in set-builder: $| P$ and Q are … origin$
+    s = s.replace(/(\\\left\s*\([\s\S]{0,80}?\\right\))\s*\|?\s*([A-Z])\s*\$(\s+and\s+[A-Z]\b)/g, "$1 \\mid $2$3");
+    // Marks split \left. \right. across "and"
+    s = s.replace(/\\right\.\s*\$(\s+(?:and|or|,)\s+)\$\\left\./g, "\\right.$1\\left.");
+    // ${R}_{1} and {R}_{2}$ → two islands
+    s = s.replace(/\$(\{R\}_\{\s*\d+\s*\})\s+and\s+(\{R\}_\{\s*\d+\s*\})\$/g, "$$$1$ and $$$2$");
+    s = s.replace(/\$\}([A-Za-z])/g, "$} $1");
+    s = s.replace(/\\geq\s*slant\b/g, "\\geqslant");
+    s = s.replace(/\\leq\s*slant\b/g, "\\leqslant");
 
     return s;
   }
@@ -360,7 +382,7 @@
     // Double-escaped grouping braces around commands: \{\log\} → \log
     t = t.replace(/\\\{(\\[a-zA-Z]+)\\\}/g, "$1");
     // Braced command group {\log} / {log} → \log (common Marks log-base export)
-    t = t.replace(/\{\\?(log|ln|sin|cos|tan|cot|sec|csc|lim|exp|max|min|det|gcd|lcm|arg|deg)\}/gi,
+    t = t.replace(/(?<![A-Za-z])\{\\?(log|ln|sin|cos|tan|cot|sec|csc|lim|exp|max|min|det|gcd|lcm|arg|deg)\}/gi,
       (_, n) => "\\" + String(n).toLowerCase());
     // {log}_{cosx} / {\log}_{sinx} → \log_{\cos x}
     t = t.replace(/\{\\?(log|ln)\}_\{(sin|cos|tan|cot|sec|csc)x\}/gi,
