@@ -1168,10 +1168,84 @@ window.Mx = (() => {
     return out;
   }
 
+  function hasRealKatexHtml(s) {
+    const t = String(s || "");
+    return /<span\b[^>]*class=["'][^"']*\bkatex\b/i.test(t) && !/spanclass/i.test(t);
+  }
+
+  function leftoverDelimInDirectText(node) {
+    if (!node || !node.childNodes) return false;
+    let t = "";
+    for (let i = 0; i < node.childNodes.length; i++) {
+      const n = node.childNodes[i];
+      if (n.nodeType === 3) t += n.nodeValue || "";
+    }
+    return /\$|\\\(|\\\[/.test(t);
+  }
+
+  function decodeNumericEntityText(s) {
+    let t = String(s || "");
+    if (!/&(?:amp;)?(?:#\d+|#x[0-9a-fA-F]+|[a-z]+);/i.test(t)) return t;
+    t = t.replace(/&amp;(#(?:x?[0-9a-fA-F]+|[a-z]+);)/gi, "&$1");
+    t = t.replace(/&nbsp;/gi, " ");
+    t = t.replace(/&minus;/gi, "−");
+    t = t.replace(/&times;/gi, "×");
+    t = t.replace(/&plusmn;/gi, "±");
+    t = t.replace(/&alpha;/gi, "α");
+    t = t.replace(/&beta;/gi, "β");
+    t = t.replace(/&infin;/gi, "∞");
+    t = t.replace(/&#160;|&#x0*A0;/gi, " ");
+    t = t.replace(/&#(\d+);/g, (m, n) => {
+      const code = +n;
+      if (code === 60 || code === 62 || code === 34 || code === 39) return m;
+      try { return String.fromCharCode(code); } catch (e) { return m; }
+    });
+    t = t.replace(/&#x([0-9a-f]+);/gi, (m, h) => {
+      const code = parseInt(h, 16);
+      if (code === 60 || code === 62 || code === 34 || code === 39) return m;
+      try { return String.fromCharCode(code); } catch (e) { return m; }
+    });
+    return t;
+  }
+
+  function decodeEntityTextInDom(root) {
+    const el = root || (typeof document !== "undefined" ? document.body : null);
+    if (!el || !el.querySelectorAll) return;
+    const hosts = el.querySelectorAll(
+      ".mtk-q-text, .qx-q-text-only, .qx-prac-opt-text, .mtk-opt-text, .qx-content, " +
+      ".eg-q-stem, #egQArea, .eg-sol, #egSol, .sol-body, .qx-sol-body, .qx-sol-flow, .eg-opts"
+    );
+    const list = hosts.length ? hosts : [el];
+    const skipSel = ".katex, .katex-html, mjx-container, annotation, math, script, style";
+    list.forEach((host) => {
+      if (!host) return;
+      const walker = document.createTreeWalker(host, NodeFilter.SHOW_TEXT, {
+        acceptNode: function (n) {
+          if (!n || n.nodeValue == null) return NodeFilter.FILTER_REJECT;
+          if (n.parentElement && n.parentElement.closest(skipSel)) return NodeFilter.FILTER_REJECT;
+          if (!/&(?:amp;)?#/.test(n.nodeValue) && !/&(?:nbsp|minus|alpha|times);/i.test(n.nodeValue)) {
+            return NodeFilter.FILTER_REJECT;
+          }
+          return NodeFilter.FILTER_ACCEPT;
+        }
+      });
+      const nodes = [];
+      while (walker.nextNode()) nodes.push(walker.currentNode);
+      nodes.forEach((n) => {
+        const after = decodeNumericEntityText(n.nodeValue);
+        if (after !== n.nodeValue) n.nodeValue = after;
+      });
+    });
+  }
+
   /** Convert $...$ / $$...$$ / \(...\) islands to KaTeX HTML (works inside HTML stems). */
   function katexRenderIslands(s) {
     const src = String(s || "");
-    if (/class\s*=\s*["'][^"']*katex/.test(src)) {
+    /* Never re-paint already-typeset KaTeX (annotation TeX looks like \left / \mathrm). */
+    if (hasRealKatexHtml(src) && !looksLetterSpacedMarkup(src)) {
+      return repairSpacedKatexTags(src);
+    }
+    if (/class\s*=\s*["'][^"']*katex/.test(src) && !/spanclass/i.test(src)) {
       const leftover = src.replace(/<[^>]+>/g, " ");
       if (!/\$[^$]{1,400}\$/.test(leftover) && !/\\\(|\\\[/.test(leftover)) return src;
     }
@@ -1325,11 +1399,7 @@ window.Mx = (() => {
       } catch (_) { /* */ }
       s = repairSpacedKatexTags(s);
     }
-    // Still spaced tags: drop markup only when it is clearly dumped class soup
-    if (looksLetterSpacedMarkup(s) && /spanclass|katex\s*-\s*display/i.test(s)
-      && !/<span\b[^>]*class=["'][^"']*\bkatex\b/i.test(s)) {
-      s = s.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
-    }
+    // Still spaced tags: never flatten to text (dumps spanclass / &#160; on screen)
     return s;
   }
 
@@ -2274,7 +2344,7 @@ window.Mx = (() => {
     phi: "\\phi", omega: "\\omega", infin: "\\infty", le: "\\le", ge: "\\ge",
     ne: "\\ne", times: "\\times", plusmn: "\\pm", isin: "\\in", notin: "\\notin",
     cap: "\\cap", cup: "\\cup", sub: "\\subset", sum: "\\sum", int: "\\int",
-    part: "\\partial", nbsp: " ", amp: "\text{ and }", and: "\text{ and }"
+    part: "\\partial", nbsp: " ", amp: "\\text{ and }", and: "\\text{ and }"
   };
 
   function mmlDecodeText(t) {
@@ -2340,11 +2410,64 @@ window.Mx = (() => {
     return kids;
   }
 
+  /** Replace one MathML tag with balanced open/close so nested mfenced/mfrac keep inner (x,y). */
+  function replaceBalancedMathTag(s, tag, fn) {
+    const str = String(s || "");
+    if (!str || !tag) return str;
+    const openRe = new RegExp("<" + tag + "\\b([^>]*)>", "gi");
+    let out = "";
+    let last = 0;
+    let m;
+    while ((m = openRe.exec(str))) {
+      const start = m.index;
+      if (start < last) {
+        openRe.lastIndex = last;
+        continue;
+      }
+      const attrs = m[1] || "";
+      const innerStart = start + m[0].length;
+      let pos = innerStart;
+      let depth = 1;
+      const openTok = new RegExp("<" + tag + "\\b", "gi");
+      const closeTok = new RegExp("</" + tag + "\\s*>", "gi");
+      let end = -1;
+      while (pos < str.length && depth > 0) {
+        openTok.lastIndex = pos;
+        closeTok.lastIndex = pos;
+        const o = openTok.exec(str);
+        const c = closeTok.exec(str);
+        if (!c) break;
+        if (o && o.index < c.index) {
+          depth++;
+          pos = o.index + o[0].length;
+        } else {
+          depth--;
+          pos = c.index + c[0].length;
+          if (depth === 0) {
+            end = pos;
+            break;
+          }
+        }
+      }
+      if (end < 0) break;
+      const chunk = str.slice(innerStart, end);
+      const closeMatch = chunk.match(new RegExp("</" + tag + "\\s*>$", "i"));
+      const inner = closeMatch ? chunk.slice(0, chunk.length - closeMatch[0].length) : chunk;
+      out += str.slice(last, start);
+      let repl = "";
+      try { repl = fn(attrs, inner); } catch (_) { repl = inner; }
+      out += (repl == null ? "" : String(repl));
+      last = end;
+      openRe.lastIndex = end;
+    }
+    return out + str.slice(last);
+  }
+
   function mathmlToTex(inner) {
     let s = String(inner || "");
     // Piecewise / arrays — Marks/Examgoal put f(x) definitions in <mtable>
     // (Q6 "Let . Consider" when this block collapsed to a lone period)
-    s = s.replace(/<mtable\b[^>]*>([\s\S]*?)<\/mtable>/gi, (_, body) => {
+    s = replaceBalancedMathTag(s, "mtable", (_, body) => {
       let rows = [...String(body).matchAll(/<m(?:labeled)?tr\b[^>]*>([\s\S]*?)<\/m(?:labeled)?tr>/gi)];
       if (!rows.length) {
         const cells = [...String(body).matchAll(/<mtd\b[^>]*>([\s\S]*?)<\/mtd>/gi)];
@@ -2374,7 +2497,7 @@ window.Mx = (() => {
       if (two) return "\\begin{cases}" + texRows.join(" \\\\ ") + "\\end{cases}";
       return "\\begin{array}{ll}" + texRows.join(" \\\\ ") + "\\end{array}";
     });
-    s = s.replace(/<munderover\b[^>]*>([\s\S]*?)<\/munderover>/gi, (_, body) => {
+    s = replaceBalancedMathTag(s, "munderover", (_, body) => {
       const kids = mmlKids(body);
       if (kids.length >= 3) {
         const base = mathmlToTex(kids[0]);
@@ -2385,17 +2508,17 @@ window.Mx = (() => {
       }
       return mathmlToTex(body);
     });
-    s = s.replace(/<munder\b[^>]*>([\s\S]*?)<\/munder>/gi, (_, body) => {
+    s = replaceBalancedMathTag(s, "munder", (_, body) => {
       const kids = mmlKids(body);
       if (kids.length >= 2) return "\\mathop{" + mathmlToTex(kids[0]) + "}_{" + mathmlToTex(kids[1]) + "}";
       return mathmlToTex(body);
     });
-    s = s.replace(/<mover\b[^>]*>([\s\S]*?)<\/mover>/gi, (_, body) => {
+    s = replaceBalancedMathTag(s, "mover", (_, body) => {
       const kids = mmlKids(body);
       if (kids.length >= 2) return "\\overset{" + mathmlToTex(kids[1]) + "}{" + mathmlToTex(kids[0]) + "}";
       return mathmlToTex(body);
     });
-    s = s.replace(/<msubsup\b[^>]*>([\s\S]*?)<\/msubsup>/gi, (_, body) => {
+    s = replaceBalancedMathTag(s, "msubsup", (_, body) => {
       const kids = mmlKids(body);
       if (kids.length >= 3) {
         return "{" + mathmlToTex(kids[0]) + "}_{" + mathmlToTex(kids[1]) + "}^{" + mathmlToTex(kids[2]) + "}";
@@ -2403,22 +2526,22 @@ window.Mx = (() => {
       return mathmlToTex(body);
     });
     // msup/msub/mfrac BEFORE mfenced so [\mathrm{FeF}_6]^{3-} keeps base+sup kids
-    s = s.replace(/<mfrac\b[^>]*>([\s\S]*?)<\/mfrac>/gi, (_, body) => {
+    s = replaceBalancedMathTag(s, "mfrac", (_, body) => {
       const kids = mmlKids(body);
       if (kids.length >= 2) return "\\frac{" + mathmlToTex(kids[0]) + "}{" + mathmlToTex(kids[1]) + "}";
       return mathmlToTex(body);
     });
-    s = s.replace(/<msup\b[^>]*>([\s\S]*?)<\/msup>/gi, (_, body) => {
+    s = replaceBalancedMathTag(s, "msup", (_, body) => {
       const kids = mmlKids(body);
       if (kids.length >= 2) return "{" + mathmlToTex(kids[0]) + "}^{" + mathmlToTex(kids[1]) + "}";
       return mathmlToTex(body);
     });
-    s = s.replace(/<msub\b[^>]*>([\s\S]*?)<\/msub>/gi, (_, body) => {
+    s = replaceBalancedMathTag(s, "msub", (_, body) => {
       const kids = mmlKids(body);
       if (kids.length >= 2) return "{" + mathmlToTex(kids[0]) + "}_{" + mathmlToTex(kids[1]) + "}";
       return mathmlToTex(body);
     });
-    s = s.replace(/<mfenced\b([^>]*)>([\s\S]*?)<\/mfenced>/gi, (_, attrs, body) => {
+    s = replaceBalancedMathTag(s, "mfenced", (attrs, body) => {
       const inner = mathmlToTex(body);
       if (!String(inner || "").trim()) return "";
       const oa = /open\s*=\s*["']([^"']*)["']/i.exec(attrs || "");
@@ -2433,8 +2556,8 @@ window.Mx = (() => {
       if (c === "") c = ".";
       return "\\left" + o + inner + "\\right" + c;
     });
-    s = s.replace(/<msqrt\b[^>]*>([\s\S]*?)<\/msqrt>/gi, (_, body) => "\\sqrt{" + mathmlToTex(body) + "}");
-    s = s.replace(/<mrow\b[^>]*>([\s\S]*?)<\/mrow>/gi, (_, body) => mathmlToTex(body));
+    s = replaceBalancedMathTag(s, "msqrt", (_, body) => "\\sqrt{" + mathmlToTex(body) + "}");
+    s = replaceBalancedMathTag(s, "mrow", (_, body) => mathmlToTex(body));
     s = s.replace(/<mtext\b[^>]*>([\s\S]*?)<\/mtext>/gi, (_, t) => {
       const v = mmlDecodeText(String(t || "").replace(/<[^>]+>/g, ""));
       return v ? "\\text{" + v + "}" : "";
@@ -2487,7 +2610,7 @@ window.Mx = (() => {
     }
     out = out.replace(/\$\s*=\s*\$\s*\{\s*\$/g, "$ = \\{");
     /* qxmd215: strip stray amp */
-    out = out.replace(/&#38;/g, " and ").replace(/&amp;/gi, " and ");
+    out = out.replace(/&#38;/g, " and ").replace(/&amp;(?!#|[a-zA-Z]+;)/gi, " and ");
     out = out.replace(/(^|[^\\$A-Za-z])&(?![#a-zA-Z])/g, "$1 and ");
     return out;
   }
@@ -4451,7 +4574,11 @@ window.Mx = (() => {
   function html(content) {
     if (content == null) return "";
     try { loadKatex(); } catch (_) { /* */ }
+    if (hasRealKatexHtml(content) && !looksLetterSpacedMarkup(content)) {
+      return repairSpacedKatexTags(String(content));
+    }
     content = qxSanitizeIncoming(content);
+    content = decodeNumericEntityText(String(content));
     const cacheKey = String(content);
     if (cacheKey.length < 10000 && _htmlMemo.has(cacheKey)) {
       const hit = _htmlMemo.get(cacheKey);
@@ -4778,7 +4905,8 @@ window.Mx = (() => {
     }, KATEX_OPTS);
     list.forEach(node => {
       try {
-        if (node.querySelector && node.querySelector(".katex") && !/\$|\\\(|\\\[/.test(node.textContent || "")) return;
+        /* textContent includes KaTeX annotation TeX (\left, \mathrm) — never use it as leftover. */
+        if (node.querySelector && node.querySelector(".katex") && !leftoverDelimInDirectText(node)) return;
         const raw = node.innerHTML || "";
         if (/\\begin\{cases\}/.test(raw) && !/\$\$[^$]*\\begin\{cases\}/.test(raw)) {
           const up = raw.replace(
@@ -4861,7 +4989,7 @@ window.Mx = (() => {
   function stemLooksGlued(html) {
     const t = String(html || "").replace(/<[^>]+>/g, " ").replace(/\u00a0/g, " ").replace(/\s+/g, " ").trim();
     const compact = t.replace(/\s+/g, "");
-    if (/LetX=|Definearelation|Risanequivalence|Inthelightof|choosethecorrect|representsaline|Forsome\(/i.test(compact)) return true;
+    if (/LetX=|Definearelation|Risanequivalence|Inthelightof|choosethecorrect|representsaline|Forsome\(|IfR=|LetN|LetR=|R-1is|4is the|domainofR|PAP-1=B/i.test(compact)) return true;
     const spaces = (t.match(/ /g) || []).length;
     if (compact.length > 70 && spaces < compact.length / 22 && /[A-Za-z]{18,}/.test(compact)) return true;
     return false;
@@ -4956,6 +5084,7 @@ window.Mx = (() => {
     requestAnimationFrame(() => {
       const el = root || document.getElementById("app-main") || document.body;
       if (!el) return;
+      try { decodeEntityTextInDom(el); } catch (_) { /* */ }
       try { fixSpacingInDom(el); } catch (_) { /* */ }
       try { peelProseKatexInDom(el); } catch (_) { /* */ }
       try { beautifyMatchTablesInDom(el); } catch (_) { /* */ }
@@ -5017,9 +5146,9 @@ window.Mx = (() => {
           const before = node.innerHTML || "";
           if (!looksLetterSpacedMarkup(before) && !/&lt;\s*span[^&]*katex/i.test(before)) return;
           if (/<span\b[^>]*class=["'][^"']*\bkatex\b/i.test(before) && !/spanclass/i.test(before)) return;
-          const orig = node.getAttribute("data-qx-sol-src") || node.getAttribute("data-qx-stem-src");
+          const orig = node.getAttribute("data-qx-sol-src") || node.getAttribute("data-qx-stem-src") || node.getAttribute("data-qx-opt-src");
           let fixed = recoverLetterSpacedKatexHtml(before);
-          if (orig && looksLetterSpacedMarkup(fixed)) {
+          if (orig && (looksLetterSpacedMarkup(fixed) || /spanclass|&#\d+;/.test(fixed))) {
             try { fixed = html(orig); } catch (_) { /* */ }
           }
           if (fixed && fixed !== before) {
@@ -5037,6 +5166,7 @@ window.Mx = (() => {
       } catch (_) { /* */ }
       const list = pickMathRoots();
       const run = () => {
+        try { decodeEntityTextInDom(el); } catch (_) { /* */ }
         try { fixSpacingInDom(el); } catch (_) { /* */ }
         try { peelProseKatexInDom(el); } catch (_) { /* */ }
         /* qxmd220: sol peel reinforce after KaTeX settles */
@@ -5096,6 +5226,7 @@ window.Mx = (() => {
             }).catch(() => typesetKatex(live))
           : Promise.resolve();
         pass2.finally(() => {
+          try { decodeEntityTextInDom(el); } catch (_) { /* */ }
           try { peelProseKatexInDom(el); } catch (_) { /* */ }
           try { recoverHollowStemInDom(el); } catch (_) { /* */ }
           try { recoverGluedStemInDom(el); } catch (_) { /* */ }
@@ -5118,17 +5249,13 @@ window.Mx = (() => {
             ".qx-sol-card, .qx-sol-flow, #qaSolReveal, #qaResult, .eg-opts, .mtk-opt-text"
           ).forEach((node) => {
             if (!node || (node.closest && node.closest(".katex, mjx-container"))) return;
-            if (node.querySelector && node.querySelector(".katex")) {
-              const textBits = Array.prototype.map.call(node.childNodes, function (n) {
-                return n.nodeType === 3 ? (n.nodeValue || "") : "";
-              }).join("");
-              if (!/\$|\\\(|\\\[|\\left|\\right|\\mathrm|\\\{/.test(textBits)) return;
-            }
+            if (node.querySelector && node.querySelector(".katex, .katex-html, .katex-display, mjx-container")) return;
             const before = node.innerHTML || "";
+            if (hasRealKatexHtml(before)) return;
             if (!/\$|\\\(|\\\[|\\left|\\right|\\mathrm|\\ce\b|\\\{/.test(before)) return;
             try {
               const painted = katexRenderIslands(before);
-              if (painted && painted !== before) node.innerHTML = painted;
+              if (painted && painted !== before && !looksLetterSpacedMarkup(painted)) node.innerHTML = painted;
             } catch (_) { /* */ }
           });
         })
@@ -5153,6 +5280,7 @@ window.Mx = (() => {
 
     requestAnimationFrame(() => {
       const el = root || document.getElementById("app-main") || document.body;
+      try { decodeEntityTextInDom(el); } catch (_) { /* */ }
       try { fixSpacingInDom(el); } catch (_) { /* */ }
       try { beautifyMatchTablesInDom(el); } catch (_) { /* */ }
       try { upgradeBareTexInDom(el); } catch (_) { /* */ }

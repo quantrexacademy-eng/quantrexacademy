@@ -1,10 +1,10 @@
 {
-    "cache": "qx-pwa-qxmd241",
-    "ts": 1790669000000,
-    "title": "qxmd241: stems, options, and solutions typeset correctly",
+    "cache": "qx-pwa-qxmd242",
+    "ts": 1790670000000,
+    "title": "qxmd242: question, option, solution math matches MARKS typeset",
     "site": "https://www.quantrexacademy.com",
-    "build": "qxmd241",
-    "body": "Smashed Sets and Relations stems are repaired: inequalities stay in math, set-builders keep English in \\text, relation names are not match chips, entities decode. Official answers are unchanged.",
+    "build": "qxmd242",
+    "body": "Already-typeset KaTeX is never dumped as text. HTML entities like &#160; and &#945; decode. Stems restore from source. Official answers are unchanged.",
     "package": "com.quantrexacademy.app",
     "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }

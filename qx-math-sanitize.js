@@ -23,6 +23,11 @@
   function detectBrokenKatex(s) {
     const t = String(s || "");
     if (!t) return false;
+    if (/<span\b[^>]*class=["'][^"']*\bkatex\b/i.test(t) && !/spanclass/i.test(t)
+      && !/<\s*[a-zA-Z]\s+[a-zA-Z]\s+[a-zA-Z]/.test(t)) {
+      return false;
+    }
+    if (/spanclass|katex\s*-\s*display/i.test(t)) return true;
     if (/katex-html|katex-mathml|class\s*=\s*["'][^"']*\bkatex\b/i.test(t)) return true;
     if (/\b(?:mord|mrel|mbin|vlist|pstrut)\b/i.test(t) && /span/i.test(t)) return true;
     return false;
@@ -39,6 +44,7 @@
 
   function decodeEntities(s) {
     let t = String(s || "");
+    t = t.replace(/&amp;(#(?:x?[0-9a-fA-F]+|[a-zA-Z]+);)/gi, "&$1");
     t = t.replace(/&nbsp;|&#160;|&#x0*A0;/gi, " ");
     t = t.replace(/&amp;/g, "&");
     t = t.replace(/&lt;/g, "<").replace(/&gt;/g, ">");
@@ -782,6 +788,7 @@
     normalizeLatex: normalizeDelimiters,
     repairMarksExportTex,
     looksMarksBrokenTex,
+    decodeEntities,
     sanitizeQuestionContent,
     sanitizeSolutionContent,
     sanitizeHtml: stripUnsafeHtml,

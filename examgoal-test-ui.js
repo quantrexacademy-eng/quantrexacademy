@@ -60,7 +60,7 @@
     } else {
       try { document.head.appendChild(lock); } catch (_) {}
     }
-    const lh = "assets/qx-foot-lock.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd241");
+    const lh = "assets/qx-foot-lock.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd242");
     if (lock.getAttribute("href") !== lh) lock.href = lh;
 
     /* qxmd218: practice chrome — only Settings gear; Marks-like settings cards */
@@ -701,6 +701,11 @@
 
     const titleEsc = String(session.title || "Test").replace(/</g, "&lt;").replace(/>/g, "&gt;");
     const stem = typeof ctx.renderQuestionText === "function" ? ctx.renderQuestionText(q, ctx.textReady) : "";
+    let stemSrcAttr = "";
+    try {
+      const src0 = String((q && (q._qxOrigStem || q._qxBankQ || q.q || q.question)) || "").slice(0, 8000);
+      stemSrcAttr = src0.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
+    } catch (_) { stemSrcAttr = ""; }
     const showSol = wantShowSol(session, session.idx);
     const hasAns = ctx.hasAnswerAt ? ctx.hasAnswerAt(session.idx) : session.answers[session.idx] != null;
     const fmtOpen = !!session._egFmtOpen;
@@ -932,7 +937,8 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
       '<div class="eg-body">' +
       '<div class="eg-main"><div class="eg-q-card">' +
       /* qxmd180: Check Answer keeps stem + options visible; solution sits below (Exam Goal). */
-      '<div class="eg-q-stem" id="egQArea" aria-hidden="false">' +
+      '<div class="eg-q-stem" id="egQArea" aria-hidden="false"' +
+      (stemSrcAttr ? ' data-qx-stem-src="' + stemSrcAttr + '"' : "") + ">" +
       stem + "</div>" +
       (ctx.sectionInstr || "") +
       '<div class="' + (ctx.optsClass || "mtk-options mtk-options-grid") + ' eg-opts" id="qxOpts">' +

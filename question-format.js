@@ -550,6 +550,11 @@ const QuantrexQFormat = (() => {
 
   function htmlContent(text) {
     let expanded = String(text || "");
+    try {
+      if (typeof QxMathSanitize !== "undefined" && QxMathSanitize.decodeEntities) {
+        expanded = QxMathSanitize.decodeEntities(expanded);
+      }
+    } catch (_) { /* */ }
     // qxmd170: Marks TeX glue repair before proofread / Mx (stems + options)
     try {
       if (typeof QxMathSanitize !== "undefined" && QxMathSanitize.repairMarksExportTex) {
@@ -1320,7 +1325,13 @@ const QuantrexQFormat = (() => {
     }
 
     return opts.map((o, i) => {
-      let raw = protectMathLtGt(String(o || "").trim());
+      let raw = String(o || "").trim();
+      try {
+        if (typeof QxMathSanitize !== "undefined" && QxMathSanitize.decodeEntities) {
+          raw = QxMathSanitize.decodeEntities(raw);
+        }
+      } catch (_) { /* */ }
+      raw = protectMathLtGt(raw);
       // Never render undefined/null/[object Object]
       if (/^(undefined|null|\[object Object\])$/i.test(raw)) raw = "";
       const plain = raw.replace(/<[^>]+>/g, "").trim();
@@ -1420,10 +1431,11 @@ const QuantrexQFormat = (() => {
       const multiCtrl = multi
         ? `<span class="qx-prac-check mtk-opt-check" aria-hidden="true"></span>`
         : "";
+      const optSrcAttr = String(raw || "").slice(0, 4000).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
       return `<button type="button" class="${cls}" data-prac-opt="${i}" ${done ? "disabled" : ""}>
         ${multiCtrl}
         <span class="mtk-opt-letter qx-opt-circle" aria-hidden="true">${letter(i)}</span>
-        <span class="qx-prac-opt-text ${mapLike ? "qx-match-opt" : "qx-content"}">${optBody}</span>
+        <span class="qx-prac-opt-text ${mapLike ? "qx-match-opt" : "qx-content"}" data-qx-opt-src="${optSrcAttr}">${optBody}</span>
       </button>`;
     }).join("") || `<div class="empty qx-load-opts" style="padding:20px">Options unavailable</div>`;
   }

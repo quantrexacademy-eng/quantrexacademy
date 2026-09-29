@@ -5355,6 +5355,14 @@ window.QxImgClean = (() => {
     } catch (_) {
       html = "";
     }
+    try {
+      if (html && source && !/data-qx-stem-src=/.test(html)) {
+        html = html.replace(
+          /(<div\b[^>]*class="[^"]*(?:mtk-q-text|qx-q-seg-text|qx-marks-native-q)[^"]*"[^>]*)(>)/i,
+          (m, a, b) => a + ' data-qx-stem-src="' + escAttr(String(source).slice(0, 8000)) + '"' + b
+        );
+      }
+    } catch (_) { /* */ }
     if (isMatchListOrTableFigureHtml(source) || isGuttedMatchTable(source)) {
       try {
         const body = renderMatchListHtml(source, render);
