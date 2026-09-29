@@ -60,8 +60,19 @@
     } else {
       try { document.head.appendChild(lock); } catch (_) {}
     }
-    const lh = "assets/qx-foot-lock.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd242");
+    const lh = "assets/qx-foot-lock.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd243");
     if (lock.getAttribute("href") !== lh) lock.href = lh;
+    let klock = document.getElementById("qxKatexLockCss");
+    if (!klock) {
+      klock = document.createElement("link");
+      klock.id = "qxKatexLockCss";
+      klock.rel = "stylesheet";
+      document.head.appendChild(klock);
+    } else {
+      try { document.head.appendChild(klock); } catch (_) {}
+    }
+    const kh = "assets/qx-katex-lock.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd243");
+    if (klock.getAttribute("href") !== kh) klock.href = kh;
 
     /* qxmd218: practice chrome — only Settings gear; Marks-like settings cards */
     if (!document.getElementById("qxmd219EgCss")) {
@@ -159,6 +170,8 @@
           try {
             var lockEl = document.getElementById("qxFootLockCss");
             if (lockEl) document.head.appendChild(lockEl);
+            var kEl = document.getElementById("qxKatexLockCss");
+            if (kEl) document.head.appendChild(kEl);
             var st = document.getElementById("qxmd239EgCss");
             if (st) document.head.appendChild(st);
           } catch (_) {}

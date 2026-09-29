@@ -1201,8 +1201,13 @@ const MarksLive = (() => {
           return /\bLet\s*[.,;:]?\s*(Consider|Then|the following)\b/i.test(t) || /\bLet\s+\.\s/i.test(t);
         };
         const mathW = (s) => (String(s || "").match(/\$/g) || []).length + (String(s || "").match(/\\[a-zA-Z]+/g) || []).length;
+        const looksTex = (s) => /\$[^$]{1,400}\$|\\(?:left|frac|mathbb|mathrm|times|in|begin)\b/.test(String(s || ""));
+        const looksMmlOnly = (s) => /<math[\s>]/i.test(String(s || "")) && !looksTex(s);
         let keepBankStem = false;
         if (gut(fetched.q) && snap.q && !gut(snap.q)) {
+          merged.q = snap.q;
+          keepBankStem = true;
+        } else if (looksTex(snap.q) && looksMmlOnly(fetched.q)) {
           merged.q = snap.q;
           keepBankStem = true;
         } else if (mathW(snap.q) > mathW(fetched.q) + 3) {

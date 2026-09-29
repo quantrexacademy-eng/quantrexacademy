@@ -1,10 +1,10 @@
 {
-    "cache": "qx-pwa-qxmd242",
-    "ts": 1790670000000,
-    "title": "qxmd242: question, option, solution math matches MARKS typeset",
+    "cache": "qx-pwa-qxmd243",
+    "ts": 1790700000000,
+    "title": "qxmd243: squares, cubes and math layout match MARKS",
     "site": "https://www.quantrexacademy.com",
-    "build": "qxmd242",
-    "body": "Already-typeset KaTeX is never dumped as text. HTML entities like &#160; and &#945; decode. Stems restore from source. Official answers are unchanged.",
+    "build": "qxmd243",
+    "body": "KaTeX superscripts stay raised. USB TeX is kept over MathML dumps. Glued LetN recovery only fires on real glue. Official answers are unchanged.",
     "package": "com.quantrexacademy.app",
     "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }

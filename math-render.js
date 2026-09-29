@@ -108,17 +108,36 @@ window.Mx = (() => {
   }
 
   function ensureKatexCss() {
-    if (document.getElementById("qxKatexCss")) return;
-    const l = document.createElement("link");
-    l.id = "qxKatexCss";
-    l.rel = "stylesheet";
-    l.href = "https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css";
-    document.head.appendChild(l);
+    if (!document.getElementById("qxKatexCss")) {
+      const l = document.createElement("link");
+      l.id = "qxKatexCss";
+      l.rel = "stylesheet";
+      l.href = "https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css";
+      document.head.appendChild(l);
+    }
+    if (!document.getElementById("qxKatexLockCss")) {
+      const lock = document.createElement("link");
+      lock.id = "qxKatexLockCss";
+      lock.rel = "stylesheet";
+      lock.href = "assets/qx-katex-lock.css?v=" + encodeURIComponent((typeof window !== "undefined" && window.QX_BUILD) || "qxmd243");
+      document.head.appendChild(lock);
+    } else {
+      try { document.head.appendChild(document.getElementById("qxKatexLockCss")); } catch (_) { /* */ }
+    }
     if (!document.getElementById("qxWorldMathCss")) {
       const s = document.createElement("style");
       s.id = "qxWorldMathCss";
       s.textContent = [
-        ".katex{font-size:1.08em;line-height:1.35}",
+        ".katex{font-size:1.08em;line-height:1.2;padding:0 .1em}",
+        ".katex .vlist-t{display:inline-table!important;border-collapse:collapse!important}",
+        ".katex .vlist-r{display:table-row!important}",
+        ".katex .vlist{display:table-cell!important;position:relative!important;vertical-align:bottom!important}",
+        ".katex .vlist>span{display:block!important;height:0!important;position:relative!important}",
+        ".katex .vlist>span>span{display:inline-block!important}",
+        ".katex .pstrut{overflow:hidden!important;width:0!important}",
+        ".katex .strut,.katex .base{display:inline-block!important}",
+        ".katex .msupsub{text-align:left!important}",
+        ".katex .katex-mathml{position:absolute!important;clip:rect(1px,1px,1px,1px)!important;height:1px!important;width:1px!important;overflow:hidden!important}",
         ".katex-display{margin:0.7em 0;overflow-x:auto;overflow-y:hidden;padding:2px 0}",
         ".katex-display>.katex{display:inline-block;max-width:100%}",
         ".mtk-q-text,.qx-question-body,.mtk-opt-text,.sol-body,.qx-sol-flow{",
@@ -2936,10 +2955,11 @@ window.Mx = (() => {
       return part.replace(/(\\frac\{[^{}]+\}\{[^{}]+\})/g, (m) => "$" + m + "$");
     });
 
-    // x^2 outside $
-    c = c.replace(/(^|[^$\\A-Za-z])([a-zA-Z0-9)\]])(\s*)\^(\d+)(?![0-9{])/g, (m, pre, base, sp, exp) => {
-      return `${pre}$${base}^{${exp}}$`;
-    });
+    // x^2 outside $ — never wrap inside an existing $…$ island ({x}^{3} stays)
+    c = replaceOutsideMathFn(c, (part) => part.replace(
+      /(^|[^$\\A-Za-z])([a-zA-Z0-9)\]])(\s*)\^(\d+)(?![0-9{])/g,
+      (m, pre, base, sp, exp) => `${pre}$${base}^{${exp}}$`
+    ));
 
     // Comparisons outside $
     c = replaceOutsideMath(c, /≥/g, " $\\ge$ ");
@@ -3236,7 +3256,7 @@ window.Mx = (() => {
 
     const looksRealMathDom = (k) => {
       if (!k || !k.querySelector) return false;
-      if (k.querySelector(".mfrac, .msup, .msub, .msubsup, .msqrt, .mtable, .minner, .delimsizing, .mop, .mbin, .mrel, .vlist-t, .hlmsup, .hlmsub")) return true;
+      if (k.querySelector(".mfrac, .msup, .msub, .msubsup, .msupsub, .msqrt, .mtable, .minner, .delimsizing, .mop, .mbin, .mrel, .vlist-t, .hlmsup, .hlmsub")) return true;
       if (k.querySelector(".mord.mathdefault + .mbin, .mbin, .mrel")) {
         // operator present — likely formula; still allow pure-letter prose with incidental nodes
       }
@@ -4729,6 +4749,17 @@ window.Mx = (() => {
       try { s = healShatteredTex(s); } catch (_) { /* */ }
       try { s = flattenDisplayMath(s); } catch (_) { /* */ }
       try { s = professionalizeSgnPiecewise(s); } catch (_) { /* */ }
+      try {
+        s = s.replace(/\$([^$]{0,8000})\$/g, (full, inner) => {
+          let t = String(inner)
+            .replace(/\\\(\s*\\(times|div|pm|in|infty|pi|theta|alpha|beta|gamma|Delta|Omega|mu)\s*\\\)/g, "\\$1 ")
+            .replace(/×/g, "\\times ")
+            .replace(/∈/g, "\\in ")
+            .replace(/²/g, "^{2}")
+            .replace(/³/g, "^{3}");
+          return "$" + t + "$";
+        });
+      } catch (_) { /* */ }
       try { s = katexRenderIslands(s); } catch (_) { /* */ }
       try { s = repairSpacedKatexTags(s); } catch (_) { /* */ }
       try { s = recoverLetterSpacedKatexHtml(s); } catch (_) { /* */ }
@@ -4737,30 +4768,43 @@ window.Mx = (() => {
     // Plain / LaTeX: escape only outside math so `$C < B$` stays valid for MathJax
     let out = escapeHtmlOutsideMath(s);
     out = protectMathComparisons(out);
-    // Unicode math → KaTeX-friendly (keep readable even if typeset fails)
-    out = out.replace(/×/g, "\\(\\times\\)");
-    out = out.replace(/÷/g, "\\(\\div\\)");
-    out = out.replace(/±/g, "\\(\\pm\\)");
-    out = out.replace(/∞/g, "\\(\\infty\\)");
-    out = out.replace(/π/g, "\\(\\pi\\)");
-    out = out.replace(/θ/g, "\\(\\theta\\)");
-    out = out.replace(/α/g, "\\(\\alpha\\)");
-    out = out.replace(/β/g, "\\(\\beta\\)");
-    out = out.replace(/γ/g, "\\(\\gamma\\)");
-    out = out.replace(/Δ/g, "\\(\\Delta\\)");
-    out = out.replace(/Ω/g, "\\(\\Omega\\)");
-    out = out.replace(/μ/g, "\\(\\mu\\)");
-    // Superscripts/subscripts as unicode stay fine; also offer KaTeX when next to identifiers
-    out = out.replace(/([A-Za-z0-9\)\]])²/g, "$1^{2}");
-    out = out.replace(/([A-Za-z0-9\)\]])³/g, "$1^{3}");
-    out = out.replace(/²/g, "²");
-    out = out.replace(/³/g, "³");
-    out = out.replace(/⁻¹/g, "^{-1}");
-    out = out.replace(/⁻/g, "⁻");
-    // √x or √(…) — never empty \sqrt{}
-    out = out.replace(/√\s*\(([^)]+)\)/g, "\\(\\sqrt{$1}\\)");
-    out = out.replace(/√\s*([A-Za-z0-9]+)/g, "\\(\\sqrt{$1}\\)");
-    out = out.replace(/√/g, "√");
+    /* Inside $…$: unicode → TeX. Never inject \( \) inside math (that flattens x^3 → x3). */
+    out = out.replace(/\$([^$]{0,8000})\$/g, (full, inner) => {
+      let t = String(inner)
+        .replace(/\\\(\s*\\(times|div|pm|in|infty|pi|theta|alpha|beta|gamma|Delta|Omega|mu)\s*\\\)/g, "\\$1 ")
+        .replace(/×/g, "\\times ")
+        .replace(/÷/g, "\\div ")
+        .replace(/±/g, "\\pm ")
+        .replace(/∈/g, "\\in ")
+        .replace(/∞/g, "\\infty ")
+        .replace(/π/g, "\\pi ")
+        .replace(/²/g, "^{2}")
+        .replace(/³/g, "^{3}")
+        .replace(/¹/g, "^{1}")
+        .replace(/⁴/g, "^{4}")
+        .replace(/⁻¹/g, "^{-1}");
+      return "$" + t + "$";
+    });
+    // Unicode math outside $…$ only
+    out = replaceOutsideMathFn(out, (chunk) => chunk
+      .replace(/×/g, "$\\times$")
+      .replace(/÷/g, "$\\div$")
+      .replace(/±/g, "$\\pm$")
+      .replace(/∞/g, "$\\infty$")
+      .replace(/π/g, "$\\pi$")
+      .replace(/θ/g, "$\\theta$")
+      .replace(/α/g, "$\\alpha$")
+      .replace(/β/g, "$\\beta$")
+      .replace(/γ/g, "$\\gamma$")
+      .replace(/Δ/g, "$\\Delta$")
+      .replace(/Ω/g, "$\\Omega$")
+      .replace(/μ/g, "$\\mu$")
+      .replace(/([A-Za-z0-9)\\]])²/g, "$$$1^{2}$")
+      .replace(/([A-Za-z0-9)\\]])³/g, "$$$1^{3}$")
+      .replace(/⁻¹/g, "$^{-1}$")
+      .replace(/√\s*\(([^)]+)\)/g, "$\\sqrt{$1}$")
+      .replace(/√\s*([A-Za-z0-9]+)/g, "$\\sqrt{$1}$")
+    );
     out = out.replace(/\n/g, "<br>");
     try { out = healShatteredTex(out); } catch (_) { /* */ }
     try { out = flattenDisplayMath(out); } catch (_) { /* */ }
@@ -4818,6 +4862,8 @@ window.Mx = (() => {
         return "";
       };
       const unicodeFallback = (tex) => {
+        const SUPER = { "0": "⁰", "1": "¹", "2": "²", "3": "³", "4": "⁴", "5": "⁵", "6": "⁶", "7": "⁷", "8": "⁸", "9": "⁹" };
+        const toSuper = (d) => String(d || "").split("").map((ch) => SUPER[ch] || ch).join("");
         let plain = String(tex || "")
           .replace(/^\$+|\$+$/g, "")
           .replace(/\\pi\b/g, "π")
@@ -4831,11 +4877,16 @@ window.Mx = (() => {
           .replace(/\\neq\b|\\ne\b/g, "≠")
           .replace(/\\cdot\b/g, "·")
           .replace(/\\times\b/g, "×")
+          .replace(/\\in\b/g, "∈")
           .replace(/\\pm\b/g, "±")
           .replace(/\\rightarrow\b|\\to\b/g, "→")
           .replace(/\\arg\b/g, "arg")
           .replace(/\\mathrm\{([^}]*)\}/g, "$1")
           .replace(/\\text\{([^}]*)\}/g, "$1")
+          .replace(/\{([A-Za-z0-9]+)\}\^\{(\d+)\}/g, (_, b, e) => b + toSuper(e))
+          .replace(/([A-Za-z0-9])\^\{(\d+)\}/g, (_, b, e) => b + toSuper(e))
+          .replace(/\^\{(\d+)\}/g, (_, e) => toSuper(e))
+          .replace(/\^(\d+)/g, (_, e) => toSuper(e))
           .replace(/\\left|\\right/g, "")
           .replace(/\\[a-zA-Z]+/g, "")
           .replace(/[{}]/g, "")
@@ -4988,8 +5039,12 @@ window.Mx = (() => {
 
   function stemLooksGlued(html) {
     const t = String(html || "").replace(/<[^>]+>/g, " ").replace(/\u00a0/g, " ").replace(/\s+/g, " ").trim();
+    if (!t) return false;
+    /* Compact "Let N" → LetN used to match every good Sets stem and re-paint. */
+    if (/\bLetN\b|\bLetR\s*=|\bIfR\s*=|\bLetX\s*=|\bR-1is\b|\bdomainofR\b|\bPAP-1\s*=\s*B/i.test(t)) return true;
+    if (/\bDefinearelation\b|\bRisanequivalence\b|\bInthelightof\b|\bchoosethecorrect\b|\brepresentsaline\b|\bForsome\(/i.test(t)) return true;
+    if (/\b4is the\b|\brelation Ris\b|\bThen the relation Ris\b/i.test(t)) return true;
     const compact = t.replace(/\s+/g, "");
-    if (/LetX=|Definearelation|Risanequivalence|Inthelightof|choosethecorrect|representsaline|Forsome\(|IfR=|LetN|LetR=|R-1is|4is the|domainofR|PAP-1=B/i.test(compact)) return true;
     const spaces = (t.match(/ /g) || []).length;
     if (compact.length > 70 && spaces < compact.length / 22 && /[A-Za-z]{18,}/.test(compact)) return true;
     return false;

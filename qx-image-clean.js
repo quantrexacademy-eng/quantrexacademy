@@ -5145,8 +5145,12 @@ window.QxImgClean = (() => {
     const stem = String(q.q || q.questionText || "");
     const n = stemPlainText(stem).length;
     const prevN = stemPlainText(q._qxOrigStem || "").length;
+    const looksTex = (s) => /\$[^$]{1,400}\$|\\(?:left|frac|mathbb|mathrm|times|in|begin)\b/.test(String(s || ""));
+    const looksMmlOnly = (s) => /<math[\s>]/i.test(String(s || "")) && !looksTex(s);
     if (isGuttedMatchTable(stem) && matchTableRichness(q._qxOrigStem) > matchTableRichness(stem)) {
       /* keep richer pinned match stem */
+    } else if (looksMmlOnly(stem) && looksTex(q._qxOrigStem)) {
+      /* keep USB TeX — MARKS MathML overlay must not clobber {x}^{3} */
     } else if (n > 8 && (n > prevN || matchTableRichness(stem) > matchTableRichness(q._qxOrigStem) + 20)) {
       q._qxOrigStem = stem;
     }
@@ -5174,6 +5178,8 @@ window.QxImgClean = (() => {
     // Bonus for clean log/sin forms
     if (/\\log_\{|\\sin\b|\\cos\b/.test(s) && !/[\u2061]/.test(s)) n += 120;
     if (/\\log_\{1\/2\}/.test(s)) n += 80;
+    if (/\$[^$]+\$|\\(?:left|frac|times|mathbb)\b/.test(s)) n += 400;
+    if (/<math[\s>]/i.test(s) && !/\$[^$]+\$/.test(s)) n -= 200;
     return n;
   }
 

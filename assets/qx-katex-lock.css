@@ -1,0 +1,214 @@
+/* qxmd243 — KaTeX / MathML layout lock (load last).
+   Nuclear #egQArea * { position:static; display:revert } flattened
+   squares/cubes (x^3 → x3) and stretchy braces. Engine layout wins. */
+
+html body .eg-test-root #egQArea .katex,
+html body .eg-test-root.eg-sol-showing #egQArea .katex,
+html body .eg-test-root .eg-q-stem .katex,
+html body .eg-test-root.eg-sol-showing .eg-q-stem .katex,
+html body .mtk-q-text .katex,
+html body .mtk-opt-text .katex,
+html body .qx-prac-opt-text .katex,
+html body .sol-body .katex,
+html body .qx-sol-flow .katex,
+html body .eg-sol .katex,
+html body .qx-sol-card .katex {
+  display: inline-block !important;
+  position: relative !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  overflow: visible !important;
+  height: auto !important;
+  width: auto !important;
+  max-height: none !important;
+  font-size: 1.08em !important;
+  line-height: 1.2 !important;
+  padding: 0 0.1em !important;
+  clip: auto !important;
+}
+
+html body .eg-test-root #egQArea .katex .vlist-t,
+html body .eg-test-root.eg-sol-showing #egQArea .katex .vlist-t,
+html body .eg-test-root .eg-q-stem .katex .vlist-t,
+html body .eg-test-root.eg-sol-showing .eg-q-stem .katex .vlist-t,
+html body .mtk-q-text .katex .vlist-t,
+html body .mtk-opt-text .katex .vlist-t,
+html body .sol-body .katex .vlist-t,
+html body .qx-sol-flow .katex .vlist-t,
+html body .eg-sol .katex .vlist-t {
+  display: inline-table !important;
+  border-collapse: collapse !important;
+  table-layout: fixed !important;
+  position: static !important;
+  height: auto !important;
+  width: auto !important;
+  overflow: visible !important;
+  clip: auto !important;
+  font-size: unset !important;
+  line-height: normal !important;
+}
+
+html body .eg-test-root #egQArea .katex .vlist-r,
+html body .eg-test-root.eg-sol-showing #egQArea .katex .vlist-r,
+html body .eg-test-root .eg-q-stem .katex .vlist-r,
+html body .mtk-q-text .katex .vlist-r,
+html body .mtk-opt-text .katex .vlist-r,
+html body .sol-body .katex .vlist-r,
+html body .qx-sol-flow .katex .vlist-r,
+html body .eg-sol .katex .vlist-r {
+  display: table-row !important;
+  position: static !important;
+  height: auto !important;
+  font-size: unset !important;
+}
+
+html body .eg-test-root #egQArea .katex .vlist,
+html body .eg-test-root.eg-sol-showing #egQArea .katex .vlist,
+html body .eg-test-root .eg-q-stem .katex .vlist,
+html body .mtk-q-text .katex .vlist,
+html body .mtk-opt-text .katex .vlist,
+html body .sol-body .katex .vlist,
+html body .qx-sol-flow .katex .vlist,
+html body .eg-sol .katex .vlist {
+  display: table-cell !important;
+  position: relative !important;
+  vertical-align: bottom !important;
+  height: auto !important;
+  overflow: visible !important;
+  font-size: unset !important;
+}
+
+html body .eg-test-root #egQArea .katex .vlist > span,
+html body .eg-test-root.eg-sol-showing #egQArea .katex .vlist > span,
+html body .eg-test-root .eg-q-stem .katex .vlist > span,
+html body .mtk-q-text .katex .vlist > span,
+html body .mtk-opt-text .katex .vlist > span,
+html body .sol-body .katex .vlist > span,
+html body .qx-sol-flow .katex .vlist > span,
+html body .eg-sol .katex .vlist > span {
+  display: block !important;
+  height: 0 !important;
+  position: relative !important;
+  overflow: visible !important;
+  font-size: unset !important;
+  line-height: normal !important;
+  clip: auto !important;
+}
+
+html body .eg-test-root #egQArea .katex .vlist > span > span,
+html body .eg-test-root.eg-sol-showing #egQArea .katex .vlist > span > span,
+html body .eg-test-root .eg-q-stem .katex .vlist > span > span,
+html body .mtk-q-text .katex .vlist > span > span,
+html body .mtk-opt-text .katex .vlist > span > span,
+html body .sol-body .katex .vlist > span > span,
+html body .qx-sol-flow .katex .vlist > span > span,
+html body .eg-sol .katex .vlist > span > span {
+  display: inline-block !important;
+  position: static !important;
+  height: auto !important;
+  font-size: unset !important;
+}
+
+html body .eg-test-root #egQArea .katex .pstrut,
+html body .eg-test-root.eg-sol-showing #egQArea .katex .pstrut,
+html body .eg-test-root .eg-q-stem .katex .pstrut,
+html body .mtk-q-text .katex .pstrut,
+html body .sol-body .katex .pstrut {
+  overflow: hidden !important;
+  width: 0 !important;
+}
+
+html body .eg-test-root #egQArea .katex .strut,
+html body .eg-test-root.eg-sol-showing #egQArea .katex .strut,
+html body .eg-test-root .eg-q-stem .katex .strut,
+html body .mtk-q-text .katex .strut,
+html body .mtk-opt-text .katex .strut,
+html body .sol-body .katex .strut {
+  display: inline-block !important;
+}
+
+html body .eg-test-root #egQArea .katex .base,
+html body .eg-test-root.eg-sol-showing #egQArea .katex .base,
+html body .eg-test-root .eg-q-stem .katex .base,
+html body .mtk-q-text .katex .base,
+html body .mtk-opt-text .katex .base,
+html body .sol-body .katex .base {
+  display: inline-block !important;
+  position: relative !important;
+  white-space: nowrap !important;
+  height: auto !important;
+}
+
+html body .eg-test-root #egQArea .katex .msupsub,
+html body .eg-test-root.eg-sol-showing #egQArea .katex .msupsub,
+html body .eg-test-root .eg-q-stem .katex .msupsub,
+html body .mtk-q-text .katex .msupsub,
+html body .mtk-opt-text .katex .msupsub,
+html body .sol-body .katex .msupsub {
+  text-align: left !important;
+  display: inline-block !important;
+  position: static !important;
+  height: auto !important;
+  font-size: unset !important;
+}
+
+html body .eg-test-root #egQArea .katex .mfrac .frac-line,
+html body .eg-test-root.eg-sol-showing #egQArea .katex .mfrac .frac-line,
+html body .eg-test-root .eg-q-stem .katex .mfrac .frac-line,
+html body .mtk-q-text .katex .mfrac .frac-line,
+html body .sol-body .katex .mfrac .frac-line {
+  display: inline-block !important;
+  width: 100% !important;
+  border-bottom-style: solid !important;
+}
+
+html body .eg-test-root #egQArea .katex-mathml,
+html body .eg-test-root.eg-sol-showing #egQArea .katex-mathml,
+html body .eg-test-root .eg-q-stem .katex-mathml,
+html body .mtk-q-text .katex-mathml,
+html body .sol-body .katex-mathml {
+  position: absolute !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+  border: 0 !important;
+  height: 1px !important;
+  width: 1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+}
+
+html body .eg-test-root #egQArea .katex .sizing,
+html body .eg-test-root.eg-sol-showing #egQArea .katex .sizing,
+html body .eg-test-root .eg-q-stem .katex .sizing,
+html body .mtk-q-text .katex .sizing,
+html body .mtk-opt-text .katex .sizing,
+html body .sol-body .katex .sizing {
+  font-size: unset !important;
+}
+
+html body .eg-test-root math,
+html body .eg-test-root.eg-sol-showing math,
+html body .mtk-q-text math,
+html body .sol-body math {
+  display: inline-block !important;
+  position: static !important;
+  font-size: inherit !important;
+}
+html body .eg-test-root msup,
+html body .eg-test-root.eg-sol-showing msup,
+html body .mtk-q-text msup,
+html body .sol-body msup {
+  display: inline !important;
+  position: static !important;
+}
+html body .eg-test-root msup > *:last-child,
+html body .eg-test-root.eg-sol-showing msup > *:last-child,
+html body .mtk-q-text msup > *:last-child {
+  font-size: 0.75em !important;
+  vertical-align: super !important;
+}
+html body .eg-test-root msub > *:last-child,
+html body .eg-test-root.eg-sol-showing msub > *:last-child,
+html body .mtk-q-text msub > *:last-child {
+  font-size: 0.75em !important;
+  vertical-align: sub !important;
+}
