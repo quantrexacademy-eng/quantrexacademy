@@ -112,14 +112,14 @@ window.Mx = (() => {
       const l = document.createElement("link");
       l.id = "qxKatexCss";
       l.rel = "stylesheet";
-      l.href = "https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css";
+      l.href = "assets/katex/katex.min.css?v=" + encodeURIComponent((typeof window !== "undefined" && window.QX_BUILD) || "qxmd245");
       document.head.appendChild(l);
     }
     if (!document.getElementById("qxKatexLockCss")) {
       const lock = document.createElement("link");
       lock.id = "qxKatexLockCss";
       lock.rel = "stylesheet";
-      lock.href = "assets/qx-katex-lock.css?v=" + encodeURIComponent((typeof window !== "undefined" && window.QX_BUILD) || "qxmd244");
+      lock.href = "assets/qx-katex-lock.css?v=" + encodeURIComponent((typeof window !== "undefined" && window.QX_BUILD) || "qxmd245");
       document.head.appendChild(lock);
     } else {
       try { document.head.appendChild(document.getElementById("qxKatexLockCss")); } catch (_) { /* */ }
@@ -2686,6 +2686,9 @@ window.Mx = (() => {
     c = c.replace(/&#38;/g, "\\text{ and }");
     /* qxmd215: unglue Camel */
     c = c.replace(/\b(Now|Then|Hence|Therefore|Since|But|Also|Thus|So|Let|Given|Here|Consider)(?=[A-Z][a-z])/g, "$1 ");
+    c = c.replace(/\b(Let|If|Then|Given)(?=[A-Z]\b)/g, "$1 ");
+    c = c.replace(/\b(Then,)\s*([A-Z])is\b/g, "$1 $2 is");
+    c = c.replace(/(\d),-(\d)is\b/g, "$1, -$2 is");
     c = c.replace(/([a-z])([A-Z][a-z]{2,})/g, "$1 $2");
     return c;
   }
@@ -4885,13 +4888,22 @@ window.Mx = (() => {
           .replace(/\\arg\b/g, "arg")
           .replace(/\\mathrm\{([^}]*)\}/g, "$1")
           .replace(/\\text\{([^}]*)\}/g, "$1")
-          .replace(/\{([A-Za-z0-9]+)\}\^\{(\d+)\}/g, (_, b, e) => b + toSuper(e))
-          .replace(/([A-Za-z0-9])\^\{(\d+)\}/g, (_, b, e) => b + toSuper(e))
-          .replace(/\^\{(\d+)\}/g, (_, e) => toSuper(e))
-          .replace(/\^(\d+)/g, (_, e) => toSuper(e))
+          .replace(/\\left\s*\\\{/g, "{")
+          .replace(/\\right\s*\\\}/g, "}")
+          .replace(/\\left\s*\(/g, "(")
+          .replace(/\\right\s*\)/g, ")")
+          .replace(/\\left\s*\[/g, "[")
+          .replace(/\\right\s*\]/g, "]")
+          .replace(/\\left\s*\.|\\right\s*\./g, "")
           .replace(/\\left|\\right/g, "")
+          .replace(/\\\{/g, "{")
+          .replace(/\\\}/g, "}")
+          .replace(/\{([A-Za-z0-9]+)\}\s*\^\s*\{(\d+)\}/g, (_, b, e) => b + toSuper(e))
+          .replace(/([A-Za-z0-9])\s*\^\s*\{(\d+)\}/g, (_, b, e) => b + toSuper(e))
+          .replace(/\^\s*\{(\d+)\}/g, (_, e) => toSuper(e))
+          .replace(/\^\s*(\d)/g, (_, e) => toSuper(e))
           .replace(/\\[a-zA-Z]+/g, "")
-          .replace(/[{}]/g, "")
+          .replace(/\{([A-Za-z0-9πθ])\}/g, "$1")
           .replace(/\s+/g, " ")
           .trim();
         return plain;
@@ -5043,9 +5055,10 @@ window.Mx = (() => {
     const t = String(html || "").replace(/<[^>]+>/g, " ").replace(/\u00a0/g, " ").replace(/\s+/g, " ").trim();
     if (!t) return false;
     /* Compact "Let N" → LetN used to match every good Sets stem and re-paint. */
-    if (/\bLetN\b|\bLetR\s*=|\bIfR\s*=|\bLetX\s*=|\bR-1is\b|\bdomainofR\b|\bPAP-1\s*=\s*B/i.test(t)) return true;
+    if (/\bLetN\b|\bLetP\b|\bLetR\s*=|\bIfR\s*=|\bLetX\s*=|\bR-1is\b|\bdomainofR\b|\bPAP-1\s*=\s*B/i.test(t)) return true;
     if (/\bDefinearelation\b|\bRisanequivalence\b|\bInthelightof\b|\bchoosethecorrect\b|\brepresentsaline\b|\bForsome\(/i.test(t)) return true;
-    if (/\b4is the\b|\brelation Ris\b|\bThen the relation Ris\b/i.test(t)) return true;
+    if (/\b4is the\b|\brelation Ris\b|\bThen the relation Ris\b|\bThen, Pis\b|\bThen,Pis\b|\b1,-1is\b|\b1and\b/i.test(t)) return true;
+    if (/\\left|\\right|\\\(|\\\[/.test(t)) return true;
     const compact = t.replace(/\s+/g, "");
     const spaces = (t.match(/ /g) || []).length;
     if (compact.length > 70 && spaces < compact.length / 22 && /[A-Za-z]{18,}/.test(compact)) return true;
@@ -5087,6 +5100,58 @@ window.Mx = (() => {
         host.innerHTML = painted;
         try { peelProseKatexInDom(host); } catch (_) { /* */ }
       } else if (painted && painted !== host.innerHTML) {
+        host.innerHTML = painted;
+        try { peelProseKatexInDom(host); } catch (_) { /* */ }
+      }
+    });
+  }
+
+  function optionLooksSmashed(html) {
+    const t = String(html || "").replace(/<[^>]+>/g, " ").replace(/\u00a0/g, " ").replace(/\s+/g, " ").trim();
+    if (!t) return false;
+    if (/&#(?:160|8722|\d+);/.test(String(html || ""))) return true;
+    if (/x 2\s*\+\s*y 2/.test(t)) return true;
+    if (/S = x,\s*y\s*\|/.test(t)) return true;
+    if (/\\left|\\right|\\\(|\\\{/.test(t)) return true;
+    if (/\{x\}\s*\^\s*\{\s*2\s*\}/.test(t)) return true;
+    return false;
+  }
+
+  function recoverSmashedOptionsInDom(root) {
+    const el = root || (typeof document !== "undefined" ? document.getElementById("app-main") : null);
+    if (!el || !el.querySelectorAll) return;
+    const hosts = el.querySelectorAll(".mtk-opt-text, .qx-prac-opt-text, .qa-opt .qx-content, .qx-opt-text-only");
+    if (!hosts.length) return;
+    let q = null;
+    try {
+      if (typeof QxImgClean !== "undefined" && QxImgClean.resolveCurrentQuestion) {
+        q = QxImgClean.resolveCurrentQuestion(el);
+      }
+    } catch (_) { /* */ }
+    if (!q && typeof getQ === "function" && window.QuantrexTestEngine && QuantrexTestEngine.getSession) {
+      try {
+        const sess = QuantrexTestEngine.getSession();
+        if (sess && sess.ids && sess.ids[sess.idx] != null) q = getQ(sess.ids[sess.idx]);
+      } catch (_) { /* */ }
+    }
+    const opts = (q && (q.options || q.opts || q.choices)) || [];
+    hosts.forEach((host, i) => {
+      if (!optionLooksSmashed(host.innerHTML || host.textContent || "")) return;
+      let src = "";
+      try { src = host.getAttribute("data-qx-opt-src") || ""; } catch (_) { src = ""; }
+      if (!src && opts.length) {
+        const idx = host.closest("[data-prac-opt], [data-opt], [data-eg-opt]")
+          ? Number((host.closest("[data-prac-opt], [data-opt], [data-eg-opt]").getAttribute("data-prac-opt")
+            || host.closest("[data-prac-opt], [data-opt], [data-eg-opt]").getAttribute("data-opt")
+            || host.closest("[data-prac-opt], [data-opt], [data-eg-opt]").getAttribute("data-eg-opt")))
+          : i;
+        const raw = opts[idx] || opts[i] || "";
+        src = typeof raw === "string" ? raw : (raw && (raw.text || raw.html || raw.q || "")) || "";
+      }
+      if (!src) return;
+      let painted = "";
+      try { painted = html(src); } catch (_) { painted = String(src); }
+      if (painted && painted !== host.innerHTML) {
         host.innerHTML = painted;
         try { peelProseKatexInDom(host); } catch (_) { /* */ }
       }
@@ -5287,6 +5352,7 @@ window.Mx = (() => {
           try { peelProseKatexInDom(el); } catch (_) { /* */ }
           try { recoverHollowStemInDom(el); } catch (_) { /* */ }
           try { recoverGluedStemInDom(el); } catch (_) { /* */ }
+          try { recoverSmashedOptionsInDom(el); } catch (_) { /* */ }
           try {
             if (typeof QxImgClean !== "undefined" && QxImgClean.arrangePortraitFigures
               && !(document.body && document.body.classList.contains("marks-test-active"))) {
@@ -5374,6 +5440,7 @@ window.Mx = (() => {
           try { peelProseKatexInDom(el); } catch (_) { /* */ }
           try { recoverHollowStemInDom(el); } catch (_) { /* */ }
           try { recoverGluedStemInDom(el); } catch (_) { /* */ }
+          try { recoverSmashedOptionsInDom(el); } catch (_) { /* */ }
           // Only process images that exist — skip full-tree diagram scrub when empty
           const poolImgs = el.querySelectorAll("#qxDiagramSlot img, .qx-diagram-slot img, img.qx-pool-fig");
           if (!marksNative && poolImgs.length && typeof QxImgClean !== "undefined" && QxImgClean.processImage) {
@@ -5580,6 +5647,7 @@ window.Mx = (() => {
     afterRenderLight,
     recoverHollowStemInDom,
     recoverGluedStemInDom,
+    recoverSmashedOptionsInDom,
     cleanDom,
     fixWordSpacing,
     unglueLowercaseMathProse,

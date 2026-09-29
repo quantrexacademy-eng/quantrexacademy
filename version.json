@@ -1,10 +1,10 @@
 {
-    "cache": "qx-pwa-qxmd244",
-    "ts": 1790701200000,
-    "title": "qxmd244: squares and cubes stay raised like MARKS",
+    "cache": "qx-pwa-qxmd245",
+    "ts": 1790704800000,
+    "title": "qxmd245: braces, leftover topics, no blank chapters",
     "site": "https://www.quantrexacademy.com",
-    "build": "qxmd244",
-    "body": "KaTeX superscripts keep engine height. Stem stays visible. Official answers are unchanged.",
+    "build": "qxmd245",
+    "body": "Set braces use KaTeX Size fonts. Chapter topic leftover no longer blanks Limits. Official answers are unchanged.",
     "package": "com.quantrexacademy.app",
     "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }

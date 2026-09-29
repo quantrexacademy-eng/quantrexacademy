@@ -1590,7 +1590,10 @@ function tsExamgoalCategoryListHtml(cat, tests) {
     let list = tests.filter(t => (t.topicSection || t.chapter) === topic);
     list = tsFilterCategoryTests(list);
     list = tsSortBySeriesOrder(list);
-    if (!list.length) return '<div class="empty">No tests in this topic.</div>';
+    if (!list.length) {
+      _tsPayload.topicSection = null;
+      return tsExamgoalCategoryListHtml(cat, tests);
+    }
     return `<div class="ts-eg-topic-head"><button type="button" class="ts-premium-cta ghost" onclick="tsClearTopicSection()">← Back</button><h3>${tsEscHtml(topic)}</h3></div>
       <div class="ts-premium-test-list">${list.map(t => tsPremiumTestRowHtml(t)).join("")}</div>`;
   }
@@ -2672,7 +2675,12 @@ async function tsCheckQuizrrSync() {
 }
 
 async function viewTestSeriesFolder(payload) {
-  const p = { ..._tsPayload, ...(payload || {}) };
+  const incoming = payload || {};
+  const p = { ..._tsPayload, ...incoming };
+  if (incoming.categoryId != null && incoming.categoryId !== _tsPayload.categoryId && incoming.topicSection == null) {
+    p.topicSection = null;
+  }
+  if (!incoming.categoryId && incoming.page) p.topicSection = null;
   _tsPayload = p;
   if (p.categoryId) { _tsPage = "category"; return tsBuildPageHtml(); }
   _tsPage = p.page || "home";
@@ -2680,7 +2688,11 @@ async function viewTestSeriesFolder(payload) {
 }
 
 async function viewTestSeriesCategory(payload) {
-  const p = { ..._tsPayload, ...(payload || {}) };
+  const incoming = payload || {};
+  const p = { ..._tsPayload, ...incoming };
+  if (incoming.categoryId != null && incoming.categoryId !== _tsPayload.categoryId && incoming.topicSection == null) {
+    p.topicSection = null;
+  }
   _tsPayload = p;
   _tsPage = "category";
   return tsBuildPageHtml();

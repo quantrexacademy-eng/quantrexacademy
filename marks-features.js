@@ -11,6 +11,47 @@ function mg(view, payload) {
   return `data-mg="${view}" data-mgp='${p}'`;
 }
 
+/** Drop leftover topic/bucket/mode when the student changes exam/chapter/step.
+ *  JSON.stringify omits undefined, so {step:"chapterHub"} used to keep a Sets topic
+ *  on Limits and render a blank page. */
+function sanitizeCpyqbNavPayload(prev, incoming) {
+  const src = incoming || {};
+  const p = Object.assign({}, prev || {}, src);
+  const step = String(src.step || p.step || "");
+  const shallow = /^(exams|subjects|chapters|chapterHub|topics|buckets|classExams|class12boards)$/.test(step);
+  const examChanged = src.exam != null && src.exam !== (prev && prev.exam);
+  const subjectChanged = src.subject != null && src.subject !== (prev && prev.subject);
+  const chapterChanged = src.chapter != null && src.chapter !== (prev && prev.chapter);
+  const own = (k) => Object.prototype.hasOwnProperty.call(src, k);
+  const dropScoped = shallow || examChanged || subjectChanged || chapterChanged;
+  if (dropScoped || src.step === "topics" || src.step === "chapterHub" || src.step === "buckets") {
+    if (!own("topicId") && !own("topicTitle")) {
+      delete p.topicId;
+      delete p.topicTitle;
+      if (p.mode === "topic" && !own("mode")) delete p.mode;
+    }
+    if (!own("bucketId") && !own("bucketTitle")) {
+      delete p.bucketId;
+      delete p.bucketTitle;
+      if (p.mode === "bucket" && !own("mode")) delete p.mode;
+    }
+    if (!own("levelId") && !own("levelTitle")) {
+      delete p.levelId;
+      delete p.levelTitle;
+      if (p.mode === "typeLevel" && !own("mode")) delete p.mode;
+    }
+    if (shallow && !own("mode")) delete p.mode;
+  }
+  if (p.topicId == null) delete p.topicId;
+  if (p.topicTitle == null) delete p.topicTitle;
+  if (p.bucketId == null) delete p.bucketId;
+  if (p.bucketTitle == null) delete p.bucketTitle;
+  if (p.mode == null) delete p.mode;
+  if (p.levelId == null) delete p.levelId;
+  if (p.levelTitle == null) delete p.levelTitle;
+  return p;
+}
+
 function qxParseMgp(el) {
   let raw = "";
   try { raw = el.getAttribute("data-mgp") || el.dataset.mgp || "{}"; } catch (_) { raw = "{}"; }
@@ -1977,6 +2018,23 @@ async function qxFillStubsFromCatalog(qs) {
 
 async function ensureCpyqbChapterQuestions(examSlug, subject, chapter, meta, opts) {
   opts = opts || {};
+  // Leftover topic from another chapter (Sets topic on Limits) → this chapter's bank.
+  if (opts.mode === "topic" && (opts.topicId || opts.topicTitle) && meta) {
+    const topic = findMetaItem(meta.topics, opts.topicId, opts.topicTitle);
+    if (!topic || (!(topic.questionIds && topic.questionIds.length) && !(topic.count > 0))) {
+      opts = Object.assign({}, opts, { mode: "all" });
+      delete opts.topicId;
+      delete opts.topicTitle;
+    }
+  }
+  if (opts.mode === "bucket" && (opts.bucketId || opts.bucketTitle) && meta) {
+    const bucket = findMetaItem(meta.buckets, opts.bucketId, opts.bucketTitle);
+    if (!bucket || (!(bucket.questionIds && bucket.questionIds.length) && !(bucket.count > 0))) {
+      opts = Object.assign({}, opts, { mode: "all" });
+      delete opts.bucketId;
+      delete opts.bucketTitle;
+    }
+  }
   // 0) Fast path: one chapter JSON (~0.2–2 MB), never parse 52 MB jee_main.json
   if (typeof loadChapterBank === "function") {
     try {
@@ -2495,13 +2553,13 @@ function renderChapterHubPage(exam, p, meta, qs, stats) {
       ? QxCardIcons.chapterIconHtml("All Previous Year Qs", p.subject)
       : "";
     const topicCard = topics.length
-      ? `<button type="button" class="qx-module-card" ${mg("cpyqb", { step: "topics", exam: p.exam, subject: p.subject, chapter: p.chapter })}>
+      ? `<button type="button" class="qx-module-card" ${mg("cpyqb", { step: "topics", exam: p.exam, subject: p.subject, chapter: p.chapter, topicId: null, topicTitle: null, mode: null })}>
           <span class="qx-module-ic">${topicIc}</span>
           <span class="qx-module-body"><strong>Topic-Wise PYQs</strong><small>${topicCount} Topics</small></span>
           <span class="qx-module-chev">›</span>
         </button>`
       : "";
-    const allCard = `<button type="button" class="qx-module-card" ${mg("cpyqb", { step: "questions", mode: "all", exam: p.exam, subject: p.subject, chapter: p.chapter })}>
+    const allCard = `<button type="button" class="qx-module-card" ${mg("cpyqb", { step: "questions", mode: "all", exam: p.exam, subject: p.subject, chapter: p.chapter, topicId: null, topicTitle: null, bucketId: null, bucketTitle: null })}>
         <span class="qx-module-ic">${allIc}</span>
         <span class="qx-module-body"><strong>All Previous Year Qs</strong><small>${pyqCount} PYQs · mixed types</small></span>
         <span class="qx-module-chev">›</span>
@@ -2569,7 +2627,7 @@ function renderChapterHubPage(exam, p, meta, qs, stats) {
       ? QxCardIcons.chapterIconHtml("Topic-Wise PYQs", p.subject)
       : "";
     const topicCard = topics.length
-      ? `<div class="qx-module-grid" style="margin-top:12px"><button type="button" class="qx-module-card" ${mg("cpyqb", { step: "topics", exam: p.exam, subject: p.subject, chapter: p.chapter })}>
+      ? `<div class="qx-module-grid" style="margin-top:12px"><button type="button" class="qx-module-card" ${mg("cpyqb", { step: "topics", exam: p.exam, subject: p.subject, chapter: p.chapter, topicId: null, topicTitle: null, mode: null })}>
           <span class="qx-module-ic">${topicIcHub}</span>
           <span class="qx-module-body"><strong>Topic-Wise PYQs</strong><small>${topicCount} Topics</small></span>
           <span class="qx-module-chev">›</span>
@@ -2590,7 +2648,7 @@ function renderChapterHubPage(exam, p, meta, qs, stats) {
     </div>`);
   }
   if (topics.length) {
-    modeCards.push(`<div class="ch-hub-mode-card" ${mg("cpyqb", { step: "topics", exam: p.exam, subject: p.subject, chapter: p.chapter })}>
+    modeCards.push(`<div class="ch-hub-mode-card" ${mg("cpyqb", { step: "topics", exam: p.exam, subject: p.subject, chapter: p.chapter, topicId: null, topicTitle: null, mode: null })}>
       <div class="ch-hub-mode-ic">${(typeof QxCardIcons !== "undefined" && QxCardIcons.chapterIconHtml) ? QxCardIcons.chapterIconHtml("Topic-Wise PYQs", p.subject) : ""}</div>
       <div><strong>Topic-Wise PYQs</strong><small>${topicCount} Topics</small></div>
       <span class="ch-hub-mode-go">›</span>
@@ -2620,7 +2678,7 @@ function chapterModeCards(meta, payload) {
 
 async function viewCpyqb(payload) {
   const incoming = payload || {};
-  const p = { ..._cpyqbPayload, ...incoming };
+  const p = sanitizeCpyqbNavPayload(_cpyqbPayload, incoming);
 
   // Explicit exam open (tile click / deep-link) — always wins over stale list mode.
   // forceExamList used to stick after the Engineering grid and block TS EAMCET etc.
@@ -3007,7 +3065,7 @@ async function viewCpyqb(payload) {
         ? `<span class="qx-ch-priority p${priorityRank}">P${priorityRank}</span>`
         : (imp >= 22 ? `<span class="qx-ch-priority high">High</span>` : "");
       const continueBtn = isContinue ? `<span class="qx-topic-continue">Continue</span>` : "";
-      return `<button type="button" class="qx-topic-card qx-topic-rich qx-topic-${g}${isContinue ? " is-continue" : ""}" title="${escCh(displayName)}" ${mg("cpyqb", { step: "chapterHub", exam: p.exam, subject: p.subject, chapter: c.name })}>
+      return `<button type="button" class="qx-topic-card qx-topic-rich qx-topic-${g}${isContinue ? " is-continue" : ""}" title="${escCh(displayName)}" ${mg("cpyqb", { step: "chapterHub", exam: p.exam, subject: p.subject, chapter: c.name, topicId: null, topicTitle: null, bucketId: null, bucketTitle: null, mode: null, levelId: null })}>
         <div class="qx-topic-top">
           <span class="qx-topic-ic" aria-hidden="true">${cpyqbChapterIcon(ctCh, p.subject, c.name)}</span>
           ${priorityPill}
@@ -3110,8 +3168,20 @@ async function viewCpyqb(payload) {
       const hubStats = cpyqbChapterStats(p.exam, p.subject, p.chapter, allQs.length);
       return `${topbar(p.chapter, "JEE (Advanced) · Marks-style levels")}${bc}${renderChapterHubPage(exam, p, meta, allQs, hubStats)}`;
     }
-    if (hasBuckets && !hasTopics) return viewCpyqb({ ...p, step: "buckets" });
-    if (hasTopics && !hasBuckets) return viewCpyqb({ ...p, step: "topics" });
+    if (hasBuckets && !hasTopics) {
+      return viewCpyqb({
+        step: "buckets", exam: p.exam, subject: p.subject, chapter: p.chapter,
+        classSlug: p.classSlug, trackKind: p.trackKind, filterClass: p.filterClass,
+        topicId: null, topicTitle: null, bucketId: null, bucketTitle: null, mode: null
+      });
+    }
+    if (hasTopics && !hasBuckets) {
+      return viewCpyqb({
+        step: "topics", exam: p.exam, subject: p.subject, chapter: p.chapter,
+        classSlug: p.classSlug, trackKind: p.trackKind, filterClass: p.filterClass,
+        topicId: null, topicTitle: null, bucketId: null, bucketTitle: null, mode: null
+      });
+    }
     _lastListFn = () => ({ step: "chapterHub", exam: p.exam, subject: p.subject, chapter: p.chapter });
     const bc = breadcrumb(baseBc.slice(0, -1).concat([{ label: p.chapter }]));
     if (!hasBuckets && !hasTopics) {
@@ -3165,34 +3235,50 @@ async function viewCpyqb(payload) {
 
   if (p.step === "buckets" && !p.bucketId && !p.bucketTitle) {
     _lastListFn = () => ({ step: "buckets", exam: p.exam, subject: p.subject, chapter: p.chapter });
-    const buckets = (meta && meta.buckets) || (chMetaNav && chMetaNav.buckets) || [];
+    const rawBuckets = (meta && meta.buckets) || (chMetaNav && chMetaNav.buckets) || [];
+    const buckets = rawBuckets.filter(b => b && ((b.count || 0) > 0 || ((b.questionIds || []).length > 0)));
     const bc = breadcrumb(baseBc.concat([{ label: "All PYQs" }]));
-    const cards = buckets.length ? buckets.map(b => `
+    if (!buckets.length) {
+      return viewCpyqb({
+        step: "questions", mode: "all", exam: p.exam, subject: p.subject, chapter: p.chapter,
+        classSlug: p.classSlug, trackKind: p.trackKind, filterClass: p.filterClass,
+        bucketId: null, bucketTitle: null, topicId: null, topicTitle: null
+      });
+    }
+    const cards = buckets.map(b => `
       <div class="ch-card qx-bucket-card qx-ch-card-rich ${bucketTone(b)}" ${mg("cpyqb", { step: "questions", mode: "bucket", exam: p.exam, subject: p.subject, chapter: p.chapter, bucketId: b.id, bucketTitle: b.title })}>
         <div class="qx-ch-card-top">
           ${cpyqbChapterIcon(null, p.subject, b.title || p.chapter)}
-          <div class="qx-ch-body"><strong>${b.title}</strong><small>${(b.count || 0).toLocaleString()} questions</small></div>
+          <div class="qx-ch-body"><strong>${b.title}</strong><small>${(b.count || (b.questionIds || []).length || 0).toLocaleString()} questions</small></div>
         </div>
-        ${qxProgressBar(0, b.count || 0)}
-      </div>`).join("") : `<div class="empty">No PYQ buckets for this chapter yet.</div>`;
+        ${qxProgressBar(0, b.count || (b.questionIds || []).length || 0)}
+      </div>`).join("");
     return `${topbar(p.chapter, "All PYQs")}${bc}<div class="ch-grid">${cards}</div>`;
   }
 
   if (p.step === "topics" && !p.topicId && !p.topicTitle) {
     _lastListFn = () => ({ step: "topics", exam: p.exam, subject: p.subject, chapter: p.chapter });
-    const topics = (meta && meta.topics) || (chMetaNav && chMetaNav.topics) || [];
+    const rawTopics = (meta && meta.topics) || (chMetaNav && chMetaNav.topics) || [];
+    const topics = rawTopics.filter(t => t && ((t.count || 0) > 0 || ((t.questionIds || []).length > 0)));
     const bc = breadcrumb(baseBc.concat([{ label: "Topicwise PYQs" }]));
-    const cards = topics.length ? topics.map(t => `
+    if (!topics.length) {
+      return viewCpyqb({
+        step: "questions", mode: "all", exam: p.exam, subject: p.subject, chapter: p.chapter,
+        classSlug: p.classSlug, trackKind: p.trackKind, filterClass: p.filterClass,
+        topicId: null, topicTitle: null
+      });
+    }
+    const cards = topics.map(t => `
       <div class="ch-card qx-topic-card qx-ch-card-rich" ${mg("cpyqb", { step: "questions", mode: "topic", exam: p.exam, subject: p.subject, chapter: p.chapter, topicId: t.id, topicTitle: t.title })}>
         <div class="qx-ch-card-top">
           ${cpyqbChapterIcon(null, p.subject, t.title)}
           <div class="qx-topic-body qx-ch-body">
             <strong>${typeof qxTopicDisplayTitle === "function" ? qxTopicDisplayTitle(t.title) : t.title}</strong>
-            <small>${(t.count || 0).toLocaleString()} questions</small>
+            <small>${(t.count || (t.questionIds || []).length || 0).toLocaleString()} questions</small>
           </div>
         </div>
-        ${qxProgressBar(0, t.count || 0)}
-      </div>`).join("") : `<div class="empty">No subtopics for this chapter yet.</div>`;
+        ${qxProgressBar(0, t.count || (t.questionIds || []).length || 0)}
+      </div>`).join("");
     return `${topbar(p.chapter, "Topicwise PYQs")}${bc}<div class="ch-grid qx-topic-grid">${cards}</div>`;
   }
 
@@ -3236,6 +3322,17 @@ async function viewCpyqb(payload) {
         }
       } catch (_) { /* */ }
     });
+  }
+  if (!qs.length && (p.topicId || p.topicTitle || p.bucketId || p.mode === "topic" || p.mode === "bucket")) {
+    qs = await ensureCpyqbChapterQuestions(p.exam, p.subject, p.chapter, meta, { mode: "all" });
+    if (qs.length) {
+      p.mode = "all";
+      delete p.topicId;
+      delete p.topicTitle;
+      delete p.bucketId;
+      delete p.bucketTitle;
+      _cpyqbPayload = p;
+    }
   }
   if (!qs.length) {
     filterNote = `<p class="result-count">No questions in this topic for this chapter yet.</p>`;

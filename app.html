@@ -43,7 +43,7 @@
     <link rel="dns-prefetch" href="https://firebasestorage.googleapis.com">
     <!-- First paint: UI Inter + exam reading Source Serif 4. KaTeX ships math fonts. -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    <link rel="stylesheet" href="assets/katex/katex.min.css?v=qxmd245">
     <style id="qxKatexEngineCss">
       /* Squares/cubes/fractions before secondary CSS. Never !important height on pstrut. */
       .katex,.katex *{box-sizing:content-box!important}
@@ -4313,7 +4313,7 @@
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js" defer></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js" defer></script>
     <script>
-      window.QX_BUILD = "qxmd244";
+      window.QX_BUILD = "qxmd245";
       (function () {
         try {
           var pill = document.getElementById("qxBuildPill");
@@ -4325,7 +4325,7 @@
       window.QX_FIG_LOCK = true;
       /* Secondary CSS/JS — loaded after first paint by qx-perf (not on critical path) */
       window.QX_SECONDARY_CSS = [
-        "https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css",
+        "assets/katex/katex.min.css?v=qxmd245",
         "assets/qx-font-scale.css?v=qxmd220",
         "assets/qx-beauty-read.css?v=qxmd220",
         "assets/marks-test-engine.css?v=qxapp1",
@@ -4368,7 +4368,7 @@
         "assets/qx-site-contrast.css?v=qxmd244",
         "assets/qx-mobile.css?v=qxmd244",
         "assets/qx-foot-lock.css?v=qxmd244",
-        "assets/qx-katex-lock.css?v=qxmd244"
+        "assets/qx-katex-lock.css?v=qxmd245"
       ];
       window.QX_SECONDARY_JS = [
         "https://www.gstatic.com/firebasejs/10.14.1/firebase-analytics-compat.js",
@@ -4441,7 +4441,7 @@
         });
       })();
     </script>
-    <script src="qx-perf.js?v=qxmd244"></script>
+    <script src="qx-perf.js?v=qxmd245"></script>
     <!-- Critical path (dashboard + practice + tests + core nav) -->
     <script src="firebase-config.js?v=qxfix69" defer></script>
     <script src="stack-config.js?v=qxpay2" defer></script>
@@ -4453,8 +4453,8 @@
     <script src="qx-owned-figures.js?v=qxmd229" defer></script>
     <script src="qx-image-clean.js?v=qxmd244" defer></script>
     <script src="qx-test-engine-perf.js?v=qxq861" defer></script>
-    <script src="qx-math-sanitize.js?v=qxmd244" defer></script>
-    <script src="math-render.js?v=qxmd244" defer></script>
+    <script src="qx-math-sanitize.js?v=qxmd245" defer></script>
+    <script src="math-render.js?v=qxmd245" defer></script>
     <script src="question-format.js?v=qxmd244" defer></script>
     <script src="solution-format.js?v=qxmd244" defer></script>
     <script src="assets/qx-question-cache.js?v=qxfix17" defer></script>
@@ -4472,11 +4472,11 @@
     <script src="marks-shell.js?v=qxvis4" defer></script>
     <script src="marks-live.js?v=qxmd244" defer></script>
     <script src="book-covers.js?v=qxmd228" defer></script>
-    <script src="marks-features.js?v=qxmd228" defer></script>
+    <script src="marks-features.js?v=qxmd245" defer></script>
     <!-- qx-local-fig-map.js is 1.4MB — idle secondary, Storage URLs work without it -->
     <script src="assets/qx-rfc.js?v=qxmd227" defer></script>
     <script src="assets/qx-formula-cards.js?v=qxmd227" defer></script>
-    <script src="examgoal-test-ui.js?v=qxmd244" defer></script>
+    <script src="examgoal-test-ui.js?v=qxmd245" defer></script>
     <script src="allen-test-ui.js?v=qxmd244" defer></script>
     <script>
       window.TS_CFG = {
@@ -4487,7 +4487,7 @@
         provider: "examgoal"
       };
     </script>
-    <script src="test-series.js?v=qxfix86" defer></script>
+    <script src="test-series.js?v=qxmd245" defer></script>
     <script src="test-engine.js?v=qxmd236" defer></script>
     <script src="bookmarks.js?v=qxfix58" defer></script>
     <script src="theme.js?v=qxmd220" defer></script>
@@ -4520,13 +4520,13 @@
         })();
       });
     </script>
-<link rel="stylesheet" href="assets/qx-both-themes.css?v=qxmd244">
+<link rel="stylesheet" href="assets/qx-both-themes.css?v=qxmd245">
 <link rel="stylesheet" href="assets/qx-prac-chrome.css?v=qxmd244">
 <link rel="stylesheet" href="assets/qx-ui-icons.css?v=qxmd244">
 <link rel="stylesheet" href="assets/examgoal-test-ui.css?v=qxmd244">
 <link rel="stylesheet" href="assets/qx-practice-read.css?v=qxmd244">
 <link rel="stylesheet" href="assets/qx-foot-lock.css?v=qxmd244">
-<link rel="stylesheet" href="assets/qx-katex-lock.css?v=qxmd244">
-<script src="pwa-register.js?v=qxmd244"></script>
+<link rel="stylesheet" href="assets/qx-katex-lock.css?v=qxmd245">
+<script src="pwa-register.js?v=qxmd245"></script>
 </body>
 </html>

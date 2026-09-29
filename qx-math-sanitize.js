@@ -279,6 +279,25 @@
     if (!s) return s;
     if (/class=["'][^"']*katex|<\/?math[\s>]/i.test(s)) return s;
 
+    // Set-builders split on English MUST run before `$\}` is stripped.
+    s = s.replace(
+      /\$([A-Z]\s*=\s*)\{\s*(\\left\s*\([^$]{0,80}?\\right\))\s*\|\s*([A-Z])\s*\$(\s+and\s+[A-Z][^$]{8,160}?)\s*\$\s*\}/g,
+      (_, pre, a, p, eng) => "$" + pre + "\\{" + a + " \\mid \\text{" + p + eng + "}\\}$"
+    );
+    s = s.replace(
+      /\$([A-Za-z]\s*=\s*\\?\{[^$]{0,200}?)\$(\s+(?:and|or)\s+)\$([^$]{0,80}?)\\\}/g,
+      (_, a, eng, b) => "$" + a + " \\text{" + eng + "}" + b + "\\}$"
+    );
+    s = s.replace(
+      /\$([A-Za-z]\s*=\s*\\?\{[^$]{0,200}?)\$(\s+(?:and|or)\s+)\$([^$]{0,120}?)\$(\s*\\?\})/g,
+      (_, a, eng, b) => "$" + a + " \\text{" + eng + "}" + b + "\\}$"
+    );
+    s = s.replace(
+      /(^|,\s*)(\$?)([A-Za-z]\s*=\s*\\?\{[^$]{0,200}?)\$(\s+(?:is an integer|is a real|where|such that)[^$]{0,80}?)\s*\$\s*(\\?\})/gi,
+      (_, pre, _d, a, eng) => pre + "$" + a + " \\text{" + eng + "}\\}$"
+    );
+    s = s.replace(/\\\}(\$)\$+(?=\s|[.,;]|$)/g, "\\}$1");
+
     // Join split \left. \right. BEFORE stripping lone $\left.
     s = s.replace(/\\right\.\s*\$(\s+(?:and|or|,)\s+)\$\\left\./g, "\\right.$1\\left.");
     s = s.replace(/\\right\.\s*\$(\s+(?:and|or|,)\s+)\\left\./g, "\\right.$1\\left.");
@@ -421,6 +440,8 @@
     s = s.replace(/(1\s*\\le\s*i(?:\s*,\s*j)?\s*\\le\s*k)\s*\$\}/g, "$1\\}$");
     s = s.replace(/\\\}(\$)\$+(?=\s)/g, "\\}$1");
     s = s.replace(/\\text\{\s*is a multiple of/gi, "\\text{ is a multiple of");
+    s = s.replace(/\\\(([^$\\]{0,160}?)\\\)/g, "$$$1$");
+    s = s.replace(/\\\(/g, "(").replace(/\\\)/g, ")");
 
     return s;
   }

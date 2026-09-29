@@ -60,7 +60,7 @@
     } else {
       try { document.head.appendChild(lock); } catch (_) {}
     }
-    const lh = "assets/qx-foot-lock.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd244");
+    const lh = "assets/qx-foot-lock.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd245");
     if (lock.getAttribute("href") !== lh) lock.href = lh;
     let klock = document.getElementById("qxKatexLockCss");
     if (!klock) {
@@ -71,7 +71,7 @@
     } else {
       try { document.head.appendChild(klock); } catch (_) {}
     }
-    const kh = "assets/qx-katex-lock.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd244");
+    const kh = "assets/qx-katex-lock.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd245");
     if (klock.getAttribute("href") !== kh) klock.href = kh;
 
     /* qxmd218: practice chrome — only Settings gear; Marks-like settings cards */
