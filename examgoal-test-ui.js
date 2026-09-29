@@ -89,6 +89,25 @@
       ].join("");
       document.head.appendChild(s218);
     }
+    if (!document.getElementById("qxmd237EgCss")) {
+      var s237 = document.createElement("style");
+      s237.id = "qxmd237EgCss";
+      s237.textContent = [
+        'html body .eg-test-root .eg-top-tools .eg-tool-btn:not(#egFmtBtn),',
+        'html body .eg-test-root.eg-qxmd217 .eg-top-tools .eg-tool-btn:not(#egFmtBtn),',
+        'html body .eg-test-root .eg-top-tools #mtkThemeBtn,',
+        'html body .eg-test-root .eg-top-tools #egAllQBtn,',
+        'html body .eg-test-root .eg-top-tools #egMenuBtn,',
+        'html body .eg-test-root .eg-top-tools #egStarBtn,',
+        'html body .eg-test-root .eg-top-tools #egPlusBtn,',
+        'html body .eg-test-root .eg-top-tools #egFullBtn,',
+        'html body .eg-test-root .eg-top-tools #mtkReportBtn,',
+        'html body .eg-test-root .eg-top-tools #egFmtBtn{display:inline-flex!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important;width:36px!important;height:36px!important}',
+        'html body .eg-test-root .eg-top-tools{display:flex!important;flex-wrap:wrap!important;overflow:visible!important;max-width:none!important}',
+        'html body .eg-test-root #egSol,.eg-test-root .qx-sol-flow{min-height:48px!important;display:block!important;overflow:visible!important}'
+      ].join("");
+      document.head.appendChild(s237);
+    }
   }
 
   function isExamgoalUi(session) {
@@ -776,7 +795,7 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
     return '<div class="eg-test-root mtk-test-root' +
       (sideOpen ? " eg-side-open" : " eg-side-collapsed") +
       (stripOpen ? " eg-strip-open" : " eg-strip-collapsed") +
-      " eg-tools-open eg-compact eg-qxmd167 eg-qxmd170 eg-qxmd171 eg-qxmd173 eg-qxmd180 eg-qxmd182 eg-qxmd217 eg-qxmd220 eg-qxtool8 eg-qxeg1 eg-qxeg2 eg-qxeg3 eg-qxeg4 eg-qxeg5 eg-qxeg6 eg-qxeg7" +
+      " eg-tools-open eg-compact eg-qxmd167 eg-qxmd170 eg-qxmd171 eg-qxmd173 eg-qxmd180 eg-qxmd182 eg-qxmd220 eg-qxmd237 eg-qxtool8 eg-qxeg1 eg-qxeg2 eg-qxeg3 eg-qxeg4 eg-qxeg5 eg-qxeg6 eg-qxeg7" +
       (previewOpen ? " eg-preview-open" : " eg-preview-collapsed") +
       (desktopMode ? " eg-desktop-mode" : " eg-mobile") +
       (!desktopMode && isMobileEg ? " eg-mobile-vp" : "") +
@@ -1756,7 +1775,8 @@ function forceFootVisible(force) {
         root.classList.toggle("eg-preview-open", previewOpen);
         root.classList.toggle("eg-preview-collapsed", !previewOpen);
         root.classList.remove("eg-tools-closed", "eg-tools-open", "eg-sol-showing", "eg-qxmd175", "eg-qxmd176", "eg-qxmd177", "eg-qxmd179");
-        root.classList.add("eg-tools-open", "eg-qxmd217", "eg-qxmd220", "eg-qxmd167", "eg-qxmd170", "eg-qxmd171", "eg-qxmd173", "eg-qxmd180", "eg-qxmd182", "eg-qxtool8", "eg-qxeg1", "eg-qxeg2", "eg-qxeg3", "eg-qxeg4", "eg-qxeg5", "eg-qxeg6", "eg-qxeg7", "eg-foot-ready");
+        root.classList.add("eg-tools-open", "eg-qxmd220", "eg-qxmd237", "eg-qxmd167", "eg-qxmd170", "eg-qxmd171", "eg-qxmd173", "eg-qxmd180", "eg-qxmd182", "eg-qxtool8", "eg-qxeg1", "eg-qxeg2", "eg-qxeg3", "eg-qxeg4", "eg-qxeg5", "eg-qxeg6", "eg-qxeg7", "eg-foot-ready");
+        try { root.classList.remove("eg-qxmd217", "eg-qxmd218", "eg-qxmd219"); } catch (_) {}
         root.classList.remove("eg-qxmd218", "eg-qxmd219");
         root.setAttribute("data-eg-cycle", bothOpen ? "1" : "0");
         const strip = root.querySelector("#egQBar");

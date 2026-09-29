@@ -2820,18 +2820,47 @@ window.Mx = (() => {
       return out;
     };
     try {
-      // $...$ (non-greedy, single-line-ish up to 400 chars)
-      c = c.replace(/\$([^$\n]{6,400})\$/g, function (_m, inner) {
-        const p = peelInner(inner);
-        return p != null ? p : _m;
-      });
+      /* Pair $…$ left-to-right. A length-skip regex was matching the CLOSER of
+         `$l$` to the OPENER of `$l+\mathrm{m}$` and peeling the English between
+         them, gluing the whole stem into one math island. */
+      let rebuilt = "";
+      let i = 0;
+      const n = c.length;
+      while (i < n) {
+        if (c[i] === "$" && (i === 0 || c[i - 1] !== "\\")) {
+          const display = c[i + 1] === "$";
+          const delimLen = display ? 2 : 1;
+          const start = i + delimLen;
+          let j = start;
+          let found = -1;
+          while (j < n) {
+            if (c[j] === "$" && (j === 0 || c[j - 1] !== "\\")) {
+              if (display) {
+                if (c[j + 1] === "$") { found = j; break; }
+              } else if (c[j + 1] !== "$") {
+                found = j;
+                break;
+              }
+            }
+            j++;
+          }
+          if (found < 0) {
+            rebuilt += c.slice(i);
+            break;
+          }
+          const inner = c.slice(start, found);
+          const p = peelInner(inner);
+          if (p != null) rebuilt += p;
+          else rebuilt += c.slice(i, found + delimLen);
+          i = found + delimLen;
+          continue;
+        }
+        rebuilt += c[i];
+        i++;
+      }
+      c = rebuilt;
       // \( ... \)
       c = c.replace(/\\\(([\s\S]{6,400}?)\\\)/g, function (_m, inner) {
-        const p = peelInner(inner);
-        return p != null ? p : _m;
-      });
-      // $$...$$ prose-only (rare)
-      c = c.replace(/\$\$([^$]{6,400}?)\$\$/g, function (_m, inner) {
         const p = peelInner(inner);
         return p != null ? p : _m;
       });

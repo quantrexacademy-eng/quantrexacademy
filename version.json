@@ -1,10 +1,10 @@
 {
-    "cache": "qx-pwa-qxmd236",
-    "ts": 1789862360000,
-    "title": "qxmd236: readable stem and Check Answer solution",
+    "cache": "qx-pwa-qxmd237",
+    "ts": 1789862370000,
+    "title": "qxmd237: stems, solutions and toolbar on every question",
     "site": "https://www.quantrexacademy.com",
-    "build": "qxmd236",
-    "body": "Question text keeps normal English spacing. Check Answer shows the official solution with math rendered. Theme, All Q, Palette, Bookmark and Settings stay on the practice bar.",
+    "build": "qxmd237",
+    "body": "Short math like $l$ no longer swallows the rest of the question. Check Answer shows the official solution. Theme, All Q, Palette, Bookmark and Settings stay visible on every practice question.",
     "package": "com.quantrexacademy.app",
     "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }

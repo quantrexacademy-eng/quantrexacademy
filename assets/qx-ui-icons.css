@@ -531,3 +531,23 @@ img.qx-no-wm {
   object-fit: contain !important;
   background: #fff !important;
 }
+
+/* qxmd237: beat .eg-qxmd217 :not(#egFmtBtn) hide (ID specificity) */
+html body .eg-test-root .eg-top-tools .eg-tool-btn:not(#egFmtBtn),
+html body .eg-test-root.eg-qxmd217 .eg-top-tools .eg-tool-btn:not(#egFmtBtn),
+html body .eg-test-root .eg-top-tools #mtkThemeBtn,
+html body .eg-test-root .eg-top-tools #egAllQBtn,
+html body .eg-test-root .eg-top-tools #egMenuBtn,
+html body .eg-test-root .eg-top-tools #egStarBtn,
+html body .eg-test-root .eg-top-tools #egPlusBtn,
+html body .eg-test-root .eg-top-tools #egFullBtn,
+html body .eg-test-root .eg-top-tools #mtkReportBtn,
+html body .eg-test-root .eg-top-tools #egFmtBtn {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  width: 36px !important;
+  height: 36px !important;
+  min-width: 36px !important;
+}
