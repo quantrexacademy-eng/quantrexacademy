@@ -1,5 +1,18 @@
 // Quantrex Test Engine — MARKS-style exam simulation (sections, fullscreen, countdown)
 
+if (typeof window !== "undefined" && !window.QxNavGuard) {
+  window.QxNavGuard = {
+    _until: 0,
+    block: function () {
+      var n = Date.now();
+      if (n < this._until) return true;
+      this._until = n + 400;
+      return false;
+    },
+    armed: function () { return Date.now() < this._until; },
+    arm: function (ms) { this._until = Date.now() + (ms || 400); }
+  };
+}
 
 /** Soft-load question-format.js once if QuantrexQFormat missing (never throw). */
 function qxEnsureQuantrexQFormat() {
@@ -1788,9 +1801,27 @@ const QuantrexTestEngine = (() => {
     const reviewBtn = root.querySelector("#qxReviewBtn");
     if (reviewBtn) reviewBtn.onclick = toggleReview;
     const prev = root.querySelector("#qxPrevBtn");
-    if (prev) prev.onclick = () => goTo(session.idx - 1);
     const next = root.querySelector("#qxNextBtn");
-    if (next) next.onclick = () => goTo(session.idx + 1);
+    function wireStep(btn, dir) {
+      if (!btn) return;
+      const fire = (e) => {
+        if (e) { try { e.preventDefault(); e.stopPropagation(); } catch (_) {} }
+        if (dir < 0 && session.idx > 0) goTo(session.idx - 1);
+        else if (dir > 0 && session.idx < session.ids.length - 1) goTo(session.idx + 1);
+      };
+      btn.onclick = fire;
+      btn.onpointerup = (e) => {
+        if (!e) return;
+        if (typeof e.button === "number" && e.button !== 0) return;
+        fire(e);
+      };
+      try {
+        btn.style.touchAction = "manipulation";
+        btn.setAttribute("aria-label", dir < 0 ? "Previous question" : "Next question");
+      } catch (_) { /* */ }
+    }
+    wireStep(prev, -1);
+    wireStep(next, 1);
     const skip = root.querySelector("#qxSkipBtn");
     if (skip) skip.onclick = skipQuestion;
     const save = root.querySelector("#qxSaveBtn");
@@ -2742,6 +2773,13 @@ const QuantrexTestEngine = (() => {
       } catch (_) { /* */ }
       return;
     }
+    /* qxmd249: ghost click after pointerup hits the NEW Next button. Adjacent
+       ±1 is ignored for 400ms; palette jumps (non-adjacent) still work. */
+    try {
+      if (typeof window !== "undefined" && window.QxNavGuard) {
+        if (Math.abs(idx - session.idx) === 1 && window.QxNavGuard.block()) return;
+      }
+    } catch (_) { /* */ }
     // qxeg1: never auto-close top strip / right palette on Q change —
     // user opened them via All Q; only ✕ or All Q may close (independently).
     try {
@@ -6524,7 +6562,8 @@ document.addEventListener("pointerup", function qxNavBtnDelegate(ev) {
     const eng = typeof QuantrexTestEngine !== "undefined" ? QuantrexTestEngine : null;
     if (!eng || !eng.isActive || !eng.isActive()) return;
     // If handler already fired this tick, skip
-    if (window._qxNavLock && Date.now() - window._qxNavLock < 70) return;
+    if (window._qxNavLock && Date.now() - window._qxNavLock < 400) return;
+    if (window.QxNavGuard && window.QxNavGuard.armed()) return;
     // Prefer element handler if still attached and recent bind — only backup if no onclick and no recent paint
     const id = btn.id || "";
     window._qxNavLock = Date.now();

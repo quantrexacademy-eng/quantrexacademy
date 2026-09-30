@@ -71,13 +71,39 @@
   /** Convert plain chem-ish tokens like NO2 / CH3 / NH2 to unicode subscripts. */
   function chemifyPlain(s) {
     let t = String(s || "");
+    const forms = [
+      ["K2Cr2O7", "K₂Cr₂O₇"], ["KMnO4", "KMnO₄"], ["NaHCO3", "NaHCO₃"], ["Na2CO3", "Na₂CO₃"],
+      ["Ca(OH)2", "Ca(OH)₂"], ["Mg(OH)2", "Mg(OH)₂"], ["C2H5OH", "C₂H₅OH"],
+      ["H2SO4", "H₂SO₄"], ["H2CO3", "H₂CO₃"], ["H3PO4", "H₃PO₄"], ["HNO3", "HNO₃"],
+      ["CaCO3", "CaCO₃"], ["BaSO4", "BaSO₄"], ["CuSO4", "CuSO₄"], ["FeSO4", "FeSO₄"],
+      ["ZnSO4", "ZnSO₄"], ["AgNO3", "AgNO₃"], ["NH4Cl", "NH₄Cl"], ["Fe2O3", "Fe₂O₃"],
+      ["Al2O3", "Al₂O₃"], ["PCl5", "PCl₅"], ["PCl3", "PCl₃"], ["CH4", "CH₄"],
+      ["NH3", "NH₃"], ["H2O", "H₂O"], ["CO2", "CO₂"], ["SO2", "SO₂"], ["SO3", "SO₃"],
+      ["NO2", "NO₂"], ["HCl", "HCl"], ["H2", "H₂"], ["O2", "O₂"], ["N2", "N₂"],
+      ["SO4", "SO₄"], ["PO4", "PO₄"], ["NO3", "NO₃"], ["NH4", "NH₄"], ["MnO4", "MnO₄"]
+    ];
+    for (let i = 0; i < forms.length; i++) {
+      const a = forms[i][0];
+      const b = forms[i][1];
+      t = t.replace(new RegExp("\\b" + a.replace(/[()]/g, "\\$&") + "\\b", "g"), b);
+    }
     t = t.replace(/\b(NO|SO|CO|NH|CH|OH|PO|MnO|KMnO|H)(\d+)\b/g, (_, el, dig) =>
       el + dig.split("").map((d) => SUB_DIG[d] || d).join("")
     );
-    t = t.replace(/\b(Cl|Br|I|F|OH)[-−]\b/g, (_, el) => el + "⁻");
-    t = t.replace(/\b([A-Za-z]+)(\d+)([+\-−])\b/g, (_, el, dig, sign) =>
+    t = t.replace(/\b(Na|K|Li|H|Ag)\+(?![A-Za-z0-9])/g, (_, el) => el + "⁺");
+    t = t.replace(/\b(Cl|Br|I|F|OH)[-−](?![A-Za-z0-9])/g, (_, el) => el + "⁻");
+    t = t.replace(/\b(Fe|Al|Cr)(?:\^?3\+|3\+)(?![A-Za-z0-9])/g, (_, el) => el + "³⁺");
+    t = t.replace(/\b(Fe|Ca|Mg|Zn|Cu|Ba)(?:\^?2\+|2\+)(?![A-Za-z0-9])/g, (_, el) => el + "²⁺");
+    t = t.replace(/\b(SO₄|CO₃|SO4|CO3)(?:\^?2[-−]|2[-−])(?![A-Za-z0-9])/g, (_, el) => {
+      const base = el.replace("4", "₄").replace("3", "₃");
+      return base + "²⁻";
+    });
+    t = t.replace(/\b([A-Za-z]+)(\d+)([+\-−])(?![A-Za-z0-9])/g, (_, el, dig, sign) =>
       el + dig.split("").map((d) => SUB_DIG[d] || d).join("") + (SUPER_DIG[sign] || sign)
     );
+    t = t.replace(/\bm\/s\^2\b/g, "m/s²");
+    t = t.replace(/\bm\/s2\b/g, "m/s²");
+    t = t.replace(/\bkg[·.]m\/s\^2\b/g, "kg·m/s²");
     return t;
   }
 
@@ -573,6 +599,9 @@
         }
         return "\\" + g + w;
       });
+    // sin^2 / cos^{-1} → \sin^2 / \cos^{-1} (KaTeX, not HTML sup)
+    t = t.replace(/(^|[^\\A-Za-z])(sin|cos|tan|cot|sec|csc|log|ln)\s*\^\s*(\{-1\}|-1|\d)/gi,
+      (_, pre, fn, p) => pre + "\\" + String(fn).toLowerCase() + "^" + p);
     // Subscript _{1 / 2} → _{1/2}
     t = t.replace(/_\{\s*(\d+)\s*\/\s*(\d+)\s*\}/g, "_{$1/$2}");
     // qxmd174: keep TeX \{ \} set braces (do not collapse to { }).
@@ -655,6 +684,7 @@
     s = normalizeDelimiters(s);
     try { s = healOddDollars(s); } catch (_) { /* */ }
     s = tidyWhitespace(s);
+    try { s = chemifyPlain(s); } catch (_) { /* */ }
 
     // If still leaking katex class tokens as visible source, strip tags aggressively
     if (detectBrokenKatex(s)) {

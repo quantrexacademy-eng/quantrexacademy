@@ -249,6 +249,7 @@
       if (!b) return;
       var fire = function (e) {
         if (e) { e.preventDefault(); e.stopPropagation(); }
+        if (window.QxNavGuard && window.QxNavGuard.block()) return;
         go(dir);
       };
       b.onclick = fire;
@@ -256,8 +257,16 @@
     }
     bindFcNav("#qxFcPrev", -1);
     bindFcNav("#qxFcNext", 1);
-    wrap.querySelector("#qxFcHitPrev").onclick = function (e) { e.stopPropagation(); go(-1); };
-    wrap.querySelector("#qxFcHitNext").onclick = function (e) { e.stopPropagation(); go(1); };
+    wrap.querySelector("#qxFcHitPrev").onclick = function (e) {
+      e.stopPropagation();
+      if (window.QxNavGuard && window.QxNavGuard.block()) return;
+      go(-1);
+    };
+    wrap.querySelector("#qxFcHitNext").onclick = function (e) {
+      e.stopPropagation();
+      if (window.QxNavGuard && window.QxNavGuard.block()) return;
+      go(1);
+    };
     wrap.querySelector("#qxFcStage").addEventListener("wheel", function (e) {
       if (e.ctrlKey || e.metaKey) {
         e.preventDefault();

@@ -91,7 +91,7 @@ window.QxPerf = (() => {
     const js = (window.QX_SECONDARY_JS || []);
     css.forEach(loadCss);
     try {
-      var bust = (typeof window.QX_BUILD === "string" && window.QX_BUILD) || "qxmd248";
+      var bust = (typeof window.QX_BUILD === "string" && window.QX_BUILD) || "qxmd249";
       loadCss("assets/qx-foot-lock.css?v=" + encodeURIComponent(bust));
       loadCss("assets/qx-katex-lock.css?v=" + encodeURIComponent(bust));
     } catch (_) { /* */ }
@@ -113,7 +113,7 @@ window.QxPerf = (() => {
     };
     onIdle(next);
     // KaTeX CSS first so math does not pop unstyled after Next
-    loadCss("assets/katex/katex.min.css?v=" + encodeURIComponent((typeof window.QX_BUILD === "string" && window.QX_BUILD) || "qxmd248"));
+    loadCss("assets/katex/katex.min.css?v=" + encodeURIComponent((typeof window.QX_BUILD === "string" && window.QX_BUILD) || "qxmd249"));
   }
 
   function smoothPaint(root) {

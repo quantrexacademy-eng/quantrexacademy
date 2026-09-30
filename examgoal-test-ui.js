@@ -1774,9 +1774,9 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
           b.style.setProperty("visibility", "visible", "important");
           b.style.setProperty("opacity", "1", "important");
           b.style.setProperty("pointer-events", "auto", "important");
-          b.style.setProperty("min-height", "48px", "important");
-          b.style.setProperty("height", "48px", "important");
-          b.style.setProperty("max-height", "48px", "important");
+          b.style.setProperty("min-height", "52px", "important");
+          b.style.setProperty("height", "52px", "important");
+          b.style.setProperty("max-height", "52px", "important");
           b.style.setProperty("border-radius", "999px", "important");
           b.style.setProperty("width", "100%", "important");
           b.style.setProperty("z-index", "2147483647", "important");
@@ -2101,7 +2101,7 @@ function forceFootVisible(force) {
             }
             var now = Date.now();
             if (now < lockUntil) return;
-            lockUntil = now + 150;
+            lockUntil = now + 400;
             go();
           }
           el.ontouchend = null;
@@ -2119,10 +2119,12 @@ function forceFootVisible(force) {
           el.style.setProperty("visibility", "visible", "important");
           el.style.setProperty("opacity", "1", "important");
           el.style.setProperty("touch-action", "manipulation", "important");
+          el.style.setProperty("min-height", "52px", "important");
         }
         const p = root.querySelector("#qxPrevBtn");
         if (p) {
           p.textContent = "Previous"; /* qxeg6: re-label every render/bind */
+          p.setAttribute("aria-label", "Previous question");
           p.removeAttribute("disabled");
           if (session.idx <= 0) p.setAttribute("disabled", "disabled");
           p.disabled = session.idx <= 0;
@@ -2131,6 +2133,7 @@ function forceFootVisible(force) {
         const n = root.querySelector("#qxNextBtn");
         if (n) {
           n.textContent = "Next";
+          n.setAttribute("aria-label", "Next question");
           n.removeAttribute("disabled");
           if (session.idx >= session.ids.length - 1) n.setAttribute("disabled", "disabled");
           n.disabled = session.idx >= session.ids.length - 1;

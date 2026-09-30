@@ -1,10 +1,10 @@
 {
-  "cache": "qx-pwa-qxmd248",
-  "ts": 1790712000000,
-  "title": "qxmd248: smooth figures, no hang",
+  "cache": "qx-pwa-qxmd249",
+  "ts": 1790800000000,
+  "title": "qxmd249: Next/Previous tap lock + math/chem display",
   "site": "https://www.quantrexacademy.com",
-  "build": "qxmd248",
-  "body": "Figures load once and stay. Extra image rewrites that froze the site are off. Official answers are unchanged.",
+  "build": "qxmd249",
+  "body": "Mobile Next/Previous no longer skips a question. Chemistry formulas and sin^2 render as math. Official answers are unchanged.",
   "package": "com.quantrexacademy.app",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }

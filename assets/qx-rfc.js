@@ -378,6 +378,7 @@
       if (!b) return;
       var fire = function (e) {
         if (e) { e.preventDefault(); e.stopPropagation(); }
+        if (window.QxNavGuard && window.QxNavGuard.block()) return;
         go(dir);
       };
       b.onclick = fire;
@@ -388,11 +389,13 @@
     wrap.querySelector("#qxRfcHitPrev").onclick = function (e) {
       e.stopPropagation();
       if (zoom > 1.05) return;
+      if (window.QxNavGuard && window.QxNavGuard.block()) return;
       go(-1);
     };
     wrap.querySelector("#qxRfcHitNext").onclick = function (e) {
       e.stopPropagation();
       if (zoom > 1.05) return;
+      if (window.QxNavGuard && window.QxNavGuard.block()) return;
       go(1);
     };
     wrap.querySelectorAll("[data-rfc-z]").forEach(function (btn) {

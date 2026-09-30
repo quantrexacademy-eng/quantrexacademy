@@ -144,12 +144,26 @@ html body .katex-display {
   text-align: center;
   overflow-x: auto;
   overflow-y: hidden;
+  max-width: 100%;
+  -webkit-overflow-scrolling: touch;
 }
 
 html body .katex-display > .katex {
-  display: block !important;
+  display: inline-block !important;
   text-align: center;
   white-space: nowrap;
+  max-width: none;
+}
+
+html body .eg-q-card,
+html body .mtk-q-text,
+html body .eg-opt,
+html body .mtk-opt,
+html body .qx-prac-opt,
+html body .eg-sol,
+html body #egSolPanel {
+  overflow-x: auto;
+  max-width: 100%;
 }
 
 /* Native MathML fallback (only <msup>, not KaTeX spans). */
