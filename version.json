@@ -1,10 +1,10 @@
 {
-  "cache": "qx-pwa-qxmd255",
-  "ts": 1790900000255,
-  "title": "qxmd255: Shared custom tests, unlimited bookmarks",
+  "cache": "qx-pwa-qxmd256",
+  "ts": 1790900000256,
+  "title": "qxmd256: Saved questions list has no preload cap",
   "site": "https://www.quantrexacademy.com",
-  "build": "qxmd255",
-  "body": "A created test can be taken on this device and opened from a shared link with no login. Bookmark print, PDF, make-test, and share include every saved question. Official answers are unchanged.",
+  "build": "qxmd256",
+  "body": "Every saved question shows in the notebook. Print, PDF, make-test, and share still include all of them. Shared tests open with no login. Official answers are unchanged.",
   "package": "com.quantrexacademy.app",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }

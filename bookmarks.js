@@ -554,13 +554,17 @@ let _nbHydratedKey = "";
 function nbScheduleHydrate(ids) {
   const missing = (ids || []).filter((id) => !(typeof getQ === "function" && getQ(id)));
   if (!missing.length) return;
-  const key = missing.map((id) => String(id)).join("|").slice(0, 4000);
+  const key = String(missing.length) + ":" + missing.map((id) => String(id)).join("|");
   if (key === _nbHydratedKey) return;
   _nbHydratedKey = key;
   setTimeout(async () => {
     try {
       if (typeof QuantrexCatalog !== "undefined" && QuantrexCatalog.questionsByIds) {
-        await QuantrexCatalog.questionsByIds(missing.slice(0, 120));
+        const size = 24;
+        for (let i = 0; i < missing.length; i += size) {
+          const data = await QuantrexCatalog.questionsByIds(missing.slice(i, i + size));
+          nbApplyCatalogPack(data);
+        }
       }
     } catch (_) { /* */ }
     try {
