@@ -42,16 +42,21 @@
       return cfg;
     }
 
-        // 2) Test Series → always NTA (quizrr). PYQ Mock → ExamGoal (chapter-practice UX).
+        // 2) PYQ Mock → ExamGoal. Test Series: honor explicit QUANTREX/NTA chooser.
     if (/^pyqmock$/i.test(tt)) {
       cfg.uiMode = "examgoal";
       cfg._qxFormat = "quantrex";
       return cfg;
     }
     if (/^testseries$/i.test(tt)) {
+      cfg.practiceMode = false;
+      if (ui === "examgoal" || ui === "quantrex") {
+        cfg.uiMode = "examgoal";
+        cfg._qxFormat = "quantrex";
+        return cfg;
+      }
       cfg.uiMode = "quizrr";
       cfg._qxFormat = "nta";
-      cfg.practiceMode = false;
       return cfg;
     }
 
@@ -487,21 +492,27 @@
       var id = t.id || "";
       try {
         if (id === "qzrrA11yBtn") {
-          e.preventDefault();
-          e.stopPropagation();
-          if (typeof window.qxOpenQzrrA11y === "function") window.qxOpenQzrrA11y(e);
+          if (typeof window.qxOpenQzrrA11y === "function") {
+            e.preventDefault();
+            e.stopPropagation();
+            window.qxOpenQzrrA11y(e);
+          }
           return;
         }
         if (id === "qzrrInstrBtn") {
-          e.preventDefault();
-          e.stopPropagation();
-          if (typeof window.qxOpenQzrrInstr === "function") window.qxOpenQzrrInstr(e);
+          if (typeof window.qxOpenQzrrInstr === "function") {
+            e.preventDefault();
+            e.stopPropagation();
+            window.qxOpenQzrrInstr(e);
+          }
           return;
         }
         if (id === "qzrrPaperBtn" || id === "qzrrPaperChipBtn") {
-          e.preventDefault();
-          e.stopPropagation();
-          if (typeof window.qxOpenQzrrPaper === "function") window.qxOpenQzrrPaper(e);
+          if (typeof window.qxOpenQzrrPaper === "function") {
+            e.preventDefault();
+            e.stopPropagation();
+            window.qxOpenQzrrPaper(e);
+          }
           return;
         }
         // Font A+/- handled by test-engine _qxZoomClickBound — avoid double-scale

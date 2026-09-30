@@ -1,10 +1,10 @@
 {
-  "cache": "qx-pwa-qxmd250",
-  "ts": 1790900000000,
-  "title": "qxmd250: same toolbar, mobile settings, covers, TeX leak",
+  "cache": "qx-pwa-qxmd251",
+  "ts": 1790900000251,
+  "title": "qxmd251: Test Series toolbar + high-contrast questions",
   "site": "https://www.quantrexacademy.com",
-  "build": "qxmd250",
-  "body": "NCERT, Digital Books, All Exams, Test Series, Medical and Engineering share one labeled toolbar. Mobile settings sheet is fully reachable with necessary defaults on. Light-mode homepage icons and digital book covers stay visible. Raw \\\\\\ TeX leaks are repaired on display. Official answers are unchanged.",
+  "build": "qxmd251",
+  "body": "Test Series View Settings, Instructions, and Question Paper buttons open. Question stem, options, and instructions stay high-contrast in light (black on white) and dark (white on black). Official answers are unchanged.",
   "package": "com.quantrexacademy.app",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }

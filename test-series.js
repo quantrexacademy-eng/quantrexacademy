@@ -2333,9 +2333,12 @@ function tsStandaloneLaunchTest(testId, test, meta, seriesId, questionIds, opts,
     if (o.resumeData.uiMode) config.uiMode = o.resumeData.uiMode;
   }
   if (o.uiMode) config.uiMode = o.uiMode;
-  // qxmd108: Test Series always NTA quizrr shell (tools + no topic strip)
-  config.uiMode = "quizrr";
-  if (config.resumeData) config.resumeData = Object.assign({}, config.resumeData, { uiMode: "quizrr" });
+  if (config.uiMode === "quantrex") config.uiMode = "examgoal";
+  if (config.uiMode !== "examgoal" && config.uiMode !== "quizrr") config.uiMode = "quizrr";
+  if (config.resumeData && config.resumeData.uiMode) {
+    const ru = config.resumeData.uiMode === "quantrex" ? "examgoal" : config.resumeData.uiMode;
+    config.uiMode = ru === "examgoal" ? "examgoal" : "quizrr";
+  }
 
   try {
     const gate = {

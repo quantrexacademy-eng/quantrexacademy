@@ -1478,15 +1478,18 @@ const QuantrexTestEngine = (() => {
         <header class="qzrr-black-bar">
           <div class="qzrr-black-title">${titleEsc}</div>
           <div class="qzrr-black-tools">
-            <button type="button" class="qzrr-tool-btn qzrr-tool-a11y" id="qzrrA11yBtn" title="View Settings">
+            <button type="button" class="qzrr-tool-btn qzrr-tool-a11y" id="qzrrA11yBtn" title="View Settings"
+              onclick="try{event.preventDefault();event.stopPropagation();if(window.qxOpenQzrrA11y)window.qxOpenQzrrA11y(event);}catch(_){}return false;">
               <span class="qzrr-ico qzrr-ico-green" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="#4caf50" stroke-width="2"/><path d="M12 2.5v2.2M12 19.3V21.5M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6" stroke="#4caf50" stroke-width="1.8" stroke-linecap="round"/></svg></span>
               View Settings
             </button>
-            <button type="button" class="qzrr-tool-btn qzrr-tool-instr" id="qzrrInstrBtn" title="Instructions">
+            <button type="button" class="qzrr-tool-btn qzrr-tool-instr" id="qzrrInstrBtn" title="Instructions"
+              onclick="try{event.preventDefault();event.stopPropagation();if(window.qxOpenQzrrInstr)window.qxOpenQzrrInstr(event);}catch(_){}return false;">
               <span class="qzrr-ico qzrr-ico-blue" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#42a5f5" stroke-width="2"/><path d="M12 10.5v6" stroke="#42a5f5" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="7.2" r="1.2" fill="#42a5f5"/></svg></span>
               Instructions
             </button>
-            <button type="button" class="qzrr-tool-btn qzrr-tool-paper" id="qzrrPaperBtn" title="Question Paper">
+            <button type="button" class="qzrr-tool-btn qzrr-tool-paper" id="qzrrPaperBtn" title="Question Paper"
+              onclick="try{event.preventDefault();event.stopPropagation();if(window.qxOpenQzrrPaper)window.qxOpenQzrrPaper(event);}catch(_){}return false;">
               <span class="qzrr-ico qzrr-ico-blue" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M7 3.5h7.2L19 8.3V20a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1z" stroke="#42a5f5" stroke-width="1.7"/><path d="M14 3.5V9h5.2" stroke="#42a5f5" stroke-width="1.7"/><path d="M9 12h6M9 15.5h6" stroke="#42a5f5" stroke-width="1.5" stroke-linecap="round"/></svg></span>
               Question Paper
             </button>
@@ -2118,9 +2121,12 @@ const QuantrexTestEngine = (() => {
   function bindQuizrrChrome(root) {
     if (!root || !session) return;
 
+    try {
+      if (typeof ExamgoalTestUI !== "undefined" && ExamgoalTestUI.ensureCss) ExamgoalTestUI.ensureCss();
+    } catch (_) { /* */ }
+
     const a11yBtn = root.querySelector("#qzrrA11yBtn");
-    if (a11yBtn) {
-      a11yBtn.onclick = (e) => {
+    const __qxOpenA11y = (e) => {
         if (e) { e.preventDefault(); e.stopPropagation(); }
         // Fixed on body with clean backdrop so it works flawlessly on mobile & desktop
         let pop = document.getElementById("qzrrA11yPopover");
@@ -2253,14 +2259,24 @@ const QuantrexTestEngine = (() => {
               document.removeEventListener("click", closer, true);
               return;
             }
-            if (!pop.contains(ev.target) && ev.target !== a11yBtn && !a11yBtn.contains(ev.target)) {
+            if (!pop.contains(ev.target) && (!a11yBtn || (ev.target !== a11yBtn && !a11yBtn.contains(ev.target)))) {
               closeA11y();
               document.removeEventListener("click", closer, true);
             }
           };
           document.addEventListener("click", closer, true);
         }, 80);
-      };
+    };
+    window.qxOpenQzrrA11y = function (ev) {
+      if (window.__qxQzrrToolLock && Date.now() - window.__qxQzrrToolLock < 400 && window.__qxQzrrToolName === "a11y") return;
+      window.__qxQzrrToolLock = Date.now();
+      window.__qxQzrrToolName = "a11y";
+      try { __qxOpenA11y(ev); } catch (err) { try { console.error("qxOpenQzrrA11y", err); } catch (_) {} }
+    };
+    if (a11yBtn) {
+      a11yBtn.onclick = window.qxOpenQzrrA11y;
+      a11yBtn.style.setProperty("pointer-events", "auto", "important");
+      a11yBtn.style.setProperty("z-index", "20120", "important");
     }
 
     // Top-right magnifier FAB still opens zoom +/−
@@ -2283,10 +2299,18 @@ const QuantrexTestEngine = (() => {
     }
 
     const instrBtn = root.querySelector("#qzrrInstrBtn");
+    window.qxOpenQzrrInstr = function (ev) {
+      if (ev && ev.preventDefault) { try { ev.preventDefault(); ev.stopPropagation(); } catch (_) {} }
+      if (window.__qxQzrrToolLock && Date.now() - window.__qxQzrrToolLock < 400 && window.__qxQzrrToolName === "instr") return;
+      window.__qxQzrrToolLock = Date.now();
+      window.__qxQzrrToolName = "instr";
+      const r = document.querySelector(".qzrr-cbt") || root;
+      openQzrrModal(r, "Instructions", quizrrInstructionsViewHtml());
+    };
     if (instrBtn) {
-      instrBtn.onclick = () => {
-        openQzrrModal(root, "Instructions", quizrrInstructionsViewHtml());
-      };
+      instrBtn.onclick = window.qxOpenQzrrInstr;
+      instrBtn.style.setProperty("pointer-events", "auto", "important");
+      instrBtn.style.setProperty("z-index", "20120", "important");
     }
 
     const paperBtn = root.querySelector("#qzrrPaperBtn");
@@ -2302,8 +2326,19 @@ const QuantrexTestEngine = (() => {
         };
       });
     };
-    if (paperBtn) paperBtn.onclick = openPaper;
-    if (paperChip) paperChip.onclick = openPaper;
+    window.qxOpenQzrrPaper = function (ev) {
+      if (ev && ev.preventDefault) { try { ev.preventDefault(); ev.stopPropagation(); } catch (_) {} }
+      if (window.__qxQzrrToolLock && Date.now() - window.__qxQzrrToolLock < 400 && window.__qxQzrrToolName === "paper") return;
+      window.__qxQzrrToolLock = Date.now();
+      window.__qxQzrrToolName = "paper";
+      openPaper();
+    };
+    if (paperBtn) {
+      paperBtn.onclick = window.qxOpenQzrrPaper;
+      paperBtn.style.setProperty("pointer-events", "auto", "important");
+      paperBtn.style.setProperty("z-index", "20120", "important");
+    }
+    if (paperChip) paperChip.onclick = window.qxOpenQzrrPaper;
 
     const secInfoToggle = root.querySelector("#qzrrSecInfoToggle");
     if (secInfoToggle) {
@@ -2339,7 +2374,19 @@ const QuantrexTestEngine = (() => {
     root.classList.toggle("qzrr-spacing", !!session._qzrrSpacing);
     root.classList.toggle("qzrr-dark", !!session._qzrrDark);
     root.classList.remove("qzrr-mag-on", "qzrr-dyslexia", "qzrr-focus");
-    if (session._qzrrDark) root.setAttribute("data-test-theme", "dark");
+    root.setAttribute("data-test-theme", session._qzrrDark ? "dark" : "light");
+    ["#qzrrA11yBtn", "#qzrrInstrBtn", "#qzrrPaperBtn", "#mtkFontDown", "#mtkFontUp", "#mtkExitBtn"].forEach(function (sel) {
+      const el = root.querySelector(sel);
+      if (!el) return;
+      el.style.setProperty("pointer-events", "auto", "important");
+      el.style.setProperty("z-index", "20120", "important");
+      el.style.setProperty("cursor", "pointer", "important");
+    });
+    const bar = root.querySelector(".qzrr-black-bar");
+    if (bar) {
+      bar.style.setProperty("pointer-events", "auto", "important");
+      bar.style.setProperty("z-index", "20110", "important");
+    }
 
     const syncTopZoomLbl = () => {
       const pct = Math.round(getTestZoom() * 100) + "%";
@@ -2375,6 +2422,9 @@ const QuantrexTestEngine = (() => {
     if (session._qzrrDark) {
       root.classList.add("qzrr-dark");
       root.setAttribute("data-test-theme", "dark");
+    } else {
+      root.classList.remove("qzrr-dark");
+      root.setAttribute("data-test-theme", "light");
     }
   }
 

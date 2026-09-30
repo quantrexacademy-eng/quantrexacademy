@@ -402,14 +402,25 @@ html[data-theme="dark"] .qzrr-cbt:not(.qzrr-dark) .mtk-q-text * {
   color: #0f172a !important;
   -webkit-text-fill-color: #0f172a !important;
 }
-html[data-theme="dark"] .mtk-opt .mtk-opt-text,
-html[data-theme="dark"] .mtk-opt .mtk-opt-text *,
-html[data-theme="dark"] .mtk-opt .katex,
-html[data-theme="dark"] .mtk-opt .katex *,
-.qzrr-cbt.qzrr-dark .mtk-opt .mtk-opt-text,
-.qzrr-cbt.qzrr-dark .mtk-opt .katex,
-.mtk-test-root[data-test-theme="dark"] .mtk-opt .mtk-opt-text,
-.mtk-test-root[data-test-theme="dark"] .mtk-opt .katex {
+/* Light CBT plates keep dark ink even if html is dark */
+html[data-theme="dark"] .mtk-test-root[data-test-theme="light"] .mtk-opt .mtk-opt-text,
+html[data-theme="dark"] .mtk-test-root[data-test-theme="light"] .mtk-opt .mtk-opt-text *,
+html[data-theme="dark"] .mtk-test-root[data-test-theme="light"] .mtk-opt .katex,
+html[data-theme="dark"] .mtk-test-root[data-test-theme="light"] .mtk-opt .katex *,
+html[data-theme="dark"] .qzrr-cbt:not(.qzrr-dark) .mtk-opt .mtk-opt-text,
+html[data-theme="dark"] .qzrr-cbt:not(.qzrr-dark) .mtk-opt .katex {
   color: #0f172a !important;
   -webkit-text-fill-color: #0f172a !important;
+}
+/* Dark CBT plates: pale ink (never #0f172a on charcoal) */
+.qzrr-cbt.qzrr-dark .mtk-opt .mtk-opt-text,
+.qzrr-cbt.qzrr-dark .mtk-opt .mtk-opt-text *,
+.qzrr-cbt.qzrr-dark .mtk-opt .katex,
+.qzrr-cbt.qzrr-dark .mtk-opt .katex *,
+.mtk-test-root[data-test-theme="dark"] .mtk-opt .mtk-opt-text,
+.mtk-test-root[data-test-theme="dark"] .mtk-opt .mtk-opt-text *,
+.mtk-test-root[data-test-theme="dark"] .mtk-opt .katex,
+.mtk-test-root[data-test-theme="dark"] .mtk-opt .katex * {
+  color: #f8fafc !important;
+  -webkit-text-fill-color: #f8fafc !important;
 }

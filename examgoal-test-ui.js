@@ -82,7 +82,7 @@
     } else {
       try { document.head.appendChild(clock); } catch (_) {}
     }
-    const chlock = "assets/qx-chrome-lock.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd250");
+    const chlock = "assets/qx-chrome-lock.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd251");
     if (clock.getAttribute("href") !== chlock) clock.href = chlock;
 
     /* qxmd218: practice chrome — only Settings gear; Marks-like settings cards */
@@ -930,7 +930,7 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
     return '<div class="eg-test-root mtk-test-root' +
       (sideOpen ? " eg-side-open" : " eg-side-collapsed") +
       (stripOpen ? " eg-strip-open" : " eg-strip-collapsed") +
-      " eg-tools-open eg-compact eg-qxmd167 eg-qxmd170 eg-qxmd171 eg-qxmd173 eg-qxmd180 eg-qxmd182 eg-qxmd220 eg-qxmd237 eg-qxmd238 eg-qxmd239 eg-qxmd250 eg-qxtool8 eg-qxeg1 eg-qxeg2 eg-qxeg3 eg-qxeg4 eg-qxeg5 eg-qxeg6 eg-qxeg7" +
+      " eg-tools-open eg-compact eg-qxmd167 eg-qxmd170 eg-qxmd171 eg-qxmd173 eg-qxmd180 eg-qxmd182 eg-qxmd220 eg-qxmd237 eg-qxmd238 eg-qxmd239 eg-qxmd250 eg-qxmd251 eg-qxtool8 eg-qxeg1 eg-qxeg2 eg-qxeg3 eg-qxeg4 eg-qxeg5 eg-qxeg6 eg-qxeg7" +
       (previewOpen ? " eg-preview-open" : " eg-preview-collapsed") +
       (desktopMode ? " eg-desktop-mode" : " eg-mobile") +
       (!desktopMode && isMobileEg ? " eg-mobile-vp" : "") +

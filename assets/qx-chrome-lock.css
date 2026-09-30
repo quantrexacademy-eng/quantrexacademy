@@ -1,4 +1,5 @@
 /* qxmd250 — last-wins: one toolbar, visible settings, homepage icons, book covers.
+   qxmd251 — Test Series tools clickable + high-contrast stem/options/instructions.
    Load after qx-foot-lock / qx-ui-icons / qx-mobile. */
 
 /* ===== Practice + test + Allen: identical labeled tools on blue bar ===== */
@@ -278,4 +279,265 @@ html:not([data-theme="dark"]) .qx-topic-ic img {
 .subj-mini,
 .qx-ncert-tool {
   overflow: visible !important;
+}
+
+/* ===== qxmd251: Test Series toolbar clicks + high-contrast stem/options/instructions ===== */
+html body .qzrr-cbt .qzrr-black-bar,
+html body .qzrr-cbt .qzrr-black-tools,
+html body .qzrr-cbt .qzrr-tool-btn,
+html body .qzrr-cbt #qzrrA11yBtn,
+html body .qzrr-cbt #qzrrInstrBtn,
+html body .qzrr-cbt #qzrrPaperBtn,
+html body .qzrr-cbt #mtkFontDown,
+html body .qzrr-cbt #mtkFontUp,
+html body .qzrr-cbt #mtkExitBtn {
+  pointer-events: auto !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: relative !important;
+  z-index: 20120 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+html body .qzrr-cbt #mtkExitBtn.qzrr-exit {
+  color: #ffca28 !important;
+  -webkit-text-fill-color: #ffca28 !important;
+}
+html body .qzrr-cbt .qzrr-black-bar {
+  z-index: 20110 !important;
+  overflow: visible !important;
+}
+html body .qzrr-cbt .qzrr-top-zoom {
+  pointer-events: none !important;
+  z-index: 40 !important;
+}
+
+/* LIGHT paper: near-black ink on white (site theme must not bleach this) */
+html body .eg-test-root[data-test-theme="light"] .eg-q-card,
+html body .eg-test-root[data-test-theme="light"] .eg-main,
+html body .eg-test-root[data-test-theme="light"] .eg-body,
+html[data-theme="dark"] body .eg-test-root[data-test-theme="light"] .eg-q-card,
+html[data-theme="dark"] body .eg-test-root[data-test-theme="light"] .eg-main,
+html body .qzrr-cbt:not(.qzrr-dark),
+html body .qzrr-cbt[data-test-theme="light"]:not(.qzrr-dark),
+html[data-theme="dark"] body .qzrr-cbt:not(.qzrr-dark),
+html body .qzrr-cbt:not(.qzrr-dark) .qzrr-q-area,
+html body .qzrr-cbt:not(.qzrr-dark) .qzrr-main-col,
+html[data-theme="dark"] body .qzrr-cbt:not(.qzrr-dark) .qzrr-q-area {
+  background: #ffffff !important;
+  color: #0b1220 !important;
+}
+
+html body .eg-test-root[data-test-theme="light"] #egQArea,
+html body .eg-test-root[data-test-theme="light"] .eg-q-stem,
+html body .eg-test-root[data-test-theme="light"] .mtk-q-text,
+html body .eg-test-root[data-test-theme="light"] .qx-content,
+html body .eg-test-root[data-test-theme="light"] .mtk-opt,
+html body .eg-test-root[data-test-theme="light"] .eg-opt,
+html body .eg-test-root[data-test-theme="light"] .mtk-opt-text,
+html body .eg-test-root[data-test-theme="light"] .mtk-opt-text *:not(.mtk-opt-letter):not(img):not(svg):not(path),
+html body .eg-test-root[data-test-theme="light"] .katex,
+html body .eg-test-root[data-test-theme="light"] .katex *,
+html[data-theme="dark"] body .eg-test-root[data-test-theme="light"] #egQArea,
+html[data-theme="dark"] body .eg-test-root[data-test-theme="light"] .mtk-opt-text,
+html[data-theme="dark"] body .eg-test-root[data-test-theme="light"] .katex *,
+html body .qzrr-cbt:not(.qzrr-dark) .qzrr-q-area,
+html body .qzrr-cbt:not(.qzrr-dark) .qzrr-q-area .qx-content,
+html body .qzrr-cbt:not(.qzrr-dark) .qzrr-q-area .mtk-q-text,
+html body .qzrr-cbt:not(.qzrr-dark) .qzrr-q-area .qx-content *:not(.mtk-opt-letter):not(img):not(svg):not(path):not(.qzrr-pill),
+html body .qzrr-cbt:not(.qzrr-dark) .qzrr-opts .mtk-opt,
+html body .qzrr-cbt:not(.qzrr-dark) .qzrr-opts .mtk-opt-text,
+html body .qzrr-cbt:not(.qzrr-dark) .qzrr-opts .mtk-opt-text *:not(.mtk-opt-letter):not(img):not(svg):not(path),
+html body .qzrr-cbt:not(.qzrr-dark) .katex,
+html body .qzrr-cbt:not(.qzrr-dark) .katex *,
+html body .qzrr-cbt:not(.qzrr-dark) .qzrr-section-info,
+html body .qzrr-cbt:not(.qzrr-dark) .qzrr-section-info-ul,
+html body .qzrr-cbt:not(.qzrr-dark) .qzrr-section-info-ul li,
+html body .qzrr-cbt:not(.qzrr-dark) .qx-sec-instr,
+html[data-theme="dark"] body .qzrr-cbt:not(.qzrr-dark) .qzrr-q-area .qx-content,
+html[data-theme="dark"] body .qzrr-cbt:not(.qzrr-dark) .qzrr-q-area .qx-content *,
+html[data-theme="dark"] body .qzrr-cbt:not(.qzrr-dark) .qzrr-opts .mtk-opt-text,
+html[data-theme="dark"] body .qzrr-cbt:not(.qzrr-dark) .qzrr-opts .mtk-opt-text * {
+  color: #0b1220 !important;
+  -webkit-text-fill-color: #0b1220 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+html body .eg-test-root[data-test-theme="light"] .mtk-opt,
+html body .eg-test-root[data-test-theme="light"] .eg-opt,
+html body .qzrr-cbt:not(.qzrr-dark) .qzrr-opts .mtk-opt {
+  background: #ffffff !important;
+  color: #0b1220 !important;
+}
+
+/* DARK paper: near-white ink on near-black */
+html body .eg-test-root[data-test-theme="dark"] .eg-q-card,
+html body .eg-test-root[data-test-theme="dark"] .eg-main,
+html body .eg-test-root[data-test-theme="dark"] .eg-body,
+html[data-theme="light"] body .eg-test-root[data-test-theme="dark"] .eg-q-card,
+html body .qzrr-cbt.qzrr-dark,
+html body .qzrr-cbt[data-test-theme="dark"],
+html[data-theme="light"] body .qzrr-cbt.qzrr-dark,
+html body .qzrr-cbt.qzrr-dark .qzrr-q-area,
+html body .qzrr-cbt.qzrr-dark .qzrr-main-col,
+html[data-theme="light"] body .qzrr-cbt.qzrr-dark .qzrr-q-area {
+  background: #0b1220 !important;
+  color: #f8fafc !important;
+}
+
+html body .eg-test-root[data-test-theme="dark"] #egQArea,
+html body .eg-test-root[data-test-theme="dark"] .eg-q-stem,
+html body .eg-test-root[data-test-theme="dark"] .mtk-q-text,
+html body .eg-test-root[data-test-theme="dark"] .qx-content,
+html body .eg-test-root[data-test-theme="dark"] .mtk-opt,
+html body .eg-test-root[data-test-theme="dark"] .eg-opt,
+html body .eg-test-root[data-test-theme="dark"] .mtk-opt-text,
+html body .eg-test-root[data-test-theme="dark"] .mtk-opt-text *:not(.mtk-opt-letter):not(img):not(svg):not(path),
+html body .eg-test-root[data-test-theme="dark"] .katex,
+html body .eg-test-root[data-test-theme="dark"] .katex *,
+html[data-theme="light"] body .eg-test-root[data-test-theme="dark"] #egQArea,
+html[data-theme="light"] body .eg-test-root[data-test-theme="dark"] .mtk-opt-text,
+html body .qzrr-cbt.qzrr-dark .qzrr-q-area,
+html body .qzrr-cbt.qzrr-dark .qzrr-q-area .qx-content,
+html body .qzrr-cbt.qzrr-dark .qzrr-q-area .mtk-q-text,
+html body .qzrr-cbt.qzrr-dark .qzrr-q-area .qx-content *:not(.mtk-opt-letter):not(img):not(svg):not(path):not(.qzrr-pill),
+html body .qzrr-cbt.qzrr-dark .qzrr-opts .mtk-opt,
+html body .qzrr-cbt.qzrr-dark .qzrr-opts .mtk-opt-text,
+html body .qzrr-cbt.qzrr-dark .qzrr-opts .mtk-opt-text *:not(.mtk-opt-letter):not(img):not(svg):not(path),
+html body .qzrr-cbt.qzrr-dark .mtk-opt .mtk-opt-text,
+html body .qzrr-cbt.qzrr-dark .mtk-opt .katex,
+html body .qzrr-cbt.qzrr-dark .katex,
+html body .qzrr-cbt.qzrr-dark .katex *,
+html body .qzrr-cbt.qzrr-dark .qzrr-section-info,
+html body .qzrr-cbt.qzrr-dark .qzrr-section-info-head,
+html body .qzrr-cbt.qzrr-dark .qzrr-section-info-ul,
+html body .qzrr-cbt.qzrr-dark .qzrr-section-info-ul li,
+html body .qzrr-cbt.qzrr-dark .qx-sec-instr,
+html[data-theme="dark"] body .qzrr-cbt.qzrr-dark .mtk-opt .mtk-opt-text,
+html[data-theme="dark"] body .qzrr-cbt.qzrr-dark .mtk-opt .mtk-opt-text *,
+html[data-theme="light"] body .qzrr-cbt.qzrr-dark .qzrr-q-area .qx-content,
+html[data-theme="light"] body .qzrr-cbt.qzrr-dark .qzrr-opts .mtk-opt-text {
+  color: #f8fafc !important;
+  -webkit-text-fill-color: #f8fafc !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+html body .eg-test-root[data-test-theme="dark"] .mtk-opt,
+html body .eg-test-root[data-test-theme="dark"] .eg-opt,
+html body .qzrr-cbt.qzrr-dark .qzrr-opts .mtk-opt,
+html[data-theme="dark"] body .qzrr-cbt.qzrr-dark .qzrr-opts .mtk-opt {
+  background: #1e293b !important;
+  color: #f8fafc !important;
+  border-color: #64748b !important;
+}
+
+/* Option letters stay white on Quantrex blue */
+html body .eg-test-root .mtk-opt-letter,
+html body .eg-test-root .eg-opt-letter,
+html body .qzrr-cbt .mtk-opt-letter,
+html body .qzrr-cbt.qzrr-dark .mtk-opt-letter,
+html[data-theme="dark"] body .qzrr-cbt .mtk-opt-letter,
+html[data-theme="dark"] body .eg-test-root .mtk-opt-letter {
+  background: #1565C0 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+/* Instructions overlay + in-test Instructions modal — high contrast both themes */
+html body .qzrr-instr-page,
+html[data-theme="light"] body .qzrr-instr-page,
+html body .qzrr-modal,
+html[data-theme="light"] body .qzrr-modal,
+html body #qzrrA11yPopover {
+  background: #ffffff !important;
+  color: #0b1220 !important;
+}
+html body .qzrr-instr-page .qzrr-instr-body,
+html body .qzrr-instr-page .qzrr-instr-ol,
+html body .qzrr-instr-page .qzrr-instr-ol li,
+html body .qzrr-instr-page .qzrr-gi-title,
+html body .qzrr-instr-page .qzrr-instr-center-title,
+html body .qzrr-instr-page .qzrr-declare-label,
+html body .qzrr-instr-page .qzrr-sym-table td,
+html body .qzrr-instr-page .qzrr-profile-name,
+html body .qzrr-instr-view,
+html body .qzrr-instr-view p,
+html body .qzrr-instr-view li,
+html body .qzrr-instr-view h3,
+html body .qzrr-modal-body,
+html body .qzrr-modal-body p,
+html body .qzrr-modal-body li,
+html body .qzrr-a11y-popover,
+html body .qzrr-a11y-popover-head,
+html[data-theme="dark"] body .qzrr-instr-page:not(.qzrr-instr-dark) .qzrr-instr-body,
+html[data-theme="dark"] body .qzrr-instr-page:not(.qzrr-instr-dark) .qzrr-instr-body li,
+html[data-theme="dark"] body .qzrr-modal-body,
+html[data-theme="dark"] body .qzrr-instr-view,
+html[data-theme="dark"] body .qzrr-instr-view * {
+  color: #0b1220 !important;
+  -webkit-text-fill-color: #0b1220 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+html[data-theme="dark"] body .qzrr-instr-page,
+html body.qzrr-dark-body .qzrr-instr-page,
+html[data-theme="dark"] body .qzrr-cbt.qzrr-dark ~ #qzrrModalHost .qzrr-modal,
+html body .qzrr-cbt.qzrr-dark .qzrr-modal,
+html[data-theme="dark"] body #qzrrA11yPopover,
+html body.qzrr-dark-body #qzrrA11yPopover {
+  background: #0b1220 !important;
+  color: #f8fafc !important;
+}
+html[data-theme="dark"] body .qzrr-instr-page .qzrr-instr-body,
+html[data-theme="dark"] body .qzrr-instr-page .qzrr-instr-ol li,
+html[data-theme="dark"] body .qzrr-instr-page .qzrr-gi-title,
+html[data-theme="dark"] body .qzrr-instr-page .qzrr-instr-center-title,
+html[data-theme="dark"] body .qzrr-instr-page .qzrr-declare-label,
+html[data-theme="dark"] body .qzrr-instr-page .qzrr-sym-table td,
+html[data-theme="dark"] body .qzrr-instr-page .qzrr-profile-name,
+html body.qzrr-dark-body .qzrr-instr-page .qzrr-instr-body,
+html body.qzrr-dark-body .qzrr-instr-page .qzrr-instr-ol li,
+html[data-theme="dark"] body .qzrr-cbt.qzrr-dark .qzrr-modal-body,
+html[data-theme="dark"] body .qzrr-cbt.qzrr-dark .qzrr-instr-view,
+html[data-theme="dark"] body .qzrr-cbt.qzrr-dark .qzrr-instr-view *,
+html[data-theme="dark"] body #qzrrA11yPopover,
+html[data-theme="dark"] body #qzrrA11yPopover * {
+  color: #f8fafc !important;
+  -webkit-text-fill-color: #f8fafc !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+html body .qzrr-instr-page .qzrr-instr-subhead {
+  background: #1565C0 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+html body .qzrr-instr-page .qzrr-ready-btn,
+html[data-theme="dark"] body .qzrr-instr-page .qzrr-ready-btn {
+  background: #1565C0 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+html body .qzrr-modal-head,
+html body .qzrr-modal-head strong,
+html body .qzrr-modal-x {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+html body .eg-test-root #egQArea,
+html body .eg-test-root .eg-q-stem,
+html body .eg-test-root .eg-opts,
+html body .eg-test-root #qxOpts,
+html body .qzrr-cbt #qzrrQArea,
+html body .qzrr-cbt .qzrr-q-area,
+html body .qzrr-cbt .qzrr-opts,
+html body .qzrr-instr-page,
+html body .qzrr-instr-body {
+  opacity: 1 !important;
+  visibility: visible !important;
 }
