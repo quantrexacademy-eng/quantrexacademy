@@ -6,11 +6,11 @@ const QuantrexExamLogos = (() => {
 
   const EXAM_FILES = {
     Engineering: "ic_content_exam_jee_main.png",
-    Medical: "ic_content_exam_neet.png",
+    Medical: "neet.svg",
     Foundation: "ic_content_exam_nda.png",
     jee_main: "ic_content_exam_jee_main.png",
     jee_advanced: "ic_content_exam_jee_advanced.png",
-    neet: "ic_content_exam_neet.png",
+    neet: "neet.svg",
     aiims: "ic_content_exam_aiims.png",
     bitsat: "ic_content_exam_bitsat.png",
     mht_cet: "ic_content_exam_mhtcet.png",
@@ -23,8 +23,8 @@ const QuantrexExamLogos = (() => {
     kvpy: "ic_content_exam_kvpy.png",
     manipal_met: "ic_content_exam_manipal.png",
     iat_iiser: "ic_content_exam_iat.png",
-    jipmer: "ic_content_exam_aiims.png",
-    nta_abhyas_neet: "ic_content_exam_neet.png",
+    jipmer: "ic_content_exam_jipmer.png",
+    nta_abhyas_neet: "neet.svg",
     nta_abhyas_jee_main: "ic_content_exam_jee_main.png",
     nest_niser: "ic_content_exam_nest.png",
     viteee: "ic_content_exam_viteee.png",
@@ -190,7 +190,7 @@ const QuantrexExamLogos = (() => {
     jee_main: "assets/exam-logos/ic_content_exam_jee_main.png",
     jee_advanced: "assets/exam-logos/ic_content_exam_jee_advanced.png",
     bitsat: "assets/exam-logos/ic_content_exam_bitsat.png",
-    neet: "assets/exam-logos/ic_content_exam_neet.png",
+    neet: "assets/exam-logos/neet.svg",
     nda: "assets/exam-logos/ic_content_exam_nda.png"
   };
 

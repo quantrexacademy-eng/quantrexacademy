@@ -1105,3 +1105,132 @@ html body .qx-org-fig-host-opt img:not(.qx-org-qx-wm) {
     max-height: 180px !important;
   }
 }
+
+/* ===== qxmd259: Medical walls match Engineering, both themes ===== */
+html[data-theme="light"] .qx-med-subj-card,
+html[data-theme="light"] .qx-med-test-card,
+html[data-theme="light"] .qx-med-nb-card,
+html[data-theme="light"] .qx-med-rev-card,
+html[data-theme="light"] .exam-pill-card,
+html[data-theme="light"] .qx-folder-card,
+html[data-theme="light"] .dash-tool-card,
+html[data-theme="light"] .dash-util-card {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+html[data-theme="dark"] .qx-med-subj-card,
+html[data-theme="dark"] .qx-med-test-card,
+html[data-theme="dark"] .qx-med-nb-card,
+html[data-theme="dark"] .qx-med-rev-card,
+html[data-theme="dark"] .qx-med-goal,
+html[data-theme="dark"] .qx-med-ncert-banner,
+html[data-theme="dark"] .qx-med-dpp-banner,
+html[data-theme="dark"] .qx-med-an-card,
+html[data-theme="dark"] .qx-med-util,
+html[data-theme="dark"] .exam-pill-card,
+html[data-theme="dark"] .qx-folder-card,
+html[data-theme="dark"] .dash-tool-card,
+html[data-theme="dark"] .dash-util-card,
+html[data-theme="dark"] .dash-board-hero {
+  background: #1e293b !important;
+  color: #f8fafc !important;
+  border-color: #64748b !important;
+}
+html[data-theme="light"] .qx-med-subj-card strong,
+html[data-theme="light"] .qx-med-test-card strong,
+html[data-theme="light"] .qx-med-nb-card strong,
+html[data-theme="light"] .qx-med-goal strong,
+html[data-theme="light"] .exam-pill-card strong,
+html[data-theme="light"] .qx-folder-title,
+html[data-theme="light"] .dash-board-hero h3,
+html[data-theme="light"] .dash-ncert-head h2 {
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+}
+html[data-theme="dark"] .qx-med-subj-card strong,
+html[data-theme="dark"] .qx-med-test-card strong,
+html[data-theme="dark"] .qx-med-nb-card strong,
+html[data-theme="dark"] .qx-med-rev-card strong,
+html[data-theme="dark"] .qx-med-goal strong,
+html[data-theme="dark"] .qx-med-goal span,
+html[data-theme="dark"] .qx-med-subj-go,
+html[data-theme="dark"] .exam-pill-card strong,
+html[data-theme="dark"] .dash-board-hero h3,
+html[data-theme="dark"] .dash-board-hero p,
+html[data-theme="dark"] .qx-med-util {
+  color: #f8fafc !important;
+  -webkit-text-fill-color: #f8fafc !important;
+}
+html[data-theme="light"] .qx-med-subj-card small,
+html[data-theme="light"] .qx-med-test-card small,
+html[data-theme="light"] .qx-med-nb-card small,
+html[data-theme="light"] .qx-med-rev-card small,
+html[data-theme="light"] .exam-pill-card small,
+html[data-theme="light"] .dash-board-hero p {
+  color: #334155 !important;
+  -webkit-text-fill-color: #334155 !important;
+}
+html[data-theme="dark"] .qx-med-subj-card small,
+html[data-theme="dark"] .qx-med-test-card small,
+html[data-theme="dark"] .qx-med-nb-card small,
+html[data-theme="dark"] .qx-med-rev-card small,
+html[data-theme="dark"] .exam-pill-card small,
+html[data-theme="dark"] .qx-ncert-tool small {
+  color: #cbd5e1 !important;
+  -webkit-text-fill-color: #cbd5e1 !important;
+}
+html[data-theme="light"] img.exam-card-logo,
+html[data-theme="light"] img.qx-exam-logo,
+html[data-theme="light"] img.qx-marks-icon,
+html[data-theme="light"] img.dash-board-hero-logo,
+html[data-theme="light"] img.dash-board-tab-logo,
+html[data-theme="dark"] img.exam-card-logo,
+html[data-theme="dark"] img.qx-exam-logo,
+html[data-theme="dark"] img.qx-marks-icon,
+html[data-theme="dark"] img.dash-board-hero-logo,
+html[data-theme="dark"] img.dash-board-tab-logo,
+html[data-theme="light"] .qx-med-subj-ic img,
+html[data-theme="dark"] .qx-med-subj-ic img,
+html[data-theme="light"] .qx-book-cover,
+html[data-theme="dark"] .qx-book-cover,
+html[data-theme="light"] .qx-book-photo-img,
+html[data-theme="dark"] .qx-book-photo-img {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  filter: none !important;
+  -webkit-filter: none !important;
+}
+
+/* qxmd259: exam date chip never white-on-white or black-on-black */
+html[data-theme="light"] .qx-paper-date,
+html body .eg-test-root[data-test-theme="light"] .qx-paper-date,
+html body .qzrr-cbt:not(.qzrr-dark) .qx-paper-date,
+html[data-theme="dark"] body .eg-test-root[data-test-theme="light"] .qx-paper-date,
+html[data-theme="dark"] body .qzrr-cbt:not(.qzrr-dark) .qx-paper-date,
+html[data-theme="dark"] body .eg-test-root[data-test-theme="light"] .qx-content .qx-paper-date,
+html[data-theme="light"] body .qzrr-cbt:not(.qzrr-dark) .qzrr-q-area .qx-content .qx-paper-date,
+html[data-theme="dark"] body .qzrr-cbt:not(.qzrr-dark) .qzrr-q-area .qx-content .qx-paper-date {
+  color: #9a3412 !important;
+  -webkit-text-fill-color: #9a3412 !important;
+  background: #ffedd5 !important;
+  border: 1px solid #ea580c !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+html[data-theme="dark"] .qx-paper-date,
+html body .eg-test-root[data-test-theme="dark"] .qx-paper-date,
+html body .qzrr-cbt.qzrr-dark .qx-paper-date,
+html[data-theme="light"] body .eg-test-root[data-test-theme="dark"] .qx-paper-date,
+html[data-theme="light"] body .qzrr-cbt.qzrr-dark .qx-paper-date,
+html[data-theme="dark"] body .eg-test-root[data-test-theme="dark"] .qx-content .qx-paper-date,
+html[data-theme="light"] body .qzrr-cbt.qzrr-dark .qzrr-q-area .qx-content .qx-paper-date,
+html[data-theme="dark"] body .qzrr-cbt.qzrr-dark .qzrr-q-area .qx-content .qx-paper-date {
+  color: #ffedd5 !important;
+  -webkit-text-fill-color: #ffedd5 !important;
+  background: #7c2d12 !important;
+  border: 1px solid #fb923c !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}

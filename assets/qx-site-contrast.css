@@ -43,9 +43,7 @@ html[data-theme="light"] .dash-ncert-head h2,
 html[data-theme="light"] .dash-ncert-head p,
 html[data-theme="light"] .sec-title,
 html[data-theme="light"] .sec-desc,
-html[data-theme="light"] .qx-desk-grid span,
 html[data-theme="light"] .qx-course-row,
-html[data-theme="light"] .qx-course-row span,
 html[data-theme="light"] .qx-module-card,
 html[data-theme="light"] .qx-module-card strong,
 html[data-theme="light"] .logo-text,
@@ -76,9 +74,7 @@ html[data-theme="dark"] .dash-util-card,
 html[data-theme="dark"] .dash-util-card strong,
 html[data-theme="dark"] .dash-ncert-head h2,
 html[data-theme="dark"] .sec-title,
-html[data-theme="dark"] .qx-desk-grid span,
 html[data-theme="dark"] .qx-course-row,
-html[data-theme="dark"] .qx-course-row span,
 html[data-theme="dark"] .qx-module-card,
 html[data-theme="dark"] .qx-module-card strong,
 html[data-theme="dark"] .logo-text,
@@ -484,18 +480,22 @@ html[data-theme="light"] .qx-settings-page .qx-set-head h1,
 html[data-theme="light"] .qx-settings-page .qx-set-lab,
 html[data-theme="light"] .qx-set-profile-panel h2,
 html[data-theme="light"] .qx-set-exam-sec h2,
-html[data-theme="light"] .qx-set-exam-card strong,
-html[data-theme="light"] .qx-set-seg button.on {
+html[data-theme="light"] .qx-set-exam-card strong {
   color: #0f172a !important;
   -webkit-text-fill-color: #0f172a !important;
+}
+html[data-theme="light"] .qx-set-seg button.on,
+html[data-theme="dark"] .qx-set-seg button.on {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  background: #2563eb !important;
 }
 html[data-theme="dark"] .qx-settings-page,
 html[data-theme="dark"] .qx-settings-page .qx-set-head h1,
 html[data-theme="dark"] .qx-settings-page .qx-set-lab,
 html[data-theme="dark"] .qx-set-profile-panel h2,
 html[data-theme="dark"] .qx-set-exam-sec h2,
-html[data-theme="dark"] .qx-set-exam-card strong,
-html[data-theme="dark"] .qx-set-seg button.on {
+html[data-theme="dark"] .qx-set-exam-card strong {
   color: #f8fafc !important;
   -webkit-text-fill-color: #f8fafc !important;
 }
@@ -1147,3 +1147,45 @@ html .eg-test-root.eg-qxmd179 .eg-stem-sol-hidden {
   clip-path: none !important;
   pointer-events: none !important;
 }
+
+/* qxmd259: course labels stay readable, not the same ink as the card fill */
+html[data-theme="light"] .qx-desk-grid span,
+html[data-theme="light"] .qx-course-row span,
+html[data-theme="light"] .qx-course-box p {
+  color: #334155 !important;
+  -webkit-text-fill-color: #334155 !important;
+  opacity: 1 !important;
+}
+html[data-theme="light"] .qx-course-row b,
+html[data-theme="light"] .qx-desk-grid b,
+html[data-theme="light"] .qx-course-box h3 {
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+}
+html[data-theme="dark"] .qx-desk-grid span,
+html[data-theme="dark"] .qx-course-row span,
+html[data-theme="dark"] .qx-course-box p {
+  color: #cbd5e1 !important;
+  -webkit-text-fill-color: #cbd5e1 !important;
+  opacity: 1 !important;
+}
+html[data-theme="dark"] .qx-course-row b,
+html[data-theme="dark"] .qx-desk-grid b,
+html[data-theme="dark"] .qx-course-box h3 {
+  color: #f8fafc !important;
+  -webkit-text-fill-color: #f8fafc !important;
+}
+html[data-theme="light"] .qx-course-box,
+html[data-theme="light"] .qx-course-row {
+  background: #ffffff !important;
+  color: #0f172a !important;
+}
+html[data-theme="dark"] .qx-course-box,
+html[data-theme="dark"] .qx-course-row {
+  background: #1e293b !important;
+  color: #f8fafc !important;
+  border-color: #475569 !important;
+}
+.qx-course-list { display: flex; flex-direction: column; gap: 8px; margin: 10px 0 12px; }
+.qx-course-row { display: flex; align-items: center; gap: 12px; width: 100%; text-align: left; }
+.qx-course-logo { width: 40px; height: 40px; object-fit: contain; flex-shrink: 0; background: #fff; border-radius: 10px; }

@@ -705,20 +705,25 @@ async function viewDashboard() {
   const todayDPP = (typeof DPPS !== "undefined" && Array.isArray(DPPS))
     ? DPPS.filter(d => d.date === "Today")[0]
     : null;
-  // Medical home paints immediately (same as Engineering desk). Do not wait on Marks APIs.
+  // Medical uses the same hydrated desk as Engineering (exam icons + book covers).
+  // If nav is slow, keep the instant Medical shell instead of a blank home.
   let marksSections = "";
-  if (STATE.exam === "Medical" && typeof renderMedicalMarksHomeExtras === "function") {
-    try { marksSections = renderMedicalMarksHomeExtras() || ""; } catch (_) { marksSections = ""; }
-  } else if (typeof marksDashboardSections === "function") {
+  const instantMed = (STATE.exam === "Medical" && typeof renderMedicalMarksHomeExtras === "function")
+    ? (function () { try { return renderMedicalMarksHomeExtras() || ""; } catch (_) { return ""; } })()
+    : "";
+  if (typeof marksDashboardSections === "function") {
     try {
+      const waitMs = STATE.exam === "Medical" ? 4500 : 1500;
       marksSections = await Promise.race([
         marksDashboardSections(),
-        new Promise((resolve) => setTimeout(() => resolve(""), 1500))
+        new Promise((resolve) => setTimeout(() => resolve(instantMed), waitMs))
       ]);
-      if (marksSections == null) marksSections = "";
+      if (marksSections == null || marksSections === "") marksSections = instantMed;
     } catch (e) {
-      marksSections = "";
+      marksSections = instantMed;
     }
+  } else {
+    marksSections = instantMed;
   }
 
   const guestBanner = typeof QuantrexGuestTrial !== "undefined" ? QuantrexGuestTrial.bannerHtml() : "";
@@ -2858,6 +2863,31 @@ function qxEscDesk(s) {
     .replace(/"/g, "&quot;");
 }
 
+
+function qxOpenCourse(exam, view) {
+  try {
+    if (exam) {
+      localStorage.setItem("quantrex_exam", exam);
+      if (typeof STATE !== "undefined" && STATE) STATE.exam = exam;
+    }
+  } catch (_) { /* ignore */ }
+  if (typeof go === "function") go(view || "dashboard");
+}
+
+function qxCourseDeskList() {
+  const rows = [
+    { exam: "Engineering", view: "dashboard", title: "Engineering", sub: "JEE Main, JEE Advanced and state CETs", logo: "assets/exam-logos/ic_content_exam_jee_main.png" },
+    { exam: "Medical", view: "dashboard", title: "Medical", sub: "NEET, AIIMS and JIPMER", logo: "assets/exam-logos/neet.svg" },
+    { exam: "Engineering", view: "tests", title: "JEE Main Test Series", sub: "Full mocks and chapter tests", logo: "assets/exam-logos/jee-main.svg" }
+  ];
+  return '<div class="qx-course-list">' + rows.map(function (r) {
+    return '<button type="button" class="qx-course-row qx-course-hit" onclick="qxOpenCourse(\'' + r.exam + '\',\'' + r.view + '\')">' +
+      '<img class="qx-course-logo" src="' + r.logo + '" alt="" width="40" height="40">' +
+      '<div><b>' + r.title + '</b><span>' + r.sub + '</span></div>' +
+      '</button>';
+  }).join("") + '</div>';
+}
+
 function qxProfileCoursesHtml() {
   let s = null;
   let admin = false;
@@ -2887,7 +2917,7 @@ function qxProfileCoursesHtml() {
 
   if (admin) {
     return desk +
-      '<div class="qx-course-box"><h3>Course details</h3><p>Admin · full access on every Quantrex course.</p>' +
+      '<div class="qx-course-box"><h3>Course details</h3><p>Admin · full access on every Quantrex course.</p>' + qxCourseDeskList() +
       "<div class=\"qx-desk-grid\"><div><span>Start date</span><b>Academy owner</b></div>" +
       "<div><span>End date</span><b>No expiry</b></div>" +
       "<div><span>Access</span><b>Engineering · Medical · Test series</b></div></div>" +
@@ -2896,7 +2926,7 @@ function qxProfileCoursesHtml() {
   }
   if (!s || !s.active) {
     return desk +
-      '<div class="qx-course-box"><h3>Course details</h3><p>All Quantrex courses are free. Open Engineering, Medical, and JEE Test Series from the dashboard.</p>' +
+      '<div class="qx-course-box"><h3>Course details</h3><p>All Quantrex courses are free. Open a course below.</p>' + qxCourseDeskList() +
       '<a class="qx-access-go" href="app.html">Open Academy desk</a></div>' +
       '<div class="qx-course-box" id="qxPurchaseMount"><h3>Purchase details</h3><p class="sec-desc">No purchase needed.</p></div>';
   }
@@ -2916,7 +2946,7 @@ function qxProfileCoursesHtml() {
     return f === "eng" ? "Engineering" : f === "med" ? "Medical" : f === "jee_ts" ? "JEE Main Test Series" : f;
   }).join(" · ") : "—";
   return desk +
-    '<div class="qx-course-box"><h3>Course details</h3>' +
+    '<div class="qx-course-box"><h3>Course details</h3>' + qxCourseDeskList() +
     '<button type="button" class="qx-course-row qx-course-hit" onclick="qxOpenPaidPlan(\'' + pid + '\')">' +
     "<div><b>" + qxEscDesk(label) + "</b><span>" + qxEscDesk(status) + "</span></div>" +
     (soon
