@@ -159,8 +159,8 @@ const QuantrexBookmarks = (() => {
     if (f.chapter && f.chapter !== "all") items = items.filter(x => x.chapter === f.chapter || x.topic === f.chapter);
     if (f.groupId === "none") items = items.filter(x => !x.groupId);
     else if (f.groupId && f.groupId !== "all") items = items.filter(x => x.groupId === f.groupId);
-    if (f.type === "formula") items = items.filter(x => typeof x.id === "string" && x.id.startsWith("f"));
-    else if (f.type === "question") items = items.filter(x => typeof x.id === "number");
+    if (f.type === "formula") items = items.filter(x => typeof x.id === "string" && /^f\d+$/.test(x.id));
+    else if (f.type === "question") items = items.filter(x => !(typeof x.id === "string" && /^f\d+$/.test(x.id)));
     return items;
   }
 
@@ -545,6 +545,134 @@ window.qxBmAddToGroup = qxBmAddToGroup;
 window.qxBmSaveToChapter = qxBmSaveToChapter;
 window.nbCreateGroup = nbCreateGroup;
 
+
+function nbQuestionItems() {
+  const filter = (typeof _nbFilter === "object" && _nbFilter) ? _nbFilter : {};
+  return QuantrexBookmarks.getItems(Object.assign({}, filter, { type: "question" }));
+}
+let _nbHydratedKey = "";
+function nbScheduleHydrate(ids) {
+  const missing = (ids || []).filter((id) => !(typeof getQ === "function" && getQ(id)));
+  if (!missing.length) return;
+  const key = missing.map((id) => String(id)).join("|").slice(0, 4000);
+  if (key === _nbHydratedKey) return;
+  _nbHydratedKey = key;
+  setTimeout(async () => {
+    try {
+      if (typeof QuantrexCatalog !== "undefined" && QuantrexCatalog.questionsByIds) {
+        await QuantrexCatalog.questionsByIds(missing.slice(0, 120));
+      }
+    } catch (_) { /* */ }
+    try {
+      if (typeof currentView !== "undefined" && currentView !== "notebook") return;
+      if (typeof render === "function") render("notebook");
+    } catch (_) { /* */ }
+  }, 40);
+}
+function nbBookmarkSolHtml(q) {
+  try {
+    if (q && typeof QuantrexSolution !== "undefined" && QuantrexSolution.renderBlock) {
+      const html = QuantrexSolution.renderBlock(q);
+      if (html) return html;
+    }
+  } catch (_) { /* */ }
+  const sol = q && (q.solution || q.sol || q.explanation) || "";
+  if (!String(sol).replace(/<[^>]+>/g, "").trim()) return "<p>Solution not available.</p>";
+  try {
+    if (typeof Mx !== "undefined" && Mx.html) return Mx.html(sol);
+  } catch (_) { /* */ }
+  return String(sol);
+}
+async function nbLoadBookmarkQuestions(limit) {
+  const items = nbQuestionItems();
+  const cap = limit || 120;
+  const ids = items.map((it) => it.id).filter((id) => id != null);
+  const use = ids.slice(0, cap);
+  if (use.length && typeof QuantrexCatalog !== "undefined" && QuantrexCatalog.questionsByIds) {
+    try { await QuantrexCatalog.questionsByIds(use); } catch (_) { /* */ }
+  }
+  return { items: items.slice(0, cap), ids: use, total: ids.length };
+}
+async function nbPrintBookmarks() {
+  const pack = await nbLoadBookmarkQuestions(120);
+  if (!pack.ids.length) {
+    if (typeof showToast === "function") showToast("No bookmarked questions to print");
+    return;
+  }
+  const esc = (s) => String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;");
+  const blocks = pack.items.map((it, i) => {
+    const q = typeof getQ === "function" ? getQ(it.id) : null;
+    const stem = (q && q.q) ? (typeof Mx !== "undefined" && Mx.html ? Mx.html(q.q) : q.q) : ("<p>" + esc(it.subject || "Saved question") + "</p>");
+    let opts = "";
+    const options = q && (q.options || q.opts || q.choices);
+    if (Array.isArray(options)) {
+      opts = "<ol>" + options.map((o) => "<li>" + (typeof Mx !== "undefined" && Mx.html ? Mx.html(String(o)) : esc(o)) + "</li>").join("") + "</ol>";
+    }
+    return "<article><h2>Q" + (i + 1) + ". " + esc((q && q.subject) || it.subject || "") + "</h2>" + stem + opts + "<h3>Solution</h3>" + nbBookmarkSolHtml(q) + "</article>";
+  }).join("");
+  const note = pack.total > pack.ids.length ? ("<p>Showing the first " + pack.ids.length + " of " + pack.total + " bookmarks.</p>") : "";
+  const docHtml = "<!DOCTYPE html><html><head><meta charset='utf-8'><title>Bookmarked questions</title><style>body{font-family:Georgia,serif;color:#0f172a;margin:24px}article{break-inside:avoid;margin:0 0 28px;border-bottom:1px solid #e5e7eb}img{max-width:100%;height:auto}@media print{body{margin:12mm}}</style></head><body><h1>Bookmarked questions</h1>" + note + blocks + "<script>window.onload=function(){setTimeout(function(){window.print()},200)}<\/script></body></html>";
+  const w = window.open("", "_blank");
+  if (!w) {
+    if (typeof showToast === "function") showToast("Allow pop-ups to print bookmarks");
+    return;
+  }
+  w.document.open();
+  w.document.write(docHtml);
+  w.document.close();
+}
+async function nbTestFromBookmarks() {
+  const pack = await nbLoadBookmarkQuestions(120);
+  if (!pack.ids.length) {
+    if (typeof showToast === "function") showToast("No bookmarked questions for a test");
+    return;
+  }
+  if (typeof startTest !== "function") {
+    if (typeof showToast === "function") showToast("Test player is not available on this page");
+    return;
+  }
+  if (pack.total > pack.ids.length && typeof showToast === "function") showToast("Test uses the first " + pack.ids.length + " bookmarks");
+  startTest(pack.ids, "Bookmarked questions", "custom", {
+    practiceMode: true,
+    timed: false,
+    durationSec: null,
+    modeLabel: "Bookmarks",
+    marksMode: true,
+    organizeJee: false,
+    skipInstructions: true,
+    skipCountdown: true,
+    shuffle: false,
+    testType: "custom"
+  });
+}
+async function nbShareBookmarks() {
+  const pack = await nbLoadBookmarkQuestions(80);
+  if (!pack.ids.length) {
+    if (typeof showToast === "function") showToast("No bookmarked questions to share");
+    return;
+  }
+  if (typeof ctCopyShareLink !== "function") {
+    if (typeof showToast === "function") showToast("Share link needs the custom-test page script");
+    return;
+  }
+  if (pack.total > pack.ids.length && typeof showToast === "function") showToast("Share link includes the first " + pack.ids.length + " bookmarks");
+  ctCopyShareLink({
+    id: "bm_" + Date.now(),
+    title: "Bookmarked questions",
+    questionIds: pack.ids,
+    totalQs: pack.ids.length,
+    durationSec: null,
+    timed: false,
+    modeLabel: "Bookmarks",
+    examSlug: "",
+    examTitle: ""
+  });
+}
+window.nbPrintBookmarks = nbPrintBookmarks;
+window.nbTestFromBookmarks = nbTestFromBookmarks;
+window.nbShareBookmarks = nbShareBookmarks;
+window.nbScheduleHydrate = nbScheduleHydrate;
+
 function viewNotebook() {
   const notes = STATE.notes;
   const store = QuantrexBookmarks.load();
@@ -552,7 +680,7 @@ function viewNotebook() {
   const qItems = QuantrexBookmarks.getItems({ ..._nbFilter, type: "question" });
   const fItems = QuantrexBookmarks.getItems({ type: "formula" });
 
-  const exams = QuantrexBookmarks.examOptions(allItems.filter(x => typeof x.id === "number"));
+  const exams = QuantrexBookmarks.examOptions(allItems.filter(x => !(typeof x.id === "string" && /^f\d+$/.test(x.id))));
   const subs = QuantrexBookmarks.subjectOptions(allItems, _nbFilter.exam);
   const chaps = QuantrexBookmarks.chapterOptions(allItems, _nbFilter.exam, _nbFilter.subject);
 
@@ -573,19 +701,24 @@ function viewNotebook() {
   </div>`;
 
   const qCards = qItems.length ? qItems.map(it => {
-    const q = getQ(it.id);
-    if (!q) return "";
+    const q = typeof getQ === "function" ? getQ(it.id) : null;
+    const qid = (q && q.id != null) ? q.id : it.id;
+    const esc = (s) => String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/"/g, "&quot;");
     const grp = it.groupId ? store.groups.find(g => g.id === it.groupId) : null;
-    return `<div class="q-card nb-q-card" role="button" tabindex="0" data-qid="${String(q.id).replace(/&/g, "&amp;").replace(/"/g, "&quot;")}">
+    const sub = (q && q.subject) || it.subject || "Question";
+    const stem = (q && q.q) ? (typeof Mx !== "undefined" ? Mx.html(q.q) : q.q) : "<p>Saved question - tap to open</p>";
+    const rmArg = typeof qxJsId === "function" ? qxJsId(qid) : JSON.stringify(String(qid));
+    return `<div class="q-card nb-q-card" role="button" tabindex="0" data-qid="${esc(qid)}">
       <div class="q-meta">
-        <span class="tag tag-${(q.subject || "").toLowerCase().replace(/\s+/g, "-")}">${q.subject}</span>
-        ${grp ? `<span class="nb-grp-tag" style="--gc:${grp.color}">${grp.name}</span>` : ""}
+        <span class="tag tag-${esc(sub).toLowerCase().replace(/\s+/g, "-")}">${esc(sub)}</span>
+        ${grp ? `<span class="nb-grp-tag" style="--gc:${esc(grp.color)}">${esc(grp.name)}</span>` : ""}
       </div>
-      <div class="q-text qx-content">${typeof Mx !== "undefined" ? Mx.html(q.q) : q.q}</div>
-      <div class="q-footer"><small>📖 ${it.chapter || it.topic || "—"} · ${it.examSlug || it.exam || ""}</small>
-        <button type="button" class="nb-rm" onclick='event.stopPropagation();QuantrexBookmarks.remove(${typeof qxJsId === "function" ? qxJsId(q.id) : JSON.stringify(String(q.id))});render("notebook")'>✕</button></div>
+      <div class="q-text qx-content">${stem}</div>
+      <div class="q-footer"><small>Saved ? ${esc(it.chapter || it.topic || "-")} ? ${esc(it.examSlug || it.exam || "")}</small>
+        <button type="button" class="nb-rm" onclick='event.stopPropagation();QuantrexBookmarks.remove(${rmArg});render("notebook")'>x</button></div>
     </div>`;
-  }).join("") : '<div class="empty">Bookmark questions from practice — saved with exam, subject & topic automatically.</div>';
+  }).join("") : '<div class="empty">Bookmark questions from practice - saved with exam, subject and topic automatically.</div>';
+  try { nbScheduleHydrate(qItems.map(it => it.id)); } catch (_) { /* */ }
 
   const fCards = fItems.length ? fItems.map(it => {
     const f = FORMULAS.find(x => "f" + x.id === it.id);
@@ -602,6 +735,11 @@ function viewNotebook() {
   </div>
   <div class="nb-section">
     <h3 class="sec-title">🔖 Saved Questions (${qItems.length})</h3>
+    <div class="nb-bm-actions" style="display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px">
+      <button type="button" class="btn-soft sm" onclick="nbPrintBookmarks()">Print / PDF</button>
+      <button type="button" class="btn-soft sm" onclick="nbTestFromBookmarks()">Make a test</button>
+      <button type="button" class="btn-soft sm" onclick="nbShareBookmarks()">Share link</button>
+    </div>
     ${groupBar}
     ${filterBar}
     <div class="q-list qx-nb-q-list">${qCards}</div>

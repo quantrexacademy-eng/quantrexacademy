@@ -202,9 +202,19 @@
             var st250 = document.getElementById("qxmd250EgCss");
             if (st250) document.head.appendChild(st250);
           } catch (_) {}
+            var st254 = document.getElementById("qxmd254EgCss");
+            if (st254) document.head.appendChild(st254);
         });
       }
     } catch (_) {}
+
+    var s254 = document.getElementById("qxmd254EgCss");
+    if (!s254) {
+      s254 = document.createElement("style");
+      s254.id = "qxmd254EgCss";
+      s254.textContent = "\nhtml body .eg-test-root .eg-top-tools .eg-tip,html body .mtk-test-root .qx-prac-tools .eg-tip,html body .allen-practice .eg-tip{display:none!important}\nhtml body .eg-test-root>.eg-top,html body .mtk-test-root .mtk-header,html body .allen-practice .mtk-header{background:#1565C0!important;color:#fff!important}\nhtml body .eg-test-root .eg-top-tools .eg-tool-btn,html body .eg-test-root .eg-top-tools .eg-ico,html body .allen-practice .qx-prac-tools .eg-tool-btn,html body .mtk-test-root .qx-prac-tools .eg-tool-btn{color:#fff!important;-webkit-text-fill-color:#fff!important;background:transparent!important;width:40px!important;height:40px!important;min-width:40px!important;min-height:40px!important;flex-direction:row!important;align-items:center!important;justify-content:center!important;opacity:1!important;visibility:visible!important}\nhtml body .eg-test-root .eg-top-tools svg,html body .allen-practice .qx-prac-tools svg,html body .mtk-test-root .qx-prac-tools svg{width:22px!important;height:22px!important;display:block!important;opacity:1!important;visibility:visible!important;overflow:visible!important;color:#fff!important}\nhtml body .eg-test-root .eg-top-tools svg *,html body .allen-practice .qx-prac-tools svg *,html body .mtk-test-root .qx-prac-tools svg *{stroke:#fff!important}\nhtml body .eg-test-root .eg-top-tools svg [fill=\"currentColor\"],html body .allen-practice .qx-prac-tools svg [fill=\"currentColor\"],html body .mtk-test-root .qx-prac-tools svg [fill=\"currentColor\"]{fill:#fff!important}\nhtml body #egFoot,html body .eg-foot.eg-foot-marks,html body .eg-foot.eg-foot-practice{max-height:calc(84px + env(safe-area-inset-bottom,0px))!important;height:auto!important;min-height:0!important;top:auto!important;padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px))!important;align-content:center!important}\nhtml body .eg-sol-panel,html body #egSolPanel,html body #egSol,html body .eg-sol,html body .eg-sol-inline,html body .qx-sol-card,html body .sol-body,html body #qaSolReveal,html body .qx-sol-flow{flex:0 0 auto!important;height:auto!important;min-height:0!important;max-height:none!important}\nhtml body .eg-sol-panel,html body #egSolPanel{display:block!important;margin:12px 0 8px!important;padding-bottom:0!important}\nhtml body .allen-practice #qaSolReveal,html body .allen-practice #qaResult,html body .allen-practice .sol-body,html body .allen-practice .qx-sol-card,html body #egSol,html body .eg-sol,html body .eg-sol-inline{padding-bottom:12px!important}\nhtml body .eg-test-root:not([data-test-theme=\"dark\"]) .eg-sol,html body .eg-test-root:not([data-test-theme=\"dark\"]) .eg-sol .qx-sol-flow,html body .eg-test-root:not([data-test-theme=\"dark\"]) .sol-body,html body .mtk-test-root:not([data-test-theme=\"dark\"]) .eg-sol,html body .mtk-test-root:not([data-test-theme=\"dark\"]) .sol-body{color:#0f172a!important;-webkit-text-fill-color:#0f172a!important;background:#fff!important}\nhtml body .eg-test-root[data-test-theme=\"dark\"] .eg-sol,html body .eg-test-root[data-test-theme=\"dark\"] .sol-body,html body .eg-test-root[data-test-theme=\"dark\"] .qx-sol-flow,html body .mtk-test-root[data-test-theme=\"dark\"] .eg-sol,html body .mtk-test-root[data-test-theme=\"dark\"] .sol-body{color:#f1f5f9!important;-webkit-text-fill-color:#f1f5f9!important;background:#0f172a!important}\nhtml body .eg-sol-panel-head,html body .eg-sol-panel-head strong{background:#1565C0!important;color:#fff!important;-webkit-text-fill-color:#fff!important}\n@media (max-width:768px){\nhtml body #egFmtPop.eg-vs-marks,html body .eg-fmt-pop.eg-vs-marks,html body #pracViewPanel.eg-vs-marks{position:fixed!important;z-index:2147483647!important;left:0!important;right:0!important;bottom:0!important;top:auto!important;width:100%!important;max-width:100%!important;max-height:calc(100dvh - 8px)!important;min-height:0!important;height:auto!important;overflow-x:hidden!important;overflow-y:auto!important;-webkit-overflow-scrolling:touch!important;border-radius:16px 16px 0 0!important;padding:12px 16px calc(28px + env(safe-area-inset-bottom,0px))!important;background:#fff!important;color:#0f172a!important}\nhtml[data-theme=\"dark\"] body #egFmtPop.eg-vs-marks,html body .eg-test-root[data-test-theme=\"dark\"] #egFmtPop.eg-vs-marks,html[data-theme=\"dark\"] body #pracViewPanel.eg-vs-marks,html body .mtk-test-root[data-test-theme=\"dark\"] #pracViewPanel.eg-vs-marks{background:#111827!important;color:#f8fafc!important}\nhtml body #egFmtPop .eg-vs-lab-t,html body #pracViewPanel .eg-vs-lab-t,html body #egFmtPop .eg-fmt-title,html body #pracViewPanel .eg-fmt-title{color:inherit!important;-webkit-text-fill-color:currentColor!important;font-size:15px!important}\nhtml body #egFmtPop .eg-vs-hint,html body #pracViewPanel .eg-vs-hint{font-size:12px!important;color:#64748b!important;-webkit-text-fill-color:#64748b!important}\nhtml body #egFmtPop .eg-vs-row,html body #pracViewPanel .eg-vs-row{min-height:48px!important}\n}\nhtml body .eg-test-root .eg-body,html body .eg-test-root .eg-q-card,html body .mtk-test-root .eg-q-card{min-height:0!important;height:auto!important}\nhtml body .eg-test-root #qxOpts,html body .eg-test-root .eg-opts,html body .mtk-test-root #qxOpts,html body .mtk-test-root .eg-opts{flex:0 0 auto!important}\nhtml body .eg-test-root.qx-sol-showing .eg-q-card,html body .eg-test-root.eg-sol-showing .eg-q-card,html body .mtk-test-root.qx-sol-showing .eg-q-card{min-height:0!important}\nhtml body #egSol,html body .eg-sol,html body .eg-sol-inline,html body .sol-body,html body .qx-sol-card,html body #qaSolReveal{padding-bottom:12px!important}\n";
+    }
+    try { document.head.appendChild(s254); } catch (_) {}
   }
 
   function isExamgoalUi(session) {
@@ -539,6 +549,19 @@
         '<button type="button" class="eg-vs-tog' + (on ? ' on' : '') + '" data-eg-qset="' + key + '" aria-pressed="' + (on ? 'true' : 'false') + '" role="switch">' +
         '<span class="eg-vs-knob" aria-hidden="true"></span></button></div>';
     }
+    function egLsRow(lsKey, lab, hint, defOn) {
+      var on = !!defOn;
+      try {
+        var v = localStorage.getItem(lsKey);
+        if (v != null) on = v === "1";
+      } catch (_) { /* */ }
+      return '<div class="eg-vs-row">' +
+        '<div class="eg-vs-lab"><span class="eg-vs-lab-t">' + lab + '</span>' +
+        (hint ? '<span class="eg-vs-hint">' + hint + '</span>' : '') +
+        '</div>' +
+        '<button type="button" class="eg-vs-tog' + (on ? ' on' : '') + '" data-eg-pref="' + lsKey + '" aria-pressed="' + (on ? 'true' : 'false') + '" role="switch">' +
+        '<span class="eg-vs-knob" aria-hidden="true"></span></button></div>';
+    }
     var tools = '<section class="eg-vs-sec"><h5 class="eg-vs-h">Tools</h5>' +
         '<div class="eg-fmt-row eg-fmt-more eg-vs-tools" role="group" aria-label="Question tools">' +
         '<button type="button" data-eg-fmt-act="theme">Theme</button>' +
@@ -554,10 +577,13 @@
         egToggleRow("showHint", "Show hint", "Hint button when the question has a hint", false) +
         egToggleRow("alwaysShowMyNote", "Always show My note", "Keep the note box open", false) +
         egToggleRow("isQuestionSolutionMode", "Question Solution Mode", "Open the official solution when the question loads", false) +
+        egToggleRow("showHintFeedbackPopup", "Hint feedback popup", "Open hint in a popup", true) +
         '</section>' +
         '<section class="eg-vs-sec"><h5 class="eg-vs-h">Practice Experience</h5>' +
         egToggleRow("showTimer", "Start timer auto", "Timer on every practice question", true) +
         egToggleRow("playSounds", "Play sounds", "Sound after you check an answer", true) +
+        egLsRow("qx_pref_auto_next", "Auto next", "Go to the next question after you pick an answer", false) +
+        egLsRow("qx_pref_haptic", "Haptic tap", "Short vibration when you select an option", true) +
         egToggleRow("dontShowCorrectAnswerImmediately", "Don\u2019t show correct immediately", "Grade first; mark options only when Show Answer is on", false) +
         '<div class="eg-vs-row eg-vs-sizes"><div class="eg-vs-lab"><span class="eg-vs-lab-t">Text Size</span>' +
         '<span class="eg-vs-hint">Question &amp; solution font</span></div>' +
@@ -1711,17 +1737,33 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
         }
       } catch (_) {}
         } catch (_) {}
-        var nodes = [];
+        var clearSel = ".eg-q-card, .mtk-body, #egSol, #egSolPanel, .eg-sol, .sol-body, .qx-sol-card, #qaSolReveal";
         try {
           if (host && host.querySelectorAll) {
-            host.querySelectorAll(".eg-main, .eg-q-card, .mtk-main, .mtk-body").forEach(function (n) { nodes.push(n); });
+            host.querySelectorAll(clearSel).forEach(function (n) {
+              try {
+                n.style.setProperty("padding-bottom", "0px", "important");
+                n.style.setProperty("min-height", "0", "important");
+              } catch (_) {}
+            });
           }
         } catch (_) {}
         try {
           var appMain = document.getElementById("app-main");
-          if (appMain) nodes.push(appMain);
+          if (appMain) appMain.style.setProperty("padding-bottom", "0px", "important");
         } catch (_) {}
-        nodes.forEach(function (n) {
+        var scrollers = [];
+        try {
+          if (host && host.querySelector) {
+            var mainScroll = host.querySelector(".eg-main") || host.querySelector(".mtk-main");
+            if (mainScroll) scrollers.push(mainScroll);
+          }
+        } catch (_) {}
+        if (!scrollers.length) {
+          var appMainOnly = document.getElementById("app-main");
+          if (appMainOnly) scrollers.push(appMainOnly);
+        }
+        scrollers.forEach(function (n) {
           if (!n || !n.style) return;
           try {
             n.style.setProperty("padding-bottom", cssPad, "important");
@@ -1759,6 +1801,7 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
         foot.style.setProperty("border-top", _darkFoot ? "1px solid #334155" : "1px solid #e5e7eb", "important");
         foot.style.setProperty("min-height", "56px", "important");
         foot.style.setProperty("height", "auto", "important");
+        foot.style.setProperty("max-height", "calc(84px + env(safe-area-inset-bottom, 0px))", "important");
         foot.style.setProperty("backdrop-filter", "none", "important");
         foot.style.setProperty("-webkit-backdrop-filter", "none", "important");
         foot.style.setProperty("z-index", "2147483646", "important");
@@ -2307,11 +2350,11 @@ function forceFootVisible(force) {
     };
     function closeFmtPop() {
       session._egFmtOpen = false;
-      try { var p0 = root.querySelector("#egFmtPop"); if (p0) p0.remove(); } catch (_) {}
-      try { var s0 = root.querySelector("#egFmtScrim"); if (s0) s0.remove(); } catch (_) {}
+      try { var p0 = document.getElementById("egFmtPop"); if (p0) p0.remove(); } catch (_) {}
+      try { var s0 = document.getElementById("egFmtScrim"); if (s0) s0.remove(); } catch (_) {}
     }
     function wireFmtPopNow() {
-      root.querySelectorAll("[data-eg-qset]").forEach(function (b) {
+      (document.getElementById("egFmtPop") || root).querySelectorAll("[data-eg-qset]").forEach(function (b) {
         b.onclick = function (e) {
           if (e) { e.preventDefault(); e.stopPropagation(); }
           var key = b.getAttribute("data-eg-qset");
@@ -2335,12 +2378,12 @@ function forceFootVisible(force) {
           }
         };
       });
-      var fmtClose = root.querySelector("#egFmtClose");
+      var fmtClose = (document.getElementById("egFmtPop") || root).querySelector("#egFmtClose");
       if (fmtClose) fmtClose.onclick = function (e) {
         if (e) { e.preventDefault(); e.stopPropagation(); }
         closeFmtPop();
       };
-      var scrim = root.querySelector("#egFmtScrim");
+      var scrim = document.getElementById("egFmtScrim");
       if (scrim) {
         scrim.removeAttribute("hidden");
         scrim.onclick = function (e) {
@@ -2348,21 +2391,32 @@ function forceFootVisible(force) {
           closeFmtPop();
         };
       }
-      root.querySelectorAll("[data-eg-scale]").forEach(function (b) {
+      (document.getElementById("egFmtPop") || root).querySelectorAll("[data-eg-pref]").forEach(function (b) {
+        b.onclick = function (e) {
+          if (e) { e.preventDefault(); e.stopPropagation(); }
+          var key = b.getAttribute("data-eg-pref");
+          if (!key) return;
+          var next = !b.classList.contains("on");
+          try { localStorage.setItem(key, next ? "1" : "0"); } catch (_) { /* */ }
+          b.classList.toggle("on", next);
+          b.setAttribute("aria-pressed", next ? "true" : "false");
+        };
+      });
+      (document.getElementById("egFmtPop") || root).querySelectorAll("[data-eg-scale]").forEach(function (b) {
         b.onclick = function (e) {
           if (e) { e.preventDefault(); e.stopPropagation(); }
           if (typeof setTestFontScale === "function") setTestFontScale(b.getAttribute("data-eg-scale"));
-          root.querySelectorAll("[data-eg-scale]").forEach(function (x) {
+          (document.getElementById("egFmtPop") || root).querySelectorAll("[data-eg-scale]").forEach(function (x) {
             x.classList.toggle("on", x.getAttribute("data-eg-scale") === b.getAttribute("data-eg-scale"));
           });
         };
       });
-      root.querySelectorAll("[data-eg-pal]").forEach(function (b) {
+      (document.getElementById("egFmtPop") || root).querySelectorAll("[data-eg-pal]").forEach(function (b) {
         b.onclick = function (e) {
           if (e) { e.preventDefault(); e.stopPropagation(); }
           var mode = b.getAttribute("data-eg-pal");
           setPalettePref(mode);
-          root.querySelectorAll("[data-eg-pal]").forEach(function (x) {
+          (document.getElementById("egFmtPop") || root).querySelectorAll("[data-eg-pal]").forEach(function (x) {
             x.classList.toggle("on", x.getAttribute("data-eg-pal") === mode);
           });
           applyPalettePrefOpen(session);
@@ -2373,7 +2427,7 @@ function forceFootVisible(force) {
           syncCycleBtn();
         };
       });
-      root.querySelectorAll("[data-eg-fmt-act]").forEach(function (b) {
+      (document.getElementById("egFmtPop") || root).querySelectorAll("[data-eg-fmt-act]").forEach(function (b) {
         b.onclick = function (e) {
           if (e) { e.preventDefault(); e.stopPropagation(); }
           var act = b.getAttribute("data-eg-fmt-act");
@@ -2394,19 +2448,18 @@ function forceFootVisible(force) {
       if (e) { e.preventDefault(); e.stopPropagation(); }
       if (window._egFmtLock && Date.now() - window._egFmtLock < 180) return;
       window._egFmtLock = Date.now();
-      var existing = root.querySelector("#egFmtPop");
+      var existing = document.getElementById("egFmtPop");
       if (existing) {
         closeFmtPop();
         return;
       }
       session._egFmtOpen = true;
-      var host = root.querySelector(".eg-top") || root;
-      host.insertAdjacentHTML("afterend", viewSettingsPopHtml(session, !!session.practiceMode, (typeof getTestFontScale === "function" ? getTestFontScale() : "medium")));
+      document.body.insertAdjacentHTML("beforeend", viewSettingsPopHtml(session, !!session.practiceMode, (typeof getTestFontScale === "function" ? getTestFontScale() : "medium")));
       wireFmtPopNow();
     };
     wireFmtPopNow();
     /* qxmd218: Marks settings toggles + close */
-    root.querySelectorAll("[data-eg-qset]").forEach(function (b) {
+    (document.getElementById("egFmtPop") || root).querySelectorAll("[data-eg-qset]").forEach(function (b) {
       b.onclick = function (e) {
         if (e) { e.preventDefault(); e.stopPropagation(); }
         var key = b.getAttribute("data-eg-qset");
@@ -2434,24 +2487,24 @@ function forceFootVisible(force) {
         }
       };
     });
-    var fmtClose = root.querySelector("#egFmtClose");
+    var fmtClose = (document.getElementById("egFmtPop") || root).querySelector("#egFmtClose");
     if (fmtClose) fmtClose.onclick = function (e) {
       if (e) { e.preventDefault(); e.stopPropagation(); }
       session._egFmtOpen = false;
-      try { var pop = root.querySelector("#egFmtPop"); if (pop) pop.remove(); } catch (_) {}
+      try { var pop = document.getElementById("egFmtPop"); if (pop) pop.remove(); } catch (_) {}
     };
-    root.querySelectorAll("[data-eg-scale]").forEach(function (b) {
+    (document.getElementById("egFmtPop") || root).querySelectorAll("[data-eg-scale]").forEach(function (b) {
       b.onclick = function (e) {
         if (e) { e.preventDefault(); e.stopPropagation(); }
         if (typeof setTestFontScale === "function") setTestFontScale(b.getAttribute("data-eg-scale"));
       };
     });
-    root.querySelectorAll("[data-eg-pal]").forEach(function (b) {
+    (document.getElementById("egFmtPop") || root).querySelectorAll("[data-eg-pal]").forEach(function (b) {
       b.onclick = function (e) {
         if (e) { e.preventDefault(); e.stopPropagation(); }
         var mode = b.getAttribute("data-eg-pal");
         setPalettePref(mode);
-        root.querySelectorAll("[data-eg-pal]").forEach(function (x) {
+        (document.getElementById("egFmtPop") || root).querySelectorAll("[data-eg-pal]").forEach(function (x) {
           x.classList.toggle("on", x.getAttribute("data-eg-pal") === mode);
         });
         /* Apply immediately without full refresh */
@@ -2475,7 +2528,7 @@ function forceFootVisible(force) {
       };
     });
     /* qxmd167: Aa More row → proxy to toolbar buttons (no extra clutter in Practice foot) */
-    root.querySelectorAll("[data-eg-fmt-act]").forEach(function (b) {
+    (document.getElementById("egFmtPop") || root).querySelectorAll("[data-eg-fmt-act]").forEach(function (b) {
       b.onclick = function (e) {
         if (e) { e.preventDefault(); e.stopPropagation(); }
         var act = b.getAttribute("data-eg-fmt-act");
@@ -2870,15 +2923,20 @@ function forceFootVisible(force) {
       var cssPad = "calc(" + pad + "px + env(safe-area-inset-bottom, 0px))";
       document.documentElement.style.setProperty("--eg-foot-h", h + "px");
       document.documentElement.style.setProperty("--eg-foot-pad", cssPad);
-      var sels = [".eg-main", ".eg-q-card", ".mtk-main", ".mtk-body", "#app-main"];
-      for (var i = 0; i < sels.length; i++) {
-        var nodes = document.querySelectorAll(sels[i]);
-        for (var j = 0; j < nodes.length; j++) {
-          try {
-            nodes[j].style.setProperty("padding-bottom", cssPad, "important");
-            nodes[j].style.setProperty("scroll-padding-bottom", cssPad, "important");
-          } catch (_) {}
+      var clearSels = [".eg-q-card", ".mtk-body", "#egSol", "#egSolPanel", ".eg-sol", ".sol-body", ".qx-sol-card", "#qaSolReveal", "#app-main"];
+      for (var ci = 0; ci < clearSels.length; ci++) {
+        var cn = document.querySelectorAll(clearSels[ci]);
+        for (var cj = 0; cj < cn.length; cj++) {
+          try { cn[cj].style.setProperty("padding-bottom", "0px", "important"); } catch (_) {}
         }
+      }
+      var scrollEl = document.querySelector(".eg-test-root .eg-main, .mtk-test-root .mtk-main, .allen-practice .mtk-main");
+      if (!scrollEl) scrollEl = document.getElementById("app-main");
+      if (scrollEl) {
+        try {
+          scrollEl.style.setProperty("padding-bottom", cssPad, "important");
+          scrollEl.style.setProperty("scroll-padding-bottom", cssPad, "important");
+        } catch (_) {}
       }
       var sol = document.querySelector("#egSolPanel, .eg-sol-panel, #qaSolReveal");
       if (sol) sol.style.setProperty("margin-bottom", "16px", "important");

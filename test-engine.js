@@ -351,48 +351,58 @@ window.applyTestFontScaleToDom = applyTestFontScaleToDom;
 
 
 /** Fullscreen with iOS/Android WebView fallback (class-based immersive). */
-function toggleQxImmersiveFullscreen(target) {
-  const el = target || document.querySelector(".eg-test-root") || document.documentElement;
-  const nativeFs = document.fullscreenElement || document.webkitFullscreenElement || null;
-  const immersive = document.documentElement.classList.contains("qx-immersive")
-    || !!(document.body && document.body.classList.contains("qx-immersive"))
-    || !!(el && el.classList && el.classList.contains("qx-immersive"));
-  if (nativeFs || immersive) {
+function qxFullWindowWanted() {
+  return window._qxFullWindowOn === true;
+}
+function qxApplyFullWindow(on) {
+  window._qxFullWindowOn = !!on;
+  var html = document.documentElement;
+  var body = document.body;
+  if (on) {
+    html.classList.add("qx-immersive");
+    if (body) body.classList.add("qx-immersive");
     try {
-      if (nativeFs) {
-        const exit = document.exitFullscreen || document.webkitExitFullscreen || document.webkitCancelFullScreen;
-        if (exit) exit.call(document);
-      }
+      document.querySelectorAll(".eg-test-root, .mtk-test-root, .allen-practice").forEach(function (n) {
+        n.classList.add("qx-immersive");
+      });
     } catch (_) { /* */ }
-    try {
-      document.documentElement.classList.remove("qx-immersive");
-      if (document.body) document.body.classList.remove("qx-immersive");
-      document.querySelectorAll(".qx-immersive").forEach(function (n) { n.classList.remove("qx-immersive"); });
-    } catch (_) { /* */ }
-    return false;
-  }
-  let requested = false;
-  try {
-    const req = el.requestFullscreen || el.webkitRequestFullscreen || el.webkitRequestFullScreen;
-    if (typeof req === "function") {
-      const ret = req.call(el);
-      requested = true;
-      if (ret && typeof ret.catch === "function") {
-        ret.catch(function () {
-          document.documentElement.classList.add("qx-immersive");
-          if (document.body) document.body.classList.add("qx-immersive");
-          if (el && el.classList) el.classList.add("qx-immersive");
-        });
+    var nativeFs = document.fullscreenElement || document.webkitFullscreenElement || null;
+    if (!nativeFs) {
+      var req = html.requestFullscreen || html.webkitRequestFullscreen || html.webkitRequestFullScreen;
+      if (typeof req === "function") {
+        try {
+          var ret = req.call(html);
+          if (ret && typeof ret.catch === "function") ret.catch(function () {});
+        } catch (_) { /* */ }
       }
     }
-  } catch (_) { requested = false; }
-  if (!requested) {
-    document.documentElement.classList.add("qx-immersive");
-    if (document.body) document.body.classList.add("qx-immersive");
-    if (el && el.classList) el.classList.add("qx-immersive");
+    return true;
   }
-  return true;
+  try { html.classList.remove("qx-immersive"); } catch (_) { /* */ }
+  try { if (body) body.classList.remove("qx-immersive"); } catch (_) { /* */ }
+  try {
+    document.querySelectorAll(".qx-immersive").forEach(function (n) { n.classList.remove("qx-immersive"); });
+  } catch (_) { /* */ }
+  try {
+    var exit = document.exitFullscreen || document.webkitExitFullscreen || document.webkitCancelFullScreen;
+    if ((document.fullscreenElement || document.webkitFullscreenElement) && exit) exit.call(document);
+  } catch (_) { /* */ }
+  return false;
 }
+function toggleQxImmersiveFullscreen(target) {
+  void target;
+  var on = qxFullWindowWanted()
+    || document.documentElement.classList.contains("qx-immersive")
+    || !!(document.body && document.body.classList.contains("qx-immersive"))
+    || !!(document.fullscreenElement || document.webkitFullscreenElement);
+  return qxApplyFullWindow(!on);
+}
+function qxRestoreFullWindow() {
+  if (!qxFullWindowWanted()) return;
+  qxApplyFullWindow(true);
+}
+window.qxFullWindowWanted = qxFullWindowWanted;
+window.qxRestoreFullWindow = qxRestoreFullWindow;
 window.toggleQxImmersiveFullscreen = toggleQxImmersiveFullscreen;
 
 /* Capture-phase so PYQ mock A−/A+ and zoom ± survive innerHTML repaint. */
@@ -2511,6 +2521,7 @@ const QuantrexTestEngine = (() => {
       }
       try {
         document.dispatchEvent(new CustomEvent("qx:question-rendered", { detail: { root: main, q } }));
+        if (typeof qxRestoreFullWindow === "function") qxRestoreFullWindow();
       } catch (_) { /* */ }
     } catch (_) { /* */ }
     // Books only: local figure maps. PYQ already Storage-first from paintQuestion.
@@ -5632,7 +5643,8 @@ function enterMarksTestMode() {
   if (content) content.style.maxWidth = "none";
   // CSS full-window only — never browser Fullscreen (that paints a second layer over subject tabs)
   try {
-    if (document.fullscreenElement && document.exitFullscreen) document.exitFullscreen().catch(function () {});
+    if (typeof qxFullWindowWanted === "function" && qxFullWindowWanted()) { if (typeof qxRestoreFullWindow === "function") qxRestoreFullWindow(); }
+    else if (document.fullscreenElement && document.exitFullscreen) document.exitFullscreen().catch(function () {});
   } catch (_) { /* */ }
 }
 

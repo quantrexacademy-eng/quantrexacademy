@@ -1,10 +1,10 @@
 {
-  "cache": "qx-pwa-qxmd253",
-  "ts": 1790900000253,
-  "title": "qxmd253: Question stems, options, and solutions display cleanly",
+  "cache": "qx-pwa-qxmd254",
+  "ts": 1790900000254,
+  "title": "qxmd254: Practice solution, full window, settings, bookmarks",
   "site": "https://www.quantrexacademy.com",
-  "build": "qxmd253",
-  "body": "Set braces, infinity, and escaped TeX commands render as math. Image hosts are not stripped. KaTeX source is not shown as text. Option letters A-D stay visible. Official answers are unchanged.",
+  "build": "qxmd254",
+  "body": "Solution panel is content height so the answer is visible. Full window stays on across Next and Previous. Mobile settings scroll. Bookmarks stay visible and can be printed, turned into a test, or shared. Official answers are unchanged.",
   "package": "com.quantrexacademy.app",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }

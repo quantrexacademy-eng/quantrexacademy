@@ -774,6 +774,12 @@ const AllenTestUI = (() => {
           <section class="eg-vs-sec"><h5 class="eg-vs-h">Notes &amp; Solutions</h5>
             <div class="eg-vs-row"><div class="eg-vs-lab"><span class="eg-vs-lab-t">Show hint</span><span class="eg-vs-hint">Hint button when the question has a hint</span></div>
               <button type="button" class="eg-vs-tog${qs.showHint ? " on" : ""}" data-eg-qset="showHint" aria-pressed="${qs.showHint ? "true" : "false"}" role="switch"><span class="eg-vs-knob"></span></button></div>
+            <div class="eg-vs-row"><div class="eg-vs-lab"><span class="eg-vs-lab-t">Hint feedback popup</span><span class="eg-vs-hint">Open hint in a popup</span></div>
+              <button type="button" class="eg-vs-tog${qs.showHintFeedbackPopup !== false ? " on" : ""}" data-eg-qset="showHintFeedbackPopup" aria-pressed="${qs.showHintFeedbackPopup !== false ? "true" : "false"}" role="switch"><span class="eg-vs-knob"></span></button></div>
+            <div class="eg-vs-row"><div class="eg-vs-lab"><span class="eg-vs-lab-t">Auto next</span><span class="eg-vs-hint">Go to the next question after you pick an answer</span></div>
+              <button type="button" class="eg-vs-tog${(function(){try{var v=localStorage.getItem("qx_pref_auto_next");return v==="1";}catch(e){return false;}})() ? " on" : ""}" data-eg-pref="qx_pref_auto_next" aria-pressed="false" role="switch"><span class="eg-vs-knob"></span></button></div>
+            <div class="eg-vs-row"><div class="eg-vs-lab"><span class="eg-vs-lab-t">Haptic tap</span><span class="eg-vs-hint">Short vibration when you select an option</span></div>
+              <button type="button" class="eg-vs-tog${(function(){try{return localStorage.getItem("qx_pref_haptic")!=="0";}catch(e){return true;}})() ? " on" : ""}" data-eg-pref="qx_pref_haptic" aria-pressed="false" role="switch"><span class="eg-vs-knob"></span></button></div>
             <div class="eg-vs-row"><div class="eg-vs-lab"><span class="eg-vs-lab-t">Always show My note</span><span class="eg-vs-hint">Keep the note box open</span></div>
               <button type="button" class="eg-vs-tog${qs.alwaysShowMyNote ? " on" : ""}" data-eg-qset="alwaysShowMyNote" aria-pressed="${qs.alwaysShowMyNote ? "true" : "false"}" role="switch"><span class="eg-vs-knob"></span></button></div>
             <div class="eg-vs-row"><div class="eg-vs-lab"><span class="eg-vs-lab-t">Question Solution Mode</span><span class="eg-vs-hint">Open the official solution when the question loads</span></div>
@@ -939,12 +945,13 @@ const AllenTestUI = (() => {
       viewBtn.addEventListener("click", (e) => {
         e.stopPropagation();
         const open = viewPanel.hasAttribute("hidden");
-        if (open) viewPanel.removeAttribute("hidden");
-        else viewPanel.setAttribute("hidden", "");
+        if (open) {
+          viewPanel.removeAttribute("hidden");
+          if (viewPanel.parentNode !== document.body) document.body.appendChild(viewPanel);
+        } else viewPanel.setAttribute("hidden", "");
         viewBtn.setAttribute("aria-expanded", open ? "true" : "false");
       });
       document.addEventListener("click", function pracViewOutside(ev) {
-        if (!root.contains(ev.target)) return;
         if (viewPanel.hasAttribute("hidden")) return;
         if (viewBtn.contains(ev.target) || viewPanel.contains(ev.target)) return;
         viewPanel.setAttribute("hidden", "");
@@ -995,7 +1002,7 @@ const AllenTestUI = (() => {
       if (viewPanel) viewPanel.setAttribute("hidden", "");
       if (viewBtn) viewBtn.setAttribute("aria-expanded", "false");
     });
-    root.querySelectorAll("[data-eg-qset]").forEach((btn) => {
+    (document.getElementById("pracViewPanel") || root).querySelectorAll("[data-eg-qset]").forEach((btn) => {
       btn.addEventListener("click", (e) => {
         e.stopPropagation();
         const key = btn.getAttribute("data-eg-qset");
@@ -1014,6 +1021,17 @@ const AllenTestUI = (() => {
         if (key === "alwaysShowMyNote" && next) {
           try { root.querySelector("#qxPracNote")?.click(); } catch (_) { /* */ }
         }
+      });
+    });
+    (document.getElementById("pracViewPanel") || root).querySelectorAll("[data-eg-pref]").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const key = btn.getAttribute("data-eg-pref");
+        if (!key) return;
+        const next = !btn.classList.contains("on");
+        try { localStorage.setItem(key, next ? "1" : "0"); } catch (_) { /* */ }
+        btn.classList.toggle("on", next);
+        btn.setAttribute("aria-pressed", next ? "true" : "false");
       });
     });
     root.querySelectorAll("[data-prac-fmt-act]").forEach((btn) => {
