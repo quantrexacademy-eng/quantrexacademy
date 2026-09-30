@@ -2148,7 +2148,21 @@ window.QxImgClean = (() => {
     img.style.setProperty("position", "relative", "important");
     img.style.setProperty("z-index", "2", "important");
     img.style.setProperty("image-rendering", "auto", "important");
-    img.style.setProperty("max-height", "none", "important");
+    const qxInSol258 = img.closest(".sol-body, .qx-sol-body, .eg-sol, .eg-sol-panel, #egSol, #egSolPanel, .qx-sol-flow");
+    const qxInOpt258 = !qxInSol258 && (img.classList.contains("qx-opt-fig-img") || img.closest(".mtk-opt, .qx-prac-opt, .qa-opt, .eg-opt, .qx-opt-fig, .qx-opt-diagram-slot, .qx-marks-native-opt, .qx-org-fig-host-opt, .mtk-opt-text, .qx-prac-opt-text, .qx-prac-opts, #qxOpts, .eg-opts"));
+    if (qxInOpt258) {
+      img.style.setProperty("max-width", "100%", "important");
+      img.style.setProperty("max-height", "200px", "important");
+      img.style.setProperty("width", "auto", "important");
+      img.style.setProperty("height", "auto", "important");
+    } else if (!qxInSol258) {
+      img.style.setProperty("max-width", "100%", "important");
+      img.style.setProperty("max-height", "280px", "important");
+      img.style.setProperty("width", "auto", "important");
+      img.style.setProperty("height", "auto", "important");
+    } else {
+      img.style.setProperty("max-height", "none", "important");
+    }
     img.style.setProperty("object-fit", "contain", "important");
   }
 
@@ -4732,8 +4746,8 @@ window.QxImgClean = (() => {
     // Do NOT mark qx-cleaned until soft-strip/proxy actually runs (was skipping MARKS wipe on PYQ)
     const readyCls = localClean || isPreprocessedQxOrg(src) ? cleanCls : " qx-fig-ready";
     const imgStyle = dw > 12
-      ? ` style="--qx-fig-w:${dw}px;width:auto;height:auto;max-width:min(100%,${Math.max(dw, 240)}px);max-height:none;display:block;margin:8px auto;opacity:1;visibility:visible;object-fit:contain;background:#fff;"`
-      : ` style="max-width:min(100%,760px);height:auto;max-height:none;display:block;margin:8px auto;opacity:1;visibility:visible;object-fit:contain;background:#fff;"`;
+      ? ` style="--qx-fig-w:${dw}px;width:auto;height:auto;max-width:100%;max-height:280px;display:block;margin:8px auto;opacity:1;visibility:visible;object-fit:contain;background:#fff;"`
+      : ` style="max-width:100%;height:auto;max-height:280px;display:block;margin:8px auto;opacity:1;visibility:visible;object-fit:contain;background:#fff;"`;
     const imgClass = ` class="qx-fig-img qx-no-wm qx-pool-fig${iroFb ? " qx-irodov-stem" : ""}${organic ? " qx-organic-fig qx-org-fig" : ""}${readyCls}"`;
     return `<div class="qx-fig-flat mathjax_ignore tex2jax_ignore"><img${imgClass}${imgDataW}${imgStyle} src="${displaySrc}" alt="" loading="eager" decoding="async" fetchpriority="high" data-qx-orig-src="${u}" data-qx-pinned="1"${wmAttrs} onerror="${FIG_ONERROR}"></div>`;
   }
@@ -4786,8 +4800,8 @@ window.QxImgClean = (() => {
     const imgDataW = dw > 12 ? ` data-qx-display-w="${dw}"` : "";
     const cap = dw > 12 ? Math.min(Math.max(dw, 180), 560) : 0;
     const imgStyle = cap
-      ? ` style="--qx-fig-w:${cap}px;width:auto;height:auto;max-width:min(100%,${cap}px);max-height:none;display:block;margin:0 auto;opacity:1;visibility:visible;object-fit:contain;background:#fff;"`
-      : ` style="max-width:min(100%,520px);height:auto;max-height:none;display:block;margin:0 auto;opacity:1;visibility:visible;object-fit:contain;background:#fff;"`;
+      ? ` style="--qx-fig-w:${cap}px;width:auto;height:auto;max-width:100%;max-height:200px;display:block;margin:0 auto;opacity:1;visibility:visible;object-fit:contain;background:#fff;"`
+      : ` style="max-width:100%;height:auto;max-height:200px;display:block;margin:0 auto;opacity:1;visibility:visible;object-fit:contain;background:#fff;"`;
     const imgClass = ` class="qx-fig-img qx-no-wm qx-pool-fig qx-opt-fig-img${organic ? " qx-organic-fig qx-org-fig" : ""}${cleanCls}"`;
     return `<div class="qx-fig-flat mathjax_ignore tex2jax_ignore"><img${imgClass}${imgDataW}${imgStyle} src="${displaySrc}" alt="" loading="eager" decoding="async" fetchpriority="high" data-qx-orig-src="${u}" data-qx-pinned="1"${wmAttrs} onerror="${FIG_ONERROR}"></div>`;
   }

@@ -160,7 +160,7 @@ const QuantrexQFormat = (() => {
           a = a.replace(/\bclass=(["'])([^"']*)\1/i, (m, q, c) => `class=${q}${c} qx-pool-fig qx-no-wm qx-opt-fig-img qx-fig-ready${q}`);
         }
         // Compact option structures (BNH: keep bonds readable, less vertical scroll)
-        const hdStyle = "max-width:100%;max-height:min(70vh,480px);width:auto;height:auto;display:block;margin:4px auto;padding:2px;opacity:1;visibility:visible;object-fit:contain;background:#fff;border-radius:8px;image-rendering:high-quality";
+        const hdStyle = "max-width:100%;max-height:200px;width:auto;height:auto;display:block;margin:4px auto;padding:2px;opacity:1;visibility:visible;object-fit:contain;background:#fff;border-radius:8px;image-rendering:high-quality";
         if (!/\bstyle=/i.test(a)) {
           a += ` style="${hdStyle}"`;
         } else {

@@ -908,3 +908,105 @@ img.qx-opt-fig-img,
 .eg-opts {
   min-width: 0;
 }
+
+/* qxmd258: one laptop screen — option figures 200px, stems 280px, contain (never crop). */
+html body .mtk-test-root .mtk-main .qx-question-body img:not(.qx-exam-logo):not(.qx-opt-fig-img):not(.qx-org-qx-wm),
+html body .mtk-test-root.qx-book-q .mtk-main .mtk-q-text img:not(.qx-exam-logo):not(.qx-opt-fig-img),
+html body .mtk-test-root .mtk-main .mtk-q-text img:not(.qx-exam-logo):not(.qx-opt-fig-img),
+html body .eg-test-root .eg-q-stem img:not(.qx-exam-logo):not(.qx-opt-fig-img),
+html body .qx-question-body > img:not(.qx-exam-logo),
+html body .qx-diagram-slot img:not(.qx-opt-fig-img):not(.qx-org-qx-wm),
+html body #qxDiagramSlot img:not(.qx-opt-fig-img),
+html body .qx-diagram-seg img:not(.qx-opt-fig-img),
+html body .qx-marks-native-q img:not(.qx-opt-fig-img),
+html body .qx-org-fig-host:not(.qx-org-fig-host-opt):not(.qx-org-fig-host-cell) > img,
+html body img.qx-irodov-stem,
+html body .qx-fig:not(.qx-opt-fig) img.qx-pool-fig:not(.qx-opt-fig-img) {
+  max-width: 100% !important;
+  max-height: 280px !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+}
+html body .mtk-opt img,
+html body .mtk-opt-text img,
+html body .mtk-options img,
+html body .qx-prac-opt img,
+html body .qx-prac-opt-text img,
+html body .qx-prac-opts img,
+html body .qa-opt img,
+html body .eg-opt img,
+html body .eg-opts img,
+html body #qxOpts img,
+html body .qx-opt-fig img,
+html body img.qx-opt-fig-img,
+html body .qx-opt-diagram-slot img,
+html body .qx-marks-native-opt img,
+html body .qx-opt-pair img,
+html body .qx-opt-pair-struct img,
+html body .qx-org-fig-host-opt img,
+html body .mtk-opt-text .qx-opt-fig img.qx-pool-fig,
+html body .mtk-opt-text .qx-opt-diagram-slot img,
+html body .mtk-opt-text img.qx-pool-fig,
+html body .qx-prac-opt-text img.qx-pool-fig,
+html body .qx-fig-flat img.qx-opt-fig-img {
+  max-width: 100% !important;
+  max-height: 200px !important;
+  width: auto !important;
+  height: auto !important;
+  min-height: 0 !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+}
+@media (max-width: 720px) {
+  html body .mtk-test-root .mtk-main .qx-question-body img:not(.qx-exam-logo):not(.qx-opt-fig-img):not(.qx-org-qx-wm),
+  html body .mtk-test-root.qx-book-q .mtk-main .mtk-q-text img:not(.qx-exam-logo):not(.qx-opt-fig-img),
+  html body .eg-test-root .eg-q-stem img:not(.qx-exam-logo):not(.qx-opt-fig-img),
+  html body .qx-diagram-slot img:not(.qx-opt-fig-img),
+  html body #qxDiagramSlot img:not(.qx-opt-fig-img),
+  html body img.qx-irodov-stem {
+    max-height: 240px !important;
+  }
+  html body .mtk-opt img,
+  html body .mtk-opt-text img,
+  html body .qx-prac-opt img,
+  html body .qx-prac-opt-text img,
+  html body .qa-opt img,
+  html body .eg-opt img,
+  html body #qxOpts img,
+  html body .qx-opt-fig img,
+  html body img.qx-opt-fig-img,
+  html body .qx-opt-diagram-slot img,
+  html body .qx-marks-native-opt img,
+  html body .qx-org-fig-host-opt img,
+  html body .mtk-opt-text img.qx-pool-fig {
+    max-height: 180px !important;
+  }
+}
+
+/* qxmd258: option figures beat the stem cap when both match */
+html body .mtk-test-root.qx-book-q .mtk-main .mtk-q-text .mtk-opt img:not(.qx-exam-logo),
+html body .mtk-test-root.qx-book-q .mtk-main .mtk-q-text .qx-prac-opt img:not(.qx-exam-logo),
+html body .mtk-test-root .mtk-main .qx-question-body .mtk-opt img:not(.qx-exam-logo),
+html body .mtk-test-root .mtk-main .qx-question-body .qx-prac-opt img:not(.qx-exam-logo),
+html body .eg-test-root .eg-q-stem .eg-opt img:not(.qx-exam-logo),
+html body .eg-test-root #qxOpts img:not(.qx-exam-logo),
+html body .mtk-test-root .mtk-main .mtk-options img:not(.qx-exam-logo),
+html body .qx-org-fig-host-opt img:not(.qx-org-qx-wm) {
+  max-width: 100% !important;
+  max-height: 200px !important;
+  width: auto !important;
+  height: auto !important;
+  min-height: 0 !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+}
+@media (max-width: 720px) {
+  html body .mtk-test-root.qx-book-q .mtk-main .mtk-q-text .mtk-opt img:not(.qx-exam-logo),
+  html body .mtk-test-root .mtk-main .qx-question-body .mtk-opt img:not(.qx-exam-logo),
+  html body .eg-test-root #qxOpts img:not(.qx-exam-logo),
+  html body .qx-org-fig-host-opt img:not(.qx-org-qx-wm) {
+    max-height: 180px !important;
+  }
+}

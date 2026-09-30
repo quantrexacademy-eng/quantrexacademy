@@ -1,10 +1,10 @@
 {
-  "cache": "qx-pwa-qxmd257",
-  "ts": 1790900000257,
-  "title": "qxmd257: Option figures no longer show raw image markup",
+  "cache": "qx-pwa-qxmd258",
+  "ts": 1790900000258,
+  "title": "qxmd258: Option and stem figures use a standard size",
   "site": "https://www.quantrexacademy.com",
-  "build": "qxmd257",
-  "body": "Practice options keep the figure and hide leaked filenames, alt=media, and broken img text. Option images fit the card and text wraps. Official answers are unchanged.",
+  "build": "qxmd258",
+  "body": "Option figures are capped at 200px and stem figures at 280px (object-fit contain, no crop) so the question and options fit one laptop screen. Mobile stays readable. Official answers are unchanged.",
   "package": "com.quantrexacademy.app",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }
