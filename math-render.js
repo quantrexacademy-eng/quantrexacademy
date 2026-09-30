@@ -297,7 +297,7 @@ window.Mx = (() => {
   const BRAND_PATTERNS = [
     /cdn-assets\.getmarks/gi,
     /www\.vedantu\.com/gi, /vedantu\.com/gi, /\bMIMS\b/gi,
-    /Scoremarks\s+Technologies/gi, /Mathongo/gi, /\bGet\s*Marks\b/gi, /\bMARKS\s*App\b/gi,
+    /Scoremarks\s+Technologies/gi, /Mathongo/gi, /\bGet\s*Marks\b(?!\.app\b)/gi, /\bMARKS\s*App\b/gi,
     /\bVedantu\b/gi, /\bUnacademy\b/gi, /\bAakash\b/gi, /\bFIITJEE\b/gi, /\bResonance\b/gi,
     /Powered\s+by\s+MARKS/gi, /MOG\s*Premium/gi, /\bMARKS\s*Premium\b/gi,
     /\bMARKS\s*Selected\b/gi, /marks_selected/gi, /\bMARKS\s*web\b/gi,
@@ -468,7 +468,7 @@ window.Mx = (() => {
 
   function protectImgUrls(str) {
     const slots = [];
-    const safe = String(str).replace(/(<img[^>]+src=["'])([^"']+)(["'])/gi, (m, pre, url, post) => {
+    const safe = String(str).replace(/(<img\b[^>]*?\bsrc\s*=\s*["'])([^"']+)(["'])/gi, (m, pre, url, post) => {
       if (!PROTECTED_IMG_RX.test(url) && !FORMULA_IMG_RX.test(url) && !/^https?:/i.test(url) && !/\/assets\//i.test(url)) return m;
       const key = `__QXIMG${slots.length}__`;
       slots.push(url);
@@ -513,12 +513,15 @@ window.Mx = (() => {
   }
 
   function fixBrokenImgUrls(str) {
-    return String(str || "").replace(BROKEN_CDN_RX, PYQ_CDN);
+    return String(str || "")
+      .replace(/cdn-question-pool\.{2,}app/gi, "cdn-question-pool.getmarks.app")
+      .replace(BROKEN_CDN_RX, PYQ_CDN);
   }
 
   function stripBranding(str) {
     let raw = fixBrokenImgUrls(str);
-    const { safe, slots } = protectImgUrls(raw);
+    const figs = parkAllFigTags(raw);
+    const { safe, slots } = protectImgUrls(figs.safe);
     let out = safe;
     BRAND_PATTERNS.forEach(rx => { out = out.replace(rx, ""); });
     if (typeof QxWM !== "undefined") out = QxWM.cleanHtml(out);
@@ -528,6 +531,7 @@ window.Mx = (() => {
       out = out.replace(/<img[^>]+(?:watermark(?!ed_images|_improved)|marks-premium|ic_marks)[^>]*>/gi, "");
     }
     out = restoreImgUrls(out, slots);
+    out = restoreAllFigTags(out, figs.slots);
     // Safety: never allow brand strip to leave a match table without its cell figures
     if (typeof QuantrexStrip !== "undefined" && !/<img/i.test(out)) out = QuantrexStrip.displayText(out);
     if (isHtml(out)) out = wrapDiagramImages(out);
@@ -2112,6 +2116,14 @@ window.Mx = (() => {
       c = c.replace(
         /(^|[^\\])(\\left\s*(?:\\[{}()[\].|]|[\(\)\[\]{}.|])[\s\S]*?\\right\s*(?:\\[{}()[\].|]|[\(\)\[\]{}.|]))/g,
         (m, pre, tex) => pre + park("$" + tex + "$")
+      );
+      // qxmd253: bare \{ ... \} stays one island so commas and \infty are not split out
+      c = c.replace(
+        /(^|[^\\$])(\\\{(?:[^{}$\\]|\\[a-zA-Z]+|\\[{}]|\{[^{}]*\}){0,480}\\\})/g,
+        (m, pre, tex) => {
+          if (/\uE100/.test(tex)) return m;
+          return pre + park("$" + tex + "$");
+        }
       );
       // Bare A^{100} / B^{n} still outside math
       c = c.replace(/(^|[^$\\])([A-Za-z])\s*\^\s*\{(\d+)\}/g, (m, pre, v, n) => pre + park("$" + v + "^{" + n + "}$"));
@@ -4625,6 +4637,20 @@ window.Mx = (() => {
   }
 
   // Render content: HTML preserved, branding stripped, plain text escaped, LaTeX intact
+  function stripDumpedKatexProse(s) {
+    const raw = String(s || "");
+    if (!/katex/i.test(raw)) return raw;
+    if (!/(strut|aria\s*-\s*hidden|spanclass|mord|vlist)/i.test(raw)) return raw;
+    if (hasRealKatexHtml(raw) && !looksLetterSpacedMarkup(raw)) return raw;
+    let out = raw;
+    out = out.replace(/<\/?span\b[^>]*>/gi, " ");
+    out = out.replace(/\b(?:span\s*class|spanclass)\s*=\s*["']?[^"'\n]{0,80}/gi, " ");
+    out = out.replace(/\baria\s*-\s*hidden\s*=\s*["']?true["']?/gi, " ");
+    out = out.replace(/\bstrut\b(?:\s+style\s*=\s*["'][^"']*["'])?/gi, " ");
+    out = out.replace(/\bclass\s*=\s*["'][^"']*(?:katex|mord|strut|vlist)[^"']*["']/gi, " ");
+    return out.replace(/[ \t]{2,}/g, " ");
+  }
+
   function html(content) {
     if (content == null) return "";
     try { loadKatex(); } catch (_) { /* */ }
@@ -4632,6 +4658,7 @@ window.Mx = (() => {
       return repairSpacedKatexTags(String(content));
     }
     content = qxSanitizeIncoming(content);
+    try { content = stripDumpedKatexProse(content); } catch (_) { /* */ }
     content = decodeNumericEntityText(String(content));
     const cacheKey = String(content);
     if (cacheKey.length < 10000 && _htmlMemo.has(cacheKey)) {
@@ -4716,7 +4743,7 @@ window.Mx = (() => {
     if (typeof QxImgClean !== "undefined" && QxImgClean.stripSpilledFigUrls) {
       try { s = QxImgClean.stripSpilledFigUrls(s); } catch (_) { /* */ }
     }
-    s = s.replace(/\bsrc=(["'])([^"']+)\1/gi, (m, q, url) => {
+    s = s.replace(/\bsrc\s*=\s*(["'])([^"']+)\1/gi, (m, q, url) => {
       if (/^data:/i.test(url)) return m;
       const esc = (u) => String(u || "").replace(/&/g, "&amp;").replace(/"/g, "&quot;");
       if (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.displaySrc

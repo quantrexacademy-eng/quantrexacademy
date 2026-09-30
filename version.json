@@ -1,10 +1,10 @@
 {
-  "cache": "qx-pwa-qxmd252",
-  "ts": 1790900000252,
-  "title": "qxmd252: Light and dark icons, covers, and contrast",
+  "cache": "qx-pwa-qxmd253",
+  "ts": 1790900000253,
+  "title": "qxmd253: Question stems, options, and solutions display cleanly",
   "site": "https://www.quantrexacademy.com",
-  "build": "qxmd252",
-  "body": "Homepage folder icons stay visible in light and dark. Book covers and formula labels stay readable. Instructions, solution view, and toolbars keep high contrast. Official answers are unchanged.",
+  "build": "qxmd253",
+  "body": "Set braces, infinity, and escaped TeX commands render as math. Image hosts are not stripped. KaTeX source is not shown as text. Option letters A-D stay visible. Official answers are unchanged.",
   "package": "com.quantrexacademy.app",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }

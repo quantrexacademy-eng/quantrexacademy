@@ -546,6 +546,8 @@
     t = t.replace(/\\{2,}([a-zA-Z]+)/g, "\\$1");
     t = t.replace(/\\{2,}([{}])/g, "\\$1");
     t = t.replace(/\\{3,}/g, "\\");
+    // qxmd253: \\$left / \$frac display leaks -> \\left / \\frac
+    t = t.replace(/\\+\$\s*(?=(?:left|right|frac|dfrac|tfrac|sqrt|mathrm|mathbf|textbf|text|begin|end|infty|alpha|beta|gamma|theta|times|cdot|leq|geq|leqslant|geqslant|cap|cup|subset|subseteq|rightarrow|leftarrow|Rightarrow)\b)/g, "\\");
     return t;
   }
 

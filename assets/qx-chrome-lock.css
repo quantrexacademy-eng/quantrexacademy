@@ -991,3 +991,15 @@ html body .mtk-test-root.allen-practice .qx-prac-tools .eg-tip {
     opacity: 1 !important;
   }
 }
+
+/* qxmd253: older .qzrr-opts rule hid A-D letters. Keep them visible. */
+html body .qzrr-opts .mtk-opt-letter,
+html body .qzrr-opts .qx-opt-circle,
+html body .eg-test-root .mtk-opt-letter,
+html body .eg-test-root .qx-opt-circle,
+html body .qx-prac-opt .mtk-opt-letter,
+html body .qx-prac-opt .qx-opt-circle {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
