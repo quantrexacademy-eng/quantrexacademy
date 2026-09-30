@@ -233,7 +233,8 @@ const QuantrexExamLogos = (() => {
     const isChip = /qx-paper-exam-logo|qx-nta-chip|qx-card-exam-logo|qx-src-tag/.test(base);
     const c = isChip ? base : (base + " qx-marks-icon");
     const url = String(src || "").replace(/"/g, "&quot;");
-    return `<img class="${c}" src="${url}" width="${s}" height="${s}" alt="${label || ""}" loading="lazy" decoding="async" style="width:${s}px;height:${s}px;max-width:${s}px;max-height:${s}px;object-fit:contain;display:inline-block;vertical-align:middle">`;
+    const eager = /dash-tool-logo|cpyqb-exam-tile-logo|exam-pill-logo|dash-board|subj-ic-img/.test(c);
+    return `<img class="${c}" src="${url}" width="${s}" height="${s}" alt="${label || ""}" loading="${eager ? "eager" : "lazy"}" decoding="async" style="width:${s}px;height:${s}px;max-width:${s}px;max-height:${s}px;object-fit:contain;display:inline-block;vertical-align:middle;content-visibility:visible;opacity:1">`;
   }
 
   function html(key, size, cls) {

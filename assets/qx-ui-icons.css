@@ -549,9 +549,12 @@ html body .eg-test-root .eg-top-tools #egFmtBtn {
   visibility: visible !important;
   opacity: 1 !important;
   pointer-events: auto !important;
-  width: 36px !important;
-  height: 36px !important;
+  width: auto !important;
+  height: auto !important;
   min-width: 36px !important;
+  min-height: 40px !important;
+  flex-direction: column !important;
+  color: #ffffff !important;
 }
 
 /* qxmd238: solid Prev|Check|Next + full toolbar (last file wins) */

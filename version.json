@@ -1,10 +1,10 @@
 {
-  "cache": "qx-pwa-qxmd249",
-  "ts": 1790800000000,
-  "title": "qxmd249: Next/Previous tap lock + math/chem display",
+  "cache": "qx-pwa-qxmd250",
+  "ts": 1790900000000,
+  "title": "qxmd250: same toolbar, mobile settings, covers, TeX leak",
   "site": "https://www.quantrexacademy.com",
-  "build": "qxmd249",
-  "body": "Mobile Next/Previous no longer skips a question. Chemistry formulas and sin^2 render as math. Official answers are unchanged.",
+  "build": "qxmd250",
+  "body": "NCERT, Digital Books, All Exams, Test Series, Medical and Engineering share one labeled toolbar. Mobile settings sheet is fully reachable with necessary defaults on. Light-mode homepage icons and digital book covers stay visible. Raw \\\\\\ TeX leaks are repaired on display. Official answers are unchanged.",
   "package": "com.quantrexacademy.app",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }

@@ -281,6 +281,22 @@ img {
   content-visibility: auto;
 }
 
+img.qx-book-photo-img,
+.qx-book-photo img,
+img.dash-tool-logo,
+img.cpyqb-exam-tile-logo,
+img.exam-pill-logo,
+img.exam-card-logo,
+img.subj-ic-img,
+img.qx-ch-glyph-img,
+img.qx-exam-logo,
+img.qx-marks-icon,
+img.dash-board-hero-logo,
+img.dash-board-tab-logo {
+  content-visibility: visible !important;
+  contain: none !important;
+}
+
 img[loading="lazy"] {
   decoding: async;
 }

@@ -1,0 +1,281 @@
+/* qxmd250 — last-wins: one toolbar, visible settings, homepage icons, book covers.
+   Load after qx-foot-lock / qx-ui-icons / qx-mobile. */
+
+/* ===== Practice + test + Allen: identical labeled tools on blue bar ===== */
+html body .eg-test-root > .eg-top,
+html body .eg-test-root .eg-top,
+html body .eg-test-root.eg-qxmd250 .eg-top,
+html body .mtk-test-root.allen-practice .mtk-header {
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  overflow: visible !important;
+  max-height: none !important;
+  min-height: 44px !important;
+  background: #1565C0 !important;
+  color: #ffffff !important;
+  position: relative !important;
+  top: auto !important;
+  bottom: auto !important;
+  z-index: 80 !important;
+}
+
+html body .eg-test-root .eg-top-tools,
+html body .eg-test-root[data-eg-mode="practice"] .eg-top-tools,
+html body .eg-test-root[data-eg-mode="test"] .eg-top-tools,
+html body .eg-test-root.eg-qxmd167 .eg-top-tools,
+html body .mtk-test-root.allen-practice .qx-prac-tools,
+html body .mtk-test-root.allen-practice .mtk-header-tools {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  overflow: visible !important;
+  max-width: none !important;
+  gap: 2px !important;
+}
+
+html body .eg-test-root .eg-top-tools .eg-tool-btn,
+html body .eg-test-root .eg-top-tools .eg-ico,
+html body .eg-test-root .eg-top-tools .eg-tool-sec,
+html body .eg-test-root .eg-top-tools .eg-tool-sec:not(.eg-tool-reach),
+html body .eg-test-root.eg-qxmd217 .eg-top-tools .eg-tool-btn:not(#egFmtBtn),
+html body .eg-test-root[data-eg-mode="practice"] .eg-top-tools .eg-tool-btn,
+html body .eg-test-root[data-eg-mode="test"] .eg-top-tools .eg-tool-btn,
+html body .mtk-test-root.allen-practice .qx-prac-tools .eg-tool-btn,
+html body .mtk-test-root.allen-practice .qx-prac-tools .eg-ico {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  flex: 0 0 auto !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: auto !important;
+  min-width: 36px !important;
+  max-width: none !important;
+  height: auto !important;
+  min-height: 40px !important;
+  padding: 2px 4px !important;
+  color: #ffffff !important;
+  background: transparent !important;
+  border: 0 !important;
+  gap: 1px !important;
+}
+
+html body .eg-test-root .eg-top-tools .eg-tool-btn svg,
+html body .eg-test-root .eg-top-tools .eg-ico svg,
+html body .mtk-test-root.allen-practice .qx-prac-tools svg {
+  width: 18px !important;
+  height: 18px !important;
+  display: block !important;
+  stroke: currentColor !important;
+  color: #ffffff !important;
+  fill: none;
+}
+
+html body .eg-test-root .eg-top-tools .eg-tool-btn .eg-tip,
+html body .eg-test-root .eg-top-tools .eg-ico .eg-tip,
+html body .eg-test-root.eg-qxtool8 .eg-top-tools .eg-tip,
+html body .mtk-test-root.allen-practice .qx-prac-tools .eg-tip {
+  display: block !important;
+  position: static !important;
+  transform: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: none !important;
+  background: transparent !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  font-size: 9px !important;
+  font-weight: 700 !important;
+  line-height: 1.1 !important;
+  white-space: nowrap !important;
+}
+
+html body .eg-test-root[data-test-theme="dark"] .eg-top,
+html body .eg-test-root[data-test-theme="light"] .eg-top,
+html[data-theme="dark"] .eg-test-root .eg-top,
+html[data-theme="light"] .eg-test-root .eg-top {
+  background: #1565C0 !important;
+  color: #ffffff !important;
+}
+
+/* ===== Settings sheet: all rows reachable ===== */
+html body .eg-fmt-scrim,
+html body #egFmtScrim {
+  position: fixed !important;
+  inset: 0 !important;
+  background: rgba(15, 23, 42, 0.45) !important;
+  z-index: 2147483600 !important;
+}
+
+html body .eg-fmt-pop.eg-vs-marks,
+html body .eg-test-root #egFmtPop,
+html body .eg-test-root .eg-fmt-pop,
+html body #pracViewPanel.eg-vs-marks {
+  position: fixed !important;
+  z-index: 2147483601 !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  background: #ffffff !important;
+  color: #0f172a !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+html body .eg-test-root[data-test-theme="dark"] .eg-fmt-pop.eg-vs-marks,
+html body .eg-test-root[data-test-theme="dark"] #egFmtPop,
+html[data-theme="dark"] .eg-fmt-pop.eg-vs-marks,
+html[data-theme="dark"] #pracViewPanel.eg-vs-marks {
+  background: #111827 !important;
+  color: #f1f5f9 !important;
+  border-color: #334155 !important;
+}
+
+html body .eg-fmt-pop.eg-vs-marks .eg-vs-head,
+html body .eg-fmt-pop.eg-vs-marks .eg-fmt-title,
+html body .eg-fmt-pop.eg-vs-marks .eg-vs-lab-t,
+html body .eg-fmt-pop.eg-vs-marks .eg-vs-h {
+  color: inherit !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+html body .eg-fmt-pop.eg-vs-marks .eg-vs-row,
+html body .eg-fmt-pop.eg-vs-marks .eg-vs-sec,
+html body .eg-fmt-pop.eg-vs-marks .eg-vs-tog {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+@media (max-width: 768px) {
+  html body .eg-fmt-pop.eg-vs-marks,
+  html body .eg-test-root.eg-qxmd173 .eg-fmt-pop,
+  html body .eg-test-root.eg-qxmd173 #egFmtPop,
+  html body .eg-test-root #egFmtPop,
+  html body #pracViewPanel.eg-vs-marks {
+    top: auto !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    transform: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: min(82vh, calc(100dvh - 48px)) !important;
+    min-height: 48vh !important;
+    border-radius: 16px 16px 0 0 !important;
+    padding: 14px 16px calc(20px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+}
+
+@media (min-width: 769px) {
+  html body .eg-fmt-pop.eg-vs-marks,
+  html body .eg-test-root #egFmtPop {
+    top: 56px !important;
+    left: 50% !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: translateX(-50%) !important;
+    width: min(420px, 94vw) !important;
+    max-height: min(78vh, 640px) !important;
+    border-radius: 16px !important;
+  }
+}
+
+/* ===== Digital book covers always paint ===== */
+.qx-book-card,
+.book-card,
+.qx-book-photo,
+.qx-book-photo-frame,
+.qx-book-cover,
+img.qx-book-photo-img,
+.qx-book-photo img {
+  content-visibility: visible !important;
+  contain: none !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+img.qx-book-photo-img,
+.qx-book-photo img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 180px !important;
+  object-fit: cover !important;
+}
+
+/* ===== Homepage icons: Medical + Engineering, light + dark ===== */
+html[data-theme="light"] img.dash-tool-logo,
+html[data-theme="light"] img.cpyqb-exam-tile-logo,
+html[data-theme="light"] img.exam-pill-logo,
+html[data-theme="light"] img.exam-card-logo,
+html[data-theme="light"] img.subj-ic-img,
+html[data-theme="light"] img.qx-ch-glyph-img,
+html[data-theme="light"] img.qx-exam-logo,
+html[data-theme="light"] img.qx-marks-icon,
+html[data-theme="light"] img.dash-board-hero-logo,
+html[data-theme="light"] img.dash-board-tab-logo,
+html:not([data-theme="dark"]) img.dash-tool-logo,
+html:not([data-theme="dark"]) img.cpyqb-exam-tile-logo,
+html:not([data-theme="dark"]) img.exam-pill-logo,
+html:not([data-theme="dark"]) img.subj-ic-img,
+html:not([data-theme="dark"]) img.qx-ch-glyph-img,
+html[data-theme="dark"] img.dash-tool-logo,
+html[data-theme="dark"] img.cpyqb-exam-tile-logo,
+html[data-theme="dark"] img.exam-pill-logo,
+html[data-theme="dark"] img.subj-ic-img,
+html[data-theme="dark"] img.qx-ch-glyph-img {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  content-visibility: visible !important;
+  filter: none !important;
+  -webkit-filter: none !important;
+  mix-blend-mode: normal !important;
+  backface-visibility: visible !important;
+}
+
+html[data-theme="light"] .dash-tool-ic,
+html[data-theme="light"] .cpyqb-exam-tile-ic,
+html[data-theme="light"] .exam-pill-ic,
+html[data-theme="light"] .subj-mini-ic,
+html[data-theme="light"] .qx-robo-core,
+html[data-theme="light"] .qx-ch-icon,
+html:not([data-theme="dark"]) .dash-tool-ic,
+html:not([data-theme="dark"]) .cpyqb-exam-tile-ic,
+html:not([data-theme="dark"]) .qx-ch-icon {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  overflow: visible !important;
+}
+
+/* 3D flip was painting a blank face on light cards */
+html[data-theme="light"] .qx-ch-3d-img,
+html:not([data-theme="dark"]) .qx-ch-3d-img,
+html[data-theme="light"] .qx-folder-ic img,
+html:not([data-theme="dark"]) .qx-folder-ic img,
+html[data-theme="light"] .qx-topic-ic img,
+html:not([data-theme="dark"]) .qx-topic-ic img {
+  animation: none !important;
+  transform: none !important;
+  backface-visibility: visible !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.dash-tool-card,
+.cpyqb-exam-tile,
+.exam-pill-card,
+.subj-mini,
+.qx-ncert-tool {
+  overflow: visible !important;
+}

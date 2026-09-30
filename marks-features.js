@@ -3595,15 +3595,15 @@ function qxNcertKindsHtml() {
   return `${topbar(QX_UX.ncertBox, trackHint)}
     <div class="qx-ncert-tools">
       <button type="button" class="qx-ncert-tool qx-folder-card" ${mg("ncert", { step: "subjects", ncertKind: "lblq" })}>
-        ${qxAnimCover("ncert", QX_UX.lineScan)}
+        ${logo("lblq") || qxAnimCover("ncert", QX_UX.lineScan)}
         <strong>${QX_UX.lineScan}</strong><small>Concept-by-concept · ${trackHint}</small>
       </button>
       <button type="button" class="qx-ncert-tool qx-folder-card" ${mg("ncert", { step: "subjects", ncertKind: "ncoq" })}>
-        ${qxAnimCover("exemplar", QX_UX.textPlus)}
+        ${logo("ncoq") || qxAnimCover("exemplar", QX_UX.textPlus)}
         <strong>${QX_UX.textPlus}</strong><small>In-text · exercise · extra set</small>
       </button>
       <button type="button" class="qx-ncert-tool qx-folder-card" ${mg("ncert", { step: "subjects", ncertKind: "dbq" })}>
-        ${qxAnimCover("diagram", QX_UX.figureLab)}
+        ${logo("dbq") || qxAnimCover("diagram", QX_UX.figureLab)}
         <strong>${QX_UX.figureLab}</strong><small>Figures · labelling · cycles</small>
       </button>
     </div>`;
@@ -7642,6 +7642,12 @@ const QX_BOOKS_CATALOG = {
 
 function qxBookCoverSrc(book) {
   if (!book) return "";
+  try {
+    if (typeof bookCoverImage === "function") {
+      var mapped = bookCoverImage(book);
+      if (mapped) return mapped;
+    }
+  } catch (_) { /* */ }
   var map = {
     "6a7db25c02198edab586feff": "assets/book-covers/physical-chemistry-jee.jpg",
     "6aa934f6b8c05657c7be7531": "assets/book-covers/physical-chemistry-neet.jpg",
@@ -8711,8 +8717,11 @@ async function marksDashboardSections() {
     { kind: "dbq", title: QX_UX.figureLab, sub: "Figure-based practice", view: "ncert", payload: { step: "subjects", ncertKind: "dbq" } }
   ];
   const toolCards = ncertTools.map(t => {
+    const logo = (typeof QuantrexExamLogos !== "undefined" && QuantrexExamLogos.ncertToolHtml)
+      ? QuantrexExamLogos.ncertToolHtml(t.kind, 36, "dash-tool-logo")
+      : "";
     return `<div class="dash-tool-card" ${mg(t.view, t.payload)}>
-      <span class="dash-tool-ic" aria-hidden="true">${qxAnimCover(t.kind, t.title)}</span>
+      <span class="dash-tool-ic" aria-hidden="true">${logo || qxAnimCover(t.kind, t.title)}</span>
       <strong>${t.title}</strong>
       <small>${t.sub}</small>
     </div>`;

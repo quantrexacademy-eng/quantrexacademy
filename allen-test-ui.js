@@ -706,7 +706,13 @@ const AllenTestUI = (() => {
       ? qBody
       : `<div class="mtk-q-text qx-content" id="egQArea" data-qx-qid="${q.id}">${qBody}</div>`;
 
-      const BM_SVG = `<svg class="qx-bm-svg" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M6 3.5h12a1.5 1.5 0 0 1 1.5 1.5v15.2a.9.9 0 0 1-1.4.75L12 16.6l-6.1 4.35A.9.9 0 0 1 4.5 20.2V5A1.5 1.5 0 0 1 6 3.5z" fill="currentColor"/></svg>`;
+      const icoA = (p) => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' + p + "</svg>";
+      const themeIcoA = appTheme === "dark"
+        ? icoA('<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>')
+        : '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+      const starIcoA = icoA(bmOn
+        ? '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z" fill="currentColor" stroke="none"/>'
+        : '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z" fill="none" stroke="currentColor" stroke-width="1.7"/>');
       const themeLbl = appTheme === "dark" ? "Light" : "Dark";
       const subj = (subject || "").toLowerCase();
       let secCls = "";
@@ -719,22 +725,24 @@ const AllenTestUI = (() => {
         const st = d ? "answered" : (i === (pc.idx || 0) ? "not-answered" : "unvisited");
         return `<button type="button" class="mtk-pal-cell ${st}${cur}" data-prac-idx="${i}">${i + 1}</button>`;
       }).join("");
-      return `<div class="mtk-test-root allen-cbt allen-practice qx-font-host qxmd220-allen qxmd219-allen qxmd218-allen${bookCls}${solOpen ? " qx-sol-showing" : ""}" data-test-theme="${appTheme}" data-font-scale="${fontScale}">
-        <header class="mtk-header">
+      return `<div class="mtk-test-root allen-cbt allen-practice qx-font-host qxmd220-allen qxmd219-allen qxmd218-allen qxmd250-allen${bookCls}${solOpen ? " qx-sol-showing" : ""}" data-test-theme="${appTheme}" data-font-scale="${fontScale}">
+        <header class="mtk-header eg-top">
           <div class="mtk-header-left">
-            <button type="button" class="mtk-close-btn" id="qxPracBackBtn" title="Back" aria-label="Back">&larr;</button>
+            <button type="button" class="mtk-close-btn eg-back" id="qxPracBackBtn" title="Back" aria-label="Back">&larr;</button>
             <div class="mtk-brand qx-prac-brand"><span class="mtk-brand-text">Quantrex Academy</span></div>
           </div>
           <div class="mtk-prac-progress">Q${pos} / ${total}</div>
           ${timerHtml}
-          <div class="mtk-header-tools qx-prac-tools">
+          <div class="mtk-header-tools qx-prac-tools eg-top-tools" role="toolbar" aria-label="Question tools">
             ${hintBtn}
-            <button type="button" class="qx-bm-btn eg-tool-btn ${bmOn ? "on" : ""}" id="pracBmBtn" onclick="typeof toggleBm==='function'&&toggleBm(${qidAttr})" data-tip="Bookmark" title="Bookmark" aria-label="Bookmark">${BM_SVG}</button>
-            <button type="button" class="eg-tool-btn" id="pracGroupBtn" onclick="typeof toggleBmWithGroup==='function'&&toggleBmWithGroup(${qidAttr})" data-tip="Create group" title="Create group" aria-label="Create group">+</button>
-            <button type="button" class="qx-report-fab eg-tool-btn" id="pracReportBtn" onclick="typeof openQuestionReport==='function'&&openQuestionReport(${qidAttr})" data-tip="Report" title="Report" aria-label="Report">!</button>
-            <button type="button" class="mtk-font-btn qx-prac-theme-btn eg-tool-btn" id="pracThemeToggle" data-tip="Theme" title="Theme">${themeLbl}</button>
-            <button type="button" class="eg-tool-btn" id="pracFullBtn" data-tip="Fullscreen" title="Fullscreen" aria-label="Fullscreen">Full</button>
-            <button type="button" class="qx-prac-view-btn eg-tool-btn eg-settings-gear" id="pracViewMenuBtn" data-tip="Settings" title="Question View Settings" aria-expanded="false" aria-controls="pracViewPanel" aria-label="Question View Settings">⚙<span class="eg-tip">Settings</span></button>
+            <button type="button" class="mtk-font-btn qx-prac-theme-btn eg-ico eg-tool-btn eg-tool-pri${appTheme === "light" ? " eg-moon" : ""}" id="pracThemeToggle" data-tip="Theme" title="Light / dark" aria-label="Light / dark">${themeIcoA}<span class="eg-tip">Theme</span></button>
+            <button type="button" class="eg-ico eg-tool-btn eg-tool-pri eg-allq-btn" id="pracAllQBtn" data-tip="All Q" title="All questions" aria-label="All questions">${icoA('<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>')}<span class="eg-tip">All Q</span></button>
+            <button type="button" class="eg-ico eg-tool-btn eg-tool-pri eg-menu-btn" id="pracMenuBtn" data-tip="Palette" title="Question palette" aria-label="Question palette">${icoA('<path d="M4 7h16M4 12h16M4 17h16"/>')}<span class="eg-tip">Palette</span></button>
+            <button type="button" class="qx-bm-btn eg-ico star eg-tool-btn eg-tool-pri ${bmOn ? "on" : ""}" id="pracBmBtn" onclick="typeof toggleBm==='function'&&toggleBm(${qidAttr})" data-tip="Bookmark" title="Bookmark" aria-label="Bookmark">${starIcoA}<span class="eg-tip">Bookmark</span></button>
+            <button type="button" class="eg-ico eg-tool-btn eg-tool-pri" id="pracGroupBtn" onclick="typeof toggleBmWithGroup==='function'&&toggleBmWithGroup(${qidAttr})" data-tip="Group" title="Create group" aria-label="Create group">${icoA('<path d="M12 5v14M5 12h14"/>')}<span class="eg-tip">Group</span></button>
+            <button type="button" class="eg-ico eg-tool-btn eg-tool-pri" id="pracFullBtn" data-tip="Fullscreen" title="Fullscreen" aria-label="Fullscreen">${icoA('<path d="M8 3H3v5M16 3h5v5M8 21H3v-5M21 16v5h-5"/>')}<span class="eg-tip">Full</span></button>
+            <button type="button" class="qx-report-fab eg-ico warn eg-tool-btn eg-tool-pri" id="pracReportBtn" onclick="typeof openQuestionReport==='function'&&openQuestionReport(${qidAttr})" data-tip="Report" title="Report" aria-label="Report">${icoA('<path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/>')}<span class="eg-tip">Report</span></button>
+            <button type="button" class="qx-prac-view-btn eg-ico eg-tool-btn eg-tool-pri eg-settings-gear" id="pracViewMenuBtn" data-tip="Settings" title="Question View Settings" aria-expanded="false" aria-controls="pracViewPanel" aria-label="Question View Settings">${icoA('<circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>')}<span class="eg-tip">Settings</span></button>
           </div>
         </header>
         <div class="mtk-sec-bar"><div class="mtk-sec-tabs"><button type="button" class="mtk-sec-tab ${secCls} active">${esc(subject || "Question")}</button></div></div>
@@ -909,6 +917,22 @@ const AllenTestUI = (() => {
     }
 
     // View panel: text size presets + continuous zoom
+    function toggleAllenPalette() {
+      const pal = root.querySelector(".mtk-palette");
+      if (!pal) return;
+      const hide = pal.getAttribute("hidden") != null || pal.style.display === "none";
+      if (hide) {
+        pal.removeAttribute("hidden");
+        pal.style.display = "";
+      } else {
+        pal.setAttribute("hidden", "");
+        pal.style.display = "none";
+      }
+    }
+    const allQBtn = root.querySelector("#pracAllQBtn");
+    const palBtn = root.querySelector("#pracMenuBtn");
+    if (allQBtn) allQBtn.addEventListener("click", function (e) { e.preventDefault(); toggleAllenPalette(); });
+    if (palBtn) palBtn.addEventListener("click", function (e) { e.preventDefault(); toggleAllenPalette(); });
     const viewBtn = root.querySelector("#pracViewMenuBtn");
     const viewPanel = root.querySelector("#pracViewPanel");
     if (viewBtn && viewPanel) {

@@ -163,6 +163,19 @@ html[data-theme="dark"] .qx-ch-plate {
 }
 html:not([data-theme="dark"]) .qx-ch-3d-img {
   mix-blend-mode: normal;
+  animation: none !important;
+  transform: none !important;
+  backface-visibility: visible !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+html[data-theme="light"] .qx-ch-glyph-img,
+html:not([data-theme="dark"]) .qx-ch-glyph-img,
+html[data-theme="light"] .qx-ch-icon,
+html:not([data-theme="dark"]) .qx-ch-icon {
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: inline-flex !important;
 }
 .qx-folder-ic img, .qx-topic-ic img, .subj-ic img, .ct-wiz-ch-card.ct-folder img,
 .qx-module-ic img, .qx-module-ic .qx-ch-3d-img {

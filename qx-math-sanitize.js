@@ -537,9 +537,22 @@
    * qxmd163 — Marks/Firestore export quirks → KaTeX-safe TeX (meaning-preserving).
    * Does NOT change math meaning; only unwraps broken wrappers / invisible ops / escapes.
    */
+  function collapseEscapedBackslashes(s) {
+    let t = String(s || "");
+    if (!t || t.indexOf("\\") < 0) return t;
+    // Visible \\\frac / \\\{ leaks from JSON over-escape. Keep TeX \\ line-breaks
+    // (two slashes not followed by a letter or grouping brace).
+    t = t.replace(/\\{3,}(?=[a-zA-Z{])/g, "\\");
+    t = t.replace(/\\{2,}([a-zA-Z]+)/g, "\\$1");
+    t = t.replace(/\\{2,}([{}])/g, "\\$1");
+    t = t.replace(/\\{3,}/g, "\\");
+    return t;
+  }
+
   function repairMarksExportTex(s) {
     let t = String(s || "");
     if (!t) return t;
+    try { t = collapseEscapedBackslashes(t); } catch (_) { /* */ }
     // Invisible math operators + zero-widths
     t = t.replace(/[\u2061\u2062\u2063\u2064\u2060\u200b\u200c\u200d\ufeff]/g, "");
     // Double-escaped grouping braces around commands: \{\log\} → \log
@@ -674,11 +687,8 @@
     s = decodeEntities(s);
 
     s = stripUnsafeHtml(s);
-    // qxmd159: Firestore/JSON double-escaped commands (\\frac) → \frac for KaTeX. Never strip slash to bare "frac".
-    // Collapse only when a TeX command name follows; keep \\ matrix newlines (\\ + non-letter).
-    if (/\\[a-zA-Z]/.test(s)) {
-      s = s.replace(/\\{2,}([a-zA-Z]+)/g, "\\$1");
-    }
+    // qxmd250: collapse \\\frac / \\\{ display leaks. Keep \\ matrix newlines.
+    try { s = collapseEscapedBackslashes(s); } catch (_) { /* */ }
     // qxmd163: also collapse \\{ before letters already done; repair Marks braces/U+2061
     try { s = repairMarksExportTex(s); } catch (_) { /* */ }
     s = normalizeDelimiters(s);
@@ -849,6 +859,7 @@
     normalizeMathContent,
     normalizeLatex: normalizeDelimiters,
     repairMarksExportTex,
+    collapseEscapedBackslashes,
     looksMarksBrokenTex,
     decodeEntities,
     sanitizeQuestionContent,
