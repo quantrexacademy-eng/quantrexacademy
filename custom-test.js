@@ -97,9 +97,8 @@ function ctSharePayload(test) {
 }
 function ctShareUrl(test) {
   const token = ctB64urlEncode(JSON.stringify(ctSharePayload(test)));
-  const path = (location.pathname || "/").replace(/index\.html$/i, "app.html");
-  const base = location.origin + ( /app\.html$/i.test(path) ? path : (path.replace(/\/$/, "") + "/app.html") );
-  return base.split("#")[0] + "#custom/take/" + token;
+  // Always app.html. Site root rewrites to login.html, so a shared link must not use "/".
+  return location.origin + "/app.html#custom/take/" + token;
 }
 async function ctCopyShareLink(testId, teacher) {
   const t = (typeof testId === "object" && testId && testId.questionIds) ? testId : ctLoadTests(teacher).find((x) => x.id === testId);
@@ -149,9 +148,6 @@ async function ctOpenSharedTest(token) {
     status: "notStarted"
   };
   ctRememberShared(test);
-  if (typeof QuantrexCatalog !== "undefined" && QuantrexCatalog.questionsByIds) {
-    try { await QuantrexCatalog.questionsByIds(data.ids.slice(0, 80)); } catch (_) { /* */ }
-  }
   setTimeout(() => {
     startTest(test.questionIds, test.title, "custom", {
       testType: "custom",
@@ -162,6 +158,7 @@ async function ctOpenSharedTest(token) {
       marksMode: true,
       organizeJee: false,
       skipInstructions: true,
+      sharedTake: true,
       onComplete: ctOnCompleteHook(test.id)
     });
   }, 80);
@@ -949,11 +946,11 @@ async function viewCustomTests(payload) {
   p.teacherMode = false;
   if (_ctDraft && _ctDraft._teacherAssign) _ctDraft = null;
   _ctPayload = p;
-  await fetchCtExams();
-
+  // Shared link: do not wait on exam lists, and do not require a signed-in account.
   if (p.step === "take" && p.share) {
     return ctOpenSharedTest(p.share);
   }
+  await fetchCtExams();
 
   if (p.step === "wizard" || _ctDraft) {
     if (p._draftInit || !_ctDraft) {

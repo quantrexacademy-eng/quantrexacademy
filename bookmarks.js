@@ -583,18 +583,40 @@ function nbBookmarkSolHtml(q) {
   } catch (_) { /* */ }
   return String(sol);
 }
-async function nbLoadBookmarkQuestions(limit) {
+function nbApplyCatalogPack(data) {
+  ((data && data.questions) || []).forEach(function (rec) {
+    if (!rec) return;
+    let q = null;
+    if (typeof getQ === "function") {
+      q = getQ(rec.id) || getQ(rec._marksId) || (rec._marksId ? getQ("m_" + rec._marksId) : null);
+    }
+    if (q && typeof QuantrexCatalog !== "undefined" && QuantrexCatalog.applyCatalogRec) {
+      QuantrexCatalog.applyCatalogRec(q, rec);
+      return;
+    }
+    if (!q && typeof QUESTIONS !== "undefined") {
+      const nq = Object.assign({ _listStub: false, _catalogTried: true }, rec);
+      QUESTIONS.push(nq);
+      if (typeof _qxIndexQuestion === "function") _qxIndexQuestion(nq);
+    }
+  });
+}
+async function nbLoadBookmarkQuestions() {
   const items = nbQuestionItems();
-  const cap = limit || 120;
   const ids = items.map((it) => it.id).filter((id) => id != null);
-  const use = ids.slice(0, cap);
-  if (use.length && typeof QuantrexCatalog !== "undefined" && QuantrexCatalog.questionsByIds) {
-    try { await QuantrexCatalog.questionsByIds(use); } catch (_) { /* */ }
+  if (ids.length && typeof QuantrexCatalog !== "undefined" && QuantrexCatalog.questionsByIds) {
+    const size = 24;
+    for (let i = 0; i < ids.length; i += size) {
+      try {
+        const data = await QuantrexCatalog.questionsByIds(ids.slice(i, i + size));
+        nbApplyCatalogPack(data);
+      } catch (_) { /* */ }
+    }
   }
-  return { items: items.slice(0, cap), ids: use, total: ids.length };
+  return { items: items, ids: ids, total: ids.length };
 }
 async function nbPrintBookmarks() {
-  const pack = await nbLoadBookmarkQuestions(120);
+  const pack = await nbLoadBookmarkQuestions();
   if (!pack.ids.length) {
     if (typeof showToast === "function") showToast("No bookmarked questions to print");
     return;
@@ -610,7 +632,7 @@ async function nbPrintBookmarks() {
     }
     return "<article><h2>Q" + (i + 1) + ". " + esc((q && q.subject) || it.subject || "") + "</h2>" + stem + opts + "<h3>Solution</h3>" + nbBookmarkSolHtml(q) + "</article>";
   }).join("");
-  const note = pack.total > pack.ids.length ? ("<p>Showing the first " + pack.ids.length + " of " + pack.total + " bookmarks.</p>") : "";
+  const note = "";
   const docHtml = "<!DOCTYPE html><html><head><meta charset='utf-8'><title>Bookmarked questions</title><style>body{font-family:Georgia,serif;color:#0f172a;margin:24px}article{break-inside:avoid;margin:0 0 28px;border-bottom:1px solid #e5e7eb}img{max-width:100%;height:auto}@media print{body{margin:12mm}}</style></head><body><h1>Bookmarked questions</h1>" + note + blocks + "<script>window.onload=function(){setTimeout(function(){window.print()},200)}<\/script></body></html>";
   const w = window.open("", "_blank");
   if (!w) {
@@ -622,7 +644,7 @@ async function nbPrintBookmarks() {
   w.document.close();
 }
 async function nbTestFromBookmarks() {
-  const pack = await nbLoadBookmarkQuestions(120);
+  const pack = await nbLoadBookmarkQuestions();
   if (!pack.ids.length) {
     if (typeof showToast === "function") showToast("No bookmarked questions for a test");
     return;
@@ -631,7 +653,6 @@ async function nbTestFromBookmarks() {
     if (typeof showToast === "function") showToast("Test player is not available on this page");
     return;
   }
-  if (pack.total > pack.ids.length && typeof showToast === "function") showToast("Test uses the first " + pack.ids.length + " bookmarks");
   startTest(pack.ids, "Bookmarked questions", "custom", {
     practiceMode: true,
     timed: false,
@@ -646,7 +667,7 @@ async function nbTestFromBookmarks() {
   });
 }
 async function nbShareBookmarks() {
-  const pack = await nbLoadBookmarkQuestions(80);
+  const pack = await nbLoadBookmarkQuestions();
   if (!pack.ids.length) {
     if (typeof showToast === "function") showToast("No bookmarked questions to share");
     return;
@@ -655,7 +676,6 @@ async function nbShareBookmarks() {
     if (typeof showToast === "function") showToast("Share link needs the custom-test page script");
     return;
   }
-  if (pack.total > pack.ids.length && typeof showToast === "function") showToast("Share link includes the first " + pack.ids.length + " bookmarks");
   ctCopyShareLink({
     id: "bm_" + Date.now(),
     title: "Bookmarked questions",

@@ -47,6 +47,11 @@ function qxRequireLogin(view, payload) {
   return true;
 }
 
+/** Shared custom test (#custom/take/…). Question ids only — no account required. */
+function qxIsSharedCustomTake(view, payload) {
+  return view === "custom" && !!(payload && payload.step === "take" && payload.share);
+}
+
 function qxIsExamComingSoon(key) {
   return !!(typeof EXAMS !== "undefined" && EXAMS[key] && EXAMS[key].isComingSoon);
 }
@@ -507,7 +512,18 @@ function finishRender(html) {
 }
 
 function render(view, payload) {
-  if (typeof QuantrexAccess !== "undefined" && !QuantrexAccess.allow(view, payload)) {
+  if (qxIsSharedCustomTake(view, payload) && typeof viewCustomTests !== "function") {
+    finishRender(typeof qxLoadLogoHtml === "function" ? qxLoadLogoHtml("Opening shared test…") : '<div class="empty">Opening shared test…</div>');
+    const src = "custom-test.js?v=qxmd255";
+    const done = function () {
+      if (typeof viewCustomTests === "function") render(view, payload);
+      else finishRender('<div class="empty">Could not open this shared test. <button class="btn-primary sm" onclick="location.reload()">Retry</button></div>');
+    };
+    if (typeof QxPerf !== "undefined" && QxPerf.loadScript) QxPerf.loadScript(src).then(done);
+    else done();
+    return;
+  }
+  if (!qxIsSharedCustomTake(view, payload) && typeof QuantrexAccess !== "undefined" && !QuantrexAccess.allow(view, payload)) {
     finishRender(QuantrexAccess.paywallHtml(view, payload));
     return;
   }
@@ -3591,11 +3607,11 @@ document.addEventListener("DOMContentLoaded", () => {
 const _origGo = go;
 go = function(view, payload) {
   currentView = view;
-  if (typeof QuantrexAccess !== "undefined" && !QuantrexAccess.allow(view, payload)) {
+  if (!qxIsSharedCustomTake(view, payload) && typeof QuantrexAccess !== "undefined" && !QuantrexAccess.allow(view, payload)) {
     finishRender(QuantrexAccess.paywallHtml(view, payload));
     return;
   }
-  if (view !== "test" && view !== "question" && !qxRequireLogin(view, payload)) return;
+  if (view !== "test" && view !== "question" && !qxIsSharedCustomTake(view, payload) && !qxRequireLogin(view, payload)) return;
   const main = document.getElementById("app-main");
   if (main) main.scrollTop = 0;
   _listPage = 1;

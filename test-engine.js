@@ -6027,7 +6027,7 @@ function launchTestSession(main) {
 async function startTest(questionIds, title, returnTo, options) {
   const opts = options || {};
   try {
-    if (typeof QuantrexAccess !== "undefined" && QuantrexAccess.allow) {
+    if (!opts.sharedTake && typeof QuantrexAccess !== "undefined" && QuantrexAccess.allow) {
       const gate = {
         exam: (opts.meta && (opts.meta.slug || opts.meta.exam || opts.meta.track)) || (typeof STATE !== "undefined" ? STATE.exam : ""),
         slug: (opts.meta && opts.meta.slug) || "",
