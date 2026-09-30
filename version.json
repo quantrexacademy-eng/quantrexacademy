@@ -1,10 +1,10 @@
 {
-  "cache": "qx-pwa-qxmd251",
-  "ts": 1790900000251,
-  "title": "qxmd251: Test Series toolbar + high-contrast questions",
+  "cache": "qx-pwa-qxmd252",
+  "ts": 1790900000252,
+  "title": "qxmd252: Light and dark icons, covers, and contrast",
   "site": "https://www.quantrexacademy.com",
-  "build": "qxmd251",
-  "body": "Test Series View Settings, Instructions, and Question Paper buttons open. Question stem, options, and instructions stay high-contrast in light (black on white) and dark (white on black). Official answers are unchanged.",
+  "build": "qxmd252",
+  "body": "Homepage folder icons stay visible in light and dark. Book covers and formula labels stay readable. Instructions, solution view, and toolbars keep high contrast. Official answers are unchanged.",
   "package": "com.quantrexacademy.app",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }
