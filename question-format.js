@@ -97,8 +97,8 @@ const QuantrexQFormat = (() => {
     // Always emit quoted src. Unquoted src=...url=... cuts at "=" and spills the path as text.
     out = out.replace(/<img\b([^>]*?)(\s*\/\s*)?>/gi, (full, attrs) => {
       let a = String(attrs || "").replace(/\/\s*$/, "").trim();
-      const qm = a.match(/\bsrc\s*=\s*(["'])([\s\S]*?)\1/i);
-      const um = !qm && a.match(/\bsrc\s*=\s*([^\s>]+)/i);
+      const qm = a.match(/(?<![\w-])src\s*=\s*(["'])([\s\S]*?)\1/i);
+      const um = !qm && a.match(/(?<![\w-])src\s*=\s*([^\s>]+)/i);
       let src = qm ? qm[2] : (um ? um[1] : "");
       if (!src) return full;
       if (/data:|assets\/diagrams|assets\/qx-figures|pubchem\.ncbi|cactus\.nci/i.test(src)
@@ -108,12 +108,14 @@ const QuantrexQFormat = (() => {
       const raw = unwrapProxyUrl(src);
       const disp = toDisplay(src);
       a = a
-        .replace(/\bsrc\s*=\s*(["'])[\s\S]*?\1/i, "")
-        .replace(/\bsrc\s*=\s*[^\s>]+/i, "")
+        .replace(/(?<![\w-])src\s*=\s*(["'])[\s\S]*?\1/i, "")
+        .replace(/(?<![\w-])src\s*=\s*[^\s"'<>]+/i, "")
         .replace(/\bdata-qx-orig-src\s*=\s*(["'])[\s\S]*?\1/i, "")
         .replace(/\bdata-qx-orig-src\s*=\s*[^\s>]+/i, "")
-        .replace(/\balt\s*=\s*(["'])[\s\S]*?\1/i, "")
-        .replace(/\balt\s*=\s*[^\s>]+/i, "")
+        .replace(/\bdata-qx-storage-src\s*=\s*(["'])[\s\S]*?\1/i, "")
+        .replace(/\bdata-qx-storage-src\s*=\s*[^\s"'<>]+/i, "")
+        .replace(/(?:^|\s)alt\s*=\s*(["'])[\s\S]*?\1/gi, " ")
+        .replace(/(?:^|\s)alt\s*=\s*[^\s"'<>]+/gi, " ")
         .replace(/\breferrerpolicy\s*=\s*(["'])[\s\S]*?\1/i, "")
         .replace(/\bdecoding\s*=\s*(["'])[\s\S]*?\1/i, "")
         .replace(/\bloading\s*=\s*(["'])[\s\S]*?\1/i, "")
@@ -158,7 +160,7 @@ const QuantrexQFormat = (() => {
           a = a.replace(/\bclass=(["'])([^"']*)\1/i, (m, q, c) => `class=${q}${c} qx-pool-fig qx-no-wm qx-opt-fig-img qx-fig-ready${q}`);
         }
         // Compact option structures (BNH: keep bonds readable, less vertical scroll)
-        const hdStyle = "max-width:min(100%,220px);max-height:130px;width:auto;height:auto;display:block;margin:4px auto;padding:2px;opacity:1;visibility:visible;object-fit:contain;background:#fff;border-radius:8px;image-rendering:high-quality";
+        const hdStyle = "max-width:100%;max-height:min(70vh,480px);width:auto;height:auto;display:block;margin:4px auto;padding:2px;opacity:1;visibility:visible;object-fit:contain;background:#fff;border-radius:8px;image-rendering:high-quality";
         if (!/\bstyle=/i.test(a)) {
           a += ` style="${hdStyle}"`;
         } else {
@@ -1431,7 +1433,7 @@ const QuantrexQFormat = (() => {
       const multiCtrl = multi
         ? `<span class="qx-prac-check mtk-opt-check" aria-hidden="true"></span>`
         : "";
-      const optSrcAttr = String(raw || "").slice(0, 4000).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
+      const optSrcAttr = String(raw || "").slice(0, 4000).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
       return `<button type="button" class="${cls}" data-prac-opt="${i}" ${done ? "disabled" : ""}>
         ${multiCtrl}
         <span class="mtk-opt-letter qx-opt-circle" aria-hidden="true">${letter(i)}</span>

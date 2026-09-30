@@ -360,7 +360,7 @@ window.Mx = (() => {
   }
 
   function figureHtml(attrs) {
-    const srcM = String(attrs || "").match(/\bsrc=["']([^"']+)["']/i);
+    const srcM = String(attrs || "").match(/(?<![\w-])src=["']([^"']+)["']/i);
     const src = srcM ? fixBrokenImgUrls(srcM[1]) : "";
     if (shouldPoolFigure(src) && typeof QxImgClean !== "undefined" && QxImgClean.poolFigureHtml) {
       return QxImgClean.poolFigureHtml(src);
@@ -468,7 +468,7 @@ window.Mx = (() => {
 
   function protectImgUrls(str) {
     const slots = [];
-    const safe = String(str).replace(/(<img\b[^>]*?\bsrc\s*=\s*["'])([^"']+)(["'])/gi, (m, pre, url, post) => {
+    const safe = String(str).replace(/(<img\b[^>]*?(?<![\w-])src\s*=\s*["'])([^"']+)(["'])/gi, (m, pre, url, post) => {
       if (!PROTECTED_IMG_RX.test(url) && !FORMULA_IMG_RX.test(url) && !/^https?:/i.test(url) && !/\/assets\//i.test(url)) return m;
       const key = `__QXIMG${slots.length}__`;
       slots.push(url);
@@ -4148,7 +4148,7 @@ window.Mx = (() => {
     function pinPoolImgs(html) {
       return String(html || "").replace(/<img\b([^>]*)>/gi, (full, attrs) => {
         let a = String(attrs || "");
-        const sm = a.match(/\bsrc\s*=\s*(["'])([^"']*)\1/i);
+        const sm = a.match(/(?<![\w-])src\s*=\s*(["'])([^"']*)\1/i);
         let src = sm ? sm[2] : "";
         if (!src) return full;
         src = src
@@ -4724,6 +4724,13 @@ window.Mx = (() => {
         }
       }
     }
+    // qxmd257: park <img> so jee_main_2026.png?alt=media is not rewritten into <sub> text.
+    const _qxFigSlots257 = [];
+    s = String(s).replace(/<img\b[^>]*>/gi, (m) => {
+      const k = "\uE170" + _qxFigSlots257.length + "\uE171";
+      _qxFigSlots257.push(m);
+      return k;
+    });
     s = normalizeLatex(s);
     s = fixBrokenHtml(s);
     if (/\\le\s*ft|Unknown node type|Math input error|\\pithen/i.test(s)) {
@@ -4733,6 +4740,9 @@ window.Mx = (() => {
     try { s = repairMatchListTableHtml(s); } catch (_) { /* */ }
     // Chemistry Unicode (H2SO4 → H₂SO₄) outside math islands
     try { s = formatChemistryUnicode(s); } catch (_) { /* */ }
+    _qxFigSlots257.forEach((tag, i) => {
+      s = s.split("\uE170" + i + "\uE171").join(tag);
+    });
     // BHK: leftover Unicode math → KaTeX (never mutate figures / meaning)
     try { s = texifyUnicodeMath(s); } catch (_) { /* */ }
     // Pool figures → clean proxy (no Marks watermark on view/click). Keep local assets as-is.
@@ -4743,7 +4753,7 @@ window.Mx = (() => {
     if (typeof QxImgClean !== "undefined" && QxImgClean.stripSpilledFigUrls) {
       try { s = QxImgClean.stripSpilledFigUrls(s); } catch (_) { /* */ }
     }
-    s = s.replace(/\bsrc\s*=\s*(["'])([^"']+)\1/gi, (m, q, url) => {
+    s = s.replace(/(?<![\w-])src\s*=\s*(["'])([^"']+)\1/gi, (m, q, url) => {
       if (/^data:/i.test(url)) return m;
       const esc = (u) => String(u || "").replace(/&/g, "&amp;").replace(/"/g, "&quot;");
       if (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.displaySrc

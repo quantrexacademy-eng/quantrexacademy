@@ -881,3 +881,30 @@ img.qx-opt-fig-img,
   font-size: 0 !important;
   line-height: 0 !important;
 }
+
+/* qxmd257: option figures stay inside the card; text wraps; stems stay visible */
+.qx-prac-opt,
+.qx-prac-opt-text,
+.qx-opt-text-only,
+.qx-marks-native-opt,
+.qx-content {
+  max-width: 100%;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+.qx-prac-opt img,
+.qx-opt-diagram-slot img,
+.qx-marks-native-opt img,
+.qx-fig-flat img,
+.mtk-q-text img,
+.qx-q-text img {
+  max-width: 100% !important;
+  height: auto !important;
+  object-fit: contain;
+}
+.qx-prac-opts,
+.qx-opt-grid,
+.eg-opts {
+  min-width: 0;
+}

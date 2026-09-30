@@ -477,7 +477,7 @@ window.QxImgClean = (() => {
       if (rec && rec.s) return fixUrl(rec.s);
     }
     const raw = String((q && (q._qxBankQ || q.q)) || "");
-    const m = raw.match(/\bsrc=["']([^"']+)["']/i);
+    const m = raw.match(/(?<![\w-])src=["']([^"']+)["']/i);
     if (m && /AKCR2_|2026_modules/i.test(m[1])) {
       let u = fixUrl(m[1]);
       if (/proxy-image/i.test(u)) {
@@ -569,7 +569,7 @@ window.QxImgClean = (() => {
       try { out = QxOwnedFigs.rewriteHtml(out); } catch (_) { /* keep */ }
     }
     // Never expand broken Marks hosts to getmarks.app.
-    out = out.replace(/\bsrc=(["'])([^"']+)\1/gi, (m, q, src) => {
+    out = out.replace(/(?<![\w-])src=(["'])([^"']+)\1/gi, (m, q, src) => {
       try {
         if (/firebasestorage|quantrexacademy-app\.firebasestorage/i.test(src)) return m;
         const fixed = fixUrl(src);
@@ -1131,7 +1131,7 @@ window.QxImgClean = (() => {
     while ((m = imgRx.exec(s)) !== null) {
       const attrs = m[1];
       const origM = attrs.match(/\bdata-qx-orig-src=["']([^"']+)["']/i);
-      const srcM = attrs.match(/\bsrc=["']([^"']+)["']/i);
+      const srcM = attrs.match(/(?<![\w-])src=["']([^"']+)["']/i);
       let raw = origM ? origM[1] : (srcM ? srcM[1] : "");
       raw = fixUrl(raw);
       if (!raw || raw.startsWith("data:image/gif")) continue;
@@ -4092,7 +4092,7 @@ window.QxImgClean = (() => {
     while ((m = imgRx.exec(s)) !== null) {
       const tag = m[0];
       const origM = tag.match(/\bdata-qx-orig-src=["']([^"']+)["']/i);
-      const srcM = tag.match(/\bsrc=["']([^"']+)["']/i);
+      const srcM = tag.match(/(?<![\w-])src=["']([^"']+)["']/i);
       let raw = origM ? origM[1] : (srcM ? srcM[1] : "");
       if (!raw) continue;
       if (isApiFigureSrc(raw)) raw = canonicalCdnSrc(raw) || "";
@@ -4191,13 +4191,13 @@ window.QxImgClean = (() => {
       // Normalize local match imgs: visible classes, no broken self-close
       raw = raw.replace(/<img\b([^>]*?)(\s*\/\s*)?>/gi, (full, attrs) => {
         let a = String(attrs || "").replace(/\/\s*$/, "").trim();
-        const srcM = a.match(/\bsrc\s*=\s*(["'])([^"']*)\1/i);
+        const srcM = a.match(/(?<![\w-])src\s*=\s*(["'])([^"']*)\1/i);
         if (!srcM) return full;
         let src = srcM[2];
         if (src && !src.startsWith("/") && !/^https?:/i.test(src) && /assets\//i.test(src)) {
           src = "/" + src.replace(/^\.\//, "");
         }
-        a = a.replace(/\bsrc\s*=\s*(["'])[^"']*\1/i, `src="${src}"`);
+        a = a.replace(/(?<![\w-])src\s*=\s*(["'])[^"']*\1/i, `src="${src}"`);
         a = a.replace(/\bdata-qx-orig-src\s*=\s*(["'])[^"']*\1/i, "");
         if (!/class=/i.test(a)) a += ' class="qx-pool-fig qx-no-wm qx-match-fig qx-local-fig"';
         else if (!/qx-local-fig|qx-match-fig/i.test(a)) {
@@ -4321,6 +4321,7 @@ window.QxImgClean = (() => {
     // Path crumbs from a punched <img> (ss 912–914 / live 27189)
     if (/%2F|&clean=|v\s*=\s*c93|watermarked/i.test(t) && /http|proxy|png|jpg|webp/i.test(t)) return true;
     if (/\.(?:png|jpe?g|webp|gif)\b/i.test(t) && /clean|alt\s*=|watermark/i.test(t)) return true;
+    if (/\balt\s*=\s*media\b/i.test(t) && /png|jpe?g|webp|gif|>|src/i.test(t)) return true;
     if (/["']\s*>\s*$/.test(t) && /alt|clean|src/i.test(t)) return true;
     if (/cdn-question-pool|getmarks\.app|proxy-image|watermark_improved|2026_modules|AKCR2_|quizrr\.in/i.test(t)
       && /https?:|%2F|\.png|\.jpg|src=/i.test(t)) {
@@ -4358,8 +4359,8 @@ window.QxImgClean = (() => {
   function forceCleanProxyInHtml(html) {
     const out = String(html || "").replace(/<img\b([^>]*?)(\s*\/\s*)?>/gi, (full, attrs) => {
       let a = String(attrs || "").replace(/\/\s*$/, "").trim();
-      const srcM = a.match(/\bsrc\s*=\s*(["'])([^"']*)\1/i)
-        || a.match(/\bsrc\s*=\s*([^\s>]+)/i);
+      const srcM = a.match(/(?<![\w-])src\s*=\s*(["'])([^"']*)\1/i)
+        || a.match(/(?<![\w-])src\s*=\s*([^\s>]+)/i);
       if (!srcM) return full;
       let src = srcM[2] != null ? srcM[2] : srcM[1];
       if (/proxy-image|restore-image/i.test(src)) {
@@ -4381,9 +4382,9 @@ window.QxImgClean = (() => {
           : ("/api/proxy-image?url=" + encodeURIComponent(src) + "&clean=1&fc=1&v=qxfig110");
         if (cardDisp && cardDisp !== src) {
           const safeCard = String(cardDisp).replace(/&/g, "&amp;").replace(/"/g, "&quot;");
-          a = a.replace(/\bsrc\s*=\s*(["'])[\s\S]*?\1/i, "src=$1" + safeCard + "$1")
-            .replace(/\bsrc\s*=\s*[^\s>]+/i, "src=\"" + safeCard + "\"");
-          if (!/\bsrc=/i.test(a)) a += ' src="' + safeCard + '"';
+          a = a.replace(/(?<![\w-])src\s*=\s*(["'])[\s\S]*?\1/i, "src=$1" + safeCard + "$1")
+            .replace(/(?<![\w-])src\s*=\s*[^\s"'<>]+/i, "src=\"" + safeCard + "\"");
+          if (!/(?<![\w-])src=/i.test(a)) a += ' src="' + safeCard + '"';
           return `<img ${a}>`;
         }
       }
@@ -4394,8 +4395,8 @@ window.QxImgClean = (() => {
       const safeOrig = String(orig).replace(/&/g, "&amp;").replace(/"/g, "&quot;");
       const safeProxy = String(proxy).replace(/&/g, "&amp;").replace(/"/g, "&quot;");
       a = a
-        .replace(/\bsrc\s*=\s*(["'])[\s\S]*?\1/i, "")
-        .replace(/\bsrc\s*=\s*[^\s>]+/i, "")
+        .replace(/(?<![\w-])src\s*=\s*(["'])[\s\S]*?\1/i, "")
+        .replace(/(?<![\w-])src\s*=\s*[^\s"'<>]+/i, "")
         .replace(/\bdata-qx-orig-src\s*=\s*(["'])[\s\S]*?\1/i, "")
         .replace(/\bdata-qx-orig-src\s*=\s*[^\s>]+/i, "")
         .replace(/\s*crossorigin(?:\s*=\s*(["'])[^"']*\1)?/gi, "")
@@ -4459,8 +4460,8 @@ window.QxImgClean = (() => {
     const attrs = imgM[1];
     const origM = attrs.match(/\bdata-qx-orig-src=["']([^"']+)["']/i)
       || attrs.match(/\bdata-qx-orig-src=([^\s>]+)/i);
-    const srcM = attrs.match(/\bsrc=["']([^"']+)["']/i)
-      || attrs.match(/\bsrc=([^\s>]+)/i);
+    const srcM = attrs.match(/(?<![\w-])src=["']([^"']+)["']/i)
+      || attrs.match(/(?<![\w-])src=([^\s>]+)/i);
     let raw = origM ? origM[1] : (srcM ? srcM[1] : "");
     raw = fixUrl(raw);
     if (isApiFigureSrc(raw)) raw = canonicalCdnSrc(raw) || "";
@@ -4597,7 +4598,7 @@ window.QxImgClean = (() => {
     const origRx = /\bdata-qx-orig-src=["']([^"']+)["']/gi;
     let om;
     while ((om = origRx.exec(s)) !== null) pushDiagramSrc(srcs, om[1]);
-    const rx = /\bsrc=["']([^"']+)["']/gi;
+    const rx = /(?<![\w-])src=["']([^"']+)["']/gi;
     let m;
     while ((m = rx.exec(s)) !== null) {
       let found = m[1];
@@ -4794,8 +4795,8 @@ window.QxImgClean = (() => {
   function optionDirectImgHtml(raw) {
     const entries = resolveOptionEntries(raw, null);
     if (entries.length) return poolOptionFigureHtml(entries[0].src, entries[0].displayW);
-    const m = String(raw || "").match(/\bsrc=["']([^"']+)["']/i)
-      || String(raw || "").match(/\bsrc=([^\s>]+)/i);
+    const m = String(raw || "").match(/(?<![\w-])src=["']([^"']+)["']/i)
+      || String(raw || "").match(/(?<![\w-])src=([^\s>]+)/i);
     if (!m) {
       const spilled = recoverSpilledPoolUrl(raw);
       if (spilled) return poolOptionFigureHtml(spilled, 0);
