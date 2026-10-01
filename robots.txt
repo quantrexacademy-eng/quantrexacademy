@@ -8,6 +8,8 @@ Allow: /bitsat
 Allow: /questions
 Allow: /search
 Allow: /app.html
+Allow: /api/proxy-image
+Allow: /api/restore-image
 Disallow: /api/
 Disallow: /data/seo/
 Disallow: /admin.html

@@ -1362,3 +1362,112 @@ html[data-theme="dark"] .qx-med-subj-ic img {
     filter: none !important;
   }
 }
+
+
+/* qxmd262: settings sheet groups stay readable on a phone, selected stays white on blue */
+html body .eg-fmt-pop.eg-vs-marks,
+html body #pracViewPanel.eg-vs-marks {
+  overflow-x: hidden !important;
+}
+html body .eg-fmt-pop.eg-vs-marks .eg-vs-lab,
+html body #pracViewPanel.eg-vs-marks .eg-vs-lab {
+  min-width: 0 !important;
+  flex: 1 1 auto !important;
+}
+html body .eg-fmt-pop.eg-vs-marks .eg-vs-lab-t,
+html body #pracViewPanel.eg-vs-marks .eg-vs-lab-t,
+html body .eg-fmt-pop.eg-vs-marks .eg-fmt-title,
+html body #pracViewPanel.eg-vs-marks .eg-fmt-title {
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+  line-height: 1.35 !important;
+  color: inherit !important;
+  -webkit-text-fill-color: currentColor !important;
+}
+html body .eg-fmt-pop.eg-vs-marks .eg-vs-hint,
+html body #pracViewPanel.eg-vs-marks .eg-vs-hint {
+  color: #475569 !important;
+  -webkit-text-fill-color: #475569 !important;
+}
+html[data-theme="dark"] body .eg-fmt-pop.eg-vs-marks .eg-vs-hint,
+html body .eg-test-root[data-test-theme="dark"] .eg-fmt-pop.eg-vs-marks .eg-vs-hint,
+html[data-theme="dark"] body #pracViewPanel.eg-vs-marks .eg-vs-hint,
+html body .mtk-test-root[data-test-theme="dark"] #pracViewPanel.eg-vs-marks .eg-vs-hint {
+  color: #cbd5e1 !important;
+  -webkit-text-fill-color: #cbd5e1 !important;
+}
+html body .eg-fmt-pop.eg-vs-marks .eg-vs-h,
+html body #pracViewPanel.eg-vs-marks .eg-vs-h {
+  color: #334155 !important;
+  -webkit-text-fill-color: #334155 !important;
+}
+html[data-theme="dark"] body .eg-fmt-pop.eg-vs-marks .eg-vs-h,
+html body .eg-test-root[data-test-theme="dark"] .eg-vs-h,
+html[data-theme="dark"] body #pracViewPanel.eg-vs-marks .eg-vs-h,
+html body .mtk-test-root[data-test-theme="dark"] #pracViewPanel.eg-vs-marks .eg-vs-h {
+  color: #cbd5e1 !important;
+  -webkit-text-fill-color: #cbd5e1 !important;
+}
+html body .eg-fmt-pop.eg-vs-marks .eg-fmt-row,
+html body #pracViewPanel.eg-vs-marks .eg-fmt-row,
+html body .eg-fmt-pop.eg-vs-marks .eg-vs-tools,
+html body #pracViewPanel.eg-vs-marks .eg-vs-tools {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  max-width: 100% !important;
+}
+html body .eg-fmt-pop.eg-vs-marks .eg-fmt-row button,
+html body #pracViewPanel.eg-vs-marks .eg-fmt-row button,
+html body .eg-fmt-pop.eg-vs-marks .eg-vs-tools button,
+html body #pracViewPanel.eg-vs-marks .eg-vs-tools button {
+  min-height: 44px !important;
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+  background: #f1f5f9 !important;
+  border: 1px solid #cbd5e1 !important;
+}
+html[data-theme="dark"] body .eg-fmt-pop.eg-vs-marks .eg-fmt-row button:not(.on),
+html body .eg-test-root[data-test-theme="dark"] .eg-fmt-pop.eg-vs-marks .eg-fmt-row button:not(.on),
+html[data-theme="dark"] body #pracViewPanel.eg-vs-marks .eg-fmt-row button:not(.on),
+html body .mtk-test-root[data-test-theme="dark"] #pracViewPanel.eg-vs-marks .eg-fmt-row button:not(.on),
+html[data-theme="dark"] body .eg-fmt-pop.eg-vs-marks .eg-vs-tools button,
+html body .eg-test-root[data-test-theme="dark"] .eg-vs-tools button,
+html[data-theme="dark"] body #pracViewPanel.eg-vs-marks .eg-vs-tools button {
+  color: #f8fafc !important;
+  -webkit-text-fill-color: #f8fafc !important;
+  background: #1e293b !important;
+  border-color: #475569 !important;
+}
+html body .eg-fmt-pop.eg-vs-marks .eg-fmt-row button.on,
+html body #pracViewPanel.eg-vs-marks .eg-fmt-row button.on,
+html body .eg-fmt-pop.eg-vs-marks .eg-vs-size-row button.on,
+html body #pracViewPanel.eg-vs-marks .eg-vs-size-row button.on {
+  background: #1565C0 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  border-color: #1565C0 !important;
+}
+html body .eg-fmt-pop.eg-vs-marks .eg-vs-tog,
+html body #pracViewPanel.eg-vs-marks .eg-vs-tog {
+  min-width: 46px !important;
+  width: 46px !important;
+  height: 28px !important;
+  flex: 0 0 46px !important;
+}
+@media (max-width: 420px) {
+  html body .eg-fmt-pop.eg-vs-marks .eg-vs-sizes,
+  html body #pracViewPanel.eg-vs-marks .eg-vs-sizes {
+    flex-wrap: wrap !important;
+    align-items: flex-start !important;
+  }
+  html body .eg-fmt-pop.eg-vs-marks .eg-vs-size-row,
+  html body #pracViewPanel.eg-vs-marks .eg-vs-size-row {
+    width: 100% !important;
+    justify-content: flex-start !important;
+  }
+  html body .eg-fmt-pop.eg-vs-marks,
+  html body #pracViewPanel.eg-vs-marks {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+}
