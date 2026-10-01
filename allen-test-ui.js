@@ -766,7 +766,7 @@ const AllenTestUI = (() => {
             </div>
           </div>
           
-<aside class="mtk-palette"><div class="mtk-pal-grp-grid flat">${cells}</div></aside>
+<aside class="mtk-palette"${(typeof window !== "undefined" && window.matchMedia && window.matchMedia("(max-width:760px)").matches) ? " hidden" : ""} data-qx="qxmd272 palette"><div class="mtk-pal-grp-grid flat">${cells}</div></aside>
         </div>
                 <div class="qx-prac-view-panel eg-vs-marks" id="pracViewPanel" hidden role="dialog" aria-label="Question View Settings">
           <div class="eg-vs-head"><h5 class="eg-fmt-title">Question View Settings</h5>

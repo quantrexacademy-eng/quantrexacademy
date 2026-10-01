@@ -975,6 +975,13 @@ html[data-theme="dark"] .qx-help-bar a { color: #c5dcff; }
 .login-bar { padding: 22px 18px 16px; }
 </style>
     <link rel="stylesheet" href="assets/qx-site-contrast.css?v=qxmd179">
+<style id="qx-hub-272">
+/* qxmd272: centre logo sits fully inside the hub circle (no white square), soft breathing glow */
+.stage-hub{padding:0!important;background:#000!important}
+.stage-hub img{width:100%!important;height:100%!important;border-radius:50%!important;object-fit:cover!important;clip-path:circle(50% at 50% 50%);filter:drop-shadow(0 0 6px rgba(56,189,248,.35))!important;animation:qx-hub-breathe 5.5s ease-in-out infinite!important;will-change:transform}
+@keyframes qx-hub-breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.045)}}
+@media (prefers-reduced-motion: reduce){.stage-hub img{animation:none!important}}
+</style>
 </head>
 <body>
   <div class="bg-orbs" aria-hidden="true">
@@ -1023,7 +1030,7 @@ html[data-theme="dark"] .qx-help-bar a { color: #c5dcff; }
           <span style="--a:300deg;--ld:1s"></span>
           <span style="--a:330deg;--ld:1.1s"></span>
         </div>
-        <div class="stage-hub"><img src="assets/quantrex-logo-192.png" alt="Quantrex Academy" width="88" height="88" class="qx-ui-brand-logo"></div>
+        <div class="stage-hub"><img src="assets/quantrex-logo-hub-192.png" alt="Quantrex Academy" width="88" height="88" class="qx-ui-brand-logo"></div>
 
         <div class="cat-rotor" id="catRotor">
           <button type="button" class="cat cat-academic" data-cat="Academic" title="Academic 7–12">

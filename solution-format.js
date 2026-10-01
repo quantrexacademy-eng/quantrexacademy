@@ -1112,7 +1112,31 @@ const QuantrexSolution = (() => {
     return cands[0];
   }
 
-  function ensureNoStemHead(html, q) {
+  /* qxmd272: stem-echo / repeated-question trimming is text based. Run on HTML that already holds KaTeX it
+     cut mid-tag (leaking "pan class=mspace..." and raw \Rightarrow). Each KaTeX block becomes a token first;
+     if any token is cut the untrimmed HTML is kept. */
+  function qxKatexSafe(fn, html, q) {
+    const s = String(html == null ? "" : html);
+    if (typeof document === "undefined" || !/class\s*=\s*["'][^"']*katex/.test(s)) return fn(html, q);
+    let tp;
+    try { tp = document.createElement("template"); tp.innerHTML = s; } catch (_) { return fn(html, q); }
+    const store = [];
+    tp.content.querySelectorAll(".katex-display, .katex").forEach(function (el) {
+      if (el.parentElement && el.parentElement.closest(".katex-display, .katex")) return;
+      store.push(el.outerHTML);
+      el.replaceWith(document.createTextNode(" \u00a7\u00a7QXKH" + (store.length - 1) + "\u00a7\u00a7 "));
+    });
+    if (!store.length) return fn(html, q);
+    let out = fn(tp.innerHTML, q);
+    out = String(out == null ? "" : out);
+    out = out.replace(/ ?\u00a7\u00a7QXKH(\d+)\u00a7\u00a7 ?/g, function (m, i) { return store[+i] != null ? store[+i] : m; });
+    if (/QXKH/.test(out)) return s;
+    return out;
+  }
+  function stripLeadingStemEcho(html, q) { return qxKatexSafe(stripLeadingStemEchoCore, html, q); }
+  function ensureNoStemHead(html, q) { return qxKatexSafe(ensureNoStemHeadCore, html, q); }
+  function dropRepeatedQuestionBlocks(html, q) { return qxKatexSafe(dropRepeatedQuestionBlocksCore, html, q); }
+  function ensureNoStemHeadCore(html, q) {
     let out = String(html || "");
     if (!out.trim()) return out;
     /* qxmd208: always drop rescued/forced stem nodes before any early-return */
@@ -1198,7 +1222,7 @@ const QuantrexSolution = (() => {
     return out;
   }
 
-  function stripLeadingStemEcho(html, q) {
+  function stripLeadingStemEchoCore(html, q) {
     let out = String(html || "");
     if (!out.trim()) return out;
     /* qxmd208: drop rescued stem wrappers even if present on a card string */
@@ -1606,7 +1630,7 @@ const QuantrexSolution = (() => {
     return html;
   }
 
-  function dropRepeatedQuestionBlocks(html, q) {
+  function dropRepeatedQuestionBlocksCore(html, q) {
     const stemP = stemComparePlain((q && (q.q || q.questionText || q._qxOrigStem || q._qxBankQ || q.question)) || "");
     if (stemP.length < 8) return html;
     let s = String(html || "");
@@ -1647,7 +1671,9 @@ const QuantrexSolution = (() => {
     let label = "";
     try {
       if (typeof QuantrexQFormat !== "undefined" && QuantrexQFormat.formatCorrectAnswer) {
-        label = plainText(QuantrexQFormat.formatCorrectAnswer(q) || "");
+        /* qxmd272: keep TeX in the answer label (plainText turned "A. $\\sqrt{19}$" into "A. 19") */
+        const rawLab = String(QuantrexQFormat.formatCorrectAnswer(q) || "");
+        label = /\$|\\[a-zA-Z]/.test(rawLab) ? rawLab.replace(/<(?!img)[^>]*>/gi, " ").replace(/\s+/g, " ").trim() : plainText(rawLab);
       }
     } catch (_) { /* */ }
     let qType = "";
@@ -1692,6 +1718,8 @@ const QuantrexSolution = (() => {
   function renderBlock(q, rawSolution) {
     try { ensureSolCss(); } catch (_) { /* */ }
     let sol = rawSolution != null ? rawSolution : (q && (q.solution || q.sol || q.explanation));
+    /* qxmd272: \text{$ word $} and a stray \& after an alignment & ("&10") are source typos */
+    try { if (typeof Mx !== "undefined" && Mx.qxPreHealTex) sol = Mx.qxPreHealTex(sol); } catch (_) { /* */ }
     /* qxmd269: typeset \left / \begin and healed broken-TeX islands first, so stem-echo trimming and
        formatBody cannot cut them into raw TeX or escaped KaTeX HTML. Restored after formatBody. */
     const solSrc0 = sol;

@@ -5003,7 +5003,17 @@ window.Mx = (() => {
     const old = oldFn();
     return qxRawLeak(old) < ln ? old : healedHtml;
   }
+  /* qxmd272: \text{$ from $} (dollar inside \text breaks $ pairing for the rest of the solution) and
+     "& \& 10" (escaped ampersand right after an alignment &, printed as "&10"). */
+  function qxPreHealTex(src) {
+    if (src == null) return src;
+    let s = String(src);
+    if (s.indexOf("\\text") >= 0 && s.indexOf("$") >= 0) s = s.replace(/\\text\s*\{\s*\$([^{}$]*)\$\s*\}/g, "\\text{ $1 }");
+    if (s.indexOf("\\&") >= 0) s = s.replace(/(\\begin\{(?:aligned|align\*?|gathered|array|split)\}(?:\{[^{}]*\})?|\\\\)(\s*)&(\s*)\\&\s*/g, "$1$2&$3");
+    return s;
+  }
   function html(content) {
+    content = qxPreHealTex(content);
     if (content == null) return "";
     try { loadKatex(); } catch (_) { /* */ }
     let parked = null;
@@ -6084,6 +6094,7 @@ window.Mx = (() => {
     qxParkTex,
     qxUnparkTex,
     qxHealTexIsland,
+    qxPreHealTex,
     qxPickLessRaw,
     htmlMarksNative,
     typeset,
@@ -6150,6 +6161,7 @@ window.Mx = (() => {
   function render(text, opts) {
     try {
       /* qxmd269: typeset healed broken-TeX islands before normalize() can split them */
+      try { if (w.Mx && w.Mx.qxPreHealTex) text = w.Mx.qxPreHealTex(text); } catch (_) { /* */ }
       let parked = null;
       try { if (w.Mx && w.Mx.qxParkTex) parked = w.Mx.qxParkTex(text); } catch (_) { parked = null; }
       if (parked && parked.ids.length) {

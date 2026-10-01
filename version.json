@@ -1,10 +1,10 @@
 {
-  "cache": "qx-pwa-qxmd271",
-  "ts": 1790900000271,
-  "title": "qxmd271: Full solution visible, buttons always on screen, clean phone header",
+  "cache": "qx-pwa-qxmd272",
+  "ts": 1790900000272,
+  "title": "qxmd272: Questions fit the phone screen, cleaner solutions, round logo",
   "site": "https://www.quantrexacademy.com",
-  "build": "qxmd271",
-  "body": "On phones the whole solution now scrolls above the Previous / Check / Next buttons, and those buttons always stay on screen. The phone header no longer shows the Eng / Med / Def / Acad switcher twice, and Login and the power icon are no longer cut off. Also keeps the small exam logo, correct answer keys and cleaner math from qxmd269.",
+  "build": "qxmd272",
+  "body": "Long questions, options and solutions now fit the phone screen; wide formulas scroll inside their own box. Fixed broken math such as $\\Rightarrow$ showing as code, a wrong-looking answer label (A. 19 is now A. sqrt 19), the hard-to-read exam/date chip in dark mode and the stray lines in solutions. The chapter practice view on phones now uses the same compact toolbar, palette sheet and footer as the main practice view. The centre logo on the login page is round with a soft glow.",
   "package": "com.quantrexacademy.app",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }
