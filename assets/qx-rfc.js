@@ -327,6 +327,23 @@
     });
     if (!deck.length) return;
     cur = Math.max(0, Math.min(deck.length - 1, start | 0));
+    if (window.QxCardViewer) { // qxmd273 viewer: shared full-screen reader (zoom / pan / fit / theme)
+      close();
+      var opened = window.QxCardViewer.open({
+        kind: "rfc",
+        start: cur,
+        items: deck.map(function (it) {
+          return { src: proxy(it.src), raw: rawSrc(it.src), title: (it.chapter || "Revision Flash Card") + (it.title ? " \u00b7 " + it.title : ""), sub: "Revision Flash Cards" };
+        }),
+        onError: function (img, it) {
+          if (img.dataset.qxCvRaw !== "1" && it.raw && /firebasestorage/i.test(it.raw)) { img.dataset.qxCvRaw = "1"; img.setAttribute("src", it.raw); return true; }
+          if (window.QxOwnedFigs && QxOwnedFigs.retryOnError && img.dataset.qxCvOwned !== "1") { img.dataset.qxCvOwned = "1"; QxOwnedFigs.retryOnError(img); return true; }
+          return false;
+        },
+        onChange: function (i) { cur = i; }
+      });
+      if (opened) return;
+    }
     loadPrefs();
     close();
     var wrap = document.createElement("div");

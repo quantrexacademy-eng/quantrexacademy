@@ -1,10 +1,10 @@
 {
-  "cache": "qx-pwa-qxmd272",
-  "ts": 1790900000272,
-  "title": "qxmd272: Questions fit the phone screen, cleaner solutions, round logo",
+  "cache": "qx-pwa-qxmd276",
+  "ts": 1790900000276,
+  "title": "qxmd276: Formula Cards open in the new reader",
   "site": "https://www.quantrexacademy.com",
-  "build": "qxmd272",
-  "body": "Long questions, options and solutions now fit the phone screen; wide formulas scroll inside their own box. Fixed broken math such as $\\Rightarrow$ showing as code, a wrong-looking answer label (A. 19 is now A. sqrt 19), the hard-to-read exam/date chip in dark mode and the stray lines in solutions. The chapter practice view on phones now uses the same compact toolbar, palette sheet and footer as the main practice view. The centre logo on the login page is round with a soft glow.",
+  "build": "qxmd276",
+  "body": "Formula Cards and Revision Flash Cards always open in the new full-screen reader, even on phones that still had the old one saved. Zoom, scroll to every edge, fit width or page, light and dark, portrait and landscape.",
   "package": "com.quantrexacademy.app",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }

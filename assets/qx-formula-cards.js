@@ -211,6 +211,40 @@
     if (!deck.length) return;
     cur = Math.max(0, Math.min(deck.length - 1, start | 0));
     closeReader();
+    if (window.QxCardViewer) { // qxmd273 viewer: shared full-screen reader (zoom / pan / fit / theme)
+      var trail = window._qxFcTrail;
+      var opened = window.QxCardViewer.open({
+        kind: "fc",
+        start: cur,
+        items: deck.map(function (it) {
+          var html = String(it.html || "");
+          var src = fcProxyUrl(it.src) || it.src || "";
+          var showHtml = html && (!src || (!/<img\b/i.test(html) && /[A-Za-z]{8,}/.test(html.replace(/<[^>]+>/g, " "))));
+          return { src: src, raw: it.src || "", html: showHtml ? html : (!src && /<img\b/i.test(html) ? html : ""), meaning: it.meaning || "", title: it.topic || "Formula", sub: (trail && trail.subject ? trail.subject + " \u00b7 " : "") + "Formula Cards" };
+        }),
+        onError: function (img, it) {
+          if (img.dataset.qxFcTriedRaw !== "1") {
+            img.dataset.qxFcTriedRaw = "1";
+            try {
+              var u = new URL(String(it.raw || ""), location.origin);
+              if (u.pathname.indexOf("proxy-image") >= 0) { var dec = decodeURIComponent(u.searchParams.get("url") || ""); if (dec) { img.setAttribute("src", dec); return true; } }
+            } catch (_) { /* */ }
+          }
+          if (window.QxOwnedFigs && QxOwnedFigs.retryOnError && img.dataset.qxCvOwned !== "1") { img.dataset.qxCvOwned = "1"; QxOwnedFigs.retryOnError(img); return true; }
+          return false;
+        },
+        onChange: function (i) { cur = i; },
+        onEdge: (trail && trail.chapters && trail.chapters.length) ? function (dir) {
+          var ni = (trail.chapterIdx | 0) + dir;
+          if (ni < 0 || ni >= trail.chapters.length || !trail.chapters[ni] || !trail.chapters[ni].name) return false;
+          window._qxFcOpenAfter = dir > 0 ? 0 : "last";
+          if (typeof window.go === "function") window.go("formula", { step: "cards", subject: trail.subject, chapter: trail.chapters[ni].name });
+          else if (window.qxFcOpenChapter) window.qxFcOpenChapter(trail.subject, trail.chapters[ni].name);
+          return true;
+        } : null
+      });
+      if (opened) return;
+    }
     const wrap = document.createElement("div");
     wrap.id = "qxFcReader";
     wrap.className = "qx-fc-reader";
