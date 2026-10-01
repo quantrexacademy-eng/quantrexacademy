@@ -2486,3 +2486,10 @@ html body .eg-test-root .eg-foot.eg-foot{position:fixed!important;bottom:0!impor
 @media (max-width:760px){
   html body .topbar #qxTopExams, html body .topbar .qx-top-exams{display:none!important}
 }
+
+/* qxmd271: phone header fits: right-side icons (search, theme, Login, power) were squeezed into a fixed
+   max-width box, cutting off Login and the power icon. */
+@media (max-width:760px){
+  html body .topbar .topbar-right.topbar-right{max-width:none!important;flex:0 0 auto!important;margin-left:auto!important}
+  html body .topbar #qxLoginHint{max-width:none!important;min-width:max-content!important;flex:0 0 auto!important}
+}
