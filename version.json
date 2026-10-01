@@ -1,10 +1,10 @@
 {
-  "cache": "qx-pwa-qxmd263",
-  "ts": 1790900000263,
-  "title": "qxmd263: Engineering and Medical desk icons stay visible",
+  "cache": "qx-pwa-qxmd264",
+  "ts": 1790900000264,
+  "title": "qxmd264: Solution figures show when a real image URL exists",
   "site": "https://www.quantrexacademy.com",
-  "build": "qxmd263",
-  "body": "Engineering and Medical home icons, folder covers, and section walls stay readable in light and dark, including on a phone. Icons use a small lift that never flips them away. The JEE Main exam date chip stays high contrast. Official answers are unchanged.",
+  "build": "qxmd264",
+  "body": "Solution graphs and diagrams use the clean image proxy when Storage has no copy, so they no longer render as a broken Question figure icon. Official answers are unchanged.",
   "package": "com.quantrexacademy.app",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }

@@ -24,7 +24,7 @@
     return m;
   })();
   const UI_KEEP = /ic_content_exam_|cpyqb\/subjects|ncert_toolbox|app_assets\/img\/exams\//i;
-  const FIG_VER = "qxmd248";
+  const FIG_VER = "qxmd264";
   const POOL_RX = /cdn-question-pool\.getmarks|cdn\.quizrr|watermarked_images|\/pyq\/|AKCR2_|2026_modules/i;
   let LOCAL_FIG_MAP = {};
   try {
@@ -200,7 +200,19 @@
     const inner = (isForeignHost(owned) ? ownedFigureUrl(owned) : "") || owned;
     const card = isCardArt(raw) || isCardArt(inner);
     const pool = POOL_RX.test(raw) || POOL_RX.test(inner);
-    if (/firebasestorage/i.test(inner) && !card) return inner.split("#")[0];
+    if (/firebasestorage/i.test(inner) && !card) {
+      // qxmd264: raw Storage 404s when the copy was never uploaded (solution figures).
+      // Without ?alt=media Storage returns JSON and the img stays a broken icon.
+      // /api/proxy-image?clean=1 falls back to the original CDN and returns a PNG.
+      let direct = inner.split("#")[0];
+      if (!/[?&]alt=media(?:&|$)/i.test(direct)) {
+        direct += (direct.indexOf("?") >= 0 ? "&" : "?") + "alt=media";
+      }
+      if (needsWipe(direct) || pool || POOL_RX.test(direct)) {
+        return "/api/proxy-image?url=" + encodeURIComponent(direct) + "&clean=1&v=" + FIG_VER;
+      }
+      return direct;
+    }
     if (needsWipe(inner) || needsWipe(raw) || card) {
       let fetchUrl = isForeignHost(inner) ? (ownedFigureUrl(inner) || inner) : inner;
       if (isForeignHost(fetchUrl)) {
@@ -290,7 +302,7 @@
     return s.replace(/<img\b([^>]*)>/gi, (full, attrs) => {
       let a = String(attrs || "").replace(/\/\s*$/, " ");
       if (/qx-marks-icon|qx-exam-logo|qx-book-photo|qx-ui-brand-logo/i.test(a)) return full;
-      const srcM = a.match(/\bsrc=(["'])([^"']*)\1/i) || a.match(/\bsrc=([^\s>]+)/i);
+      const srcM = a.match(/(?<![\w-])src=(["'])([^"']*)\1/i) || a.match(/(?<![\w-])src=([^\s>]+)/i);
       const origM = a.match(/\bdata-qx-orig-src=(["'])([^"']*)\1/i);
       const src = srcM ? (srcM[2] != null ? srcM[2] : srcM[1]) : "";
       if (/^data:/i.test(src)) return full;
@@ -305,7 +317,7 @@
       const storedEsc = escAttr(stored);
       const hintEsc = escAttr(hint || src);
       if (srcM && srcM[0]) a = a.replace(srcM[0], 'src="' + dispEsc + '"');
-      else if (/\bsrc=/i.test(a)) a = a.replace(/\bsrc=(["'])[^"']*\1/i, 'src="' + dispEsc + '"').replace(/\bsrc=([^\s"'>]+)/i, 'src="' + dispEsc + '"');
+      else if (/(?<![\w-])src=/i.test(a)) a = a.replace(/(?<![\w-])src=(["'])[^"']*\1/i, 'src="' + dispEsc + '"').replace(/(?<![\w-])src=([^\s"'>]+)/i, 'src="' + dispEsc + '"');
       else a += ' src="' + dispEsc + '"';
       if (!/\bdata-qx-orig-src=/i.test(a)) a += ' data-qx-orig-src="' + hintEsc + '"';
       if (stored) {

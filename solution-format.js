@@ -506,11 +506,11 @@ const QuantrexSolution = (() => {
     out = out.replace(/px(["'])src=/gi, "px$1 src=");
     out = out.replace(/<img\b([^>]*)>/gi, (full, attrs) => {
       let a = String(attrs || "");
-      const srcM = a.match(/\bsrc=(["'])([^"']+)\1/i);
+      const srcM = a.match(/(?<![\w-])src=(["'])([^"']+)\1/i);
       let src = srcM ? srcM[2] : "";
       if (src && /https?:\/\/\.app\//i.test(src)) {
         src = src.replace(/https?:\/\/\.app\//gi, "https://cdn-question-pool.getmarks.app/");
-        a = a.replace(/\bsrc=(["'])[^"']+\1/i, `src=$1${src}$1`);
+        a = a.replace(/(?<![\w-])src=(["'])[^"']+\1/i, `src=$1${src}$1`);
       }
       const escU = (u) => String(u || "").replace(/&/g, "&amp;").replace(/"/g, "&quot;");
       const disp = (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.displaySrc)
@@ -521,7 +521,7 @@ const QuantrexSolution = (() => {
         : src;
       if (disp && disp !== src) {
         if (!/\bdata-qx-orig-src=/i.test(a)) a += ` data-qx-orig-src="${escU(stored)}"`;
-        a = a.replace(/\bsrc=(["'])[^"']+\1/i, `src=$1${escU(disp)}$1`);
+        a = a.replace(/(?<![\w-])src=(["'])[^"']+\1/i, `src=$1${escU(disp)}$1`);
       } else if (src && !/\bdata-qx-orig-src=/i.test(a)) {
         a += ` data-qx-orig-src="${escU(stored)}"`;
       }
@@ -531,8 +531,13 @@ const QuantrexSolution = (() => {
       }
       if (!/\bclass=/i.test(a)) {
         a += ' class="qx-pool-fig qx-no-wm qx-sol-fig"';
-      } else if (!/qx-pool-fig|qx-sol-fig/i.test(a)) {
-        a = a.replace(/\bclass=(["'])([^"']*)\1/i, (m, q, c) => `class=${q}${c} qx-pool-fig qx-no-wm qx-sol-fig${q}`);
+      } else {
+        if (!/qx-sol-fig/i.test(a)) {
+          a = a.replace(/\bclass=(["'])([^"']*)\1/i, (m, q, c) => `class=${q}${c} qx-sol-fig${q}`);
+        }
+        if (!/qx-pool-fig/i.test(a)) {
+          a = a.replace(/\bclass=(["'])([^"']*)\1/i, (m, q, c) => `class=${q}${c} qx-pool-fig qx-no-wm${q}`);
+        }
       }
       if (!/\bstyle=/i.test(a)) {
         a += ' style="max-width:100%;height:auto;display:block;margin:10px auto;float:none;object-fit:contain;background:#fff;border-radius:6px"';

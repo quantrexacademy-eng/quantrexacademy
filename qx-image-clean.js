@@ -4399,7 +4399,7 @@ window.QxImgClean = (() => {
       let src = srcM[2] != null ? srcM[2] : srcM[1];
       if (/proxy-image|restore-image/i.test(src)) {
         try {
-          const u = new URL(src, "https://www.quantrexacademy.com");
+          const u = new URL(src.replace(/&amp;/gi, "&"), "https://www.quantrexacademy.com");
           const inner = u.searchParams.get("url");
           if (inner) src = inner;
         } catch (_) { /* */ }
@@ -4422,10 +4422,26 @@ window.QxImgClean = (() => {
           return `<img ${a}>`;
         }
       }
-      const isPool = /cdn-question-pool|cdn\.quizrr|\/pyq\/|watermarked_images|getmarks\.app|2026_modules|AKCR2_/i.test(src);
-      if (!isPool && !/proxy-image/i.test(String(srcM[0] || ""))) return full;
-      const orig = (canonicalCdnSrc(src) || src).split("?")[0] || src;
-      const proxy = isPool ? (proxyImageUrl(orig) || orig) : orig;
+      const isPool = /cdn-question-pool|cdn\.quizrr|\/pyq\/|%2Fpyq%2F|watermarked_images|getmarks\.app|2026_modules|AKCR2_|firebasestorage/i.test(src);
+      if (!isPool && !/proxy-image/i.test(String(srcM[0] || "") + " " + src)) return full;
+      // qxmd264: never drop ?alt=media. Bare Storage URLs return JSON (broken icon).
+      // Firebase copies of pool figures are still pool — %2Fpyq%2F does not match /pyq/.
+      let orig = src;
+      let proxy = src;
+      if (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.displaySrc) {
+        proxy = QxOwnedFigs.displaySrc(src) || src;
+        orig = (QxOwnedFigs.ownedFigureUrl && (QxOwnedFigs.ownedFigureUrl(src) || src)) || src;
+      } else {
+        const canon = canonicalCdnSrc(src) || src;
+        orig = /[?&]alt=media(?:&|$)/i.test(canon) ? canon : ((canon.split("?")[0]) || canon);
+        if (/firebasestorage/i.test(orig) && !/[?&]alt=media(?:&|$)/i.test(orig)) {
+          orig += (orig.indexOf("?") >= 0 ? "&" : "?") + "alt=media";
+        }
+        proxy = (isPool || /proxy-image|firebasestorage/i.test(src)) ? (proxyImageUrl(orig) || orig) : orig;
+      }
+      if (proxy && /^\/api\/proxy-image$/i.test(String(proxy).split("#")[0]) && !/\?/.test(proxy)) {
+        proxy = "/api/proxy-image?url=" + encodeURIComponent(orig || src) + "&clean=1&v=qxmd264";
+      }
       const safeOrig = String(orig).replace(/&/g, "&amp;").replace(/"/g, "&quot;");
       const safeProxy = String(proxy).replace(/&/g, "&amp;").replace(/"/g, "&quot;");
       a = a

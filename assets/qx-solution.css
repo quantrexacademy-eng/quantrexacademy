@@ -105,6 +105,8 @@
 .qx-sol-flow img,
 .qx-sol-card img,
 .qx-sol-fig {
+  content-visibility: visible !important;
+  contain: none !important;
   max-width: 100% !important;
   width: auto !important;
   height: auto !important;
