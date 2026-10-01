@@ -1343,6 +1343,7 @@ window.Mx = (() => {
       t = t.replace(/(^|[^\\])\$(?!\$)/g, "$1 ");
       t = t.replace(/&#38;|&amp;/gi, "\\text{ and }").replace(/(^|[^\\&A-Za-z])amp;/gi, "$1\\text{ and }");
       t = t.replace(/\s+/g, " ").trim();
+      try { t = healLeftBraceTex(t); } catch (_) { /* */ }
       if (!t) return "";
       try {
         const html = window.katex.renderToString(t, Object.assign({ displayMode: !!display }, KATEX_OPTS));
@@ -1794,7 +1795,9 @@ window.Mx = (() => {
   }
 
   function repairBrokenLatex(s) {
-    let out = parkAxisHyphenMath(String(s || ""));
+    let out = String(s || "");
+    try { out = healLeftBraceTex(out); } catch (_) { /* */ }
+    out = parkAxisHyphenMath(out);
     try { out = repairChemAndShatteredTex(out); } catch (_) { /* */ }
     try { out = repairShatteredMathDollars(out); } catch (_) { /* */ }
     try { out = sanitizeHtmlInMath(out); } catch (_) { /* */ }
@@ -2074,6 +2077,195 @@ window.Mx = (() => {
    * Wrap bare LaTeX that lacks $…$ so MathJax can typeset.
    * Protects existing $…$ so we never nest dollars (fixes \frac{1}{4\pi}).
    */
+  function braceDeltaAt(s, i) {
+    const c = s[i];
+    if (c === "\\") {
+      const n = s[i + 1];
+      if (n === "{") return { d: 1, n: 2 };
+      if (n === "}") return { d: -1, n: 2 };
+      return { d: 0, n: 2 };
+    }
+    if (c === "{") return { d: 1, n: 1 };
+    if (c === "}") return { d: -1, n: 1 };
+    return { d: 0, n: 1 };
+  }
+  function braceDepth(s) {
+    let d = 0;
+    for (let i = 0; i < s.length; ) {
+      const step = braceDeltaAt(s, i);
+      d += step.d;
+      i += step.n;
+    }
+    return d;
+  }
+  function matchGroupBrace(s, openIdx) {
+    let d = 0;
+    for (let i = openIdx; i < s.length; ) {
+      const c = s[i];
+      if (c === "\\") { i += 2; continue; }
+      if (c === "{") d++;
+      else if (c === "}") {
+        d--;
+        if (d === 0) return i;
+      }
+      i++;
+    }
+    return -1;
+  }
+  function unmatchedRight(s, from) {
+    let depth = 0;
+    for (let i = from; i < s.length; i++) {
+      if (s.startsWith("\\left", i) && !/[A-Za-z]/.test(s[i + 5] || "")) { depth++; i += 4; continue; }
+      if (s.startsWith("\\right", i) && !/[A-Za-z]/.test(s[i + 6] || "")) {
+        if (depth === 0) return i;
+        depth--;
+        i += 5;
+        continue;
+      }
+    }
+    return -1;
+  }
+  function textifyProseGap(chunk) {
+    return String(chunk || "").replace(/(^|[^\\A-Za-z])([A-Za-z]{2,})/g, (m, pre, w) => {
+      if (/^(left|right|frac|mathrm|text|begin|end)$/i.test(w)) return m;
+      const lead = /\s/.test(pre) ? "" : pre;
+      return lead + "\\text{ " + w + " }";
+    });
+  }
+  function promoteSetBraces(body) {
+    const s = String(body || "");
+    const stack = [];
+    const promote = [];
+    for (let i = 0; i < s.length; i++) {
+      if (s[i] === "\\") {
+        if (s[i + 1] === "{") { stack.push({ i: i, esc: true }); i++; continue; }
+        if (s[i + 1] === "}") {
+          const top = stack.pop();
+          if (top && !top.esc) {
+            const inner = s.slice(top.i + 1, i);
+            if (/\\(?:in|times|mid|subset|cup|cap)\b|,/.test(inner)) promote.push(top.i);
+          }
+          i++;
+          continue;
+        }
+        i++;
+        continue;
+      }
+      if (s[i] === "{") stack.push({ i: i, esc: false });
+      else if (s[i] === "}") stack.pop();
+    }
+    if (!promote.length) return s;
+    const mark = new Set(promote);
+    let o = "";
+    for (let i = 0; i < s.length; i++) o += mark.has(i) ? "\\{" : s[i];
+    return o;
+  }
+  function healSplitMathBraces(s) {
+    const src = String(s || "");
+    let i = 0;
+    let out = "";
+    while (i < src.length) {
+      if (src[i] !== "$" || (i > 0 && src[i - 1] === "\\")) { out += src[i++]; continue; }
+      let j = i + 1;
+      while (j < src.length && !(src[j] === "$" && src[j - 1] !== "\\")) j++;
+      if (j >= src.length) { out += src.slice(i); break; }
+      const body = src.slice(i + 1, j);
+      let depth = braceDepth(body);
+      if (depth <= 0) { out += "$" + body + "$"; i = j + 1; continue; }
+      let acc = body;
+      let k = j + 1;
+      let mode = "prose";
+      let outside = "";
+      let guard = 0;
+      let ok = false;
+      while (k < src.length && guard < 800 && depth > 0) {
+        if (src[k] === "<") { ok = false; break; }
+        if (src[k] === "$" && src[k - 1] !== "\\") {
+          if (mode === "prose") { acc += textifyProseGap(outside); outside = ""; mode = "math"; }
+          else mode = "prose";
+          k++;
+          guard++;
+          continue;
+        }
+        const step = braceDeltaAt(src, k);
+        depth += step.d;
+        const piece = src.slice(k, k + step.n);
+        if (mode === "prose") outside += piece;
+        else acc += piece;
+        k += step.n;
+        guard += step.n;
+        if (depth <= 0) { ok = true; break; }
+      }
+      if (ok) {
+        if (mode === "math") {
+          while (k < src.length && src[k] !== "$" && src[k] !== "<") { acc += src[k]; k++; }
+          if (src[k] === "$") k++;
+        }
+        if (outside) acc += textifyProseGap(outside);
+        acc = promoteSetBraces(acc);
+        out += "$" + acc + "$";
+        i = k;
+      } else {
+        out += "$" + body + "$";
+        i = j + 1;
+      }
+    }
+    return out;
+  }
+  function healLeftBraceTex(s) {
+    const src = String(s || "");
+    if (!src || (src.indexOf("\\left") < 0 && src.indexOf("\\right") < 0)) return src;
+    let out = "";
+    let realLeft = 0;
+    const fakeAt = [];
+    let i = 0;
+    while (i < src.length) {
+      if (src.startsWith("\\left", i) && !/[A-Za-z]/.test(src[i + 5] || "")) {
+        let j = i + 5;
+        while (src[j] === " " || src[j] === "\t") j++;
+        if (src[j] === "{" ) {
+          const close = matchGroupBrace(src, j);
+          const rightAt = unmatchedRight(src, j + 1);
+          if (close !== -1 && (rightAt === -1 || close < rightAt)) {
+            fakeAt.push(realLeft);
+            i = j;
+            continue;
+          }
+          out += "\\left\\{";
+          realLeft++;
+          i = j + 1;
+          continue;
+        }
+        out += "\\left";
+        realLeft++;
+        i += 5;
+        continue;
+      }
+      if (src.startsWith("\\right", i) && !/[A-Za-z]/.test(src[i + 6] || "")) {
+        let j = i + 6;
+        while (src[j] === " " || src[j] === "\t") j++;
+        const fake = fakeAt.length && fakeAt[fakeAt.length - 1] === realLeft;
+        if (realLeft > 0 && !fake) {
+          realLeft--;
+          if (src[j] === "}" ) { out += "\\right\\}"; i = j + 1; continue; }
+          out += "\\right";
+          i += 6;
+          continue;
+        }
+        if (fake) fakeAt.pop();
+        if (src[j] === "\\" && src[j + 1] === "}") { out += "\\}"; i = j + 2; continue; }
+        if (src[j] === "}") { out += "\\}"; i = j + 1; continue; }
+        if (src[j] === ".") { i = j + 1; continue; }
+        if (src[j] === ")" || src[j] === "]" || src[j] === "|") { out += src[j]; i = j + 1; continue; }
+        i = j;
+        continue;
+      }
+      out += src[i];
+      i++;
+    }
+    return healSplitMathBraces(out);
+  }
+
   function ensureMathDelimiters(s) {
     function wrapChunk(chunk) {
       chunk = parkAxisHyphenMath(chunk);

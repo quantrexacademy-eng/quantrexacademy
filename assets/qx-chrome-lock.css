@@ -1234,3 +1234,131 @@ html[data-theme="dark"] body .qzrr-cbt.qzrr-dark .qzrr-q-area .qx-content .qx-pa
   opacity: 1 !important;
   visibility: visible !important;
 }
+
+/* ===== qxmd260: inline option math + icons never blank/flipped ===== */
+html body .mtk-opt-text,
+html body .qx-prac-opt-text,
+html body .eg-opt .qx-content,
+html body #qxOpts .mtk-opt-text,
+html body #qxOpts .mtk-opt .qx-content,
+html body .qzrr-opts .mtk-opt-text {
+  display: block !important;
+  flex-direction: unset !important;
+  white-space: normal !important;
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+}
+html body .mtk-opt-text .katex,
+html body .qx-prac-opt-text .katex,
+html body #qxOpts .katex,
+html body .qzrr-opts .katex,
+html body .mtk-opt-text .katex-display:not(.qx-math-block),
+html body #qxOpts .katex-display:not(.qx-math-block),
+html body .qzrr-opts .katex-display:not(.qx-math-block) {
+  display: inline-block !important;
+  white-space: nowrap !important;
+  vertical-align: middle !important;
+}
+html body .mtk-opt-text img,
+html body .qx-prac-opt-text img,
+html body #qxOpts .mtk-opt img,
+html body .qx-opt-fig img {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+html body .qx-ch-icon,
+html body .qx-module-ic,
+html body .qx-folder-ic,
+html body .qx-topic-ic,
+html body .subj-ic,
+html body .qx-med-subj-ic,
+html body .dash-tool-ic,
+html body .exam-pill-ic,
+html body .cpyqb-exam-tile-ic,
+html[data-theme="light"] .qx-ch-icon,
+html[data-theme="dark"] .qx-ch-icon,
+html[data-theme="light"] .qx-med-subj-ic,
+html[data-theme="dark"] .qx-med-subj-ic {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  overflow: visible !important;
+  animation: none !important;
+  transform: none !important;
+  filter: none !important;
+  -webkit-filter: none !important;
+}
+html body .qx-ch-icon img,
+html body .qx-ch-3d-img,
+html body .qx-ch-glyph-img,
+html body .qx-module-ic img,
+html body .qx-folder-ic img,
+html body .qx-topic-ic img,
+html body .subj-ic img,
+html body .qx-med-subj-ic img,
+html body img.qx-exam-logo,
+html body img.qx-marks-icon,
+html body img.dash-tool-logo,
+html body img.exam-pill-logo,
+html body img.exam-card-logo,
+html body img.cpyqb-exam-tile-logo,
+html[data-theme="light"] .qx-ch-3d-img,
+html[data-theme="dark"] .qx-ch-3d-img,
+html[data-theme="light"] .qx-med-subj-ic img,
+html[data-theme="dark"] .qx-med-subj-ic img {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  animation: none !important;
+  transform: none !important;
+  filter: none !important;
+  -webkit-filter: none !important;
+  mix-blend-mode: normal !important;
+  backface-visibility: visible !important;
+  content-visibility: visible !important;
+}
+@media (max-width: 720px) {
+  html body .qx-ch-icon,
+  html body .qx-ch-icon img,
+  html body .qx-module-ic,
+  html body .qx-module-ic img,
+  html body .qx-folder-ic img,
+  html body .qx-topic-ic img,
+  html body .qx-med-subj-ic img,
+  html body img.qx-exam-logo,
+  html body img.dash-tool-logo,
+  html body img.qx-marks-icon {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    animation: none !important;
+    transform: none !important;
+    filter: none !important;
+    max-width: none !important;
+    max-height: none !important;
+  }
+  html body .qx-ch-icon,
+  html body .qx-module-ic,
+  html body .qx-folder-ic,
+  html body .qx-med-subj-ic,
+  html body .dash-tool-ic {
+    display: inline-flex !important;
+  }
+}
+@media (min-width: 721px) {
+  html body .qx-ch-icon img,
+  html body .qx-module-ic img,
+  html body .qx-folder-ic img,
+  html body .qx-topic-ic img,
+  html body .qx-med-subj-ic img,
+  html body img.qx-exam-logo,
+  html body img.dash-tool-logo {
+    visibility: visible !important;
+    opacity: 1 !important;
+    animation: none !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}

@@ -1,10 +1,10 @@
 {
-  "cache": "qx-pwa-qxmd259",
-  "ts": 1790900000259,
-  "title": "qxmd259: Medical desk matches Engineering, NEET and JIPMER logos",
+  "cache": "qx-pwa-qxmd260",
+  "ts": 1790900000260,
+  "title": "qxmd260: set-brace TeX renders, option lines and icons stay visible",
   "site": "https://www.quantrexacademy.com",
-  "build": "qxmd259",
-  "body": "Medical home uses the same hydrated desk as Engineering. NEET uses neet.svg and JIPMER uses its own icon. Light and dark locks cover walls, logos, covers, and the JEE date chip. The selected settings segment is white on blue. Official answers are unchanged.",
+  "build": "qxmd260",
+  "body": "Invalid \\left{ and split set dollars render as KaTeX. Option math stays inline. Engineering and Medical icons stay visible in light and dark at narrow and wide widths. Official answers are unchanged.",
   "package": "com.quantrexacademy.app",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }

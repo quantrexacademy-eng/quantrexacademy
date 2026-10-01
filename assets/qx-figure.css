@@ -258,11 +258,15 @@ img.qx-organic-fig[data-qx-display-w],
 }
 
 .mtk-opt-text {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  justify-content: center;
+  /* qxmd260: block, not column flex — inline KaTeX must stay beside words */
+  display: block;
   min-width: 0;
+}
+.mtk-opt-text .katex,
+.mtk-opt-text .katex-display:not(.qx-math-block) {
+  display: inline-block;
+  white-space: nowrap;
+  vertical-align: middle;
 }
 
 .mtk-options.qx-opts-img .mtk-opt {
