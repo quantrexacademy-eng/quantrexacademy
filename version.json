@@ -1,10 +1,10 @@
 {
-  "cache": "qx-pwa-qxmd264",
-  "ts": 1790900000264,
-  "title": "qxmd264: Solution figures show when a real image URL exists",
+  "cache": "qx-pwa-qxmd265",
+  "ts": 1790900000265,
+  "title": "qxmd265: Question figures keep their image URL",
   "site": "https://www.quantrexacademy.com",
-  "build": "qxmd264",
-  "body": "Solution graphs and diagrams use the clean image proxy when Storage has no copy, so they no longer render as a broken Question figure icon. Official answers are unchanged.",
+  "build": "qxmd265",
+  "body": "Figure links are no longer rewritten into the word and, so question, option, solution, book, and test images load instead of a broken Question figure icon. Official answers are unchanged.",
   "package": "com.quantrexacademy.app",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }

@@ -1,7 +1,7 @@
 /* Quantrex PWA — website + Android TWA share this cache.
    Bump CACHE on every release so activate deletes ALL old qx-pwa-* caches.
    Critical question/math/test JS must NEVER be served stale from cache. */
-const CACHE = "qx-pwa-qxmd264";
+const CACHE = "qx-pwa-qxmd265";
 const PRECACHE = ["/login.html", "/manifest.webmanifest", "/assets/icon-192.png", "/assets/icon-512.png"];
 const SKIP = /\.(mp4|webm|apk|m4a|mp3)$/i;
 const ASSET_IMG = /\.(png|jpe?g|webp|svg|gif|ico|woff2?)$/i;
@@ -29,7 +29,7 @@ self.addEventListener("activate", (event) => {
       )
     ).then(() => self.clients.claim()).then(() =>
       self.clients.matchAll({ type: "window", includeUncontrolled: true }).then((clients) => {
-        clients.forEach((c) => c.postMessage({ type: "QX_UPDATED", cache: CACHE, build: "qxmd264" }));
+        clients.forEach((c) => c.postMessage({ type: "QX_UPDATED", cache: CACHE, build: "qxmd265" }));
       })
     )
   );
@@ -107,11 +107,22 @@ self.addEventListener("fetch", (event) => {
   }
 
   if (isImg) {
+    /* qxmd265: cache-first was pinning non-image bodies (HTML/JSON) under image URLs. */
     event.respondWith(
-      caches.match(req).then((hit) => {
-        const net = fetch(req).then(putCache).catch(() => hit);
-        return hit || net;
-      })
+      fetch(req).then((res) => {
+        const ctype = (res && res.headers && res.headers.get("content-type")) || "";
+        if (res && res.ok && /^image\//i.test(ctype)) return putCache(res);
+        if (res && res.ok) return res;
+        return caches.match(req).then((hit) => {
+          const hc = hit && hit.headers && hit.headers.get("content-type");
+          if (hit && /^image\//i.test(hc || "")) return hit;
+          return res;
+        });
+      }).catch(() => caches.match(req).then((hit) => {
+        const hc = hit && hit.headers && hit.headers.get("content-type");
+        if (hit && /^image\//i.test(hc || "")) return hit;
+        return Response.error();
+      }))
     );
     return;
   }

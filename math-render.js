@@ -515,6 +515,7 @@ window.Mx = (() => {
   function fixBrokenImgUrls(str) {
     return String(str || "")
       .replace(/cdn-question-pool\.{2,}app/gi, "cdn-question-pool.getmarks.app")
+      .replace(/cdn-question-pool\.Quantrex(?:\s+Academy)?\.app/gi, "cdn-question-pool.getmarks.app")
       .replace(BROKEN_CDN_RX, PYQ_CDN);
   }
 
@@ -2862,9 +2863,19 @@ window.Mx = (() => {
       out = out.replace(/\$([^$]+)\$([A-Za-z])/g, "$$$1$ $2");
     }
     out = out.replace(/\$\s*=\s*\$\s*\{\s*\$/g, "$ = \\{");
-    /* qxmd215: strip stray amp */
+    /* qxmd265: &amp; inside <img src> is a query join, not the word "and".
+       Turning it into "and" made /api/proxy-image and Storage URLs 404 (alt "Question figure"). */
+    const _qxTagPark = [];
+    out = out.replace(/<(?:img|source|a|link)\b[^>]*>/gi, (tag) => {
+      const k = "\uE160" + _qxTagPark.length + "\uE161";
+      _qxTagPark.push(tag);
+      return k;
+    });
     out = out.replace(/&#38;/g, " and ").replace(/&amp;(?!#|[a-zA-Z]+;)/gi, " and ");
     out = out.replace(/(^|[^\\$A-Za-z])&(?![#a-zA-Z])/g, "$1 and ");
+    if (_qxTagPark.length) {
+      out = out.replace(/\uE160(\d+)\uE161/g, (_, i) => _qxTagPark[+i] || "");
+    }
     return out;
   }
 

@@ -24,7 +24,7 @@
     return m;
   })();
   const UI_KEEP = /ic_content_exam_|cpyqb\/subjects|ncert_toolbox|app_assets\/img\/exams\//i;
-  const FIG_VER = "qxmd264";
+  const FIG_VER = "qxmd265";
   const POOL_RX = /cdn-question-pool\.getmarks|cdn\.quizrr|watermarked_images|\/pyq\/|AKCR2_|2026_modules/i;
   let LOCAL_FIG_MAP = {};
   try {
@@ -56,8 +56,18 @@
     return BASE + encodeURIComponent(p) + "?alt=media";
   }
 
+  function healFigureUrl(url) {
+    let t = String(url || "");
+    t = t.replace(/\s*\\text\{\s*and\s*\}\s*/gi, "&");
+    t = t.replace(/&amp;/gi, "&");
+    t = t.replace(/(?:%20|\+|\s)+and(?:%20|\+|\s)+(clean|v|alt|fc|token|url)=/gi, "&$1=");
+    t = t.replace(/cdn-question-pool\.Quantrex(?:%20|\s)+Academy\.app/gi, "cdn-question-pool.getmarks.app");
+    t = t.replace(/cdn-question-pool\.Quantrex\.app/gi, "cdn-question-pool.getmarks.app");
+    return t;
+  }
+
   function unwrap(url) {
-    let s = String(url || "").trim()
+    let s = healFigureUrl(String(url || "")).trim()
       .replace(/&amp;/gi, "&")
       .replace(/&quot;/gi, "\"")
       .replace(/&#39;/g, "'");
@@ -245,10 +255,14 @@
   }
 
   function isStableFigSrc(src) {
-    const s = String(src || "").replace(/&amp;/gi, "&");
+    const raw = String(src || "");
+    if (/\\text\{\s*and\s*\}|\sand\s+(?:clean|v|alt)=/i.test(raw)) return false;
+    const s = healFigureUrl(raw);
     if (!s) return false;
     if (/getmarks\.app|quizrr\.in/i.test(s) && !/\/api\/proxy-image/i.test(s)) return false;
     if (/\/assets\/diagrams\//i.test(s)) return false;
+    if (/firebasestorage/i.test(s) && !/[?&]alt=media(?:&|$)/i.test(s) && !/%3Falt%3Dmedia/i.test(s)) return false;
+    if (/\/api\/proxy-image/i.test(s) && !/[?&](?:url|u)=/i.test(s)) return false;
     return /firebasestorage|\/api\/proxy-image/i.test(s);
   }
 
@@ -430,6 +444,7 @@
 
   return {
     unwrap,
+    healFigureUrl,
     ownedFigureUrl,
     irodovStorageUrl,
     displaySrc,
