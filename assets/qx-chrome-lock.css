@@ -2439,3 +2439,32 @@ html body .allen-practice .qx-sol-card img {
   height: auto !important;
   object-fit: contain !important;
 }
+/* qxmd269: the exam logo inside the solution paper chip stays a 16px icon.
+   qxmd268 set #egSol img { width:auto } for figures, which blew the logo up to its 400px file size. */
+html body #egSolPanel#egSolPanel .qx-paper-meta img,
+html body #egSolPanel#egSolPanel .qx-paper-chip img,
+html body #egSol#egSol .qx-paper-meta img,
+html body #egSol#egSol .qx-paper-chip img,
+html body .eg-test-root .eg-sol .qx-paper-meta img.qx-exam-logo,
+html body .allen-practice #qaSolReveal .qx-paper-meta img,
+html body .allen-practice #qaSolReveal .qx-paper-chip img,
+html body .allen-practice .sol-body .qx-paper-meta img,
+html body .allen-practice .qx-sol-card .qx-paper-meta img,
+html body .allen-practice .qx-sol-card .qx-paper-chip img {
+  width: 16px !important;
+  height: 16px !important;
+  min-width: 16px !important;
+  min-height: 16px !important;
+  max-width: 16px !important;
+  max-height: 16px !important;
+  flex: 0 0 16px !important;
+  display: inline-block !important;
+  margin: 0 5px 0 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 3px !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  object-fit: contain !important;
+  vertical-align: -3px !important;
+}

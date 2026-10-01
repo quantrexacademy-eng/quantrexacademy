@@ -1,10 +1,10 @@
 {
-  "cache": "qx-pwa-qxmd268",
-  "ts": 1790900000268,
-  "title": "qxmd268: Solution scrolls in full",
+  "cache": "qx-pwa-qxmd269",
+  "ts": 1790900000269,
+  "title": "qxmd269: Neat solution header, correct answer, cleaner math",
   "site": "https://www.quantrexacademy.com",
-  "build": "qxmd268",
-  "body": "After Check Answer, the whole explanation and its figures scroll into view. The question card still fits the question. Previous, Check Answer, and Next stay on a plain page. Official answers are unchanged.",
+  "build": "qxmd269",
+  "body": "The exam logo above the solution is a small icon again instead of a huge picture. The Answer line and the green option now match the official answer key, and numerical questions no longer show a wrong letter. Broken math in some questions and solutions (for example in Functions) now shows as proper formulas instead of raw code.",
   "package": "com.quantrexacademy.app",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }

@@ -1650,7 +1650,10 @@ const QuantrexSolution = (() => {
         label = plainText(QuantrexQFormat.formatCorrectAnswer(q) || "");
       }
     } catch (_) { /* */ }
-    if (!label && q.answer != null && q.options && q.options[q.answer] != null) {
+    let qType = "";
+    try { qType = (typeof QuantrexQFormat !== "undefined" && QuantrexQFormat.getType) ? QuantrexQFormat.getType(q) : ""; } catch (_) { /* */ }
+    /* qxmd269: options ["","","",""] or a numerical question must not print a placeholder "A" */
+    if (!label && qType !== "numerical" && qType !== "subjective" && q.answer != null && q.options && q.options[q.answer] != null && String(q.options[q.answer]).replace(/<(?!img)[^>]*>/gi, "").trim()) {
       const letter = String.fromCharCode(65 + Number(q.answer));
       label = letter;
     }
@@ -1689,6 +1692,12 @@ const QuantrexSolution = (() => {
   function renderBlock(q, rawSolution) {
     try { ensureSolCss(); } catch (_) { /* */ }
     let sol = rawSolution != null ? rawSolution : (q && (q.solution || q.sol || q.explanation));
+    /* qxmd269: typeset \left / \begin and healed broken-TeX islands first, so stem-echo trimming and
+       formatBody cannot cut them into raw TeX or escaped KaTeX HTML. Restored after formatBody. */
+    const solSrc0 = sol;
+    let parkedSol = null;
+    try { if (typeof Mx !== "undefined" && Mx.qxParkTex) parkedSol = Mx.qxParkTex(sol); } catch (_) { parkedSol = null; }
+    if (parkedSol && parkedSol.ids.length) sol = parkedSol.t; else parkedSol = null;
     try { sol = stripLeadingStemEcho(sol, q); } catch (_) { /* */ }
     try { sol = ensureNoStemHead(sol, q); } catch (_) { /* */ }
     try { sol = String(sol || "").replace(/<(div|p|section)[^>]*class="[^"]*(?:eg-q-stem|mtk-q-text)[^"]*"[\s\S]*?<\/\1>/gi, ""); } catch (_) { /* */ }
@@ -1736,6 +1745,10 @@ const QuantrexSolution = (() => {
     let body = "";
     try {
       body = formatBody(sol, q);
+      if (parkedSol) {
+        const ub = Mx.qxUnparkTex(body, parkedSol.ids);
+        body = Mx.qxPickLessRaw ? Mx.qxPickLessRaw(ub, () => formatBody(solSrc0, q)) : (ub != null ? ub : formatBody(solSrc0, q));
+      }
     } catch (err) {
       /* qxmd161: never abort whole Practice refresh on format/render throw */
       try { body = esc(String(sol || "")); } catch (_) { body = String(sol || ""); }
@@ -1750,7 +1763,8 @@ const QuantrexSolution = (() => {
     let ansHtml = "";
     try { ansHtml = officialAnswerHtml(q); } catch (_) { ansHtml = ""; }
     // qxmd217: keep original sol source on card for one-shot re-render if letter-spaced
-    const srcAttr = (typeof esc === "function" ? esc(String(sol || "").slice(0, 12000)) : String(sol || "").slice(0, 12000).replace(/"/g, "&quot;"));
+    const solAttr = parkedSol ? solSrc0 : sol;
+    const srcAttr = (typeof esc === "function" ? esc(String(solAttr || "").slice(0, 12000)) : String(solAttr || "").slice(0, 12000).replace(/"/g, "&quot;"));
     return `<div class="qx-sol-card ${theme}" data-qx-sol-src="${srcAttr}">
       <div class="qx-sol-card-h" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
         <span>${head}</span>

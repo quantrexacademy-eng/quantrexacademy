@@ -119,6 +119,8 @@ const QuantrexCatalog = (() => {
       if (!have) {
         q.options = recOpts.slice();
         q._qxBankOptions = recOpts.slice();
+        /* qxmd269: options now come from this bank record, so its answer key is the one that matches them */
+        q._qxAnsFromRec = true;
       }
     }
     if (rec.solution && (!q.solution || String(q.solution).length < 20)) q.solution = proofHtml(rec.solution);
@@ -126,6 +128,14 @@ const QuantrexCatalog = (() => {
     try {
       if (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.paintQuestion) QxOwnedFigs.paintQuestion(q);
     } catch (_) { /* */ }
+    /* qxmd269: list stubs start with answer:0 as a placeholder. When the options came from this record
+       (or the stub had none yet), use the record's official answer key, not the placeholder. */
+    const takeRecAns = q._qxAnsFromRec || (q._listStub && !(q.options || []).length);
+    if (takeRecAns && rec.answer != null && rec.answer !== "") q.answer = rec.answer;
+    else if (takeRecAns && rec.correctAnswer != null && rec.correctAnswer !== "") q.answer = rec.correctAnswer;
+    if (takeRecAns && Array.isArray(rec.answers) && rec.answers.length) q.answers = rec.answers;
+    if ((q.correctValue == null || String(q.correctValue).trim() === "") && rec.correctValue != null && String(rec.correctValue).trim() !== "") q.correctValue = rec.correctValue;
+    delete q._qxAnsFromRec;
     if (q.answer == null && rec.answer != null) q.answer = rec.answer;
     if (q.answer == null && rec.correctAnswer != null) q.answer = rec.correctAnswer;
     if (!q.answers && rec.answers) q.answers = rec.answers;

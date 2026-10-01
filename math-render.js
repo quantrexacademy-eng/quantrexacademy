@@ -1347,7 +1347,13 @@ window.Mx = (() => {
       try { t = healLeftBraceTex(t); } catch (_) { /* */ }
       if (!t) return "";
       try {
-        const html = window.katex.renderToString(t, Object.assign({ displayMode: !!display }, KATEX_OPTS));
+        let html;
+        /* qxmd269: one retry with healed \left/\right, \begin/\end and braces before raw-TeX fallback */
+        try { html = window.katex.renderToString(t, Object.assign({ displayMode: !!display }, KATEX_OPTS)); } catch (e0) {
+          const t2 = qxHealTexIsland(t);
+          if (t2 === t) throw e0;
+          html = window.katex.renderToString(t2, Object.assign({ displayMode: !!display }, KATEX_OPTS));
+        }
         if (/class=["'][^"']*katex-error|ParseError|Can't use function/i.test(html)) {
           const esc = t.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
           return '<span class="qx-tex-fallback" title="TeX">' + esc + "</span>";
@@ -4854,7 +4860,158 @@ window.Mx = (() => {
     return out.replace(/[ \t]{2,}/g, " ");
   }
 
+  /* qxmd269: heal damaged TeX inside one math island (no-op on balanced TeX).
+     \right with no delimiter -> \right. ; missing \end{env} ; extra \left/\right ; open braces ; MARA watermark. */
+  const QX_TEX_DELIM = /^\s*(?:[()[\]|./<>]|\\[{}|]|\\(?:rangle|langle|rbrace|lbrace|rfloor|lfloor|rceil|lceil|vert|Vert|rvert|lvert|rVert|lVert|rgroup|lgroup|uparrow|downarrow|updownarrow|Uparrow|Downarrow|Updownarrow|backslash|rmoustache|lmoustache)(?![A-Za-z]))/;
+  let _qxParkSeq = 0;
+  const _qxParkMap = new Map();
+  function qxTexBalance(t) {
+    const s = String(t || "");
+    let d = 0;
+    for (let i = 0; i < s.length; i++) { if (s[i] === "\\") { i++; continue; } if (s[i] === "{") d++; else if (s[i] === "}") d--; }
+    const b = (s.match(/\\begin\s*\{/g) || []).length, e = (s.match(/\\end\s*\{/g) || []).length;
+    const l = (s.match(/\\left(?![A-Za-z])/g) || []).length, r = (s.match(/\\right(?![A-Za-z])/g) || []).length;
+    return { brace: d, env: b - e, lr: l - r };
+  }
+  function qxHealTexIsland(t) {
+    let s = String(t || "");
+    if (!/\\(?:left|right|begin|end)(?![A-Za-z])|[{}]|MARA/.test(s)) return s;
+    s = s.replace(/\\text\s*\{\s*MARA\s*\}/g, " ");
+    s = s.replace(/\\(left|right)(?![A-Za-z])/g, (m, w, off, all) => (QX_TEX_DELIM.test(all.slice(off + m.length)) ? m : m + "."));
+    {
+      const re = /\\(begin|end)\s*\{([a-zA-Z*]+)\}/g; const stack = []; const drop = []; let m;
+      while ((m = re.exec(s))) {
+        if (m[1] === "begin") stack.push(m[2]);
+        else if (stack.length && stack[stack.length - 1] === m[2]) stack.pop();
+        else drop.push([m.index, m[0].length]);
+      }
+      for (let k = drop.length - 1; k >= 0; k--) s = s.slice(0, drop[k][0]) + s.slice(drop[k][0] + drop[k][1]);
+      while (stack.length) s += "\\end{" + stack.pop() + "}";
+    }
+    {
+      const bal = qxTexBalance(s);
+      if (bal.lr > 0) s += " \\right.".repeat(bal.lr);
+      else if (bal.lr < 0) s = "\\left. ".repeat(-bal.lr) + s;
+    }
+    {
+      let d = 0, min = 0;
+      for (let i = 0; i < s.length; i++) { if (s[i] === "\\") { i++; continue; } if (s[i] === "{") d++; else if (s[i] === "}") { d--; if (d < min) min = d; } }
+      if (min < 0) { s = "{".repeat(-min) + s; d -= min; }
+      if (d > 0) s += "}".repeat(d);
+    }
+    return s;
+  }
+  function qxTexIslandToKatex(inner) {
+    const t = String(inner || "").replace(/<br\s*\/?>/gi, " \\\\ ").replace(/<[^>]+>/g, " ")
+      .replace(/&nbsp;/gi, " ").replace(/&lt;/gi, "<").replace(/&gt;/gi, ">").replace(/&amp;/gi, "&")
+      .replace(/\s+/g, " ").trim();
+    if (!t) return null;
+    const display = /\\begin\{(?:aligned|align\*?|array|cases|matrix|pmatrix|bmatrix|vmatrix|gathered)\}/.test(t);
+    return window.katex.renderToString(t, Object.assign({}, KATEX_OPTS, { displayMode: display, throwOnError: true }));
+  }
+  /* qxmd269: a stray $ inside \begin{..}/\left/{ splits one formula into pieces that then print as raw TeX
+     or as escaped KaTeX HTML. Re-join such pieces (only TeX-looking gaps), heal, and when the island had to
+     be changed, typeset it now and leave a \u00a7\u00a7QXKP<n>\u00a7\u00a7 placeholder (restored by qxUnparkTex). */
+  function qxParkTex(src) {
+    const s = String(src == null ? "" : src);
+    const res = { t: s, ids: [] };
+    if (s.indexOf("$") < 0 || !/\\(?:left|right|begin|end)(?![A-Za-z])|MARA/.test(s)) return res;
+    if (/class\s*=\s*["'][^"']*katex/i.test(s) || /spanclass/i.test(s)) return res;
+    if (!(window.katex && window.katex.renderToString)) return res;
+    const pos = [];
+    for (let i = 0; i < s.length; i++) { if (s[i] === "$" && s[i - 1] !== "\\") pos.push(i); }
+    if (pos.length < 2) return res;
+    const bad = (b) => b.brace > 0 || b.env > 0 || b.lr > 0;
+    const block = /<\/?(?:p|div|li|table|tr|td|ul|ol)\b/i;
+    const texGap = (g) => /[\\^_&{}]/.test(g) || !/[A-Za-z]{3,}/.test(g.replace(/<[^>]+>/g, ""));
+    let out = "", last = 0, k = 0;
+    while (k < pos.length - 1) {
+      const a = pos[k];
+      if (s[a + 1] === "$") {
+        let c = k + 1;
+        while (c < pos.length && !(s[pos[c] + 1] === "$" && pos[c] > a + 1)) c++;
+        if (c >= pos.length) break;
+        k = c + 2;
+        continue;
+      }
+      let b = k + 1;
+      if (s[pos[b] + 1] === "$" && pos[b] + 1 === (pos[b + 1] || -1)) { k = b; continue; }
+      const orig = s.slice(a + 1, pos[b]);
+      let inner = orig;
+      let joinedAny = false;
+      if (bad(qxTexBalance(inner)) && !block.test(inner)) {
+        let c = b, joined = inner, ok = false;
+        while (c + 1 < pos.length && c - b < 8) {
+          const gap = s.slice(pos[c] + 1, pos[c + 1]);
+          if (s[pos[c] + 1] === "$" || !texGap(gap) || block.test(gap)) break;
+          joined += " " + gap; c++;
+          if (!bad(qxTexBalance(joined))) { ok = true; break; }
+        }
+        if (ok) { b = c; inner = joined; joinedAny = true; }
+      }
+      const healed = qxHealTexIsland(inner);
+      /* \left / \begin islands are typeset whole: later word/spacing passes split them into raw TeX */
+      /* mis-paired $ (prose or paragraph tags inside the "island") are left to the normal pipeline */
+      const prose = block.test(inner) || /[A-Za-z]{3,}\s+[A-Za-z]{3,}\s+[A-Za-z]{3,}/.test(inner.replace(/\\(?:text|mathrm|mathbf|operatorname|textbf|textit)\s*\{[^{}]*\}/g, " ").replace(/\\[A-Za-z]+/g, " ").replace(/<[^>]+>/g, " "));
+      if (!prose && (joinedAny || healed !== orig || /\\(?:left|begin)(?![A-Za-z])/.test(healed))) {
+        let html = null;
+        try { html = qxTexIslandToKatex(healed); } catch (_) { html = null; }
+        if (html) {
+          const id = ++_qxParkSeq;
+          _qxParkMap.set(id, html);
+          if (_qxParkMap.size > 400) _qxParkMap.delete(_qxParkMap.keys().next().value);
+          res.ids.push(id);
+          out += s.slice(last, a) + "\u00a7\u00a7QXKP" + id + "\u00a7\u00a7";
+          last = pos[b] + 1; k = b + 1;
+          continue;
+        }
+      }
+      k = b + 1;
+    }
+    res.t = out + s.slice(last);
+    return res;
+  }
+  function qxUnparkTex(html, ids) {
+    let s = String(html == null ? "" : html);
+    if (!ids || !ids.length) return s;
+    let seen = 0;
+    s = s.replace(/\u00a7\u00a7QXKP(\d+)\u00a7\u00a7/g, (m, i) => {
+      if (ids.indexOf(+i) < 0) return m;
+      const h = _qxParkMap.get(+i);
+      if (h == null) return m;
+      seen++;
+      return h;
+    });
+    /* placeholders may be dropped on purpose (stem-echo paragraph); a half-eaten one means fall back */
+    return ids.some((id) => s.indexOf("QXKP" + id) >= 0) ? null : s;
+  }
+  /* qxmd269: count raw TeX / escaped KaTeX left as visible text (template = no image loads) */
+  function qxRawLeak(h) {
+    try {
+      const tp = document.createElement("template");
+      tp.innerHTML = String(h || "");
+      tp.content.querySelectorAll(".katex, .katex-display, mjx-container, script, style").forEach((e) => e.remove());
+      const t = tp.content.textContent || "";
+      return (t.match(/\\[A-Za-z]{2,}|\$|spanclass|katex\s*[-\u2212]\s*(?:display|html)/g) || []).length;
+    } catch (_) { return 0; }
+  }
+  /* keep the healed render unless the old render leaves less raw TeX on screen */
+  function qxPickLessRaw(healedHtml, oldFn) {
+    if (healedHtml == null) return oldFn();
+    const ln = qxRawLeak(healedHtml);
+    if (!ln) return healedHtml;
+    const old = oldFn();
+    return qxRawLeak(old) < ln ? old : healedHtml;
+  }
   function html(content) {
+    if (content == null) return "";
+    try { loadKatex(); } catch (_) { /* */ }
+    let parked = null;
+    try { parked = qxParkTex(content); } catch (_) { parked = null; }
+    if (!parked || !parked.ids.length) return htmlCore(content);
+    return qxPickLessRaw(qxUnparkTex(htmlCore(parked.t), parked.ids), () => htmlCore(content));
+  }
+  function htmlCore(content) {
     if (content == null) return "";
     try { loadKatex(); } catch (_) { /* */ }
     if (hasRealKatexHtml(content) && !looksLetterSpacedMarkup(content)) {
@@ -5924,6 +6081,10 @@ window.Mx = (() => {
 
   return {
     html,
+    qxParkTex,
+    qxUnparkTex,
+    qxHealTexIsland,
+    qxPickLessRaw,
     htmlMarksNative,
     typeset,
     afterRender,
@@ -5988,6 +6149,13 @@ window.Mx = (() => {
   }
   function render(text, opts) {
     try {
+      /* qxmd269: typeset healed broken-TeX islands before normalize() can split them */
+      let parked = null;
+      try { if (w.Mx && w.Mx.qxParkTex) parked = w.Mx.qxParkTex(text); } catch (_) { parked = null; }
+      if (parked && parked.ids.length) {
+        const outP = w.Mx.qxUnparkTex(w.Mx.html(normalize(parked.t), opts), parked.ids);
+        return w.Mx.qxPickLessRaw(outP, () => w.Mx.html(normalize(text), opts));
+      }
       const cleaned = normalize(text);
       return w.Mx.html(cleaned, opts);
     } catch (err) {
