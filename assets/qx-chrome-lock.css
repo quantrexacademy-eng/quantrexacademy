@@ -1991,12 +1991,12 @@ html body .allen-practice .qx-bm-btn.on {
 html body .eg-test-root[data-test-theme="light"] .eg-main,
 html body .mtk-test-root.allen-practice[data-test-theme="light"] .mtk-body,
 html body .allen-practice[data-test-theme="light"] .mtk-main {
-  background: #e8eef6 !important;
+  background: #ffffff !important;
 }
 html body .eg-test-root[data-test-theme="dark"] .eg-main,
 html body .mtk-test-root.allen-practice[data-test-theme="dark"] .mtk-body,
 html body .allen-practice[data-test-theme="dark"] .mtk-main {
-  background: #070b16 !important;
+  background: #0f172a !important;
 }
 html body .eg-test-root .eg-q-card,
 html body .eg-test-root.eg-compact .eg-q-card,
@@ -2284,3 +2284,89 @@ html body .eg-sol-panel-head strong {
   -webkit-text-fill-color: #ffffff !important;
 }
 
+/* qxmd267: card is content height. Options do not grow. Page is plain.
+   The #e8eef6 page wash was the bottom strip. Footer is the three buttons only. */
+html body .eg-test-root:not([data-test-theme="dark"]),
+html body .eg-test-root:not([data-test-theme="dark"]) .eg-body,
+html body .eg-test-root:not([data-test-theme="dark"]) .eg-main,
+html body .allen-practice:not([data-test-theme="dark"]),
+html body .allen-practice:not([data-test-theme="dark"]) .mtk-body,
+html body .mtk-test-root.allen-practice:not([data-test-theme="dark"]) .mtk-body {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  background-image: none !important;
+}
+html body .eg-test-root[data-test-theme="dark"],
+html body .eg-test-root[data-test-theme="dark"] .eg-body,
+html body .eg-test-root[data-test-theme="dark"] .eg-main,
+html body .allen-practice[data-test-theme="dark"],
+html body .allen-practice[data-test-theme="dark"] .mtk-body,
+html body .mtk-test-root.allen-practice[data-test-theme="dark"] .mtk-body {
+  background: #0f172a !important;
+  background-color: #0f172a !important;
+  background-image: none !important;
+}
+html body .eg-test-root > .eg-body,
+html body .eg-test-root .eg-body,
+html body .allen-practice .mtk-body {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  padding-bottom: calc(84px + env(safe-area-inset-bottom, 0px)) !important;
+}
+html body .eg-test-root .eg-main {
+  flex: 0 0 auto !important;
+  flex-grow: 0 !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+html body .eg-test-root .eg-q-card,
+html body .eg-test-root.eg-compact .eg-q-card,
+html body .eg-test-root.eg-qxtool8 .eg-q-card,
+html body .eg-test-root.eg-qxmd179 .eg-q-card,
+html body .eg-test-root.eg-qxmd182 .eg-q-card,
+html body .mtk-test-root .eg-q-card,
+html body .allen-practice .mtk-main,
+html body .mtk-test-root .mtk-main {
+  flex: 0 0 auto !important;
+  flex-grow: 0 !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+html body .eg-test-root #qxOpts,
+html body .eg-test-root .eg-opts,
+html body .allen-practice #qaOpts,
+html body .allen-practice .mtk-options,
+html body .mtk-options.mtk-options-grid {
+  flex: 0 0 auto !important;
+  flex-grow: 0 !important;
+  height: auto !important;
+  min-height: 0 !important;
+  align-content: start !important;
+}
+html body .eg-test-root #egFoot,
+html body .eg-test-root .eg-foot,
+html body .eg-test-root .eg-foot.eg-foot-marks,
+html body .eg-test-root .eg-foot.eg-foot-practice,
+html body .eg-test-root.eg-qxtool8 #egFoot,
+html body .eg-test-root.eg-qxtool8 .eg-foot,
+html body .eg-test-root[data-test-theme="dark"] #egFoot,
+html body .eg-test-root[data-test-theme="dark"] .eg-foot,
+html body .allen-practice #egFoot,
+html body .allen-practice .eg-foot,
+html body .allen-practice[data-test-theme="dark"] #egFoot,
+html body .allen-practice[data-test-theme="dark"] .eg-foot,
+html body #egFoot,
+html body .eg-foot {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  border-top: 0 !important;
+  box-shadow: none !important;
+}

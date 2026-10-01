@@ -1,10 +1,10 @@
 {
-  "cache": "qx-pwa-qxmd266",
-  "ts": 1790900000266,
-  "title": "qxmd266: Practice question card, colors, and icon toolbar",
+  "cache": "qx-pwa-qxmd267",
+  "ts": 1790900000267,
+  "title": "qxmd267: Practice card fits the question",
   "site": "https://www.quantrexacademy.com",
-  "build": "qxmd266",
-  "body": "Practice questions use a roomier card, dark ink on light and light ink on dark, visible A-D letters, and a clear selected state. The top bar is white icons on Quantrex blue and stays on one row on a phone. Official answers are unchanged.",
+  "build": "qxmd267",
+  "body": "The practice question card is only as tall as the question and options. The gray band under the options is gone, and Previous, Check Answer, and Next sit on a plain page. Official answers are unchanged.",
   "package": "com.quantrexacademy.app",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }
