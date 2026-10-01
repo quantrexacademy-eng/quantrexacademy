@@ -2370,3 +2370,72 @@ html body .eg-foot {
   border-top: 0 !important;
   box-shadow: none !important;
 }
+
+
+/* qxmd268: the solution must scroll. qxmd267 sized the card to the question
+   (flex 0 0 auto, height auto, overflow visible) but qxmd182 / foot-lock still
+   set .eg-body and .eg-main to overflow:hidden. The card was no longer a
+   scrollport, so Check Answer grew the explanation past the viewport and the
+   body clipped it, including figures. .eg-body is the scrollport. The card
+   stays content height. Footer stays transparent: buttons only, no gray strip. */
+html body .eg-test-root.eg-qxmd182.eg-qxtool8 > .eg-body,
+html body .eg-test-root.eg-qxmd182.eg-qxtool8 .eg-body {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  height: auto !important;
+  max-height: none !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  overscroll-behavior: contain !important;
+  padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)) !important;
+  scroll-padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)) !important;
+}
+html body .eg-test-root.eg-qxmd182.eg-qxtool8 .eg-main,
+html body .eg-test-root.eg-qxmd182.eg-qxtool8.qx-sol-showing .eg-main {
+  flex: 0 0 auto !important;
+  flex-grow: 0 !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+html body .eg-test-root.eg-qxmd182.eg-qxtool8 .eg-q-card,
+html body .eg-test-root.eg-qxmd182.eg-qxtool8.qx-sol-showing .eg-q-card,
+html body .eg-test-root.eg-qxtool8.qx-sol-showing .eg-q-card {
+  flex: 0 0 auto !important;
+  flex-grow: 0 !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+html body .eg-test-root.eg-qxmd182.eg-qxtool8 #egSolPanel,
+html body .eg-test-root.eg-qxmd182.eg-qxtool8 #egSol,
+html body .eg-test-root.eg-qxmd182.eg-qxtool8 .eg-sol,
+html body .eg-test-root.eg-qxmd182.eg-qxtool8 .eg-sol-inline,
+html body .eg-test-root.eg-qxmd182.eg-qxtool8 .qx-sol-flow,
+html body .eg-test-root.eg-qxmd182.eg-qxtool8 .sol-body,
+html body .allen-practice.qx-sol-showing #qaSolReveal,
+html body .allen-practice.qx-sol-showing .sol-body,
+html body .allen-practice.qx-sol-showing .qx-sol-card {
+  display: block !important;
+  position: relative !important;
+  flex: 0 0 auto !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+html body .eg-test-root.eg-qxmd182.eg-qxtool8 #egSol img,
+html body .eg-test-root.eg-qxmd182.eg-qxtool8 #egSolPanel img,
+html body .eg-test-root.eg-qxmd182.eg-qxtool8 .eg-sol img,
+html body .allen-practice #qaSolReveal img,
+html body .allen-practice .sol-body img,
+html body .allen-practice .qx-sol-card img {
+  max-width: 100% !important;
+  max-height: none !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain !important;
+}

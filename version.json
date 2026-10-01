@@ -1,10 +1,10 @@
 {
-  "cache": "qx-pwa-qxmd267",
-  "ts": 1790900000267,
-  "title": "qxmd267: Practice card fits the question",
+  "cache": "qx-pwa-qxmd268",
+  "ts": 1790900000268,
+  "title": "qxmd268: Solution scrolls in full",
   "site": "https://www.quantrexacademy.com",
-  "build": "qxmd267",
-  "body": "The practice question card is only as tall as the question and options. The gray band under the options is gone, and Previous, Check Answer, and Next sit on a plain page. Official answers are unchanged.",
+  "build": "qxmd268",
+  "body": "After Check Answer, the whole explanation and its figures scroll into view. The question card still fits the question. Previous, Check Answer, and Next stay on a plain page. Official answers are unchanged.",
   "package": "com.quantrexacademy.app",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }
