@@ -659,7 +659,7 @@ const AllenTestUI = (() => {
     const showHint = !!qs.showHint;
     const hintTxt = hintTextOf(q);
     const hintBtn = showHint
-      ? `<button type="button" class="eg-tool-btn qx-hint-btn" id="qxPracHint" ${hintTxt ? "" : "disabled"} data-tip="Hint" title="Hint" aria-label="Hint">Hint<span class="eg-tip">Hint</span></button>`
+      ? `<button type="button" class="eg-tool-btn qx-hint-btn" id="qxPracHint" ${hintTxt ? "" : "disabled"} data-tip="Hint" title="Hint" aria-label="Hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 16v-1M12 8h.01"/></svg><span class="eg-tip">Hint</span></button>`
       : "";
     const timerHtml = showTimer
       ? `<div class="mtk-prac-timer qx-best-timer" id="egmqQTime"><span id="egmqTimerSec">0s</span></div>`

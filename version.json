@@ -1,10 +1,10 @@
 {
-  "cache": "qx-pwa-qxmd265",
-  "ts": 1790900000265,
-  "title": "qxmd265: Question figures keep their image URL",
+  "cache": "qx-pwa-qxmd266",
+  "ts": 1790900000266,
+  "title": "qxmd266: Practice question card, colors, and icon toolbar",
   "site": "https://www.quantrexacademy.com",
-  "build": "qxmd265",
-  "body": "Figure links are no longer rewritten into the word and, so question, option, solution, book, and test images load instead of a broken Question figure icon. Official answers are unchanged.",
+  "build": "qxmd266",
+  "body": "Practice questions use a roomier card, dark ink on light and light ink on dark, visible A-D letters, and a clear selected state. The top bar is white icons on Quantrex blue and stays on one row on a phone. Official answers are unchanged.",
   "package": "com.quantrexacademy.app",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }

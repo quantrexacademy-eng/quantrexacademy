@@ -1823,3 +1823,464 @@ html body .mtk-test-root[data-test-theme="dark"] .qx-paper-date {
     transform: none !important;
   }
 }
+
+/* ===== qxmd266: coaching practice shell. Icons-only bar, readable question, visible letters. ===== */
+
+/* Toolbar: white icons on Quantrex blue, no text labels, one row on a phone */
+html body .eg-test-root > .eg-top,
+html body .eg-test-root .eg-top,
+html body .mtk-test-root.allen-practice .mtk-header,
+html body .allen-practice .mtk-header.eg-top {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  gap: 4px !important;
+  overflow: visible !important;
+  min-height: 48px !important;
+  max-height: 52px !important;
+  padding: 0 6px !important;
+  background: #1565C0 !important;
+  color: #ffffff !important;
+}
+html body .eg-test-root .eg-back,
+html body .allen-practice .mtk-close-btn,
+html body .allen-practice .eg-back {
+  flex: 0 0 32px !important;
+  width: 32px !important;
+  min-width: 32px !important;
+  height: 36px !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  background: transparent !important;
+}
+html body .eg-test-root .eg-top-title,
+html body .allen-practice .mtk-brand,
+html body .allen-practice .mtk-brand-text,
+html body .allen-practice .mtk-prac-progress,
+html body .allen-practice .qx-best-timer,
+html body .eg-test-root .eg-mode-pill {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+html body .eg-test-root .eg-top-title,
+html body .allen-practice .mtk-header-left {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  overflow: hidden !important;
+}
+html body .eg-test-root .eg-top-title,
+html body .allen-practice .mtk-brand-text {
+  white-space: nowrap !important;
+  text-overflow: ellipsis !important;
+  overflow: hidden !important;
+}
+html body .eg-test-root .eg-top-tools,
+html body .allen-practice .qx-prac-tools,
+html body .mtk-test-root.allen-practice .mtk-header-tools {
+  display: flex !important;
+  flex: 0 0 auto !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 0 !important;
+  max-width: calc(100% - 88px) !important;
+  min-width: 0 !important;
+  overflow: visible !important;
+  margin-left: auto !important;
+}
+html body .eg-test-root .eg-top-tools .eg-tool-btn,
+html body .eg-test-root .eg-top-tools .eg-ico,
+html body .allen-practice .qx-prac-tools .eg-tool-btn,
+html body .allen-practice .qx-prac-tools .eg-ico,
+html body .allen-practice .qx-hint-btn {
+  display: inline-flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 34px !important;
+  min-width: 34px !important;
+  max-width: 34px !important;
+  height: 36px !important;
+  min-height: 36px !important;
+  padding: 0 !important;
+  gap: 0 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  background: transparent !important;
+  border: 0 !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  flex: 0 0 34px !important;
+}
+html body .eg-test-root .eg-top-tools .eg-tip,
+html body .eg-test-root .eg-top-tools .eg-tool-btn .eg-tip,
+html body .eg-test-root .eg-top-tools .eg-ico .eg-tip,
+html body .allen-practice .qx-prac-tools .eg-tip,
+html body .allen-practice .eg-tip {
+  display: none !important;
+}
+html body .eg-test-root .eg-top-tools svg,
+html body .allen-practice .qx-prac-tools svg,
+html body .allen-practice .qx-hint-btn svg {
+  width: 20px !important;
+  height: 20px !important;
+  display: block !important;
+  flex: 0 0 auto !important;
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  overflow: visible !important;
+}
+html body .eg-test-root .eg-top-tools svg [fill="currentColor"],
+html body .allen-practice .qx-prac-tools svg [fill="currentColor"] {
+  fill: #ffffff !important;
+}
+html body .eg-test-root .eg-top-tools .eg-tool-btn.on,
+html body .eg-test-root .eg-top-tools .eg-ico.on,
+html body .allen-practice .qx-prac-tools .eg-tool-btn.on,
+html body .allen-practice .qx-bm-btn.on {
+  background: rgba(255, 255, 255, 0.22) !important;
+  box-shadow: inset 0 0 0 1.5px #ffffff !important;
+  border-radius: 8px !important;
+  color: #ffffff !important;
+}
+@media (max-width: 420px) {
+  html body .eg-test-root > .eg-top,
+  html body .allen-practice .mtk-header.eg-top {
+    gap: 2px !important;
+    padding: 0 2px !important;
+  }
+  html body .eg-test-root .eg-back,
+  html body .allen-practice .eg-back {
+    flex-basis: 28px !important;
+    width: 28px !important;
+    min-width: 28px !important;
+  }
+  html body .allen-practice .mtk-brand-text {
+    max-width: 64px !important;
+    font-size: 12px !important;
+  }
+  html body .allen-practice .mtk-prac-progress {
+    font-size: 11px !important;
+    flex: 0 0 auto !important;
+    white-space: nowrap !important;
+  }
+  html body .eg-test-root .eg-mode-pill { display: none !important; }
+  html body .eg-test-root .eg-top-tools .eg-tool-btn,
+  html body .eg-test-root .eg-top-tools .eg-ico,
+  html body .allen-practice .qx-prac-tools .eg-tool-btn,
+  html body .allen-practice .qx-prac-tools .eg-ico,
+  html body .allen-practice .qx-hint-btn {
+    width: 28px !important;
+    min-width: 28px !important;
+    max-width: 28px !important;
+    height: 36px !important;
+    flex-basis: 28px !important;
+  }
+  html body .eg-test-root .eg-top-tools,
+  html body .allen-practice .qx-prac-tools {
+    max-width: calc(100% - 72px) !important;
+  }
+}
+
+/* Question card: not raw, not cramped. Ink stays readable in both themes. */
+html body .eg-test-root[data-test-theme="light"] .eg-main,
+html body .mtk-test-root.allen-practice[data-test-theme="light"] .mtk-body,
+html body .allen-practice[data-test-theme="light"] .mtk-main {
+  background: #e8eef6 !important;
+}
+html body .eg-test-root[data-test-theme="dark"] .eg-main,
+html body .mtk-test-root.allen-practice[data-test-theme="dark"] .mtk-body,
+html body .allen-practice[data-test-theme="dark"] .mtk-main {
+  background: #070b16 !important;
+}
+html body .eg-test-root .eg-q-card,
+html body .eg-test-root.eg-compact .eg-q-card,
+html body .allen-practice .mtk-main {
+  padding: 16px 16px 18px !important;
+  background: #ffffff !important;
+  color: #0b1220 !important;
+  border-radius: 16px !important;
+  border: 1px solid #d5deea !important;
+}
+html body .eg-test-root[data-test-theme="dark"] .eg-q-card,
+html body .eg-test-root.eg-compact[data-test-theme="dark"] .eg-q-card,
+html body .allen-practice[data-test-theme="dark"] .mtk-main {
+  background: #0f172a !important;
+  color: #f8fafc !important;
+  border-color: #334155 !important;
+}
+html body .eg-test-root[data-test-theme="light"] #egQArea,
+html body .eg-test-root[data-test-theme="light"] .eg-q-stem,
+html body .eg-test-root[data-test-theme="light"] .mtk-q-text,
+html body .eg-test-root[data-test-theme="light"] .qx-question-body,
+html body .allen-practice[data-test-theme="light"] .mtk-q-text,
+html body .allen-practice[data-test-theme="light"] #egQArea,
+html body .eg-test-root[data-test-theme="light"] #egQArea *:not(.mtk-opt-letter):not(.qx-opt-circle):not(img):not(svg):not(path),
+html body .allen-practice[data-test-theme="light"] .mtk-q-text *:not(.mtk-opt-letter):not(.qx-opt-circle):not(img):not(svg):not(path),
+html body .eg-test-root[data-test-theme="light"] .katex,
+html body .eg-test-root[data-test-theme="light"] .katex *,
+html body .allen-practice[data-test-theme="light"] .mtk-q-text .katex,
+html body .allen-practice[data-test-theme="light"] .mtk-q-text .katex * {
+  color: #0b1220 !important;
+  -webkit-text-fill-color: #0b1220 !important;
+}
+html body .eg-test-root[data-test-theme="dark"] #egQArea,
+html body .eg-test-root[data-test-theme="dark"] .eg-q-stem,
+html body .eg-test-root[data-test-theme="dark"] .mtk-q-text,
+html body .eg-test-root[data-test-theme="dark"] .qx-question-body,
+html body .allen-practice[data-test-theme="dark"] .mtk-q-text,
+html body .allen-practice[data-test-theme="dark"] #egQArea,
+html body .eg-test-root[data-test-theme="dark"] #egQArea *:not(.mtk-opt-letter):not(.qx-opt-circle):not(img):not(svg):not(path),
+html body .allen-practice[data-test-theme="dark"] .mtk-q-text *:not(.mtk-opt-letter):not(.qx-opt-circle):not(img):not(svg):not(path),
+html body .eg-test-root[data-test-theme="dark"] .katex,
+html body .eg-test-root[data-test-theme="dark"] .katex *,
+html body .allen-practice[data-test-theme="dark"] .mtk-q-text .katex,
+html body .allen-practice[data-test-theme="dark"] .mtk-q-text .katex * {
+  color: #f8fafc !important;
+  -webkit-text-fill-color: #f8fafc !important;
+}
+html body .eg-test-root #egQArea,
+html body .eg-test-root .eg-q-stem,
+html body .allen-practice .mtk-q-text,
+html body .qx-question-body {
+  font-size: 17px !important;
+  line-height: 1.7 !important;
+  font-weight: 500 !important;
+  margin: 0 0 14px !important;
+}
+html body .eg-test-root .eg-q-stem p,
+html body .allen-practice .mtk-q-text p,
+html body .qx-question-body p {
+  margin: 0 0 10px !important;
+}
+html body .eg-test-root #qxOpts,
+html body .eg-test-root .eg-opts,
+html body .allen-practice #qaOpts,
+html body .allen-practice .mtk-options,
+html body .mtk-options.mtk-options-grid {
+  display: grid !important;
+  gap: 10px !important;
+  margin-top: 4px !important;
+}
+@media (max-width: 720px) {
+  html body .eg-test-root #qxOpts,
+  html body .eg-test-root .eg-opts,
+  html body .allen-practice #qaOpts,
+  html body .allen-practice .mtk-options,
+  html body .eg-test-root #qxOpts.mtk-options-grid,
+  html body .eg-test-root #qxOpts.qx-opts-img,
+  html body .eg-test-root #qxOpts.qx-opts-stack {
+    grid-template-columns: 1fr !important;
+  }
+  html body .eg-test-root .eg-q-card,
+  html body .eg-test-root.eg-compact .eg-q-card,
+  html body .allen-practice .mtk-main {
+    padding: 14px 12px 16px !important;
+  }
+}
+
+/* Option rows + letters. Selected / correct / wrong stay obvious. */
+html body .eg-test-root .mtk-opt,
+html body .eg-test-root .eg-opt,
+html body .eg-test-root .qx-prac-opt,
+html body .allen-practice .mtk-opt,
+html body .allen-practice .qx-prac-opt {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: flex-start !important;
+  gap: 12px !important;
+  padding: 12px 14px !important;
+  min-height: 52px !important;
+  border-radius: 12px !important;
+  border: 1.5px solid #cbd5e1 !important;
+  background: #ffffff !important;
+  color: #0b1220 !important;
+}
+html body .eg-test-root[data-test-theme="dark"] .mtk-opt,
+html body .eg-test-root[data-test-theme="dark"] .eg-opt,
+html body .eg-test-root[data-test-theme="dark"] .qx-prac-opt,
+html body .allen-practice[data-test-theme="dark"] .mtk-opt,
+html body .allen-practice[data-test-theme="dark"] .qx-prac-opt {
+  background: #1e293b !important;
+  color: #f8fafc !important;
+  border-color: #64748b !important;
+}
+html body .eg-test-root[data-test-theme="light"] .mtk-opt-text,
+html body .eg-test-root[data-test-theme="light"] .qx-prac-opt-text,
+html body .allen-practice[data-test-theme="light"] .mtk-opt-text,
+html body .eg-test-root[data-test-theme="light"] .mtk-opt-text *:not(.mtk-opt-letter):not(.qx-opt-circle):not(img):not(svg):not(path),
+html body .allen-practice[data-test-theme="light"] .mtk-opt-text *:not(.mtk-opt-letter):not(.qx-opt-circle):not(img):not(svg):not(path) {
+  color: #0b1220 !important;
+  -webkit-text-fill-color: #0b1220 !important;
+}
+html body .eg-test-root[data-test-theme="dark"] .mtk-opt-text,
+html body .eg-test-root[data-test-theme="dark"] .qx-prac-opt-text,
+html body .allen-practice[data-test-theme="dark"] .mtk-opt-text,
+html body .eg-test-root[data-test-theme="dark"] .mtk-opt-text *:not(.mtk-opt-letter):not(.qx-opt-circle):not(img):not(svg):not(path),
+html body .allen-practice[data-test-theme="dark"] .mtk-opt-text *:not(.mtk-opt-letter):not(.qx-opt-circle):not(img):not(svg):not(path) {
+  color: #f8fafc !important;
+  -webkit-text-fill-color: #f8fafc !important;
+}
+html body .eg-test-root.eg-qxmd182 .mtk-opt .mtk-opt-letter,
+html body .eg-test-root.eg-qxmd182 .mtk-opt .qx-opt-circle,
+html body .eg-test-root .mtk-opt-letter,
+html body .eg-test-root .qx-opt-circle,
+html body .eg-test-root .eg-opt-letter,
+html body .allen-practice .mtk-opt-letter,
+html body .allen-practice .qx-opt-circle,
+html body .qzrr-opts .mtk-opt .mtk-opt-letter,
+html body .qzrr-cbt .mtk-opt-letter,
+html body .qx-prac-opt .mtk-opt-letter,
+html body .qx-prac-opt .qx-opt-circle {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 32px !important;
+  height: 32px !important;
+  min-width: 32px !important;
+  min-height: 32px !important;
+  flex: 0 0 32px !important;
+  border-radius: 50% !important;
+  background: #1565C0 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  border: 0 !important;
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  line-height: 1 !important;
+  letter-spacing: 0 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  position: relative !important;
+  overflow: visible !important;
+}
+html body .eg-test-root[data-test-theme="light"] .mtk-opt.selected:not(.correct):not(.wrong):not(.eg-opt-right):not(.eg-opt-wrong),
+html body .eg-test-root[data-test-theme="light"] .qx-prac-opt.selected:not(.correct):not(.wrong),
+html body .allen-practice[data-test-theme="light"] .mtk-opt.selected:not(.correct):not(.wrong),
+html body .allen-practice[data-test-theme="light"] .qx-prac-opt.selected:not(.correct):not(.wrong) {
+  background: #e3f2fd !important;
+  border-color: #1565C0 !important;
+  box-shadow: 0 0 0 2px rgba(21, 101, 192, 0.28) !important;
+  color: #0b1220 !important;
+}
+html body .eg-test-root[data-test-theme="dark"] .mtk-opt.selected:not(.correct):not(.wrong):not(.eg-opt-right):not(.eg-opt-wrong),
+html body .eg-test-root[data-test-theme="dark"] .qx-prac-opt.selected:not(.correct):not(.wrong),
+html body .allen-practice[data-test-theme="dark"] .mtk-opt.selected:not(.correct):not(.wrong) {
+  background: #1e3a5f !important;
+  border-color: #90caf9 !important;
+  box-shadow: 0 0 0 2px rgba(144, 202, 249, 0.35) !important;
+  color: #f8fafc !important;
+}
+html body .eg-test-root .mtk-opt.selected .mtk-opt-letter,
+html body .eg-test-root .mtk-opt.selected .qx-opt-circle,
+html body .eg-test-root.eg-qxmd182 .mtk-opt.selected .mtk-opt-letter,
+html body .allen-practice .mtk-opt.selected .mtk-opt-letter,
+html body .qx-prac-opt.selected .mtk-opt-letter,
+html body .qzrr-opts .mtk-opt.selected .mtk-opt-letter {
+  background: #0d47a1 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  box-shadow: 0 0 0 3px rgba(21, 101, 192, 0.35) !important;
+}
+html body .eg-test-root[data-test-theme="light"] .mtk-opt.eg-opt-right,
+html body .eg-test-root[data-test-theme="light"] .mtk-opt.correct,
+html body .allen-practice[data-test-theme="light"] .mtk-opt.correct,
+html body .allen-practice[data-test-theme="light"] .qx-prac-opt.correct {
+  background: #ecfdf5 !important;
+  border-color: #16a34a !important;
+  color: #14532d !important;
+}
+html body .eg-test-root[data-test-theme="dark"] .mtk-opt.eg-opt-right,
+html body .eg-test-root[data-test-theme="dark"] .mtk-opt.correct,
+html body .allen-practice[data-test-theme="dark"] .mtk-opt.correct {
+  background: #14532d !important;
+  border-color: #4ade80 !important;
+  color: #dcfce7 !important;
+}
+html body .eg-test-root .mtk-opt.eg-opt-right .mtk-opt-letter,
+html body .eg-test-root .mtk-opt.correct .mtk-opt-letter,
+html body .allen-practice .mtk-opt.correct .mtk-opt-letter,
+html body .qx-prac-opt.correct .mtk-opt-letter {
+  background: #15803d !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+html body .eg-test-root[data-test-theme="light"] .mtk-opt.eg-opt-wrong,
+html body .eg-test-root[data-test-theme="light"] .mtk-opt.wrong,
+html body .allen-practice[data-test-theme="light"] .mtk-opt.wrong,
+html body .allen-practice[data-test-theme="light"] .qx-prac-opt.wrong {
+  background: #fef2f2 !important;
+  border-color: #dc2626 !important;
+  color: #7f1d1d !important;
+}
+html body .eg-test-root[data-test-theme="dark"] .mtk-opt.eg-opt-wrong,
+html body .eg-test-root[data-test-theme="dark"] .mtk-opt.wrong,
+html body .allen-practice[data-test-theme="dark"] .mtk-opt.wrong {
+  background: #7f1d1d !important;
+  border-color: #fca5a5 !important;
+  color: #fee2e2 !important;
+}
+html body .eg-test-root .mtk-opt.eg-opt-wrong .mtk-opt-letter,
+html body .eg-test-root .mtk-opt.wrong .mtk-opt-letter,
+html body .allen-practice .mtk-opt.wrong .mtk-opt-letter,
+html body .qx-prac-opt.wrong .mtk-opt-letter {
+  background: #b91c1c !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+/* Solution: room to read, figures untouched */
+html body .eg-sol-panel,
+html body #egSolPanel,
+html body .allen-practice #qaSolReveal,
+html body .qx-sol-card {
+  margin: 16px 0 8px !important;
+  padding: 0 !important;
+  border-radius: 14px !important;
+}
+html body #egSol,
+html body .eg-sol,
+html body .eg-sol-inline,
+html body .sol-body,
+html body .qx-sol-flow,
+html body .allen-practice #qaSolReveal .qx-sol-card,
+html body .allen-practice .sol-body {
+  padding: 14px 16px 18px !important;
+  line-height: 1.75 !important;
+  font-size: 17px !important;
+}
+html body .qx-sol-flow p,
+html body .sol-body p,
+html body .qx-sol-flow .qx-sol-p,
+html body .eg-sol p {
+  margin: 0 0 12px !important;
+  line-height: 1.75 !important;
+}
+html body .eg-test-root:not([data-test-theme="dark"]) .eg-sol,
+html body .eg-test-root:not([data-test-theme="dark"]) .qx-sol-flow,
+html body .allen-practice:not([data-test-theme="dark"]) .sol-body,
+html body .allen-practice:not([data-test-theme="dark"]) .qx-sol-card {
+  color: #0b1220 !important;
+  -webkit-text-fill-color: #0b1220 !important;
+  background: #ffffff !important;
+}
+html body .eg-test-root[data-test-theme="dark"] .eg-sol,
+html body .eg-test-root[data-test-theme="dark"] .qx-sol-flow,
+html body .allen-practice[data-test-theme="dark"] .sol-body,
+html body .allen-practice[data-test-theme="dark"] .qx-sol-card {
+  color: #f8fafc !important;
+  -webkit-text-fill-color: #f8fafc !important;
+  background: #0f172a !important;
+}
+html body .eg-sol-panel-head,
+html body .eg-sol-panel-head strong {
+  background: #1565C0 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
