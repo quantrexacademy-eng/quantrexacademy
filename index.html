@@ -782,7 +782,30 @@ html[data-theme="dark"] .btn-google { background: #0f172a; color: #f8fafc; }
   }
 }
   .qx-build-pill, #updateBanner, .pwa-update-toast { display: none !important; }
+  @keyframes qxIconSettle {
+    0%, 100% { transform: translateY(0) scale(1); opacity: 1; }
+    45% { transform: translateY(-3px) scale(1.06); opacity: 1; }
+  }
+  .cat img, .exam-dot img, .stage-hub img {
+    opacity: 1 !important;
+    visibility: visible !important;
+    animation: qxIconSettle 2.8s ease-in-out infinite !important;
+    backface-visibility: visible !important;
+  }
+  html[data-theme="dark"] .cat .lab,
+  html[data-theme="light"] .cat .lab,
+  html[data-theme="dark"] .exam-dot .name,
+  html[data-theme="light"] .exam-dot .name { color: var(--text) !important; opacity: 1 !important; }
+  @media (prefers-reduced-motion: reduce) {
+    .cat img, .exam-dot img, .stage-hub img {
+      animation: none !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+      transform: none !important;
+    }
+  }
 </style>
+
     <link rel="stylesheet" href="assets/qx-site-contrast.css?v=qxmd259">
 </head>
 <body>
