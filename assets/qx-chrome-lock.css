@@ -2468,3 +2468,21 @@ html body .allen-practice .qx-sol-card .qx-paper-chip img {
   object-fit: contain !important;
   vertical-align: -3px !important;
 }
+
+/* qxmd270: (1) the whole solution scrolls above the footer: .eg-main grows with the card so the
+   scroll padding applies (overflow of a fixed-height .eg-main ignored it); (2) Prev|Check|Next footer
+   always on screen on phones: no leftover fade-in transform turning #app-main into the footer's
+   containing block, and the test shell uses 100dvh (visible height) instead of 100vh;
+   (3) one stream switcher on phones: hide the topbar Eng/Med/Def/Acad pills (home row + side menu keep it). */
+html body .eg-test-root.eg-test-root .eg-body > .eg-main{height:auto!important;max-height:none!important;min-height:100%!important;align-self:start!important;overflow:visible!important;padding-bottom:0!important}
+html body .eg-test-root.eg-test-root .eg-body{padding-bottom:calc(96px + env(safe-area-inset-bottom, 0px))!important;scroll-padding-bottom:calc(96px + env(safe-area-inset-bottom, 0px))}
+html body.marks-test-active #app-main, html body:has(.eg-test-root) #app-main{transform:none!important;animation:none!important;opacity:1!important}
+@supports (height:100dvh){
+  html body.marks-test-active #app-main, html body:has(.eg-test-root) #app-main{min-height:100dvh!important;height:100dvh!important}
+  html body.marks-test-active .main, html body.marks-test-active .app, html body:has(.eg-test-root) .main, html body:has(.eg-test-root) .app{min-height:100dvh!important}
+  html body #app-main .eg-test-root.eg-test-root{height:100dvh!important;max-height:100dvh!important}
+}
+html body .eg-test-root .eg-foot.eg-foot{position:fixed!important;bottom:0!important;top:auto!important;transform:none!important;visibility:visible!important;opacity:1!important;z-index:2147483646!important;padding-bottom:calc(12px + env(safe-area-inset-bottom, 0px))!important;max-height:none!important}
+@media (max-width:760px){
+  html body .topbar #qxTopExams, html body .topbar .qx-top-exams{display:none!important}
+}

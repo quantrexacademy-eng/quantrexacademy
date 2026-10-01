@@ -1,10 +1,10 @@
 {
-  "cache": "qx-pwa-qxmd269",
-  "ts": 1790900000269,
-  "title": "qxmd269: Neat solution header, correct answer, cleaner math",
+  "cache": "qx-pwa-qxmd270",
+  "ts": 1790900000270,
+  "title": "qxmd270: Full solution visible, buttons always on screen, single header",
   "site": "https://www.quantrexacademy.com",
-  "build": "qxmd269",
-  "body": "The exam logo above the solution is a small icon again instead of a huge picture. The Answer line and the green option now match the official answer key, and numerical questions no longer show a wrong letter. Broken math in some questions and solutions (for example in Functions) now shows as proper formulas instead of raw code.",
+  "build": "qxmd270",
+  "body": "On phones the whole solution now scrolls above the Previous / Check / Next buttons, and those buttons always stay on screen. The phone header no longer shows the Eng / Med / Def / Acad switcher twice. Also keeps the small exam logo, correct answer keys and cleaner math from qxmd269.",
   "package": "com.quantrexacademy.app",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }
