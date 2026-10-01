@@ -68,6 +68,42 @@ function esc(s) {
     .replace(/"/g, "&quot;");
 }
 
+let qxSeoAlt = "Question figure";
+
+function plainFig(s) {
+  return String(s || "")
+    .replace(/<script[\s\S]*?<\/script>/gi, " ")
+    .replace(/<style[\s\S]*?<\/style>/gi, " ")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/\$\$[\s\S]*?\$\$/g, " ")
+    .replace(/\$[^$\n]{0,200}\$/g, " ")
+    .replace(/&nbsp;/gi, " ")
+    .replace(/&amp;/gi, "&")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function figAlt(s) {
+  let text = plainFig(s);
+  if (text.length < 8) return "Question figure";
+  if (text.length > 120) text = text.slice(0, 120).replace(/\s+\S*$/, "");
+  return text || "Question figure";
+}
+
+/* HTML alt only. Do not touch ?alt=media or &alt=media inside image URLs. */
+function stripHtmlAlt(attr) {
+  return String(attr || "").replace(/(^|\s)alt\s*=\s*(?:"[^"]*"|'[^']*'|[^\s"'=<>]+)/gi, "$1");
+}
+
+function absoluteUrl(u) {
+  const s = String(u || "").trim();
+  if (!s || /^data:/i.test(s) || /^javascript:/i.test(s)) return "";
+  if (/^https?:\/\//i.test(s)) return s;
+  if (s.indexOf("//") === 0) return "https:" + s;
+  if (s.charAt(0) === "/") return SITE + s;
+  return SITE + "/" + s.replace(/^\.\//, "");
+}
+
 function publicImg(u) {
   const s = String(u || "").trim();
   if (!s || /^data:/i.test(s) || /^javascript:/i.test(s)) return "";
@@ -137,7 +173,7 @@ function rich(s) {
   h = h.replace(/<img([^>]*?)src\s*=\s*(["'])([^"']+)\2([^>]*)>/gi, function (_, a, _q, src, b) {
     const p = publicImg(src);
     if (!p) return "";
-    return "<img" + a + ' src="' + esc(p) + '" alt="Quantrex figure" loading="lazy" decoding="async"' + b + ">";
+    return "<img" + stripHtmlAlt(a) + ' src="' + esc(p) + '" alt="' + esc(figAlt(qxSeoAlt)) + '" loading="lazy" decoding="async"' + stripHtmlAlt(b) + ">";
   });
   return h;
 }
@@ -234,18 +270,22 @@ function render(rec, related) {
       return `<li class="${ok ? "hit" : ""}"><span class="ltr">${letters(i)}</span><span class="opt-body">${rich(o)}</span></li>`;
     })
     .join("");
+  qxSeoAlt = qtxt || "Question figure";
   const fromField = Array.isArray(rec.imgs) ? rec.imgs.map(publicImg).filter(Boolean) : [];
   const fromBlob = extractImgs(recBlob(rec));
   const seenFig = Object.create(null);
-  const stemFigs = fromField.concat(fromBlob)
+  const stemFigUrls = fromField.concat(fromBlob)
     .filter((u) => {
       if (!u || seenFig[u]) return false;
       seenFig[u] = 1;
       return true;
     })
-    .slice(0, 6)
-    .map((u) => `<img class="stem-fig" src="${esc(u)}" alt="Quantrex figure" loading="lazy">`)
+    .slice(0, 6);
+  const stemFigs = stemFigUrls
+    .map((u) => `<img class="stem-fig" src="${esc(u)}" alt="${esc(figAlt(qxSeoAlt))}" loading="lazy">`)
     .join("");
+  const ogImage = stemFigUrls.length ? absoluteUrl(stemFigUrls[0]) : SITE + "/assets/quantrex-logo-3d-192.png";
+  const ogIsFig = stemFigUrls.length > 0;
   const relHtml = (related || [])
     .map((x) => `<a href="/q/${esc(x.id)}/${esc(x.slug)}">${esc(x.t)}${x.year ? ` <small>${esc(x.year)}</small>` : ""}</a>`)
     .join("");
@@ -294,6 +334,13 @@ function render(rec, related) {
     ]
   };
   if (!schema["@graph"][2].mainEntity.acceptedAnswer) delete schema["@graph"][2].mainEntity.acceptedAnswer;
+  if (ogIsFig) {
+    schema["@graph"].push({
+      "@type": "ImageObject",
+      contentUrl: ogImage,
+      caption: figAlt(qxSeoAlt)
+    });
+  }
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -309,8 +356,12 @@ function render(rec, related) {
   <meta property="og:title" content="${esc(title)}">
   <meta property="og:description" content="${esc(desc)}">
   <meta property="og:url" content="${esc(url)}">
-  <meta property="og:image" content="${SITE}/assets/quantrex-logo-3d-192.png">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="${esc(ogImage)}">
+  <meta property="og:image:alt" content="${esc(ogIsFig ? figAlt(qxSeoAlt) : "Quantrex Academy")}">
+  <meta name="twitter:card" content="${ogIsFig ? "summary_large_image" : "summary"}">
+  <meta name="twitter:title" content="${esc(title)}">
+  <meta name="twitter:description" content="${esc(desc)}">
+  <meta name="twitter:image" content="${esc(ogImage)}">
   <meta name="theme-color" content="#1565C0">
   <link rel="icon" type="image/png" href="/assets/favicon-32x32.png">
   <!-- KaTeX for remaining $math$ on SEO pages -->
@@ -520,7 +571,7 @@ async function renderSearch(req, res) {
       const href = "/q/" + encodeURIComponent(it.id) + "/" + encodeURIComponent(it.slug || "question");
       const opts = optList(it);
       const figs = extractImgs(recBlob(it)).slice(0, 2)
-        .map((u) => `<img class="thumb" src="${esc(u)}" alt="Quantrex figure" loading="lazy">`)
+        .map((u) => `<img class="thumb" src="${esc(u)}" alt="${esc(figAlt(it.text || it.t || ""))}" loading="lazy">`)
         .join("");
       const optHtml = opts.length
         ? `<ol class="mini-opts">${opts.map((o, n) => `<li><b>${letters(n)}</b> ${rich(String(o).slice(0, 280))}</li>`).join("")}</ol>`
@@ -574,7 +625,7 @@ async function renderSearch(req, res) {
 </head>
 <body>
   <header class="top">
-    <a class="brand" href="/"><img src="/assets/quantrex-logo-3d-64.png" alt="">Quantrex Academy</a>
+    <a class="brand" href="/"><img src="/assets/quantrex-logo-3d-64.png" alt="Quantrex Academy">Quantrex Academy</a>
     <a class="brand" href="/jee" style="font-size:12px;background:rgba(255,255,255,.14);padding:8px 12px;border-radius:999px">JEE PYQs</a>
   </header>
   <main>

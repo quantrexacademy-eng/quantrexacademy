@@ -491,13 +491,33 @@ window.QxImgClean = (() => {
     return "";
   }
 
+  let qxFigAlt = "Question figure";
+  function rememberFigAlt(q) {
+    const raw = String((q && (q.text || q.q || q.t || q.question)) || "")
+      .replace(/<script[\s\S]*?<\/script>/gi, " ")
+      .replace(/<style[\s\S]*?<\/style>/gi, " ")
+      .replace(/<[^>]+>/g, " ")
+      .replace(/\$\$[\s\S]*?\$\$/g, " ")
+      .replace(/\$[^$\n]{0,180}\$/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+    if (raw.length < 8) return;
+    let s = raw;
+    if (s.length > 120) s = s.slice(0, 120).replace(/\s+\S*$/, "");
+    if (s.length >= 8) qxFigAlt = s;
+  }
+  function figAltAttr() {
+    return escAttr(qxFigAlt || "Question figure");
+  }
+
   function irodovStemHtml(q) {
+    rememberFigAlt(q);
     const cdn = irodovStemCdn(q);
     if (!cdn) return "";
     const proxy = proxyImageUrl(cdn) || cdn;
     const safeP = String(proxy).replace(/&/g, "&amp;").replace(/"/g, "&quot;");
     const safeO = String(cdn).replace(/&/g, "&amp;").replace(/"/g, "&quot;");
-    return `<img class="qx-pool-fig qx-fig-img qx-no-wm qx-irodov-stem" src="${safeP}" data-qx-orig-src="${safeO}" alt="" loading="eager" decoding="async" fetchpriority="high" style="max-width:min(100%,720px);height:auto;min-height:140px;display:block;margin:8px auto;object-fit:contain;background:#fff;content-visibility:visible">`;
+    return `<img class="qx-pool-fig qx-fig-img qx-no-wm qx-irodov-stem" src="${safeP}" data-qx-orig-src="${safeO}" alt="${figAltAttr()}" loading="eager" decoding="async" fetchpriority="high" style="max-width:min(100%,720px);height:auto;min-height:140px;display:block;margin:8px auto;object-fit:contain;background:#fff;content-visibility:visible">`;
   }
 
   function ensureIrodovStem(q) {
@@ -4424,7 +4444,8 @@ window.QxImgClean = (() => {
         );
       }
       if (!/\bloading\s*=/i.test(a)) a += ' loading="eager"';
-      a += ` src="${safeProxy}" data-qx-orig-src="${safeOrig}" alt=""`;
+      a = a.replace(/(^|\s)alt\s*=\s*(?:"[^"]*"|'[^']*'|[^\s"'=<>]+)/gi, "$1");
+      a += ` src="${safeProxy}" data-qx-orig-src="${safeOrig}" alt="${figAltAttr()}"`;
       return `<img ${a.trim()}>`;
     });
     return stripSpilledFigUrls(out);
@@ -4749,10 +4770,11 @@ window.QxImgClean = (() => {
       ? ` style="--qx-fig-w:${dw}px;width:auto;height:auto;max-width:100%;max-height:280px;display:block;margin:8px auto;opacity:1;visibility:visible;object-fit:contain;background:#fff;"`
       : ` style="max-width:100%;height:auto;max-height:280px;display:block;margin:8px auto;opacity:1;visibility:visible;object-fit:contain;background:#fff;"`;
     const imgClass = ` class="qx-fig-img qx-no-wm qx-pool-fig${iroFb ? " qx-irodov-stem" : ""}${organic ? " qx-organic-fig qx-org-fig" : ""}${readyCls}"`;
-    return `<div class="qx-fig-flat mathjax_ignore tex2jax_ignore"><img${imgClass}${imgDataW}${imgStyle} src="${displaySrc}" alt="" loading="eager" decoding="async" fetchpriority="high" data-qx-orig-src="${u}" data-qx-pinned="1"${wmAttrs} onerror="${FIG_ONERROR}"></div>`;
+    return `<div class="qx-fig-flat mathjax_ignore tex2jax_ignore"><img${imgClass}${imgDataW}${imgStyle} src="${displaySrc}" alt="${figAltAttr()}" loading="eager" decoding="async" fetchpriority="high" data-qx-orig-src="${u}" data-qx-pinned="1"${wmAttrs} onerror="${FIG_ONERROR}"></div>`;
   }
 
   function buildSlotInnerHtml(rawHtml, qid, q) {
+    rememberFigAlt(q);
     const entries = resolveDiagramEntries(rawHtml, qid, q);
     if (entries.length) {
       return entries.map(e => poolFigureHtml(e.src, e.displayW)).join("");
@@ -4762,6 +4784,7 @@ window.QxImgClean = (() => {
   }
 
   function buildDiagramSlotHtml(qid, rawHtml, q) {
+    rememberFigAlt(q);
     if (qid == null || qid === "") return "";
     pinQuestionHtml(qid, rawHtml);
     const inner = buildSlotInnerHtml(rawHtml, qid, q);
@@ -4803,7 +4826,7 @@ window.QxImgClean = (() => {
       ? ` style="--qx-fig-w:${cap}px;width:auto;height:auto;max-width:100%;max-height:200px;display:block;margin:0 auto;opacity:1;visibility:visible;object-fit:contain;background:#fff;"`
       : ` style="max-width:100%;height:auto;max-height:200px;display:block;margin:0 auto;opacity:1;visibility:visible;object-fit:contain;background:#fff;"`;
     const imgClass = ` class="qx-fig-img qx-no-wm qx-pool-fig qx-opt-fig-img${organic ? " qx-organic-fig qx-org-fig" : ""}${cleanCls}"`;
-    return `<div class="qx-fig-flat mathjax_ignore tex2jax_ignore"><img${imgClass}${imgDataW}${imgStyle} src="${displaySrc}" alt="" loading="eager" decoding="async" fetchpriority="high" data-qx-orig-src="${u}" data-qx-pinned="1"${wmAttrs} onerror="${FIG_ONERROR}"></div>`;
+    return `<div class="qx-fig-flat mathjax_ignore tex2jax_ignore"><img${imgClass}${imgDataW}${imgStyle} src="${displaySrc}" alt="${figAltAttr()}" loading="eager" decoding="async" fetchpriority="high" data-qx-orig-src="${u}" data-qx-pinned="1"${wmAttrs} onerror="${FIG_ONERROR}"></div>`;
   }
 
   function optionDirectImgHtml(raw) {

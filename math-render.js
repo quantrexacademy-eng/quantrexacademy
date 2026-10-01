@@ -4362,7 +4362,7 @@ window.Mx = (() => {
           : orig;
         const safe = disp.replace(/&/g, "&amp;").replace(/"/g, "&quot;");
         const safeOrig = orig.replace(/&/g, "&amp;").replace(/"/g, "&quot;");
-        return `<img class="qx-pool-fig qx-match-fig qx-no-wm qx-fig-ready qx-wm-clean" src="${safe}" data-qx-orig-src="${safeOrig}" alt="" loading="eager" decoding="async" style="max-width:min(100%,260px);max-height:150px;width:auto;height:auto;display:block;margin:6px auto;object-fit:contain;background:#fff;border-radius:8px">`;
+        return `<img class="qx-pool-fig qx-match-fig qx-no-wm qx-fig-ready qx-wm-clean" src="${safe}" data-qx-orig-src="${safeOrig}" alt="Question figure" loading="eager" decoding="async" style="max-width:min(100%,260px);max-height:150px;width:auto;height:auto;display:block;margin:6px auto;object-fit:contain;background:#fff;border-radius:8px">`;
       });
     }
     function cellBodyHtml(cell) {

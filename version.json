@@ -1,10 +1,10 @@
 {
-  "cache": "qx-pwa-qxmd260",
-  "ts": 1790900000260,
-  "title": "qxmd260: set-brace TeX renders, option lines and icons stay visible",
+  "cache": "qx-pwa-qxmd261",
+  "ts": 1790900000261,
+  "title": "qxmd261: question figure text for search, clearer login",
   "site": "https://www.quantrexacademy.com",
-  "build": "qxmd260",
-  "body": "Invalid \\left{ and split set dollars render as KaTeX. Option math stays inline. Engineering and Medical icons stay visible in light and dark at narrow and wide widths. Official answers are unchanged.",
+  "build": "qxmd261",
+  "body": "Question pages keep their own title, description and canonical. When a question has a real figure, the page names that figure and uses it as the share image. Login fields are easier to read in light and dark. Official answers are unchanged. Search ranking is not guaranteed.",
   "package": "com.quantrexacademy.app",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }

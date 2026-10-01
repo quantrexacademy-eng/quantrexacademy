@@ -275,7 +275,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 .brand-name {
   font-family: Kanit, sans-serif; font-weight: 800; font-size: 15px;
   background: linear-gradient(110deg, var(--primary), var(--sky) 50%, var(--orange));
-  -webkit-background-clip: text; background-clip: text; color: transparent;
+  -webkit-background-clip: text; background-clip: text; color: var(--primary); -webkit-text-fill-color: transparent;
 }
 .theme-btn {
   border: 1px solid var(--line); background: var(--surface); color: var(--text);
@@ -330,7 +330,7 @@ h1 {
 h1 em {
   font-style: normal;
   background: linear-gradient(120deg, var(--primary), var(--sky) 45%, var(--orange));
-  -webkit-background-clip: text; background-clip: text; color: transparent;
+  -webkit-background-clip: text; background-clip: text; color: var(--primary); -webkit-text-fill-color: transparent;
   background-size: 200% auto;
   animation: shimmer 6s linear infinite;
 }
@@ -903,6 +903,67 @@ html[data-theme="dark"] .btn-google { background: #0f172a; color: #f8fafc; }
   }
   .bg-orbs, .mesh-grid { display: none; }
 }
+
+/* qxmd261: readable fields in light and dark. Auth behavior is unchanged. */
+.auth-pane input,
+.auth-pane select {
+  background: #ffffff;
+  color: #0b1b33;
+  border: 1.5px solid #7fa4cf;
+  border-radius: 12px;
+  height: 48px;
+}
+html[data-theme="dark"] .auth-pane input,
+html[data-theme="dark"] .auth-pane select {
+  background: #0c1730;
+  color: #f7faff;
+  border-color: #8eadd4;
+}
+.auth-pane input::placeholder {
+  color: #3e5570;
+  opacity: 1;
+}
+html[data-theme="dark"] .auth-pane input::placeholder {
+  color: #d3e1f5;
+}
+.auth-pane input:focus,
+.auth-pane select:focus {
+  outline: 2px solid #1565c0;
+  outline-offset: 1px;
+  border-color: #1565c0;
+}
+html[data-theme="dark"] .auth-pane input:focus,
+html[data-theme="dark"] .auth-pane select:focus {
+  outline-color: #9ec0ff;
+  border-color: #9ec0ff;
+}
+.auth-row .cc {
+  color: #0b1b33;
+  background: #e7f1fb;
+  border: 1.5px solid #7fa4cf;
+  border-radius: 12px;
+  height: 48px;
+  min-width: 52px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+}
+html[data-theme="dark"] .auth-row .cc {
+  color: #f7faff;
+  background: #0c1730;
+  border-color: #8eadd4;
+}
+.auth-tab { color: #1d334d; }
+html[data-theme="dark"] .auth-tab { color: #e2ecf8; }
+.auth-tab.on { color: #ffffff; }
+.lead, .hint { color: #334862; }
+html[data-theme="dark"] .lead,
+html[data-theme="dark"] .hint { color: #d5e2f3; }
+.qx-help-bar { gap: 10px 14px; margin-top: 14px; }
+.qx-help-bar a { color: #0d47a1; }
+html[data-theme="dark"] .qx-help-bar a { color: #c5dcff; }
+.login-bar { padding: 22px 18px 16px; }
 </style>
     <link rel="stylesheet" href="assets/qx-site-contrast.css?v=qxmd179">
 </head>
@@ -962,17 +1023,17 @@ html[data-theme="dark"] .btn-google { background: #0f172a; color: #f8fafc; }
             <span class="sub">Class 7–12 · CBSE</span>
           </button>
           <button type="button" class="cat cat-engineering" data-cat="Engineering" title="Engineering">
-            <img src="assets/exam-logos/ic_content_exam_jee_advanced.png?v=anim1" alt="">
+            <img src="assets/exam-logos/ic_content_exam_jee_advanced.png?v=anim1" alt="JEE Advanced">
             <span class="lab">Engineering</span>
             <span class="sub">JEE Advanced</span>
           </button>
           <button type="button" class="cat cat-medical" data-cat="Medical" title="Medical">
-            <img src="assets/exam-logos/ic_content_exam_neet.png?v=anim1" alt="">
+            <img src="assets/exam-logos/ic_content_exam_neet.png?v=anim1" alt="NEET">
             <span class="lab">Medical</span>
             <span class="sub">NTA · NEET</span>
           </button>
           <button type="button" class="cat cat-defence" data-cat="Defence" title="Defence">
-            <img src="assets/exam-logos/ic_content_exam_nda.png?v=anim1" alt="">
+            <img src="assets/exam-logos/ic_content_exam_nda.png?v=anim1" alt="NDA">
             <span class="lab">Defence</span>
             <span class="sub">NDA</span>
           </button>
@@ -1270,7 +1331,7 @@ html[data-theme="dark"] .btn-google { background: #0f172a; color: #f8fafc; }
       btn.style.setProperty("--ey", ey.toFixed(1) + "px");
       btn.style.setProperty("--d", (i * 0.04) + "s");
       btn.title = item.name;
-      btn.innerHTML = `<span class="arm" aria-hidden="true"></span><img src="${item.logo}" alt=""><span class="name">${item.name}</span>`;
+      btn.innerHTML = `<span class="arm" aria-hidden="true"></span><img src="${item.logo}" alt="${item.name || "Exam"}"><span class="name">${item.name}</span>`;
       btn.addEventListener("click", (e) => {
         e.stopPropagation();
         onItemClick(item, list, originEl);
