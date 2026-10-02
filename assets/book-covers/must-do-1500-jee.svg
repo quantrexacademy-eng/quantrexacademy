@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3b0764"/><stop offset="55%" stop-color="#6d28d9"/><stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="800" fill="url(#g)"/>
+  <rect x="28" y="28" width="544" height="744" rx="18" fill="none" stroke="#fde68a" stroke-opacity=".45" stroke-width="2"/>
+  <text x="48" y="90" fill="#fde68a" font-family="Arial,sans-serif" font-size="22" font-weight="700">Quantrex Academy</text>
+  <text x="48" y="240" fill="#fef3c7" font-family="Arial,sans-serif" font-size="28" font-weight="800">MUST DO</text>
+  <text x="48" y="340" fill="#fff" font-family="Arial,sans-serif" font-size="92" font-weight="900">1500</text>
+  <text x="48" y="410" fill="#fde68a" font-family="Arial,sans-serif" font-size="28" font-weight="800">PYQs for JEE Main</text>
+  <text x="48" y="460" fill="#e9d5ff" font-family="Arial,sans-serif" font-size="22" font-weight="700">2027 Edition</text>
+  <text x="48" y="740" fill="#fef3c7" font-family="Arial,sans-serif" font-size="18">Chem · Math · Phy · High-yield PYQ</text>
+</svg>

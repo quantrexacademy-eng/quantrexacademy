@@ -1,0 +1,76 @@
+{
+  "id": "6a7db96f02198edab586ff05",
+  "title": "Inorganic Chemistry for JEE Main 2027",
+  "type": "exam",
+  "exam": "JEE Main 2027",
+  "banner": "assets/book-covers/inorganic-chemistry-jee.jpg",
+  "redirectType": "subject",
+  "count": 800,
+  "stream": "Engineering",
+  "modules": [
+    {
+      "id": "6ab51bd492144a8573977b03",
+      "title": "Inorganic Chemistry for JEE Main 2027",
+      "count": 800,
+      "subjects": [
+        {
+          "id": "6ab51bd492144a8573977b06",
+          "name": "Chemistry",
+          "count": 800,
+          "position": 0,
+          "chapters": [
+            {
+              "id": "6ab51bd492144a8573977b07",
+              "name": "Chemical Bonding and Molecular Structure",
+              "count": 180,
+              "position": 0,
+              "key": "6a7db96f02198edab586ff05__6ab51bd492144a8573977b03__6ab51bd492144a8573977b06__6ab51bd492144a8573977b07"
+            },
+            {
+              "id": "6ab51bd492144a8573977e34",
+              "name": "Classification of Elements and Periodicity in Properties",
+              "count": 110,
+              "position": 1,
+              "key": "6a7db96f02198edab586ff05__6ab51bd492144a8573977b03__6ab51bd492144a8573977b06__6ab51bd492144a8573977e34"
+            },
+            {
+              "id": "6ab51bd492144a8573978043",
+              "name": "p-Block Elements (Group 13 & 14)",
+              "count": 46,
+              "position": 2,
+              "key": "6a7db96f02198edab586ff05__6ab51bd492144a8573977b03__6ab51bd492144a8573977b06__6ab51bd492144a8573978043"
+            },
+            {
+              "id": "6ab51bd492144a857397811e",
+              "name": "p-Block Elements (Group 15, 16, 17 & 18)",
+              "count": 74,
+              "position": 3,
+              "key": "6a7db96f02198edab586ff05__6ab51bd492144a8573977b03__6ab51bd492144a8573977b06__6ab51bd492144a857397811e"
+            },
+            {
+              "id": "6ab51bd492144a8573978285",
+              "name": "d- and f-Block Elements",
+              "count": 150,
+              "position": 4,
+              "key": "6a7db96f02198edab586ff05__6ab51bd492144a8573977b03__6ab51bd492144a8573977b06__6ab51bd492144a8573978285"
+            },
+            {
+              "id": "6ab51bd492144a857397851c",
+              "name": "Coordination Compounds",
+              "count": 190,
+              "position": 5,
+              "key": "6a7db96f02198edab586ff05__6ab51bd492144a8573977b03__6ab51bd492144a8573977b06__6ab51bd492144a857397851c"
+            },
+            {
+              "id": "6ab51bd492144a8573978813",
+              "name": "Principles Related to Practical Chemistry (Inorganic Salt Analysis)",
+              "count": 50,
+              "position": 6,
+              "key": "6a7db96f02198edab586ff05__6ab51bd492144a8573977b03__6ab51bd492144a8573977b06__6ab51bd492144a8573978813"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

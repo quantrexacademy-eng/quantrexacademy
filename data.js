@@ -641,9 +641,21 @@ function getChapterQuestions(bank, subject, chapter) {
   let raw = (_qxChapterMap[k] && _qxChapterMap[k].length)
     ? _qxChapterMap[k]
     : QUESTIONS.filter(q => q._bank === bank && q.subject === subject && q.chapter === chapter);
+  /* qxmd269: QuantrexTestEngine.uniqueQuestionRecords does not exist; re-indexing pushed the same
+     rows again (list showed 240 for a 120-question chapter). De-duplicate by id. */
   const out = (typeof QuantrexTestEngine !== "undefined" && QuantrexTestEngine.uniqueQuestionRecords)
     ? QuantrexTestEngine.uniqueQuestionRecords(raw)
-    : raw;
+    : (function () {
+      const seen = Object.create(null);
+      const keep = [];
+      for (let i = 0; i < raw.length; i++) {
+        const q = raw[i];
+        const k = q && q.id != null ? String(q.id) : null;
+        if (k != null) { if (seen[k]) continue; seen[k] = true; }
+        keep.push(q);
+      }
+      return keep;
+    })();
   _qxChapterMap[k] = out;
   return out;
 }
@@ -757,11 +769,14 @@ async function loadChapterBank(slug, subject, chapter) {
       // Sanitize stems/options/solutions at ingest (qxmath1 pipeline)
       try {
         if (typeof Mx !== "undefined" && Mx.cleanQuestionText) {
-          if (q.q) q.q = Mx.cleanQuestionText(q.q);
-          if (q.question && q.question !== q.q) q.question = Mx.cleanQuestionText(q.question);
-          if (q.solution) q.solution = Mx.cleanQuestionText(q.solution);
-          if (q.explanation) q.explanation = Mx.cleanQuestionText(q.explanation);
-          if (Array.isArray(q.options)) q.options = q.options.map((o) => (typeof o === "string" ? Mx.cleanQuestionText(o) : o));
+          /* qxmd269: proofread (well-formed) text is kept as stored — the heal pass changed meaning
+             (\mathrm{R} → \mathbb{R}, unwrapped $A$) and cost ~1.5 s main thread per chapter. */
+          const _qxCl = (t) => ((Mx.isCleanTex && Mx.isCleanTex(t)) ? t : Mx.cleanQuestionText(t));
+          if (q.q) q.q = _qxCl(q.q);
+          if (q.question && q.question !== q.q) q.question = _qxCl(q.question);
+          if (q.solution) q.solution = _qxCl(q.solution);
+          if (q.explanation) q.explanation = _qxCl(q.explanation);
+          if (Array.isArray(q.options)) q.options = q.options.map((o) => (typeof o === "string" ? _qxCl(o) : o));
         } else if (typeof QxMathSanitize !== "undefined" && QxMathSanitize.normalizeMathContent) {
           const norm = (s) => QxMathSanitize.normalizeMathContent(s).html || s;
           if (q.q) q.q = norm(q.q);
@@ -769,7 +784,9 @@ async function loadChapterBank(slug, subject, chapter) {
           if (Array.isArray(q.options)) q.options = q.options.map((o) => (typeof o === "string" ? norm(o) : o));
         }
       } catch (_) { /* */ }
-      _qxBrandQuestionMeta(q);
+      /* qxmd269: helper was removed in qxmd162; the bare call threw a ReferenceError, so every
+         chapter JSON load failed and practice fell back to catalog stubs ("Loading question N…"). */
+      if (typeof _qxBrandQuestionMeta === "function") _qxBrandQuestionMeta(q);
       try {
         if (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.paintQuestion) {
           QxOwnedFigs.paintQuestion(q);

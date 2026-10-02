@@ -6,12 +6,12 @@
   "year": 2027,
   "tagline": "Quantrex Ultimate · New Q Series + Free PYQ Chapterwise",
   "syncedFrom": "examgoal_2027",
-  "syncedAt": "2026-09-16T13:09:35.633Z",
+  "syncedAt": "2026-10-02T16:16:01.226Z",
   "examgoalSeriesId": "tsr-19g61mnpryz1v",
   "totalTests": 828,
-  "availableTests": 562,
-  "upcomingTests": 266,
-  "questionShards": 192,
+  "availableTests": 583,
+  "upcomingTests": 246,
+  "questionShards": 213,
   "sections": [
     "PYQ Chapterwise",
     "Chapter and Topic Wise Tests",
@@ -2018,7 +2018,7 @@
       "file": "categories/chemistry.json",
       "testIndex": 62,
       "scheduledDate": "2026-08-14",
-      "status": "upcoming",
+      "status": "available",
       "totalQs": 15
     },
     {
@@ -2078,7 +2078,7 @@
       "file": "categories/chemistry.json",
       "testIndex": 63,
       "scheduledDate": "2026-08-15",
-      "status": "upcoming",
+      "status": "available",
       "totalQs": 15
     },
     {
@@ -2418,7 +2418,7 @@
       "file": "categories/mathematics.json",
       "testIndex": 75,
       "scheduledDate": "2026-08-24",
-      "status": "upcoming",
+      "status": "available",
       "totalQs": 15
     },
     {
@@ -2458,7 +2458,7 @@
       "file": "categories/mathematics.json",
       "testIndex": 77,
       "scheduledDate": "2026-08-25",
-      "status": "upcoming",
+      "status": "available",
       "totalQs": 15
     },
     {
@@ -2468,7 +2468,7 @@
       "file": "categories/mathematics.json",
       "testIndex": 78,
       "scheduledDate": "2026-08-25",
-      "status": "upcoming",
+      "status": "available",
       "totalQs": 15
     },
     {
@@ -2498,7 +2498,7 @@
       "file": "categories/mathematics.json",
       "testIndex": 80,
       "scheduledDate": "2026-08-26",
-      "status": "upcoming",
+      "status": "available",
       "totalQs": 15
     },
     {
@@ -2508,7 +2508,7 @@
       "file": "categories/mathematics.json",
       "testIndex": 81,
       "scheduledDate": "2026-08-26",
-      "status": "upcoming",
+      "status": "available",
       "totalQs": 15
     },
     {
@@ -2568,7 +2568,7 @@
       "file": "categories/mathematics.json",
       "testIndex": 85,
       "scheduledDate": "2026-08-27",
-      "status": "upcoming",
+      "status": "available",
       "totalQs": 15
     },
     {
@@ -2718,7 +2718,7 @@
       "file": "categories/chemistry.json",
       "testIndex": 77,
       "scheduledDate": "2026-08-30",
-      "status": "upcoming",
+      "status": "available",
       "totalQs": 15
     },
     {
@@ -2748,7 +2748,7 @@
       "file": "categories/physics.json",
       "testIndex": 82,
       "scheduledDate": "2026-08-31",
-      "status": "upcoming",
+      "status": "available",
       "totalQs": 15
     },
     {
@@ -2758,7 +2758,7 @@
       "file": "categories/chemistry.json",
       "testIndex": 78,
       "scheduledDate": "2026-08-31",
-      "status": "upcoming",
+      "status": "available",
       "totalQs": 15
     },
     {
@@ -2778,7 +2778,7 @@
       "file": "categories/physics.json",
       "testIndex": 83,
       "scheduledDate": "2026-09-01",
-      "status": "upcoming",
+      "status": "available",
       "totalQs": 15
     },
     {
@@ -2788,7 +2788,7 @@
       "file": "categories/chemistry.json",
       "testIndex": 79,
       "scheduledDate": "2026-09-01",
-      "status": "upcoming",
+      "status": "available",
       "totalQs": 15
     },
     {
@@ -2808,7 +2808,7 @@
       "file": "categories/physics.json",
       "testIndex": 84,
       "scheduledDate": "2026-09-02",
-      "status": "upcoming",
+      "status": "available",
       "totalQs": 15
     },
     {
@@ -2838,7 +2838,7 @@
       "file": "categories/physics.json",
       "testIndex": 85,
       "scheduledDate": "2026-09-03",
-      "status": "upcoming",
+      "status": "available",
       "totalQs": 15
     },
     {
@@ -2868,7 +2868,17 @@
       "file": "categories/physics.json",
       "testIndex": 86,
       "scheduledDate": "2026-09-04",
-      "status": "upcoming",
+      "status": "available",
+      "totalQs": 15
+    },
+    {
+      "id": "tst-19g61mu9iub3a",
+      "title": "Electrostatics Test - 6 (Topic Test)",
+      "categoryId": "physics",
+      "file": "categories/physics.json",
+      "testIndex": 87,
+      "scheduledDate": "2026-09-25",
+      "status": "available",
       "totalQs": 15
     },
     {
@@ -2898,7 +2908,7 @@
       "file": "categories/physics.json",
       "testIndex": 87,
       "scheduledDate": "2026-09-05",
-      "status": "upcoming",
+      "status": "available",
       "totalQs": 25
     },
     {
@@ -2908,7 +2918,7 @@
       "file": "categories/ept.json",
       "testIndex": 11,
       "scheduledDate": "2026-09-05",
-      "status": "upcoming",
+      "status": "available",
       "totalQs": 75
     },
     {
@@ -2948,7 +2958,7 @@
       "file": "categories/physics.json",
       "testIndex": 88,
       "scheduledDate": "2026-09-06",
-      "status": "upcoming",
+      "status": "available",
       "totalQs": 15
     },
     {
@@ -2978,7 +2988,7 @@
       "file": "categories/physics.json",
       "testIndex": 89,
       "scheduledDate": "2026-09-07",
-      "status": "upcoming",
+      "status": "available",
       "totalQs": 15
     },
     {

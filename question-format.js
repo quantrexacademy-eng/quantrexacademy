@@ -13,6 +13,16 @@ const QuantrexQFormat = (() => {
     return String.fromCharCode(65 + i);
   }
 
+  /** Bare A–D or 1–4 stubs belong in the letter circle, not as option text. */
+  function isStubOptionText(plain, i) {
+    const t = String(plain || "").replace(/\s+/g, " ").trim();
+    if (!t) return true;
+    if (/^[A-D]$/i.test(t)) return true;
+    if (/^\(?[A-D]\)?\.?$/i.test(t)) return true;
+    if (/^[1-4]$/.test(t) && Number(t) === (i + 1)) return true;
+    return false;
+  }
+
   /** Convert broken <smiles>…</smiles> text into clean structure images (PubChem + CACTUS fallback) */
   function smilesImgTag(smi) {
     const enc = encodeURIComponent(smi);
@@ -654,6 +664,7 @@ const QuantrexQFormat = (() => {
       const t = s.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
       if (!t) continue;
       if (/^[A-D]$/i.test(t)) continue;
+      if (/^[1-4]$/.test(t)) continue;
       real++;
     }
     return real >= 2;
@@ -665,7 +676,7 @@ const QuantrexQFormat = (() => {
     if (!optsRaw.length) return true;
     return optsRaw.every(o => {
       const t = String(o || "").replace(/<[^>]+>/g, " ").trim();
-      return !t || /^[A-D]$/i.test(t);
+      return !t || /^[A-D]$/i.test(t) || /^[1-4]$/.test(t);
     });
   }
 
@@ -1427,8 +1438,8 @@ const QuantrexQFormat = (() => {
         } else if (raw && !isFigStubHtml(raw)) optBody = raw;
         else optBody = `<span class="qx-fig-loading" data-qx-fig-wait="${i}"></span>`;
       }
-      // Never skip index i — missing options bug when map returns ""
-      if (!String(optBody || "").trim()) optBody = `<span class="qx-opt-plain">${letter(i)}</span>`;
+      if (isStubOptionText(plain, i) && !/<img\b/i.test(String(optBody || raw || ""))) optBody = "";
+      if (!String(optBody || "").trim() && /<img\b/i.test(raw)) optBody = sizeOptionImgs(cleanPoolImgHtml(raw));
       // Marks-style multi: checkbox + letter
       const multiCtrl = multi
         ? `<span class="qx-prac-check mtk-opt-check" aria-hidden="true"></span>`
@@ -1533,10 +1544,10 @@ const QuantrexQFormat = (() => {
       // Last resort: keep original HTML so options never vanish as "Loading…"
       if (!String(optBody || "").trim() && raw) optBody = sizeOptionImgs(cleanPoolImgHtml(raw));
       if (!String(optBody || "").trim() && /C_\{|\^\{|\\binom|\$/.test(raw)) optBody = htmlContent(raw);
-      if (!String(optBody || "").trim() && plain && !/^[A-D]$/i.test(plain)) {
+      if (!String(optBody || "").trim() && plain && !isStubOptionText(plain, i)) {
         optBody = `<span class="qx-opt-plain">${plain.replace(/&/g, "&amp;").replace(/</g, "&lt;")}</span>`;
       }
-      if (!String(optBody || "").trim()) optBody = `<span class="qx-opt-plain">${letter(i)}</span>`;
+      if (isStubOptionText(plain, i) && !/<img\b/i.test(String(optBody || raw || ""))) optBody = "";
       // Radio circle for Quizrr/NTA CBT; letter badge for Quantrex style (CSS toggles)
       const radio = multi
         ? ""

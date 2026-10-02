@@ -7608,6 +7608,8 @@ const QX_BOOKS_CATALOG = {
   subtitle: "Expert-picked question banks — practice on Quantrex Academy",
   engineering: [
     { id: "6a7db25c02198edab586feff", title: "Physical Chemistry for JEE Main 2027", cover: "assets/book-covers/physical-chemistry-jee.jpg", subject: "Chemistry", badge: "Physical Chemistry", exam: "JEE Main 2027", isComingSoon: false, bankSlug: "jee_main", redirectType: "subject", moduleId: "6aa93b7f25c310c04441e9a2", count: 1045, countBadge: "1045 Questions", type: "exam", tag: "1045 PYQ" },
+    { id: "6a7db96f02198edab586ff05", title: "Inorganic Chemistry for JEE Main 2027", cover: "assets/book-covers/inorganic-chemistry-jee.jpg", subject: "Chemistry", badge: "Inorganic Chemistry", exam: "JEE Main 2027", isComingSoon: false, bankSlug: "jee_main", redirectType: "subject", moduleId: "6ab51bd492144a8573977b03", count: 800, countBadge: "800 Questions", type: "exam", tag: "800 PYQ" },
+    { id: "6ab9f6ec14b1aa409cd705f9", title: "JEE Main Must Do 1500 PYQs (2027 Edition)", cover: "assets/book-covers/must-do-1500-jee.jpg", subject: "PCM", badge: "Must Do 1500", exam: "JEE Main 2027", isComingSoon: false, bankSlug: "jee_main", redirectType: "subject", moduleId: "6aba851533d2f25b260b94b3", count: 4319, countBadge: "1500+ PYQ", type: "exam", tag: "Chem 1500 · Math 1380 · Phy 1439" },
     { id: "6a91185f41ab5aba084f4d30", title: "Most Important PYQ Based Questions", cover: "assets/book-covers/qx-pyq-important.jpg", subject: "PCM", badge: "Quantrex PYQ", exam: "JEE Main 2027", isComingSoon: false, bankSlug: "jee_main", redirectType: "subject", moduleId: "6a916235cb18ffc9d00d5aa1", count: 4289, countBadge: "4200+ Questions", type: "exam", tag: "PYQ 2022–2026" },
     { id: "6a0addba4b032b031e049a36", title: "Concepts Of Physics MCQ Edition [Volume 2]", cover: "assets/book-covers/hc-verma-v2.jpg", subject: "Physics", badge: "HC Verma", exam: "Physics", isComingSoon: false, bankSlug: "jee_main", redirectType: "module", count: 1854, countBadge: "1854 Questions", type: "exam" },
     { id: "6a4ce383c59a7b462185330f", title: "Fundamentals of Organic Chemistry — JEE Mains & Advanced", cover: "assets/book-covers/organic-chemistry.jpg", subject: "Chemistry", badge: "Organic", exam: "JEE Main", isComingSoon: false, bankSlug: "jee_main", redirectType: "subject", moduleId: "6a4e21aea2f0a1af5a74e192", count: 1151, countBadge: "1151 Questions", type: "exam" },
@@ -7624,6 +7626,7 @@ const QX_BOOKS_CATALOG = {
   ],
   medical: [
     { id: "6aa934f6b8c05657c7be7531", title: "Physical Chemistry for NEET 2027", cover: "assets/book-covers/physical-chemistry-neet.jpg", description: "Physical Chemistry Qs Bank · 1045 PYQ", subject: "Chemistry", badge: "Physical Chemistry", exam: "NEET", isComingSoon: false, count: 1045, countBadge: "1045 Questions", type: "exam", redirectType: "subject", moduleId: "6aa93b7f25c310c04441f844", tag: "1045 PYQ" },
+    { id: "6ab508441186769ffc06c18b", title: "Inorganic Chemistry for NEET 2027", cover: "assets/book-covers/inorganic-chemistry-neet.jpg", description: "Inorganic Chemistry Qs Bank · 800 PYQ", subject: "Chemistry", badge: "Inorganic Chemistry", exam: "NEET", isComingSoon: false, count: 800, countBadge: "800 Questions", type: "exam", redirectType: "subject", moduleId: "6ab51bd492144a85739788fe", tag: "800 PYQ" },
     { id: "6a9158833d351af582b98369", title: "Most Important PYQ Based Questions — NEET 2027", cover: "assets/book-covers/qx-pyq-important.jpg", description: "Phy 1344 · Chem 1184 · Bot 1079 · Zoo 1334", subject: "PCB", badge: "Quantrex PYQ", exam: "NEET", isComingSoon: false, count: 4941, countBadge: "4941 Questions", type: "exam", redirectType: "subject", moduleId: "6a9161f1a69a205613f39f1b", tag: "NEET PYQ" },
     { id: "6a0adb714b032b031e049a34", title: "Concepts Of Physics MCQ Edition [Volume 2]", cover: "assets/book-covers/hc-verma-v2.jpg", description: "Objective I · II · Exercises", subject: "Physics", badge: "HC Verma", exam: "NEET", isComingSoon: false, count: 1854, countBadge: "1854 Questions", type: "exam", aliasId: "6a0addba4b032b031e049a36" },
     { id: "6a507da9107f81233d9985c1", title: "Fundamentals of Organic Chemistry — NEET 2027", cover: "assets/book-covers/organic-chemistry.jpg", description: "for NEET 2027", subject: "Chemistry", badge: "Organic", exam: "NEET", isComingSoon: false, count: 1151, countBadge: "1151 Questions", type: "exam", aliasId: "6a4ce383c59a7b462185330f" },
@@ -7651,6 +7654,9 @@ function qxBookCoverSrc(book) {
   var map = {
     "6a7db25c02198edab586feff": "assets/book-covers/physical-chemistry-jee.jpg",
     "6aa934f6b8c05657c7be7531": "assets/book-covers/physical-chemistry-neet.jpg",
+    "6a7db96f02198edab586ff05": "assets/book-covers/inorganic-chemistry-jee.jpg",
+    "6ab508441186769ffc06c18b": "assets/book-covers/inorganic-chemistry-neet.jpg",
+    "6ab9f6ec14b1aa409cd705f9": "assets/book-covers/must-do-1500-jee.jpg",
     "6a9158833d351af582b98369": "assets/book-covers/qx-pyq-important.jpg",
     "qx_physchem_jee_2027": "assets/book-covers/physical-chemistry-jee.jpg",
     "qx_physchem_neet_2027": "assets/book-covers/physical-chemistry-neet.jpg",
