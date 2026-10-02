@@ -68,6 +68,9 @@ function getTestTheme() {
 
 function setTestTheme(mode) {
   const m = mode === "dark" ? "dark" : "light";
+  try {
+    if (typeof session !== "undefined" && session) session._qzrrDark = m === "dark";
+  } catch (_) { /* */ }
   try { localStorage.setItem("quantrex_test_theme", m); } catch (_) { /* */ }
   /* Lockstep with homepage theme — MutationObserver + html[data-theme] CSS must agree */
   try { localStorage.setItem("quantrex_theme", m); } catch (_) { /* */ }
@@ -1512,8 +1515,10 @@ const QuantrexTestEngine = (() => {
               <span class="qzrr-ico qzrr-ico-blue" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M7 3.5h7.2L19 8.3V20a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1z" stroke="#42a5f5" stroke-width="1.7"/><path d="M14 3.5V9h5.2" stroke="#42a5f5" stroke-width="1.7"/><path d="M9 12h6M9 15.5h6" stroke="#42a5f5" stroke-width="1.5" stroke-linecap="round"/></svg></span>
               Question Paper
             </button>
-            <button type="button" class="qzrr-tool-btn mtk-font-btn" id="mtkFontDown" title="Decrease text size">A−</button>
-            <button type="button" class="qzrr-tool-btn mtk-font-btn" id="mtkFontUp" title="Increase text size">A+</button>
+            <button type="button" class="qzrr-tool-btn qzrr-theme-btn${qzrrDark ? "" : " on"}" id="qzrrThemeLight" title="Light mode" aria-pressed="${qzrrDark ? "false" : "true"}"
+              onclick="try{event.preventDefault();event.stopPropagation();if(window.qxSetQzrrTheme)window.qxSetQzrrTheme('light');}catch(_){}return false;"><span class="qzrr-theme-ico" aria-hidden="true">☀</span> Light</button>
+            <button type="button" class="qzrr-tool-btn qzrr-theme-btn${qzrrDark ? " on" : ""}" id="qzrrThemeDark" title="Dark mode" aria-pressed="${qzrrDark ? "true" : "false"}"
+              onclick="try{event.preventDefault();event.stopPropagation();if(window.qxSetQzrrTheme)window.qxSetQzrrTheme('dark');}catch(_){}return false;"><span class="qzrr-theme-ico" aria-hidden="true">☾</span> Dark</button>
             <button type="button" class="qzrr-tool-btn qzrr-exit" id="mtkExitBtn" data-qx-exit="1"
               title="Exit test"
               onclick="event.preventDefault();event.stopPropagation();if(window.qxExitTest){window.qxExitTest();}return false;">Exit</button>
@@ -2140,6 +2145,38 @@ const QuantrexTestEngine = (() => {
   function bindQuizrrChrome(root) {
     if (!root || !session) return;
 
+    window.qxSetQzrrTheme = function (mode) {
+      if (window._qxQzrrThemeLock) return;
+      window._qxQzrrThemeLock = true;
+      try {
+        var m = mode === "dark" ? "dark" : "light";
+        try { session._qzrrDark = m === "dark"; } catch (_) { /* */ }
+        try { if (typeof setTestTheme === "function") setTestTheme(m); } catch (_) { /* */ }
+        var r = document.querySelector(".qzrr-cbt") || root;
+        if (r) {
+          r.classList.toggle("qzrr-dark", m === "dark");
+          r.setAttribute("data-test-theme", m);
+        }
+        try {
+          if (document.body) document.body.classList.toggle("qzrr-dark-body", m === "dark");
+        } catch (_) { /* */ }
+        try {
+          document.querySelectorAll("#qzrrThemeLight, #qzrrThemeDark").forEach(function (b) {
+            var wantDark = b.id === "qzrrThemeDark";
+            var isOn = wantDark === (m === "dark");
+            b.classList.toggle("on", isOn);
+            b.setAttribute("aria-pressed", isOn ? "true" : "false");
+          });
+        } catch (_) { /* */ }
+        try {
+          var tog = document.getElementById("qzrrDarkToggle");
+          if (tog && tog.checked !== (m === "dark")) tog.checked = m === "dark";
+        } catch (_) { /* */ }
+      } finally {
+        window._qxQzrrThemeLock = false;
+      }
+    };
+
     try {
       if (typeof ExamgoalTestUI !== "undefined" && ExamgoalTestUI.ensureCss) ExamgoalTestUI.ensureCss();
     } catch (_) { /* */ }
@@ -2262,7 +2299,9 @@ const QuantrexTestEngine = (() => {
             syncZoomLbl();
           };
         };
-        bindToggle("#qzrrDarkToggle", "_qzrrDark");
+        bindToggle("#qzrrDarkToggle", "_qzrrDark", function (on) {
+          if (typeof window.qxSetQzrrTheme === "function") window.qxSetQzrrTheme(on ? "dark" : "light");
+        });
         bindToggle("#qzrrContrastToggle", "_qzrrContrast");
         bindToggle("#qzrrSpacingToggle", "_qzrrSpacing");
         const resetAll = pop.querySelector("#qzrrA11yResetAll");
@@ -2273,6 +2312,7 @@ const QuantrexTestEngine = (() => {
             session._qzrrDark = false;
             session._qzrrContrast = false;
             session._qzrrSpacing = false;
+            if (typeof window.qxSetQzrrTheme === "function") window.qxSetQzrrTheme("light");
             setTestFontScale("medium");
             setTestZoom(1);
             applyTestZoomToDom(1);
@@ -2405,7 +2445,7 @@ const QuantrexTestEngine = (() => {
     root.classList.toggle("qzrr-dark", !!session._qzrrDark);
     root.classList.remove("qzrr-mag-on", "qzrr-dyslexia", "qzrr-focus");
     root.setAttribute("data-test-theme", session._qzrrDark ? "dark" : "light");
-    ["#qzrrA11yBtn", "#qzrrInstrBtn", "#qzrrPaperBtn", "#mtkFontDown", "#mtkFontUp", "#mtkExitBtn"].forEach(function (sel) {
+    ["#qzrrA11yBtn", "#qzrrInstrBtn", "#qzrrPaperBtn", "#qzrrThemeLight", "#qzrrThemeDark", "#mtkExitBtn"].forEach(function (sel) {
       const el = root.querySelector(sel);
       if (!el) return;
       el.style.setProperty("pointer-events", "auto", "important");

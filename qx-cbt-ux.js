@@ -8,7 +8,7 @@
 (function (global) {
   "use strict";
 
-  var VERSION = "qxmd116";
+  var VERSION = "qxmd281";
   var FORMAT_KEY = "qx_cbt_format_pref"; // "quantrex" | "nta"
 
   function isPracticeConfig(cfg) {
@@ -484,7 +484,7 @@
     document.addEventListener("click", function (e) {
       var t = e.target && e.target.closest && e.target.closest(
         "#qzrrA11yBtn, #qzrrInstrBtn, #qzrrPaperBtn, #qzrrPaperChipBtn, " +
-        "#mtkFontDown, #mtkFontUp, #mtkFontDownHdr, #mtkFontUpHdr, " +
+        "#qzrrThemeLight, #qzrrThemeDark, #mtkFontDown, #mtkFontUp, #mtkFontDownHdr, #mtkFontUpHdr, " +
         ".qzrr-zoom-circle, .qzrr-top-zoom-fab, [data-qzrr-zoom], " +
         "#egFmtBtn, #mtkThemeBtn, #egMenuBtn, #egFullBtn, #qzrrSideToggle, #qzrrPalClose, #mtkPalClose"
       );
@@ -512,6 +512,14 @@
             e.preventDefault();
             e.stopPropagation();
             window.qxOpenQzrrPaper(e);
+          }
+          return;
+        }
+        if (id === "qzrrThemeLight" || id === "qzrrThemeDark") {
+          if (typeof window.qxSetQzrrTheme === "function") {
+            e.preventDefault();
+            e.stopPropagation();
+            window.qxSetQzrrTheme(id === "qzrrThemeDark" ? "dark" : "light");
           }
           return;
         }
@@ -564,7 +572,7 @@
   document.addEventListener("click", function (ev) {
     try {
       var t = ev.target && ev.target.closest
-        ? ev.target.closest("#qzrrA11yBtn,#qzrrInstrBtn,#qzrrPaperBtn,#qzrrPaperChipBtn,#mtkExitBtn,#qxSubmitBtn,#qxSubmitTop,[data-qx-exit='1']")
+        ? ev.target.closest("#qzrrA11yBtn,#qzrrInstrBtn,#qzrrPaperBtn,#qzrrPaperChipBtn,#qzrrThemeLight,#qzrrThemeDark,#mtkExitBtn,#qxSubmitBtn,#qxSubmitTop,[data-qx-exit='1']")
         : null;
       if (!t) return;
       var id = t.id || "";
@@ -578,6 +586,10 @@
       }
       if ((id === "qzrrPaperBtn" || id === "qzrrPaperChipBtn") && typeof window.qxOpenQzrrPaper === "function") {
         if (!ev.defaultPrevented) { ev.preventDefault(); window.qxOpenQzrrPaper(ev); }
+        return;
+      }
+      if ((id === "qzrrThemeLight" || id === "qzrrThemeDark") && typeof window.qxSetQzrrTheme === "function") {
+        if (!ev.defaultPrevented) { ev.preventDefault(); window.qxSetQzrrTheme(id === "qzrrThemeDark" ? "dark" : "light"); }
         return;
       }
       if ((id === "qxSubmitBtn" || id === "qxSubmitTop") && typeof window.qxSubmitTest === "function") {

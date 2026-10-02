@@ -1,10 +1,18 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
     <title>JEE Main PYQ Chapter Tests (Free) | Quantrex Academy</title>
-    <meta name="theme-color" content="#0f172a">
+    <meta name="theme-color" content="#f0f4f9">
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem("quantrex_test_theme") || localStorage.getItem("quantrex_theme");
+          if (t === "dark" || t === "light") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+      })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Literata:opsz,wght@7..72,400;7..72,500;7..72,600;7..72,700&family=STIX+Two+Math&family=Kanit:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -28,6 +36,8 @@
     <link rel="stylesheet" href="assets/qx-solution.css?v=qxtest605">
     <link rel="stylesheet" href="assets/qx-mobile.css?v=qxtest605">
     <link rel="stylesheet" href="assets/qx-palette-nav.css?v=qxpal1">
+    <link rel="stylesheet" href="assets/qx-cbt-ux.css?v=qxmd281">
+    <link rel="stylesheet" href="assets/qx-chrome-lock.css?v=qxmd281" id="qxChromeLockCss">
     <style>
         body.marks-instr-active { overflow: hidden; }
         #app-main { position: fixed; inset: 0; z-index: -1; opacity: 0; pointer-events: none; min-height: 100vh; background: #f4f7fb; }
@@ -56,7 +66,7 @@
     <div id="app-main"></div>
     <div id="appToast"></div>
     <script>
-      window.QX_BUILD = "qxfix43";
+      window.QX_BUILD = "qxmd281";
       window.QX_NO_WM_PERMANENT = true;
       window.TS_STANDALONE = true;
       window.TS_CFG = {
@@ -76,14 +86,18 @@
     <script src="qx-image-clean.js?v=qxfix51" defer></script>
     <script src="qx-nowm-guard.js?v=qxnowm15" defer></script>
     <script src="qx-watermark.js?v=qxrestore2" defer></script>
-    <script src="math-render.js?v=qxmd272" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" defer></script>
+    <script src="qx-math-sanitize.js?v=qxmd260" defer></script>
+    <script src="math-render.js?v=qxmd279" defer></script>
     <script src="question-format.js?v=qxfix40" defer></script>
     <script src="solution-format.js?v=qxmd272" defer></script>
     <script src="data.js?v=qxfbm4" defer></script>
     <script src="marks-live.js?v=qxfbm4" defer></script>
-    <script src="allen-test-ui.js?v=qxmd272" defer></script>
-    <script src="test-engine.js?v=qxfix48" defer></script>
+    <script src="allen-test-ui.js?v=qxmd280" defer></script>
+    <script src="test-engine.js?v=qxmd281" defer></script>
+    <script src="qx-cbt-ux.js?v=qxmd281" defer></script>
     <script src="qx-firebase-bank.js?v=qxfix40" defer></script>
-    <script src="test-series.js?v=qxfix41" defer></script>
+    <script src="test-series.js?v=qxmd251" defer></script>
+    <script src="pwa-register.js?v=qxmd281"></script>
 </body>
 </html>

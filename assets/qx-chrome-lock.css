@@ -288,6 +288,8 @@ html body .qzrr-cbt .qzrr-tool-btn,
 html body .qzrr-cbt #qzrrA11yBtn,
 html body .qzrr-cbt #qzrrInstrBtn,
 html body .qzrr-cbt #qzrrPaperBtn,
+html body .qzrr-cbt #qzrrThemeLight,
+html body .qzrr-cbt #qzrrThemeDark,
 html body .qzrr-cbt #mtkFontDown,
 html body .qzrr-cbt #mtkFontUp,
 html body .qzrr-cbt #mtkExitBtn {
@@ -299,9 +301,13 @@ html body .qzrr-cbt #mtkExitBtn {
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
 }
-html body .qzrr-cbt #mtkExitBtn.qzrr-exit {
-  color: #ffca28 !important;
-  -webkit-text-fill-color: #ffca28 !important;
+html body .qzrr-cbt #mtkExitBtn.qzrr-exit,
+html body .qzrr-cbt #mtkExitBtn {
+  background: #ef4444 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  border: none !important;
+  font-weight: 800 !important;
 }
 html body .qzrr-cbt .qzrr-black-bar {
   z-index: 20110 !important;
@@ -3147,6 +3153,91 @@ html[data-theme="dark"] .eg-top-tools .eg-tip {
   overflow: visible !important;
   max-height: none !important;
   text-shadow: 0 1px 2px rgba(0,0,0,.45);
+}
+
+/* ===== qxmd281: MARKS NTA toolbar — labeled Light/Dark, never white-on-white ===== */
+html body .qzrr-cbt .qzrr-black-bar,
+html body #app-main .qzrr-cbt .qzrr-black-bar {
+  background: #111111 !important;
+  color: #ffffff !important;
+  overflow: visible !important;
+  flex-wrap: wrap !important;
+  height: auto !important;
+  min-height: 38px !important;
+}
+html body .qzrr-cbt .qzrr-black-tools,
+html body #app-main .qzrr-cbt .qzrr-black-tools {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 4px !important;
+  overflow: visible !important;
+  pointer-events: auto !important;
+}
+html body .qzrr-cbt .qzrr-tool-btn,
+html body #app-main .qzrr-cbt .qzrr-tool-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  background: transparent !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  min-height: 32px !important;
+  padding: 5px 10px !important;
+  border: 0 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  white-space: nowrap !important;
+}
+html body .qzrr-cbt .qzrr-theme-btn,
+html body #app-main .qzrr-cbt .qzrr-theme-btn {
+  min-width: 56px !important;
+  justify-content: center !important;
+  border: 1px solid rgba(255,255,255,.55) !important;
+  border-radius: 4px !important;
+  background: transparent !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  font-size: 13px !important;
+  font-weight: 800 !important;
+}
+html body .qzrr-cbt #qzrrThemeLight.on,
+html body #app-main .qzrr-cbt #qzrrThemeLight.on {
+  background: #ffffff !important;
+  color: #111111 !important;
+  -webkit-text-fill-color: #111111 !important;
+  border-color: #ffffff !important;
+}
+html body .qzrr-cbt #qzrrThemeDark.on,
+html body #app-main .qzrr-cbt #qzrrThemeDark.on {
+  background: #0f172a !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  border-color: #ffffff !important;
+}
+html body .qzrr-cbt #mtkExitBtn.qzrr-exit,
+html body #app-main .qzrr-cbt #mtkExitBtn {
+  background: #ef4444 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  border: 0 !important;
+  border-radius: 8px !important;
+  font-weight: 800 !important;
+  padding: 6px 14px !important;
+}
+html body .qzrr-cbt .qzrr-tool-btn.mtk-font-btn,
+html body .qzrr-cbt #mtkFontDown,
+html body .qzrr-cbt #mtkFontUp {
+  background: #1e293b !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  border: 1px solid #ffffff !important;
+  min-width: 36px !important;
+  font-size: 14px !important;
+  font-weight: 800 !important;
 }
 
 
