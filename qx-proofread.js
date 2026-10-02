@@ -63,8 +63,15 @@
     out = out.replace(/\bSgn\s*\(/g, "$\\operatorname{sgn}(");
     out = out.replace(/\\mathrm\s*\{\s*\}/g, "");
     out = out.replace(/\\text\s*\{\s*\}/g, "");
-    out = out.replace(/\$\$\s*\$\$/g, "");
-    out = out.replace(/\$\s*\$/g, "");
+    // Empty math islands only. NEVER /\$\s*\$/ — that also matches display
+    // "$$…$$" delimiters and strips them, leaving raw ax^2 / \begin visible.
+    out = out.replace(/\$\$[ \t\n\r]+\$\$/g, "");
+    out = out.replace(/\$(\s+)\$/g, function (full, inner, idx, src) {
+      const around = src.slice(Math.max(0, idx - 1), idx + full.length + 1);
+      if (/\$\$/.test(around)) return full;
+      if ((src.slice(0, idx).match(/\$/g) || []).length % 2 === 1) return full;
+      return inner;
+    });
 
     out = out.replace(/\bGet\s*Marks(?:\s*App)?\b/gi, "Quantrex Academy");
     out = out.replace(/\bMarks App\b/gi, "Quantrex Academy");

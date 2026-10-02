@@ -1605,7 +1605,7 @@ const QuantrexTestEngine = (() => {
                 <button type="button" class="qzrr-btn qzrr-btn-outline" id="qxPrevBtn" ${session.idx <= 0 ? "disabled" : ""}>Previous</button>
                 <button type="button" class="qzrr-btn qzrr-btn-primary" id="qxSaveBtn">Save &amp; Next</button>
               </div>
-              <button type="button" class="qzrr-btn qzrr-btn-primary qzrr-submit-mobile" id="qxSubmitTop"
+              <button type="button" class="qzrr-btn qzrr-btn-primary qzrr-submit-mobile" id="qxSubmitTop" data-qx-submit="1"
                 onclick="event.preventDefault();event.stopPropagation();if(window.qxSubmitTest){window.qxSubmitTest();}return false;">Submit</button>
             </div>
           </div>
@@ -1640,7 +1640,7 @@ const QuantrexTestEngine = (() => {
             <p class="qzrr-choose">Choose a Question</p>
             <div class="qzrr-grid">${palCells.join("")}</div>
             <div class="qzrr-side-foot">
-              <button type="button" class="qzrr-btn qzrr-btn-primary" id="qxSubmitBtn"
+              <button type="button" class="qzrr-btn qzrr-btn-primary" id="qxSubmitBtn" data-qx-submit="1"
                 onclick="event.preventDefault();event.stopPropagation();if(window.qxSubmitTest){window.qxSubmitTest();}return false;">Submit</button>
             </div>
           </aside>
@@ -2441,7 +2441,7 @@ const QuantrexTestEngine = (() => {
     root.classList.toggle("qzrr-dark", !!session._qzrrDark);
     root.classList.remove("qzrr-mag-on", "qzrr-dyslexia", "qzrr-focus");
     root.setAttribute("data-test-theme", session._qzrrDark ? "dark" : "light");
-    ["#qzrrA11yBtn", "#qzrrInstrBtn", "#qzrrPaperBtn", "#qzrrThemeLight", "#qzrrThemeDark", "#mtkExitBtn"].forEach(function (sel) {
+    ["#qzrrA11yBtn", "#qzrrInstrBtn", "#qzrrPaperBtn", "#qzrrThemeLight", "#qzrrThemeDark", "#mtkExitBtn", "#qxSubmitBtn", "#qxSubmitTop"].forEach(function (sel) {
       const el = root.querySelector(sel);
       if (!el) return;
       el.style.setProperty("pointer-events", "auto", "important");
@@ -6469,21 +6469,24 @@ window.qxExitTest = function qxExitTest(force) {
 /** Global Submit — footer + inline onclick (always works even if re-bind missed) */
 window.qxSubmitTest = function qxSubmitTest() {
   try {
+    if (window._qxSubmitOpenLock && Date.now() - window._qxSubmitOpenLock < 700) return;
+    window._qxSubmitOpenLock = Date.now();
+    if (document.getElementById("mtkSubmitModal")) return;
     const eng = typeof QuantrexTestEngine !== "undefined" ? QuantrexTestEngine : null;
     if (!eng || !eng.getSession || !eng.getSession()) {
       if (typeof showToast === "function") showToast("⚠️ No active test to submit");
       return;
     }
-    // Prefer modal; if it fails or is hidden behind UI, fall back to confirm()
     try {
       if (typeof mtkShowSubmitModal === "function") {
         mtkShowSubmitModal();
-        // Ensure modal is on top of #app-main (z-index 9500)
         const ov = document.getElementById("mtkSubmitModal");
         if (ov) {
-          ov.style.zIndex = "2147483646";
-          ov.style.position = "fixed";
-          ov.style.pointerEvents = "auto";
+          ov.style.setProperty("z-index", "2147483646", "important");
+          ov.style.setProperty("position", "fixed", "important");
+          ov.style.setProperty("inset", "0", "important");
+          ov.style.setProperty("pointer-events", "auto", "important");
+          ov.style.setProperty("display", "flex", "important");
           return;
         }
       }
@@ -6658,15 +6661,11 @@ document.addEventListener("click", function qxSubmitBtnDelegate(ev) {
       if (typeof window.mtkCloseSubmitModal === "function") window.mtkCloseSubmitModal();
       return;
     }
-    const btn = ev.target && ev.target.closest && ev.target.closest("#qxSubmitBtn, #qxSubmitTop, #egSubmit, [data-eg-submit]");
+    const btn = ev.target && ev.target.closest && ev.target.closest("#qxSubmitBtn, #qxSubmitTop, #egSubmit, [data-eg-submit], [data-qx-submit='1']");
     if (!btn) return;
     if (btn.disabled) return;
-    if (document.getElementById("mtkSubmitModal")) return; // modal already open
-    if (window._qxSubmitLock && Date.now() - window._qxSubmitLock < 400) return;
-    // Prefer explicit handlers; if they didn't stop, still ensure submit opens
-    if (btn.getAttribute("onclick") && typeof btn.onclick === "function") return;
-    window._qxSubmitLock = Date.now();
-    ev.preventDefault();
+    if (document.getElementById("mtkSubmitModal")) return;
+    try { ev.preventDefault(); ev.stopPropagation(); } catch (_) { /* */ }
     if (typeof window.qxSubmitTest === "function") window.qxSubmitTest();
   } catch (_) { /* */ }
 }, true);

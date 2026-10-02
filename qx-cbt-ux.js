@@ -486,7 +486,8 @@
         "#qzrrA11yBtn, #qzrrInstrBtn, #qzrrPaperBtn, #qzrrPaperChipBtn, " +
         "#qzrrThemeLight, #qzrrThemeDark, #mtkFontDown, #mtkFontUp, #mtkFontDownHdr, #mtkFontUpHdr, " +
         ".qzrr-zoom-circle, .qzrr-top-zoom-fab, [data-qzrr-zoom], " +
-        "#egFmtBtn, #mtkThemeBtn, #egMenuBtn, #egFullBtn, #qzrrSideToggle, #qzrrPalClose, #mtkPalClose"
+        "#egFmtBtn, #mtkThemeBtn, #egMenuBtn, #egFullBtn, #qzrrSideToggle, #qzrrPalClose, #mtkPalClose, " +
+        "#qxSubmitBtn, #qxSubmitTop, [data-qx-submit='1'], [data-eg-submit]"
       );
       if (!t) return;
       var id = t.id || "";
@@ -520,6 +521,14 @@
             e.preventDefault();
             e.stopPropagation();
             window.qxSetQzrrTheme(id === "qzrrThemeDark" ? "dark" : "light");
+          }
+          return;
+        }
+        if (id === "qxSubmitBtn" || id === "qxSubmitTop" || t.getAttribute("data-qx-submit") === "1" || t.getAttribute("data-eg-submit") === "1") {
+          if (typeof window.qxSubmitTest === "function") {
+            e.preventDefault();
+            e.stopPropagation();
+            window.qxSubmitTest();
           }
           return;
         }
@@ -572,7 +581,7 @@
   document.addEventListener("click", function (ev) {
     try {
       var t = ev.target && ev.target.closest
-        ? ev.target.closest("#qzrrA11yBtn,#qzrrInstrBtn,#qzrrPaperBtn,#qzrrPaperChipBtn,#qzrrThemeLight,#qzrrThemeDark,#mtkExitBtn,#qxSubmitBtn,#qxSubmitTop,[data-qx-exit='1']")
+        ? ev.target.closest("#qzrrA11yBtn,#qzrrInstrBtn,#qzrrPaperBtn,#qzrrPaperChipBtn,#qzrrThemeLight,#qzrrThemeDark,#mtkExitBtn,#qxSubmitBtn,#qxSubmitTop,[data-qx-exit='1'],[data-qx-submit='1'],[data-eg-submit]")
         : null;
       if (!t) return;
       var id = t.id || "";
@@ -592,16 +601,11 @@
         if (!ev.defaultPrevented) { ev.preventDefault(); window.qxSetQzrrTheme(id === "qzrrThemeDark" ? "dark" : "light"); }
         return;
       }
-      if ((id === "qxSubmitBtn" || id === "qxSubmitTop") && typeof window.qxSubmitTest === "function") {
-        if (!t.__qxmd111Bound) {
-          t.__qxmd111Bound = true;
-          t.addEventListener("click", function (e) {
-            try {
-              if (e) { e.preventDefault(); e.stopPropagation(); }
-              window.qxSubmitTest();
-            } catch (_) {}
-          }, true);
-        }
+      if ((id === "qxSubmitBtn" || id === "qxSubmitTop" || t.getAttribute("data-qx-submit") === "1" || t.getAttribute("data-eg-submit") === "1") && typeof window.qxSubmitTest === "function") {
+        if (!ev.defaultPrevented) { ev.preventDefault(); }
+        try { ev.stopPropagation(); } catch (_) {}
+        window.qxSubmitTest();
+        return;
       }
     } catch (_) {}
   }, true);

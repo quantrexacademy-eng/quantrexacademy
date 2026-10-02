@@ -1,10 +1,10 @@
 {
-  "cache": "qx-pwa-qxmd282",
-  "ts": 1791000000282,
-  "title": "qxmd282: MARKS NTA toolbar + Clear/Previous readable in light and dark",
+  "cache": "qx-pwa-qxmd283",
+  "ts": 1791000000283,
+  "title": "qxmd283: Submit works + Test Series question/solution format proofread",
   "site": "https://www.quantrexacademy.com",
-  "build": "qxmd282",
-  "body": "NTA bar matches MARKS: View Settings, Instructions, Question Paper, Exit. Dark mode lives in View Settings. Clear Response and Previous stay readable in light and dark. Website and Play app share this build.",
+  "build": "qxmd283",
+  "body": "NTA Submit opens the confirm modal on website and Play app. Test Series questions restored from official ExamGoal/Quizrr: math format, figures, solutions. Empty official solutions left empty. Answers unchanged.",
   "package": "com.quantrexacademy.app",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }

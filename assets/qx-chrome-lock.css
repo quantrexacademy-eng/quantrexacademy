@@ -3349,4 +3349,65 @@ html body #app-main .qzrr-cbt #qxSaveBtn {
   visibility: visible !important;
 }
 
+/* ===== qxmd283: NTA Submit always tappable; confirm modal above test chrome ===== */
+html body .qzrr-cbt #qxSubmitBtn,
+html body .qzrr-cbt #qxSubmitTop,
+html body .qzrr-cbt .qzrr-side-foot #qxSubmitBtn,
+html body #app-main .qzrr-cbt #qxSubmitBtn,
+html body #app-main .qzrr-cbt #qxSubmitTop,
+html body .qzrr-cbt.qzrr-dark #qxSubmitBtn,
+html body .qzrr-cbt.qzrr-dark #qxSubmitTop {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  z-index: 20130 !important;
+  position: relative !important;
+  background: #1a73e8 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  border: 1px solid #1557b0 !important;
+  font-weight: 800 !important;
+  min-height: 44px !important;
+}
+html body .qzrr-cbt .qzrr-side-foot {
+  pointer-events: auto !important;
+  z-index: 20125 !important;
+  position: sticky !important;
+  bottom: 0 !important;
+}
+html body .qzrr-cbt.qzrr-side-collapsed #qxSubmitTop.qzrr-submit-mobile,
+html body .qzrr-cbt.qzrr-side-collapsed #qxSubmitTop {
+  display: flex !important;
+}
+@media (max-width: 900px) {
+  html body .qzrr-cbt #qxSubmitTop.qzrr-submit-mobile {
+    display: flex !important;
+    width: 100% !important;
+  }
+}
+html body #mtkSubmitModal,
+html body #mtkSubmitModal.marks-modal-overlay,
+html body .marks-modal-overlay#mtkSubmitModal {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 2147483646 !important;
+  display: flex !important;
+  pointer-events: auto !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+html body #mtkSubmitModal .marks-resume-modal,
+html body #mtkSubmitModal [data-qx-confirm-submit],
+html body #mtkSubmitModal [data-qx-submit-cancel] {
+  pointer-events: auto !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  z-index: 2147483647 !important;
+  cursor: pointer !important;
+}
+
 
