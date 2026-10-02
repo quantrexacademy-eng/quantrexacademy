@@ -204,6 +204,8 @@
             if (st254) document.head.appendChild(st254);
             var cEl = document.getElementById("qxChromeLockCss");
             if (cEl) document.head.appendChild(cEl);
+            var st278 = document.getElementById("qxmd278EgCss");
+            if (st278) document.head.appendChild(st278);
         });
       }
     } catch (_) {}
@@ -219,6 +221,35 @@
       var cLast = document.getElementById("qxChromeLockCss");
       if (cLast) document.head.appendChild(cLast);
     } catch (_) {}
+    /* qxmd278: last-wins mobile Test Series layout — after wrap injects + chrome-lock */
+    var s278 = document.getElementById("qxmd278EgCss");
+    if (!s278) {
+      s278 = document.createElement("style");
+      s278.id = "qxmd278EgCss";
+      s278.textContent = [
+        "@media (max-width:768px){",
+        "html body #app-main .eg-test-root{display:flex!important;flex-direction:column!important;height:100%!important;max-height:100dvh!important;overflow:hidden!important}",
+        "html body #app-main .eg-test-root>.eg-top,html body #app-main .eg-test-root .eg-top{flex-wrap:nowrap!important;overflow:hidden!important;max-height:52px!important;min-height:44px!important;height:48px!important;position:relative!important;bottom:auto!important}",
+        "html body #app-main .eg-test-root .eg-top-tools{display:flex!important;flex-wrap:nowrap!important;flex:1 1 auto!important;min-width:0!important;overflow-x:auto!important;overflow-y:hidden!important;-webkit-overflow-scrolling:touch!important}",
+        "html body #app-main .eg-test-root .eg-top-title{max-width:min(32vw,148px)!important;min-width:0!important;overflow:hidden!important;text-overflow:ellipsis!important;white-space:nowrap!important}",
+        "html body #app-main .eg-test-root .eg-mode-pill{display:none!important}",
+        "html body #app-main .eg-test-root .eg-info-strip,html body #app-main .eg-test-root .eg-info-strip.eg-info-strip{flex-wrap:nowrap!important;overflow-x:auto!important;max-height:34px!important;min-height:30px!important;height:32px!important;padding:2px 8px!important}",
+        "html body #app-main .eg-test-root .eg-info-strip .eg-paper-line{white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important;max-width:min(42vw,180px)!important}",
+        "html body #app-main .eg-test-root>.eg-body,html body #app-main .eg-test-root .eg-body{flex:1 1 auto!important;min-height:0!important;overflow-y:auto!important;-webkit-overflow-scrolling:touch!important}",
+        "html body #app-main .eg-test-root #egQArea,html body #app-main .eg-test-root .eg-q-stem,html body #app-main .eg-test-root #qxOpts{visibility:visible!important;opacity:1!important;overflow:visible!important;max-height:none!important}",
+        "html body #app-main .qzrr-cbt{display:flex!important;flex-direction:column!important;height:100%!important;max-height:100dvh!important;overflow:hidden!important}",
+        "html body #app-main .qzrr-cbt .qzrr-black-bar{flex-wrap:nowrap!important;overflow:hidden!important;max-height:44px!important}",
+        "html body #app-main .qzrr-cbt .qzrr-black-tools{flex-wrap:nowrap!important;overflow-x:auto!important;min-width:0!important}",
+        "html body #app-main .qzrr-cbt .qzrr-section-info.collapsed .qzrr-section-info-ul{display:none!important}",
+        "html body #app-main .qzrr-cbt .qzrr-section-info:not(.collapsed) .qzrr-section-info-ul{max-height:min(28vh,180px)!important;overflow-y:auto!important}",
+        "html body #app-main .qzrr-cbt .qzrr-q-area,html body #app-main .qzrr-cbt #qzrrQArea{flex:1 1 auto!important;min-height:0!important;overflow-y:auto!important;visibility:visible!important}",
+        "html body #app-main .qzrr-cbt .qzrr-body,html body #app-main .qzrr-cbt .qzrr-main-col{min-height:0!important;overflow:hidden!important}",
+        "}"
+      ].join("");
+      document.head.appendChild(s278);
+    } else {
+      try { document.head.appendChild(s278); } catch (_) {}
+    }
   }
 
   function isExamgoalUi(session) {

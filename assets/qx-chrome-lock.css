@@ -2553,3 +2553,377 @@ html body .eg-test-root.eg-test-root.qx-theme-dark .eg-info-strip.eg-info-strip 
   html body #app-main .mtk-test-root.allen-practice .eg-top-tools .eg-tool-btn{width:31px!important;min-width:31px!important;height:32px!important;flex:0 0 31px!important}
   html body #app-main .mtk-test-root.allen-practice .eg-top-tools .eg-tool-btn svg{width:17px!important;height:17px!important}
 }
+
+/* ===== qxmd278: mobile Test Series — question uses leftover viewport.
+   Toolbar stays one tappable scroll-row. Instructions stay compact / collapsed.
+   Footer Previous|Check|Next stays solid. Do not pin .eg-top to the bottom. */
+@media (max-width: 768px) {
+  html body.marks-test-active #app-main:has(.eg-test-root),
+  html body.qx-q-fullscreen #app-main:has(.eg-test-root),
+  html body.marks-test-active #app-main:has(.qzrr-cbt),
+  html body.qx-q-fullscreen #app-main:has(.qzrr-cbt),
+  html body.allen-cbt-active #app-main:has(.qzrr-cbt) {
+    overflow: hidden !important;
+    height: 100dvh !important;
+    max-height: 100dvh !important;
+  }
+
+  html body #app-main .eg-test-root,
+  html body.marks-test-active #app-main .eg-test-root,
+  html body.qx-q-fullscreen #app-main .eg-test-root,
+  html body #app-main .eg-test-root.eg-qxmd182,
+  html body #app-main .eg-test-root.eg-qxtool8,
+  html body #app-main .eg-test-root.eg-qxmd250,
+  html body #app-main .eg-test-root.eg-qxmd251 {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+    max-height: 100dvh !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+  }
+
+  html body #app-main .eg-test-root > .eg-top,
+  html body #app-main .eg-test-root .eg-top,
+  html body #app-main .eg-test-root.eg-compact .eg-top,
+  html body #app-main .eg-test-root.eg-qxmd182 .eg-top,
+  html body #app-main .eg-test-root.eg-qxmd250 .eg-top,
+  html body #app-main .eg-test-root.eg-qxtool8 .eg-top {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    flex-shrink: 0 !important;
+    overflow: hidden !important;
+    max-height: 52px !important;
+    min-height: 44px !important;
+    height: 48px !important;
+    padding: 2px 6px !important;
+    gap: 4px !important;
+    position: relative !important;
+    top: auto !important;
+    bottom: auto !important;
+    z-index: 80 !important;
+  }
+
+  html body #app-main .eg-test-root .eg-top-title {
+    flex: 0 1 auto !important;
+    max-width: min(32vw, 148px) !important;
+    min-width: 0 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    font-size: 13px !important;
+  }
+
+  html body #app-main .eg-test-root .eg-mode-pill {
+    display: none !important;
+  }
+
+  html body #app-main .eg-test-root .eg-back {
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px !important;
+    flex: 0 0 36px !important;
+  }
+
+  html body #app-main .eg-test-root .eg-top-tools,
+  html body #app-main .eg-test-root[data-eg-mode="practice"] .eg-top-tools,
+  html body #app-main .eg-test-root[data-eg-mode="test"] .eg-top-tools,
+  html body #app-main .eg-test-root.eg-qxmd167 .eg-top-tools,
+  html body #app-main .eg-test-root.eg-qxtool8 .eg-top-tools {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    justify-content: flex-end !important;
+    align-items: center !important;
+    gap: 0 !important;
+  }
+  html body #app-main .eg-test-root .eg-top-tools::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  html body #app-main .eg-test-root .eg-top-tools .eg-tool-btn,
+  html body #app-main .eg-test-root .eg-top-tools .eg-ico,
+  html body #app-main .eg-test-root .eg-top-tools .eg-tool-sec,
+  html body #app-main .eg-test-root[data-eg-mode="test"] .eg-top-tools .eg-tool-btn,
+  html body #app-main .eg-test-root[data-eg-mode="practice"] .eg-top-tools .eg-tool-btn {
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    flex: 0 0 auto !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: auto !important;
+    min-width: 34px !important;
+    max-width: none !important;
+    height: auto !important;
+    min-height: 40px !important;
+    padding: 1px 3px !important;
+  }
+
+  html body #app-main .eg-test-root .eg-timer {
+    flex: 0 0 auto !important;
+    padding: 3px 8px !important;
+    font-size: 12px !important;
+    margin-right: 2px !important;
+  }
+
+  html body #app-main .eg-test-root .eg-subs {
+    flex-shrink: 0 !important;
+    min-height: 0 !important;
+    max-height: 36px !important;
+  }
+  html body #app-main .eg-test-root .eg-sub {
+    padding: 6px 6px !important;
+    font-size: 12px !important;
+  }
+
+  html body #app-main .eg-test-root .eg-info-strip,
+  html body #app-main .eg-test-root .eg-info-strip.eg-info-strip,
+  html body #app-main .eg-test-root .eg-info-strip.eg-info-pills {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    flex-shrink: 0 !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    max-height: 34px !important;
+    min-height: 30px !important;
+    height: 32px !important;
+    padding: 2px 8px !important;
+    gap: 6px !important;
+    row-gap: 0 !important;
+  }
+  html body #app-main .eg-test-root .eg-info-strip::-webkit-scrollbar {
+    display: none !important;
+  }
+  html body #app-main .eg-test-root .eg-info-strip .eg-paper-line,
+  html body #app-main .eg-test-root.eg-test-root .eg-info-strip.eg-info-strip .eg-paper-line.eg-paper-line {
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: min(42vw, 180px) !important;
+    flex: 0 1 auto !important;
+  }
+  html body #app-main .eg-test-root .eg-info-strip .eg-paper-empty {
+    display: none !important;
+  }
+  html body #app-main .eg-test-root .eg-info-strip .eg-type,
+  html body #app-main .eg-test-root .eg-info-strip .eg-type-pill {
+    margin-left: 0 !important;
+    flex: 0 0 auto !important;
+    white-space: nowrap !important;
+    font-size: 10px !important;
+    padding: 2px 8px !important;
+  }
+
+  html body #app-main .eg-test-root > .eg-body,
+  html body #app-main .eg-test-root .eg-body,
+  html body #app-main .eg-test-root.eg-qxmd182 .eg-body,
+  html body #app-main .eg-test-root.eg-qxmd182.eg-qxtool8 .eg-body {
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding-bottom: calc(88px + env(safe-area-inset-bottom, 0px)) !important;
+    scroll-padding-bottom: calc(88px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+
+  html body #app-main .eg-test-root .eg-q-stem,
+  html body #app-main .eg-test-root #egQArea,
+  html body #app-main .eg-test-root #qxOpts,
+  html body #app-main .eg-test-root .eg-opts {
+    visibility: visible !important;
+    opacity: 1 !important;
+    overflow: visible !important;
+    max-height: none !important;
+  }
+
+  html body #app-main .qx-sec-instr,
+  html body #app-main .eg-test-root .qx-sec-instr,
+  html body #app-main .qzrr-cbt .qx-sec-instr {
+    margin: 6px 0 8px !important;
+    padding: 6px 10px !important;
+    font-size: 12px !important;
+    line-height: 1.35 !important;
+    border-radius: 10px !important;
+    flex-shrink: 0 !important;
+  }
+  html body #app-main .qx-sec-instr > summary {
+    cursor: pointer !important;
+    font-weight: 800 !important;
+    list-style: none !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 8px !important;
+  }
+  html body #app-main .qx-sec-instr > summary::-webkit-details-marker {
+    display: none !important;
+  }
+  html body #app-main .qx-sec-instr > summary::after {
+    content: "▼" !important;
+    font-size: 10px !important;
+    opacity: .7 !important;
+  }
+  html body #app-main .qx-sec-instr[open] > summary::after {
+    content: "▲" !important;
+  }
+  html body #app-main .qx-sec-instr:not([open]) > *:not(summary) {
+    display: none !important;
+  }
+
+  /* NTA / Quizrr Test Series */
+  html body #app-main .qzrr-cbt,
+  html body #app-main .mtk-test-root.qzrr-cbt {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+    max-height: 100dvh !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+  }
+
+  html body #app-main .qzrr-cbt .qzrr-black-bar {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    flex-shrink: 0 !important;
+    overflow: hidden !important;
+    max-height: 44px !important;
+    min-height: 40px !important;
+    padding: 4px 8px !important;
+    gap: 6px !important;
+  }
+  html body #app-main .qzrr-cbt .qzrr-black-title {
+    flex: 0 1 auto !important;
+    max-width: min(30vw, 140px) !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+  }
+  html body #app-main .qzrr-cbt .qzrr-black-tools {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    padding-right: 0 !important;
+    justify-content: flex-end !important;
+  }
+  html body #app-main .qzrr-cbt .qzrr-black-tools::-webkit-scrollbar {
+    display: none !important;
+  }
+  html body #app-main .qzrr-cbt .qzrr-tool-btn {
+    flex: 0 0 auto !important;
+    white-space: nowrap !important;
+    font-size: 11px !important;
+    padding: 4px 7px !important;
+    min-height: 32px !important;
+  }
+
+  html body #app-main .qzrr-cbt .qzrr-sec-strip,
+  html body #app-main .qzrr-cbt .qzrr-sec-row,
+  html body #app-main .qzrr-cbt .qzrr-q-meta-row {
+    flex-shrink: 0 !important;
+    padding-top: 4px !important;
+    padding-bottom: 4px !important;
+  }
+  html body #app-main .qzrr-cbt .qzrr-q-meta-row {
+    gap: 8px !important;
+    padding: 4px 10px !important;
+  }
+  html body #app-main .qzrr-cbt .qzrr-qtype,
+  html body #app-main .qzrr-cbt .qzrr-marks-line {
+    font-size: 11px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  html body #app-main .qzrr-cbt .qzrr-section-info {
+    flex-shrink: 0 !important;
+    margin: 4px 10px 0 !important;
+  }
+  html body #app-main .qzrr-cbt .qzrr-section-info-head {
+    padding: 6px 10px !important;
+    font-size: 12px !important;
+  }
+  html body #app-main .qzrr-cbt .qzrr-section-info.collapsed .qzrr-section-info-ul {
+    display: none !important;
+  }
+  html body #app-main .qzrr-cbt .qzrr-section-info:not(.collapsed) .qzrr-section-info-ul {
+    display: block !important;
+    max-height: min(28vh, 180px) !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    font-size: 12px !important;
+    padding: 6px 12px 8px 22px !important;
+  }
+
+  html body #app-main .qzrr-cbt .qzrr-body {
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+    grid-template-columns: 1fr !important;
+  }
+  html body #app-main .qzrr-cbt .qzrr-main-col {
+    display: flex !important;
+    flex-direction: column !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+  }
+  html body #app-main .qzrr-cbt .qzrr-q-area,
+  html body #app-main .qzrr-cbt #qzrrQArea {
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding: 10px 12px 12px !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  html body #app-main .qzrr-cbt .qzrr-footer-actions {
+    flex-shrink: 0 !important;
+    position: relative !important;
+    z-index: 40 !important;
+    padding: 6px 8px calc(8px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+
+  html body #app-main .qzrr-cbt.qzrr-side-collapsed .qzrr-side {
+    display: none !important;
+  }
+}
+
+@media (max-width: 400px) {
+  html body #app-main .eg-test-root .eg-top-title {
+    max-width: min(26vw, 110px) !important;
+  }
+  html body #app-main .qzrr-cbt .qzrr-black-title {
+    max-width: min(24vw, 96px) !important;
+  }
+}
+

@@ -1326,31 +1326,34 @@ const QuantrexTestEngine = (() => {
           ? QuantrexQFormat.testOptsContainerClass(q)
           : "mtk-options mtk-options-grid"));
 
-    // In-test official section instruction strip (Adv multi/single/num)
+    // In-test official section instruction strip (Adv multi/single/num).
+    // Mobile: collapsed <details> so the stem stays on screen (qxmd278).
     let sectionInstr = "";
+    const instrOpenAttr = (typeof window !== "undefined" && window.matchMedia
+      && window.matchMedia("(max-width: 768px)").matches) ? "" : " open";
     if (secNow && (session.paperFormat === "jee_advanced" || (session.meta && session.meta.exam === "jee_advanced")
       || (session.meta && session.meta.slug === "jee_advanced"))) {
       const st = secNow.type || "";
       if (st === "MC" || isMultiQ) {
-        sectionInstr = `<div class="qx-sec-instr qx-sec-instr-multi" role="note">
-          <strong>SECTION — One or More Correct</strong>
+        sectionInstr = `<details class="qx-sec-instr qx-sec-instr-multi" role="note"${instrOpenAttr}>
+          <summary><strong>SECTION — One or More Correct</strong></summary>
           <span>Each question has FOUR options. <b>ONE OR MORE THAN ONE</b> option(s) may be correct. Tap options to select/deselect multiple (A+B+C+D allowed). Full +4 only if all correct options chosen; partial marks as per official scheme; wrong combination −1.</span>
-        </div>`;
+        </details>`;
       } else if (st === "NUM" || isNumQ) {
-        sectionInstr = `<div class="qx-sec-instr qx-sec-instr-num" role="note">
-          <strong>SECTION — Numerical Value</strong>
+        sectionInstr = `<details class="qx-sec-instr qx-sec-instr-num" role="note"${instrOpenAttr}>
+          <summary><strong>SECTION — Numerical Value</strong></summary>
           <span>Enter the correct numerical value. Full Marks +4 if correct; Zero Marks 0 otherwise (no negative marking).</span>
-        </div>`;
+        </details>`;
       } else if (st === "MATCH") {
-        sectionInstr = `<div class="qx-sec-instr" role="note">
-          <strong>SECTION — Match List</strong>
+        sectionInstr = `<details class="qx-sec-instr" role="note"${instrOpenAttr}>
+          <summary><strong>SECTION — Match List</strong></summary>
           <span>Choose the option corresponding to the correct matching. Follow the marking scheme for this paper.</span>
-        </div>`;
+        </details>`;
       } else {
-        sectionInstr = `<div class="qx-sec-instr qx-sec-instr-sc" role="note">
-          <strong>SECTION — Single Correct</strong>
+        sectionInstr = `<details class="qx-sec-instr qx-sec-instr-sc" role="note"${instrOpenAttr}>
+          <summary><strong>SECTION — Single Correct</strong></summary>
           <span>Each question has FOUR options (A)(B)(C)(D). <b>ONLY ONE</b> is correct. Full Marks +3 · Incorrect −1 · Unattempted 0.</span>
-        </div>`;
+        </details>`;
       }
     }
 
@@ -1481,6 +1484,12 @@ const QuantrexTestEngine = (() => {
       const maxSecMarks = secCount * (posMark > 0 ? posMark : 4);
       const magOn = !!(session && session._qzrrMag);
       const sideCollapsed = isSideCollapsed();
+      try {
+        if (session && session._qzrrSecInfoClosed == null
+          && window.matchMedia && window.matchMedia("(max-width: 768px)").matches) {
+          session._qzrrSecInfoClosed = true;
+        }
+      } catch (_) { /* */ }
       const secInfoOpen = !(session && session._qzrrSecInfoClosed);
       if (session && session._qzrrDark == null) session._qzrrDark = getTestTheme() === "dark";
       const qzrrDark = !!(session && session._qzrrDark);
