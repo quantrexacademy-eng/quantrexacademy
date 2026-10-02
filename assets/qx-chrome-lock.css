@@ -1824,9 +1824,9 @@ html body .mtk-test-root[data-test-theme="dark"] .qx-paper-date {
   }
 }
 
-/* ===== qxmd266: coaching practice shell. Icons-only bar, readable question, visible letters. ===== */
+/* ===== qxmd266/280: coaching practice shell. Labeled toolbar, readable question, visible letters. ===== */
 
-/* Toolbar: white icons on Quantrex blue, no text labels, one row on a phone */
+/* Toolbar: white icons + labels on Quantrex blue */
 html body .eg-test-root > .eg-top,
 html body .eg-test-root .eg-top,
 html body .mtk-test-root.allen-practice .mtk-header,
@@ -1836,8 +1836,9 @@ html body .allen-practice .mtk-header.eg-top {
   align-items: center !important;
   gap: 4px !important;
   overflow: visible !important;
-  min-height: 48px !important;
-  max-height: 52px !important;
+  min-height: 56px !important;
+  max-height: none !important;
+  height: auto !important;
   padding: 0 6px !important;
   background: #1565C0 !important;
   color: #ffffff !important;
@@ -1994,11 +1995,13 @@ html body .allen-practice .qx-bm-btn.on {
   html body .allen-practice .qx-prac-tools .eg-tool-btn,
   html body .allen-practice .qx-prac-tools .eg-ico,
   html body .allen-practice .qx-hint-btn {
-    width: 28px !important;
-    min-width: 28px !important;
-    max-width: 28px !important;
-    height: 36px !important;
-    flex-basis: 28px !important;
+    width: auto !important;
+    min-width: 40px !important;
+    max-width: none !important;
+    height: auto !important;
+    min-height: 52px !important;
+    flex-basis: auto !important;
+    flex-direction: column !important;
   }
   html body .eg-test-root .eg-top-tools,
   html body .allen-practice .qx-prac-tools {
@@ -2545,7 +2548,7 @@ html body .eg-test-root.eg-test-root.qx-theme-dark .eg-info-strip.eg-info-strip 
   html body .mtk-test-root.allen-practice .eg-top-tools{flex:1 1 auto!important;min-width:0!important;display:flex!important;flex-wrap:nowrap!important;justify-content:flex-end!important;gap:2px!important;overflow-x:auto!important;scrollbar-width:none!important;padding:0!important;border-radius:12px!important}
   html body .mtk-test-root.allen-practice .eg-top-tools::-webkit-scrollbar{display:none!important}
   html body .mtk-test-root.allen-practice .eg-top-tools .eg-tip{display:block!important;position:static!important;opacity:1!important;visibility:visible!important;color:#ffffff!important;-webkit-text-fill-color:#ffffff!important;font-size:11px!important;font-weight:800!important;background:transparent!important}
-  html body .mtk-test-root.allen-practice .eg-top-tools .eg-tool-btn{width:34px!important;min-width:34px!important;height:34px!important;padding:0!important;flex:0 0 34px!important;border-radius:10px!important;flex-direction:row!important}
+  html body .mtk-test-root.allen-practice .eg-top-tools .eg-tool-btn{width:auto!important;min-width:44px!important;height:auto!important;min-height:52px!important;padding:2px 5px!important;flex:0 0 auto!important;border-radius:10px!important;flex-direction:column!important}
   html body .mtk-test-root.allen-practice .eg-top-tools .eg-tool-btn svg{width:18px!important;height:18px!important}
   html body .mtk-test-root.allen-practice .mtk-palette{position:fixed!important;left:8px!important;right:8px!important;top:auto!important;bottom:calc(84px + env(safe-area-inset-bottom, 0px))!important;width:auto!important;max-width:none!important;max-height:min(50dvh, 420px)!important;overflow-y:auto!important;z-index:2147483645!important;border-radius:16px!important;padding:10px!important;box-shadow:0 12px 40px rgba(2,6,23,.45)!important;background:#ffffff!important;border:1px solid #cbd5e1!important}
   html body .mtk-test-root.allen-practice[data-test-theme="dark"] .mtk-palette{background:#0f172a!important;border-color:#334155!important}
@@ -3081,6 +3084,69 @@ html body #app-main img.qx-fig-img {
     flex-direction: column !important;
     font-size: 11px !important;
   }
+}
+
+/* ===== qxmd280: toolbar labels always white-on-blue, never clipped ===== */
+html body .eg-test-root > .eg-top,
+html body .eg-test-root .eg-top,
+html body .mtk-test-root.allen-practice .mtk-header,
+html body .allen-practice .mtk-header {
+  min-height: 56px !important;
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+  background: #1565C0 !important;
+  color: #ffffff !important;
+}
+html body .eg-test-root .eg-top-tools .eg-tool-btn,
+html body .eg-test-root .eg-top-tools .eg-ico,
+html body .eg-test-root:not([data-test-theme="dark"]) .eg-top-tools .eg-tool-btn,
+html body .eg-test-root[data-test-theme="dark"] .eg-top-tools .eg-tool-btn,
+html body .eg-test-root:not([data-test-theme="dark"]) .eg-top-tools .eg-ico,
+html body .mtk-test-root.allen-practice .qx-prac-tools .eg-tool-btn,
+html body .allen-practice .qx-prac-tools .eg-tool-btn,
+html[data-theme="light"] .eg-test-root .eg-top-tools .eg-tool-btn,
+html[data-theme="dark"] .eg-test-root .eg-top-tools .eg-tool-btn {
+  display: inline-flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: auto !important;
+  min-width: 44px !important;
+  max-width: none !important;
+  height: auto !important;
+  min-height: 52px !important;
+  overflow: visible !important;
+  background: transparent !important;
+  border: 0 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  font-size: 11px !important;
+}
+html body .eg-test-root .eg-top-tools .eg-tip,
+html body .eg-test-root .eg-top-tools .eg-tool-btn .eg-tip,
+html body .eg-test-root .eg-top-tools .eg-ico .eg-tip,
+html body .eg-test-root:not([data-test-theme="dark"]) .eg-top-tools .eg-tip,
+html body .eg-test-root[data-test-theme="dark"] .eg-top-tools .eg-tip,
+html body .mtk-test-root.allen-practice .qx-prac-tools .eg-tip,
+html body .allen-practice .eg-tip,
+html[data-theme="light"] .eg-top-tools .eg-tip,
+html[data-theme="dark"] .eg-top-tools .eg-tip {
+  display: block !important;
+  position: static !important;
+  transform: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  background: transparent !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  line-height: 1.15 !important;
+  white-space: nowrap !important;
+  overflow: visible !important;
+  max-height: none !important;
+  text-shadow: 0 1px 2px rgba(0,0,0,.45);
 }
 
 

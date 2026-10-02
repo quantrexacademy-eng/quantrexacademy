@@ -1645,29 +1645,29 @@ html[data-theme="light"] .qx-prac-foot.eg-foot {
   border-color: #1d4ed8;
 }
 .eg-tool-btn .eg-tip {
-  position: absolute;
-  top: calc(100% + 6px);
-  left: 50%;
-  transform: translateX(-50%) translateY(-2px);
+  position: static;
+  top: auto;
+  left: auto;
+  transform: none;
   white-space: nowrap;
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: .02em;
-  padding: 4px 8px;
-  border-radius: 6px;
-  background: #0f172a;
-  color: #f8fafc;
-  opacity: 0;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #ffffff;
+  opacity: 1;
+  display: block;
   pointer-events: none;
-  transition: opacity .12s, transform .12s;
-  z-index: 14000;
-  box-shadow: 0 4px 12px rgba(0,0,0,.25);
+  z-index: auto;
+  box-shadow: none;
 }
 .eg-tool-btn.tip-on .eg-tip,
 .eg-tool-btn:hover .eg-tip,
 .eg-tool-btn:focus-visible .eg-tip {
   opacity: 1;
-  transform: translateX(-50%) translateY(0);
+  transform: none;
 }
 .eg-test-root[data-test-theme="dark"] .eg-tool-btn {
   background: #1e293b;
@@ -2243,7 +2243,10 @@ html[data-theme="light"] .qx-prac-foot.eg-foot {
 /* Quantrex header — tools live HERE (not Menu-only) */
 .eg-test-root.eg-qxtool8 .eg-top {
   background: linear-gradient(90deg, #1e3a8a 0%, #2563eb 55%, #1d4ed8 100%) !important;
-  min-height: 48px !important;
+  min-height: 56px !important;
+  max-height: none !important;
+  height: auto !important;
+  overflow: visible !important;
   z-index: 13000 !important;
   pointer-events: auto !important;
   padding: 4px 6px 4px 4px !important;

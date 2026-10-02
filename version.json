@@ -1,10 +1,10 @@
 {
-  "cache": "qx-pwa-qxmd279",
-  "ts": 1791000000279,
-  "title": "qxmd279: clear toolbar labels, question/options/figures on mobile app",
+  "cache": "qx-pwa-qxmd280",
+  "ts": 1791000000280,
+  "title": "qxmd280: toolbar Theme/All Q/Palette labels always clear white on blue",
   "site": "https://www.quantrexacademy.com",
-  "build": "qxmd279",
-  "body": "Toolbar Theme/All Q/Palette/Settings labels stay white and readable. Question, options and figures stay visible on phones. Play app pulls this build by clearing the old PWA cache.",
+  "build": "qxmd280",
+  "body": "Toolbar labels Theme, All Q, Palette, Bookmark, Group, Full, Report, Settings stay on the blue bar in white. Header no longer clips the text. Website and Play app share this build.",
   "package": "com.quantrexacademy.app",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }

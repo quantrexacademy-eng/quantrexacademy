@@ -98,20 +98,23 @@
   stroke: none !important;
 }
 .eg-test-root .eg-top-tools .eg-tip {
-  display: none !important;
-  position: absolute !important;
-  top: calc(100% + 6px) !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  background: #0f172a !important;
-  color: #fff !important;
+  display: block !important;
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  transform: none !important;
+  background: transparent !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
   font-size: 11px !important;
-  font-weight: 700 !important;
-  padding: 4px 8px !important;
-  border-radius: 6px !important;
+  font-weight: 800 !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
   white-space: nowrap !important;
-  z-index: 80 !important;
+  z-index: auto !important;
   pointer-events: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 .eg-test-root .eg-top-tools .eg-tool-btn:hover > .eg-tip {
   display: block !important;
