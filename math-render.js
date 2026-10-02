@@ -394,7 +394,7 @@ window.Mx = (() => {
       if (/class=["'][^"']*qx-fig-img/i.test(fixedAttrs)) return m;
       if (isDiagramImg(fixedAttrs)) return figureHtml(fixedAttrs);
       const hasLoading = /loading=/i.test(fixedAttrs);
-      const extra = hasLoading ? "" : ' loading="lazy" decoding="async"';
+      const extra = hasLoading ? "" : ' loading="eager" decoding="async"';
       return `<span class="qx-img-wrap"><img${fixedAttrs}${extra}></span>`;
     });
   }

@@ -1,6 +1,6 @@
 (function () {
   if (!("serviceWorker" in navigator)) return;
-  var bust = (typeof window.QX_BUILD === "string" && window.QX_BUILD) || "qxmd261";
+  var bust = (typeof window.QX_BUILD === "string" && window.QX_BUILD) || "qxmd279";
 
   function hardReload() {
     try {
@@ -8,7 +8,16 @@
       if (sessionStorage.getItem(k)) return;
       sessionStorage.setItem(k, "1");
     } catch (_) { /* */ }
-    var done = function () { window.location.reload(); };
+    var go = function () {
+      try {
+        var u = new URL(window.location.href);
+        u.searchParams.set("v", bust);
+        u.searchParams.set("_qx", String(Date.now()));
+        window.location.replace(u.toString());
+      } catch (_) {
+        window.location.reload();
+      }
+    };
     try {
       caches.keys().then(function (keys) {
         return Promise.all(keys.map(function (k) { return caches.delete(k); }));
@@ -18,10 +27,19 @@
             return Promise.all(regs.map(function (r) { return r.unregister(); }));
           });
         }
-      }).then(done).catch(done);
+      }).then(go).catch(go);
     } catch (_) {
-      done();
+      go();
     }
+  }
+
+  function checkVersion() {
+    fetch("/version.json?t=" + Date.now(), { cache: "no-store" })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (v) {
+        if (v && v.build && String(v.build) !== String(bust)) hardReload();
+      })
+      .catch(function () {});
   }
 
   window.addEventListener("load", function () {
@@ -40,14 +58,17 @@
       });
       try { reg.update(); } catch (_) {}
     }).catch(function () {});
-
-    fetch("/version.json?t=" + Date.now(), { cache: "no-store" })
-      .then(function (r) { return r.ok ? r.json() : null; })
-      .then(function (v) {
-        if (v && v.build && String(v.build) !== String(bust)) hardReload();
-      })
-      .catch(function () {});
+    checkVersion();
   });
+
+  try { checkVersion(); } catch (_) {}
+
+  try {
+    navigator.serviceWorker.addEventListener("message", function (ev) {
+      var d = ev && ev.data;
+      if (d && d.type === "QX_UPDATED" && d.build && String(d.build) !== String(bust)) hardReload();
+    });
+  } catch (_) {}
 
   var reloading = false;
   navigator.serviceWorker.addEventListener("controllerchange", function () {

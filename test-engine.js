@@ -2143,6 +2143,17 @@ const QuantrexTestEngine = (() => {
     try {
       if (typeof ExamgoalTestUI !== "undefined" && ExamgoalTestUI.ensureCss) ExamgoalTestUI.ensureCss();
     } catch (_) { /* */ }
+    try {
+      root.querySelectorAll("img").forEach(function (img) {
+        img.loading = "eager";
+        img.style.setProperty("content-visibility", "visible", "important");
+        img.style.setProperty("opacity", "1", "important");
+        img.style.setProperty("visibility", "visible", "important");
+        if (img.complete && !img.naturalWidth && window.QxOwnedFigs && QxOwnedFigs.retryOnError) {
+          QxOwnedFigs.retryOnError(img);
+        }
+      });
+    } catch (_) { /* */ }
 
     const a11yBtn = root.querySelector("#qzrrA11yBtn");
     const __qxOpenA11y = (e) => {

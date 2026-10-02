@@ -1,10 +1,10 @@
 {
-  "cache": "qx-pwa-qxmd278",
-  "ts": 1791000000278,
-  "title": "qxmd278: mobile Test Series question view",
+  "cache": "qx-pwa-qxmd279",
+  "ts": 1791000000279,
+  "title": "qxmd279: clear toolbar labels, question/options/figures on mobile app",
   "site": "https://www.quantrexacademy.com",
-  "build": "qxmd278",
-  "body": "On phones, Test Series keeps the toolbar as one scroll row, collapses instructions, and gives the leftover screen to the question so stem and options stay visible above Previous / Check / Next.",
+  "build": "qxmd279",
+  "body": "Toolbar Theme/All Q/Palette/Settings labels stay white and readable. Question, options and figures stay visible on phones. Play app pulls this build by clearing the old PWA cache.",
   "package": "com.quantrexacademy.app",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }

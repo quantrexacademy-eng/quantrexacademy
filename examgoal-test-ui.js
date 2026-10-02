@@ -229,14 +229,17 @@
       s278.textContent = [
         "@media (max-width:768px){",
         "html body #app-main .eg-test-root{display:flex!important;flex-direction:column!important;height:100%!important;max-height:100dvh!important;overflow:hidden!important}",
-        "html body #app-main .eg-test-root>.eg-top,html body #app-main .eg-test-root .eg-top{flex-wrap:nowrap!important;overflow:hidden!important;max-height:52px!important;min-height:44px!important;height:48px!important;position:relative!important;bottom:auto!important}",
-        "html body #app-main .eg-test-root .eg-top-tools{display:flex!important;flex-wrap:nowrap!important;flex:1 1 auto!important;min-width:0!important;overflow-x:auto!important;overflow-y:hidden!important;-webkit-overflow-scrolling:touch!important}",
+        "html body #app-main .eg-test-root>.eg-top,html body #app-main .eg-test-root .eg-top{flex-wrap:nowrap!important;overflow-x:hidden!important;overflow-y:visible!important;max-height:none!important;min-height:56px!important;height:auto!important;position:relative!important;bottom:auto!important}",
+        "html body #app-main .eg-test-root .eg-top-tools{display:flex!important;flex-wrap:nowrap!important;flex:1 1 auto!important;min-width:0!important;overflow-x:auto!important;overflow-y:visible!important;-webkit-overflow-scrolling:touch!important}",
+        "html body #app-main .eg-test-root .eg-top-tools .eg-tip,html body #app-main .eg-test-root .eg-top-tools .eg-tool-btn .eg-tip{display:block!important;position:static!important;opacity:1!important;visibility:visible!important;color:#fff!important;-webkit-text-fill-color:#fff!important;font-size:11px!important;font-weight:800!important;background:transparent!important;transform:none!important}",
+        "html body #app-main .eg-test-root .eg-top-tools .eg-tool-btn{flex-direction:column!important;width:auto!important;min-width:44px!important;min-height:52px!important;height:auto!important;font-size:11px!important;color:#fff!important}",
         "html body #app-main .eg-test-root .eg-top-title{max-width:min(32vw,148px)!important;min-width:0!important;overflow:hidden!important;text-overflow:ellipsis!important;white-space:nowrap!important}",
         "html body #app-main .eg-test-root .eg-mode-pill{display:none!important}",
         "html body #app-main .eg-test-root .eg-info-strip,html body #app-main .eg-test-root .eg-info-strip.eg-info-strip{flex-wrap:nowrap!important;overflow-x:auto!important;max-height:34px!important;min-height:30px!important;height:32px!important;padding:2px 8px!important}",
         "html body #app-main .eg-test-root .eg-info-strip .eg-paper-line{white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important;max-width:min(42vw,180px)!important}",
         "html body #app-main .eg-test-root>.eg-body,html body #app-main .eg-test-root .eg-body{flex:1 1 auto!important;min-height:0!important;overflow-y:auto!important;-webkit-overflow-scrolling:touch!important}",
-        "html body #app-main .eg-test-root #egQArea,html body #app-main .eg-test-root .eg-q-stem,html body #app-main .eg-test-root #qxOpts{visibility:visible!important;opacity:1!important;overflow:visible!important;max-height:none!important}",
+        "html body #app-main .eg-test-root #egQArea,html body #app-main .eg-test-root .eg-q-stem,html body #app-main .eg-test-root #qxOpts,html body #app-main .eg-test-root .mtk-opt{visibility:visible!important;opacity:1!important;overflow:visible!important;max-height:none!important}",
+        "html body #app-main .eg-test-root img,html body #app-main .qzrr-cbt img,html body #app-main img.qx-pool-fig{content-visibility:visible!important;opacity:1!important;visibility:visible!important;max-width:100%!important;height:auto!important}",
         "html body #app-main .qzrr-cbt{display:flex!important;flex-direction:column!important;height:100%!important;max-height:100dvh!important;overflow:hidden!important}",
         "html body #app-main .qzrr-cbt .qzrr-black-bar{flex-wrap:nowrap!important;overflow:hidden!important;max-height:44px!important}",
         "html body #app-main .qzrr-cbt .qzrr-black-tools{flex-wrap:nowrap!important;overflow-x:auto!important;min-width:0!important}",
@@ -1618,6 +1621,17 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
       root.classList.add("eg-qxmd182", "eg-qxmd180");
       root.classList.remove("eg-qxmd175", "eg-qxmd176", "eg-qxmd177", "eg-qxmd179");
       document.documentElement.classList.add("qx-test-zoom");
+    } catch (_) { /* */ }
+    try {
+      root.querySelectorAll("img").forEach(function (img) {
+        img.loading = "eager";
+        img.style.setProperty("content-visibility", "visible", "important");
+        img.style.setProperty("opacity", "1", "important");
+        img.style.setProperty("visibility", "visible", "important");
+        if (img.complete && !img.naturalWidth && window.QxOwnedFigs && QxOwnedFigs.retryOnError) {
+          QxOwnedFigs.retryOnError(img);
+        }
+      });
     } catch (_) { /* */ }
     const session = api.session;
     normalizeSessionSets(session);
