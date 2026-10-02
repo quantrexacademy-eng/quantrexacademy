@@ -3240,4 +3240,113 @@ html body .qzrr-cbt #mtkFontUp {
   font-weight: 800 !important;
 }
 
+/* ===== qxmd282: MARKS NTA bar (no extra Light/Dark) + footer labels always readable ===== */
+html body .qzrr-cbt .qzrr-footer-actions,
+html body #app-main .qzrr-cbt .qzrr-footer-actions {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 10px !important;
+  flex-wrap: wrap !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  z-index: 40 !important;
+}
+html body .qzrr-cbt .qzrr-footer-actions .qzrr-btn,
+html body .qzrr-cbt #qxReviewNextBtn,
+html body .qzrr-cbt #qxClearBtn,
+html body .qzrr-cbt #qxPrevBtn,
+html body .qzrr-cbt #qxSaveBtn,
+html body #app-main .qzrr-cbt #qxClearBtn,
+html body #app-main .qzrr-cbt #qxPrevBtn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  visibility: visible !important;
+  min-height: 40px !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  white-space: nowrap !important;
+  overflow: visible !important;
+  pointer-events: auto !important;
+}
+html body .qzrr-cbt:not(.qzrr-dark) .qzrr-footer-actions,
+html body #app-main .qzrr-cbt:not(.qzrr-dark) .qzrr-footer-actions,
+html[data-theme="dark"] body .qzrr-cbt:not(.qzrr-dark) .qzrr-footer-actions {
+  background: #ffffff !important;
+  border-top: 1px solid #c5cdd6 !important;
+}
+html body .qzrr-cbt:not(.qzrr-dark) .qzrr-btn-outline,
+html body .qzrr-cbt:not(.qzrr-dark) #qxReviewNextBtn,
+html body .qzrr-cbt:not(.qzrr-dark) #qxClearBtn,
+html body .qzrr-cbt:not(.qzrr-dark) #qxPrevBtn,
+html body #app-main .qzrr-cbt:not(.qzrr-dark) #qxClearBtn,
+html body #app-main .qzrr-cbt:not(.qzrr-dark) #qxPrevBtn,
+html[data-theme="dark"] body .qzrr-cbt:not(.qzrr-dark) #qxClearBtn,
+html[data-theme="dark"] body .qzrr-cbt:not(.qzrr-dark) #qxPrevBtn,
+html[data-theme="dark"] body .qzrr-cbt:not(.qzrr-dark) #qxReviewNextBtn {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  color: #1a2b3c !important;
+  -webkit-text-fill-color: #1a2b3c !important;
+  border: 1px solid #90a0b0 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+html body .qzrr-cbt:not(.qzrr-dark) #qxClearBtn:disabled,
+html body .qzrr-cbt:not(.qzrr-dark) #qxPrevBtn:disabled,
+html[data-theme="dark"] body .qzrr-cbt:not(.qzrr-dark) #qxClearBtn:disabled,
+html[data-theme="dark"] body .qzrr-cbt:not(.qzrr-dark) #qxPrevBtn:disabled {
+  background: #ffffff !important;
+  color: #64748b !important;
+  -webkit-text-fill-color: #64748b !important;
+  border: 1px solid #cbd5e1 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+html body .qzrr-cbt.qzrr-dark .qzrr-footer-actions,
+html body #app-main .qzrr-cbt.qzrr-dark .qzrr-footer-actions,
+html[data-theme="light"] body .qzrr-cbt.qzrr-dark .qzrr-footer-actions {
+  background: #2a2a2c !important;
+  border-top: 1px solid #454548 !important;
+}
+html body .qzrr-cbt.qzrr-dark .qzrr-btn-outline,
+html body .qzrr-cbt.qzrr-dark #qxReviewNextBtn,
+html body .qzrr-cbt.qzrr-dark #qxClearBtn,
+html body .qzrr-cbt.qzrr-dark #qxPrevBtn,
+html body #app-main .qzrr-cbt.qzrr-dark #qxClearBtn,
+html body #app-main .qzrr-cbt.qzrr-dark #qxPrevBtn,
+html[data-theme="light"] body .qzrr-cbt.qzrr-dark #qxClearBtn,
+html[data-theme="light"] body .qzrr-cbt.qzrr-dark #qxPrevBtn,
+html[data-theme="light"] body .qzrr-cbt.qzrr-dark #qxReviewNextBtn {
+  background: #2a2a2c !important;
+  background-color: #2a2a2c !important;
+  color: #eceae4 !important;
+  -webkit-text-fill-color: #eceae4 !important;
+  border: 1px solid #6b7280 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+html body .qzrr-cbt.qzrr-dark #qxClearBtn:disabled,
+html body .qzrr-cbt.qzrr-dark #qxPrevBtn:disabled,
+html[data-theme="light"] body .qzrr-cbt.qzrr-dark #qxClearBtn:disabled,
+html[data-theme="light"] body .qzrr-cbt.qzrr-dark #qxPrevBtn:disabled {
+  background: #2a2a2c !important;
+  color: #94a3b8 !important;
+  -webkit-text-fill-color: #94a3b8 !important;
+  border: 1px solid #4b5563 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+html body .qzrr-cbt #qxSaveBtn,
+html body .qzrr-cbt.qzrr-dark #qxSaveBtn,
+html body #app-main .qzrr-cbt #qxSaveBtn {
+  background: #1a73e8 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  border: 1px solid #1557b0 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
 

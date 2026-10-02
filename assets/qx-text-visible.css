@@ -568,7 +568,10 @@ html[data-theme="dark"] .eg-btn,
 .mtk-test-root[data-test-theme="dark"] .mtk-btn-prev,
 .mtk-test-root[data-test-theme="dark"] .mtk-btn-ghost,
 .qzrr-cbt.qzrr-dark .qzrr-btn-outline,
-#qxClearBtn, #qxPrevBtn, #qxPracClear, #qxPracPrev {
+.qzrr-cbt.qzrr-dark #qxClearBtn,
+.qzrr-cbt.qzrr-dark #qxPrevBtn,
+.eg-test-root[data-test-theme="dark"] #qxPracClear,
+.eg-test-root[data-test-theme="dark"] #qxPracPrev {
   background: #1e293b !important;
   color: #f1f5f9 !important;
   -webkit-text-fill-color: #f1f5f9 !important;

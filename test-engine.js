@@ -1515,10 +1515,6 @@ const QuantrexTestEngine = (() => {
               <span class="qzrr-ico qzrr-ico-blue" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M7 3.5h7.2L19 8.3V20a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1z" stroke="#42a5f5" stroke-width="1.7"/><path d="M14 3.5V9h5.2" stroke="#42a5f5" stroke-width="1.7"/><path d="M9 12h6M9 15.5h6" stroke="#42a5f5" stroke-width="1.5" stroke-linecap="round"/></svg></span>
               Question Paper
             </button>
-            <button type="button" class="qzrr-tool-btn qzrr-theme-btn${qzrrDark ? "" : " on"}" id="qzrrThemeLight" title="Light mode" aria-pressed="${qzrrDark ? "false" : "true"}"
-              onclick="try{event.preventDefault();event.stopPropagation();if(window.qxSetQzrrTheme)window.qxSetQzrrTheme('light');}catch(_){}return false;"><span class="qzrr-theme-ico" aria-hidden="true">☀</span> Light</button>
-            <button type="button" class="qzrr-tool-btn qzrr-theme-btn${qzrrDark ? " on" : ""}" id="qzrrThemeDark" title="Dark mode" aria-pressed="${qzrrDark ? "true" : "false"}"
-              onclick="try{event.preventDefault();event.stopPropagation();if(window.qxSetQzrrTheme)window.qxSetQzrrTheme('dark');}catch(_){}return false;"><span class="qzrr-theme-ico" aria-hidden="true">☾</span> Dark</button>
             <button type="button" class="qzrr-tool-btn qzrr-exit" id="mtkExitBtn" data-qx-exit="1"
               title="Exit test"
               onclick="event.preventDefault();event.stopPropagation();if(window.qxExitTest){window.qxExitTest();}return false;">Exit</button>
