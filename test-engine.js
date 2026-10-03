@@ -4179,7 +4179,8 @@ const QuantrexTestEngine = (() => {
       main.innerHTML = renderResults(data);
       try {
         if (!session.practiceMode && typeof QxAiProctor !== "undefined" && QxAiProctor.mountReport) {
-          QxAiProctor.mountReport(main, data);
+          var prState = QxAiProctor.getState && QxAiProctor.getState();
+          if (prState) QxAiProctor.mountReport(main, data);
         }
       } catch (_pr2) { /* */ }
       const an = main.querySelector("#qzAnPage");
@@ -6218,7 +6219,8 @@ async function startTest(questionIds, title, returnTo, options) {
       _qxStartPainted = true;
       try {
         if (!config.practiceMode && typeof QxAiProctor !== "undefined" && QxAiProctor.attach) {
-          QxAiProctor.attach();
+          var gateOn = QxAiProctor.shouldGate ? QxAiProctor.shouldGate(config) : false;
+          if (gateOn) QxAiProctor.attach();
         }
       } catch (_pr) { /* */ }
       try { if (typeof qxClearPracticeFailsafe === "function") qxClearPracticeFailsafe(); } catch (_) { /* */ }

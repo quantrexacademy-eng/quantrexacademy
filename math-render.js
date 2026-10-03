@@ -3394,6 +3394,21 @@ window.Mx = (() => {
     c = c.replace(/([a-zA-Z0-9])\s*\^\s*\{/g, "$1^{");
     c = c.replace(/([a-zA-Z0-9])\s*_\s*\{/g, "$1_{");
     c = c.replace(/[ \t]{2,}/g, " ");
+    try { c = healDisplayMathGlues(c); } catch (_) { /* */ }
+    return c;
+  }
+
+  /** Display-only: glued andf, inverse smash, unbraced \\mathrmH. Does not change stored answers. */
+  function healDisplayMathGlues(s) {
+    let c = String(s || "");
+    if (!c) return c;
+    c = c.replace(/\\(sin|cos|tan|cot|sec|csc|sinh|cosh|tanh)\s*-\s*1(?=\s*[(\\{])/g, "\\$1^{-1}");
+    c = c.replace(/(^|[^\\A-Za-z])(sin|cos|tan|cot|sec|csc)\s*-\s*1(?=\s*[(\\{])/g, "$1\\$2^{-1}");
+    c = c.replace(/\\mathrm(?!\{)([A-Z])(?![a-zA-Z])/g, "\\mathrm{$1}");
+    c = c.replace(/\\mathbb\{R\}andf/g, "\\mathbb{R} and f");
+    c = c.replace(/([}\])])andf\b/g, "$1 and f");
+    c = c.replace(/\bandf(?=\\left|[(:])/g, "and f");
+    c = c.replace(/\bandf:/g, "and f:");
     return c;
   }
 
@@ -3709,6 +3724,7 @@ window.Mx = (() => {
       [/\bonly(?=[A-Z])/g, "only "],
       [/(\d)is\b/g, "$1 is"],
       [/(\d)then\b/gi, "$1 then"],
+      [/\bandf\b/g, "and f"],
     ];
     const parkedCmds = [];
     c = c.replace(/\\[a-zA-Z]+/g, function (m) {

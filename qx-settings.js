@@ -17,6 +17,7 @@
     haptic: "qx_pref_haptic",
     awake: "qx_pref_keep_awake",
     lang: "qx_pref_lang",
+    aiProctor: "qx_pref_ai_proctor",
     qset: "qx_marks_question_settings",
     themePref: "quantrex_theme"
   };
@@ -471,6 +472,15 @@
       /* Question — MARKS user.questionSettings */
       questionSettingsHtml() +
 
+      '<div class="qx-set-sec">' +
+      '<div class="qx-set-sec-h">AI Proctoring</div>' +
+      '<p class="qx-set-sec-sub">Timed tests only. Off by default. Camera stills on integrity events \u2014 never video, never an automatic cheating verdict.</p>' +
+      '<div class="qx-set-list">' +
+      '<div class="qx-set-row"><div class="qx-set-lab-wrap"><span class="qx-set-lab">AI proctor on timed tests</span>' +
+      '<span class="qx-set-hint">Turn on in Settings before a mock. Concept Create Destiny.</span></div>' +
+      toggleHtml("qxSetAiProctor", lsGet(PREF.aiProctor, "0") === "1") + "</div>" +
+      "</div></div>" +
+
       /* Account */
       '<div class="qx-set-sec qx-set-span">' +
       '<div class="qx-set-sec-h">Account</div>' +
@@ -541,6 +551,12 @@
         else if (btn.id === "qxSetSolMode") setQuestionSetting("isQuestionSolutionMode", next);
         else if (btn.id === "qxSetAlwaysNote") setQuestionSetting("alwaysShowMyNote", next);
         else if (btn.id === "qxSetAttemptInsight") setQuestionSetting("showAttemptInsight", next);
+        else if (btn.id === "qxSetAiProctor") {
+          lsSet(PREF.aiProctor, next ? "1" : "0");
+          try {
+            if (typeof QxAiProctor !== "undefined" && QxAiProctor.setEnabled) QxAiProctor.setEnabled(next);
+          } catch (_) { /* */ }
+        }
         btn.classList.toggle("on", next);
         btn.setAttribute("aria-checked", next ? "true" : "false");
         if (typeof showToast === "function") showToast(next ? "Enabled" : "Disabled");

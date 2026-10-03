@@ -100,8 +100,12 @@ function ctShareUrl(test) {
   // Always app.html. Site root rewrites to login.html, so a shared link must not use "/".
   return location.origin + "/app.html#custom/take/" + token;
 }
+function ctResolveTest(testId, teacher) {
+  if (typeof testId === "object" && testId && (testId.questionIds || testId.id)) return testId;
+  return ctLoadTests(teacher).find((x) => x.id === testId);
+}
 async function ctCopyShareLink(testId, teacher) {
-  const t = (typeof testId === "object" && testId && testId.questionIds) ? testId : ctLoadTests(teacher).find((x) => x.id === testId);
+  const t = ctResolveTest(testId, teacher);
   if (!t) { showToast("Test not found"); return; }
   const url = ctShareUrl(t);
   try {
@@ -115,8 +119,52 @@ async function ctCopyShareLink(testId, teacher) {
     showToast(url);
   }
 }
+function ctShareWhatsApp(testId, teacher) {
+  const t = ctResolveTest(testId, teacher);
+  if (!t) { showToast("Test not found"); return; }
+  const url = ctShareUrl(t);
+  const text = (t.title || "Quantrex custom test") + " — " + (t.totalQs || "") + " Qs\n" + url;
+  window.open("https://wa.me/?text=" + encodeURIComponent(text), "_blank", "noopener");
+}
+async function ctNativeShare(testId, teacher) {
+  const t = ctResolveTest(testId, teacher);
+  if (!t) { showToast("Test not found"); return; }
+  const url = ctShareUrl(t);
+  if (navigator.share) {
+    try {
+      await navigator.share({ title: t.title || "Quantrex custom test", text: t.title || "Custom test", url: url });
+      return;
+    } catch (err) {
+      if (err && err.name === "AbortError") return;
+    }
+  }
+  await ctCopyShareLink(t, teacher);
+}
+function ctShareButtonsHtml(test, teacher) {
+  if (!test) return "";
+  const tid = String(test.id || "").replace(/'/g, "");
+  const tflag = teacher ? "true" : "false";
+  let url = "";
+  try { url = ctShareUrl(test); } catch (_) { url = ""; }
+  const safeUrl = String(url).replace(/"/g, "&quot;");
+  return `<div class="ct-share-panel">
+    <strong>Share this test</strong>
+    <p>Copy, WhatsApp, or system share — anyone with the link can attempt it.</p>
+    <div class="ct-share-row">
+      <input class="ct-share-url" readonly value="${safeUrl}" onclick="this.select()">
+    </div>
+    <div class="ct-share-actions">
+      <button type="button" class="ct-share-btn" onclick="event.stopPropagation();ctCopyShareLink('${tid}', ${tflag})">Copy link</button>
+      <button type="button" class="ct-share-btn wa" onclick="event.stopPropagation();ctShareWhatsApp('${tid}', ${tflag})">WhatsApp</button>
+      <button type="button" class="ct-share-btn" onclick="event.stopPropagation();ctNativeShare('${tid}', ${tflag})">Share</button>
+    </div>
+  </div>`;
+}
 window.ctCopyShareLink = ctCopyShareLink;
 window.ctShareUrl = ctShareUrl;
+window.ctShareWhatsApp = ctShareWhatsApp;
+window.ctNativeShare = ctNativeShare;
+window.ctToggleSubjectAll = ctToggleSubjectAll;
 
 function ctRememberShared(test) {
   try {
@@ -193,6 +241,8 @@ function ctCpyqbToExam(navEntry) {
           _id: "ct_" + slug + "_s" + si + "_c" + ci,
           title: ch.name,
           shortName: ch.name,
+          subject: sub.name,
+          subjectTitle: sub.name,
           syllabusCategory: "noChange"
         }))
       }]
@@ -373,6 +423,13 @@ function ctIsTeacherAssign() {
   return !!(_ctDraft && _ctDraft._teacherAssign);
 }
 
+function ctWizPayload(extra) {
+  if (ctTeacherMode() || ctIsTeacherAssign()) {
+    return Object.assign({ step: "wizard", teacherMode: true }, extra || {});
+  }
+  return Object.assign({ step: "wizard", fromTests: ctFromTests() }, extra || {});
+}
+
 function ctRender(payload) {
   if (ctTeacherMode() || ctIsTeacherAssign()) {
     if (payload) _ctPayload = { ..._ctPayload, ...payload, teacherMode: true };
@@ -418,14 +475,17 @@ function ctExamIcon(ex) {
   return `<span class="ct-wiz-card-fb">${ic}</span>`;
 }
 
-function ctChapterIcon(ch) {
+function ctChapterIcon(ch, subjectTitle) {
   if (!ch) return "";
-  if (typeof QxCardIcons !== "undefined") {
-    const name = ch.shortName || ch.title || ch.name || "";
-    const subj = ch.subject || (typeof _ctState !== "undefined" && _ctState.subject) || "";
+  const name = ch.shortName || ch.title || ch.name || "";
+  const subj = subjectTitle || ch.subject || ch.subjectTitle || "";
+  if (typeof cpyqbChapterIcon === "function") {
+    return cpyqbChapterIcon(ch, subj, name);
+  }
+  if (typeof QxCardIcons !== "undefined" && QxCardIcons.chapterIconHtml) {
     return QxCardIcons.chapterIconHtml(name, subj, ch);
   }
-  return `<span class="ct-wiz-ch-fb">${(ch.shortName || ch.title || "?").slice(0, 1)}</span>`;
+  return `<span class="cpyqb-ch-ic-fb">${(name || "?").slice(0, 1)}</span>`;
 }
 
 function ctSourceLabel(source) {
@@ -530,10 +590,18 @@ function ctPreviewBadges(draft) {
 }
 
 function ctWizardProgress(step) {
-  const steps = ["pick", "chapters", "years"];
-  const idx = steps.indexOf(step);
+  const steps = [
+    { id: "pick", n: "1", lab: "Exam" },
+    { id: "chapters", n: "2", lab: "Chapters" },
+    { id: "years", n: "3", lab: "Years" }
+  ];
+  const idx = steps.findIndex(s => s.id === step);
+  const pills = steps.map((s, i) => {
+    const st = i < idx ? "done" : (i === idx ? "on" : "");
+    return `<span class="ct-wiz-step ${st}"><i>${s.n}</i>${s.lab}</span>`;
+  }).join('<span class="ct-wiz-step-line" aria-hidden="true"></span>');
   const pct = idx < 0 ? 10 : Math.round(((idx + 1) / steps.length) * 100);
-  return `<div class="ct-wiz-progress"><span style="width:${pct}%"></span></div>`;
+  return `<div class="ct-wiz-steps">${pills}</div><div class="ct-wiz-progress"><span style="width:${pct}%"></span></div>`;
 }
 
 function ctWizardPreviewBar(draft, nextLabel, nextFn, nextDisabled) {
@@ -614,28 +682,34 @@ function ctChaptersStepHtml(draft) {
 
   const subjectRows = subjects.map(s => {
     const cnt = ctSubjectCount(s);
-    const open = true;
     const selInSub = (s.units || []).reduce((n, u) => n + (u.chapters || []).filter(ch => draft.chapterIds.has(ch._id)).length, 0);
     const sty = ctSubjectStyle(s.title);
-    return `<div class="ct-wiz-subj-block open" style="--ct-card-c:${sty.color}">
+    return `<div class="ct-wiz-subj-block open" data-ct-sub="${s._id}" style="--ct-card-c:${sty.color}">
       <div class="ct-wiz-subj-row">
         <div class="ct-wiz-subj-row-main">
           ${ctSubjectIcon(s)}
           <div><strong>${s.title}</strong><small>${cnt.units} Units, ${cnt.chapters} Chapters${selInSub ? ` · ${selInSub} selected` : ""}</small></div>
         </div>
-        <button type="button" class="ct-wiz-show-units" onclick="document.getElementById('ctFold_${s._id}')&&document.getElementById('ctFold_${s._id}').scrollIntoView({behavior:'smooth',block:'start'})">VIEW FOLDERS</button>
+        <div class="ct-wiz-subj-row-actions">
+          <button type="button" class="ct-wiz-link-btn" onclick="event.stopPropagation();ctToggleSubjectAll('${s._id}')">Select all</button>
+          <button type="button" class="ct-wiz-show-units" onclick="document.getElementById('ctFold_${s._id}')&&document.getElementById('ctFold_${s._id}').scrollIntoView({behavior:'smooth',block:'start'})">VIEW FOLDERS</button>
+        </div>
       </div>
     </div>`;
   }).join("");
 
-  function ctFolderCardHtml(ch, delay) {
+  function ctFolderCardHtml(ch, delay, subjectTitle) {
     const on = draft.chapterIds.has(ch._id);
-    return `<label class="ct-wiz-ch-card ct-folder ${on ? "on" : ""}" style="animation-delay:${delay}ms">
+    const name = ch.shortName || ch.title || "";
+    const g = ["g0", "g1", "g2", "g3", "g4", "g5", "g6", "g7"][Math.abs(String(name).length + String(ch._id || "").length) % 8];
+    return `<label class="qx-topic-card qx-topic-rich qx-topic-${g} ch-card qx-ch-card-rich ct-wiz-ch-card ct-folder ${on ? "on" : ""}" data-ct-ch="${ch._id}" style="animation-delay:${delay}ms">
       <input type="checkbox" class="ct-wiz-ch-check" ${on ? "checked" : ""} onchange="ctToggleChapter('${ch._id}', this.checked)">
-      <div class="ct-wiz-ch-card-ic">${ctChapterIcon(ch)}</div>
-      <div class="ct-wiz-ch-card-body">
-        <strong>${ch.shortName || ch.title}</strong>
-        <small>${ch.title}</small>
+      <div class="qx-topic-top qx-ch-card-top">
+        <span class="qx-topic-ic cpyqb-ch-ic" aria-hidden="true">${ctChapterIcon(ch, subjectTitle)}</span>
+      </div>
+      <strong class="qx-topic-name">${name}</strong>
+      <div class="qx-topic-details">
+        <span class="qx-ch-pill">${on ? "Selected" : "Tap to add"}</span>
       </div>
     </label>`;
   }
@@ -651,21 +725,21 @@ function ctChaptersStepHtml(draft) {
       const unitSel = chapters.filter(ch => draft.chapterIds.has(ch._id)).length;
       const expanded = !draft.expandedUnits || draft.expandedUnits.size === 0 || draft.expandedUnits.has(unit._id);
       const cards = chapters.map(ch => {
-        delay += 28;
-        return ctFolderCardHtml(ch, delay);
+        delay += 18;
+        return ctFolderCardHtml(ch, delay, s.title);
       }).join("");
-      return `<div class="ct-wiz-unit ${expanded ? "expanded" : "collapsed"}">
+      return `<div class="ct-wiz-unit ${expanded ? "expanded" : "collapsed"}" data-ct-unit="${unit._id}">
         <div class="ct-wiz-unit-head" onclick="ctToggleUnitExpand('${unit._id}')">
           <span class="ct-wiz-unit-chev">${expanded ? "▾" : "▸"}</span>
           <strong>${unit.title}</strong>
           <small>${unitSel}/${chapters.length} selected</small>
           <button type="button" class="ct-wiz-unit-all" onclick="event.stopPropagation();ctToggleUnitAll('${s._id}','${unit._id}')">${unitSel === chapters.length ? "Clear unit" : "Select unit"}</button>
         </div>
-        ${expanded ? `<div class="ct-wiz-ch-grid ct-wiz-folder-grid">${cards}</div>` : ""}
+        <div class="ct-wiz-ch-grid ct-wiz-folder-grid qx-topic-grid qx-topic-grid-rich">${cards}</div>
       </div>`;
     }).join("");
     return `<section class="ct-wiz-folder-sub" id="ctFold_${s._id}">
-      <div class="ct-wiz-right-head"><strong>${s.title}</strong><small>All chapter folders</small></div>
+      <div class="ct-wiz-right-head"><strong>${s.title}</strong><small>Chapter folders · same icons as Chapter-wise PYQ</small></div>
       ${unitsHtml || '<div class="empty">No chapters in this subject.</div>'}
     </section>`;
   }).join("");
@@ -825,7 +899,11 @@ function ctLandingHtml(tests, forTeacher) {
         <small>${t.examTitle || "JEE Main"} · ${date}</small>
         ${extra}
       </div>
-      <button type="button" class="ct-share-btn" onclick="event.stopPropagation();ctCopyShareLink('${t.id}', ${teacher ? "true" : "false"})">Share</button>
+      <div class="ct-landing-share">
+        <button type="button" class="ct-share-btn" onclick="event.stopPropagation();ctCopyShareLink('${t.id}', ${teacher ? "true" : "false"})">Copy</button>
+        <button type="button" class="ct-share-btn wa" onclick="event.stopPropagation();ctShareWhatsApp('${t.id}', ${teacher ? "true" : "false"})">WhatsApp</button>
+        <button type="button" class="ct-share-btn" onclick="event.stopPropagation();ctNativeShare('${t.id}', ${teacher ? "true" : "false"})">Share</button>
+      </div>
       <span class="ct-landing-action">${action}</span>
     </div>`;
   }).join("") : `<div class="ct-landing-empty">No tests in this filter.</div>`;
@@ -902,12 +980,7 @@ function ctPreviewModalHtml(test, forTeacher) {
   const yearLines = (test.yearLabels || []).slice(0, 8).join(", ");
   const yearMeta = test.yearPreset === "all" ? "All Years" : (test.yearPreset === "custom" ? `Custom (${(test.yearLabels || []).length} shifts)` : test.yearPresetLabel || "Selected years");
 
-  const shareUrl = (() => { try { return ctShareUrl(test); } catch (_) { return ""; } })();
-  const shareRow = shareUrl ? `<div class="ct-share-row">
-      <input class="ct-share-url" readonly value="${String(shareUrl).replace(/"/g, "&quot;")}" onclick="this.select()">
-      <button type="button" class="ct-share-btn" onclick="event.stopPropagation();ctCopyShareLink('${test.id}', ${teacher ? "true" : "false"})">Copy link</button>
-    </div>
-    <p class="ct-preview-years">Anyone with this link can open it and take the test.</p>` : "";
+  const shareRow = ctShareButtonsHtml(test, teacher);
   const actions = teacher
     ? `<button type="button" class="marks-preview-attempt" onclick="ctClosePreview();ctAssignTeacherTest('${test.id}')">${test.assigned ? "Assign Again →" : "Assign to Batch →"}</button>
         <button type="button" class="marks-preview-later" onclick="ctClosePreview()">Close</button>`
@@ -1036,10 +1109,7 @@ function ctWizardBack() {
     ctCloseWizard();
     return;
   }
-  const payload = (ctTeacherMode() || ctIsTeacherAssign())
-    ? { step: "wizard", teacherMode: true }
-    : { step: "wizard", fromTests: ctFromTests() };
-  ctRender(payload);
+  ctRender(ctWizPayload());
 }
 
 function ctSetFilter(f) {
@@ -1064,7 +1134,7 @@ function ctPickExam(id) {
   _ctDraft.unitsSubjectId = sub ? sub._id : null;
   _ctDraft.chapterIds = new Set();
   _ctYearShiftsCache = null;
-  ctRender({ step: "wizard", fromTests: ctFromTests() });
+  ctRender(ctWizPayload());
 }
 
 /** Toggle subject on/off — multi-select (Physics + Chemistry + Maths …) */
@@ -1091,7 +1161,7 @@ function ctPickSubject(id) {
   if (_ctDraft.unitsSubjectId && !_ctDraft.subjectIds.has(_ctDraft.unitsSubjectId)) {
     _ctDraft.unitsSubjectId = _ctDraft.subjectId;
   }
-  ctRender({ step: "wizard", fromTests: ctFromTests() });
+  ctRender(ctWizPayload());
 }
 
 function ctSelectAllSubjects() {
@@ -1099,7 +1169,7 @@ function ctSelectAllSubjects() {
   const all = ctExamSubjects(_ctDraft);
   _ctDraft.subjectIds = new Set(all.map(s => s._id));
   ctSyncPrimarySubject(_ctDraft);
-  ctRender({ step: "wizard", fromTests: ctFromTests() });
+  ctRender(ctWizPayload());
 }
 
 function ctClearSubjects() {
@@ -1109,7 +1179,7 @@ function ctClearSubjects() {
   _ctDraft.subjectMeta = null;
   _ctDraft.chapterIds = new Set();
   _ctDraft.unitsSubjectId = null;
-  ctRender({ step: "wizard", fromTests: ctFromTests() });
+  ctRender(ctWizPayload());
 }
 
 function ctGoChapters() {
@@ -1128,7 +1198,7 @@ function ctGoChapters() {
   selected.forEach(sub => {
     (sub.units || []).forEach(u => _ctDraft.expandedUnits.add(u._id));
   });
-  ctRender({ step: "wizard", fromTests: ctFromTests() });
+  ctRender(ctWizPayload());
 }
 
 async function ctGoYears() {
@@ -1138,20 +1208,16 @@ async function ctGoYears() {
   }
   _ctDraft.wizardStep = "years";
   ctSyncDuration(_ctDraft);
-  if (ctIsTeacherAssign()) {
-    go("teacher");
-  } else {
-    finishRender(`<div class="ct-wizard-overlay"><div class="ct-wizard-shell"><div class="ct-wiz-generating"><div class="ct-spinner"></div><strong>Loading year papers…</strong></div></div></div>`);
-  }
+  ctRender(ctWizPayload());
   _ctYearShiftsCache = null;
   await ctBuildYearShifts(true);
-  ctRender({ step: "wizard", fromTests: ctFromTests() });
+  if (_ctDraft && _ctDraft.wizardStep === "years") ctRender(ctWizPayload());
 }
 
 function ctSetSyllabus(hideOut) {
   if (!_ctDraft) return;
   _ctDraft.hideOutOfSyllabus = hideOut;
-  ctRender({ step: "wizard", fromTests: ctFromTests() });
+  ctRender(ctWizPayload());
 }
 
 function ctShowUnitsFor(subjectId) {
@@ -1165,15 +1231,66 @@ function ctShowUnitsFor(subjectId) {
       _ctDraft.expandedUnits = new Set((sub.units || []).map(u => u._id));
     }
   }
-  ctRender({ step: "wizard", fromTests: ctFromTests() });
+  ctRender(ctWizPayload());
+}
+
+function ctPaintChapterCard(chId, on) {
+  const card = document.querySelector('[data-ct-ch="' + chId + '"]');
+  if (!card) return;
+  card.classList.toggle("on", !!on);
+  const inp = card.querySelector("input.ct-wiz-ch-check");
+  if (inp) inp.checked = !!on;
+  const pill = card.querySelector(".qx-ch-pill");
+  if (pill) pill.textContent = on ? "Selected" : "Tap to add";
+}
+
+function ctRefreshChapterChrome() {
+  if (!_ctDraft) return;
+  const sel = ctSelectedChapters(_ctDraft).length;
+  const countEl = document.querySelector(".ct-wiz-sel-count");
+  if (countEl) countEl.textContent = sel + " chapter" + (sel !== 1 ? "s" : "") + " selected";
+  const next = document.querySelector(".ct-wiz-next-btn");
+  if (next) {
+    next.disabled = !sel;
+    next.classList.toggle("disabled", !sel);
+  }
+  ctSelectedSubjects(_ctDraft).forEach(sub => {
+    let selInSub = 0;
+    (sub.units || []).forEach(unit => {
+      const visible = (unit.chapters || []).filter(ch => {
+        if (_ctDraft.hideOutOfSyllabus && ch.syllabusCategory === "outOfSyllabus") return false;
+        return true;
+      });
+      const n = visible.filter(ch => _ctDraft.chapterIds.has(ch._id)).length;
+      selInSub += n;
+      const unitEl = document.querySelector('[data-ct-unit="' + unit._id + '"]');
+      if (!unitEl) return;
+      const sm = unitEl.querySelector(".ct-wiz-unit-head small");
+      if (sm) sm.textContent = n + "/" + visible.length + " selected";
+      const btn = unitEl.querySelector(".ct-wiz-unit-all");
+      if (btn) btn.textContent = (visible.length && n === visible.length) ? "Clear unit" : "Select unit";
+    });
+    const block = document.querySelector('[data-ct-sub="' + sub._id + '"] small');
+    if (block) {
+      const cnt = ctSubjectCount(sub);
+      block.textContent = cnt.units + " Units, " + cnt.chapters + " Chapters" + (selInSub ? (" · " + selInSub + " selected") : "");
+    }
+  });
 }
 
 function ctToggleUnitExpand(unitId) {
   if (!_ctDraft) return;
   if (!_ctDraft.expandedUnits) _ctDraft.expandedUnits = new Set();
-  if (_ctDraft.expandedUnits.has(unitId)) _ctDraft.expandedUnits.delete(unitId);
+  const el = document.querySelector('[data-ct-unit="' + unitId + '"]');
+  const open = _ctDraft.expandedUnits.has(unitId);
+  if (open) _ctDraft.expandedUnits.delete(unitId);
   else _ctDraft.expandedUnits.add(unitId);
-  ctRender({ step: "wizard", fromTests: ctFromTests() });
+  if (el) {
+    el.classList.toggle("expanded", !open);
+    el.classList.toggle("collapsed", open);
+    const chev = el.querySelector(".ct-wiz-unit-chev");
+    if (chev) chev.textContent = open ? "▸" : "▾";
+  }
 }
 
 function ctSetTotalQs(n) {
@@ -1181,7 +1298,7 @@ function ctSetTotalQs(n) {
   _ctDraft.totalQs = n;
   _ctDraft.durationManual = false;
   ctSyncDuration(_ctDraft);
-  ctRender({ step: "wizard", fromTests: ctFromTests() });
+  ctRender(ctWizPayload());
 }
 
 function ctSetTimePerQ(sec) {
@@ -1189,7 +1306,7 @@ function ctSetTimePerQ(sec) {
   _ctDraft.timePerQ = sec;
   _ctDraft.durationManual = false;
   ctSyncDuration(_ctDraft);
-  ctRender({ step: "wizard", fromTests: ctFromTests() });
+  ctRender(ctWizPayload());
 }
 
 function ctSetDurationMins(mins) {
@@ -1197,7 +1314,7 @@ function ctSetDurationMins(mins) {
   const m = Math.max(1, Math.min(600, Math.round(Number(mins) || 0)));
   _ctDraft.durationSec = m * 60;
   _ctDraft.durationManual = true;
-  ctRender({ step: "wizard", fromTests: ctFromTests() });
+  ctRender(ctWizPayload());
 }
 
 function ctBumpDuration(mins) {
@@ -1205,14 +1322,15 @@ function ctBumpDuration(mins) {
   const add = Math.max(1, Math.round(Number(mins) || 0));
   _ctDraft.durationSec = Math.max(60, (_ctDraft.durationSec || CT_DEFAULT_MINS * 60) + add * 60);
   _ctDraft.durationManual = true;
-  ctRender({ step: "wizard", fromTests: ctFromTests() });
+  ctRender(ctWizPayload());
 }
 
 function ctToggleChapter(chId, checked) {
   if (!_ctDraft) return;
   if (checked) _ctDraft.chapterIds.add(chId);
   else _ctDraft.chapterIds.delete(chId);
-  ctRender({ step: "wizard", fromTests: ctFromTests() });
+  ctPaintChapterCard(chId, checked);
+  ctRefreshChapterChrome();
 }
 
 function ctToggleUnitAll(subjectId, unitId) {
@@ -1225,16 +1343,40 @@ function ctToggleUnitAll(subjectId, unitId) {
     if (_ctDraft.hideOutOfSyllabus && ch.syllabusCategory === "outOfSyllabus") return false;
     return true;
   });
-  const allOn = visible.every(ch => _ctDraft.chapterIds.has(ch._id));
-  visible.forEach(ch => { if (allOn) _ctDraft.chapterIds.delete(ch._id); else _ctDraft.chapterIds.add(ch._id); });
-  ctRender({ step: "wizard", fromTests: ctFromTests() });
+  const allOn = visible.length > 0 && visible.every(ch => _ctDraft.chapterIds.has(ch._id));
+  visible.forEach(ch => {
+    if (allOn) _ctDraft.chapterIds.delete(ch._id);
+    else _ctDraft.chapterIds.add(ch._id);
+    ctPaintChapterCard(ch._id, !allOn);
+  });
+  ctRefreshChapterChrome();
+}
+
+function ctToggleSubjectAll(subjectId) {
+  if (!_ctDraft) return;
+  const sub = ctExamSubjects(_ctDraft).find(s => s._id === subjectId);
+  if (!sub) return;
+  const visible = [];
+  (sub.units || []).forEach(u => {
+    (u.chapters || []).forEach(ch => {
+      if (_ctDraft.hideOutOfSyllabus && ch.syllabusCategory === "outOfSyllabus") return;
+      visible.push(ch);
+    });
+  });
+  const allOn = visible.length > 0 && visible.every(ch => _ctDraft.chapterIds.has(ch._id));
+  visible.forEach(ch => {
+    if (allOn) _ctDraft.chapterIds.delete(ch._id);
+    else _ctDraft.chapterIds.add(ch._id);
+    ctPaintChapterCard(ch._id, !allOn);
+  });
+  ctRefreshChapterChrome();
 }
 
 function ctSetYearPreset(preset) {
   if (!_ctDraft) return;
   _ctDraft.yearPreset = preset;
   if (preset !== "custom") _ctDraft.customSources = new Set();
-  ctRender({ step: "wizard", fromTests: ctFromTests() });
+  ctRender(ctWizPayload());
 }
 
 async function ctOpenYearModal() {
@@ -1274,7 +1416,7 @@ function ctApplyCustomYears() {
   if (!_ctDraft) return;
   _ctDraft.yearPreset = "custom";
   ctCloseYearModal();
-  ctRender({ step: "wizard", fromTests: ctFromTests() });
+  ctRender(ctWizPayload());
 }
 
 function ctAutoTitle(draft, chapters) {
@@ -1323,7 +1465,7 @@ async function ctGenerateTest() {
   if (!chapters.length) return;
 
   _ctDraft.wizardStep = "generating";
-  ctRender({ step: "wizard", fromTests: ctFromTests() });
+  ctRender(ctWizPayload());
 
   const banks = ctBanksForYears(_ctDraft);
   if (typeof loadMultipleBanks === "function") await loadMultipleBanks(banks);
@@ -1348,7 +1490,7 @@ async function ctGenerateTest() {
   if (!pool.length) {
     showToast("⚠️ No questions found. Try more chapters or different years.");
     _ctDraft.wizardStep = "years";
-    ctRender({ step: "wizard", fromTests: ctFromTests() });
+    ctRender(ctWizPayload());
     return;
   }
 
@@ -1471,3 +1613,9 @@ function ctResetWizard() {
   _ctDraft = null;
   _ctPayload = { step: "landing" };
 }
+
+window.ctToggleSubjectAll = ctToggleSubjectAll;
+window.ctCopyShareLink = ctCopyShareLink;
+window.ctShareUrl = ctShareUrl;
+window.ctShareWhatsApp = ctShareWhatsApp;
+window.ctNativeShare = ctNativeShare;

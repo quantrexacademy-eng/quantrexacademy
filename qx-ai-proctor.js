@@ -8,6 +8,7 @@
   var MAX_SNAPS = 8;
   var SNAP_W = 480;
   var LOG_KEY = "qx_ai_proctor_log";
+  var PREF_KEY = "qx_pref_ai_proctor";
   var _state = null;
   var _stream = null;
   var _video = null;
@@ -22,7 +23,7 @@
   var _listening = false;
 
   function bust() {
-    return encodeURIComponent((typeof global.QX_BUILD === "string" && global.QX_BUILD) || "qxmd289");
+    return encodeURIComponent((typeof global.QX_BUILD === "string" && global.QX_BUILD) || "qxmd291");
   }
   function ensureCss() {
     if (_css || !document.head) return;
@@ -56,10 +57,19 @@
     sess = sess || sessionObj();
     return !!(sess && sess.practiceMode);
   }
+  function prefOn() {
+    try { return localStorage.getItem(PREF_KEY) === "1"; } catch (_) { return false; }
+  }
+  function setEnabled(on) {
+    try { localStorage.setItem(PREF_KEY, on ? "1" : "0"); } catch (_) { /* */ }
+  }
   function shouldGate(config) {
     if (!config) return false;
     if (config.practiceMode) return false;
-    return true;
+    if (!prefOn()) return false;
+    if (config.timed === false) return false;
+    var timed = !!(config.timed || (Number(config.durationSec) > 0) || config.uiMode === "quizrr");
+    return timed;
   }
 
   function pushEvent(type, severity, label, note, withPhoto) {
@@ -566,6 +576,8 @@
 
   global.QxAiProctor = {
     shouldGate: shouldGate,
+    enabled: prefOn,
+    setEnabled: setEnabled,
     gate: gate,
     attach: attach,
     stop: stop,

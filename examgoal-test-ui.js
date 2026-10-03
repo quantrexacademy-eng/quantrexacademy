@@ -689,7 +689,10 @@
             egLsRow("qx_pref_similar_norepeat", "Don\u2019t repeat same question", "Skip stems already in this practice", true) +
             (typeof QxSimilarPractice !== "undefined" && QxSimilarPractice.settingsHtml ? QxSimilarPractice.settingsHtml() : "") +
             '</section>')
-          : ""));
+          : "") +
+        '<section class="eg-vs-sec" id="qxAiProctorSec"><h5 class="eg-vs-h">AI Proctoring</h5>' +
+        egLsRow("qx_pref_ai_proctor", "AI proctor on timed tests", "Still photos on tab-switch. Off until you turn it on. Flags are for review \u2014 never automatic cheating.", false) +
+        '</section>');
     return '<div class="eg-fmt-scrim" id="egFmtScrim" hidden></div>' +
       '<div class="eg-fmt-pop eg-view-settings eg-vs-marks" id="egFmtPop" role="dialog" aria-label="Question View Settings">' +
       '<div class="eg-vs-head"><h5 class="eg-fmt-title">Question View Settings</h5>' +

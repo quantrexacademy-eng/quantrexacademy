@@ -1,10 +1,10 @@
 {
-  "cache": "qx-pwa-qxmd290",
-  "ts": 1791100000290,
-  "title": "qxmd290: keep live KaTeX in question and solution",
+  "cache": "qx-pwa-qxmd291",
+  "ts": 1791100000291,
+  "title": "qxmd291: Create Own Test folders, share, AI proctor default off",
   "site": "https://www.quantrexacademy.com",
-  "build": "qxmd290",
-  "body": "Question and solution format: live KaTeX is no longer treated as a dumped HTML leak, so Check Answer keeps the structured SOLUTION card, typeset math, log, powers, and fractions.",
+  "build": "qxmd291",
+  "body": "Create Own Test wizard uses chapter-wise PYQ folder cards with theme-safe names, share after creation (copy / WhatsApp / system share), display-only math glues, and AI proctoring only after Settings is turned on (default off, timed tests, still photos).",
   "package": "com.quantrexacademy.app",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }
