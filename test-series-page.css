@@ -896,20 +896,27 @@ body.ts-standalone-body {
   padding: 8px 6px !important; border-radius: 2px !important; color: #111 !important;
   text-align: left !important; cursor: pointer; font-family: inherit; width: 100%;
 }
-.qzrr-opts .mtk-opt:hover { background: #f5f9fc !important; }
-.qzrr-opts .mtk-opt.selected { background: #e8f2fc !important; }
-.qzrr-opts .mtk-opt-letter { display: none !important; }
-.qzrr-opts .mtk-opt-radio {
-  width: 16px !important; height: 16px !important; min-width: 16px !important;
-  border: 2px solid #555 !important; border-radius: 50% !important;
-  background: #fff !important; margin-top: 2px !important; box-shadow: none !important;
-  display: inline-block !important; flex-shrink: 0 !important;
+.qzrr-opts .mtk-opt:hover { background: #f8fbff !important; }
+.qzrr-opts .mtk-opt.selected { background: #eef5ff !important; border-color: #1565C0 !important; }
+.qzrr-opts .mtk-opt-radio { display: none !important; width: 0 !important; height: 0 !important; overflow: hidden !important; }
+.qzrr-opts .mtk-opt-letter,
+.qzrr-opts .qx-opt-circle {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  width: 32px !important; height: 32px !important; min-width: 32px !important;
+  border-radius: 50% !important;
+  background: #1565C0 !important; color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  font-weight: 800 !important; font-size: 14px !important; line-height: 1 !important;
+  flex-shrink: 0 !important;
 }
-.qzrr-opts .mtk-opt.selected .mtk-opt-radio {
-  border-color: #1a73e8 !important;
-  background: radial-gradient(circle, #1a73e8 0 42%, #fff 46%) !important;
+.qzrr-opts .mtk-opt.selected .mtk-opt-letter {
+  background: #0d47a1 !important;
 }
-.qzrr-opts .mtk-opt-text { color: #111 !important; font-size: 14px !important; line-height: 1.45 !important; }
+.qzrr-opts .mtk-opt-text { color: #111 !important; font-size: 15px !important; line-height: 1.5 !important; }
 /* Never show raw LaTeX as red error-ish text */
 .qzrr-q-area .qx-content,
 .qzrr-opts .mtk-opt-text,
@@ -921,17 +928,15 @@ body.ts-standalone-body {
 .qzrr-q-area .katex * {
   color: inherit !important;
 }
-.qzrr-opts .mtk-opt-letter { display: none !important; }
-.qzrr-opts .mtk-opt-radio {
-  display: inline-block !important;
-  width: 16px !important; height: 16px !important; min-width: 16px !important;
-  border: 2px solid #555 !important; border-radius: 50% !important;
-  background: #fff !important; margin-top: 2px !important; box-shadow: none !important;
-  flex-shrink: 0 !important;
+.qzrr-opts .mtk-opt {
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 10px !important;
+  padding: 10px 12px !important;
+  margin-bottom: 8px !important;
 }
-.qzrr-opts .mtk-opt.selected .mtk-opt-radio {
-  border-color: #1a73e8 !important;
-  background: radial-gradient(circle, #1a73e8 0 42%, #fff 46%) !important;
+.qzrr-opts .mtk-opt.selected {
+  background: #eef5ff !important;
+  border-color: #1565C0 !important;
 }
 .qzrr-footer-actions {
   display: flex; justify-content: space-between; align-items: center; gap: 12px;

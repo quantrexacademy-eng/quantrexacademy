@@ -93,57 +93,73 @@ html[data-qx-shell="web"] .qzrr-cbt .qzrr-opts .mtk-opt {
   display: flex !important;
 }
 
-/* Logged-in Quizrr NTA: radio options, no A/B/C/D chips */
+/* Single Correct: A/B/C/D letter chips. Radio hidden. */
+html[data-qx-shell="web"] .qzrr-cbt .qzrr-opts .mtk-opt-radio {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  overflow: hidden !important;
+}
 html[data-qx-shell="web"] .qzrr-cbt .qzrr-opts .mtk-opt-letter,
 html[data-qx-shell="web"] .qzrr-cbt .qzrr-opts .qx-opt-circle {
-  display: none !important;
-}
-html[data-qx-shell="web"] .qzrr-cbt .qzrr-opts .mtk-opt-radio {
-  display: inline-block !important;
-  width: 16px !important;
-  height: 16px !important;
-  min-width: 16px !important;
-  min-height: 16px !important;
-  border: 2px solid #555 !important;
-  border-radius: 50% !important;
-  background: #fff !important;
-  margin-top: 3px !important;
-  flex-shrink: 0 !important;
-  box-shadow: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
   visibility: visible !important;
   opacity: 1 !important;
+  width: 32px !important;
+  height: 32px !important;
+  min-width: 32px !important;
+  min-height: 32px !important;
+  flex: 0 0 32px !important;
+  border-radius: 50% !important;
+  background: #1565C0 !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  line-height: 1 !important;
+  font-family: Inter, Segoe UI, Arial, sans-serif !important;
+  box-shadow: 0 2px 8px rgba(21, 101, 192, 0.28) !important;
 }
-html[data-qx-shell="web"] .qzrr-cbt .qzrr-opts .mtk-opt.selected .mtk-opt-radio {
-  border-color: #1a73e8 !important;
-  background: radial-gradient(circle, #1a73e8 0 42%, #fff 46%) !important;
+html[data-qx-shell="web"] .qzrr-cbt .qzrr-opts .mtk-opt.selected .mtk-opt-letter,
+html[data-qx-shell="web"] .qzrr-cbt .qzrr-opts .mtk-opt.selected .qx-opt-circle {
+  background: #0d47a1 !important;
+  box-shadow: 0 0 0 3px rgba(21, 101, 192, 0.32) !important;
 }
 html[data-qx-shell="web"] .qzrr-cbt .qzrr-opts .mtk-opt {
   display: flex !important;
   align-items: flex-start !important;
-  gap: 10px !important;
+  gap: 12px !important;
   width: 100% !important;
-  margin: 0 !important;
-  padding: 8px 6px !important;
-  border: none !important;
-  border-radius: 2px !important;
-  background: transparent !important;
+  margin: 0 0 8px !important;
+  padding: 10px 12px !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 10px !important;
+  background: #fff !important;
   box-shadow: none !important;
   text-align: left !important;
   cursor: pointer !important;
 }
 html[data-qx-shell="web"] .qzrr-cbt .qzrr-opts .mtk-opt:hover {
-  background: #f5f9fc !important;
+  background: #f8fbff !important;
+  border-color: #c5d0db !important;
 }
 html[data-qx-shell="web"] .qzrr-cbt .qzrr-opts .mtk-opt.selected {
-  background: #e8f2fc !important;
+  background: #eef5ff !important;
+  border-color: #1565C0 !important;
 }
 html[data-qx-shell="web"] .qzrr-cbt .qzrr-opts .mtk-opt-text {
   flex: 1 1 auto !important;
   min-width: 0 !important;
-  padding-top: 0 !important;
+  padding-top: 5px !important;
   color: #111 !important;
-  font-size: 14px !important;
-  line-height: 1.45 !important;
+  font-size: 15px !important;
+  line-height: 1.5 !important;
 }
 
 html[data-qx-shell="web"] .qzrr-cbt .qzrr-footer-actions {
@@ -188,13 +204,29 @@ html[data-qx-shell="web"] .qzrr-cbt #qxSaveBtn {
 html[data-qx-shell="web"] .qzrr-cbt #qxSubmitBtn {
   display: flex !important;
   width: 100% !important;
-  min-height: 40px !important;
+  min-height: 44px !important;
   align-items: center !important;
   justify-content: center !important;
   background: #1a73e8 !important;
   color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
   visibility: visible !important;
+  opacity: 1 !important;
   pointer-events: auto !important;
+  position: relative !important;
+  z-index: 20200 !important;
+  cursor: pointer !important;
+}
+html[data-qx-shell="web"] #mtkSubmitModal,
+html[data-qx-shell="web"] .marks-modal-overlay#mtkSubmitModal {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 2147483646 !important;
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  background: rgba(0, 0, 0, 0.65) !important;
 }
 
 /* Screen Magnifier — hover lens. Paper font-size does not change. */

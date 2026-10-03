@@ -1,10 +1,10 @@
 {
-  "cache": "qx-pwa-qxmd298",
-  "ts": 1791100000298,
-  "title": "qxmd298: Website Quizrr hover magnifier + AI Proctor + Submit/Exit",
+  "cache": "qx-pwa-qxmd299",
+  "ts": 1791100000299,
+  "title": "qxmd299: Single Correct A-D letters + Submit fix",
   "site": "https://www.quantrexacademy.com",
-  "build": "qxmd298",
-  "body": "Website NTA (Quizrr after login): Screen Magnifier is a hover lens so paper text size does not change. AI Proctor stays on the black bar. Radio options, palette Submit and Exit. App MARKS player is unchanged.",
+  "build": "qxmd299",
+  "body": "Single Correct options show A B C D letter chips. Submit opens the confirm modal (stale overlay and leftover modal no longer swallow the click).",
   "package": "com.quantrexacademy.app",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }

@@ -2005,18 +2005,28 @@ const QuantrexTestEngine = (() => {
       if (e) { e.preventDefault(); e.stopPropagation(); }
       markReviewAndNext();
     };
+    const fireSubmit = (e) => {
+      if (e) { try { e.preventDefault(); e.stopPropagation(); } catch (_) {} }
+      try {
+        if (typeof window.qxSubmitTest === "function") window.qxSubmitTest();
+        else confirmSubmit();
+      } catch (err) {
+        console.error("submit click", err);
+        try { confirmSubmit(); } catch (_) { /* */ }
+      }
+    };
     const wireSubmit = (el) => {
       if (!el) return;
-      el.onclick = (e) => {
-        if (e) { e.preventDefault(); e.stopPropagation(); }
-        try {
-          if (typeof window.qxSubmitTest === "function") window.qxSubmitTest();
-          else confirmSubmit();
-        } catch (err) {
-          console.error("submit click", err);
-          try { confirmSubmit(); } catch (_) { /* */ }
-        }
+      el.onclick = fireSubmit;
+      el.onpointerup = function (e) {
+        if (!e || (e.button != null && e.button !== 0)) return;
+        fireSubmit(e);
       };
+      try {
+        el.style.setProperty("pointer-events", "auto", "important");
+        el.style.setProperty("z-index", "20200", "important");
+        el.removeAttribute("disabled");
+      } catch (_) { /* */ }
     };
     wireSubmit(root.querySelector("#qxSubmitBtn"));
     wireSubmit(root.querySelector("#qxSubmitTop"));
@@ -4933,6 +4943,7 @@ const QuantrexTestEngine = (() => {
     set onTick(fn) { onTick = fn; }
   };
 })();
+try { window.QuantrexTestEngine = QuantrexTestEngine; } catch (_) { /* */ }
 
 /**
  * Marks JEE Main numerical — same rules as QuantrexQFormat.getType.
@@ -6881,32 +6892,50 @@ window.qxExitTest = function qxExitTest(force) {
 /** Global Submit — footer + inline onclick (always works even if re-bind missed) */
 window.qxSubmitTest = function qxSubmitTest() {
   try {
+    try {
+      if (!window._qxProctorGating) {
+        document.querySelectorAll(".qx-pr-root").forEach(function (n) { n.remove(); });
+      }
+      document.querySelectorAll("#qzrrA11yBackdrop").forEach(function (n) { n.remove(); });
+    } catch (_) { /* */ }
     const existing = document.getElementById("mtkSubmitModal");
     if (existing) {
-      const vis = window.getComputedStyle(existing).display !== "none" && existing.offsetParent !== null;
-      if (vis || existing.classList.contains("open") || existing.style.display === "flex") return;
+      let vis = false;
+      try {
+        const cs = window.getComputedStyle(existing);
+        vis = cs.display !== "none" && cs.visibility !== "hidden" && Number(cs.opacity || 1) > 0.05;
+      } catch (_) { vis = !!(existing.offsetParent || existing.getClientRects().length); }
+      if (vis) {
+        existing.style.setProperty("z-index", "2147483646", "important");
+        existing.style.setProperty("position", "fixed", "important");
+        existing.style.setProperty("inset", "0", "important");
+        existing.style.setProperty("display", "flex", "important");
+        existing.style.setProperty("visibility", "visible", "important");
+        existing.style.setProperty("opacity", "1", "important");
+        existing.style.setProperty("pointer-events", "auto", "important");
+        return;
+      }
       try { existing.remove(); } catch (_) { /* */ }
     }
-    const eng = typeof QuantrexTestEngine !== "undefined" ? QuantrexTestEngine : null;
+    const eng = (typeof window !== "undefined" && window.QuantrexTestEngine)
+      || (typeof QuantrexTestEngine !== "undefined" ? QuantrexTestEngine : null);
     if (!eng || !eng.getSession || !eng.getSession()) {
       if (typeof showToast === "function") showToast("⚠️ No active test to submit");
       return;
     }
     try {
-      if (typeof mtkShowSubmitModal === "function") {
-        mtkShowSubmitModal();
-        const ov = document.getElementById("mtkSubmitModal");
-        if (ov) {
-          window._qxSubmitOpenLock = Date.now();
-          ov.style.setProperty("z-index", "2147483646", "important");
-          ov.style.setProperty("position", "fixed", "important");
-          ov.style.setProperty("inset", "0", "important");
-          ov.style.setProperty("pointer-events", "auto", "important");
-          ov.style.setProperty("display", "flex", "important");
-          ov.style.setProperty("visibility", "visible", "important");
-          ov.style.setProperty("opacity", "1", "important");
-          return;
-        }
+      if (typeof window.mtkShowSubmitModal === "function") window.mtkShowSubmitModal();
+      else if (typeof mtkShowSubmitModal === "function") mtkShowSubmitModal();
+      const ov = document.getElementById("mtkSubmitModal");
+      if (ov) {
+        ov.style.setProperty("z-index", "2147483646", "important");
+        ov.style.setProperty("position", "fixed", "important");
+        ov.style.setProperty("inset", "0", "important");
+        ov.style.setProperty("pointer-events", "auto", "important");
+        ov.style.setProperty("display", "flex", "important");
+        ov.style.setProperty("visibility", "visible", "important");
+        ov.style.setProperty("opacity", "1", "important");
+        return;
       }
     } catch (err) {
       console.warn("submit modal failed", err);
@@ -6917,9 +6946,8 @@ window.qxSubmitTest = function qxSubmitTest() {
   } catch (e) {
     console.error("qxSubmitTest", e);
     try {
-      if (typeof QuantrexTestEngine !== "undefined" && QuantrexTestEngine.submit) {
-        if (window.confirm("Submit test now?")) QuantrexTestEngine.submit(false);
-      }
+      const eng2 = window.QuantrexTestEngine || (typeof QuantrexTestEngine !== "undefined" ? QuantrexTestEngine : null);
+      if (eng2 && eng2.submit && window.confirm("Submit test now?")) eng2.submit(false);
     } catch (_) { /* */ }
   }
 };
@@ -6948,9 +6976,13 @@ function mtkSubmitModalHtml() {
   const s = (() => {
     let answered = 0, skipped = 0, unvisited = 0, review = 0;
     sess.ids.forEach((_, i) => {
-      const chosen = sess.answers[i];
-      const visited = sess.visited.has(i);
-      const rev = sess.review.has(i);
+      const chosen = sess.answers && sess.answers[i];
+      const visSet = sess.visited;
+      const revSet = sess.review;
+      const visited = visSet && typeof visSet.has === "function" ? visSet.has(i)
+        : (Array.isArray(visSet) && visSet.indexOf(i) >= 0);
+      const rev = revSet && typeof revSet.has === "function" ? revSet.has(i)
+        : (Array.isArray(revSet) && revSet.indexOf(i) >= 0);
       if (!visited) { unvisited++; return; }
       if (chosen === undefined) { skipped++; if (rev) review++; return; }
       answered++;
@@ -7082,8 +7114,7 @@ document.addEventListener("click", function qxSubmitBtnDelegate(ev) {
     const btn = ev.target && ev.target.closest && ev.target.closest("#qxSubmitBtn, #qxSubmitTop, #qxSubmitHdr, #egSubmit, #egMarksOvSubmit, [data-eg-submit], [data-qx-submit='1']");
     if (!btn) return;
     if (btn.disabled) return;
-    if (document.getElementById("mtkSubmitModal")) return;
-    try { ev.preventDefault(); ev.stopPropagation(); } catch (_) { /* */ }
+    try { ev.preventDefault(); } catch (_) { /* */ }
     if (typeof window.qxSubmitTest === "function") window.qxSubmitTest();
   } catch (_) { /* */ }
 }, true);

@@ -551,8 +551,7 @@
         }
         if (id === "qxSubmitBtn" || id === "qxSubmitTop" || t.getAttribute("data-qx-submit") === "1" || t.getAttribute("data-eg-submit") === "1") {
           if (typeof window.qxSubmitTest === "function") {
-            e.preventDefault();
-            e.stopPropagation();
+            try { e.preventDefault(); } catch (_) {}
             window.qxSubmitTest();
           }
           return;
@@ -631,8 +630,7 @@
         return;
       }
       if ((id === "qxSubmitBtn" || id === "qxSubmitTop" || id === "qxSubmitHdr" || id === "egMarksOvSubmit" || t.getAttribute("data-qx-submit") === "1" || t.getAttribute("data-eg-submit") === "1") && typeof window.qxSubmitTest === "function") {
-        if (!ev.defaultPrevented) { ev.preventDefault(); }
-        try { ev.stopPropagation(); } catch (_) {}
+        try { ev.preventDefault(); } catch (_) {}
         window.qxSubmitTest();
         return;
       }
