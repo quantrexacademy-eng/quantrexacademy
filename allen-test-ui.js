@@ -790,7 +790,6 @@ const AllenTestUI = (() => {
               <button type="button" class="eg-vs-tog${qs.showTimer !== false ? " on" : ""}" data-eg-qset="showTimer" aria-pressed="${qs.showTimer !== false ? "true" : "false"}" role="switch"><span class="eg-vs-knob"></span></button></div>
             <div class="eg-vs-row"><div class="eg-vs-lab"><span class="eg-vs-lab-t">Play sounds</span><span class="eg-vs-hint">Sound after you check an answer</span></div>
               <button type="button" class="eg-vs-tog${qs.playSounds !== false ? " on" : ""}" data-eg-qset="playSounds" aria-pressed="${qs.playSounds !== false ? "true" : "false"}" role="switch"><span class="eg-vs-knob"></span></button></div>
-            ${typeof QxPracticeVoice !== "undefined" && QxPracticeVoice.settingsHtml ? QxPracticeVoice.settingsHtml() : ""}
             <div class="eg-vs-row"><div class="eg-vs-lab"><span class="eg-vs-lab-t">Don’t show correct immediately</span><span class="eg-vs-hint">Grade first; mark options only when Show Answer is on</span></div>
               <button type="button" class="eg-vs-tog${qs.dontShowCorrectAnswerImmediately ? " on" : ""}" data-eg-qset="dontShowCorrectAnswerImmediately" aria-pressed="${qs.dontShowCorrectAnswerImmediately ? "true" : "false"}" role="switch"><span class="eg-vs-knob"></span></button></div>
             <div class="eg-vs-row eg-vs-sizes"><div class="eg-vs-lab"><span class="eg-vs-lab-t">Text Size</span><span class="eg-vs-hint">Question &amp; solution font</span></div>
@@ -800,6 +799,12 @@ const AllenTestUI = (() => {
                 <button type="button" class="qx-prac-size-btn${sizeOn("large")}" data-scale="large">L</button>
                 <button type="button" class="qx-prac-size-btn${sizeOn("xlarge")}" data-scale="xlarge">XL</button>
               </div></div>
+          </section>
+          ${typeof QxPracticeVoice !== "undefined" && QxPracticeVoice.settingsHtml ? QxPracticeVoice.settingsHtml() : `<section class="eg-vs-sec qx-voice-sec" id="qxVoiceSec"><h5 class="eg-vs-h">Practice Voice</h5><div class="eg-vs-row"><div class="eg-vs-lab"><span class="eg-vs-lab-t">Voice after Check Answer</span><span class="eg-vs-hint">God, Hero, Demon, Villain, Mirzapur — off until you turn it on.</span></div><button type="button" class="eg-vs-tog" data-eg-pref="qx_pref_practice_voice" aria-pressed="false" role="switch"><span class="eg-vs-knob"></span></button></div></section>`}
+          <section class="eg-vs-sec" id="qxSimilarSec"><h5 class="eg-vs-h">Similar practice</h5>
+            <div class="eg-vs-row"><div class="eg-vs-lab"><span class="eg-vs-lab-t">Mistake Booster AI</span><span class="eg-vs-hint">Show similar / trickier generator after Check Answer</span></div>
+              <button type="button" class="eg-vs-tog${(function(){try{return localStorage.getItem("qx_pref_similar_booster")==="1";}catch(e){return false;}})() ? " on" : ""}" data-eg-pref="qx_pref_similar_booster" aria-pressed="false" role="switch"><span class="eg-vs-knob"></span></button></div>
+            ${typeof QxSimilarPractice !== "undefined" && QxSimilarPractice.settingsHtml ? QxSimilarPractice.settingsHtml() : ""}
           </section>
           <section class="eg-vs-sec"><h5 class="eg-vs-h">Tools</h5>
             <div class="eg-fmt-row eg-vs-tools" role="group" aria-label="Question tools">
@@ -1033,11 +1038,20 @@ const AllenTestUI = (() => {
         try { localStorage.setItem(key, next ? "1" : "0"); } catch (_) { /* */ }
         btn.classList.toggle("on", next);
         btn.setAttribute("aria-pressed", next ? "true" : "false");
+        if (key === "qx_pref_similar_booster") {
+          var box = document.getElementById("qxBoostSettingsBox");
+          if (box) box.hidden = !next;
+        }
       });
     });
     try {
       if (typeof QxPracticeVoice !== "undefined" && QxPracticeVoice.bindSettings) {
         QxPracticeVoice.bindSettings(document.getElementById("pracViewPanel") || root);
+      }
+    } catch (_) { /* */ }
+    try {
+      if (typeof QxSimilarPractice !== "undefined" && QxSimilarPractice.bindSettings) {
+        QxSimilarPractice.bindSettings(document.getElementById("pracViewPanel") || root);
       }
     } catch (_) { /* */ }
     root.querySelectorAll("[data-prac-fmt-act]").forEach((btn) => {

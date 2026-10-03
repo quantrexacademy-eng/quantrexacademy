@@ -383,7 +383,12 @@
       row("qxSetShowTimer", "showTimer", "Show timer", "Timer on every practice question") +
       row("qxSetPlaySounds", "playSounds", "Play sounds", "Sound after you check an answer") +
       "</div>" +
-      (typeof QxPracticeVoice !== "undefined" && QxPracticeVoice.settingsHtml ? QxPracticeVoice.settingsHtml() : "") +
+      (function () {
+        try {
+          if (typeof QxPracticeVoice !== "undefined" && QxPracticeVoice.settingsHtml) return QxPracticeVoice.settingsHtml();
+        } catch (_) { /* */ }
+        return "";
+      })() +
       '<div class="qx-set-list">' +
       row("qxSetShowHint", "showHint", "Show hint", "Hint button when the question has a hint") +
       row("qxSetHintPopup", "showHintFeedbackPopup", "Hint feedback popup", "Open hint in a popup") +

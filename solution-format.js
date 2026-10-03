@@ -417,7 +417,7 @@ const QuantrexSolution = (() => {
       .replace(/<br\s*\/?>/gi, "\n")
       .replace(/<\/p>|<\/div>|<\/li>|<\/tr>/gi, "\n")
       .replace(/<[^>]+>/g, " ")
-      .replace(/&nbsp;/gi, " ")
+      .replace(/&nbsp;|&#160;|&#x0*A0;/gi, " ")
       .replace(/\s+\n/g, "\n")
       .replace(/\n{2,}/g, "\n")
       .trim();
@@ -871,7 +871,7 @@ const QuantrexSolution = (() => {
       .replace(/<br\s*\/?>/gi, " ")
       .replace(/<\/(?:p|div|li|tr|h[1-6])>/gi, " ")
       .replace(/<[^>]+>/g, " ")
-      .replace(/&nbsp;/gi, " ")
+      .replace(/&nbsp;|&#160;|&#x0*A0;/gi, " ")
       .replace(/&#(\d+);/g, (_, n) => {
         try { return String.fromCharCode(+n); } catch (e) { return " "; }
       })

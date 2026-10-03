@@ -61,6 +61,14 @@
     t = t.replace(/&#x([0-9a-f]+);/gi, (_, h) => {
       try { return String.fromCharCode(parseInt(h, 16)); } catch (e) { return ""; }
     });
+    if (/&(?:amp;|#\d+|#x[0-9a-f]+|nbsp|minus);/i.test(t)) {
+      t = t.replace(/&amp;(#(?:x?[0-9a-fA-F]+|[a-zA-Z]+);)/gi, "&$1");
+      t = t.replace(/&nbsp;|&#160;|&#x0*A0;/gi, " ");
+      t = t.replace(/&minus;|&#8722;/gi, "−");
+      t = t.replace(/&#(\d+);/g, (_, n) => {
+        try { return String.fromCharCode(+n); } catch (e) { return ""; }
+      });
+    }
     return t;
   }
 

@@ -1,6 +1,7 @@
 /**
  * Practice similar-type generator (Mistake Booster AI).
- * Database-first unused same-chapter PYQs, then Jovi-generated items with options + solutions.
+ * Off until Question View Settings. After Check Answer only.
+ * Database-first unused same-chapter PYQs, then Jovi-generated items.
  */
 (function (global) {
   "use strict";
@@ -11,7 +12,8 @@
   var PREF_NOREP = "qx_pref_similar_norepeat";
   var DEFAULT_COUNT = 3;
   var MAX_COUNT = 10;
-  var CHIPS = [1, 2, 3, 5];
+  var CHIPS = [3, 5, 10];
+  var JOVI_URLS = ["/api/jovi", "https://jovi-rhun66xupa-uc.a.run.app"];
 
   function lsGet(k, fallback) {
     try {
@@ -24,8 +26,7 @@
     try { localStorage.setItem(k, v); } catch (_) { /* */ }
   }
   function showOn() {
-    var v = lsGet(PREF_SHOW, "1");
-    return v !== "0";
+    return lsGet(PREF_SHOW, "0") === "1";
   }
   function trickDefault() {
     return lsGet(PREF_TRICK, "0") === "1";
@@ -37,6 +38,17 @@
     var n = parseInt(lsGet(PREF_COUNT, String(DEFAULT_COUNT)), 10);
     if (!Number.isFinite(n)) n = DEFAULT_COUNT;
     return Math.max(1, Math.min(MAX_COUNT, n));
+  }
+  function isChecked(session) {
+    if (!session) return false;
+    var i = session.idx;
+    if (session._egChecked && (session._egChecked[i] || session._egChecked[String(i)])) return true;
+    try {
+      if (typeof ExamgoalTestUI !== "undefined" && ExamgoalTestUI.egCheckedAt) {
+        return !!ExamgoalTestUI.egCheckedAt(session, i);
+      }
+    } catch (_) { /* */ }
+    return false;
   }
 
   function strip(s) {
@@ -126,6 +138,7 @@
     var bank = src._bank || "";
     var stem = src.q || src.question || src.text || "";
     var scored = [];
+    var sameCh = [];
     for (var i = 0; i < qs.length; i++) {
       var q = qs[i];
       if (!q || q.id == null) continue;
@@ -139,6 +152,7 @@
       if (noRepeat && fps[f]) continue;
       var ov = overlap(stem, st);
       if (ov >= 0.92) continue;
+      sameCh.push(q);
       if (ov < 0.12 && tokens(st).length > 6) continue;
       scored.push({ q: q, ov: ov });
     }
@@ -147,6 +161,13 @@
       if (out.length >= want) return;
       out.push(x.q);
     });
+    if (out.length < want) {
+      sameCh.forEach(function (q) {
+        if (out.length >= want) return;
+        if (out.some(function (x) { return String(x.id) === String(q.id); })) return;
+        out.push(q);
+      });
+    }
     return out;
   }
 
@@ -200,16 +221,25 @@
       },
       messages: [{ role: "user", content: "Generate " + count + " similar practice questions with options and full solutions." }]
     };
-    var res = await fetch("/api/jovi", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body)
-    });
-    var data = await res.json().catch(function () { return {}; });
-    if (!res.ok) {
-      throw new Error((data && (data.message || data.error)) || ("HTTP " + res.status));
+    var lastErr = null;
+    for (var u = 0; u < JOVI_URLS.length; u++) {
+      try {
+        var res = await fetch(JOVI_URLS[u], {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body)
+        });
+        var data = await res.json().catch(function () { return {}; });
+        if (!res.ok) {
+          lastErr = new Error((data && (data.message || data.error)) || ("HTTP " + res.status));
+          continue;
+        }
+        return (data && data.questions) || [];
+      } catch (e) {
+        lastErr = e;
+      }
     }
-    return (data && data.questions) || [];
+    throw lastErr || new Error("Jovi unavailable");
   }
 
   function indexQ(q) {
@@ -250,16 +280,16 @@
   }
 
   function setBusy(root, on, msg) {
-    var go = root && root.querySelector && root.querySelector("#qxBoostGo");
-    if (go) {
+    var gos = document.querySelectorAll(".qx-boost-go");
+    gos.forEach(function (go) {
       go.disabled = !!on;
-      go.textContent = on ? "Generating…" : "Generate Practice";
-    }
-    var m = root && root.querySelector && root.querySelector("#qxBoostMsg");
-    if (m) {
+      go.textContent = on ? "Generating\u2026" : "Generate Practice";
+    });
+    var msgs = document.querySelectorAll(".qx-boost-msg");
+    msgs.forEach(function (m) {
       m.className = "qx-boost-msg";
       m.textContent = msg || "";
-    }
+    });
     var bar = document.getElementById("egSimilarBtn");
     if (bar) bar.classList.toggle("on", !!on);
   }
@@ -283,7 +313,7 @@
     if (opts.trickier != null) lsSet(PREF_TRICK, trickier ? "1" : "0");
 
     var host = opts.host || document.querySelector(".eg-test-root") || document;
-    setBusy(host, true, trickier ? "Building trickier variations…" : "Finding similar questions…");
+    setBusy(host, true, trickier ? "Building trickier variations\u2026" : "Finding similar questions\u2026");
 
     var collected = [];
     try {
@@ -292,10 +322,11 @@
 
       var need = count - collected.length;
       if (need > 0) {
-        setBusy(host, true, "Jovi is writing " + need + " new question" + (need > 1 ? "s" : "") + "…");
+        setBusy(host, true, "Jovi is writing " + need + " new question" + (need > 1 ? "s" : "") + "\u2026");
         var gen = await callJovi(src, session, need, trickier, noRepeat);
         gen.forEach(function (item, i) {
           var built = buildJoviQ(item, src, i);
+          if (!built.q || built.q.length < 8) return;
           if (noRepeat && fp(built.q) === fp(src.q || src.question || "")) return;
           if (overlap(src.q || src.question || "", built.q) >= 0.92) return;
           indexQ(built);
@@ -305,13 +336,13 @@
       }
     } catch (e) {
       setBusy(host, false, "");
-      var m = host.querySelector && host.querySelector("#qxBoostMsg");
-      if (m) {
+      var errText = collected.length
+        ? "AI fill failed \u2014 using bank similar questions."
+        : ("Could not generate: " + String(e.message || e));
+      document.querySelectorAll(".qx-boost-msg").forEach(function (m) {
         m.className = "qx-boost-msg err";
-        m.textContent = collected.length
-          ? "AI fill failed — using bank similar questions."
-          : ("Could not generate: " + String(e.message || e));
-      }
+        m.textContent = errText;
+      });
       if (!collected.length) {
         toast("Could not generate similar questions");
         return { ok: false, error: e };
@@ -321,7 +352,11 @@
     collected = collected.slice(0, count);
     if (!collected.length) {
       setBusy(host, false, "");
-      toast("No unused similar questions yet — try again");
+      document.querySelectorAll(".qx-boost-msg").forEach(function (m) {
+        m.className = "qx-boost-msg err";
+        m.textContent = "No unused similar questions yet \u2014 try again or another chapter.";
+      });
+      toast("No unused similar questions yet \u2014 try again");
       return { ok: false };
     }
     collected.forEach(function (x) { rememberFp(session, x.q.q || x.q.question || ""); });
@@ -336,31 +371,51 @@
     return { ok: ok, ids: ids, count: ids.length };
   }
 
-  function cardHtml(count, trickier) {
+  function chipsHtml(count) {
     count = Math.max(1, Math.min(MAX_COUNT, Number(count) || DEFAULT_COUNT));
-    var chips = CHIPS.map(function (n) {
+    return CHIPS.map(function (n) {
       return '<button type="button" class="qx-boost-chip' + (n === count ? " on" : "") + '" data-qx-boost-n="' + n + '" aria-label="' + n + ' questions">' + n + "</button>";
     }).join("");
+  }
+
+  function controlsHtml(count, trickier, compact) {
+    count = Math.max(1, Math.min(MAX_COUNT, Number(count) || DEFAULT_COUNT));
+    return (
+      '<div class="qx-boost-box">' +
+        '<span class="qx-boost-lab"># Questions to generate:</span>' +
+        '<div class="qx-boost-chips">' +
+          '<button type="button" class="qx-boost-pm" data-qx-boost-pm="-1" aria-label="Fewer">\u2212</button>' +
+          chipsHtml(count) +
+          '<button type="button" class="qx-boost-pm" data-qx-boost-pm="1" aria-label="More">+</button>' +
+          '<span class="qx-boost-n" data-qx-boost-nlab>' + count + "</span>" +
+        "</div>" +
+        '<label class="qx-boost-tog"><input type="checkbox" class="qx-boost-trick"' + (trickier ? " checked" : "") + "> More tricky</label>" +
+        '<label class="qx-boost-tog"><input type="checkbox" class="qx-boost-norep"' + (noRepeatOn() ? " checked" : "") + "> Don\u2019t repeat</label>" +
+        '<button type="button" class="qx-boost-go" data-qx-boost-go>Generate Practice</button>' +
+      "</div>" +
+      '<p class="qx-boost-msg"></p>'
+    );
+  }
+
+  function cardHtml(count, trickier) {
     return (
       '<div class="qx-boost" id="qxBoostCard">' +
         '<div class="qx-boost-head">' +
-          '<span class="qx-boost-spark" aria-hidden="true">✦</span>' +
+          '<span class="qx-boost-spark" aria-hidden="true">\u2726</span>' +
           "<div><h3>Mistake Booster AI</h3>" +
           "<p>Challenge yourself with trickier, realistic variations of this concept.</p></div>" +
         "</div>" +
-        '<div class="qx-boost-box">' +
-          '<span class="qx-boost-lab"># Questions to generate:</span>' +
-          '<div class="qx-boost-chips">' +
-            '<button type="button" class="qx-boost-pm" data-qx-boost-pm="-1" aria-label="Fewer">−</button>' +
-            chips +
-            '<button type="button" class="qx-boost-pm" data-qx-boost-pm="1" aria-label="More">+</button>' +
-            '<span class="qx-boost-n" id="qxBoostN">' + count + "</span>" +
-          "</div>" +
-          '<label class="qx-boost-tog"><input type="checkbox" id="qxBoostTrick"' + (trickier ? " checked" : "") + "> More tricky</label>" +
-          '<label class="qx-boost-tog"><input type="checkbox" id="qxBoostNoRep"' + (noRepeatOn() ? " checked" : "") + "> Don\u2019t repeat</label>" +
-          '<button type="button" class="qx-boost-go" id="qxBoostGo">Generate Practice</button>' +
-        "</div>" +
-        '<p class="qx-boost-msg" id="qxBoostMsg"></p>' +
+        controlsHtml(count, trickier, false) +
+      "</div>"
+    );
+  }
+
+  function settingsHtml() {
+    ensureCss();
+    var on = showOn();
+    return (
+      '<div id="qxBoostSettingsBox" class="qx-boost qx-boost-settings"' + (on ? "" : " hidden") + ">" +
+        controlsHtml(savedCount(), trickDefault(), true) +
       "</div>"
     );
   }
@@ -369,15 +424,19 @@
     if (!card) return;
     n = Math.max(1, Math.min(MAX_COUNT, n));
     lsSet(PREF_COUNT, String(n));
-    var lab = card.querySelector("#qxBoostN");
-    if (lab) lab.textContent = String(n);
-    card.querySelectorAll("[data-qx-boost-n]").forEach(function (b) {
+    card.querySelectorAll("[data-qx-boost-nlab], #qxBoostN").forEach(function (lab) {
+      lab.textContent = String(n);
+    });
+    document.querySelectorAll(".qx-boost [data-qx-boost-nlab], .qx-boost #qxBoostN").forEach(function (lab) {
+      lab.textContent = String(n);
+    });
+    document.querySelectorAll(".qx-boost [data-qx-boost-n]").forEach(function (b) {
       b.classList.toggle("on", parseInt(b.getAttribute("data-qx-boost-n"), 10) === n);
     });
   }
 
   function readCount(card) {
-    var lab = card && card.querySelector("#qxBoostN");
+    var lab = card && card.querySelector("[data-qx-boost-nlab], #qxBoostN");
     var n = parseInt(lab && lab.textContent, 10);
     return Number.isFinite(n) ? Math.max(1, Math.min(MAX_COUNT, n)) : savedCount();
   }
@@ -387,58 +446,83 @@
     var l = document.createElement("link");
     l.id = "qxSimilarCss";
     l.rel = "stylesheet";
-    l.href = "assets/qx-similar-practice.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd286");
+    l.href = "assets/qx-similar-practice.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd288");
     document.head.appendChild(l);
   }
 
-  function wireCard(card, session) {
-    if (!card || card._qxBoostWired) return;
-    card._qxBoostWired = true;
-    card.querySelectorAll("[data-qx-boost-n]").forEach(function (b) {
-      b.onclick = function (e) {
-        if (e) { e.preventDefault(); e.stopPropagation(); }
-        syncChips(card, parseInt(b.getAttribute("data-qx-boost-n"), 10));
-      };
-    });
-    card.querySelectorAll("[data-qx-boost-pm]").forEach(function (b) {
-      b.onclick = function (e) {
-        if (e) { e.preventDefault(); e.stopPropagation(); }
-        var d = parseInt(b.getAttribute("data-qx-boost-pm"), 10) || 0;
-        syncChips(card, readCount(card) + d);
-      };
-    });
-    var trick = card.querySelector("#qxBoostTrick");
-    if (trick) trick.onchange = function () { lsSet(PREF_TRICK, trick.checked ? "1" : "0"); };
-    var nr = card.querySelector("#qxBoostNoRep");
-    if (nr) nr.onchange = function () { lsSet(PREF_NOREP, nr.checked ? "1" : "0"); };
-    var go = card.querySelector("#qxBoostGo");
-    if (go) {
-      go.onclick = function (e) {
-        if (e) { e.preventDefault(); e.stopPropagation(); }
-        generate({
-          session: session || currentSession(),
-          host: card,
-          count: readCount(card),
-          trickier: !!(trick && trick.checked),
-          noRepeat: !(nr) || nr.checked
-        });
-      };
+  function hostFromEvent(t) {
+    return (t && t.closest && t.closest(".qx-boost")) || document.getElementById("qxBoostCard") || document;
+  }
+
+  function handleBoostEvent(e) {
+    var t = e && e.target;
+    if (!t || !t.closest) return;
+    if (t.closest && t.closest("input.qx-boost-trick, input.qx-boost-norep, label.qx-boost-tog, .qx-boost-tog")) {
+      return;
     }
+    var chip = t.closest("[data-qx-boost-n]");
+    var pm = t.closest("[data-qx-boost-pm]");
+    var go = t.closest("[data-qx-boost-go], .qx-boost-go");
+    if (!chip && !pm && !go) return;
+    if (e && e.preventDefault) e.preventDefault();
+    if (e && e.stopPropagation) e.stopPropagation();
+    var card = hostFromEvent(t);
+    if (chip) {
+      syncChips(card, parseInt(chip.getAttribute("data-qx-boost-n"), 10));
+      return;
+    }
+    if (pm) {
+      var d = parseInt(pm.getAttribute("data-qx-boost-pm"), 10) || 0;
+      syncChips(card, readCount(card) + d);
+      return;
+    }
+    if (go) {
+      if (go.disabled) return;
+      var trickEl = card.querySelector(".qx-boost-trick");
+      var nrEl = card.querySelector(".qx-boost-norep");
+      generate({
+        session: currentSession(),
+        host: card,
+        count: readCount(card),
+        trickier: !!(trickEl && trickEl.checked),
+        noRepeat: !(nrEl) || nrEl.checked
+      });
+    }
+  }
+
+  function wireCard(card) {
+    if (!card) return;
+    card.querySelectorAll(".qx-boost-trick").forEach(function (el) {
+      el.onchange = function () { lsSet(PREF_TRICK, el.checked ? "1" : "0"); };
+    });
+    card.querySelectorAll(".qx-boost-norep").forEach(function (el) {
+      el.onchange = function () { lsSet(PREF_NOREP, el.checked ? "1" : "0"); };
+    });
+  }
+
+  function removeCard(root) {
+    try {
+      var old = (root && root.querySelector && root.querySelector("#qxBoostCard")) || document.getElementById("qxBoostCard");
+      if (old) old.remove();
+    } catch (_) { /* */ }
   }
 
   function attach(root, session) {
     ensureCss();
     session = session || currentSession();
-    if (!session || !session.practiceMode) return;
-    if (!showOn()) {
-      var old = root && root.querySelector && root.querySelector("#qxBoostCard");
-      if (old) old.remove();
+    if (!session || !session.practiceMode) {
+      removeCard(root);
+      return;
+    }
+    if (!showOn() || !isChecked(session)) {
+      removeCard(root);
       return;
     }
     root = root || document.querySelector(".eg-test-root");
     if (!root || !root.querySelector) return;
-    if (root.querySelector("#qxBoostCard")) {
-      wireCard(root.querySelector("#qxBoostCard"), session);
+    var existing = root.querySelector("#qxBoostCard");
+    if (existing) {
+      wireCard(existing);
       return;
     }
     var html = cardHtml(savedCount(), trickDefault());
@@ -449,11 +533,28 @@
     } else if (sol && sol.parentNode) {
       sol.insertAdjacentHTML("afterend", html);
     } else {
-      var card = root.querySelector(".eg-q-card");
-      if (card) card.insertAdjacentHTML("beforeend", html);
+      var qcard = root.querySelector(".eg-q-card");
+      if (qcard) qcard.insertAdjacentHTML("beforeend", html);
       else return;
     }
-    wireCard(root.querySelector("#qxBoostCard"), session);
+    var card = root.querySelector("#qxBoostCard");
+    wireCard(card);
+    try {
+      if (card) {
+        card.style.scrollMarginBottom = "120px";
+        requestAnimationFrame(function () {
+          try { card.scrollIntoView({ behavior: "smooth", block: "nearest" }); } catch (_) { /* */ }
+        });
+      }
+    } catch (_) { /* */ }
+  }
+
+  function bindSettings(root) {
+    if (!root) return;
+    ensureCss();
+    var box = root.querySelector("#qxBoostSettingsBox");
+    if (box) box.hidden = !showOn();
+    wireCard(root.querySelector(".qx-boost-settings") || box || root);
   }
 
   function clickSimilar() {
@@ -462,15 +563,16 @@
       toast("Similar practice is for Practice mode");
       return;
     }
-    var root = document.querySelector(".eg-test-root");
-    if (root && !root.querySelector("#qxBoostCard")) {
-      var sol = root.querySelector("#egSolPanel");
-      if (!sol) {
-        generate({ session: session, count: savedCount(), trickier: trickDefault(), noRepeat: noRepeatOn() });
-        return;
-      }
-      attach(root, session);
+    if (!showOn()) {
+      try { lsSet(PREF_SHOW, "1"); } catch (_) { /* */ }
+      toast("Mistake Booster AI is now on");
     }
+    var root = document.querySelector(".eg-test-root");
+    if (!isChecked(session)) {
+      generate({ session: session, count: savedCount(), trickier: trickDefault(), noRepeat: noRepeatOn() });
+      return;
+    }
+    attach(root, session);
     var card = root && root.querySelector("#qxBoostCard");
     if (card) {
       try { card.scrollIntoView({ behavior: "smooth", block: "nearest" }); } catch (_) { /* */ }
@@ -486,11 +588,31 @@
     }
   }
 
+  try {
+    document.addEventListener("click", handleBoostEvent, true);
+    document.addEventListener("pointerdown", function (e) {
+      var foot = e.target && e.target.closest && e.target.closest("#egFoot, .eg-foot");
+      if (!foot) return;
+      var x = e.clientX, y = e.clientY;
+      var prev = foot.style.pointerEvents;
+      foot.style.pointerEvents = "none";
+      var under = document.elementFromPoint(x, y);
+      foot.style.pointerEvents = prev;
+      var hit = under && under.closest && under.closest("[data-qx-boost-n],[data-qx-boost-pm],[data-qx-boost-go],.qx-boost-go,.qx-boost-chip,.qx-boost-pm");
+      if (!hit) return;
+      e.preventDefault();
+      e.stopPropagation();
+      handleBoostEvent({ target: hit, preventDefault: function () {}, stopPropagation: function () {} });
+    }, true);
+  } catch (_) { /* */ }
+
   global.QxSimilarPractice = {
     generate: generate,
     attach: attach,
     clickSimilar: clickSimilar,
     cardHtml: cardHtml,
+    settingsHtml: settingsHtml,
+    bindSettings: bindSettings,
     showOn: showOn,
     prefShow: PREF_SHOW,
     prefTrick: PREF_TRICK

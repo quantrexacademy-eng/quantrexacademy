@@ -74,9 +74,9 @@
     var s = document.createElement("style");
     s.id = "qxVoiceCss";
     s.textContent = [
-      "#qxVoiceSec{margin:10px 0 6px;padding:10px;border-radius:12px;background:#f8fafc;border:1px solid #e2e8f0}",
+      "#qxVoiceSec,.qx-voice-sec{display:flex!important;flex-direction:column!important;width:100%!important;max-width:100%!important;visibility:visible!important;opacity:1!important;margin:10px 0 6px;padding:10px;border-radius:12px;background:#f8fafc;border:1px solid #e2e8f0}",
       "html[data-theme=dark] #qxVoiceSec,.eg-test-root[data-test-theme=dark] #qxVoiceSec{background:#0b1220;border-color:#1e293b}",
-      "#qxVoiceSec .eg-fmt-row{display:flex;gap:6px;flex-wrap:wrap}",
+      "#qxVoiceSec .eg-fmt-row,#qxVoiceSec .eg-vs-row{display:flex!important;gap:6px;flex-wrap:wrap;width:100%!important}",
       "#qxVoiceSec .eg-fmt-row button{appearance:none;border:1px solid #cbd5e1;background:#f1f5f9;color:#0f172a;border-radius:10px;padding:7px 10px;font-size:12px;font-weight:700;cursor:pointer}",
       "#qxVoiceSec .eg-fmt-row button.on{background:#2563eb;color:#fff;border-color:#2563eb}",
       "html[data-theme=dark] #qxVoiceSec .eg-fmt-row button,.eg-test-root[data-test-theme=dark] #qxVoiceSec .eg-fmt-row button{background:#1e293b;color:#f1f5f9;border-color:#475569}",
@@ -88,7 +88,7 @@
   }
 
   function bust() {
-    return encodeURIComponent((typeof global.QX_BUILD === "string" && global.QX_BUILD) || "qxmd287");
+    return encodeURIComponent((typeof global.QX_BUILD === "string" && global.QX_BUILD) || "qxmd288");
   }
   function load() {
     if (_loaded) return Promise.resolve(_clips);
@@ -233,7 +233,7 @@
   function settingsHtml() {
     injectCss();
     var on = lsGet(KEYS.on, DEF.on) === "1";
-    return '<section class="eg-vs-sec" id="qxVoiceSec"><h5 class="eg-vs-h">Practice Voice</h5>' +
+    return '<section class="eg-vs-sec qx-voice-sec" id="qxVoiceSec"><h5 class="eg-vs-h">Practice Voice</h5>' +
       '<div class="eg-vs-row"><div class="eg-vs-lab"><span class="eg-vs-lab-t">Voice after Check Answer</span>' +
       '<span class="eg-vs-hint">God, Hero, Demon, Villain, Mirzapur — voice only, no text. Off until you turn it on.</span></div>' +
       '<button type="button" class="eg-vs-tog' + (on ? " on" : "") + '" data-eg-pref="' + KEYS.on + '" aria-pressed="' + (on ? "true" : "false") + '" role="switch"><span class="eg-vs-knob"></span></button></div>' +
@@ -294,6 +294,31 @@
 
   try {
     document.addEventListener("pointerdown", unlock, { capture: true, passive: true });
+    document.addEventListener("click", function (e) {
+      var t = e && e.target;
+      if (!t || !t.closest) return;
+      var previewBtn = t.closest("[data-qx-voice-preview]");
+      if (previewBtn) {
+        e.preventDefault();
+        e.stopPropagation();
+        preview();
+        return;
+      }
+      var chip = t.closest("[data-qx-voice-key]");
+      if (!chip) return;
+      e.preventDefault();
+      e.stopPropagation();
+      var key = chip.getAttribute("data-qx-voice-key");
+      var val = chip.getAttribute("data-qx-voice-val");
+      if (!key || !val) return;
+      lsSet(key, val);
+      var row = chip.parentNode;
+      if (row) {
+        row.querySelectorAll("[data-qx-voice-key]").forEach(function (x) {
+          x.classList.toggle("on", x.getAttribute("data-qx-voice-val") === val);
+        });
+      }
+    }, true);
   } catch (_) { /* */ }
 
   global.QxPracticeVoice = {

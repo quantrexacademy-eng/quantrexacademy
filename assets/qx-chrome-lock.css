@@ -148,9 +148,20 @@ html body .eg-fmt-pop.eg-vs-marks .eg-vs-h {
 }
 
 html body .eg-fmt-pop.eg-vs-marks .eg-vs-row,
-html body .eg-fmt-pop.eg-vs-marks .eg-vs-sec,
 html body .eg-fmt-pop.eg-vs-marks .eg-vs-tog {
   display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+html body .eg-fmt-pop.eg-vs-marks .eg-vs-sec,
+html body #pracViewPanel.eg-vs-marks .eg-vs-sec,
+html body .eg-fmt-pop.eg-vs-marks #qxVoiceSec,
+html body #pracViewPanel.eg-vs-marks #qxVoiceSec,
+html body #qxSettingsRoot #qxVoiceSec {
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100% !important;
+  max-width: 100% !important;
   visibility: visible !important;
   opacity: 1 !important;
 }
@@ -184,7 +195,7 @@ html body .eg-fmt-pop.eg-vs-marks .eg-vs-tog {
     bottom: auto !important;
     transform: translateX(-50%) !important;
     width: min(420px, 94vw) !important;
-    max-height: min(78vh, 640px) !important;
+    max-height: min(86vh, 760px) !important;
     border-radius: 16px !important;
   }
 }

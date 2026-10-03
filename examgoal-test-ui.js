@@ -112,8 +112,11 @@
         '.eg-vs-head .eg-fmt-title{margin:0;font-size:16px;font-weight:800}',
         '.eg-vs-close{appearance:none;border:0;background:#e2e8f0;color:#0f172a;width:32px;height:32px;border-radius:999px;font-size:18px;line-height:1;cursor:pointer}',
         'html[data-theme=dark] .eg-vs-close,.eg-test-root[data-test-theme=dark] .eg-vs-close{background:#334155;color:#f8fafc}',
-        '.eg-vs-sec{margin:10px 0 6px;padding:10px 10px 6px;border-radius:12px;background:#f8fafc;border:1px solid #e2e8f0}',
+        '.eg-vs-sec{display:flex;flex-direction:column;width:100%;margin:10px 0 6px;padding:10px 10px 6px;border-radius:12px;background:#f8fafc;border:1px solid #e2e8f0}',
         'html[data-theme=dark] .eg-vs-sec,.eg-test-root[data-test-theme=dark] .eg-vs-sec{background:#0b1220;border-color:#1e293b}',
+        '#qxVoiceSec,.qx-voice-sec{display:flex!important;flex-direction:column!important;width:100%!important;max-width:100%!important;visibility:visible!important;opacity:1!important}',
+        '#qxVoiceSec .eg-vs-row,#qxVoiceSec .eg-fmt-row{display:flex!important;flex-wrap:wrap!important;width:100%!important}',
+        '.eg-fmt-pop.eg-vs-marks{max-height:min(86vh,760px)!important}',
         '.eg-vs-h{margin:0 0 8px;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#64748b}',
         '.eg-vs-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 2px;min-height:44px}',
         '.eg-vs-lab{display:flex;flex-direction:column;gap:2px;min-width:0}',
@@ -656,7 +659,6 @@
         '<section class="eg-vs-sec"><h5 class="eg-vs-h">Practice Experience</h5>' +
         egToggleRow("showTimer", "Start timer auto", "Timer on every practice question", true) +
         egToggleRow("playSounds", "Play sounds", "Sound after you check an answer", true) +
-        (typeof QxPracticeVoice !== "undefined" && QxPracticeVoice.settingsHtml ? QxPracticeVoice.settingsHtml() : "") +
         egLsRow("qx_pref_auto_next", "Auto next", "Go to the next question after you pick an answer", false) +
         egLsRow("qx_pref_haptic", "Haptic tap", "Short vibration when you select an option", true) +
         egToggleRow("dontShowCorrectAnswerImmediately", "Don\u2019t show correct immediately", "Grade first; mark options only when Show Answer is on", false) +
@@ -668,14 +670,24 @@
         '<button type="button" data-eg-scale="large"' + (fontScale === "large" ? ' class="on"' : "") + ">L</button>" +
         '<button type="button" data-eg-scale="xlarge"' + (fontScale === "xlarge" ? ' class="on"' : "") + ">XL</button>" +
         '</div></div></section>' +
+        (function () {
+          try {
+            if (typeof QxPracticeVoice !== "undefined" && QxPracticeVoice.settingsHtml) return QxPracticeVoice.settingsHtml();
+          } catch (_) { /* */ }
+          return '<section class="eg-vs-sec qx-voice-sec" id="qxVoiceSec"><h5 class="eg-vs-h">Practice Voice</h5>' +
+            '<div class="eg-vs-row"><div class="eg-vs-lab"><span class="eg-vs-lab-t">Voice after Check Answer</span>' +
+            '<span class="eg-vs-hint">God, Hero, Demon, Villain, Mirzapur \u2014 off until you turn it on.</span></div>' +
+            '<button type="button" class="eg-vs-tog" data-eg-pref="qx_pref_practice_voice" aria-pressed="false" role="switch"><span class="eg-vs-knob"></span></button></div></section>';
+        })() +
         '<section class="eg-vs-sec"><h5 class="eg-vs-h">Peer Insights</h5>' +
         egToggleRow("showAttemptInsight", "Show attempt insight", "Time taken after Check Answer", true) +
         '</section>' +
         (practice
-          ? ('<section class="eg-vs-sec"><h5 class="eg-vs-h">Similar practice</h5>' +
-            egLsRow("qx_pref_similar_booster", "Mistake Booster AI", "Show similar / trickier generator after Check Answer", true) +
+          ? ('<section class="eg-vs-sec" id="qxSimilarSec"><h5 class="eg-vs-h">Similar practice</h5>' +
+            egLsRow("qx_pref_similar_booster", "Mistake Booster AI", "Show similar / trickier generator after Check Answer", false) +
             egLsRow("qx_pref_similar_trickier", "More tricky by default", "Generated questions one step harder", false) +
             egLsRow("qx_pref_similar_norepeat", "Don\u2019t repeat same question", "Skip stems already in this practice", true) +
+            (typeof QxSimilarPractice !== "undefined" && QxSimilarPractice.settingsHtml ? QxSimilarPractice.settingsHtml() : "") +
             '</section>')
           : ""));
     return '<div class="eg-fmt-scrim" id="egFmtScrim" hidden></div>' +
@@ -1093,9 +1105,9 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
           '<button type="button" class="eg-sol-panel-close" id="egSolClose" title="Close">✕</button>' +
           '</header>' +
           '<div class="eg-sol eg-sol-inline qx-content" id="egSol">' + solInner + '</div>' +
-          '</div>' +
-          '<div id="qxBoostMount"></div>';
+          '</div>';
       })() : "") +
+      (practice ? '<div id="qxBoostMount"></div>' : "") +
       '</div>' +
       "</div>" +
       '<aside class="eg-side" id="egSide"' + (sideOpen ? ' aria-hidden="false"' : ' hidden aria-hidden="true"') + '>' +
@@ -1581,6 +1593,13 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
         QxSimilarPractice.attach(root, session);
       }
     } catch (_) { /* */ }
+    try {
+      if (typeof QuantrexQFormat !== "undefined" && QuantrexQFormat.healEntityLeak) {
+        QuantrexQFormat.healEntityLeak(root.querySelector("#egQArea"));
+        QuantrexQFormat.healEntityLeak(root.querySelector("#qxOpts"));
+        QuantrexQFormat.healEntityLeak(root.querySelector("#egSol"));
+      }
+    } catch (_) { /* */ }
     /* qxmd175: typeset solution after inject — KaTeX race + afterRender root-self miss */
     function qxTypesetSol(el) {
       if (!el || typeof Mx === "undefined") return;
@@ -1611,6 +1630,11 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
           }
         } catch (_) { /* */ }
         stripStemRescuedFromSolDom(panel);
+        try {
+          if (typeof QuantrexQFormat !== "undefined" && QuantrexQFormat.healEntityLeak) {
+            QuantrexQFormat.healEntityLeak(solEl);
+          }
+        } catch (_h) { /* */ }
       }
     } catch (_) { /* */ }
     try {
@@ -1747,8 +1771,9 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
       } catch (_) { /* */ }
       try {
         if (ok && session.practiceMode) {
-          var right = !!(session._egCorrect && session._egCorrect[session.idx]);
+          var right = !!(session._egCorrect && (session._egCorrect[session.idx] || session._egCorrect[String(session.idx)]));
           if (typeof QxPracticeVoice !== "undefined" && QxPracticeVoice.enabled && QxPracticeVoice.enabled()) {
+            try { if (QxPracticeVoice.unlock) QxPracticeVoice.unlock(); } catch (_u) { /* */ }
             QxPracticeVoice.play(right);
           } else if (typeof QxSettings !== "undefined" && QxSettings.playAnswerSound) {
             QxSettings.playAnswerSound(right);
@@ -2506,6 +2531,8 @@ function forceFootVisible(force) {
           b.setAttribute("aria-pressed", next ? "true" : "false");
           if (key === "qx_pref_similar_booster" && typeof QxSimilarPractice !== "undefined") {
             try {
+              var box = document.getElementById("qxBoostSettingsBox");
+              if (box) box.hidden = !next;
               if (next) QxSimilarPractice.attach(root, session);
               else {
                 var card = root.querySelector("#qxBoostCard");
@@ -2518,6 +2545,11 @@ function forceFootVisible(force) {
       try {
         if (typeof QxPracticeVoice !== "undefined" && QxPracticeVoice.bindSettings) {
           QxPracticeVoice.bindSettings(document.getElementById("egFmtPop") || root);
+        }
+      } catch (_) { /* */ }
+      try {
+        if (typeof QxSimilarPractice !== "undefined" && QxSimilarPractice.bindSettings) {
+          QxSimilarPractice.bindSettings(document.getElementById("egFmtPop") || root);
         }
       } catch (_) { /* */ }
       (document.getElementById("egFmtPop") || root).querySelectorAll("[data-eg-scale]").forEach(function (b) {
@@ -2983,6 +3015,13 @@ function forceFootVisible(force) {
     try {
       if (session && session.practiceMode && typeof QxSimilarPractice !== "undefined" && QxSimilarPractice.attach) {
         QxSimilarPractice.attach(root, session);
+      }
+    } catch (_) { /* */ }
+    try {
+      if (typeof QuantrexQFormat !== "undefined" && QuantrexQFormat.healEntityLeak) {
+        QuantrexQFormat.healEntityLeak(root.querySelector("#egQArea"));
+        QuantrexQFormat.healEntityLeak(root.querySelector("#qxOpts, .eg-opts"));
+        QuantrexQFormat.healEntityLeak(root.querySelector("#egSol"));
       }
     } catch (_) { /* */ }
   }

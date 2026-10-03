@@ -565,6 +565,9 @@ const QuantrexQFormat = (() => {
     try {
       if (typeof QxMathSanitize !== "undefined" && QxMathSanitize.decodeEntities) {
         expanded = QxMathSanitize.decodeEntities(expanded);
+        if (/&(?:#\d+|nbsp|minus|amp;|#x)/i.test(expanded)) {
+          expanded = QxMathSanitize.decodeEntities(expanded);
+        }
       }
     } catch (_) { /* */ }
     // qxmd170: Marks TeX glue repair before proofread / Mx (stems + options)
@@ -1342,6 +1345,7 @@ const QuantrexQFormat = (() => {
       try {
         if (typeof QxMathSanitize !== "undefined" && QxMathSanitize.decodeEntities) {
           raw = QxMathSanitize.decodeEntities(raw);
+          if (/&(?:#\d+|nbsp|minus|amp;|#x)/i.test(raw)) raw = QxMathSanitize.decodeEntities(raw);
         }
       } catch (_) { /* */ }
       raw = protectMathLtGt(raw);
@@ -1893,7 +1897,34 @@ const QuantrexQFormat = (() => {
     parseAnswerIndex, hasRealMcqOptions, validateQuestion,
     optsLayoutClass, practiceOptsContainerClass, testOptsContainerClass,
     renderOptions, renderTestOptions, renderNumericalEntry, grade, isAnswered, formatCorrectAnswer, formatChosenAnswer,
-    bindPractice, bindNumericalKeypad, sanitizeNumVal, applyPracticeResult, revealAnswers, isMatchColumn, checkNumerical
+    bindPractice, bindNumericalKeypad, sanitizeNumVal, applyPracticeResult, revealAnswers, isMatchColumn, checkNumerical,
+    healEntityLeak: function (root) {
+      if (!root || !root.querySelectorAll) return;
+      var nodes = [];
+      try {
+        var w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null);
+        while (w.nextNode()) {
+          var n = w.currentNode;
+          if (!n || !n.nodeValue) continue;
+          if (!/&(?:#\d+|nbsp|minus|amp;|#x)/i.test(n.nodeValue)) continue;
+          if (n.parentElement && n.parentElement.closest && n.parentElement.closest(".katex, .katex-html, math, script, style")) continue;
+          nodes.push(n);
+        }
+      } catch (_) { return; }
+      nodes.forEach(function (n) {
+        var t = n.nodeValue;
+        try {
+          if (typeof QxMathSanitize !== "undefined" && QxMathSanitize.decodeEntities) t = QxMathSanitize.decodeEntities(t);
+        } catch (_) { /* */ }
+        t = String(t || "")
+          .replace(/&nbsp;|&#160;|&#x0*A0;/gi, " ")
+          .replace(/&minus;|&#8722;/gi, "\u2212")
+          .replace(/&#(\d+);/g, function (_, d) {
+            try { return String.fromCharCode(+d); } catch (e) { return ""; }
+          });
+        n.nodeValue = t;
+      });
+    }
   };
 })();
 
