@@ -1603,6 +1603,11 @@ const QuantrexSolution = (() => {
     if (!/class=["'][^"']*katex/i.test(html)) {
       try { html = polishScientificSymbols(html); } catch (_) { /* */ }
     }
+    try {
+      if (typeof Mx !== "undefined" && Mx.looksKatexHtmlLeak && Mx.looksKatexHtmlLeak(html)) {
+        if (Mx.recoverLetterSpacedKatexHtml) html = Mx.recoverLetterSpacedKatexHtml(html);
+      }
+    } catch (_) { /* */ }
     // qxmd217: if SOLUTION shows letter-spaced KaTeX HTML, recover once from original source
     try {
       const looksSpaced = (typeof Mx !== "undefined" && Mx.looksLetterSpacedMarkup)

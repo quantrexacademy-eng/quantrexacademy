@@ -1377,9 +1377,19 @@ window.Mx = (() => {
     return repairSpacedKatexTags(out);
   }
 
+  function looksKatexHtmlLeak(s) {
+    const t = String(s || "");
+    if (!t) return false;
+    return /spanclass/i.test(t)
+      || /katex\s*-\s*(?:display|html|mathml)/i.test(t)
+      || (/\baria\s*-\s*hidden/i.test(t) && /\bstrut\b/i.test(t))
+      || (/<\s*\/?\s*span/i.test(t) && /\bmord\b/.test(t) && /\bstrut\b/.test(t));
+  }
+
   function looksLetterSpacedMarkup(s) {
     const t = String(s || "");
     if (!t) return false;
+    if (looksKatexHtmlLeak(t)) return true;
     // Real KaTeX HTML is NOT letter-spaced (mord mathnormal is a real class).
     if (/<span\b[^>]*class=["'][^"']*\bkatex\b/i.test(t) && !/spanclass/i.test(t)
       && !/<\s*[a-zA-Z]\s+[a-zA-Z]\s+[a-zA-Z]/.test(t)) {
@@ -1407,8 +1417,30 @@ window.Mx = (() => {
     return String(c || "").replace(re, (_, i) => slots[+i] || "");
   }
 
-  function repairSpacedKatexTags(s) {
+  function collapseSpacedKatexDump(s) {
     let out = String(s || "");
+    if (!looksKatexHtmlLeak(out) && !/spanclass|katex\s*-/i.test(out)) return out;
+    out = out
+      .replace(/<\s*\/\s*/g, "</")
+      .replace(/<\s+/g, "<")
+      .replace(/\s+>/g, ">")
+      .replace(/\bspanclass\b/gi, "span class")
+      .replace(/\bdivclass\b/gi, "div class")
+      .replace(/\bspan\s+class\s*=/gi, "span class=")
+      .replace(/class\s*=\s*/gi, "class=")
+      .replace(/style\s*=\s*/gi, "style=")
+      .replace(/aria\s*-\s*hidden\s*=\s*/gi, "aria-hidden=")
+      .replace(/katex\s*-\s*(display|html|mathml)/gi, "katex-$1")
+      .replace(/vertical\s*-\s*align/gi, "vertical-align")
+      .replace(/height\s*:\s*/gi, "height:")
+      .replace(/vertical-align\s*:/gi, "vertical-align:")
+      .replace(/;\s*vertical-align/gi, ";vertical-align")
+      .replace(/"(aria-hidden|style)=/gi, '" $1=');
+    return out;
+  }
+
+  function repairSpacedKatexTags(s) {
+    let out = collapseSpacedKatexDump(String(s || ""));
     if (looksLetterSpacedMarkup(out)) {
       out = out.replace(/<\/?[^>]{3,}>/g, (tag) => {
         const close = tag.startsWith("</");
@@ -1443,9 +1475,10 @@ window.Mx = (() => {
     let s = String(html || "");
     if (!s) return s;
     // Escaped KaTeX dump: &lt;span class="katex-display"&gt;
-    if (/&lt;\s*span[^&]*katex/i.test(s) || /&lt;spanclass/i.test(s)) {
+    if (/&lt;\s*span[^&]*katex/i.test(s) || /&lt;spanclass/i.test(s) || /&lt;\s*\/?\s*span/i.test(s)) {
       s = s.replace(/&lt;/gi, "<").replace(/&gt;/gi, ">").replace(/&quot;/gi, '"').replace(/&amp;/gi, "&");
     }
+    s = collapseSpacedKatexDump(s);
     if (/<span\b[^>]*class=["'][^"']*\bkatex\b/i.test(s) && !/spanclass/i.test(s)) {
       return repairSpacedKatexTags(s);
     }
@@ -3615,6 +3648,10 @@ window.Mx = (() => {
       [/\breflexiverelation\b/gi, "reflexive relation"],
       [/\btransitiverelation\b/gi, "transitive relation"],
       [/\bequivalencerelation\b/gi, "equivalence relation"],
+      [/\bbearelationdefinedon(?=[A-Z]|\b)/gi, "be a relation defined on "],
+      [/\bbearelation\b/gi, "be a relation"],
+      [/\brelationdefined\b/gi, "relation defined"],
+      [/\bdefinedon(?=[A-Z]|\b)/gi, "defined on "],
       [/\bantisymmetric\b/gi, "antisymmetric"], // keep real word
       [/\bisnotsymmetric\b/gi, "is not symmetric"],
       [/\bisnotreflexive\b/gi, "is not reflexive"],
@@ -5024,11 +5061,17 @@ window.Mx = (() => {
   function htmlCore(content) {
     if (content == null) return "";
     try { loadKatex(); } catch (_) { /* */ }
-    if (hasRealKatexHtml(content) && !looksLetterSpacedMarkup(content)) {
+    if (looksKatexHtmlLeak(content) || looksLetterSpacedMarkup(content) || /&lt;\s*span[^&]*katex/i.test(String(content))) {
+      try { content = recoverLetterSpacedKatexHtml(content); } catch (_) { /* */ }
+    }
+    if (hasRealKatexHtml(content) && !looksLetterSpacedMarkup(content) && !/spanclass/i.test(String(content))) {
       return repairSpacedKatexTags(String(content));
     }
     content = qxSanitizeIncoming(content);
-    try { content = stripDumpedKatexProse(content); } catch (_) { /* */ }
+    try {
+      if (looksKatexHtmlLeak(content)) content = recoverLetterSpacedKatexHtml(content);
+      if (looksKatexHtmlLeak(content) && !hasRealKatexHtml(content)) content = stripDumpedKatexProse(content);
+    } catch (_) { /* */ }
     content = decodeNumericEntityText(String(content));
     const cacheKey = String(content);
     if (cacheKey.length < 10000 && _htmlMemo.has(cacheKey)) {
@@ -5066,6 +5109,7 @@ window.Mx = (() => {
     // Screenshot 864: turn MathML islands into $…$ TeX so KaTeX renders α / ∈
     try { s = convertAllMathML(s); } catch (_) { /* */ }
     try { s = unglueTexFromWords(s); } catch (_) { /* */ }
+    try { s = wrapBareSetLatex(s); } catch (_) { /* */ }
     // Kill MathJax-breaking HTML inside math + glued \pi then
     try { s = sanitizeHtmlInMath(s); } catch (_) { /* */ }
     // Match-list options (plain "P → 2; Q → 1") — tidy before full HTML path
@@ -5498,7 +5542,8 @@ window.Mx = (() => {
     if (!t) return false;
     /* Compact "Let N" → LetN used to match every good Sets stem and re-paint. */
     if (/\bLetN\b|\bLetP\b|\bLetR\s*=|\bIfR\s*=|\bLetX\s*=|\bR-1is\b|\bdomainofR\b|\bPAP-1\s*=\s*B/i.test(t)) return true;
-    if (/\bDefinearelation\b|\bRisanequivalence\b|\bInthelightof\b|\bchoosethecorrect\b|\brepresentsaline\b|\bForsome\(/i.test(t)) return true;
+    if (/\bDefinearelation\b|\bbearelationdefinedon\b|\bdefinedon[A-Z]|\bRisanequivalence\b|\bInthelightof\b|\bchoosethecorrect\b|\brepresentsaline\b|\bForsome\(/i.test(t)) return true;
+    if (/[A-Za-z]=\\\{/.test(t) || /\\\{[0-9,]{3,}\\\}/.test(t)) return true;
     if (/\b4is the\b|\brelation Ris\b|\bThen the relation Ris\b|\bThen, Pis\b|\bThen,Pis\b|\b1,-1is\b|\b1and\b/i.test(t)) return true;
     if (/\\left|\\right|\\\(|\\\[/.test(t)) return true;
     const compact = t.replace(/\s+/g, "");
@@ -5651,6 +5696,7 @@ window.Mx = (() => {
       try { decodeEntityTextInDom(el); } catch (_) { /* */ }
       try { fixSpacingInDom(el); } catch (_) { /* */ }
       try { peelProseKatexInDom(el); } catch (_) { /* */ }
+      try { recoverKatexLeakInDom(el); } catch (_) { /* */ }
       try { beautifyMatchTablesInDom(el); } catch (_) { /* */ }
       try { upgradeBareTexInDom(el); } catch (_) { /* */ }
       // Typeset ALL question/option/solution surfaces for uniform math
@@ -5721,6 +5767,7 @@ window.Mx = (() => {
           }
         });
       } catch (_) { /* */ }
+      try { recoverKatexLeakInDom(el); } catch (_) { /* */ }
       try {
         el.querySelectorAll(".qx-prac-opt, .mtk-opt, .qa-opt").forEach((opt) => {
           if (opt.querySelector("img")) {
@@ -5792,6 +5839,7 @@ window.Mx = (() => {
         pass2.finally(() => {
           try { decodeEntityTextInDom(el); } catch (_) { /* */ }
           try { peelProseKatexInDom(el); } catch (_) { /* */ }
+          try { recoverKatexLeakInDom(el); } catch (_) { /* */ }
           try { recoverHollowStemInDom(el); } catch (_) { /* */ }
           try { recoverGluedStemInDom(el); } catch (_) { /* */ }
           try { recoverSmashedOptionsInDom(el); } catch (_) { /* */ }
@@ -5849,7 +5897,9 @@ window.Mx = (() => {
       try { fixSpacingInDom(el); } catch (_) { /* */ }
       try { beautifyMatchTablesInDom(el); } catch (_) { /* */ }
       try { upgradeBareTexInDom(el); } catch (_) { /* */ }
+      try { recoverKatexLeakInDom(el); } catch (_) { /* */ }
       const finish = () => {
+        try { recoverKatexLeakInDom(el); } catch (_) { /* */ }
         try { fixSpacingInDom(el); } catch (_) { /* */ }
         try { beautifyMatchTablesInDom(el); } catch (_) { /* */ }
         try { upgradeBareTexInDom(el); } catch (_) { /* */ }
@@ -5943,6 +5993,11 @@ window.Mx = (() => {
     out = out.replace(/\bcorrectoption\b/gi, "correct option");
     out = out.replace(/\bcorrectanswer\b/gi, "correct answer");
     out = out.replace(/\bDefinearelation\b/gi, "Define a relation");
+    out = out.replace(/\bbearelationdefinedon(?=[A-Z]|\b)/gi, "be a relation defined on ");
+    out = out.replace(/\bbearelation\b/gi, "be a relation");
+    out = out.replace(/\brelationdefined\b/gi, "relation defined");
+    out = out.replace(/\bdefinedon(?=[A-Z]|\b)/gi, "defined on ");
+    out = out.replace(/([.!?])Let\b/g, "$1 Let");
     out = out.replace(/\bequivalencerelation\b/gi, "equivalence relation");
     out = out.replace(/\bInthelightoftheabovestatements\b/gi, "In the light of the above statements");
     out = out.replace(/\bchoosethecorrectanswerfromtheoptionsgivenbelow\b/gi, "choose the correct answer from the options given below");
@@ -6015,6 +6070,99 @@ window.Mx = (() => {
   }
 
   /** Clean any question/option/solution string (all screens) — single proofread entry */
+  function wrapBareSetLatex(s) {
+    let out = String(s || "");
+    if (!out) return out;
+    try {
+      out = replaceOutsideMathFn(out, (chunk) => {
+        let c = String(chunk || "");
+        c = c.replace(/([.!?])Let\b/g, "$1 Let");
+        c = c.replace(/\bbearelationdefinedon(?=[A-Z]|\b)/gi, "be a relation defined on ");
+        c = c.replace(/\bbearelation\b/gi, "be a relation");
+        c = c.replace(/\brelationdefined\b/gi, "relation defined");
+        c = c.replace(/\bdefinedon(?=[A-Z]|\b)/gi, "defined on ");
+        c = c.replace(/(^|[^$\\A-Za-z])([A-Za-z]\s*=\s*\\\{[^{}$]{0,120}?\\\})(?!\$)/g, "$1$$$2$");
+        c = c.replace(/(^|[^$\\])(\\\{[0-9,\s]{3,80}?\\\})(?!\$)/g, "$1$$$2$");
+        return c;
+      });
+    } catch (_) { /* */ }
+    return out;
+  }
+
+  function recoverKatexLeakInDom(root) {
+    const el = root && root.nodeType === 1 ? root : null;
+    if (!el || !el.querySelectorAll) return;
+    const SEL = "#egSol, .eg-sol, .sol-body, .qx-sol-body, .qx-sol-flow, .qx-sol-card, #egSolPanel, " +
+      "#egQArea, .eg-q-stem, .mtk-q-text, .qx-q-seg-text, .qx-q-text-only, " +
+      ".mtk-opt-text, .qx-prac-opt-text, #qxOpts, .eg-opts, #qaSolReveal, .qx-content";
+    let hosts = [];
+    try { hosts = Array.prototype.slice.call(el.querySelectorAll(SEL), 0, 32); } catch (_) { hosts = []; }
+    try {
+      const id = el.id || "";
+      if (/^(egSol|egSolPanel|egQArea|qaSolReveal)$/.test(id) && hosts.indexOf(el) < 0) hosts.unshift(el);
+    } catch (_) { /* */ }
+    if (!hosts.length) hosts = [el];
+    hosts.forEach((host) => {
+      if (!host) return;
+      let raw = "";
+      try { raw = host.innerHTML || ""; } catch (_) { return; }
+      const text = String(host.textContent || "");
+      if (!looksKatexHtmlLeak(raw) && !looksKatexHtmlLeak(text) && !/&lt;\s*span[^&]*katex/i.test(raw)) return;
+      try {
+        const walker = document.createTreeWalker(host, NodeFilter.SHOW_TEXT, null);
+        const dumpNodes = [];
+        while (walker.nextNode()) {
+          const n = walker.currentNode;
+          if (!n || !n.nodeValue) continue;
+          if (n.parentElement && n.parentElement.closest && n.parentElement.closest(".katex, .katex-html, math, script, style, annotation")) continue;
+          if (looksKatexHtmlLeak(n.nodeValue) || /&lt;\s*span[^&]*katex/i.test(n.nodeValue)) dumpNodes.push(n);
+        }
+        if (dumpNodes.length && host.querySelector && host.querySelector(".katex, .katex-display")) {
+          dumpNodes.forEach((n) => { try { n.nodeValue = ""; } catch (_) { /* */ } });
+          return;
+        }
+      } catch (_) { /* */ }
+      let s = String(raw)
+        .replace(/&lt;/gi, "<")
+        .replace(/&gt;/gi, ">")
+        .replace(/&quot;/gi, '"')
+        .replace(/&#0?39;/g, "'")
+        .replace(/&amp;/gi, "&");
+      try { s = recoverLetterSpacedKatexHtml(s); } catch (_) { /* */ }
+      if (hasRealKatexHtml(s) && !looksLetterSpacedMarkup(s) && !/spanclass/i.test(s)) {
+        host.innerHTML = s;
+        try { typesetKatex([host]); } catch (_) { /* */ }
+        return;
+      }
+      try {
+        const bits = [];
+        const re = /<annotation[^>]*encoding=["']application\/x-tex["'][^>]*>([\s\S]*?)<\/annotation>/gi;
+        let m;
+        while ((m = re.exec(s))) {
+          const t = String(m[1] || "").replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">").trim();
+          if (t) bits.push("$" + t + "$");
+        }
+        if (bits.length) {
+          let i = 0;
+          s = s.replace(/<span(?=[^>]*\bkatex\b)[^>]*>[\s\S]*?(?:<\/span>)?/gi, function () {
+            const t = bits[i] || "";
+            i += 1;
+            return t ? t + " " : " ";
+          });
+        }
+      } catch (_) { /* */ }
+      try { s = stripDumpedKatexProse(s); } catch (_) { /* */ }
+      try { s = wrapBareSetLatex(s); } catch (_) { /* */ }
+      try {
+        if (window.katex && window.katex.renderToString) s = katexRenderIslands(s);
+      } catch (_) { /* */ }
+      if (s && s !== raw) {
+        host.innerHTML = s;
+        try { typesetKatex([host]); } catch (_) { /* */ }
+      }
+    });
+  }
+
   function cleanQuestionText(s) {
     if (s == null || s === "") return s;
     try {
@@ -6040,6 +6188,7 @@ window.Mx = (() => {
       } catch (_) { /* */ }
       out = fixWordSpacing(out);
       try { out = unglueLowercaseMathProse(out); } catch (_) { /* */ }
+      try { out = wrapBareSetLatex(out); } catch (_) { /* */ }
       if (/\\le\s*ft|\\pithen|\\textb\{|unknown node/i.test(out)) {
         out = repairBrokenLatex(out);
         out = repairLatexCommandSpaces(out);
@@ -6103,6 +6252,9 @@ window.Mx = (() => {
     recoverHollowStemInDom,
     recoverGluedStemInDom,
     recoverSmashedOptionsInDom,
+    recoverKatexLeakInDom,
+    looksKatexHtmlLeak,
+    wrapBareSetLatex,
     cleanDom,
     fixWordSpacing,
     unglueLowercaseMathProse,

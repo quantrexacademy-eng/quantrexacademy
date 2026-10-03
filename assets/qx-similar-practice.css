@@ -1,17 +1,28 @@
-/* Mistake Booster AI — practice similar / trickier generator (qxmd288) */
+/* Mistake Booster AI — practice similar / trickier generator (qxmd289) */
 .qx-boost{
   position:relative;
   z-index:40;
-  margin:16px 0 calc(96px + env(safe-area-inset-bottom, 0px));
+  margin:16px 0 12px;
   padding:16px 16px 14px;
   border-radius:16px;
   background:linear-gradient(180deg,#eef1fb 0%,#e4e9f8 100%);
   border:1px solid #cfd6ee;
   color:#1e293b;
   box-shadow:0 8px 24px rgba(79,70,229,.08);
-  scroll-margin-bottom:calc(120px + env(safe-area-inset-bottom, 0px));
+  scroll-margin-bottom:calc(140px + env(safe-area-inset-bottom, 0px));
   pointer-events:auto;
   touch-action:manipulation;
+}
+#qxBoostMount{
+  display:block;
+  margin-bottom:calc(96px + env(safe-area-inset-bottom, 0px));
+  padding-bottom:8px;
+}
+.qx-boost-foot-gap{
+  display:block;
+  height:calc(88px + env(safe-area-inset-bottom, 0px));
+  width:100%;
+  pointer-events:none;
 }
 #qxBoostCard.qx-boost{
   position:relative;
@@ -37,6 +48,11 @@
   pointer-events:auto;
   position:relative;
   z-index:2;
+}
+.qx-boost-box > .qx-boost-go{
+  order:-1;
+  width:100%;
+  margin-left:0;
 }
 .eg-test-root[data-test-theme="dark"] .qx-boost-box{background:#1a2236;border-color:#334155}
 .qx-boost-lab{font-size:13px;font-weight:800;color:#334155;white-space:nowrap}
@@ -66,6 +82,9 @@
   margin-left:auto;background:#5b21b6;color:#fff;border:0;border-radius:10px;
   padding:10px 16px;font-weight:800;font-size:13px;cursor:pointer;min-height:44px;
   pointer-events:auto;touch-action:manipulation;position:relative;z-index:3
+}
+@media (min-width:641px){
+  .qx-boost-box > .qx-boost-go{width:auto;margin-left:auto}
 }
 .qx-boost-go:disabled{opacity:.6;cursor:wait}
 .qx-boost-msg{margin:8px 0 0;font-size:12px;font-weight:700;color:#475569}

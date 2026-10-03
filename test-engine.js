@@ -4157,6 +4157,9 @@ const QuantrexTestEngine = (() => {
     if (!session || session.submitted) return;
     session.submitted = true;
     stopTimer();
+    try {
+      if (typeof QxAiProctor !== "undefined" && QxAiProctor.stop) QxAiProctor.stop();
+    } catch (_ps) { /* */ }
     const data = computeResults();
     // Full snapshot for "View Analysis" later (resume after submit)
     let snapshot = null;
@@ -4174,6 +4177,11 @@ const QuantrexTestEngine = (() => {
     if (main) {
       // Instant Report Card paint — NO full-page MathJax on 75 solutions (was freezing UI)
       main.innerHTML = renderResults(data);
+      try {
+        if (!session.practiceMode && typeof QxAiProctor !== "undefined" && QxAiProctor.mountReport) {
+          QxAiProctor.mountReport(main, data);
+        }
+      } catch (_pr2) { /* */ }
       const an = main.querySelector("#qzAnPage");
       if (an) {
         bindQuizrrAnalysis(an);
@@ -6208,6 +6216,11 @@ async function startTest(questionIds, title, returnTo, options) {
       }
       launchTestSession(main);
       _qxStartPainted = true;
+      try {
+        if (!config.practiceMode && typeof QxAiProctor !== "undefined" && QxAiProctor.attach) {
+          QxAiProctor.attach();
+        }
+      } catch (_pr) { /* */ }
       try { if (typeof qxClearPracticeFailsafe === "function") qxClearPracticeFailsafe(); } catch (_) { /* */ }
       return true;
     } catch (err) {
@@ -6219,6 +6232,7 @@ async function startTest(questionIds, title, returnTo, options) {
   window.qxForcePracticeFirstPaint = function () {
     try {
       if (_qxStartPainted) return;
+      if (window._qxProctorGating) return;
       if (!questionIds || !questionIds.length) return;
       paintNow();
     } catch (_) { /* */ }
@@ -6286,6 +6300,9 @@ async function startTest(questionIds, title, returnTo, options) {
             }
           }).catch(function () { /* */ });
         } catch (_) { /* continue into test */ }
+      }
+      if (!practiceMode && typeof QxAiProctor !== "undefined" && QxAiProctor.shouldGate && QxAiProctor.shouldGate(config) && QxAiProctor.gate) {
+        try { await QxAiProctor.gate(config); } catch (_g) { /* continue */ }
       }
       if (!paintNow()) {
         showToast("⚠️ Could not start test. Try again.");

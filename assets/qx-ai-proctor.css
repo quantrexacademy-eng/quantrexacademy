@@ -1,0 +1,72 @@
+/* Quantrex AI Proctor — dark + gold + white. Still photos only; no video recording. */
+.qx-pr-root{position:fixed;inset:0;z-index:2147483000;background:rgba(6,8,14,.78);display:flex;align-items:center;justify-content:center;padding:16px;font-family:Inter,Segoe UI,system-ui,sans-serif}
+.qx-pr-card{
+  width:min(720px,100%);max-height:min(92vh,920px);overflow:auto;
+  background:linear-gradient(180deg,#141820 0%,#0c1018 100%);
+  color:#f8fafc;border:1px solid rgba(212,175,55,.35);border-radius:20px;
+  box-shadow:0 30px 80px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.04) inset;
+}
+.qx-pr-hero{padding:28px 28px 12px;border-bottom:1px solid rgba(212,175,55,.18)}
+.qx-pr-kicker{letter-spacing:.18em;text-transform:uppercase;font-size:11px;font-weight:800;color:#d4af37;margin:0 0 6px}
+.qx-pr-hero h2{margin:0;font-size:26px;font-weight:800;color:#fff;letter-spacing:-.02em}
+.qx-pr-hero p{margin:8px 0 0;color:#cbd5e1;font-size:14px;line-height:1.5}
+.qx-pr-motto{margin:10px 0 0;font-size:12px;font-weight:700;color:#d4af37;letter-spacing:.04em}
+.qx-pr-body{padding:18px 28px 24px}
+.qx-pr-list{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.qx-pr-list li{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:#e2e8f0;line-height:1.45}
+.qx-pr-dot{width:8px;height:8px;border-radius:50%;margin-top:5px;flex:0 0 8px;background:#d4af37}
+.qx-pr-checks{display:grid;gap:8px;margin:16px 0}
+.qx-pr-row{display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:10px 12px}
+.qx-pr-row span{font-size:13px;font-weight:700}
+.qx-pr-ok{color:#86efac}.qx-pr-wait{color:#fbbf24}.qx-pr-bad{color:#fca5a5}
+.qx-pr-consent{display:flex;gap:10px;align-items:flex-start;margin:14px 0;font-size:13px;color:#cbd5e1}
+.qx-pr-consent input{margin-top:3px;accent-color:#d4af37}
+.qx-pr-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.qx-pr-btn{
+  appearance:none;border:0;border-radius:12px;padding:12px 18px;font-weight:800;font-size:14px;cursor:pointer
+}
+.qx-pr-btn-gold{background:linear-gradient(180deg,#e6c35c,#c9a227);color:#111}
+.qx-pr-btn-ghost{background:transparent;color:#e2e8f0;border:1px solid rgba(255,255,255,.18)}
+.qx-pr-btn:disabled{opacity:.5;cursor:wait}
+.qx-pr-note{font-size:12px;color:#94a3b8;margin-top:12px;line-height:1.45}
+
+.qx-pr-pip{
+  position:fixed;right:14px;bottom:calc(72px + env(safe-area-inset-bottom,0px));z-index:2147483002;
+  width:132px;border-radius:14px;overflow:hidden;border:1px solid rgba(212,175,55,.45);
+  box-shadow:0 12px 32px rgba(0,0,0,.4);background:#0b1220
+}
+.qx-pr-pip video,.qx-pr-pip canvas{display:block;width:100%;height:88px;object-fit:cover;background:#111}
+.qx-pr-pip-bar{display:flex;align-items:center;gap:6px;padding:6px 8px;background:#0b1220;color:#f8fafc;font-size:10px;font-weight:800;letter-spacing:.04em}
+.qx-pr-live{width:7px;height:7px;border-radius:50%;background:#4ade80;box-shadow:0 0 8px #4ade80}
+
+.qx-pr-report{position:relative;z-index:1;margin:18px auto;width:min(980px,100%);padding:0 12px 40px}
+.qx-pr-sheet{
+  background:linear-gradient(180deg,#12161f,#0b0e14);color:#f8fafc;border:1px solid rgba(212,175,55,.28);
+  border-radius:22px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.28)
+}
+.qx-pr-cover{padding:28px 28px 18px;background:radial-gradient(1200px 240px at 10% -20%,rgba(212,175,55,.18),transparent),#0d1118;border-bottom:1px solid rgba(212,175,55,.2)}
+.qx-pr-cover h1{margin:4px 0 0;font-size:28px;letter-spacing:-.03em}
+.qx-pr-meta{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:10px;font-size:13px;color:#cbd5e1}
+.qx-pr-score{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;padding:18px 28px}
+.qx-pr-kpi{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:14px}
+.qx-pr-kpi b{display:block;font-size:22px;color:#e6c35c}
+.qx-pr-kpi small{color:#94a3b8;font-weight:700;letter-spacing:.04em;text-transform:uppercase;font-size:10px}
+.qx-pr-sec{padding:8px 28px 20px}
+.qx-pr-sec h3{margin:8px 0 10px;font-size:16px;color:#d4af37;letter-spacing:.04em;text-transform:uppercase}
+.qx-pr-tl{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.qx-pr-tl li{display:grid;grid-template-columns:88px 14px 1fr;gap:10px;align-items:start;font-size:13px}
+.qx-pr-sev{width:10px;height:10px;border-radius:50%;margin-top:4px}
+.qx-pr-sev.g{background:#4ade80}.qx-pr-sev.y{background:#fbbf24}.qx-pr-sev.o{background:#fb923c}.qx-pr-sev.r{background:#f87171}
+.qx-pr-photos{display:flex;flex-wrap:wrap;gap:8px}
+.qx-pr-photos img{width:120px;height:80px;object-fit:cover;border-radius:10px;border:1px solid rgba(255,255,255,.1)}
+.qx-pr-table{width:100%;border-collapse:collapse;font-size:13px}
+.qx-pr-table th,.qx-pr-table td{padding:8px 6px;border-bottom:1px solid rgba(255,255,255,.08);text-align:left}
+.qx-pr-bar{height:8px;border-radius:99px;background:rgba(255,255,255,.08);overflow:hidden}
+.qx-pr-bar > i{display:block;height:100%;background:linear-gradient(90deg,#d4af37,#f5e6a3)}
+.qx-pr-disclaimer{font-size:12px;color:#94a3b8;line-height:1.5;margin:0}
+
+@media print{
+  .qx-pr-pip,.qx-pr-root,.eg-foot,#egFoot,.eg-top{display:none!important}
+  .qx-pr-sheet{box-shadow:none;border-color:#d4af37}
+  body{background:#fff;color:#111}
+}

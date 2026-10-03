@@ -1900,18 +1900,33 @@ const QuantrexQFormat = (() => {
     bindPractice, bindNumericalKeypad, sanitizeNumVal, applyPracticeResult, revealAnswers, isMatchColumn, checkNumerical,
     healEntityLeak: function (root) {
       if (!root || !root.querySelectorAll) return;
+      try {
+        if (typeof Mx !== "undefined" && Mx.recoverKatexLeakInDom) Mx.recoverKatexLeakInDom(root);
+      } catch (_) { /* */ }
       var nodes = [];
       try {
         var w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null);
         while (w.nextNode()) {
           var n = w.currentNode;
           if (!n || !n.nodeValue) continue;
-          if (!/&(?:#\d+|nbsp|minus|amp;|#x)/i.test(n.nodeValue)) continue;
           if (n.parentElement && n.parentElement.closest && n.parentElement.closest(".katex, .katex-html, math, script, style")) continue;
-          nodes.push(n);
+          var leak = /spanclass|katex\s*-\s*(?:display|html)|aria\s*-\s*hidden|\bstrut\b/i.test(n.nodeValue)
+            || /&lt;\s*span[^&]*katex/i.test(n.nodeValue);
+          if (leak) {
+            nodes.push({ n: n, leak: true });
+            continue;
+          }
+          if (!/&(?:#\d+|nbsp|minus|amp;|#x)/i.test(n.nodeValue)) continue;
+          nodes.push({ n: n, leak: false });
         }
       } catch (_) { return; }
-      nodes.forEach(function (n) {
+      var needRecover = false;
+      nodes.forEach(function (item) {
+        var n = item.n;
+        if (item.leak) {
+          needRecover = true;
+          return;
+        }
         var t = n.nodeValue;
         try {
           if (typeof QxMathSanitize !== "undefined" && QxMathSanitize.decodeEntities) t = QxMathSanitize.decodeEntities(t);
@@ -1922,8 +1937,17 @@ const QuantrexQFormat = (() => {
           .replace(/&#(\d+);/g, function (_, d) {
             try { return String.fromCharCode(+d); } catch (e) { return ""; }
           });
+        if (/spanclass|katex\s*-\s*(?:display|html)|<\s*span/i.test(t)) {
+          needRecover = true;
+          return;
+        }
         n.nodeValue = t;
       });
+      if (needRecover) {
+        try {
+          if (typeof Mx !== "undefined" && Mx.recoverKatexLeakInDom) Mx.recoverKatexLeakInDom(root);
+        } catch (_) { /* */ }
+      }
     }
   };
 })();

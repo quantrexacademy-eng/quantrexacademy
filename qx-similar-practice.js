@@ -294,8 +294,11 @@
     if (bar) bar.classList.toggle("on", !!on);
   }
 
+  var _genLock = 0;
   async function generate(opts) {
     opts = opts || {};
+    if (Date.now() - _genLock < 900) return { ok: false, busy: true };
+    _genLock = Date.now();
     var session = opts.session || currentSession();
     if (!session || !session.practiceMode) {
       toast("Open a practice question first");
@@ -382,6 +385,7 @@
     count = Math.max(1, Math.min(MAX_COUNT, Number(count) || DEFAULT_COUNT));
     return (
       '<div class="qx-boost-box">' +
+        '<button type="button" class="qx-boost-go" data-qx-boost-go>Generate Practice</button>' +
         '<span class="qx-boost-lab"># Questions to generate:</span>' +
         '<div class="qx-boost-chips">' +
           '<button type="button" class="qx-boost-pm" data-qx-boost-pm="-1" aria-label="Fewer">\u2212</button>' +
@@ -391,9 +395,9 @@
         "</div>" +
         '<label class="qx-boost-tog"><input type="checkbox" class="qx-boost-trick"' + (trickier ? " checked" : "") + "> More tricky</label>" +
         '<label class="qx-boost-tog"><input type="checkbox" class="qx-boost-norep"' + (noRepeatOn() ? " checked" : "") + "> Don\u2019t repeat</label>" +
-        '<button type="button" class="qx-boost-go" data-qx-boost-go>Generate Practice</button>' +
       "</div>" +
-      '<p class="qx-boost-msg"></p>'
+      '<p class="qx-boost-msg"></p>' +
+      '<div class="qx-boost-foot-gap" aria-hidden="true"></div>'
     );
   }
 
@@ -446,7 +450,7 @@
     var l = document.createElement("link");
     l.id = "qxSimilarCss";
     l.rel = "stylesheet";
-    l.href = "assets/qx-similar-practice.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd288");
+    l.href = "assets/qx-similar-practice.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd289");
     document.head.appendChild(l);
   }
 
@@ -497,6 +501,34 @@
     });
     card.querySelectorAll(".qx-boost-norep").forEach(function (el) {
       el.onchange = function () { lsSet(PREF_NOREP, el.checked ? "1" : "0"); };
+    });
+    card.querySelectorAll("[data-qx-boost-go], .qx-boost-go").forEach(function (go) {
+      go.onclick = function (e) {
+        if (e) { e.preventDefault(); e.stopPropagation(); }
+        if (go.disabled) return;
+        var trickEl = card.querySelector(".qx-boost-trick");
+        var nrEl = card.querySelector(".qx-boost-norep");
+        generate({
+          session: currentSession(),
+          host: card,
+          count: readCount(card),
+          trickier: !!(trickEl && trickEl.checked),
+          noRepeat: !(nrEl) || nrEl.checked
+        });
+      };
+    });
+    card.querySelectorAll("[data-qx-boost-n]").forEach(function (chip) {
+      chip.onclick = function (e) {
+        if (e) { e.preventDefault(); e.stopPropagation(); }
+        syncChips(card, parseInt(chip.getAttribute("data-qx-boost-n"), 10));
+      };
+    });
+    card.querySelectorAll("[data-qx-boost-pm]").forEach(function (pm) {
+      pm.onclick = function (e) {
+        if (e) { e.preventDefault(); e.stopPropagation(); }
+        var d = parseInt(pm.getAttribute("data-qx-boost-pm"), 10) || 0;
+        syncChips(card, readCount(card) + d);
+      };
     });
   }
 
@@ -590,7 +622,7 @@
 
   try {
     document.addEventListener("click", handleBoostEvent, true);
-    document.addEventListener("pointerdown", function (e) {
+    function punchFoot(e) {
       var foot = e.target && e.target.closest && e.target.closest("#egFoot, .eg-foot");
       if (!foot) return;
       var x = e.clientX, y = e.clientY;
@@ -598,12 +630,15 @@
       foot.style.pointerEvents = "none";
       var under = document.elementFromPoint(x, y);
       foot.style.pointerEvents = prev;
-      var hit = under && under.closest && under.closest("[data-qx-boost-n],[data-qx-boost-pm],[data-qx-boost-go],.qx-boost-go,.qx-boost-chip,.qx-boost-pm");
+      var hit = under && under.closest && under.closest("[data-qx-boost-n],[data-qx-boost-pm],[data-qx-boost-go],.qx-boost-go,.qx-boost-chip,.qx-boost-pm,#qxBoostCard");
       if (!hit) return;
-      e.preventDefault();
-      e.stopPropagation();
+      if (e.preventDefault) e.preventDefault();
+      if (e.stopPropagation) e.stopPropagation();
+      if (e.stopImmediatePropagation) e.stopImmediatePropagation();
       handleBoostEvent({ target: hit, preventDefault: function () {}, stopPropagation: function () {} });
-    }, true);
+    }
+    document.addEventListener("pointerdown", punchFoot, true);
+    document.addEventListener("click", punchFoot, true);
   } catch (_) { /* */ }
 
   global.QxSimilarPractice = {

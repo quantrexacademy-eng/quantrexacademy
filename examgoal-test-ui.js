@@ -1635,6 +1635,23 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
             QuantrexQFormat.healEntityLeak(solEl);
           }
         } catch (_h) { /* */ }
+        try {
+          if (typeof Mx !== "undefined" && Mx.recoverKatexLeakInDom) {
+            Mx.recoverKatexLeakInDom(solEl);
+            Mx.recoverKatexLeakInDom(root.querySelector("#egQArea"));
+          }
+        } catch (_k) { /* */ }
+        try {
+          setTimeout(function () {
+            try {
+              if (typeof Mx !== "undefined" && Mx.recoverKatexLeakInDom) {
+                Mx.recoverKatexLeakInDom(solEl);
+                Mx.recoverKatexLeakInDom(root.querySelector("#egQArea"));
+              }
+              if (typeof Mx !== "undefined" && Mx.recoverGluedStemInDom) Mx.recoverGluedStemInDom(root);
+            } catch (_) { /* */ }
+          }, 420);
+        } catch (_d) { /* */ }
       }
     } catch (_) { /* */ }
     try {
@@ -1853,6 +1870,11 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
         var pad = h + 12; /* qxmd217 fixed overlay clear */
         var solOpen = !!(host && host.classList && (host.classList.contains("qx-sol-showing") || host.classList.contains("eg-sol-showing")));
         if (solOpen) pad = h + 12; /* qxmd217 */
+        try {
+          if (host && host.querySelector && host.querySelector("#qxBoostCard, #qxBoostMount .qx-boost")) {
+            pad = Math.max(pad, h + 148);
+          }
+        } catch (_b) { /* */ }
         var cssPad = "calc(" + pad + "px + env(safe-area-inset-bottom, 0px))";
         try {
           document.documentElement.style.setProperty("--eg-foot-h", h + "px");
@@ -1871,6 +1893,7 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
           if (host && host.querySelectorAll) {
             host.querySelectorAll(clearSel).forEach(function (n) {
               try {
+                if (n && (n.id === "qxBoostMount" || (n.classList && n.classList.contains("qx-boost")))) return;
                 n.style.setProperty("padding-bottom", "0px", "important");
                 n.style.setProperty("min-height", "0", "important");
               } catch (_) {}
@@ -3023,6 +3046,13 @@ function forceFootVisible(force) {
         QuantrexQFormat.healEntityLeak(root.querySelector("#qxOpts, .eg-opts"));
         QuantrexQFormat.healEntityLeak(root.querySelector("#egSol"));
       }
+    } catch (_) { /* */ }
+    try {
+      if (typeof Mx !== "undefined" && Mx.recoverKatexLeakInDom) {
+        Mx.recoverKatexLeakInDom(root.querySelector("#egQArea"));
+        Mx.recoverKatexLeakInDom(root.querySelector("#egSol"));
+      }
+      if (typeof Mx !== "undefined" && Mx.recoverGluedStemInDom) Mx.recoverGluedStemInDom(root);
     } catch (_) { /* */ }
   }
 

@@ -30,6 +30,9 @@
   var _audio = null;
   var _lastId = "";
   var _unlock = false;
+  var _actx = null;
+  var _gain = null;
+  var _mediaSrc = null;
 
   function lsGet(k, d) {
     try {
@@ -88,7 +91,7 @@
   }
 
   function bust() {
-    return encodeURIComponent((typeof global.QX_BUILD === "string" && global.QX_BUILD) || "qxmd288");
+    return encodeURIComponent((typeof global.QX_BUILD === "string" && global.QX_BUILD) || "qxmd289");
   }
   function load() {
     if (_loaded) return Promise.resolve(_clips);
@@ -173,10 +176,12 @@
       if (!global.speechSynthesis) return;
       global.speechSynthesis.cancel();
       var u = new SpeechSynthesisUtterance(ok
-        ? (lang === "en" ? "Correct." : "Sahi uttar.")
-        : (lang === "en" ? "Try again." : "Dobara koshish karo."));
+        ? (lang === "en" ? "Correct. Well done." : "Sahi uttar. Bahut badhiya.")
+        : (lang === "en" ? "Wrong. Try again." : "Galat. Dobara koshish karo."));
       u.lang = lang === "en" ? "en-IN" : "hi-IN";
-      u.rate = 1;
+      u.rate = 0.82;
+      u.pitch = 0.72;
+      u.volume = 1;
       global.speechSynthesis.speak(u);
     } catch (_) { /* */ }
   }
@@ -189,6 +194,21 @@
       if (!_audio) _audio = new Audio();
       _audio.muted = false;
       _audio.volume = 1;
+      _audio.playbackRate = 0.92;
+      _audio.preservesPitch = true;
+      try { _audio.mozPreservesPitch = true; } catch (_) { /* */ }
+      try {
+        var AC = global.AudioContext || global.webkitAudioContext;
+        if (AC && !_actx) {
+          _actx = new AC();
+          _gain = _actx.createGain();
+          _gain.gain.value = 1.65;
+          _mediaSrc = _actx.createMediaElementSource(_audio);
+          _mediaSrc.connect(_gain);
+          _gain.connect(_actx.destination);
+        }
+        if (_actx && _actx.state === "suspended") _actx.resume();
+      } catch (_) { /* */ }
       _audio.src = ROOT + clip.file + "?v=" + bust();
       var p = _audio.play();
       if (p && p.catch) {
@@ -235,7 +255,7 @@
     var on = lsGet(KEYS.on, DEF.on) === "1";
     return '<section class="eg-vs-sec qx-voice-sec" id="qxVoiceSec"><h5 class="eg-vs-h">Practice Voice</h5>' +
       '<div class="eg-vs-row"><div class="eg-vs-lab"><span class="eg-vs-lab-t">Voice after Check Answer</span>' +
-      '<span class="eg-vs-hint">God, Hero, Demon, Villain, Mirzapur — voice only, no text. Off until you turn it on.</span></div>' +
+      '<span class="eg-vs-hint">Bold, realistic voice after Check Answer. Off until you turn it on. No on-screen captions.</span></div>' +
       '<button type="button" class="eg-vs-tog' + (on ? " on" : "") + '" data-eg-pref="' + KEYS.on + '" aria-pressed="' + (on ? "true" : "false") + '" role="switch"><span class="eg-vs-knob"></span></button></div>' +
       chipRow(KEYS.lang, "Voice language", "Hindi, English, or mix", [
         { v: "hi", l: "Hindi" }, { v: "en", l: "English" }, { v: "mix", l: "Mix" }
