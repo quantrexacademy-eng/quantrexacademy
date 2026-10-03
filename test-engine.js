@@ -1603,6 +1603,7 @@ const QuantrexTestEngine = (() => {
                 <button type="button" class="qzrr-btn qzrr-btn-outline" id="qxClearBtn">Clear Response</button>
               </div>
               <div class="qzrr-act-right">
+                <button type="button" class="qzrr-btn qzrr-btn-outline" id="qxPrevBtn" ${session.idx <= 0 ? "disabled" : ""}>Previous</button>
                 <button type="button" class="qzrr-btn qzrr-btn-primary" id="qxSaveBtn">Save &amp; Next</button>
               </div>
             </div>
@@ -2616,6 +2617,45 @@ const QuantrexTestEngine = (() => {
   }
 
   /** Fast paint first; figures rewrite local/proxy then finalize (Marks-smooth) */
+  function qxAutoFitQuestion(root) {
+    if (!root || !root.querySelector) {
+      root = document.getElementById("app-main") || document.body;
+    }
+    try {
+      var area = root.querySelector("#qzrrQArea") || root.querySelector(".qzrr-q-area") ||
+        root.querySelector("#egQArea") || root.querySelector(".eg-body");
+      if (!area) return;
+      var isQuizrr = !!(area.id === "qzrrQArea" || (area.classList && area.classList.contains("qzrr-q-area")));
+      if (isQuizrr) {
+        area.style.setProperty("overflow-y", "auto", "important");
+        area.style.setProperty("overflow-x", "auto", "important");
+        area.style.setProperty("visibility", "visible", "important");
+        area.style.setProperty("opacity", "1", "important");
+        area.style.scrollPaddingBottom = "32px";
+      }
+      var opts = root.querySelector("#qxOpts, .qzrr-opts, .eg-opts");
+      if (opts) {
+        opts.style.setProperty("overflow", "visible", "important");
+        opts.style.setProperty("max-height", "none", "important");
+        opts.style.setProperty("height", "auto", "important");
+      }
+      root.querySelectorAll(".mtk-opt, .eg-opt, .qx-prac-opt").forEach(function (el) {
+        el.style.setProperty("overflow", "visible", "important");
+        el.style.setProperty("max-height", "none", "important");
+        el.style.setProperty("height", "auto", "important");
+        el.style.setProperty("min-width", "0", "important");
+      });
+      area.querySelectorAll("img").forEach(function (img) {
+        if (img._qxFitBound) return;
+        img._qxFitBound = true;
+        img.addEventListener("load", function () {
+          try { qxAutoFitQuestion(root); } catch (_) { /* */ }
+        }, { once: true });
+      });
+    } catch (_) { /* */ }
+  }
+  try { window.qxAutoFitQuestion = qxAutoFitQuestion; } catch (_) { /* */ }
+
   function paintQuestionNow(main, q) {
     if (main && main.getAttribute("data-qx-painting") === "1") {
       /* qxmd162: never leave paint flag stuck — Show Answer / Check Answer must repaint */
@@ -2660,6 +2700,7 @@ const QuantrexTestEngine = (() => {
     capturePaletteNavState(main);
     main.innerHTML = renderQuestion();
     bindEvents(main);
+    try { qxAutoFitQuestion(main); } catch (_) { /* */ }
     restorePaletteNavState(main);
     setTestTheme(getTestTheme());
     setTestFontScale(getTestFontScale());
@@ -3020,6 +3061,11 @@ const QuantrexTestEngine = (() => {
     } catch (_) { /* */ }
     // Dwell time on previous question (Marks time charts)
     recordQTime(session.idx);
+    try {
+      if (typeof QxAiProctor !== "undefined" && QxAiProctor.noteNav) {
+        QxAiProctor.noteNav(session.idx, idx, (session.qTimes && session.qTimes[session.idx]) || 0);
+      }
+    } catch (_) { /* */ }
     // Always update index first so rapid Next taps advance even if paint lags
     session.visited.add(session.idx);
     session.idx = idx;
@@ -3942,6 +3988,7 @@ const QuantrexTestEngine = (() => {
         <div class="mk-rc-actions">
           <button type="button" class="mk-rc-btn-sol" id="qzAnViewSol">View Solution</button>
           <button type="button" class="mk-rc-btn-re" id="mkRcReattempt">Reattempt</button>
+          <button type="button" class="mk-rc-btn-print" id="qzAnPrint">Print / PDF</button>
         </div>
         <nav class="mk-rc-tabs" id="mkRcTabs">${tabsHtml}</nav>
         <div class="mk-rc-body" id="mkRcBody">${panelsHtml}</div>
@@ -3957,6 +4004,12 @@ const QuantrexTestEngine = (() => {
             <button type="button" class="mk-sol-sec-nav" id="mkSolSecNext">›</button>
           </div>
         </header>
+        <div class="mk-sol-filters" id="mkSolFilters">
+          <button type="button" class="mk-sol-fchip on" data-sol-filter="all">Complete paper</button>
+          <button type="button" class="mk-sol-fchip" data-sol-filter="wrong">Wrong questions</button>
+          <button type="button" class="mk-sol-fchip" data-sol-filter="sel">Selective</button>
+          <button type="button" class="mk-sol-fchip" id="mkSolPrint">Print this view</button>
+        </div>
         <div class="mk-sol-body qx-review-split" id="qxReviewSplit">
           <div class="mk-sol-main qx-review-main">
             <div class="review-list marks-review-list">${reviewRows}</div>
@@ -4074,15 +4127,53 @@ const QuantrexTestEngine = (() => {
       root._mkRcBound = true;
       root.addEventListener("click", (ev) => {
         const t = ev.target.closest(
-          "#qzAnBack, #mkSolBack, #qzAnViewSol, #mkRcReattempt, .mk-rc-tab, #mkSolSecPrev, #mkSolSecNext"
+          "#qzAnBack, #mkSolBack, #qzAnViewSol, #mkRcReattempt, #qzAnPrint, #mkSolPrint, .mk-rc-tab, #mkSolSecPrev, #mkSolSecNext, [data-sol-filter], .mk-sol-row, .mk-sol-rail .mk-rv-dot, [data-rv-idx]"
         );
         if (!t || !root.contains(t)) return;
-        ev.preventDefault();
-        if (t.id === "qzAnBack") { leaveAnalysis(); return; }
-        if (t.id === "mkSolBack") { showReport(); return; }
-        if (t.id === "qzAnViewSol") { showSolutions(); return; }
-        if (t.id === "mkRcReattempt") { doReattempt(); return; }
+        if (t.id === "qzAnBack") { ev.preventDefault(); leaveAnalysis(); return; }
+        if (t.id === "mkSolBack") { ev.preventDefault(); showReport(); return; }
+        if (t.id === "qzAnViewSol") { ev.preventDefault(); showSolutions(); return; }
+        if (t.id === "mkRcReattempt") { ev.preventDefault(); doReattempt(); return; }
+        if (t.id === "qzAnPrint") {
+          ev.preventDefault();
+          try {
+            document.body.setAttribute("data-qx-print-mode", "report");
+            window.print();
+          } catch (_) { /* */ }
+          return;
+        }
+        if (t.id === "mkSolPrint") {
+          ev.preventDefault();
+          try {
+            const mode = root.getAttribute("data-sol-filter") || "all";
+            document.body.setAttribute("data-qx-print-mode", mode);
+            window.print();
+          } catch (_) { /* */ }
+          return;
+        }
+        if (t.hasAttribute && t.hasAttribute("data-sol-filter")) {
+          ev.preventDefault();
+          const mode = t.getAttribute("data-sol-filter") || "all";
+          root.setAttribute("data-sol-filter", mode);
+          root.querySelectorAll("[data-sol-filter]").forEach(x => x.classList.toggle("on", x === t));
+          root.querySelectorAll(".mk-sol-row").forEach(row => {
+            const wrong = row.classList.contains("wrong");
+            let show = true;
+            if (mode === "wrong") show = wrong;
+            if (show) row.removeAttribute("data-qx-filter-hide");
+            else row.setAttribute("data-qx-filter-hide", "1");
+          });
+          return;
+        }
+        if ((root.getAttribute("data-sol-filter") === "sel") && t.closest && t.closest(".mk-sol-row")) {
+          ev.preventDefault();
+          const row = t.closest(".mk-sol-row");
+          const on = row.getAttribute("data-rv-sel") === "1";
+          row.setAttribute("data-rv-sel", on ? "0" : "1");
+          return;
+        }
         if (t.classList.contains("mk-rc-tab")) {
+          ev.preventDefault();
           const scope = t.getAttribute("data-mk-scope");
           root.querySelectorAll(".mk-rc-tab").forEach(x => x.classList.toggle("on", x === t));
           root.querySelectorAll(".mk-rc-panel").forEach(p => {
@@ -4273,6 +4364,9 @@ const QuantrexTestEngine = (() => {
       if (typeof QxAiProctor !== "undefined" && QxAiProctor.stop) QxAiProctor.stop();
     } catch (_ps) { /* */ }
     const data = computeResults();
+    const wasPractice = !!(session && session.practiceMode);
+    const tabCount = (session && session._qzrrTabCount) || 0;
+    const sessTitle = (session && session.title) || "Assessment";
     // Full snapshot for "View Analysis" later (resume after submit)
     let snapshot = null;
     try {
@@ -4290,9 +4384,9 @@ const QuantrexTestEngine = (() => {
       // Instant Report Card paint — NO full-page MathJax on 75 solutions (was freezing UI)
       main.innerHTML = renderResults(data);
       try {
-        if (!session.practiceMode && typeof QxAiProctor !== "undefined" && QxAiProctor.mountReport) {
-          var prState = QxAiProctor.getState && QxAiProctor.getState();
-          if (prState) QxAiProctor.mountReport(main, data);
+        if (!wasPractice && typeof QxAiProctor !== "undefined") {
+          if (QxAiProctor.noteExternal) QxAiProctor.noteExternal({ tabCount: tabCount, title: sessTitle });
+          if (QxAiProctor.mountReport) QxAiProctor.mountReport(main, data);
         }
       } catch (_pr2) { /* */ }
       const an = main.querySelector("#qzAnPage");

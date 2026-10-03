@@ -858,14 +858,21 @@ body.ts-standalone-body {
 .qzrr-mark-sub { margin: 6px 0 0; padding-left: 18px; list-style: none; }
 .qzrr-mark-sub li { margin-bottom: 3px; }
 .qzrr-q-area {
-  flex: 1; overflow-y: auto; padding: 14px 18px 18px; min-height: 0;
+  flex: 1; overflow-y: auto; padding: 14px 18px 32px; min-height: 0;
   background: #fff;
+  scroll-padding-bottom: 28px;
 }
 .qzrr-cbt.qzrr-mag-on .qzrr-q-area,
 .qzrr-cbt.qzrr-mag-on #qzrrQArea {
   zoom: 1.35 !important;
   transform-origin: top left;
   overflow-y: auto !important;
+  overflow-x: auto !important;
+}
+.qzrr-cbt #qxPrevBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 .qzrr-cbt.qzrr-contrast {
   filter: contrast(1.18);

@@ -1010,3 +1010,37 @@ html body .qx-org-fig-host-opt img:not(.qx-org-qx-wm) {
     max-height: 180px !important;
   }
 }
+
+/* qxmd297: auto-fit stem + options so the full question stays on screen */
+html body .qzrr-q-area,
+html body #qzrrQArea,
+html body #egQArea,
+html body .eg-q-stem,
+html body .mtk-q-text,
+html body .qx-question-body,
+html body .mtk-opt,
+html body .eg-opt,
+html body .qx-prac-opt,
+html body .mtk-opt-text {
+  max-width: 100%;
+  min-width: 0;
+  height: auto;
+  max-height: none;
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+html body .qzrr-opts,
+html body #qxOpts,
+html body .eg-opts,
+html body .mtk-options {
+  max-height: none;
+  overflow: visible;
+  min-width: 0;
+}
+html body .katex,
+html body .katex-display,
+html body .mtk-opt .katex,
+html body .eg-q-stem .katex {
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+}

@@ -12,13 +12,31 @@
           if (t === "dark" || t === "light") document.documentElement.setAttribute("data-theme", t);
         } catch (e) {}
       })();
+      /* qxmd297: Play TWA / installed PWA = app. Browser = web (Quizrr NTA). */
+      (function () {
+        try {
+          var app = false;
+          if (window.matchMedia && (
+            window.matchMedia("(display-mode: standalone)").matches ||
+            window.matchMedia("(display-mode: fullscreen)").matches ||
+            window.matchMedia("(display-mode: minimal-ui)").matches
+          )) app = true;
+          if (navigator.standalone) app = true;
+          if (String(document.referrer || "").indexOf("android-app://") === 0) app = true;
+          if (/\bapp=1\b/.test(String(location.search || ""))) app = true;
+          try { if (localStorage.getItem("qx_force_app_ui") === "1") app = true; } catch (_) {}
+          document.documentElement.setAttribute("data-qx-shell", app ? "app" : "web");
+        } catch (e) {
+          document.documentElement.setAttribute("data-qx-shell", "web");
+        }
+      })();
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Kanit:wght@400;500;600;700;800&family=Literata:opsz,wght@7..72,400;7..72,500;7..72,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
     <link rel="stylesheet" href="assets/quantrex-brand.css?v=qxbrand1">
-    <link rel="stylesheet" href="test-series-page.css?v=qxmd294">
+    <link rel="stylesheet" href="test-series-page.css?v=qxmd297">
     <link rel="stylesheet" href="assets/marks-test-engine.css?v=qxview1">
     <link rel="stylesheet" href="assets/allen-test-engine.css?v=qxwmblue1">
     <link rel="stylesheet" href="assets/qx-no-watermark.css?v=qxrestore2">
@@ -33,17 +51,28 @@
     <link rel="stylesheet" href="assets/qx-palette-nav.css?v=qxhid1">
     <link rel="stylesheet" href="assets/qx-hw-sol.css?v=qxhw1">
     <link rel="stylesheet" href="assets/qx-cbt-ux.css?v=qxmd281">
-    <link rel="stylesheet" href="assets/qx-fig-lock.css?v=qxmd294">
-    <link rel="stylesheet" href="assets/qx-text-visible.css?v=qxmd294">
-    <link rel="stylesheet" href="assets/qx-ai-proctor.css?v=qxmd294" id="qxAiProctorCss">
-    <link rel="stylesheet" href="assets/qx-chrome-lock.css?v=qxmd294" id="qxChromeLockCss">
-    <link rel="stylesheet" href="assets/qx-marks-player.css?v=qxmd294" id="qxMarksPlayerCss">
+    <link rel="stylesheet" href="assets/qx-fig-lock.css?v=qxmd297">
+    <link rel="stylesheet" href="assets/qx-text-visible.css?v=qxmd297">
+    <link rel="stylesheet" href="assets/qx-ai-proctor.css?v=qxmd297" id="qxAiProctorCss">
+    <link rel="stylesheet" href="assets/qx-foot-lock.css?v=qxmd297">
+    <link rel="stylesheet" href="assets/qx-katex-lock.css?v=qxmd297">
+    <link rel="stylesheet" href="assets/qx-chrome-lock.css?v=qxmd297" id="qxChromeLockCss">
+    <link rel="stylesheet" href="assets/qx-marks-player.css?v=qxmd297" id="qxMarksPlayerCss">
+    <link rel="stylesheet" href="assets/qx-quizrr-web.css?v=qxmd297" id="qxQuizrrWebCss">
     <style>
         body.marks-instr-active { overflow: hidden; }
         #app-main { position: fixed; inset: 0; z-index: -1; opacity: 0; pointer-events: none; min-height: 100vh; background: #f4f7fb; }
         body.marks-test-active .ts-app, body.marks-test-active #ts-root { display: none !important; }
-        body.marks-test-active #app-main { z-index: 9500 !important; opacity: 1 !important; pointer-events: auto !important; padding: 0; overflow: auto; background: #f4f7fb; }
-        body:not(.marks-test-active):not(.allen-practice-active) #app-main { position: relative !important; inset: auto !important; z-index: auto !important; opacity: 1 !important; pointer-events: auto !important; }
+        body.marks-test-active #app-main {
+          z-index: 9500 !important; opacity: 1 !important; pointer-events: auto !important; padding: 0;
+          overflow: hidden !important; height: 100dvh !important; max-height: 100dvh !important;
+          display: flex !important; flex-direction: column !important; background: #f4f7fb;
+        }
+        body.marks-results-active #app-main {
+          z-index: 9500 !important; opacity: 1 !important; pointer-events: auto !important; padding: 0;
+          overflow: auto !important; height: auto !important; min-height: 100dvh; background: #f4f7fb;
+        }
+        body:not(.marks-test-active):not(.allen-practice-active):not(.marks-results-active) #app-main { position: relative !important; inset: auto !important; z-index: auto !important; opacity: 1 !important; pointer-events: auto !important; }
     </style>
 </head>
 <body class="ts-standalone-body">
@@ -51,7 +80,7 @@
     <div id="app-main"></div>
     <div id="appToast"></div>
     <script>
-      window.QX_BUILD = "qxmd294";
+      window.QX_BUILD = "qxmd297";
       window.TS_STANDALONE = true;
       window.TS_SERIES_OVERRIDE = "quantrex_jee_main_2027";
     </script>
@@ -63,16 +92,17 @@
     <script src="qx-watermark.js?v=qxrestore2" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" defer></script>
     <script src="qx-math-sanitize.js?v=qxmd288" defer></script>
-    <script src="math-render.js?v=qxmd294" defer></script>
-    <script src="question-format.js?v=qxmd294" defer></script>
-    <script src="solution-format.js?v=qxmd294" defer></script>
+    <script src="math-render.js?v=qxmd297" defer></script>
+    <script src="question-format.js?v=qxmd297" defer></script>
+    <script src="solution-format.js?v=qxmd297" defer></script>
     <script src="data.js?v=qxtest455" defer></script>
     <script src="marks-live.js?v=qxstem2" defer></script>
     <script src="allen-test-ui.js?v=qxmd288" defer></script>
-    <script src="test-engine.js?v=qxmd294" defer></script>
-    <script src="qx-ai-proctor.js?v=qxmd294" defer></script>
-    <script src="qx-cbt-ux.js?v=qxmd294" defer></script>
+    <script src="examgoal-test-ui.js?v=qxmd297" defer></script>
+    <script src="test-engine.js?v=qxmd297" defer></script>
+    <script src="qx-ai-proctor.js?v=qxmd297" defer></script>
+    <script src="qx-cbt-ux.js?v=qxmd297" defer></script>
     <script src="test-series.js?v=qxmd251" defer></script>
-    <script src="pwa-register.js?v=qxmd294"></script>
+    <script src="pwa-register.js?v=qxmd297"></script>
 </body>
 </html>

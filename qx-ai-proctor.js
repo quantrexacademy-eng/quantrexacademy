@@ -1,6 +1,8 @@
 /**
  * Quantrex AI Proctor — still photos on integrity events. No video recording.
- * Flags are review indicators, never "CHEATING DETECTED".
+ * Flags are review indicators, never "CHEATING DETECTED". Default OFF until toggle.
+ * qxmd297: richer client integrity intelligence for review (tab, focus, copy/paste,
+ * print, fullscreen, face hints, rapid-nav, short dwell, display heuristic).
  */
 (function (global) {
   "use strict";
@@ -20,10 +22,17 @@
   var _lastBlur = 0;
   var _lastVis = 0;
   var _lastFace = 0;
+  var _lastCopy = 0;
+  var _lastPaste = 0;
+  var _lastPrint = 0;
+  var _lastCtx = 0;
+  var _lastLeave = 0;
+  var _lastResize = 0;
+  var _lastKey = 0;
   var _listening = false;
 
   function bust() {
-    return encodeURIComponent((typeof global.QX_BUILD === "string" && global.QX_BUILD) || "qxmd291");
+    return encodeURIComponent((typeof global.QX_BUILD === "string" && global.QX_BUILD) || "qxmd297");
   }
   function ensureCss() {
     if (_css || !document.head) return;
@@ -70,6 +79,11 @@
     return true;
   }
 
+  function bump(field) {
+    if (!_state) return;
+    _state[field] = (_state[field] || 0) + 1;
+  }
+
   function pushEvent(type, severity, label, note, withPhoto) {
     if (!_state) return;
     var ev = {
@@ -109,6 +123,27 @@
     } catch (_) { /* stills are best-effort; never record video */ }
   }
 
+  function unbindIntel() {
+    try {
+      document.removeEventListener("visibilitychange", onVis);
+      window.removeEventListener("blur", onBlur);
+      document.removeEventListener("fullscreenchange", onFs);
+      document.removeEventListener("webkitfullscreenchange", onFs);
+      document.removeEventListener("copy", onCopy, true);
+      document.removeEventListener("cut", onCut, true);
+      document.removeEventListener("paste", onPaste, true);
+      window.removeEventListener("beforeprint", onBeforePrint);
+      document.removeEventListener("contextmenu", onCtx, true);
+      document.removeEventListener("keydown", onKey, true);
+      document.removeEventListener("pointerleave", onPointerLeave, true);
+      window.removeEventListener("resize", onResize);
+      window.removeEventListener("pagehide", onPageHide);
+      document.removeEventListener("pointerdown", onInput, true);
+      document.removeEventListener("keydown", onInput, true);
+    } catch (_) { /* */ }
+    _listening = false;
+  }
+
   function stopStream() {
     try {
       if (_stream) _stream.getTracks().forEach(function (t) { try { t.stop(); } catch (_) { /* */ } });
@@ -119,13 +154,7 @@
     if (_pip && _pip.parentNode) _pip.parentNode.removeChild(_pip);
     _pip = null;
     _video = null;
-    try {
-      document.removeEventListener("visibilitychange", onVis);
-      window.removeEventListener("blur", onBlur);
-      document.removeEventListener("fullscreenchange", onFs);
-      document.removeEventListener("webkitfullscreenchange", onFs);
-    } catch (_) { /* */ }
-    _listening = false;
+    unbindIntel();
   }
 
   function showTabSwitchWarn(count) {
@@ -160,8 +189,16 @@
     if (document.hidden) {
       if (Date.now() - _lastVis < 1200) return;
       _lastVis = Date.now();
+      _state._tabHidAt = Date.now();
       pushEvent("tab", "o", "Browser tab or window hidden", "Potential integrity event detected — requires review.", true);
       try { showTabSwitchWarn(); } catch (_) { /* */ }
+    } else if (_state._tabHidAt) {
+      var hid = Date.now() - _state._tabHidAt;
+      _state.tabHiddenMs = (_state.tabHiddenMs || 0) + hid;
+      _state._tabHidAt = 0;
+      if (hid > 8000) {
+        pushEvent("tab", "o", "Returned after a long hide", "Tab was hidden for " + Math.round(hid / 1000) + "s. Potential integrity event — requires review.", false);
+      }
     }
   }
   function onBlur() {
@@ -175,8 +212,88 @@
     if (!_state || _state.ended) return;
     var fs = document.fullscreenElement || document.webkitFullscreenElement;
     if (!fs) {
-      pushEvent("fullscreen", "o", "Full-screen exit", "Full-screen mode ended during the test.", true);
+      pushEvent("fullscreen", "o", "Full-screen exit", "Full-screen mode ended during the test. Potential integrity event — requires review.", true);
     }
+  }
+  function onCopy() {
+    if (!_state || _state.ended) return;
+    if (Date.now() - _lastCopy < 1500) return;
+    _lastCopy = Date.now();
+    bump("copyEvents");
+    pushEvent("copy", "o", "Copy or cut attempted", "Potential integrity event — requires review.", true);
+  }
+  function onCut() { onCopy(); }
+  function onPaste() {
+    if (!_state || _state.ended) return;
+    if (Date.now() - _lastPaste < 1500) return;
+    _lastPaste = Date.now();
+    bump("pasteEvents");
+    pushEvent("paste", "o", "Paste attempted", "Potential integrity event — requires review.", true);
+  }
+  function onBeforePrint() {
+    if (!_state || _state.ended) return;
+    if (Date.now() - _lastPrint < 2000) return;
+    _lastPrint = Date.now();
+    bump("printEvents");
+    pushEvent("print", "o", "Print dialog opened", "Potential integrity event — requires review.", false);
+  }
+  function onCtx(e) {
+    if (!_state || _state.ended) return;
+    if (Date.now() - _lastCtx < 2500) return;
+    _lastCtx = Date.now();
+    bump("ctxEvents");
+    pushEvent("context", "y", "Context menu opened", "Right-click during the test. Review indicator.", false);
+    try { if (e && e.preventDefault) e.preventDefault(); } catch (_) { /* */ }
+  }
+  function onKey(e) {
+    if (!_state || _state.ended || !e) return;
+    var k = (e.key || "").toLowerCase();
+    var combo = (e.ctrlKey || e.metaKey) && (k === "c" || k === "v" || k === "x" || k === "p" || k === "u" || k === "s");
+    var printScr = k === "printscreen";
+    if (!combo && !printScr) return;
+    if (Date.now() - _lastKey < 1200) return;
+    _lastKey = Date.now();
+    bump("keyFlags");
+    pushEvent("hotkey", "o", "Restricted shortcut", "A copy, paste, print, or similar shortcut was used. Potential integrity event — requires review.", true);
+  }
+  function onPointerLeave(e) {
+    if (!_state || _state.ended) return;
+    if (e && e.target && e.target !== document.documentElement && e.target !== document.body) return;
+    if (Date.now() - _lastLeave < 4000) return;
+    _lastLeave = Date.now();
+    bump("pointerLeaves");
+    pushEvent("pointer", "y", "Pointer left the test window", "Mouse or pointer left the page. Review indicator.", false);
+  }
+  function onResize() {
+    if (!_state || _state.ended) return;
+    if (Date.now() - _lastResize < 4000) return;
+    _lastResize = Date.now();
+    bump("resizeEvents");
+    sampleDisplay();
+  }
+  function onPageHide() {
+    if (!_state || _state.ended) return;
+    pushEvent("pagehide", "o", "Page hide / freeze", "The test page was hidden or frozen. Potential integrity event — requires review.", true);
+  }
+  function onInput() {
+    if (_state) _state.lastInputAt = Date.now();
+  }
+
+  function sampleDisplay() {
+    if (!_state || _state.ended) return;
+    try {
+      var scr = window.screen;
+      if (!scr) return;
+      var extra = (scr.width || 0) - (window.innerWidth || 0);
+      var off = (typeof scr.availLeft === "number" && scr.availLeft < 0) ||
+        (typeof window.screenLeft === "number" && window.screenLeft < -80);
+      if ((extra > 520 && off) || (scr.width > 0 && extra > scr.width * 0.45 && off)) {
+        if (!_state.secondScreen) {
+          _state.secondScreen = 1;
+          pushEvent("display", "y", "Additional display heuristic", "Window geometry suggests another screen may be in use. This is a weak signal and requires review.", false);
+        }
+      }
+    } catch (_) { /* */ }
   }
 
   function sampleFace() {
@@ -204,10 +321,12 @@
 
   function showPip() {
     if (_pip) return;
+    if (!_stream) return;
     ensureCss();
     _pip = document.createElement("div");
-    _pip.className = "qx-pr-pip";
-    _pip.innerHTML = '<video playsinline muted autoplay></video><div class="qx-pr-pip-bar"><span class="qx-pr-live"></span> AI PROCTORING ACTIVE</div>';
+    _pip.className = "qx-pr-pip qx-pr-pip-top";
+    _pip.setAttribute("data-qx-pr-pip", "1");
+    _pip.innerHTML = '<video playsinline muted autoplay></video><div class="qx-pr-pip-bar"><span class="qx-pr-live"></span> AI PROCTOR</div>';
     document.body.appendChild(_pip);
     var v = _pip.querySelector("video");
     _video = v;
@@ -218,17 +337,31 @@
     }
   }
 
+  function bindIntel() {
+    if (_listening) return;
+    try {
+      document.addEventListener("visibilitychange", onVis);
+      window.addEventListener("blur", onBlur);
+      document.addEventListener("fullscreenchange", onFs);
+      document.addEventListener("webkitfullscreenchange", onFs);
+      document.addEventListener("copy", onCopy, true);
+      document.addEventListener("cut", onCut, true);
+      document.addEventListener("paste", onPaste, true);
+      window.addEventListener("beforeprint", onBeforePrint);
+      document.addEventListener("contextmenu", onCtx, true);
+      document.addEventListener("keydown", onKey, true);
+      document.addEventListener("pointerleave", onPointerLeave, true);
+      window.addEventListener("resize", onResize);
+      window.addEventListener("pagehide", onPageHide);
+      document.addEventListener("pointerdown", onInput, true);
+      document.addEventListener("keydown", onInput, true);
+    } catch (_) { /* */ }
+    _listening = true;
+  }
+
   function attach() {
     if (!_state || _state.ended) return;
-    if (!_listening) {
-      try {
-        document.addEventListener("visibilitychange", onVis);
-        window.addEventListener("blur", onBlur);
-        document.addEventListener("fullscreenchange", onFs);
-        document.addEventListener("webkitfullscreenchange", onFs);
-      } catch (_) { /* */ }
-      _listening = true;
-    }
+    bindIntel();
     showPip();
     if (_tick) clearInterval(_tick);
     _tick = setInterval(function () {
@@ -236,16 +369,26 @@
       _state.cameraOkSec += (_stream && _stream.active) ? 1 : 0;
       _state.elapsedSec += 1;
       if (_stream && !_stream.active) {
-        pushEvent("camera", "r", "Camera temporarily unavailable", "Camera track ended.", true);
+        pushEvent("camera", "r", "Camera temporarily unavailable", "Camera track ended. Potential integrity event — requires review.", true);
+      }
+      if (_state.lastInputAt && Date.now() - _state.lastInputAt > 180000) {
+        if (!_state._idleFlag) {
+          _state._idleFlag = true;
+          bump("idleEvents");
+          pushEvent("idle", "y", "No interaction for 3 minutes", "Long idle stretch. Review indicator — may also be thinking time.", false);
+        }
+      } else {
+        _state._idleFlag = false;
       }
     }, 1000);
     if (_faceTimer) clearInterval(_faceTimer);
     _faceTimer = setInterval(sampleFace, 5000);
     try { sampleFace(); } catch (_) { /* */ }
+    try { sampleDisplay(); } catch (_) { /* */ }
   }
 
-  function startState(config) {
-    _state = {
+  function emptyState(config) {
+    return {
       id: "pr_" + Date.now(),
       title: (config && config.title) || "AI Proctored Test",
       startedAt: Date.now(),
@@ -262,14 +405,75 @@
       cameraOkSec: 0,
       elapsedSec: 0,
       cameraOk: false,
-      consent: true
+      consent: true,
+      copyEvents: 0,
+      pasteEvents: 0,
+      printEvents: 0,
+      ctxEvents: 0,
+      rapidNav: 0,
+      shortDwell: 0,
+      pointerLeaves: 0,
+      resizeEvents: 0,
+      secondScreen: 0,
+      idleEvents: 0,
+      keyFlags: 0,
+      tabHiddenMs: 0,
+      navHops: [],
+      lastNavAt: 0,
+      lastInputAt: Date.now()
     };
-    pushEvent("start", "g", "Test started", "AI monitoring active. Still photos only on integrity events.");
+  }
+
+  function startState(config) {
+    _state = emptyState(config);
+    pushEvent("start", "g", "Test started", "AI monitoring active. Still photos only on integrity events. No automatic cheating verdict.");
+  }
+
+  function ensureState(config) {
+    if (_state) return _state;
+    startState(config || { title: "Assessment" });
+    _state.cameraOk = false;
+    return _state;
+  }
+
+  function noteExternal(info) {
+    info = info || {};
+    ensureState({ title: info.title || "Assessment" });
+    var n = Number(info.tabCount) || 0;
+    if (n > 0 && n > (_state.focusChanges || 0)) {
+      var add = n - (_state.focusChanges || 0);
+      for (var i = 0; i < add; i++) {
+        pushEvent("tab", "o", "Tab switch (session counter)", "Potential integrity event — requires review.", false);
+      }
+    }
+  }
+
+  function noteNav(fromIdx, toIdx, dwellSec) {
+    if (!_state || _state.ended) return;
+    var now = Date.now();
+    var jump = Math.abs((Number(toIdx) || 0) - (Number(fromIdx) || 0));
+    var dwell = Number(dwellSec) || 0;
+    _state.navHops.push({ t: now, from: fromIdx, to: toIdx, dwell: dwell, jump: jump });
+    if (_state.navHops.length > 80) _state.navHops = _state.navHops.slice(-80);
+    if (_state.lastNavAt && now - _state.lastNavAt < 700 && jump >= 1) {
+      _state.rapidNav += 1;
+      if (_state.rapidNav === 6 || _state.rapidNav === 12) {
+        pushEvent("nav", "y", "Rapid question navigation", "Several questions were skipped quickly. Review indicator.", false);
+      }
+    }
+    if (dwell > 0 && dwell < 4 && jump === 1) {
+      _state.shortDwell += 1;
+      if (_state.shortDwell === 8 || _state.shortDwell === 16) {
+        pushEvent("dwell", "y", "Very short time on several questions", "A cluster of questions was left in under 4 seconds. Review indicator.", false);
+      }
+    }
+    _state.lastNavAt = now;
+    _state.lastInputAt = now;
   }
 
   function stop() {
     if (_state && !_state.ended) {
-      pushEvent("submit", "g", "Test submitted", "");
+      pushEvent("submit", "g", "Test submitted", "Attempt closed. Integrity events are for review only.");
       _state.ended = true;
       _state.endedAt = Date.now();
       persistMeta();
@@ -283,6 +487,7 @@
     try {
       var list = [];
       try { list = JSON.parse(localStorage.getItem(LOG_KEY) || "[]") || []; } catch (_) { list = []; }
+      var intel = integrityIntel();
       list.unshift({
         id: _state.id,
         title: _state.title,
@@ -292,17 +497,47 @@
         focusChanges: _state.focusChanges,
         cameraCuts: _state.cameraCuts,
         multiFace: _state.multiFace,
-        eventCount: _state.events.length
+        eventCount: _state.events.length,
+        intelScore: intel.score,
+        intelBand: intel.band
       });
       localStorage.setItem(LOG_KEY, JSON.stringify(list.slice(0, 20)));
     } catch (_) { /* */ }
   }
 
   function statusLine() {
+    var intel = integrityIntel();
     if (!_state) return { label: "Not monitored", sev: "g" };
-    if (_state.reviewCount >= 4 || _state.multiFace >= 1) return { label: "Some events require review", sev: "y" };
-    if (_state.reviewCount > 0) return { label: "Some events require review", sev: "y" };
+    if (intel.score < 60 || _state.multiFace >= 1) return { label: "Review required", sev: "y" };
+    if (_state.reviewCount > 0 || intel.score < 85) return { label: "Some events require review", sev: "y" };
     return { label: "No significant integrity events", sev: "g" };
+  }
+
+  function integrityIntel() {
+    var s = _state || {};
+    var score = 100;
+    var deductions = [];
+    function sub(n, why) {
+      if (!n) return;
+      n = Math.max(0, Math.round(n));
+      if (!n) return;
+      score -= n;
+      deductions.push({ n: n, why: why });
+    }
+    sub(Math.min(30, (s.focusChanges || 0) * 5), "Tab or window focus changes (" + (s.focusChanges || 0) + ")");
+    sub(Math.min(16, (s.copyEvents || 0) * 8), "Copy / cut events (" + (s.copyEvents || 0) + ")");
+    sub(Math.min(12, (s.pasteEvents || 0) * 6), "Paste events (" + (s.pasteEvents || 0) + ")");
+    sub(Math.min(10, (s.printEvents || 0) * 10), "Print attempts (" + (s.printEvents || 0) + ")");
+    sub(Math.min(15, (s.multiFace || 0) * 15), "Multiple-person camera events (" + (s.multiFace || 0) + ")");
+    sub(s.cameraOk ? 0 : 12, s.cameraOk ? "" : "Camera was not enabled");
+    sub(Math.min(10, (s.cameraCuts || 0) * 5), "Camera interruptions (" + (s.cameraCuts || 0) + ")");
+    sub(Math.min(8, Math.floor((s.rapidNav || 0) / 6) * 4), "Rapid navigation clusters");
+    sub(Math.min(8, Math.floor((s.shortDwell || 0) / 8) * 3), "Very short dwell clusters");
+    sub(s.secondScreen ? 4 : 0, s.secondScreen ? "Additional display heuristic" : "");
+    sub(Math.min(8, (s.keyFlags || 0) * 4), "Restricted shortcuts (" + (s.keyFlags || 0) + ")");
+    score = Math.max(0, Math.min(100, score));
+    var band = score >= 85 ? "Low review" : (score >= 60 ? "Watch" : "Review required");
+    return { score: score, band: band, deductions: deductions.filter(function (d) { return d.why; }) };
   }
 
   function pct(n) {
@@ -327,8 +562,8 @@
       var t = r.chapter || r.topic || r.subject || "General";
       if (!topics[t]) topics[t] = { attempted: 0, correct: 0, wrong: 0, time: 0 };
       topics[t].attempted += 1;
-      if (r.correct) topics[t].correct += 1;
-      else if (!r.skip && !r.skipped) topics[t].wrong += 1;
+      if (r.correct || r.isCorrect) topics[t].correct += 1;
+      else if (!r.skip && !r.skipped && !r.isSkip) topics[t].wrong += 1;
       topics[t].time += Number(r.sec || r.time || 0) || 0;
     });
     var topicRows = Object.keys(topics).map(function (k) {
@@ -362,8 +597,10 @@
 
   function reportHtml(data) {
     ensureCss();
+    ensureState({ title: (data && data.title) || "Assessment" });
     var a = buildAnalytics(data);
     var st = statusLine();
+    var intel = integrityIntel();
     var camPct = _state && _state.elapsedSec ? (_state.cameraOkSec / _state.elapsedSec) * 100 : (_state && _state.cameraOk ? 100 : 0);
     var facePct = _state && _state.faceSamples ? (_state.faceHit / _state.faceSamples) * 100 : 100;
     var name = "";
@@ -400,6 +637,16 @@
       ? ("Your strongest area was " + a.strong[0].topic + " (" + a.strong[0].acc + "% accuracy).")
       : "Keep building accuracy across topics.";
     if (a.weak.length) summary += " Main improvement area: " + a.weak[0].topic + " (" + a.weak[0].acc + "%).";
+    var took = [];
+    took.push((_state && _state.cameraOk) ? "Camera preview was on (still photos only, max 8)." : "Camera was off or skipped.");
+    took.push("Tab / focus changes: " + ((_state && _state.focusChanges) || 0) + ".");
+    took.push("Time away from tab: " + fmtSec((_state && _state.tabHiddenMs || 0) / 1000) + ".");
+    took.push("Copy / paste / print flags: " + (((_state && _state.copyEvents) || 0) + ((_state && _state.pasteEvents) || 0) + ((_state && _state.printEvents) || 0)) + ".");
+    took.push("Rapid-nav clusters: " + ((_state && _state.rapidNav) || 0) + " · short-dwell clusters: " + ((_state && _state.shortDwell) || 0) + ".");
+    took.push("Integrity intelligence: " + intel.score + "/100 · " + intel.band + ".");
+    var dedul = intel.deductions.map(function (d) {
+      return "<li>−" + d.n + " · " + esc(d.why) + "</li>";
+    }).join("") || "<li>No deductions.</li>";
     return (
       '<section class="qx-pr-report" id="qxPrReport">' +
         '<article class="qx-pr-sheet">' +
@@ -420,8 +667,18 @@
             '<div class="qx-pr-kpi"><small>Correct</small><b>' + a.correct + "</b></div>" +
             '<div class="qx-pr-kpi"><small>Wrong</small><b>' + a.wrong + "</b></div>" +
             '<div class="qx-pr-kpi"><small>Unattempted</small><b>' + a.skipped + "</b></div>" +
+            '<div class="qx-pr-kpi"><small>Integrity</small><b>' + intel.score + "</b></div>" +
+            '<div class="qx-pr-kpi"><small>Review band</small><b>' + esc(intel.band) + "</b></div>" +
           "</div>" +
           '<div class="qx-pr-sec"><h3>AI Performance Summary</h3><p>' + esc(summary) + "</p></div>" +
+          '<div class="qx-pr-sec"><h3>How you took this test</h3><ul>' +
+            took.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") +
+          "</ul></div>" +
+          '<div class="qx-pr-sec"><h3>Integrity intelligence</h3>' +
+            "<p>Overall monitoring status: <strong>" + esc(st.label) + "</strong></p>" +
+            "<p>This score is a <strong>review aid</strong>. The system does not declare cheating and does not auto-fail the test.</p>" +
+            "<ul>" + dedul + "</ul>" +
+          "</div>" +
           '<div class="qx-pr-sec"><h3>Topic-wise Performance</h3>' +
             (bars || "<p>Topic breakdown appears when chapter tags are present.</p>") +
             (topicTable
@@ -441,7 +698,6 @@
             next.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") +
           "</ol></div>" +
           '<div class="qx-pr-sec"><h3>AI Proctoring Report</h3>' +
-            "<p>Overall monitoring status: <strong>" + esc(st.label) + "</strong></p>" +
             "<p>Camera availability: " + pct(camPct) + "% · Face visibility: " + pct(facePct) +
             "% · Multiple face events: " + ((_state && _state.multiFace) || 0) +
             " · Focus changes: " + ((_state && _state.focusChanges) || 0) +
@@ -464,7 +720,10 @@
     root.querySelectorAll("[data-qx-pr-print]").forEach(function (b) {
       b.onclick = function (e) {
         if (e) { e.preventDefault(); e.stopPropagation(); }
-        try { window.print(); } catch (_) { /* */ }
+        try {
+          document.body.setAttribute("data-qx-print-mode", "report");
+          window.print();
+        } catch (_) { /* */ }
       };
     });
   }
@@ -472,9 +731,14 @@
   function mountReport(host, data) {
     if (!host) return;
     ensureCss();
+    ensureState({ title: (data && data.title) || "Assessment" });
+    if (host.querySelector && host.querySelector("#qxPrReport")) return;
     var wrap = document.createElement("div");
     wrap.innerHTML = reportHtml(data);
-    host.insertAdjacentElement("afterbegin", wrap.firstChild);
+    var node = wrap.firstChild;
+    var rc = host.querySelector && host.querySelector("#mkRcView");
+    if (rc && rc.parentNode) rc.parentNode.insertBefore(node, rc.nextSibling);
+    else host.insertAdjacentElement("afterbegin", node);
     bindReport(host);
   }
 
@@ -503,14 +767,14 @@
           '<div class="qx-pr-hero">' +
             '<p class="qx-pr-kicker">Quantrex Academy</p>' +
             "<h2>AI-Proctored Test</h2>" +
-            "<p>Camera stills are captured only when you switch tabs or a potential integrity event is flagged. Video is never recorded.</p>" +
+            "<p>Camera stills are captured only when a potential integrity event is flagged. Video is never recorded. Flags are for review — the test is never auto-failed.</p>" +
             '<p class="qx-pr-motto">Concept Create Destiny</p>' +
           "</div>" +
           '<div class="qx-pr-body">' +
             "<ul class=\"qx-pr-list\">" +
-              "<li><i class=\"qx-pr-dot\"></i><span>Camera stays on in a small preview. No continuous video file is saved.</span></li>" +
-              "<li><i class=\"qx-pr-dot\"></i><span>Tab switch, focus loss, full-screen exit, or camera drop takes a still photo for review.</span></li>" +
-              "<li><i class=\"qx-pr-dot\"></i><span>AI flags are review indicators — never an automatic cheating verdict.</span></li>" +
+              "<li><i class=\"qx-pr-dot\"></i><span>Small live preview stays at the top so questions stay fully visible.</span></li>" +
+              "<li><i class=\"qx-pr-dot\"></i><span>Tab switch, focus loss, copy/paste, print, full-screen exit, or camera drop can take a still (max 8 JPEGs).</span></li>" +
+              "<li><i class=\"qx-pr-dot\"></i><span>Integrity intelligence scores the session for a human reviewer. Never an automatic cheating verdict.</span></li>" +
               "<li><i class=\"qx-pr-dot\"></i><span>Stills stay on this device for this session. Event counts may be stored with your result.</span></li>" +
             "</ul>" +
             '<div class="qx-pr-checks" id="qxPrChecks"></div>' +
@@ -519,7 +783,7 @@
               '<button type="button" class="qx-pr-btn qx-pr-btn-gold" id="qxPrStart" disabled>Start AI-Proctored Test</button>' +
               '<button type="button" class="qx-pr-btn qx-pr-btn-ghost" id="qxPrSkip">Continue without camera</button>' +
             "</div>" +
-            '<p class="qx-pr-note">Continuing without a camera is logged as a high-priority review event.</p>' +
+            '<p class="qx-pr-note">Continuing without a camera is logged as a high-priority review event. Integrity signals (tab, copy, print) still run.</p>' +
           "</div>" +
         "</div>";
       document.body.appendChild(overlay);
@@ -532,7 +796,8 @@
         net: row("Internet"),
         br: row("Browser"),
         fs: row("Full-screen"),
-        tab: row("Tab-switch detection")
+        tab: row("Tab-switch detection"),
+        intel: row("Integrity intelligence")
       };
       function row(lab) {
         var d = document.createElement("div");
@@ -549,6 +814,7 @@
       setRow(rows.br, true, (navigator.userAgent.match(/Chrome|Edg|Firefox|Safari|CriOS/) || ["Browser"])[0]);
       setRow(rows.tab, typeof document.hidden === "boolean", typeof document.hidden === "boolean" ? "Ready" : "Limited");
       setRow(rows.fs, !!(document.documentElement.requestFullscreen || document.documentElement.webkitRequestFullscreen), "Available");
+      setRow(rows.intel, true, "Review-grade");
 
       function syncStart() {
         startBtn.disabled = !(consent.checked && _stream);
@@ -596,7 +862,8 @@
     try { list = JSON.parse(localStorage.getItem(LOG_KEY) || "[]") || []; } catch (_) { list = []; }
     if (!list.length) return "";
     return '<div class="qx-pr-sec"><h3>My Performance</h3><ul>' + list.slice(0, 8).map(function (r) {
-      return "<li>" + esc(r.title || "Test") + " — " + (r.reviewCount || 0) + " review events</li>";
+      return "<li>" + esc(r.title || "Test") + " — " + (r.reviewCount || 0) + " review events" +
+        (r.intelScore != null ? " · integrity " + r.intelScore : "") + "</li>";
     }).join("") + "</ul></div>";
   }
 
@@ -614,6 +881,10 @@
     historyHtml: historyHtml,
     getState: function () { return _state; },
     showTabSwitchWarn: showTabSwitchWarn,
-    isGating: function () { return _gating; }
+    isGating: function () { return _gating; },
+    noteNav: noteNav,
+    noteExternal: noteExternal,
+    ensureState: ensureState,
+    integrityIntel: integrityIntel
   };
 })(typeof window !== "undefined" ? window : this);

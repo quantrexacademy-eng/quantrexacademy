@@ -30,12 +30,44 @@
 .qx-pr-btn:disabled{opacity:.5;cursor:wait}
 .qx-pr-note{font-size:12px;color:#94a3b8;margin-top:12px;line-height:1.45}
 
-.qx-pr-pip{
-  position:fixed;right:14px;bottom:calc(72px + env(safe-area-inset-bottom,0px));z-index:2147483002;
-  width:132px;border-radius:14px;overflow:hidden;border:1px solid rgba(212,175,55,.45);
-  box-shadow:0 12px 32px rgba(0,0,0,.4);background:#0b1220
+/* qxmd297: PIP stays TOP so stem, options, and footer never hide — website AND app */
+.qx-pr-pip,
+.qx-pr-pip.qx-pr-pip-top{
+  position:fixed !important;
+  top: calc(6px + env(safe-area-inset-top, 0px)) !important;
+  right: 10px !important;
+  bottom: auto !important;
+  left: auto !important;
+  z-index:2147483002;
+  width:88px;
+  border-radius:12px;overflow:hidden;border:1px solid rgba(212,175,55,.45);
+  box-shadow:0 10px 24px rgba(0,0,0,.4);background:#0b1220;
+  pointer-events:auto;
 }
-.qx-pr-pip video,.qx-pr-pip canvas{display:block;width:100%;height:88px;object-fit:cover;background:#111}
+.qx-pr-pip video,.qx-pr-pip canvas{display:block;width:100%;height:56px;object-fit:cover;background:#111}
+html[data-qx-shell="web"] body.marks-test-active .qx-pr-pip,
+html[data-qx-shell="web"] body.allen-cbt-active .qx-pr-pip{
+  top: calc(4px + env(safe-area-inset-top, 0px)) !important;
+  right: 292px !important;
+  width: 80px;
+}
+html[data-qx-shell="app"] .qx-pr-pip{
+  top: calc(52px + env(safe-area-inset-top, 0px)) !important;
+  right: 8px !important;
+  width: 76px;
+}
+@media (max-width: 900px){
+  html[data-qx-shell="web"] body.marks-test-active .qx-pr-pip,
+  html[data-qx-shell="web"] body.allen-cbt-active .qx-pr-pip{
+    right: 8px !important;
+    top: calc(4px + env(safe-area-inset-top, 0px)) !important;
+    width: 72px;
+  }
+  html[data-qx-shell="app"] .qx-pr-pip{
+    top: calc(48px + env(safe-area-inset-top, 0px)) !important;
+    width: 70px;
+  }
+}
 .qx-pr-pip-bar{display:flex;align-items:center;gap:6px;padding:6px 8px;background:#0b1220;color:#f8fafc;font-size:10px;font-weight:800;letter-spacing:.04em}
 .qx-pr-live{width:7px;height:7px;border-radius:50%;background:#4ade80;box-shadow:0 0 8px #4ade80}
 

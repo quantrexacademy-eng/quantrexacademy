@@ -290,11 +290,21 @@ html body .eg-test-root[data-eg-mode="test"] .eg-info-meta {
 }
 
 /* ===== Question + options: never clip KaTeX ===== */
-html body .eg-test-root[data-eg-mode="test"] .eg-body,
+html body .eg-test-root[data-eg-mode="test"] .eg-body {
+  background: #fff !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  padding-bottom: calc(120px + env(safe-area-inset-bottom, 0px)) !important;
+}
 html body .eg-test-root[data-eg-mode="test"] .eg-main,
 html body .eg-test-root[data-eg-mode="test"] .eg-q-card {
   background: #fff !important;
   overflow: visible !important;
+  height: auto !important;
+  max-height: none !important;
 }
 html body .eg-test-root[data-eg-mode="test"] #egQArea,
 html body .eg-test-root[data-eg-mode="test"] .eg-q-stem {

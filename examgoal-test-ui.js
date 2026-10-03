@@ -3418,6 +3418,9 @@ function forceFootVisible(force) {
       }
       if (typeof Mx !== "undefined" && Mx.recoverGluedStemInDom) Mx.recoverGluedStemInDom(root);
     } catch (_) { /* */ }
+    try {
+      if (typeof window.qxAutoFitQuestion === "function") window.qxAutoFitQuestion(root);
+    } catch (_) { /* */ }
   }
 
   function syncTheme(mode) {
