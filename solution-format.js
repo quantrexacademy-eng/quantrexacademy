@@ -1604,7 +1604,8 @@ const QuantrexSolution = (() => {
       try { html = polishScientificSymbols(html); } catch (_) { /* */ }
     }
     try {
-      if (typeof Mx !== "undefined" && Mx.looksKatexHtmlLeak && Mx.looksKatexHtmlLeak(html)) {
+      var _liveKx = /<span\b[^>]*class=["'][^"']*\bkatex\b/i.test(html) && !/spanclass/i.test(html);
+      if (!_liveKx && typeof Mx !== "undefined" && Mx.looksKatexHtmlLeak && Mx.looksKatexHtmlLeak(html)) {
         if (Mx.recoverLetterSpacedKatexHtml) html = Mx.recoverLetterSpacedKatexHtml(html);
       }
     } catch (_) { /* */ }
@@ -1613,7 +1614,7 @@ const QuantrexSolution = (() => {
       const looksSpaced = (typeof Mx !== "undefined" && Mx.looksLetterSpacedMarkup)
         ? Mx.looksLetterSpacedMarkup(html)
         : /<\s*[a-z]\s+[a-z]\s+[a-z]|c\s+l\s+a\s+s\s+s\s*=|k\s+a\s+t\s+e\s+x/i.test(html);
-      if (looksSpaced) {
+      if (looksSpaced && !(/<span\b[^>]*class=["'][^"']*\bkatex\b/i.test(html) && !/spanclass/i.test(html))) {
         if (typeof Mx !== "undefined" && Mx.recoverLetterSpacedKatexHtml) {
           html = Mx.recoverLetterSpacedKatexHtml(html);
         }

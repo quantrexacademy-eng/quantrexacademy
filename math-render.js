@@ -1380,21 +1380,36 @@ window.Mx = (() => {
   function looksKatexHtmlLeak(s) {
     const t = String(s || "");
     if (!t) return false;
-    return /spanclass/i.test(t)
-      || /katex\s*-\s*(?:display|html|mathml)/i.test(t)
-      || (/\baria\s*-\s*hidden/i.test(t) && /\bstrut\b/i.test(t))
-      || (/<\s*\/?\s*span/i.test(t) && /\bmord\b/.test(t) && /\bstrut\b/.test(t));
+    /* Dump tokens only. `katex\s*-` / `aria\s*-` also match live `katex-display`
+       and `aria-hidden` — those must not count as a leak (qxmd289 regression). */
+    const dump = /spanclass/i.test(t)
+      || /katex\s+-\s+(?:display|html|mathml)/i.test(t)
+      || /aria\s+-\s+hidden/i.test(t)
+      || /&lt;\s*span[^&]*katex/i.test(t)
+      || /&lt;spanclass/i.test(t)
+      || /<\s+[a-zA-Z]\s+[a-zA-Z]\s+[a-zA-Z]/.test(t);
+    if (!dump) return false;
+    if (hasRealKatexHtml(t)
+        && !/spanclass/i.test(t)
+        && !/katex\s+-\s+(?:display|html|mathml)/i.test(t)
+        && !/<\s+[a-zA-Z]\s+[a-zA-Z]/.test(t)
+        && !/&lt;\s*span/i.test(t)) {
+      return false;
+    }
+    return true;
   }
 
   function looksLetterSpacedMarkup(s) {
     const t = String(s || "");
     if (!t) return false;
-    if (looksKatexHtmlLeak(t)) return true;
     // Real KaTeX HTML is NOT letter-spaced (mord mathnormal is a real class).
-    if (/<span\b[^>]*class=["'][^"']*\bkatex\b/i.test(t) && !/spanclass/i.test(t)
-      && !/<\s*[a-zA-Z]\s+[a-zA-Z]\s+[a-zA-Z]/.test(t)) {
+    if (hasRealKatexHtml(t)
+      && !/spanclass/i.test(t)
+      && !/<\s*[a-zA-Z]\s+[a-zA-Z]\s+[a-zA-Z]/.test(t)
+      && !/k\s+a\s+t\s+e\s+x/.test(t)) {
       return false;
     }
+    if (looksKatexHtmlLeak(t)) return true;
     return /<\s*[a-zA-Z]\s+[a-zA-Z]\s+[a-zA-Z]/.test(t)
       || /c\s+l\s+a\s+s\s+s\s*=/.test(t)
       || /k\s+a\s+t\s+e\s+x/.test(t)
@@ -4887,6 +4902,13 @@ window.Mx = (() => {
     const raw = String(s || "");
     if (!/katex/i.test(raw)) return raw;
     if (!/(strut|aria\s*-\s*hidden|spanclass|mord|vlist)/i.test(raw)) return raw;
+    /* Never flatten live typeset HTML (span+mord+strut is normal KaTeX). */
+    if (hasRealKatexHtml(raw)
+        && !/spanclass/i.test(raw)
+        && !/katex\s+-\s+(?:display|html|mathml)/i.test(raw)
+        && !/<\s*[a-zA-Z]\s+[a-zA-Z]\s+[a-zA-Z]/.test(raw)) {
+      return raw;
+    }
     if (hasRealKatexHtml(raw) && !looksLetterSpacedMarkup(raw)) return raw;
     let out = raw;
     out = out.replace(/<\/?span\b[^>]*>/gi, " ");
@@ -5061,6 +5083,12 @@ window.Mx = (() => {
   function htmlCore(content) {
     if (content == null) return "";
     try { loadKatex(); } catch (_) { /* */ }
+    if (hasRealKatexHtml(content)
+        && !/spanclass/i.test(String(content))
+        && !/katex\s+-\s+(?:display|html|mathml)/i.test(String(content))
+        && !looksLetterSpacedMarkup(content)) {
+      return repairSpacedKatexTags(String(content));
+    }
     if (looksKatexHtmlLeak(content) || looksLetterSpacedMarkup(content) || /&lt;\s*span[^&]*katex/i.test(String(content))) {
       try { content = recoverLetterSpacedKatexHtml(content); } catch (_) { /* */ }
     }
@@ -6094,7 +6122,7 @@ window.Mx = (() => {
     if (!el || !el.querySelectorAll) return;
     const SEL = "#egSol, .eg-sol, .sol-body, .qx-sol-body, .qx-sol-flow, .qx-sol-card, #egSolPanel, " +
       "#egQArea, .eg-q-stem, .mtk-q-text, .qx-q-seg-text, .qx-q-text-only, " +
-      ".mtk-opt-text, .qx-prac-opt-text, #qxOpts, .eg-opts, #qaSolReveal, .qx-content";
+      ".mtk-opt-text, .qx-prac-opt-text, #qxOpts, .eg-opts, #qaSolReveal";
     let hosts = [];
     try { hosts = Array.prototype.slice.call(el.querySelectorAll(SEL), 0, 32); } catch (_) { hosts = []; }
     try {
@@ -6107,7 +6135,10 @@ window.Mx = (() => {
       let raw = "";
       try { raw = host.innerHTML || ""; } catch (_) { return; }
       const text = String(host.textContent || "");
-      if (!looksKatexHtmlLeak(raw) && !looksKatexHtmlLeak(text) && !/&lt;\s*span[^&]*katex/i.test(raw)) return;
+      const hasLiveKatex = !!(host.querySelector && host.querySelector(".katex, .katex-display, .katex-html"));
+      const dumpish = looksKatexHtmlLeak(raw) || looksKatexHtmlLeak(text) || /&lt;\s*span[^&]*katex/i.test(raw);
+      if (hasLiveKatex && !dumpish) return;
+      if (!dumpish) return;
       try {
         const walker = document.createTreeWalker(host, NodeFilter.SHOW_TEXT, null);
         const dumpNodes = [];
@@ -6117,11 +6148,16 @@ window.Mx = (() => {
           if (n.parentElement && n.parentElement.closest && n.parentElement.closest(".katex, .katex-html, math, script, style, annotation")) continue;
           if (looksKatexHtmlLeak(n.nodeValue) || /&lt;\s*span[^&]*katex/i.test(n.nodeValue)) dumpNodes.push(n);
         }
+        if (hasLiveKatex) {
+          dumpNodes.forEach((n) => { try { n.nodeValue = ""; } catch (_) { /* */ } });
+          return;
+        }
         if (dumpNodes.length && host.querySelector && host.querySelector(".katex, .katex-display")) {
           dumpNodes.forEach((n) => { try { n.nodeValue = ""; } catch (_) { /* */ } });
           return;
         }
       } catch (_) { /* */ }
+      if (hasLiveKatex) return;
       let s = String(raw)
         .replace(/&lt;/gi, "<")
         .replace(/&gt;/gi, ">")
@@ -6254,6 +6290,7 @@ window.Mx = (() => {
     recoverSmashedOptionsInDom,
     recoverKatexLeakInDom,
     looksKatexHtmlLeak,
+    hasRealKatexHtml,
     wrapBareSetLatex,
     cleanDom,
     fixWordSpacing,

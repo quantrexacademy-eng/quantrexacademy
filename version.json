@@ -1,10 +1,10 @@
 {
-  "cache": "qx-pwa-qxmd289",
-  "ts": 1791100000289,
-  "title": "qxmd289: Q+sol format, generate, bold voice, AI proctor stills",
+  "cache": "qx-pwa-qxmd290",
+  "ts": 1791100000290,
+  "title": "qxmd290: keep live KaTeX in question and solution",
   "site": "https://www.quantrexacademy.com",
-  "build": "qxmd289",
-  "body": "KaTeX HTML leaks and glued PYQ stems recovered. Generate Practice sits above Previous|Check|Next and produces questions. Practice voice plays heavier. Timed tests use still-photo AI proctoring (no video) with a professional report.",
+  "build": "qxmd290",
+  "body": "Question and solution format: live KaTeX is no longer treated as a dumped HTML leak, so Check Answer keeps the structured SOLUTION card, typeset math, log, powers, and fractions.",
   "package": "com.quantrexacademy.app",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }

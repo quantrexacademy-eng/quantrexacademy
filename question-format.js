@@ -1910,7 +1910,7 @@ const QuantrexQFormat = (() => {
           var n = w.currentNode;
           if (!n || !n.nodeValue) continue;
           if (n.parentElement && n.parentElement.closest && n.parentElement.closest(".katex, .katex-html, math, script, style")) continue;
-          var leak = /spanclass|katex\s*-\s*(?:display|html)|aria\s*-\s*hidden|\bstrut\b/i.test(n.nodeValue)
+          var leak = /spanclass|katex\s+-\s+(?:display|html)|aria\s+-\s+hidden/i.test(n.nodeValue)
             || /&lt;\s*span[^&]*katex/i.test(n.nodeValue);
           if (leak) {
             nodes.push({ n: n, leak: true });
@@ -1937,7 +1937,7 @@ const QuantrexQFormat = (() => {
           .replace(/&#(\d+);/g, function (_, d) {
             try { return String.fromCharCode(+d); } catch (e) { return ""; }
           });
-        if (/spanclass|katex\s*-\s*(?:display|html)|<\s*span/i.test(t)) {
+        if (/spanclass|katex\s+-\s+(?:display|html)|&lt;\s*span/i.test(t)) {
           needRecover = true;
           return;
         }
