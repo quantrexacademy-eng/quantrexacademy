@@ -61,12 +61,15 @@
     return urls;
   }
 
-  function urlsFromQuestion(q) {
+  function urlsFromQuestion(q, opts) {
     if (!q) return [];
     const set = new Set();
-    extractImgUrls(q.q).forEach((u) => set.add(u));
-    (q.options || []).forEach((o) => extractImgUrls(o).forEach((u) => set.add(u)));
-    // Do not prefetch full solutions by default (bandwidth) — only on demand
+    extractImgUrls(q.q || q.stem || q.question || "").forEach((u) => set.add(u));
+    (q.options || []).forEach((o) => extractImgUrls(typeof o === "string" ? o : (o && (o.html || o.text || o.value)) || "").forEach((u) => set.add(u)));
+    if (opts && opts.includeSol) {
+      const sol = q.sol || q.solution || q.solutionHtml || q.officialSolution || q.solHtml || q.explanation || "";
+      extractImgUrls(sol).slice(0, 2).forEach((u) => set.add(u));
+    }
     return [...set];
   }
 
@@ -167,9 +170,9 @@
     } catch (_) { /* */ }
   }
 
-  function prefetchQuestionFigures(q, priority) {
+  function prefetchQuestionFigures(q, priority, opts) {
     if (!q) return;
-    const urls = urlsFromQuestion(q);
+    const urls = urlsFromQuestion(q, opts);
     urls.forEach((u, i) => {
       void preloadUrl(u, priority === "high" && i === 0 ? "high" : priority || "low");
       if (priority === "high" && i === 0) linkPreload(u, "high");
@@ -205,7 +208,7 @@
       if (i < 0 || i >= ids.length) return;
       try {
         const q = getQ(ids[i]);
-        if (q) prefetchQuestionFigures(q, p);
+        if (q) prefetchQuestionFigures(q, p, p === "high" ? { includeSol: true } : null);
       } catch (_) { /* */ }
     });
   }

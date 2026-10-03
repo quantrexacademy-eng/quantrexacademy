@@ -1,10 +1,10 @@
 {
-  "cache": "qx-pwa-qxmd283",
-  "ts": 1791000000283,
-  "title": "qxmd283: Submit works + Test Series question/solution format proofread",
+  "cache": "qx-pwa-qxmd284",
+  "ts": 1791000000284,
+  "title": "qxmd284: sitewide polish — folder motion, question/solution/figures, faster load",
   "site": "https://www.quantrexacademy.com",
-  "build": "qxmd283",
-  "body": "NTA Submit opens the confirm modal on website and Play app. Test Series questions restored from official ExamGoal/Quizrr: math format, figures, solutions. Empty official solutions left empty. Answers unchanged.",
+  "build": "qxmd284",
+  "body": "2D folder/dashboard icon motion (no 3D flip). Question, option, solution and figures stay visible on mobile. Homepage, dashboard and toolbar contrast. Faster question figure prefetch. Login polish. NTA Submit and MARKS chrome unchanged.",
   "package": "com.quantrexacademy.app",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }

@@ -225,8 +225,10 @@ html:not([data-theme="dark"]) .qx-ch-icon {
   animation-duration: 2.2s;
 }
 @keyframes qxIconSpin {
-  /* qxmd260: never rotateY — a 180deg face is blank on chapter/module icons */
-  0%, 100% { transform: none; }
+  /* qxmd284: 2D bob only. Never rotateY — a 180deg face blanks chapter icons. */
+  0%, 100% { translate: 0 0; rotate: 0deg; }
+  40% { translate: 0 -5px; rotate: 2.2deg; }
+  70% { translate: 0 -2px; rotate: -1.4deg; }
 }
 @media (prefers-reduced-motion: reduce) {
   .qx-ch-icon.qx-ch-3d img.qx-ch-3d-img,

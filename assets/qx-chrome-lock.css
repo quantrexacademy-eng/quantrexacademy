@@ -3410,4 +3410,322 @@ html body #mtkSubmitModal [data-qx-submit-cancel] {
   cursor: pointer !important;
 }
 
+/* ===== qxmd284: sitewide polish — 2D icon float, Q/sol/fig, home/dash/toolbar =====
+   Beats qxmd260 animation:none. Uses CSS translate/rotate (Z) so transform:none
+   on icons cannot blank a 3D face. Never rotateY / preserve-3d. */
+@keyframes qxFloat2d {
+  0%, 100% { translate: 0 0; rotate: 0deg; }
+  35% { translate: 0 -5px; rotate: 2.4deg; }
+  70% { translate: 0 -2px; rotate: -1.6deg; }
+}
+@keyframes qxDashLiftIn {
+  from { opacity: 0; translate: 0 10px; }
+  to { opacity: 1; translate: 0 0; }
+}
+
+html body .qx-ch-icon,
+html body .dash-ic,
+html body .dash-tool-ic,
+html body .exam-pill-ic,
+html body .cpyqb-exam-tile-ic,
+html body #app-main .qx-ch-icon,
+html body #app-main .dash-tool-ic,
+html body #app-main .dash-ic,
+html[data-theme="light"] .qx-ch-icon,
+html[data-theme="dark"] .qx-ch-icon,
+html[data-theme="light"] .dash-ic,
+html[data-theme="dark"] .dash-ic {
+  animation: qxFloat2d 3.8s ease-in-out infinite !important;
+  transform-style: flat !important;
+  backface-visibility: visible !important;
+  perspective: none !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  content-visibility: visible !important;
+  will-change: translate, rotate;
+}
+html body .qx-module-ic:not(:has(.qx-ch-icon)),
+html body .qx-folder-ic:not(:has(.qx-ch-icon)),
+html body .qx-topic-ic:not(:has(.qx-ch-icon)),
+html body .subj-ic:not(:has(.qx-ch-icon)),
+html body .qx-med-subj-ic:not(:has(.qx-ch-icon)) {
+  animation: qxFloat2d 3.8s ease-in-out infinite !important;
+  transform-style: flat !important;
+  backface-visibility: visible !important;
+  perspective: none !important;
+}
+html body .qx-folder-ic:has(.qx-ch-icon),
+html body .qx-topic-ic:has(.qx-ch-icon),
+html body .subj-ic:has(.qx-ch-icon),
+html body .qx-module-ic:has(.qx-ch-icon),
+html body .qx-med-subj-ic:has(.qx-ch-icon),
+html body .dash-tool-ic:has(.qx-ch-icon),
+html body .exam-pill-ic:has(.qx-ch-icon),
+html body .cpyqb-exam-tile-ic:has(.qx-ch-icon) {
+  animation: none !important;
+}
+html body .qx-ch-icon img,
+html body .qx-ch-3d-img,
+html body .qx-ch-glyph-img,
+html body .qx-module-ic img,
+html body .qx-folder-ic img,
+html body .qx-topic-ic img,
+html body .subj-ic img,
+html body .qx-med-subj-ic img,
+html body img.qx-exam-logo,
+html body img.qx-marks-icon,
+html body img.dash-tool-logo,
+html body img.exam-pill-logo,
+html body img.exam-card-logo,
+html body img.cpyqb-exam-tile-logo,
+html[data-theme="light"] .qx-ch-3d-img,
+html[data-theme="dark"] .qx-ch-3d-img {
+  animation: none !important;
+  transform-style: flat !important;
+  backface-visibility: visible !important;
+  perspective: none !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  content-visibility: visible !important;
+}
+html body .qx-topic-card:nth-child(3n) .qx-ch-icon,
+html body .qx-topic-card:nth-child(3n) .qx-ch-3d-img,
+html body .ch-card:nth-child(3n) .qx-ch-icon,
+html body .dash-card:nth-child(3n) .dash-ic {
+  animation-delay: .35s !important;
+}
+html body .qx-topic-card:nth-child(3n+1) .qx-ch-icon,
+html body .qx-topic-card:nth-child(3n+1) .qx-ch-3d-img,
+html body .ch-card:nth-child(3n+1) .qx-ch-icon,
+html body .dash-card:nth-child(3n+1) .dash-ic {
+  animation-delay: .12s !important;
+}
+html body .qx-topic-card:nth-child(3n+2) .qx-ch-icon,
+html body .qx-topic-card:nth-child(3n+2) .qx-ch-3d-img,
+html body .ch-card:nth-child(3n+2) .qx-ch-icon,
+html body .dash-card:nth-child(3n+2) .dash-ic {
+  animation-delay: .62s !important;
+}
+html body .qx-topic-card:hover .qx-ch-icon,
+html body .qx-topic-card:hover .qx-ch-3d-img,
+html body .qx-folder-card:hover .qx-ch-icon,
+html body .ch-card:hover .qx-ch-icon,
+html body .dash-card:hover .dash-ic,
+html body .dash-card:hover .dash-tool-ic {
+  animation-duration: 1.55s !important;
+}
+html body .qx-topic-card,
+html body .ch-card.qx-topic-card,
+html body .qx-folder-card,
+html body .dash-card,
+html body .subj-card {
+  transition: transform .22s cubic-bezier(.22, 1, .36, 1), box-shadow .22s ease !important;
+}
+html body .qx-topic-card:hover,
+html body .ch-card.qx-topic-card:hover,
+html body .qx-folder-card:hover,
+html body .dash-card:hover,
+html body .subj-card:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 14px 32px rgba(21, 101, 192, .16) !important;
+}
+html body .dash-card {
+  animation: qxDashLiftIn .45s cubic-bezier(.22, 1, .36, 1) both;
+}
+html:not([data-theme="dark"]) .dash-card,
+html[data-theme="light"] .dash-card,
+html:not([data-theme="dark"]) .qx-topic-card,
+html[data-theme="light"] .qx-topic-card {
+  background: #ffffff !important;
+  color: #0f172a !important;
+}
+html:not([data-theme="dark"]) .dash-card strong,
+html[data-theme="light"] .dash-card strong,
+html:not([data-theme="dark"]) .qx-topic-name,
+html[data-theme="light"] .qx-topic-name {
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+html:not([data-theme="dark"]) .dash-ic,
+html:not([data-theme="dark"]) .qx-ch-icon,
+html:not([data-theme="dark"]) .qx-ch-3d-img,
+html[data-theme="light"] .dash-ic,
+html[data-theme="light"] .qx-ch-icon,
+html[data-theme="light"] .qx-ch-3d-img {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+html body .eg-test-root .eg-top,
+html body .mtk-test-root .eg-top,
+html body #app-main .eg-test-root .eg-top {
+  background: #1565C0 !important;
+  position: relative !important;
+  bottom: auto !important;
+}
+html body .eg-top-tools .eg-tool-btn,
+html body .qx-prac-tools .eg-tool-btn {
+  transition: transform .12s ease !important;
+  pointer-events: auto !important;
+}
+html body .eg-top-tools .eg-tool-btn:active,
+html body .qx-prac-tools .eg-tool-btn:active {
+  transform: scale(0.94) !important;
+}
+html body .eg-top-tools .eg-tip,
+html body .qx-prac-tools .eg-tip {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+html body #app-main .eg-test-root #egQArea,
+html body #app-main .eg-test-root .eg-q-stem,
+html body #app-main .eg-test-root #qxOpts,
+html body #app-main .eg-test-root .eg-opts,
+html body #app-main .qzrr-cbt #qzrrQArea,
+html body #app-main .qzrr-cbt .qzrr-q-area,
+html body #app-main .eg-test-root.qx-sol-showing #egQArea,
+html body #app-main .eg-test-root.qx-sol-showing .eg-q-stem,
+html body #app-main .eg-test-root.qx-sol-showing #qxOpts,
+html body .eg-test-root.qx-sol-showing #egQArea,
+html body .eg-test-root.qx-sol-showing .eg-q-stem {
+  visibility: visible !important;
+  opacity: 1 !important;
+  overflow: visible !important;
+  max-height: none !important;
+  height: auto !important;
+}
+html body #egSolPanel,
+html body .qx-sol-card,
+html body .qx-sol-flow,
+html body #egSolPanel .qx-sol-flow {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  float: none !important;
+  max-width: 100% !important;
+}
+html body #app-main .eg-q-stem img,
+html body #app-main #egQArea img,
+html body #app-main #qxOpts img,
+html body #app-main .qzrr-q-area img,
+html body #app-main .mtk-opt img,
+html body #app-main .qx-sol-flow img,
+html body #app-main .qx-sol-card img,
+html body #app-main .qx-sol-fig,
+html body #app-main img.qx-pool-fig,
+html body #app-main img.qx-fig-img,
+html body #egSolPanel img {
+  display: block !important;
+  float: none !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  max-width: min(100%, 520px) !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain !important;
+  background: #ffffff !important;
+  content-visibility: visible !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+html body #app-main .qzrr-cbt #qxClearBtn,
+html body #app-main .qzrr-cbt #qxPrevBtn,
+html body #app-main .qzrr-cbt #qxReviewNextBtn,
+html body #app-main .qzrr-cbt #qxSaveBtn {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+html body #egFoot,
+html body .eg-foot-practice,
+html body #app-main #egFoot {
+  display: flex !important;
+  pointer-events: auto !important;
+  visibility: visible !important;
+  z-index: 40 !important;
+}
+html body #egFoot #qxPrevBtn,
+html body #egFoot #qxNextBtn,
+html body .eg-foot-practice #qxPrevBtn,
+html body .eg-foot-practice #qxNextBtn {
+  display: inline-flex !important;
+  pointer-events: auto !important;
+  visibility: visible !important;
+  min-height: 52px !important;
+}
+
+@media (max-width: 768px) {
+  html body #app-main .eg-test-root .eg-body,
+  html body #app-main .qzrr-cbt .qzrr-main {
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    min-height: 0 !important;
+  }
+  html body #app-main .eg-test-root #egQArea,
+  html body #app-main .qzrr-cbt #qzrrQArea,
+  html body #app-main .eg-q-stem,
+  html body #app-main .qzrr-q-area {
+    padding-bottom: 8px !important;
+  }
+  html body #app-main .qzrr-cbt #qxClearBtn,
+  html body #app-main .qzrr-cbt #qxPrevBtn,
+  html body #app-main .qzrr-cbt #qxReviewNextBtn,
+  html body #app-main .qzrr-cbt #qxSaveBtn,
+  html body #app-main .qzrr-cbt #qxSubmitBtn,
+  html body #app-main .qzrr-cbt #qxSubmitTop {
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  html body .eg-fmt-pop.eg-vs-marks,
+  html body #pracViewPanel.eg-vs-marks {
+    max-height: 82vh !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html body .qx-ch-icon,
+  html body .qx-module-ic,
+  html body .qx-folder-ic,
+  html body .qx-topic-ic,
+  html body .subj-ic,
+  html body .qx-med-subj-ic,
+  html body .dash-tool-ic,
+  html body .dash-ic,
+  html body .exam-pill-ic,
+  html body .cpyqb-exam-tile-ic,
+  html body .qx-ch-icon img,
+  html body .qx-ch-3d-img,
+  html body .qx-ch-glyph-img,
+  html body .qx-module-ic img,
+  html body .qx-folder-ic img,
+  html body .qx-topic-ic img,
+  html body .subj-ic img,
+  html body .qx-med-subj-ic img,
+  html body img.qx-exam-logo,
+  html body img.dash-tool-logo,
+  html body img.exam-pill-logo,
+  html body .dash-card,
+  html body .qx-topic-card,
+  html body .eg-top-tools .eg-tool-btn {
+    animation: none !important;
+    transition: none !important;
+  }
+  html body .qx-topic-card:hover,
+  html body .dash-card:hover,
+  html body .qx-folder-card:hover,
+  html body .subj-card:hover,
+  html body .eg-top-tools .eg-tool-btn:active {
+    transform: none !important;
+  }
+}
+
 
