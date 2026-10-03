@@ -1,0 +1,870 @@
+{
+  "build": "qxmd287",
+  "count": 96,
+  "clips": [
+    {
+      "id": "god-right-hi-01",
+      "role": "god",
+      "side": "right",
+      "lang": "hi",
+      "style": "blessing",
+      "voice": "atlas",
+      "file": "god/right/hi/01.mp3"
+    },
+    {
+      "id": "god-right-hi-02",
+      "role": "god",
+      "side": "right",
+      "lang": "hi",
+      "style": "blessing",
+      "voice": "orion",
+      "file": "god/right/hi/02.mp3"
+    },
+    {
+      "id": "god-right-hi-03",
+      "role": "god",
+      "side": "right",
+      "lang": "hi",
+      "style": "deep",
+      "voice": "helios",
+      "file": "god/right/hi/03.mp3"
+    },
+    {
+      "id": "god-right-hi-04",
+      "role": "god",
+      "side": "right",
+      "lang": "hi",
+      "style": "deep",
+      "voice": "zenith",
+      "file": "god/right/hi/04.mp3"
+    },
+    {
+      "id": "god-right-hi-05",
+      "role": "god",
+      "side": "right",
+      "lang": "hi",
+      "style": "calm",
+      "voice": "lumen",
+      "file": "god/right/hi/05.mp3"
+    },
+    {
+      "id": "god-right-hi-06",
+      "role": "god",
+      "side": "right",
+      "lang": "hi",
+      "style": "blessing",
+      "voice": "perseus",
+      "file": "god/right/hi/06.mp3"
+    },
+    {
+      "id": "god-right-hi-07",
+      "role": "god",
+      "side": "right",
+      "lang": "hi",
+      "style": "deep",
+      "voice": "atlas",
+      "file": "god/right/hi/07.mp3"
+    },
+    {
+      "id": "god-right-hi-08",
+      "role": "god",
+      "side": "right",
+      "lang": "hi",
+      "style": "calm",
+      "voice": "orion",
+      "file": "god/right/hi/08.mp3"
+    },
+    {
+      "id": "god-right-hi-09",
+      "role": "god",
+      "side": "right",
+      "lang": "hi",
+      "style": "blessing",
+      "voice": "helios",
+      "file": "god/right/hi/09.mp3"
+    },
+    {
+      "id": "god-right-hi-10",
+      "role": "god",
+      "side": "right",
+      "lang": "hi",
+      "style": "calm",
+      "voice": "zenith",
+      "file": "god/right/hi/10.mp3"
+    },
+    {
+      "id": "god-right-en-01",
+      "role": "god",
+      "side": "right",
+      "lang": "en",
+      "style": "blessing",
+      "voice": "atlas",
+      "file": "god/right/en/01.mp3"
+    },
+    {
+      "id": "god-right-en-02",
+      "role": "god",
+      "side": "right",
+      "lang": "en",
+      "style": "deep",
+      "voice": "orion",
+      "file": "god/right/en/02.mp3"
+    },
+    {
+      "id": "god-right-en-03",
+      "role": "god",
+      "side": "right",
+      "lang": "en",
+      "style": "calm",
+      "voice": "helios",
+      "file": "god/right/en/03.mp3"
+    },
+    {
+      "id": "god-right-en-04",
+      "role": "god",
+      "side": "right",
+      "lang": "en",
+      "style": "blessing",
+      "voice": "zenith",
+      "file": "god/right/en/04.mp3"
+    },
+    {
+      "id": "god-right-en-05",
+      "role": "god",
+      "side": "right",
+      "lang": "en",
+      "style": "deep",
+      "voice": "lumen",
+      "file": "god/right/en/05.mp3"
+    },
+    {
+      "id": "god-right-en-06",
+      "role": "god",
+      "side": "right",
+      "lang": "en",
+      "style": "calm",
+      "voice": "perseus",
+      "file": "god/right/en/06.mp3"
+    },
+    {
+      "id": "hero-right-hi-01",
+      "role": "hero",
+      "side": "right",
+      "lang": "hi",
+      "style": "meme",
+      "voice": "rex",
+      "file": "hero/right/hi/01.mp3"
+    },
+    {
+      "id": "hero-right-hi-02",
+      "role": "hero",
+      "side": "right",
+      "lang": "hi",
+      "style": "mass",
+      "voice": "leo",
+      "file": "hero/right/hi/02.mp3"
+    },
+    {
+      "id": "hero-right-hi-03",
+      "role": "hero",
+      "side": "right",
+      "lang": "hi",
+      "style": "punch",
+      "voice": "sal",
+      "file": "hero/right/hi/03.mp3"
+    },
+    {
+      "id": "hero-right-hi-04",
+      "role": "hero",
+      "side": "right",
+      "lang": "hi",
+      "style": "meme",
+      "voice": "naksh",
+      "file": "hero/right/hi/04.mp3"
+    },
+    {
+      "id": "hero-right-hi-05",
+      "role": "hero",
+      "side": "right",
+      "lang": "hi",
+      "style": "mass",
+      "voice": "cosmo",
+      "file": "hero/right/hi/05.mp3"
+    },
+    {
+      "id": "hero-right-hi-06",
+      "role": "hero",
+      "side": "right",
+      "lang": "hi",
+      "style": "punch",
+      "voice": "altair",
+      "file": "hero/right/hi/06.mp3"
+    },
+    {
+      "id": "hero-right-hi-07",
+      "role": "hero",
+      "side": "right",
+      "lang": "hi",
+      "style": "meme",
+      "voice": "helix",
+      "file": "hero/right/hi/07.mp3"
+    },
+    {
+      "id": "hero-right-hi-08",
+      "role": "hero",
+      "side": "right",
+      "lang": "hi",
+      "style": "mass",
+      "voice": "castor",
+      "file": "hero/right/hi/08.mp3"
+    },
+    {
+      "id": "hero-right-hi-09",
+      "role": "hero",
+      "side": "right",
+      "lang": "hi",
+      "style": "meme",
+      "voice": "rex",
+      "file": "hero/right/hi/09.mp3"
+    },
+    {
+      "id": "hero-right-hi-10",
+      "role": "hero",
+      "side": "right",
+      "lang": "hi",
+      "style": "punch",
+      "voice": "leo",
+      "file": "hero/right/hi/10.mp3"
+    },
+    {
+      "id": "hero-right-en-01",
+      "role": "hero",
+      "side": "right",
+      "lang": "en",
+      "style": "punch",
+      "voice": "rex",
+      "file": "hero/right/en/01.mp3"
+    },
+    {
+      "id": "hero-right-en-02",
+      "role": "hero",
+      "side": "right",
+      "lang": "en",
+      "style": "mass",
+      "voice": "leo",
+      "file": "hero/right/en/02.mp3"
+    },
+    {
+      "id": "hero-right-en-03",
+      "role": "hero",
+      "side": "right",
+      "lang": "en",
+      "style": "meme",
+      "voice": "sal",
+      "file": "hero/right/en/03.mp3"
+    },
+    {
+      "id": "hero-right-en-04",
+      "role": "hero",
+      "side": "right",
+      "lang": "en",
+      "style": "punch",
+      "voice": "naksh",
+      "file": "hero/right/en/04.mp3"
+    },
+    {
+      "id": "hero-right-en-05",
+      "role": "hero",
+      "side": "right",
+      "lang": "en",
+      "style": "mass",
+      "voice": "cosmo",
+      "file": "hero/right/en/05.mp3"
+    },
+    {
+      "id": "hero-right-en-06",
+      "role": "hero",
+      "side": "right",
+      "lang": "en",
+      "style": "meme",
+      "voice": "altair",
+      "file": "hero/right/en/06.mp3"
+    },
+    {
+      "id": "demon-wrong-hi-01",
+      "role": "demon",
+      "side": "wrong",
+      "lang": "hi",
+      "style": "heavy",
+      "voice": "zagan",
+      "file": "demon/wrong/hi/01.mp3"
+    },
+    {
+      "id": "demon-wrong-hi-02",
+      "role": "demon",
+      "side": "wrong",
+      "lang": "hi",
+      "style": "dark",
+      "voice": "rigel",
+      "file": "demon/wrong/hi/02.mp3"
+    },
+    {
+      "id": "demon-wrong-hi-03",
+      "role": "demon",
+      "side": "wrong",
+      "lang": "hi",
+      "style": "heavy",
+      "voice": "kepler",
+      "file": "demon/wrong/hi/03.mp3"
+    },
+    {
+      "id": "demon-wrong-hi-04",
+      "role": "demon",
+      "side": "wrong",
+      "lang": "hi",
+      "style": "dark",
+      "voice": "ursa",
+      "file": "demon/wrong/hi/04.mp3"
+    },
+    {
+      "id": "demon-wrong-hi-05",
+      "role": "demon",
+      "side": "wrong",
+      "lang": "hi",
+      "style": "heavy",
+      "voice": "helix",
+      "file": "demon/wrong/hi/05.mp3"
+    },
+    {
+      "id": "demon-wrong-hi-06",
+      "role": "demon",
+      "side": "wrong",
+      "lang": "hi",
+      "style": "dark",
+      "voice": "castor",
+      "file": "demon/wrong/hi/06.mp3"
+    },
+    {
+      "id": "demon-wrong-hi-07",
+      "role": "demon",
+      "side": "wrong",
+      "lang": "hi",
+      "style": "heavy",
+      "voice": "zagan",
+      "file": "demon/wrong/hi/07.mp3"
+    },
+    {
+      "id": "demon-wrong-hi-08",
+      "role": "demon",
+      "side": "wrong",
+      "lang": "hi",
+      "style": "dark",
+      "voice": "rigel",
+      "file": "demon/wrong/hi/08.mp3"
+    },
+    {
+      "id": "demon-wrong-hi-09",
+      "role": "demon",
+      "side": "wrong",
+      "lang": "hi",
+      "style": "heavy",
+      "voice": "kepler",
+      "file": "demon/wrong/hi/09.mp3"
+    },
+    {
+      "id": "demon-wrong-hi-10",
+      "role": "demon",
+      "side": "wrong",
+      "lang": "hi",
+      "style": "dark",
+      "voice": "ursa",
+      "file": "demon/wrong/hi/10.mp3"
+    },
+    {
+      "id": "demon-wrong-en-01",
+      "role": "demon",
+      "side": "wrong",
+      "lang": "en",
+      "style": "heavy",
+      "voice": "zagan",
+      "file": "demon/wrong/en/01.mp3"
+    },
+    {
+      "id": "demon-wrong-en-02",
+      "role": "demon",
+      "side": "wrong",
+      "lang": "en",
+      "style": "dark",
+      "voice": "rigel",
+      "file": "demon/wrong/en/02.mp3"
+    },
+    {
+      "id": "demon-wrong-en-03",
+      "role": "demon",
+      "side": "wrong",
+      "lang": "en",
+      "style": "heavy",
+      "voice": "kepler",
+      "file": "demon/wrong/en/03.mp3"
+    },
+    {
+      "id": "demon-wrong-en-04",
+      "role": "demon",
+      "side": "wrong",
+      "lang": "en",
+      "style": "dark",
+      "voice": "ursa",
+      "file": "demon/wrong/en/04.mp3"
+    },
+    {
+      "id": "demon-wrong-en-05",
+      "role": "demon",
+      "side": "wrong",
+      "lang": "en",
+      "style": "heavy",
+      "voice": "helix",
+      "file": "demon/wrong/en/05.mp3"
+    },
+    {
+      "id": "demon-wrong-en-06",
+      "role": "demon",
+      "side": "wrong",
+      "lang": "en",
+      "style": "dark",
+      "voice": "castor",
+      "file": "demon/wrong/en/06.mp3"
+    },
+    {
+      "id": "villain-wrong-hi-01",
+      "role": "villain",
+      "side": "wrong",
+      "lang": "hi",
+      "style": "mock",
+      "voice": "rex",
+      "file": "villain/wrong/hi/01.mp3"
+    },
+    {
+      "id": "villain-wrong-hi-02",
+      "role": "villain",
+      "side": "wrong",
+      "lang": "hi",
+      "style": "thunder",
+      "voice": "leo",
+      "file": "villain/wrong/hi/02.mp3"
+    },
+    {
+      "id": "villain-wrong-hi-03",
+      "role": "villain",
+      "side": "wrong",
+      "lang": "hi",
+      "style": "mock",
+      "voice": "helix",
+      "file": "villain/wrong/hi/03.mp3"
+    },
+    {
+      "id": "villain-wrong-hi-04",
+      "role": "villain",
+      "side": "wrong",
+      "lang": "hi",
+      "style": "thunder",
+      "voice": "orion",
+      "file": "villain/wrong/hi/04.mp3"
+    },
+    {
+      "id": "villain-wrong-hi-05",
+      "role": "villain",
+      "side": "wrong",
+      "lang": "hi",
+      "style": "mock",
+      "voice": "kepler",
+      "file": "villain/wrong/hi/05.mp3"
+    },
+    {
+      "id": "villain-wrong-hi-06",
+      "role": "villain",
+      "side": "wrong",
+      "lang": "hi",
+      "style": "thunder",
+      "voice": "altair",
+      "file": "villain/wrong/hi/06.mp3"
+    },
+    {
+      "id": "villain-wrong-hi-07",
+      "role": "villain",
+      "side": "wrong",
+      "lang": "hi",
+      "style": "mock",
+      "voice": "rex",
+      "file": "villain/wrong/hi/07.mp3"
+    },
+    {
+      "id": "villain-wrong-hi-08",
+      "role": "villain",
+      "side": "wrong",
+      "lang": "hi",
+      "style": "thunder",
+      "voice": "leo",
+      "file": "villain/wrong/hi/08.mp3"
+    },
+    {
+      "id": "villain-wrong-hi-09",
+      "role": "villain",
+      "side": "wrong",
+      "lang": "hi",
+      "style": "mock",
+      "voice": "helix",
+      "file": "villain/wrong/hi/09.mp3"
+    },
+    {
+      "id": "villain-wrong-hi-10",
+      "role": "villain",
+      "side": "wrong",
+      "lang": "hi",
+      "style": "thunder",
+      "voice": "orion",
+      "file": "villain/wrong/hi/10.mp3"
+    },
+    {
+      "id": "villain-wrong-en-01",
+      "role": "villain",
+      "side": "wrong",
+      "lang": "en",
+      "style": "mock",
+      "voice": "rex",
+      "file": "villain/wrong/en/01.mp3"
+    },
+    {
+      "id": "villain-wrong-en-02",
+      "role": "villain",
+      "side": "wrong",
+      "lang": "en",
+      "style": "thunder",
+      "voice": "leo",
+      "file": "villain/wrong/en/02.mp3"
+    },
+    {
+      "id": "villain-wrong-en-03",
+      "role": "villain",
+      "side": "wrong",
+      "lang": "en",
+      "style": "mock",
+      "voice": "helix",
+      "file": "villain/wrong/en/03.mp3"
+    },
+    {
+      "id": "villain-wrong-en-04",
+      "role": "villain",
+      "side": "wrong",
+      "lang": "en",
+      "style": "thunder",
+      "voice": "orion",
+      "file": "villain/wrong/en/04.mp3"
+    },
+    {
+      "id": "villain-wrong-en-05",
+      "role": "villain",
+      "side": "wrong",
+      "lang": "en",
+      "style": "mock",
+      "voice": "kepler",
+      "file": "villain/wrong/en/05.mp3"
+    },
+    {
+      "id": "villain-wrong-en-06",
+      "role": "villain",
+      "side": "wrong",
+      "lang": "en",
+      "style": "thunder",
+      "voice": "altair",
+      "file": "villain/wrong/en/06.mp3"
+    },
+    {
+      "id": "mirzapur-right-hi-01",
+      "role": "mirzapur",
+      "side": "right",
+      "lang": "hi",
+      "style": "mass",
+      "voice": "rex",
+      "file": "mirzapur/right/hi/01.mp3"
+    },
+    {
+      "id": "mirzapur-right-hi-02",
+      "role": "mirzapur",
+      "side": "right",
+      "lang": "hi",
+      "style": "fire",
+      "voice": "leo",
+      "file": "mirzapur/right/hi/02.mp3"
+    },
+    {
+      "id": "mirzapur-right-hi-03",
+      "role": "mirzapur",
+      "side": "right",
+      "lang": "hi",
+      "style": "court",
+      "voice": "sal",
+      "file": "mirzapur/right/hi/03.mp3"
+    },
+    {
+      "id": "mirzapur-right-hi-04",
+      "role": "mirzapur",
+      "side": "right",
+      "lang": "hi",
+      "style": "fire",
+      "voice": "naksh",
+      "file": "mirzapur/right/hi/04.mp3"
+    },
+    {
+      "id": "mirzapur-right-hi-05",
+      "role": "mirzapur",
+      "side": "right",
+      "lang": "hi",
+      "style": "mass",
+      "voice": "helix",
+      "file": "mirzapur/right/hi/05.mp3"
+    },
+    {
+      "id": "mirzapur-right-hi-06",
+      "role": "mirzapur",
+      "side": "right",
+      "lang": "hi",
+      "style": "court",
+      "voice": "cosmo",
+      "file": "mirzapur/right/hi/06.mp3"
+    },
+    {
+      "id": "mirzapur-right-hi-07",
+      "role": "mirzapur",
+      "side": "right",
+      "lang": "hi",
+      "style": "fire",
+      "voice": "rex",
+      "file": "mirzapur/right/hi/07.mp3"
+    },
+    {
+      "id": "mirzapur-right-hi-08",
+      "role": "mirzapur",
+      "side": "right",
+      "lang": "hi",
+      "style": "mass",
+      "voice": "leo",
+      "file": "mirzapur/right/hi/08.mp3"
+    },
+    {
+      "id": "mirzapur-right-hi-09",
+      "role": "mirzapur",
+      "side": "right",
+      "lang": "hi",
+      "style": "fire",
+      "voice": "sal",
+      "file": "mirzapur/right/hi/09.mp3"
+    },
+    {
+      "id": "mirzapur-right-hi-10",
+      "role": "mirzapur",
+      "side": "right",
+      "lang": "hi",
+      "style": "court",
+      "voice": "naksh",
+      "file": "mirzapur/right/hi/10.mp3"
+    },
+    {
+      "id": "mirzapur-right-en-01",
+      "role": "mirzapur",
+      "side": "right",
+      "lang": "en",
+      "style": "mass",
+      "voice": "rex",
+      "file": "mirzapur/right/en/01.mp3"
+    },
+    {
+      "id": "mirzapur-right-en-02",
+      "role": "mirzapur",
+      "side": "right",
+      "lang": "en",
+      "style": "fire",
+      "voice": "leo",
+      "file": "mirzapur/right/en/02.mp3"
+    },
+    {
+      "id": "mirzapur-right-en-03",
+      "role": "mirzapur",
+      "side": "right",
+      "lang": "en",
+      "style": "court",
+      "voice": "sal",
+      "file": "mirzapur/right/en/03.mp3"
+    },
+    {
+      "id": "mirzapur-right-en-04",
+      "role": "mirzapur",
+      "side": "right",
+      "lang": "en",
+      "style": "fire",
+      "voice": "naksh",
+      "file": "mirzapur/right/en/04.mp3"
+    },
+    {
+      "id": "mirzapur-right-en-05",
+      "role": "mirzapur",
+      "side": "right",
+      "lang": "en",
+      "style": "mass",
+      "voice": "helix",
+      "file": "mirzapur/right/en/05.mp3"
+    },
+    {
+      "id": "mirzapur-right-en-06",
+      "role": "mirzapur",
+      "side": "right",
+      "lang": "en",
+      "style": "court",
+      "voice": "cosmo",
+      "file": "mirzapur/right/en/06.mp3"
+    },
+    {
+      "id": "mirzapur-wrong-hi-01",
+      "role": "mirzapur",
+      "side": "wrong",
+      "lang": "hi",
+      "style": "court",
+      "voice": "rex",
+      "file": "mirzapur/wrong/hi/01.mp3"
+    },
+    {
+      "id": "mirzapur-wrong-hi-02",
+      "role": "mirzapur",
+      "side": "wrong",
+      "lang": "hi",
+      "style": "fire",
+      "voice": "leo",
+      "file": "mirzapur/wrong/hi/02.mp3"
+    },
+    {
+      "id": "mirzapur-wrong-hi-03",
+      "role": "mirzapur",
+      "side": "wrong",
+      "lang": "hi",
+      "style": "mass",
+      "voice": "sal",
+      "file": "mirzapur/wrong/hi/03.mp3"
+    },
+    {
+      "id": "mirzapur-wrong-hi-04",
+      "role": "mirzapur",
+      "side": "wrong",
+      "lang": "hi",
+      "style": "court",
+      "voice": "naksh",
+      "file": "mirzapur/wrong/hi/04.mp3"
+    },
+    {
+      "id": "mirzapur-wrong-hi-05",
+      "role": "mirzapur",
+      "side": "wrong",
+      "lang": "hi",
+      "style": "mass",
+      "voice": "helix",
+      "file": "mirzapur/wrong/hi/05.mp3"
+    },
+    {
+      "id": "mirzapur-wrong-hi-06",
+      "role": "mirzapur",
+      "side": "wrong",
+      "lang": "hi",
+      "style": "fire",
+      "voice": "cosmo",
+      "file": "mirzapur/wrong/hi/06.mp3"
+    },
+    {
+      "id": "mirzapur-wrong-hi-07",
+      "role": "mirzapur",
+      "side": "wrong",
+      "lang": "hi",
+      "style": "court",
+      "voice": "rex",
+      "file": "mirzapur/wrong/hi/07.mp3"
+    },
+    {
+      "id": "mirzapur-wrong-hi-08",
+      "role": "mirzapur",
+      "side": "wrong",
+      "lang": "hi",
+      "style": "fire",
+      "voice": "leo",
+      "file": "mirzapur/wrong/hi/08.mp3"
+    },
+    {
+      "id": "mirzapur-wrong-hi-09",
+      "role": "mirzapur",
+      "side": "wrong",
+      "lang": "hi",
+      "style": "mass",
+      "voice": "sal",
+      "file": "mirzapur/wrong/hi/09.mp3"
+    },
+    {
+      "id": "mirzapur-wrong-hi-10",
+      "role": "mirzapur",
+      "side": "wrong",
+      "lang": "hi",
+      "style": "fire",
+      "voice": "naksh",
+      "file": "mirzapur/wrong/hi/10.mp3"
+    },
+    {
+      "id": "mirzapur-wrong-en-01",
+      "role": "mirzapur",
+      "side": "wrong",
+      "lang": "en",
+      "style": "court",
+      "voice": "rex",
+      "file": "mirzapur/wrong/en/01.mp3"
+    },
+    {
+      "id": "mirzapur-wrong-en-02",
+      "role": "mirzapur",
+      "side": "wrong",
+      "lang": "en",
+      "style": "fire",
+      "voice": "leo",
+      "file": "mirzapur/wrong/en/02.mp3"
+    },
+    {
+      "id": "mirzapur-wrong-en-03",
+      "role": "mirzapur",
+      "side": "wrong",
+      "lang": "en",
+      "style": "mass",
+      "voice": "sal",
+      "file": "mirzapur/wrong/en/03.mp3"
+    },
+    {
+      "id": "mirzapur-wrong-en-04",
+      "role": "mirzapur",
+      "side": "wrong",
+      "lang": "en",
+      "style": "court",
+      "voice": "naksh",
+      "file": "mirzapur/wrong/en/04.mp3"
+    },
+    {
+      "id": "mirzapur-wrong-en-05",
+      "role": "mirzapur",
+      "side": "wrong",
+      "lang": "en",
+      "style": "fire",
+      "voice": "helix",
+      "file": "mirzapur/wrong/en/05.mp3"
+    },
+    {
+      "id": "mirzapur-wrong-en-06",
+      "role": "mirzapur",
+      "side": "wrong",
+      "lang": "en",
+      "style": "mass",
+      "voice": "cosmo",
+      "file": "mirzapur/wrong/en/06.mp3"
+    }
+  ]
+}

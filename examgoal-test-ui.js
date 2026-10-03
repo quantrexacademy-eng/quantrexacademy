@@ -656,6 +656,7 @@
         '<section class="eg-vs-sec"><h5 class="eg-vs-h">Practice Experience</h5>' +
         egToggleRow("showTimer", "Start timer auto", "Timer on every practice question", true) +
         egToggleRow("playSounds", "Play sounds", "Sound after you check an answer", true) +
+        (typeof QxPracticeVoice !== "undefined" && QxPracticeVoice.settingsHtml ? QxPracticeVoice.settingsHtml() : "") +
         egLsRow("qx_pref_auto_next", "Auto next", "Go to the next question after you pick an answer", false) +
         egLsRow("qx_pref_haptic", "Haptic tap", "Short vibration when you select an option", true) +
         egToggleRow("dontShowCorrectAnswerImmediately", "Don\u2019t show correct immediately", "Grade first; mark options only when Show Answer is on", false) +
@@ -1745,8 +1746,13 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
         }
       } catch (_) { /* */ }
       try {
-        if (ok && typeof QxSettings !== "undefined" && QxSettings.playAnswerSound) {
-          QxSettings.playAnswerSound(!!(session._egCorrect && session._egCorrect[session.idx]));
+        if (ok && session.practiceMode) {
+          var right = !!(session._egCorrect && session._egCorrect[session.idx]);
+          if (typeof QxPracticeVoice !== "undefined" && QxPracticeVoice.enabled && QxPracticeVoice.enabled()) {
+            QxPracticeVoice.play(right);
+          } else if (typeof QxSettings !== "undefined" && QxSettings.playAnswerSound) {
+            QxSettings.playAnswerSound(right);
+          }
         }
       } catch (_) { /* */ }
       try { revealPracticeSolution(root, api); } catch (_) { /* */ }
@@ -2509,6 +2515,11 @@ function forceFootVisible(force) {
           }
         };
       });
+      try {
+        if (typeof QxPracticeVoice !== "undefined" && QxPracticeVoice.bindSettings) {
+          QxPracticeVoice.bindSettings(document.getElementById("egFmtPop") || root);
+        }
+      } catch (_) { /* */ }
       (document.getElementById("egFmtPop") || root).querySelectorAll("[data-eg-scale]").forEach(function (b) {
         b.onclick = function (e) {
           if (e) { e.preventDefault(); e.stopPropagation(); }

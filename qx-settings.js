@@ -64,6 +64,12 @@
     var qs = getQuestionSettings();
     if (!qs.playSounds) return;
     try {
+      if (typeof QxPracticeVoice !== "undefined" && QxPracticeVoice.enabled && QxPracticeVoice.enabled()) {
+        QxPracticeVoice.play(!!ok);
+        return;
+      }
+    } catch (_) { /* */ }
+    try {
       var AC = window.AudioContext || window.webkitAudioContext;
       if (!AC) return;
       playAnswerSound._ctx = playAnswerSound._ctx || new AC();
@@ -376,6 +382,9 @@
       '<div class="qx-set-list">' +
       row("qxSetShowTimer", "showTimer", "Show timer", "Timer on every practice question") +
       row("qxSetPlaySounds", "playSounds", "Play sounds", "Sound after you check an answer") +
+      "</div>" +
+      (typeof QxPracticeVoice !== "undefined" && QxPracticeVoice.settingsHtml ? QxPracticeVoice.settingsHtml() : "") +
+      '<div class="qx-set-list">' +
       row("qxSetShowHint", "showHint", "Show hint", "Hint button when the question has a hint") +
       row("qxSetHintPopup", "showHintFeedbackPopup", "Hint feedback popup", "Open hint in a popup") +
       row("qxSetNoImmediateAns", "dontShowCorrectAnswerImmediately", "Don't show correct answer immediately", "Grade first; mark options only when Show Answer is on") +
@@ -588,6 +597,11 @@
         showToast(v === "side" ? "Palette: Right sidebar" : v === "strip" ? "Palette: Top bar" : "Palette: Both");
       }
     });
+    try {
+      if (typeof QxPracticeVoice !== "undefined" && QxPracticeVoice.bindSettings) {
+        QxPracticeVoice.bindSettings(root);
+      }
+    } catch (_) { /* */ }
 
     var edit = root.querySelector("#qxSetEditProfile");
     if (edit) edit.onclick = function () {

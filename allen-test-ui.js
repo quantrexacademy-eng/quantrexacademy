@@ -790,6 +790,7 @@ const AllenTestUI = (() => {
               <button type="button" class="eg-vs-tog${qs.showTimer !== false ? " on" : ""}" data-eg-qset="showTimer" aria-pressed="${qs.showTimer !== false ? "true" : "false"}" role="switch"><span class="eg-vs-knob"></span></button></div>
             <div class="eg-vs-row"><div class="eg-vs-lab"><span class="eg-vs-lab-t">Play sounds</span><span class="eg-vs-hint">Sound after you check an answer</span></div>
               <button type="button" class="eg-vs-tog${qs.playSounds !== false ? " on" : ""}" data-eg-qset="playSounds" aria-pressed="${qs.playSounds !== false ? "true" : "false"}" role="switch"><span class="eg-vs-knob"></span></button></div>
+            ${typeof QxPracticeVoice !== "undefined" && QxPracticeVoice.settingsHtml ? QxPracticeVoice.settingsHtml() : ""}
             <div class="eg-vs-row"><div class="eg-vs-lab"><span class="eg-vs-lab-t">Don’t show correct immediately</span><span class="eg-vs-hint">Grade first; mark options only when Show Answer is on</span></div>
               <button type="button" class="eg-vs-tog${qs.dontShowCorrectAnswerImmediately ? " on" : ""}" data-eg-qset="dontShowCorrectAnswerImmediately" aria-pressed="${qs.dontShowCorrectAnswerImmediately ? "true" : "false"}" role="switch"><span class="eg-vs-knob"></span></button></div>
             <div class="eg-vs-row eg-vs-sizes"><div class="eg-vs-lab"><span class="eg-vs-lab-t">Text Size</span><span class="eg-vs-hint">Question &amp; solution font</span></div>
@@ -1034,6 +1035,11 @@ const AllenTestUI = (() => {
         btn.setAttribute("aria-pressed", next ? "true" : "false");
       });
     });
+    try {
+      if (typeof QxPracticeVoice !== "undefined" && QxPracticeVoice.bindSettings) {
+        QxPracticeVoice.bindSettings(document.getElementById("pracViewPanel") || root);
+      }
+    } catch (_) { /* */ }
     root.querySelectorAll("[data-prac-fmt-act]").forEach((btn) => {
       btn.addEventListener("click", (e) => {
         e.stopPropagation();
