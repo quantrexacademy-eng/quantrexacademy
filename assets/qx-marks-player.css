@@ -400,21 +400,26 @@ html body .eg-test-root[data-eg-mode="test"] > #egFoot,
 html body .eg-test-root[data-eg-mode="test"] #egFoot,
 html body .eg-test-root[data-eg-mode="test"] .eg-foot,
 html body .eg-test-root[data-eg-mode="test"] .eg-foot.eg-foot-marks-test,
-html body #egFoot.eg-foot-marks-test {
+html body #egFoot.eg-foot-marks-test,
+html[data-qx-shell="app"] .eg-test-root[data-eg-mode="test"] #egFoot,
+html[data-qx-shell="app"] #egFoot.eg-foot-marks-test {
   display: grid !important;
   grid-template-columns: 1fr 1fr !important;
-  grid-template-rows: auto auto !important;
+  grid-template-rows: 48px 48px !important;
   gap: 8px !important;
   position: fixed !important;
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
   top: auto !important;
-  z-index: 90 !important;
-  min-height: 0 !important;
-  height: auto !important;
-  max-height: none !important;
-  padding: 10px 12px calc(10px + env(safe-area-inset-bottom, 0px)) !important;
+  transform: none !important;
+  z-index: 2147483000 !important;
+  min-height: calc(108px + env(safe-area-inset-bottom, 0px)) !important;
+  height: calc(108px + env(safe-area-inset-bottom, 0px)) !important;
+  max-height: calc(108px + env(safe-area-inset-bottom, 0px)) !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 8px 12px calc(8px + env(safe-area-inset-bottom, 0px)) !important;
   background: #fff !important;
   background-color: #fff !important;
   border-top: 1px solid #e5e7eb !important;
@@ -812,6 +817,21 @@ html body .eg-test-root[data-eg-mode="test"][data-qx-format="quantrex"] .eg-qx-e
   background: transparent !important;
   transform: none !important;
   white-space: nowrap !important;
+}
+
+/* qxmd295 last-wins: typeset math in MARKS + Quizrr stems/sols. */
+html body .eg-test-root .katex,
+html body .mtk-test-root .katex,
+html body .qzrr-cbt .katex,
+html body .katex * {
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+}
+html body .eg-test-root .katex-display,
+html body .mtk-test-root .katex-display,
+html body .qzrr-cbt .katex-display {
+  overflow-x: auto !important;
+  overflow-y: visible !important;
 }
 
 @media print {

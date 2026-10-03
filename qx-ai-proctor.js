@@ -64,12 +64,10 @@
     try { localStorage.setItem(PREF_KEY, on ? "1" : "0"); } catch (_) { /* */ }
   }
   function shouldGate(config) {
-    if (!config) return false;
-    if (config.practiceMode) return false;
     if (!prefOn()) return false;
-    if (config.timed === false) return false;
-    var timed = !!(config.timed || (Number(config.durationSec) > 0) || config.uiMode === "quizrr");
-    return timed;
+    if (config && config.practiceMode) return false;
+    if (isPractice()) return false;
+    return true;
   }
 
   function pushEvent(type, severity, label, note, withPhoto) {
@@ -130,12 +128,38 @@
     _listening = false;
   }
 
+  function showTabSwitchWarn() {
+    if (document.getElementById("qxPrTabWarn")) return;
+    ensureCss();
+    var n = (_state && _state.focusChanges) || 1;
+    var overlay = document.createElement("div");
+    overlay.id = "qxPrTabWarn";
+    overlay.className = "qx-pr-tabwarn";
+    overlay.innerHTML =
+      '<div class="qx-pr-tabwarn-card" role="dialog" aria-modal="true" aria-labelledby="qxPrTabWarnTitle">' +
+        '<button type="button" class="qx-pr-tabwarn-x" aria-label="Close">×</button>' +
+        '<h2 id="qxPrTabWarnTitle">Warning: Tab Switching Detected</h2>' +
+        "<p>You have switched tabs " + n + " time" + (n === 1 ? "" : "s") + " during this test.</p>" +
+        "<p>Tab switching is not allowed as it may be considered a violation of test integrity.</p>" +
+        "<p>Please remain on this tab for the duration of the test.</p>" +
+        '<div class="qx-pr-tabwarn-note"><strong>Note:</strong> Repeated tab switching may result in your test being terminated.</div>' +
+        '<div class="qx-pr-tabwarn-act"><button type="button" class="qx-pr-tabwarn-ok">I Understand</button></div>' +
+      "</div>";
+    document.body.appendChild(overlay);
+    function closeWarn() { try { overlay.remove(); } catch (_) { /* */ } }
+    var ok = overlay.querySelector(".qx-pr-tabwarn-ok");
+    var x = overlay.querySelector(".qx-pr-tabwarn-x");
+    if (ok) ok.onclick = closeWarn;
+    if (x) x.onclick = closeWarn;
+  }
+
   function onVis() {
     if (!_state || _state.ended) return;
     if (document.hidden) {
       if (Date.now() - _lastVis < 1200) return;
       _lastVis = Date.now();
       pushEvent("tab", "o", "Browser tab or window hidden", "Potential integrity event detected — requires review.", true);
+      try { showTabSwitchWarn(); } catch (_) { /* */ }
     }
   }
   function onBlur() {

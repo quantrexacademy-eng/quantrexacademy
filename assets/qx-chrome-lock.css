@@ -2542,10 +2542,10 @@ html body .eg-test-root .sol-body, html body .eg-test-root .eg-opts, html body .
 html body .eg-test-root .eg-opt > *, html body .eg-test-root .eg-q-stem, html body .eg-test-root .qx-paper-meta{min-width:0!important;max-width:100%!important;box-sizing:border-box}
 html body .eg-test-root .eg-body{overflow-x:hidden!important}
 html body .eg-test-root .eg-q-stem, html body .eg-test-root .eg-opt, html body .eg-test-root .sol-body,
-html body .eg-test-root .qx-sol-ans-val, html body .eg-test-root .qx-sol-card{overflow-wrap:anywhere!important;word-break:normal}
-html body .eg-test-root .katex-display, html body .mtk-test-root .katex-display{display:block!important;max-width:100%!important;overflow-x:auto!important;overflow-y:hidden!important;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;padding:2px 0}
+html body .eg-test-root .qx-sol-ans-val, html body .eg-test-root .qx-sol-card{overflow-wrap:break-word!important;word-break:normal}
+html body .eg-test-root .katex-display, html body .mtk-test-root .katex-display{display:block!important;max-width:100%!important;overflow-x:auto!important;overflow-y:visible!important;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;padding:2px 0}
 html body .eg-test-root .katex-display > .katex{max-width:none!important;white-space:nowrap}
-html body .eg-test-root :not(.katex-display) > .katex, html body .eg-test-root :not(.katex-display) > .katex > .katex-html{white-space:normal!important}
+html body .eg-test-root .katex, html body .eg-test-root .katex *{overflow-wrap:normal!important;word-break:normal!important}
 html body .eg-test-root .sol-body img, html body .eg-test-root .eg-q-stem img, html body .eg-test-root .eg-opt img{max-width:100%!important;height:auto}
 html body .eg-test-root .sol-body table, html body .eg-test-root .eg-q-stem table{display:block;max-width:100%;overflow-x:auto}
 @media (max-width:760px){html, body{overflow-x:hidden!important;max-width:100vw}}

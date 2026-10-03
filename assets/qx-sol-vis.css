@@ -133,14 +133,17 @@ html[data-theme="dark"] .sol-body, html[data-theme="dark"] .qx-sol-card .sol-bod
 .eg-q-stem, .mtk-q-text, .qx-prac-q, .sol-body, .qx-sol-flow {
   font-size: 17px !important;
   line-height: 1.7 !important;
-  overflow-wrap: anywhere !important;
+  overflow-wrap: break-word !important;
+  word-break: normal !important;
 }
 .eg-q-stem .katex, .mtk-q-text .katex, .sol-body .katex, .qx-sol-flow .katex {
   font-size: 1.08em !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
 }
 .katex-display {
   overflow-x: auto !important;
-  overflow-y: hidden !important;
+  overflow-y: visible !important;
   max-width: 100% !important;
 }
 

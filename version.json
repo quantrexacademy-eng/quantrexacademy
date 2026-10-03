@@ -1,10 +1,10 @@
 {
-  "cache": "qx-pwa-qxmd294",
-  "ts": 1791100000294,
-  "title": "qxmd294: NTA exact photo player; QUANTREX extras on same player",
+  "cache": "qx-pwa-qxmd295",
+  "ts": 1791100000295,
+  "title": "qxmd295: website NTA = Quizrr; app MARKS player; fixed toolbar; Q+sol wrap; AI Proctor on toggle",
   "site": "https://www.quantrexacademy.com",
-  "build": "qxmd294",
-  "body": "NTA FORMAT is the exact MARKS photo player (X / timer / Submit, View All Qs, 2x2 footer). QUANTREX FORMAT keeps that player and adds Theme, Bookmark, Notes, Settings, AI Proctor. Header Submit works. Create Own Test generate is not blank. Question math stays typeset.",
+  "build": "qxmd295",
+  "body": "Website NTA FORMAT is the Quizrr CBT (Accessibility, Screen Magnifier, Instructions, Question Paper). App NTA and QUANTREX keep the MARKS photo player with a pinned bottom toolbar. Question and solution math wrap without breaking. AI Proctor runs on every test mode only after the toggle is ON. Default remains off. Tab-switch shows a warning; it never auto-terminates.",
   "package": "com.quantrexacademy.app",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }

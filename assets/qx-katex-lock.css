@@ -15,6 +15,8 @@
 html body .katex,
 html body .katex * {
   box-sizing: content-box !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
 }
 
 html body .katex {
@@ -195,4 +197,34 @@ html body .eg-test-root.eg-sol-showing .eg-q-stem {
   color: inherit !important;
   -webkit-text-fill-color: inherit !important;
   pointer-events: auto !important;
+}
+
+/* qxmd295: keep typeset math intact; wrap prose only. */
+html body .katex,
+html body .katex * {
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+}
+html body .katex {
+  white-space: nowrap !important;
+}
+html body .katex-display {
+  overflow-x: auto !important;
+  overflow-y: visible !important;
+}
+html body .eg-q-stem,
+html body .mtk-opt-text,
+html body .eg-sol,
+html body .qx-sol-body,
+html body #egSol,
+html body .sol-body,
+html body .qx-sol-flow {
+  overflow-wrap: break-word !important;
+  word-break: normal !important;
+  overflow: visible !important;
+}
+html body #egQArea,
+html body .qzrr-q-area {
+  overflow-wrap: break-word !important;
+  word-break: normal !important;
 }

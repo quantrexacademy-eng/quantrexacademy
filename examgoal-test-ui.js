@@ -321,11 +321,35 @@
     } catch (_) {}
   }
 
-  /** Timed NTA + QUANTREX both use the MARKS light player (photos).
-      NTA is pixel-exact; QUANTREX adds extras. Practice stays blue chrome. */
+  /** Play TWA / installed PWA only. Desktop + phone browser stay "web". */
+  function isQxAppShell() {
+    try {
+      if (typeof document !== "undefined" && document.documentElement
+          && document.documentElement.getAttribute("data-qx-shell") === "app") return true;
+      if (typeof window === "undefined") return false;
+      if (window.matchMedia && (
+        window.matchMedia("(display-mode: standalone)").matches ||
+        window.matchMedia("(display-mode: fullscreen)").matches ||
+        window.matchMedia("(display-mode: minimal-ui)").matches
+      )) return true;
+      if (navigator.standalone) return true;
+      var ref = String(document.referrer || "");
+      if (ref.indexOf("android-app://") === 0) return true;
+      if (/\bapp=1\b/.test(String(location.search || ""))) return true;
+      try { if (localStorage.getItem("qx_force_app_ui") === "1") return true; } catch (_) {}
+    } catch (_) { /* */ }
+    return false;
+  }
+
+  /** Practice + QUANTREX extras = Examgoal player.
+      NTA on the app = MARKS photo player. NTA on the website = Quizrr. */
   function isExamgoalUi(session) {
     if (!session) return false;
-    return true;
+    if (session.practiceMode) return true;
+    var fmt = qxFormatOf(session);
+    if (fmt === "quantrex") return true;
+    if (fmt === "nta") return isQxAppShell();
+    return isQxAppShell();
   }
 
   function qxFormatOf(session) {
@@ -1283,7 +1307,8 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
       "" +
       '" data-test-theme="' + theme + '" data-font-scale="' + fontScale +
       '" data-eg-mode="' + (practice ? "practice" : "test") + '" data-ui="examgoal" data-qx-format="' +
-      (practice ? "practice" : qxFormatOf(session)) + '" data-eg-cycle="' + (chromeOpen ? "1" : "0") + '">' +
+      (practice ? "practice" : qxFormatOf(session)) + '" data-qx-shell="' + (isQxAppShell() ? "app" : "web") +
+      '" data-eg-cycle="' + (chromeOpen ? "1" : "0") + '">' +
       headerHtml + extrasHtml +
       ((groups && groups.length > 1) ? ('<div class="eg-subs">' + tabs + "</div>") : "") +
       qbarHtml +
@@ -2144,22 +2169,30 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
         if (!foot) return;
         var isTestMarks = root.getAttribute("data-eg-mode") === "test";
         if (isTestMarks) {
+          if (!force && foot.getAttribute("data-qx-foot-lock") === "1") {
+            try { if (typeof syncEgFootPad === "function") syncEgFootPad(root); } catch (_) {}
+            return;
+          }
+          foot.setAttribute("data-qx-foot-lock", "1");
           foot.style.setProperty("position", "fixed", "important");
           foot.style.setProperty("left", "0", "important");
           foot.style.setProperty("right", "0", "important");
           foot.style.setProperty("bottom", "0", "important");
           foot.style.setProperty("top", "auto", "important");
+          foot.style.setProperty("transform", "none", "important");
           foot.style.setProperty("display", "grid", "important");
           foot.style.setProperty("grid-template-columns", "1fr 1fr", "important");
-          foot.style.setProperty("max-height", "none", "important");
-          foot.style.setProperty("min-height", "0", "important");
-          foot.style.setProperty("height", "auto", "important");
-          foot.style.setProperty("z-index", "90", "important");
+          foot.style.setProperty("grid-template-rows", "48px 48px", "important");
+          foot.style.setProperty("max-height", "calc(108px + env(safe-area-inset-bottom, 0px))", "important");
+          foot.style.setProperty("min-height", "calc(108px + env(safe-area-inset-bottom, 0px))", "important");
+          foot.style.setProperty("height", "calc(108px + env(safe-area-inset-bottom, 0px))", "important");
+          foot.style.setProperty("z-index", "2147483000", "important");
           foot.style.setProperty("pointer-events", "auto", "important");
           foot.style.setProperty("visibility", "visible", "important");
           foot.style.setProperty("opacity", "1", "important");
           foot.style.setProperty("width", "100%", "important");
-          foot.style.setProperty("padding", "10px 12px calc(10px + env(safe-area-inset-bottom, 0px))", "important");
+          foot.style.setProperty("margin", "0", "important");
+          foot.style.setProperty("padding", "8px 12px calc(8px + env(safe-area-inset-bottom, 0px))", "important");
           ["qxPrevBtn", "qxSaveBtn", "qxClearBtn", "qxReviewNextBtn"].forEach(function (id) {
             var b = foot.querySelector("#" + id);
             if (!b) return;
@@ -3413,6 +3446,7 @@ function forceFootVisible(force) {
 
   global.ExamgoalTestUI = {
     isExamgoalUi: isExamgoalUi,
+    isQxAppShell: isQxAppShell,
     qxFormatOf: qxFormatOf,
     isQxExtras: isQxExtras,
     render: render,

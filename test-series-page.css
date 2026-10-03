@@ -721,7 +721,10 @@ body.ts-standalone-body {
 .qzrr-ico svg { display: block; }
 .qzrr-ico-green { color: #4caf50; }
 .qzrr-ico-blue { color: #42a5f5; }
-.qzrr-tool-a11y, .qzrr-tool-mag { color: #e8f5e9; }
+.qzrr-ico-gold { color: #d4af37; }
+.qzrr-tool-a11y { color: #e8f5e9; }
+.qzrr-tool-mag { color: #fff8e1; }
+.qzrr-tool-mag.on { color: #ffe082; }
 .qzrr-tool-instr, .qzrr-tool-paper { color: #e3f2fd; }
 .qzrr-tool-a11y:hover, .qzrr-tool-mag:hover { color: #fff; }
 .qzrr-tool-instr:hover, .qzrr-tool-paper:hover { color: #fff; }

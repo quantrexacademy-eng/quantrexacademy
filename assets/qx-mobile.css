@@ -538,8 +538,8 @@ html { -webkit-text-size-adjust: 100%; }
     max-width: 100%;
   }
   .mtk-opt-text, .qx-prac-opt-text, .mtk-q-text, .eg-q-stem {
-    overflow-wrap: anywhere;
-    word-break: break-word;
+    overflow-wrap: break-word;
+    word-break: normal;
   }
   .mtk-palette button, .mtk-pal-btn, .egmq-qpill, .qx-pal-btn {
     touch-action: manipulation;

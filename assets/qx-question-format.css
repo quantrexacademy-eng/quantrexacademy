@@ -890,8 +890,8 @@ img.qx-opt-fig-img,
 .qx-content {
   max-width: 100%;
   min-width: 0;
-  overflow-wrap: anywhere;
-  word-break: break-word;
+  overflow-wrap: break-word;
+  word-break: normal;
 }
 .qx-prac-opt img,
 .qx-opt-diagram-slot img,
