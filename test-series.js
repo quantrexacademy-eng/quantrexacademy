@@ -761,20 +761,20 @@ function tsFormatChooserHtml(config) {
         <p class="ts-fmt-meta">${n} questions · ${mins} minutes</p>
       </div>
       <h3 class="ts-fmt-section">Layout Mode</h3>
-      <p class="ts-fmt-hint" style="margin:0 0 12px;text-align:left">Test Series defaults to <b>NTA FORMAT</b>. Pick QUANTREX FORMAT for Quantrex practice layout.</p>
+      <p class="ts-fmt-hint" style="margin:0 0 12px;text-align:left">Test Series defaults to <b>NTA FORMAT</b> (exact photo player). Pick <b>QUANTREX FORMAT</b> for the same player plus Theme, Bookmark, Notes, Settings, and AI Proctor.</p>
       <div class="ts-fmt-grid">
         <button type="button" class="ts-fmt-opt ts-fmt-qx${ntaOn ? "" : " on"}" id="tsFmtQuantrex" data-ui="examgoal">
           <div class="ts-fmt-opt-icon">QX</div>
           <div class="ts-fmt-opt-body">
             <strong>QUANTREX FORMAT</strong>
-            <span>Flexible Quantrex practice UI on phone</span>
+            <span>Same player plus Theme, Bookmark, Notes, Settings, AI Proctor</span>
           </div>
         </button>
         <button type="button" class="ts-fmt-opt ts-fmt-qz${ntaOn ? " on" : ""}" id="tsFmtQuizrr" data-ui="quizrr">
           <div class="ts-fmt-opt-icon">NTA</div>
           <div class="ts-fmt-opt-body">
             <strong>NTA FORMAT</strong>
-            <span>Exact official exam shell · palette · timer · Save &amp; Next</span>
+            <span>Exact photo player · X / timer / Submit · View All Qs · 2×2 footer</span>
           </div>
         </button>
       </div>
@@ -791,7 +791,10 @@ function showTsFormatChooser(config, onPick, onCancel) {
   document.body.insertAdjacentHTML("beforeend", tsFormatChooserHtml(config));
   const root = document.getElementById("tsFormatChooser");
   const finish = (ui) => {
-    try { localStorage.setItem("ts_last_ui_mode", ui); } catch (_) { /* */ }
+    try {
+      localStorage.setItem("ts_last_ui_mode", ui);
+      localStorage.setItem("qx_cbt_format_pref", ui === "quizrr" ? "nta" : "quantrex");
+    } catch (_) { /* */ }
     root?.remove();
     document.body.classList.remove("ts-fmt-chooser-active");
     if (typeof onPick === "function") onPick(ui);
@@ -2331,14 +2334,18 @@ function tsStandaloneLaunchTest(testId, test, meta, seriesId, questionIds, opts,
     config.skipCountdown = true;
     // Resume with same UI format as original attempt
     if (o.resumeData.uiMode) config.uiMode = o.resumeData.uiMode;
+    if (o.resumeData._qxFormat) config._qxFormat = o.resumeData._qxFormat;
   }
   if (o.uiMode) config.uiMode = o.uiMode;
+  if (o._qxFormat) config._qxFormat = o._qxFormat;
   if (config.uiMode === "quantrex") config.uiMode = "examgoal";
   if (config.uiMode !== "examgoal" && config.uiMode !== "quizrr") config.uiMode = "quizrr";
   if (config.resumeData && config.resumeData.uiMode) {
     const ru = config.resumeData.uiMode === "quantrex" ? "examgoal" : config.resumeData.uiMode;
     config.uiMode = ru === "examgoal" ? "examgoal" : "quizrr";
+    if (config.resumeData._qxFormat) config._qxFormat = config.resumeData._qxFormat;
   }
+  if (!config._qxFormat) config._qxFormat = config.uiMode === "quizrr" ? "nta" : "quantrex";
 
   try {
     const gate = {
@@ -2410,7 +2417,11 @@ function tsStandaloneLaunchTest(testId, test, meta, seriesId, questionIds, opts,
 
   const launchWithUi = (uiMode) => {
     config.uiMode = uiMode === "quizrr" ? "quizrr" : "examgoal";
-    try { localStorage.setItem("ts_last_ui_mode", config.uiMode); } catch (_) { /* */ }
+    config._qxFormat = config.uiMode === "quizrr" ? "nta" : "quantrex";
+    try {
+      localStorage.setItem("ts_last_ui_mode", config.uiMode);
+      localStorage.setItem("qx_cbt_format_pref", config._qxFormat);
+    } catch (_) { /* */ }
     // Exam instructions only in Test Series (not PYQ mock)
     if (config.uiMode === "quizrr" && typeof showQuizrrInstructions === "function") {
       showQuizrrInstructions(config, startAfterInstructions, onCancel);
@@ -2442,7 +2453,7 @@ function tsStandaloneLaunchTest(testId, test, meta, seriesId, questionIds, opts,
     showTsFormatChooser(config, launchWithUi, onCancel);
     return;
   }
-  launchWithUi("examgoal");
+  launchWithUi("quizrr");
 }
 
 async function tsOpenTest(testId) {

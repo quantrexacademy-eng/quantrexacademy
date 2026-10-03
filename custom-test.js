@@ -1655,6 +1655,19 @@ function ctAttemptTest(id) {
     item.status = "inProgress";
     ctSaveTests(list);
   }
+  var ui = "examgoal";
+  var fmt = "quantrex";
+  if (t.timed) {
+    ui = "quizrr";
+    fmt = "nta";
+    try {
+      var pref = localStorage.getItem("qx_cbt_format_pref") || localStorage.getItem("ts_last_ui_mode") || "";
+      if (pref === "quantrex" || pref === "examgoal") {
+        ui = "examgoal";
+        fmt = "quantrex";
+      }
+    } catch (_) { /* */ }
+  }
   startTest(t.questionIds, t.title, "custom", {
     testType: "custom",
     timed: t.timed,
@@ -1664,7 +1677,8 @@ function ctAttemptTest(id) {
     marksMode: true,
     organizeJee: false,
     practiceMode: !t.timed,
-    uiMode: "examgoal",
+    uiMode: ui,
+    _qxFormat: fmt,
     onComplete: ctOnCompleteHook(t.id)
   });
 }

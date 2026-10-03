@@ -1,6 +1,7 @@
-/* qxmd294: MARKS light test player for QUANTREX FORMAT (examgoal data-eg-mode=test).
-   Practice chrome stays Quantrex blue + Previous|Check|Next.
-   NTA/quizrr black bar is unchanged. Last-wins vs chrome-lock / foot-lock. */
+/* qxmd294: MARKS light test player.
+   NTA FORMAT (data-qx-format=nta) = exact photos (X / timer / Submit, View All Qs, 2×2).
+   QUANTREX FORMAT (data-qx-format=quantrex) = same player + extras toolbar.
+   Practice chrome stays Quantrex blue + Previous|Check|Next. Last-wins vs chrome-lock / foot-lock. */
 
 html body .eg-test-root[data-eg-mode="test"],
 html body .eg-test-root[data-eg-mode="test"].eg-qxmd182,
@@ -187,7 +188,8 @@ html body .eg-test-root[data-eg-mode="test"] .eg-qbar-n {
   height: 32px !important;
   min-width: 32px !important;
   border: 0 !important;
-  border-radius: 999px !important;
+  border-radius: 0 !important;
+  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
   background: #eef2f6 !important;
   color: #64748b !important;
   -webkit-text-fill-color: #64748b !important;
@@ -198,6 +200,7 @@ html body .eg-test-root[data-eg-mode="test"] .eg-qbar-n {
   justify-content: center !important;
   cursor: pointer !important;
   pointer-events: auto !important;
+  position: relative !important;
 }
 html body .eg-test-root[data-eg-mode="test"] .eg-qbar-n.cur {
   background: #ef4444 !important;
@@ -718,4 +721,107 @@ html body .qzrr-cbt .qzrr-black-tools #qxSubmitHdr {
   font-weight: 800 !important;
   min-height: 32px !important;
   padding: 4px 12px !important;
+}
+
+html body .eg-test-root[data-eg-mode="test"] .eg-qbar-n.eg-att-mark::after {
+  content: "✓";
+  position: absolute;
+  right: 1px;
+  bottom: 1px;
+  font-size: 9px;
+  line-height: 1;
+  color: #fff;
+  font-weight: 900;
+}
+
+/* NTA FORMAT: exact photos — no extras strip */
+html body .eg-test-root[data-eg-mode="test"][data-qx-format="nta"] .eg-qx-extras {
+  display: none !important;
+}
+
+/* QUANTREX FORMAT: same MARKS player + extra tools */
+html body .eg-test-root[data-eg-mode="test"][data-qx-format="quantrex"] .eg-qx-extras,
+html body .eg-test-root[data-eg-mode="test"][data-qx-format="quantrex"] .eg-qx-extras .eg-top-tools,
+html body .eg-test-root[data-eg-mode="test"][data-qx-format="quantrex"] .eg-qx-extras-tools {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+html body .eg-test-root[data-eg-mode="test"][data-qx-format="quantrex"] .eg-qx-extras {
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 2px !important;
+  min-height: 56px !important;
+  height: auto !important;
+  max-height: none !important;
+  padding: 4px 8px !important;
+  background: #1565C0 !important;
+  color: #fff !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  -webkit-overflow-scrolling: touch !important;
+  flex-shrink: 0 !important;
+  z-index: 75 !important;
+}
+html body .eg-test-root[data-eg-mode="test"][data-qx-format="quantrex"] .eg-qx-extras .eg-top-tools,
+html body .eg-test-root[data-eg-mode="test"][data-qx-format="quantrex"] .eg-qx-extras-tools {
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  gap: 2px !important;
+  min-width: 0 !important;
+  width: 100% !important;
+  overflow: visible !important;
+  max-width: none !important;
+}
+html body .eg-test-root[data-eg-mode="test"][data-qx-format="quantrex"] .eg-qx-extras .eg-tool-btn,
+html body .eg-test-root[data-eg-mode="test"][data-qx-format="quantrex"] .eg-qx-extras .eg-ico {
+  display: inline-flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  min-width: 44px !important;
+  min-height: 52px !important;
+  height: auto !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  background: transparent !important;
+  border: 0 !important;
+  cursor: pointer !important;
+  z-index: 80 !important;
+}
+html body .eg-test-root[data-eg-mode="test"][data-qx-format="quantrex"] .eg-qx-extras .eg-tool-btn svg,
+html body .eg-test-root[data-eg-mode="test"][data-qx-format="quantrex"] .eg-qx-extras .eg-ico svg {
+  width: 18px !important;
+  height: 18px !important;
+  stroke: currentColor !important;
+  color: #fff !important;
+}
+html body .eg-test-root[data-eg-mode="test"][data-qx-format="quantrex"] .eg-qx-extras .eg-tip {
+  display: block !important;
+  position: static !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  background: transparent !important;
+  transform: none !important;
+  white-space: nowrap !important;
+}
+
+@media print {
+  html body .eg-test-root[data-eg-mode="test"] .eg-marks-top,
+  html body .eg-test-root[data-eg-mode="test"] .eg-qx-extras,
+  html body .eg-test-root[data-eg-mode="test"] .eg-subs,
+  html body .eg-test-root[data-eg-mode="test"] .eg-qbar,
+  html body .eg-test-root[data-eg-mode="test"] #egFoot,
+  html body .eg-test-root[data-eg-mode="test"] .eg-marks-overview,
+  html body .eg-test-root[data-eg-mode="test"] .eg-marks-exit {
+    display: none !important;
+  }
 }

@@ -1990,8 +1990,11 @@ const QuantrexTestEngine = (() => {
       if (cur < session.sections.length - 1) goToSection(cur + 1);
     };
 
-    // ── Quizrr toolbar + chrome (exact NTA behavior) ─────────────────
-    if (session.uiMode === "quizrr") {
+    // QUANTREX extras: Instr / Paper / Proctor openers. NTA exact player skips this.
+    var qxFmtBind = (typeof ExamgoalTestUI !== "undefined" && ExamgoalTestUI.qxFormatOf)
+      ? ExamgoalTestUI.qxFormatOf(session)
+      : (session._qxFormat || (session.uiMode === "quizrr" ? "nta" : "quantrex"));
+    if (!session.practiceMode && qxFmtBind === "quantrex") {
       bindQuizrrChrome(root);
     }
     if (typeof ExamgoalTestUI !== "undefined" && ExamgoalTestUI.isExamgoalUi(session)) {
@@ -2171,6 +2174,9 @@ const QuantrexTestEngine = (() => {
 
   function bindQuizrrChrome(root) {
     if (!root || !session) return;
+    if (session._qzrrDark == null) {
+      try { session._qzrrDark = (typeof getTestTheme === "function" ? getTestTheme() : "light") === "dark"; } catch (_) { session._qzrrDark = false; }
+    }
 
     window.qxSetQzrrTheme = function (mode) {
       if (window._qxQzrrThemeLock) return;
@@ -4103,6 +4109,7 @@ const QuantrexTestEngine = (() => {
           marksMode: !!session.marksMode,
           organizeJee: true,
           uiMode: session.uiMode || "quantrex",
+          _qxFormat: session._qxFormat || (session.uiMode === "quizrr" ? "nta" : "quantrex"),
           paperFormat: session.paperFormat || (session.meta && session.meta.format) || null,
           scoring: session.scoring,
           catalogTotalQs: session.catalogTotalQs,
@@ -4384,8 +4391,11 @@ const QuantrexTestEngine = (() => {
       meta: config.meta || null,
       paperFormat: config.paperFormat || null,
       shuffle: config.shuffle !== false,
-      // "quizrr" = NTA CBT; "examgoal" = ExamGOAL chrome; "quantrex" = Allen/legacy
+      // "quizrr" = NTA exact MARKS player; "examgoal" = QUANTREX extras on that player
       uiMode: (resume && resume.uiMode) || config.uiMode || "quantrex",
+      _qxFormat: (resume && resume._qxFormat) || config._qxFormat ||
+        ((((resume && resume.uiMode) || config.uiMode) === "quizrr") ? "nta" : "quantrex"),
+      _marksPlayer: !practiceMode,
       _egChecked: (resume && resume._egChecked) ? { ...resume._egChecked } : {},
       _egCorrect: (resume && resume._egCorrect) ? { ...resume._egCorrect } : {},
       _egShowAnswer: !!(resume && resume._egShowAnswer),
@@ -5901,6 +5911,7 @@ function marksPersistSession() {
     paperFormat: s.paperFormat || (s.meta && s.meta.slug) || null,
     shuffle: s.shuffle !== false,
     uiMode: s.uiMode || "quantrex",
+    _qxFormat: s._qxFormat || (s.uiMode === "quizrr" ? "nta" : "quantrex"),
     practiceMode: !!s.practiceMode,
     _egChecked: s._egChecked || {},
     _egCorrect: s._egCorrect || {},
@@ -6224,18 +6235,23 @@ async function startTest(questionIds, title, returnTo, options) {
   } catch (_) { /* */ }
   const isTs = opts.testType === "testseries";
   const marksMode = opts.marksMode !== false;
-  // Practice / non-TS: Quantrex-best (examgoal chrome). Test Series: NTA-exact (quizrr) by default.
+  // Practice / PYQ mock: QUANTREX practice chrome. Timed Test Series + custom: NTA exact by default.
   let uiMode = opts.uiMode || (opts.resumeData && opts.resumeData.uiMode) || null;
-  if (isTs) {
+  if (opts.practiceMode || opts.testType === "pyqmock") {
+    uiMode = "examgoal";
+  } else if (isTs) {
     if (!uiMode) {
       try { uiMode = localStorage.getItem("ts_last_ui_mode") || "quizrr"; } catch (_) { uiMode = "quizrr"; }
     }
     if (uiMode !== "examgoal" && uiMode !== "quantrex" && uiMode !== "quizrr") uiMode = "quizrr";
   } else {
-    // Practice / PYQ / custom: Quantrex-best shell
-    uiMode = opts.practiceMode ? "examgoal" : (uiMode || "examgoal");
-    if (!opts.practiceMode && opts.testType === "pyqmock") uiMode = uiMode || "examgoal";
-    uiMode = "examgoal";
+    if (!uiMode) {
+      try {
+        var prefUi = localStorage.getItem("qx_cbt_format_pref") || localStorage.getItem("ts_last_ui_mode") || "quizrr";
+        uiMode = (prefUi === "quantrex" || prefUi === "examgoal") ? "examgoal" : "quizrr";
+      } catch (_) { uiMode = "quizrr"; }
+    }
+    if (uiMode !== "examgoal" && uiMode !== "quantrex" && uiMode !== "quizrr") uiMode = "quizrr";
   }
   if (uiMode === "quantrex") uiMode = "examgoal";
   const practiceMode = !!opts.practiceMode;
@@ -6272,7 +6288,8 @@ async function startTest(questionIds, title, returnTo, options) {
     totalMarks: opts.totalMarks || null,
     catalogDurationMin: opts.catalogDurationMin || (opts.durationSec ? Math.floor(opts.durationSec / 60) : null),
     shuffle: opts.resumeData ? opts.resumeData.shuffle !== false : (opts.shuffle !== false),
-    uiMode: uiMode === "quizrr" ? "quizrr" : "examgoal"
+    uiMode: uiMode === "quizrr" ? "quizrr" : "examgoal",
+    _qxFormat: opts._qxFormat || (uiMode === "quizrr" ? "nta" : "quantrex")
   };
 
   const main = getTestMountEl();

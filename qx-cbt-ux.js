@@ -1,14 +1,14 @@
 /**
  * Quantrex CBT UX — dual format enforcement + mobile Tests entry labels
- * QUANTREX FORMAT (examgoal/Allen practice) = flexible Practice
- * NTA FORMAT (quizrr) = exact Marks/ExamGoal NTA shell for Test Series only
+ * QUANTREX FORMAT = MARKS light player + extra tools (Theme, Bookmark, Notes, Settings, AI Proctor)
+ * NTA FORMAT = exact MARKS photo player (X / timer / Submit, View All Qs, 2×2 footer)
  * PYQ Mock = ExamGoal / Quantrex practice chrome (same as chapter-wise)
  * Additive only. No payment / bank changes.
  */
 (function (global) {
   "use strict";
 
-  var VERSION = "qxmd281";
+  var VERSION = "qxmd294";
   var FORMAT_KEY = "qx_cbt_format_pref"; // "quantrex" | "nta"
 
   function isPracticeConfig(cfg) {
@@ -52,18 +52,23 @@
       cfg.practiceMode = false;
       var pref = "";
       try { pref = String(localStorage.getItem(FORMAT_KEY) || ""); } catch (_) { pref = ""; }
-      if (ui === "examgoal" || ui === "quantrex" || pref === "quantrex") {
+      if (ui === "examgoal" || ui === "quantrex") {
         cfg.uiMode = "examgoal";
         cfg._qxFormat = "quantrex";
         return cfg;
       }
-      if (ui === "quizrr" || ui === "nta" || pref === "nta") {
+      if (ui === "quizrr" || ui === "nta") {
         cfg.uiMode = "quizrr";
         cfg._qxFormat = "nta";
         return cfg;
       }
-      cfg.uiMode = "examgoal";
-      cfg._qxFormat = "quantrex";
+      if (pref === "quantrex") {
+        cfg.uiMode = "examgoal";
+        cfg._qxFormat = "quantrex";
+        return cfg;
+      }
+      cfg.uiMode = "quizrr";
+      cfg._qxFormat = "nta";
       return cfg;
     }
 
@@ -110,6 +115,11 @@
             "data-qx-cbt-format",
             cfg._qxFormat || (cfg.uiMode === "quizrr" ? "nta" : "quantrex")
           );
+        } catch (_) { /* */ }
+        try {
+          if (cfg._qxFormat && !cfg.practiceMode && /^testseries$/i.test(String(cfg.testType || ""))) {
+            localStorage.setItem(FORMAT_KEY, cfg._qxFormat);
+          }
         } catch (_) { /* */ }
         return orig.call(this, ids, title, returnTo, cfg);
       }
@@ -356,11 +366,11 @@
       legend.innerHTML =
         '<div class="qx-fmt-card qx-fmt-qx">' +
         "<strong>QUANTREX FORMAT</strong>" +
-        "<span>Flexible Practice · solutions · bookmarks · font/theme</span>" +
+        "<span>Photo player plus Theme, Bookmark, Notes, Settings, AI Proctor</span>" +
         "</div>" +
         '<div class="qx-fmt-card qx-fmt-nta">' +
         "<strong>NTA FORMAT</strong>" +
-        "<span>Exact exam shell · timer · palette · Save &amp; Next · Mark for Review</span>" +
+        "<span>Exact photo player · X / timer / Submit · View All Qs · 2×2 footer</span>" +
         "</div>";
       var head = page.querySelector(".marks-tests-head");
       if (head && head.parentNode) head.parentNode.insertBefore(legend, head.nextSibling);
@@ -394,7 +404,7 @@
         if (card.querySelector(".qx-mode-pill")) return;
         var pill = document.createElement("span");
         pill.className = "qx-mode-pill qx-mode-nta";
-        pill.textContent = "NTA FORMAT · official exam chrome (Quantrex layout optional)";
+        pill.textContent = "NTA FORMAT · exact photo player (Quantrex extras optional)";
         var body = card.querySelector(".mts-body") || card;
         body.appendChild(pill);
       });
@@ -425,7 +435,7 @@
         var s = qx.querySelector("span");
         var st = qx.querySelector("strong");
         if (st) st.textContent = "QUANTREX FORMAT";
-        if (s) s.textContent = "Flexible practice UI · not the official NTA shell";
+        if (s) s.textContent = "Same photo player plus Theme, Bookmark, Notes, Settings, AI Proctor";
       }
       if (nta) {
         var s2 = nta.querySelector("span");
@@ -433,12 +443,12 @@
         if (st2) st2.textContent = "NTA FORMAT";
         if (s2)
           s2.textContent =
-            "Exact official exam shell · palette · timer · Save & Next";
+            "Exact photo player · X / timer / Submit · View All Qs · 2×2 footer";
       }
       var hint = root.querySelector(".ts-fmt-hint");
       if (hint) {
         hint.textContent =
-          "Test Series defaults to NTA FORMAT (Marks/ExamGoal). Pick QUANTREX FORMAT only if you want the flexible practice layout.";
+          "Test Series defaults to NTA FORMAT (exact photo player). Pick QUANTREX FORMAT for extra tools on the same player.";
       }
     }
     run();
@@ -494,7 +504,7 @@
         "#qzrrThemeLight, #qzrrThemeDark, #mtkFontDown, #mtkFontUp, #mtkFontDownHdr, #mtkFontUpHdr, " +
         ".qzrr-zoom-circle, .qzrr-top-zoom-fab, [data-qzrr-zoom], " +
         "#egFmtBtn, #mtkThemeBtn, #egMenuBtn, #egFullBtn, #qzrrSideToggle, #qzrrPalClose, #mtkPalClose, " +
-        "#qxSubmitBtn, #qxSubmitTop, [data-qx-submit='1'], [data-eg-submit]"
+        "#qxSubmitBtn, #qxSubmitTop, [data-qx-submit='1'], [data-eg-submit], #egPrintBtn, #egNoteBtnExtra"
       );
       if (!t) return;
       var id = t.id || "";

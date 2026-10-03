@@ -321,10 +321,25 @@
     } catch (_) {}
   }
 
+  /** Timed NTA + QUANTREX both use the MARKS light player (photos).
+      NTA is pixel-exact; QUANTREX adds extras. Practice stays blue chrome. */
   function isExamgoalUi(session) {
     if (!session) return false;
-    if (session.uiMode === "quizrr") return false;
     return true;
+  }
+
+  function qxFormatOf(session) {
+    if (!session) return "quantrex";
+    if (session.practiceMode) return "practice";
+    var f = String(session._qxFormat || "").toLowerCase();
+    if (f === "nta" || f === "quizrr") return "nta";
+    if (f === "quantrex" || f === "examgoal") return "quantrex";
+    if (String(session.uiMode || "") === "quizrr") return "nta";
+    return "quantrex";
+  }
+
+  function isQxExtras(session) {
+    return !!(session && !session.practiceMode && qxFormatOf(session) === "quantrex");
   }
 
 
@@ -562,6 +577,50 @@
       similarBtn +
       '<button type="button" class="eg-ico eg-tool-btn eg-tool-pri eg-settings-gear" id="egFmtBtn" data-tip="Settings" title="Question View Settings" aria-label="Question View Settings">' +
         gearIco + '<span class="eg-tip" style="display:block!important;position:static!important;opacity:1!important;visibility:visible!important;color:#ffffff!important;-webkit-text-fill-color:#ffffff!important;font-size:11px!important;font-weight:800!important;line-height:1.15!important;background:transparent!important;transform:none!important">Settings</span></button>'
+    );
+  }
+
+  function _egTipSpan(lab) {
+    return '<span class="eg-tip" style="display:block!important;position:static!important;opacity:1!important;visibility:visible!important;color:#ffffff!important;-webkit-text-fill-color:#ffffff!important;font-size:11px!important;font-weight:800!important;line-height:1.15!important;background:transparent!important;transform:none!important">' + lab + "</span>";
+  }
+
+  /** QUANTREX FORMAT extras on the MARKS photo player (NTA stays exact, no extras). */
+  function quantrexExtrasHtml(opts) {
+    opts = opts || {};
+    var theme = opts.theme;
+    var bmOn = !!opts.bmOn;
+    var themeIco = theme === "dark"
+      ? ico('<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>')
+      : '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+    var starIco = ico(bmOn
+      ? '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z" fill="currentColor" stroke="none"/>'
+      : '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z" fill="none" stroke="currentColor" stroke-width="1.7"/>');
+    var fullIco = ico('<path d="M8 3H3v5M16 3h5v5M8 21H3v-5M21 16v5h-5"/>');
+    var reportIco = ico('<path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/>');
+    var gearIco = ico('<circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>');
+    var noteIco = ico('<path d="M5 4h11l3 3v13H5z"/><path d="M16 4v4h4"/><path d="M8 11h8M8 15h6"/>');
+    var printIco = ico('<path d="M6 9V3h12v6"/><rect x="6" y="13" width="12" height="8" rx="1"/><path d="M4 9h16v6h-2M6 15H4a1 1 0 0 1-1-1V10a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-2"/>');
+    var camIco = ico('<path d="M4 8h3l1.4-2h7.2L17 8h3a1.4 1.4 0 0 1 1.4 1.4v8A1.4 1.4 0 0 1 20 19H4a1.4 1.4 0 0 1-1.4-1.4v-8A1.4 1.4 0 0 1 4 8z"/><circle cx="12" cy="13.2" r="3"/>');
+    var instrIco = ico('<circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><circle cx="12" cy="7.4" r="1"/>');
+    var paperIco = ico('<path d="M7 3.5h7.2L19 8.3V20a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1z"/><path d="M14 3.5V9h5.2"/><path d="M9 12h6M9 15.5h6"/>');
+    function tool(id, lab, svg, extra) {
+      return '<button type="button" class="eg-ico eg-tool-btn eg-tool-pri' + (extra ? " " + extra : "") + '" id="' + id + '" data-tip="' + lab + '" title="' + lab + '" aria-label="' + lab + '">' +
+        svg + _egTipSpan(lab) + "</button>";
+    }
+    return (
+      '<div class="eg-qx-extras" role="toolbar" aria-label="Quantrex extras">' +
+      '<div class="eg-top-tools eg-qx-extras-tools">' +
+      tool("mtkThemeBtn", "Theme", themeIco, "mtk-theme-btn" + (theme === "light" ? " eg-moon" : "")) +
+      tool("egStarBtn", "Bookmark", starIco, "star" + (bmOn ? " on" : "")) +
+      tool("egNoteBtnExtra", "Notes", noteIco, "") +
+      tool("mtkReportBtn", "Report", reportIco, "warn") +
+      tool("egFullBtn", "Full", fullIco, "") +
+      tool("egPrintBtn", "Print", printIco, "") +
+      tool("egFmtBtn", "Settings", gearIco, "eg-settings-gear") +
+      tool("qzrrProctorBtn", "Proctor", camIco, "") +
+      tool("qzrrInstrBtn", "Instr", instrIco, "") +
+      tool("qzrrPaperBtn", "Paper", paperIco, "") +
+      "</div></div>"
     );
   }
 
@@ -1183,6 +1242,9 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
         '<button type="button" class="eg-marks-submit" id="qxSubmitTop" data-eg-submit="1" data-qx-submit="1"' +
         ' onclick="event.preventDefault();event.stopPropagation();if(window.qxSubmitTest){window.qxSubmitTest();}return false;">Submit</button>' +
         "</header>");
+    const extrasHtml = (!practice && isQxExtras(session))
+      ? quantrexExtrasHtml({ theme: theme, bmOn: bmOn })
+      : "";
     const qbarHtml = practice
       ? ('<div class="eg-qbar eg-strip' + (stripOpen ? "" : " eg-strip-collapsed") + '" id="egQBar" role="navigation" aria-label="Question numbers" aria-hidden="' + (stripOpen ? "false" : "true") + '"' + (stripOpen ? "" : " hidden") + ">" +
         '<button type="button" class="eg-strip-close" id="egStripClose" title="Close top questions" aria-label="Close top questions">✕</button>' +
@@ -1220,8 +1282,9 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
       (!desktopMode && isMobileEg ? " eg-mobile-vp" : "") +
       "" +
       '" data-test-theme="' + theme + '" data-font-scale="' + fontScale +
-      '" data-eg-mode="' + (practice ? "practice" : "test") + '" data-ui="examgoal" data-eg-cycle="' + (chromeOpen ? "1" : "0") + '">' +
-      headerHtml +
+      '" data-eg-mode="' + (practice ? "practice" : "test") + '" data-ui="examgoal" data-qx-format="' +
+      (practice ? "practice" : qxFormatOf(session)) + '" data-eg-cycle="' + (chromeOpen ? "1" : "0") + '">' +
+      headerHtml + extrasHtml +
       ((groups && groups.length > 1) ? ('<div class="eg-subs">' + tabs + "</div>") : "") +
       qbarHtml +
       infoHtml +
@@ -2918,7 +2981,7 @@ function forceFootVisible(force) {
     wireTap(allQ, cycleAllQChrome);
     wireTap(menu, toggleEgSideOnly);
     /* Ensure EVERY toolbar control is tappable above overlays */
-    ["#egStarBtn", "#egPlusBtn", "#egAllQBtn", "#egMenuBtn", "#egFullBtn", "#mtkThemeBtn", "#egFmtBtn", "#mtkReportBtn", "#egFlagBtn", "#egNoteBtn", "#egSimilarBtn"].forEach(function (sel) {
+    ["#egStarBtn", "#egPlusBtn", "#egAllQBtn", "#egMenuBtn", "#egFullBtn", "#mtkThemeBtn", "#egFmtBtn", "#mtkReportBtn", "#egFlagBtn", "#egNoteBtn", "#egNoteBtnExtra", "#egPrintBtn", "#egSimilarBtn", "#qzrrProctorBtn", "#qzrrInstrBtn", "#qzrrPaperBtn"].forEach(function (sel) {
       const el = root.querySelector(sel);
       if (!el) return;
       el.style.setProperty("pointer-events", "auto", "important");
@@ -3184,6 +3247,16 @@ function forceFootVisible(force) {
     if (s1) s1.onclick = bm;
     if (s2) s2.onclick = bm;
     if (s3) s3.onclick = bm;
+    const noteExtra = root.querySelector("#egNoteBtnExtra");
+    if (noteExtra) noteExtra.onclick = function (e) {
+      if (e) { e.preventDefault(); e.stopPropagation(); }
+      openNote(qid, noteExtra);
+    };
+    const printBtn = root.querySelector("#egPrintBtn");
+    if (printBtn) printBtn.onclick = function (e) {
+      if (e) { e.preventDefault(); e.stopPropagation(); }
+      try { window.print(); } catch (_) { /* */ }
+    };
     function openGroup(e) {
       if (e) { e.preventDefault(); e.stopPropagation(); }
       if (typeof toggleBmWithGroup === "function") toggleBmWithGroup(qid);
@@ -3340,6 +3413,8 @@ function forceFootVisible(force) {
 
   global.ExamgoalTestUI = {
     isExamgoalUi: isExamgoalUi,
+    qxFormatOf: qxFormatOf,
+    isQxExtras: isQxExtras,
     render: render,
     bind: bind,
     paletteStatus: paletteStatus,
