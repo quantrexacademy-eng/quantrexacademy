@@ -864,10 +864,9 @@ body.ts-standalone-body {
 }
 .qzrr-cbt.qzrr-mag-on .qzrr-q-area,
 .qzrr-cbt.qzrr-mag-on #qzrrQArea {
-  zoom: 1.35 !important;
-  transform-origin: top left;
-  overflow-y: auto !important;
-  overflow-x: auto !important;
+  /* Hover lens in qx-quizrr-web.css — do not change paper font-size */
+  overflow-y: auto;
+  overflow-x: auto;
 }
 .qzrr-cbt #qxPrevBtn {
   display: inline-flex;
@@ -922,7 +921,6 @@ body.ts-standalone-body {
 .qzrr-q-area .katex * {
   color: inherit !important;
 }
-/* Show option letters A/B/C/D as blue circles (readable like exam UI) */
 .qzrr-opts .mtk-opt-letter { display: none !important; }
 .qzrr-opts .mtk-opt-radio {
   display: inline-block !important;
@@ -1030,9 +1028,12 @@ body.ts-standalone-body {
 }
 .qzrr-grid-cell, .qzrr-cbt .mtk-pal-cell.qzrr-grid-cell {
   width: 100% !important; min-width: 0 !important; height: 34px !important;
+  min-height: 34px !important; max-height: 34px !important;
   border-radius: 3px !important; font-size: 12px !important; font-weight: 700 !important;
+  line-height: 34px !important; padding: 0 !important;
   border: 1px solid #9aa5b1 !important; background: #eceff1 !important; color: #444 !important;
   cursor: pointer; font-family: Arial, Helvetica, sans-serif !important;
+  zoom: 1 !important; transform: none !important;
 }
 .qzrr-grid-cell:hover, .qzrr-cbt .mtk-pal-cell.qzrr-grid-cell:hover {
   filter: brightness(0.97);

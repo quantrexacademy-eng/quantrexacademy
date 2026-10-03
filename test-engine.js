@@ -203,6 +203,9 @@ function applyTestZoomToDom(zoom) {
   ).forEach((lbl) => {
     lbl.textContent = pct;
   });
+  try {
+    if (window.QxQzrrMag && QxQzrrMag.isOn && QxQzrrMag.isOn()) QxQzrrMag.refresh();
+  } catch (_) { /* */ }
   return z;
 }
 
@@ -223,6 +226,139 @@ window.getTestZoom = getTestZoom;
 window.setTestZoom = setTestZoom;
 window.bumpTestZoom = bumpTestZoom;
 window.applyTestZoomToDom = applyTestZoomToDom;
+
+/* Website Quizrr Screen Magnifier: hover lens. Paper text size stays the same. */
+(function qxQzrrMagLens() {
+  if (typeof window === "undefined") return;
+  if (window.QxQzrrMag) return;
+  var SCALE = 2;
+  var SIZE = 220;
+  var on = false;
+  var bound = false;
+  var raf = 0;
+  var last = null;
+
+  function isWebShell() {
+    try { return document.documentElement.getAttribute("data-qx-shell") === "web"; } catch (_) { return false; }
+  }
+  function lensEl() { return document.getElementById("qxQzrrMagLens"); }
+  function ensure() {
+    var el = lensEl();
+    if (el) return el;
+    el = document.createElement("div");
+    el.id = "qxQzrrMagLens";
+    el.className = "qx-qzrr-mag-lens";
+    el.setAttribute("aria-hidden", "true");
+    el.innerHTML = '<div class="qx-qzrr-mag-view"><div class="qx-qzrr-mag-clone" id="qxQzrrMagClone"></div></div><span class="qx-qzrr-mag-handle"></span>';
+    (document.body || document.documentElement).appendChild(el);
+    return el;
+  }
+  function stripIds(node) {
+    if (!node) return;
+    if (node.removeAttribute) node.removeAttribute("id");
+    var all = node.querySelectorAll ? node.querySelectorAll("[id]") : [];
+    for (var i = 0; i < all.length; i++) all[i].removeAttribute("id");
+  }
+  function hideLens() {
+    var el = lensEl();
+    if (el) el.classList.remove("qx-on");
+  }
+  function refresh() {
+    if (!on || !isWebShell()) return;
+    ensure();
+    var src = document.getElementById("qzrrQArea");
+    var holder = document.getElementById("qxQzrrMagClone");
+    if (!src || !holder) return;
+    holder.innerHTML = "";
+    var c = src.cloneNode(true);
+    stripIds(c);
+    try {
+      c.style.zoom = "1";
+      c.style.overflow = "visible";
+      c.style.height = "auto";
+      c.style.maxHeight = "none";
+      c.style.width = (src.clientWidth || src.getBoundingClientRect().width || 640) + "px";
+      c.style.position = "relative";
+      c.style.background = "#fff";
+    } catch (_) { /* */ }
+    holder.appendChild(c);
+  }
+  function move(e) {
+    if (!on || !e || !isWebShell()) { hideLens(); return; }
+    var src = document.getElementById("qzrrQArea");
+    var holder = document.getElementById("qxQzrrMagClone");
+    var lens = ensure();
+    if (!document.querySelector(".qzrr-cbt") || !src || !holder || !holder.firstChild) { hideLens(); return; }
+    var t = e.target;
+    if (t && t.closest && t.closest(".qx-pr-pip, .qzrr-black-bar, .qzrr-side, .qzrr-footer-actions, .qzrr-a11y-popover, #mtkSubmitModal, #mtkStopModal")) {
+      hideLens();
+      return;
+    }
+    var r = src.getBoundingClientRect();
+    if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) {
+      hideLens();
+      return;
+    }
+    var x = e.clientX - r.left + (src.scrollLeft || 0);
+    var y = e.clientY - r.top + (src.scrollTop || 0);
+    holder.style.transform = "translate(" + (SIZE / 2 - x * SCALE) + "px," + (SIZE / 2 - y * SCALE) + "px) scale(" + SCALE + ")";
+    var lx = e.clientX - SIZE / 2;
+    var ly = e.clientY - SIZE / 2;
+    if (lx < 8) lx = 8;
+    if (ly < 8) ly = 8;
+    if (lx > window.innerWidth - SIZE - 8) lx = Math.max(8, window.innerWidth - SIZE - 8);
+    if (ly > window.innerHeight - SIZE - 8) ly = Math.max(8, window.innerHeight - SIZE - 8);
+    lens.style.left = lx + "px";
+    lens.style.top = ly + "px";
+    lens.classList.add("qx-on");
+  }
+  function onMove(e) {
+    last = e;
+    if (raf) return;
+    raf = requestAnimationFrame(function () {
+      raf = 0;
+      if (last) move(last);
+    });
+  }
+  function onWheel(e) {
+    if (!on || !isWebShell()) return;
+    var src = document.getElementById("qzrrQArea");
+    if (!src) return;
+    var r = src.getBoundingClientRect();
+    if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) return;
+    if (e.ctrlKey || e.metaKey) return;
+    try { e.preventDefault(); } catch (_) { /* */ }
+    SCALE = Math.max(1.5, Math.min(3.2, SCALE + (e.deltaY > 0 ? -0.15 : 0.15)));
+    if (last) move(last);
+  }
+  function bindDoc() {
+    if (bound) return;
+    bound = true;
+    document.addEventListener("pointermove", onMove, { passive: true });
+    document.addEventListener("pointerdown", onMove, { passive: true });
+    document.addEventListener("wheel", onWheel, { passive: false });
+    window.addEventListener("resize", function () { if (on) refresh(); });
+    document.addEventListener("click", function (ev) {
+      if (!on) return;
+      var t = ev.target;
+      if (t && t.closest && t.closest(".qzrr-opts, #qzrrQArea")) {
+        setTimeout(refresh, 0);
+      }
+    });
+  }
+  window.QxQzrrMag = {
+    setOn: function (v) {
+      if (!isWebShell()) { on = false; hideLens(); return; }
+      on = !!v;
+      bindDoc();
+      ensure();
+      if (on) refresh();
+      else hideLens();
+    },
+    refresh: refresh,
+    isOn: function () { return on; }
+  };
+})();
 
 /* qxeg6: sitewide pinch + ctrl/meta-wheel zoom (uses --qx-content-zoom) */
 (function qxSitewideZoom() {
@@ -1633,6 +1769,8 @@ const QuantrexTestEngine = (() => {
             <p class="qzrr-choose">Choose a Question</p>
             <div class="qzrr-grid">${palCells.join("")}</div>
             <div class="qzrr-side-foot">
+              <button type="button" class="qzrr-btn qzrr-btn-outline" id="mtkExitBtn" data-qx-exit="1"
+                onclick="event.preventDefault();event.stopPropagation();if(window.qxExitTest){window.qxExitTest();}return false;">Exit</button>
               <button type="button" class="qzrr-btn qzrr-btn-primary" id="qxSubmitBtn" data-qx-submit="1"
                 onclick="event.preventDefault();event.stopPropagation();if(window.qxSubmitTest){window.qxSubmitTest();}return false;">Submit</button>
             </div>
@@ -2418,6 +2556,17 @@ const QuantrexTestEngine = (() => {
         b.classList.toggle("on", !!session._qzrrMag);
         b.setAttribute("aria-pressed", session._qzrrMag ? "true" : "false");
       });
+      try {
+        if (window.QxQzrrMag && QxQzrrMag.setOn) QxQzrrMag.setOn(!!session._qzrrMag);
+      } catch (_) { /* */ }
+      if (session._qzrrMag && !session._qzrrMagHint) {
+        session._qzrrMagHint = 1;
+        try {
+          if (typeof showToast === "function") {
+            showToast("Screen Magnifier on — move over the question to enlarge. Paper text size stays the same.");
+          }
+        } catch (_) { /* */ }
+      }
     };
     const magBtn = root.querySelector("#qzrrMagBtn");
     if (magBtn) {
@@ -2597,6 +2746,12 @@ const QuantrexTestEngine = (() => {
     wireZoomPair("#qzrrZoomOutSide", "#qzrrZoomInSide");
     applyTestZoomToDom(getTestZoom());
     syncTopZoomLbl();
+    try {
+      if (window.QxQzrrMag) {
+        QxQzrrMag.setOn(!!session._qzrrMag);
+        QxQzrrMag.refresh();
+      }
+    } catch (_) { /* */ }
     if (session._qzrrDark) {
       root.classList.add("qzrr-dark");
       root.setAttribute("data-test-theme", "dark");
@@ -6732,8 +6887,6 @@ window.qxSubmitTest = function qxSubmitTest() {
       if (vis || existing.classList.contains("open") || existing.style.display === "flex") return;
       try { existing.remove(); } catch (_) { /* */ }
     }
-    if (window._qxSubmitOpenLock && Date.now() - window._qxSubmitOpenLock < 280) return;
-    window._qxSubmitOpenLock = Date.now();
     const eng = typeof QuantrexTestEngine !== "undefined" ? QuantrexTestEngine : null;
     if (!eng || !eng.getSession || !eng.getSession()) {
       if (typeof showToast === "function") showToast("⚠️ No active test to submit");
@@ -6744,6 +6897,7 @@ window.qxSubmitTest = function qxSubmitTest() {
         mtkShowSubmitModal();
         const ov = document.getElementById("mtkSubmitModal");
         if (ov) {
+          window._qxSubmitOpenLock = Date.now();
           ov.style.setProperty("z-index", "2147483646", "important");
           ov.style.setProperty("position", "fixed", "important");
           ov.style.setProperty("inset", "0", "important");
