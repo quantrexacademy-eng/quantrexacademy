@@ -4535,6 +4535,28 @@ const QuantrexTestEngine = (() => {
     setSideCollapsed,
     isSideCollapsed,
     selectAnswer,
+    appendPracticeQuestions: function (ids) {
+      if (!session || !ids || !ids.length) return false;
+      if (!session.practiceMode) return false;
+      const start = session.ids.length;
+      ids.forEach((id) => {
+        if (id == null || id === "") return;
+        if (session.ids.indexOf(id) < 0 && session.ids.indexOf(String(id)) < 0) session.ids.push(id);
+      });
+      if (session.ids.length === start) return false;
+      if (session.sections && session.sections.length) {
+        session.sections.push({
+          subject: "Similar practice",
+          label: "Similar practice",
+          start: start,
+          count: session.ids.length - start
+        });
+      }
+      session.idx = start;
+      session.visited.add(start);
+      refresh();
+      return true;
+    },
     set onTick(fn) { onTick = fn; }
   };
 })();

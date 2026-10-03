@@ -522,6 +522,15 @@
       }
     }
 
+    if (/similar|trickier|mistake\s*booster|aisi\s*hi|same\s*type|is(i|e)\s*jaise|generate\s*(more|practice)|aur\s*(5|3|10)\s*(q|question)/i.test(t)
+      && /question|practice|generate|banao|tricky|similar/i.test(t)) {
+      return {
+        type: "similar_practice",
+        count: detectCount(t, 3),
+        trickier: /trick|harder|difficult|kathin|mushkil|plus/i.test(t)
+      };
+    }
+
     // Create / start test
     if (/test|mock|quiz|paper|banao|बनाओ|create|generate|practice\s*set|part\s*test|mini\s*test/i.test(t)) {
       return {
@@ -683,6 +692,21 @@
     if (intent.type === "solve") {
       setContext({ mode: "solve", exam: intent.exam, subject: intent.subject });
       return { handled: false, reply: null, skipAi: false };
+    }
+    if (intent.type === "similar_practice") {
+      setAgentStatus("Test Generator · similar practice", true);
+      if (typeof QxSimilarPractice !== "undefined" && QxSimilarPractice.generate) {
+        const r = await QxSimilarPractice.generate({
+          count: intent.count || 3,
+          trickier: !!intent.trickier,
+          noRepeat: true
+        });
+        if (r && r.ok) {
+          return { handled: true, reply: "✅ Added **" + r.count + "** similar practice question" + (r.count > 1 ? "s" : "") + " with options and solutions. Scroll Next to attempt them.", skipAi: true };
+        }
+        return { handled: true, reply: "⚠️ Could not add similar questions right now. Open a practice question, then tap **Similar** on the toolbar.", skipAi: true };
+      }
+      return { handled: true, reply: "Open a **Practice** question, then tap **Similar** (Mistake Booster) to generate similar / trickier questions.", skipAi: true };
     }
     return null;
   }
@@ -1316,6 +1340,7 @@
     injectInlineAsk,
     parseTeacherIntent,
     createTest: (opts) => createTestAction(opts || {}),
+    generateSimilar: (opts) => (global.QxSimilarPractice && QxSimilarPractice.generate) ? QxSimilarPractice.generate(opts || {}) : Promise.resolve({ ok: false }),
     openExam: (slug) => openExamAction(slug),
     getGaps: () => {
       try { return JSON.parse(localStorage.getItem(GAP_KEY) || "[]"); } catch (e) { return []; }

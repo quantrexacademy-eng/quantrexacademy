@@ -511,19 +511,10 @@ function searchKey(word) {
   return t.slice(0, 2);
 }
 
-const SEARCH_STOP = {
-  the: 1, and: 1, for: 1, with: 1, that: 1, this: 1, from: 1, which: 1, what: 1,
-  when: 1, then: 1, each: 1, into: 1, following: 1, given: 1, find: 1, than: 1
-};
+const pasteSearch = require("../lib/seo-paste-search");
 
 function searchWords(q) {
-  const raw = String(q || "")
-    .toLowerCase()
-    .replace(/[^a-z0-9\s]+/g, " ")
-    .split(/\s+/)
-    .filter(Boolean);
-  const words = raw.filter((w) => w.length >= 2 && !SEARCH_STOP[w]);
-  return words.length ? words : raw.filter((w) => w.length >= 2);
+  return pasteSearch.tokens(q);
 }
 
 async function renderSearch(req, res) {
@@ -539,36 +530,34 @@ async function renderSearch(req, res) {
       }
     }
   }
-  rawQ = rawQ.replace(/\s+/g, " ").trim().slice(0, 400);
+  rawQ = rawQ.replace(/\s+/g, " ").trim().slice(0, 1600);
   const words = searchWords(rawQ);
-  const keys = [];
-  words.slice(0, 12).forEach((w) => {
-    const k = searchKey(w);
-    if (keys.indexOf(k) < 0) keys.push(k);
-  });
+  const dist = pasteSearch.distinctive(words);
+  const paste = pasteSearch.isPaste(rawQ, words);
+  const keys = pasteSearch.shardKeys(words, dist);
   const seen = Object.create(null);
   const hits = [];
-  const phrase = rawQ.toLowerCase().replace(/[^a-z0-9\s]+/g, " ").replace(/\s+/g, " ").trim();
-  const phraseKey = phrase.slice(0, 48);
-  const need = words.length <= 1 ? 1
-    : words.length >= 8 ? Math.min(5, Math.max(3, Math.ceil(words.length * 0.35)))
-    : Math.min(2, words.length);
+  const qNorm = pasteSearch.normalizeStem(rawQ);
+  const pKey = pasteSearch.phraseKey(qNorm, paste ? 72 : 48);
+  const need = pasteSearch.firstPassNeed(paste, words, dist);
   for (const k of keys) {
     const arr = (await readJson(req, "data/seo/qsearch/" + k + ".json")) || [];
     (Array.isArray(arr) ? arr : []).forEach((it) => {
       const id = String(it.id || "");
       if (!id || seen[id]) return;
-      const hay = String(it.t || "").toLowerCase();
-      const nHit = words.length ? words.filter((w) => hay.indexOf(w) >= 0).length : 0;
-      const phraseHit = phraseKey.length >= 18 && hay.indexOf(phraseKey) >= 0;
-      const ok = phraseHit || (words.length ? nHit >= need : false);
-      if (!ok) return;
+      const hay = pasteSearch.normalizeStem(it.t || "");
+      const prefix = qNorm.slice(0, Math.max(160, Math.min(qNorm.length, hay.length + 48)));
+      const pWords = pasteSearch.tokens(prefix);
+      const pDist = pasteSearch.distinctive(pWords);
+      const st = pasteSearch.scoreHay(hay, pWords, pDist, pasteSearch.phraseKey(prefix, 64));
+      if (!pasteSearch.passesFirst(st, need, paste)) return;
       seen[id] = 1;
+      it._pre = st.score;
       hits.push(it);
     });
   }
-  hits.sort((a, b) => String(b.year || "").localeCompare(String(a.year || "")));
-  const list = hits.slice(0, 28);
+  hits.sort((a, b) => (b._pre || 0) - (a._pre || 0));
+  const list = hits.slice(0, paste ? 48 : 28);
   const hydrated = [];
   for (let i = 0; i < list.length; i++) {
     const rec = await loadRec(req, list[i].id);
@@ -576,12 +565,23 @@ async function renderSearch(req, res) {
   }
   const scored = hydrated.filter((rec) => {
     if (!words.length) return true;
-    const hay = recBlob(rec).toLowerCase();
-    const n = words.filter((w) => hay.indexOf(w) >= 0).length;
-    const phraseHit = phraseKey.length >= 18 && hay.indexOf(phraseKey) >= 0;
-    rec._score = n + (phraseHit ? 20 : 0);
-    return phraseHit || n >= need;
+    const hay = pasteSearch.normalizeStem(recBlob(rec));
+    const st = pasteSearch.scoreHay(hay, words, dist, pKey);
+    rec._score = st.score;
+    rec._overlap = st.overlap;
+    rec._distOverlap = st.distOverlap;
+    rec._phrase = st.phrase;
+    return pasteSearch.passesHydrated(st, paste);
   }).sort((a, b) => (b._score || 0) - (a._score || 0) || String(b.year || "").localeCompare(String(a.year || "")));
+  const closeMiss = pasteSearch.noCloseMatch(scored, paste);
+  if (!closeMiss && pasteSearch.shouldRedirect(scored, paste) && String(q.format || "") !== "json") {
+    const best = scored[0];
+    const href = "/q/" + encodeURIComponent(best.id) + "/" + encodeURIComponent(best.slug || "question");
+    res.statusCode = 302;
+    res.setHeader("Location", href);
+    res.setHeader("Cache-Control", "public, s-maxage=30, stale-while-revalidate=120");
+    return res.end();
+  }
 
   if (String(q.format || "") === "json") {
     res.setHeader("Content-Type", "application/json; charset=utf-8");
@@ -589,7 +589,8 @@ async function renderSearch(req, res) {
     res.statusCode = 200;
     return res.end(JSON.stringify({
       q: rawQ,
-      hits: scored.slice(0, 24).map((rec) => ({
+      paste,
+      hits: (closeMiss ? [] : scored.slice(0, 24)).map((rec) => ({
         id: rec.id,
         slug: rec.slug,
         exam: rec.exam,
@@ -608,8 +609,8 @@ async function renderSearch(req, res) {
     }));
   }
 
-  const rows = scored
-    .slice(0, 24)
+  const shown = closeMiss ? [] : scored.slice(0, 24);
+  const rows = shown
     .map((it, i) => {
       const href = "/q/" + encodeURIComponent(it.id) + "/" + encodeURIComponent(it.slug || "question");
       const opts = optList(it);
@@ -620,7 +621,8 @@ async function renderSearch(req, res) {
         ? `<ol class="mini-opts">${opts.map((o, n) => `<li><b>${letters(n)}</b> ${rich(String(o).slice(0, 280))}</li>`).join("")}</ol>`
         : "";
       const stem = rich(String(it.text || it.t || "").slice(0, 420));
-      return `<a class="qrow" href="${esc(href)}"><span class="num">${i + 1}</span><span><h3>${stem}</h3>${figs ? `<div class="thumbs">${figs}</div>` : ""}${optHtml}<span class="pills">${it.exam ? `<span class="pill">${esc(it.exam)}</span>` : ""}${it.year ? `<span class="pill">${esc(it.year)}</span>` : ""}${it.subject ? `<span class="pill">${esc(it.subject)}</span>` : ""}${it.chapter ? `<span class="pill">${esc(it.chapter)}</span>` : ""}<span class="pill ok">Solution</span></span></span><span class="go">View →</span></a>`;
+      const best = i === 0 && paste ? `<span class="pill ok">Best match</span>` : "";
+      return `<a class="qrow" href="${esc(href)}"><span class="num">${i + 1}</span><span><h3>${stem}</h3>${figs ? `<div class="thumbs">${figs}</div>` : ""}${optHtml}<span class="pills">${best}${it.exam ? `<span class="pill">${esc(it.exam)}</span>` : ""}${it.year ? `<span class="pill">${esc(it.year)}</span>` : ""}${it.subject ? `<span class="pill">${esc(it.subject)}</span>` : ""}${it.chapter ? `<span class="pill">${esc(it.chapter)}</span>` : ""}<span class="pill ok">Solution</span></span></span><span class="go">View →</span></a>`;
     })
     .join("");
   const title = rawQ
@@ -678,7 +680,7 @@ async function renderSearch(req, res) {
       <input type="search" name="q" value="${esc(rawQ)}" placeholder="Paste or type a question…" autofocus>
       <button type="submit">Search</button>
     </form>
-    <div class="list">${rows || `<div style="padding:18px" class="muted">${rawQ ? "No match in the public index. Try 4–6 important words from the question, or browse " : "Type a question, or browse "}<a href="/jee">JEE PYQs</a>.</div>`}</div>
+    <div class="list">${rows || `<div style="padding:18px" class="muted">${rawQ ? (closeMiss ? "No close match for this pasted question — other stems that only share common words are hidden. Paste a longer unique part of the stem, or browse " : "No match in the public index. Try 4–6 important words from the question, or browse ") : "Type a question, or browse "}<a href="/jee">JEE PYQs</a>.</div>`}</div>
   </main>
 </body>
 </html>`;

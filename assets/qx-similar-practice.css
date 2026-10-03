@@ -1,0 +1,62 @@
+/* Mistake Booster AI — practice similar / trickier generator (qxmd286) */
+.qx-boost{
+  margin:16px 0 28px;
+  padding:16px 16px 14px;
+  border-radius:16px;
+  background:linear-gradient(180deg,#eef1fb 0%,#e4e9f8 100%);
+  border:1px solid #cfd6ee;
+  color:#1e293b;
+  box-shadow:0 8px 24px rgba(79,70,229,.08);
+}
+.eg-test-root[data-test-theme="dark"] .qx-boost{
+  background:linear-gradient(180deg,#2a3148 0%,#232a40 100%);
+  border-color:#3d4663;
+  color:#e8eefc;
+}
+.qx-boost-head{display:flex;gap:10px;align-items:flex-start;margin-bottom:12px}
+.qx-boost-spark{
+  width:28px;height:28px;border-radius:8px;flex:0 0 28px;
+  display:grid;place-items:center;background:#7c3aed;color:#fff;font-size:14px;font-weight:800
+}
+.qx-boost-head h3{margin:0;font-size:16px;font-weight:800;color:#5b21b6;letter-spacing:.01em}
+.eg-test-root[data-test-theme="dark"] .qx-boost-head h3{color:#c4b5fd}
+.qx-boost-head p{margin:2px 0 0;font-size:13px;line-height:1.4;color:#6d28d9;font-weight:600}
+.eg-test-root[data-test-theme="dark"] .qx-boost-head p{color:#ddd6fe}
+.qx-boost-box{
+  display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px;
+  background:#fff;border-radius:12px;padding:10px 12px;border:1px solid #e2e8f0
+}
+.eg-test-root[data-test-theme="dark"] .qx-boost-box{background:#1a2236;border-color:#334155}
+.qx-boost-lab{font-size:13px;font-weight:800;color:#334155;white-space:nowrap}
+.eg-test-root[data-test-theme="dark"] .qx-boost-lab{color:#cbd5e1}
+.qx-boost-chips{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.qx-boost-chip,.qx-boost-pm{
+  width:34px;height:34px;border-radius:50%;border:1.5px solid #c7d2fe;
+  background:#fff;color:#4338ca;font-weight:800;font-size:14px;cursor:pointer;
+  display:inline-grid;place-items:center;padding:0
+}
+.qx-boost-chip.on{background:#5b21b6;border-color:#5b21b6;color:#fff}
+.qx-boost-pm{border-radius:10px;width:32px;height:32px;font-size:16px}
+.eg-test-root[data-test-theme="dark"] .qx-boost-chip,
+.eg-test-root[data-test-theme="dark"] .qx-boost-pm{background:#0f172a;border-color:#6366f1;color:#c7d2fe}
+.eg-test-root[data-test-theme="dark"] .qx-boost-chip.on{background:#7c3aed;border-color:#7c3aed;color:#fff}
+.qx-boost-n{min-width:22px;text-align:center;font-weight:800;font-size:14px}
+.qx-boost-tog{
+  display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:800;
+  color:#5b21b6;cursor:pointer;user-select:none
+}
+.eg-test-root[data-test-theme="dark"] .qx-boost-tog{color:#c4b5fd}
+.qx-boost-go{
+  margin-left:auto;background:#5b21b6;color:#fff;border:0;border-radius:10px;
+  padding:10px 16px;font-weight:800;font-size:13px;cursor:pointer;min-height:40px
+}
+.qx-boost-go:disabled{opacity:.6;cursor:wait}
+.qx-boost-msg{margin:8px 0 0;font-size:12px;font-weight:700;color:#475569}
+.qx-boost-msg.err{color:#b91c1c}
+.eg-test-root[data-test-theme="dark"] .qx-boost-msg{color:#94a3b8}
+.qx-boost-msg.err{color:#fca5a5}
+
+@media (max-width:640px){
+  .qx-boost-go{width:100%;margin-left:0}
+  .qx-boost-box{padding:12px}
+}

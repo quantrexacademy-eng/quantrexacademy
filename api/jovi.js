@@ -67,14 +67,26 @@ track: Engineering | Medical | Defence | Academic
 For pure teaching/doubt/solve: NO action block.
 
 ═══════════════════════════════════════
+# SIMILAR PRACTICE GENERATOR
+═══════════════════════════════════════
+When asked to generate similar / trickier practice questions:
+• Same chapter and concept as the source question.
+• NEW numbers, functions, or setup — never copy the original stem.
+• Each item MUST have: stem, 4 options (MCQ) or numerical value, correct answer, complete step-by-step solution with $...$ / $$...$$ LaTeX.
+• Tag every generated item **[Jovi-generated]**.
+• Do not repeat any stem listed in <avoid_stems>.
+• Trickier = extra constraint, nested case, or one more reasoning step. Still one unambiguous correct answer.
+• Verify the answer before writing the solution. If unsure, pick a simpler variant that you can prove.
+
 # TEACHING / OUTPUT QUALITY
 ═══════════════════════════════════════
-• Solutions: Step 1… Final answer clear; optional 30s trick; common mistakes.
+• Solutions: Step 1… Final answer clear; optional 30s trick; common mistakes. Math in $...$ or $$...$$.
 • Tests: title, exam, duration, marks scheme if known, instructions.
 • Lists: numbered, short stem + source tags from bank.
 • Adaptive advice: if student weak, next set slightly harder on weak topics only after basics.
 • Voice-friendly: clear sentences when student uses voice.
 • Premium UX tone: ChatGPT + Gemini + Grok + expert JEE faculty + Quantrex DB.
+• You can: solve, explain, generate similar/trickier practice, open exams, make tests, read images, analytics.
 
 BANK HITS → <bank_hits>. CONTEXT → <context>. Always prefer Quantrex data when present.`;
 
@@ -103,6 +115,154 @@ function packBankHits(hits) {
     const stem = String(h.text || h.question || "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim().slice(0, 420);
     return `${i + 1}. [DATABASE FACT id=${h.id || "?"}] ${h.subject || ""} | ${h.chapter || ""} | ${h.source || h.exam || h.bank || ""}${h.hasSolution ? " | has_solution" : ""}\n${stem}`;
   }).join("\n\n");
+}
+
+const SIMILAR_SYSTEM = `You generate NEW exam practice questions for Quantrex Academy.
+Return ONLY valid JSON (no markdown) of the form:
+{"ok":true,"questions":[{"text":"...","type":"mcq","options":["A text","B text","C text","D text"],"answer":"B","sol":"Step 1: ... Final answer: **B**"}]}
+Rules:
+- Same concept/chapter as the source. Different numbers and wording. Never copy the source stem.
+- type is "mcq" (4 options) or "numerical" (options [] and answer is the numeric string; also set correctValue).
+- answer for MCQ is A, B, C or D.
+- sol is a complete, correct solution with $...$ or $$...$$ LaTeX. End with the final answer.
+- Tag the first line of sol with [Jovi-generated].
+- Do not invent official PYQ years. These are practice items only.
+- Verify algebra before writing the answer. One unambiguous correct option.
+- If trickier=true, add one extra constraint or nested step, still solvable at the exam level.
+- Do not repeat any stem in avoid_stems.
+- Produce exactly the requested count when possible (minimum 1).`;
+
+function extractJsonObject(text) {
+  const s = String(text || "").trim();
+  if (!s) return null;
+  try { return JSON.parse(s); } catch (_) { /* */ }
+  const fence = s.match(/```(?:json)?\s*([\s\S]*?)```/i);
+  if (fence) {
+    try { return JSON.parse(fence[1].trim()); } catch (_) { /* */ }
+  }
+  const start = s.indexOf("{");
+  const end = s.lastIndexOf("}");
+  if (start >= 0 && end > start) {
+    try { return JSON.parse(s.slice(start, end + 1)); } catch (_) { /* */ }
+  }
+  return null;
+}
+
+function normalizeGenerated(raw, count) {
+  const obj = raw && typeof raw === "object" ? raw : {};
+  const list = Array.isArray(obj.questions) ? obj.questions : (Array.isArray(obj.items) ? obj.items : []);
+  const out = [];
+  const want = Math.max(1, Math.min(10, Number(count) || 3));
+  list.forEach((q) => {
+    if (!q || out.length >= want) return;
+    const text = String(q.text || q.q || q.question || "").trim();
+    const sol = String(q.sol || q.solution || q.explanation || "").trim();
+    if (text.length < 12 || sol.length < 12) return;
+    const typeRaw = String(q.type || "").toLowerCase();
+    const opts = Array.isArray(q.options) ? q.options.map((o) => String(o == null ? "" : o).trim()) : [];
+    const isNum = typeRaw === "numerical" || typeRaw === "nat" || (opts.filter(Boolean).length < 2 && q.correctValue != null);
+    let answer = q.answer != null ? String(q.answer).trim() : "";
+    if (isNum) {
+      const cv = String(q.correctValue != null ? q.correctValue : answer).trim();
+      if (!cv) return;
+      out.push({
+        text,
+        type: "numerical",
+        options: [],
+        answer: cv,
+        correctValue: cv,
+        sol: /\[Jovi-generated\]/i.test(sol) ? sol : "[Jovi-generated]\n\n" + sol
+      });
+      return;
+    }
+    if (opts.filter(Boolean).length < 2) return;
+    const four = opts.slice(0, 4);
+    while (four.length < 4) four.push("");
+    if (!/^[A-Da-d]$/.test(answer)) {
+      const idx = parseInt(answer, 10);
+      if (Number.isFinite(idx) && idx >= 0 && idx < 4) answer = String.fromCharCode(65 + idx);
+      else if (Number.isFinite(idx) && idx >= 1 && idx <= 4) answer = String.fromCharCode(64 + idx);
+      else answer = "A";
+    } else {
+      answer = answer.toUpperCase();
+    }
+    out.push({
+      text,
+      type: "mcq",
+      options: four,
+      answer,
+      sol: /\[Jovi-generated\]/i.test(sol) ? sol : "[Jovi-generated]\n\n" + sol
+    });
+  });
+  return out;
+}
+
+async function xaiChat(apiKey, payload) {
+  const r = await fetch("https://api.x.ai/v1/chat/completions", {
+    method: "POST",
+    headers: {
+      Authorization: "Bearer " + apiKey,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(payload)
+  });
+  const data = await r.json().catch(() => ({}));
+  return { r, data };
+}
+
+async function handleSimilarPractice(body, apiKey, res) {
+  const context = body.context || {};
+  const count = Math.max(1, Math.min(10, Number(body.count || context.count || 3) || 3));
+  const trickier = !!(body.trickier || context.trickier);
+  const avoid = Array.isArray(body.avoidStems) ? body.avoidStems : (context.avoidStems || []);
+  const stem = String(context.questionText || context.text || body.questionText || "").slice(0, 2500);
+  const opts = context.options || body.options || [];
+  const user = [
+    "Generate " + count + " NEW practice question(s).",
+    "trickier: " + (trickier ? "true" : "false"),
+    "exam: " + (context.exam || body.exam || ""),
+    "subject: " + (context.subject || ""),
+    "chapter: " + (context.chapter || ""),
+    "source_stem:\n" + (stem || "(missing — invent a standard JEE/NEET item on the chapter)"),
+    opts && opts.length ? "source_options: " + JSON.stringify(opts).slice(0, 1500) : "",
+    avoid && avoid.length ? "<avoid_stems>\n" + avoid.slice(0, 12).map((s, i) => (i + 1) + ". " + String(s).slice(0, 280)).join("\n") + "\n</avoid_stems>" : "",
+    "Return JSON only."
+  ].filter(Boolean).join("\n\n");
+
+  const model = process.env.XAI_MODEL || "grok-4.7";
+  const { r, data } = await xaiChat(apiKey, {
+    model,
+    messages: [
+      { role: "system", content: SIMILAR_SYSTEM },
+      { role: "user", content: user }
+    ],
+    temperature: trickier ? 0.4 : 0.28,
+    max_tokens: 8000
+  });
+  if (!r.ok) {
+    res.statusCode = r.status || 502;
+    return res.end(JSON.stringify({
+      ok: false,
+      error: "Upstream AI error",
+      detail: data.error || data,
+      status: r.status
+    }));
+  }
+  const reply = data.choices && data.choices[0] && data.choices[0].message
+    ? data.choices[0].message.content
+    : "";
+  const parsed = extractJsonObject(reply);
+  const questions = normalizeGenerated(parsed, count);
+  res.setHeader("Content-Type", "application/json");
+  res.statusCode = 200;
+  return res.end(JSON.stringify({
+    ok: questions.length > 0,
+    questions,
+    count: questions.length,
+    model: data.model || model,
+    usage: data.usage || null,
+    agent: "similar_practice"
+  }));
 }
 
 function packContext(ctx) {
@@ -155,6 +315,15 @@ module.exports = async function handler(req, res) {
   const mode = body.mode || "chat";
   const language = body.language || context.language || "auto";
 
+  if (mode === "similar_practice") {
+    try {
+      return await handleSimilarPractice(body, apiKey, res);
+    } catch (e) {
+      res.statusCode = 500;
+      return res.end(JSON.stringify({ ok: false, error: "Jovi similar practice failed", message: String(e.message || e) }));
+    }
+  }
+
   const bankBlock = packBankHits(bankHits);
   const ctxBlock = packContext({ ...context, mode, language, agentHint: body.agentHint || context.agentHint });
 
@@ -203,7 +372,7 @@ module.exports = async function handler(req, res) {
   }
 
   // Task-based model preference (still xAI; env can override)
-  const model = process.env.XAI_MODEL || "grok-4.5";
+  const model = process.env.XAI_MODEL || "grok-4.7";
   const isMathHeavy = /integral|differentiate|prove|matrix|determinant|limit|trigonometry|vector|coordinate|calculus|solve|solution|math/i.test(
     JSON.stringify(messages.slice(-2))
   );

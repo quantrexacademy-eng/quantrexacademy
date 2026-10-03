@@ -84,6 +84,15 @@
     }
     const chlock = "assets/qx-chrome-lock.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd268");
     if (clock.getAttribute("href") !== chlock) clock.href = chlock;
+    let simCss = document.getElementById("qxSimilarCss");
+    if (!simCss) {
+      simCss = document.createElement("link");
+      simCss.id = "qxSimilarCss";
+      simCss.rel = "stylesheet";
+      document.head.appendChild(simCss);
+    }
+    const simHref = "assets/qx-similar-practice.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd286");
+    if (simCss.getAttribute("href") !== simHref) simCss.href = simHref;
 
     /* qxmd218: practice chrome — only Settings gear; Marks-like settings cards */
     if (!document.getElementById("qxmd219EgCss")) {
@@ -484,6 +493,7 @@
     var sideOpen = !!opts.sideOpen;
     var sideTitle = opts.sideTitle || "Question number palette";
     var bmOn = !!opts.bmOn;
+    var practiceTools = !!opts.practice;
     var themeIco = theme === "dark"
       ? ico('<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>')
       : '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
@@ -496,6 +506,11 @@
     var fullIco = ico('<path d="M8 3H3v5M16 3h5v5M8 21H3v-5M21 16v5h-5"/>');
     var reportIco = ico('<path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/>');
     var gearIco = ico('<circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>');
+    var similarIco = ico('<path d="M12 3l1.1 3.3L16.5 7.5 13.1 8.7 12 12l-1.1-3.3L7.5 7.5l3.4-1.2L12 3z"/><path d="M19 14l.7 2.1 2.1.7-2.1.7L19 20l-.7-2.1L16.2 17l2.1-.7L19 14z"/><path d="M5 14l.6 1.8L7.4 16.4 5.6 17 5 18.8l-.6-1.8L2.6 16.4l1.8-.6L5 14z"/>');
+    var similarBtn = practiceTools
+      ? ('<button type="button" class="eg-ico eg-tool-btn eg-tool-pri" id="egSimilarBtn" data-tip="Similar" title="Practice similar type questions" aria-label="Practice similar type questions">' +
+        similarIco + '<span class="eg-tip" style="display:block!important;position:static!important;opacity:1!important;visibility:visible!important;color:#ffffff!important;-webkit-text-fill-color:#ffffff!important;font-size:11px!important;font-weight:800!important;line-height:1.15!important;background:transparent!important;transform:none!important">Similar</span></button>')
+      : "";
     return (
       '<button type="button" class="eg-ico mtk-theme-btn eg-tool-btn eg-tool-pri' + (theme === "light" ? " eg-moon" : "") + '" id="mtkThemeBtn" data-tip="Theme" title="Light / dark" aria-label="Light / dark">' +
         themeIco + '<span class="eg-tip" style="display:block!important;position:static!important;opacity:1!important;visibility:visible!important;color:#ffffff!important;-webkit-text-fill-color:#ffffff!important;font-size:11px!important;font-weight:800!important;line-height:1.15!important;background:transparent!important;transform:none!important">Theme</span></button>' +
@@ -511,6 +526,7 @@
         fullIco + '<span class="eg-tip" style="display:block!important;position:static!important;opacity:1!important;visibility:visible!important;color:#ffffff!important;-webkit-text-fill-color:#ffffff!important;font-size:11px!important;font-weight:800!important;line-height:1.15!important;background:transparent!important;transform:none!important">Full</span></button>' +
       '<button type="button" class="eg-ico warn eg-tool-btn eg-tool-pri" id="mtkReportBtn" data-tip="Report" title="Report question" aria-label="Report">' +
         reportIco + '<span class="eg-tip" style="display:block!important;position:static!important;opacity:1!important;visibility:visible!important;color:#ffffff!important;-webkit-text-fill-color:#ffffff!important;font-size:11px!important;font-weight:800!important;line-height:1.15!important;background:transparent!important;transform:none!important">Report</span></button>' +
+      similarBtn +
       '<button type="button" class="eg-ico eg-tool-btn eg-tool-pri eg-settings-gear" id="egFmtBtn" data-tip="Settings" title="Question View Settings" aria-label="Question View Settings">' +
         gearIco + '<span class="eg-tip" style="display:block!important;position:static!important;opacity:1!important;visibility:visible!important;color:#ffffff!important;-webkit-text-fill-color:#ffffff!important;font-size:11px!important;font-weight:800!important;line-height:1.15!important;background:transparent!important;transform:none!important">Settings</span></button>'
     );
@@ -629,6 +645,7 @@
         '<button type="button" data-eg-fmt-act="full">Fullscreen</button>' +
         '<button type="button" data-eg-fmt-act="report">Report</button>' +
         '<button type="button" data-eg-fmt-act="note">Note</button>' +
+        (practice ? '<button type="button" data-eg-fmt-act="similar">Similar</button>' : "") +
         '</div></section>';
     var body = ('<section class="eg-vs-sec"><h5 class="eg-vs-h">Notes &amp; Solutions</h5>' +
         egToggleRow("showHint", "Show hint", "Hint button when the question has a hint", false) +
@@ -652,7 +669,14 @@
         '</div></div></section>' +
         '<section class="eg-vs-sec"><h5 class="eg-vs-h">Peer Insights</h5>' +
         egToggleRow("showAttemptInsight", "Show attempt insight", "Time taken after Check Answer", true) +
-        '</section>');
+        '</section>' +
+        (practice
+          ? ('<section class="eg-vs-sec"><h5 class="eg-vs-h">Similar practice</h5>' +
+            egLsRow("qx_pref_similar_booster", "Mistake Booster AI", "Show similar / trickier generator after Check Answer", true) +
+            egLsRow("qx_pref_similar_trickier", "More tricky by default", "Generated questions one step harder", false) +
+            egLsRow("qx_pref_similar_norepeat", "Don\u2019t repeat same question", "Skip stems already in this practice", true) +
+            '</section>')
+          : ""));
     return '<div class="eg-fmt-scrim" id="egFmtScrim" hidden></div>' +
       '<div class="eg-fmt-pop eg-view-settings eg-vs-marks" id="egFmtPop" role="dialog" aria-label="Question View Settings">' +
       '<div class="eg-vs-head"><h5 class="eg-fmt-title">Question View Settings</h5>' +
@@ -1025,7 +1049,7 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
       '<div class="eg-top-title">' + titleEsc + ' <span class="eg-mode-pill">' + mode + "</span></div>" +
       '<div class="eg-top-tools qx-prac-tools" role="toolbar" aria-label="Question tools">' +
       (!practice ? timer : "") +
-      sharedToolsHtml({ theme: theme, allQOn: allQOn, allQTitle: allQTitle, sideOpen: sideOpen, sideTitle: sideTitle, bmOn: bmOn }) +
+      sharedToolsHtml({ theme: theme, allQOn: allQOn, allQTitle: allQTitle, sideOpen: sideOpen, sideTitle: sideTitle, bmOn: bmOn, practice: practice }) +
       "</div>" + fmt +
 
       "</header>" +
@@ -1068,7 +1092,8 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
           '<button type="button" class="eg-sol-panel-close" id="egSolClose" title="Close">✕</button>' +
           '</header>' +
           '<div class="eg-sol eg-sol-inline qx-content" id="egSol">' + solInner + '</div>' +
-          '</div>';
+          '</div>' +
+          '<div id="qxBoostMount"></div>';
       })() : "") +
       '</div>' +
       "</div>" +
@@ -1550,6 +1575,11 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
     }
 
     try { applyOptDecor(root, session, q, session.idx); } catch (_) { /* */ }
+    try {
+      if (typeof QxSimilarPractice !== "undefined" && QxSimilarPractice.attach) {
+        QxSimilarPractice.attach(root, session);
+      }
+    } catch (_) { /* */ }
     /* qxmd175: typeset solution after inject — KaTeX race + afterRender root-self miss */
     function qxTypesetSol(el) {
       if (!el || typeof Mx === "undefined") return;
@@ -2468,6 +2498,15 @@ function forceFootVisible(force) {
           try { localStorage.setItem(key, next ? "1" : "0"); } catch (_) { /* */ }
           b.classList.toggle("on", next);
           b.setAttribute("aria-pressed", next ? "true" : "false");
+          if (key === "qx_pref_similar_booster" && typeof QxSimilarPractice !== "undefined") {
+            try {
+              if (next) QxSimilarPractice.attach(root, session);
+              else {
+                var card = root.querySelector("#qxBoostCard");
+                if (card) card.remove();
+              }
+            } catch (_) { /* */ }
+          }
         };
       });
       (document.getElementById("egFmtPop") || root).querySelectorAll("[data-eg-scale]").forEach(function (b) {
@@ -2499,7 +2538,7 @@ function forceFootVisible(force) {
         b.onclick = function (e) {
           if (e) { e.preventDefault(); e.stopPropagation(); }
           var act = b.getAttribute("data-eg-fmt-act");
-          var map = { star: "#egStarBtn", plus: "#egPlusBtn", full: "#egFullBtn", report: "#mtkReportBtn", theme: "#mtkThemeBtn", allq: "#egAllQBtn", palette: "#egMenuBtn", note: "#egNoteBtn" };
+          var map = { star: "#egStarBtn", plus: "#egPlusBtn", full: "#egFullBtn", report: "#mtkReportBtn", theme: "#mtkThemeBtn", allq: "#egAllQBtn", palette: "#egMenuBtn", note: "#egNoteBtn", similar: "#egSimilarBtn" };
           var tgt = map[act] && root.querySelector(map[act]);
           closeFmtPop();
           if (tgt) {
@@ -2600,7 +2639,7 @@ function forceFootVisible(force) {
       b.onclick = function (e) {
         if (e) { e.preventDefault(); e.stopPropagation(); }
         var act = b.getAttribute("data-eg-fmt-act");
-        var map = { star: "#egStarBtn", plus: "#egPlusBtn", full: "#egFullBtn", report: "#mtkReportBtn", theme: "#mtkThemeBtn", allq: "#egAllQBtn", palette: "#egMenuBtn", note: "#egNoteBtn" };
+        var map = { star: "#egStarBtn", plus: "#egPlusBtn", full: "#egFullBtn", report: "#mtkReportBtn", theme: "#mtkThemeBtn", allq: "#egAllQBtn", palette: "#egMenuBtn", note: "#egNoteBtn", similar: "#egSimilarBtn" };
         var sel = map[act];
         var tgt = sel && root.querySelector(sel);
         session._egFmtOpen = false;
@@ -2636,7 +2675,7 @@ function forceFootVisible(force) {
     wireTap(allQ, cycleAllQChrome);
     wireTap(menu, toggleEgSideOnly);
     /* Ensure EVERY toolbar control is tappable above overlays */
-    ["#egStarBtn", "#egPlusBtn", "#egAllQBtn", "#egMenuBtn", "#egFullBtn", "#mtkThemeBtn", "#egFmtBtn", "#mtkReportBtn", "#egFlagBtn", "#egNoteBtn"].forEach(function (sel) {
+    ["#egStarBtn", "#egPlusBtn", "#egAllQBtn", "#egMenuBtn", "#egFullBtn", "#mtkThemeBtn", "#egFmtBtn", "#mtkReportBtn", "#egFlagBtn", "#egNoteBtn", "#egSimilarBtn"].forEach(function (sel) {
       const el = root.querySelector(sel);
       if (!el) return;
       el.style.setProperty("pointer-events", "auto", "important");
@@ -2829,6 +2868,13 @@ function forceFootVisible(force) {
     }
     const plus = root.querySelector("#egPlusBtn");
     if (plus) plus.onclick = openGroup;
+    const similarBtn = root.querySelector("#egSimilarBtn");
+    if (similarBtn) similarBtn.onclick = function (e) {
+      if (e) { e.preventDefault(); e.stopPropagation(); }
+      try {
+        if (typeof QxSimilarPractice !== "undefined" && QxSimilarPractice.clickSimilar) QxSimilarPractice.clickSimilar();
+      } catch (_) { /* */ }
+    };
     const flagBtn = root.querySelector("#egFlagBtn");
     if (flagBtn) flagBtn.onclick = function (e) {
       if (e) { e.preventDefault(); e.stopPropagation(); }
@@ -2922,6 +2968,11 @@ function forceFootVisible(force) {
           }
         }
       });
+    } catch (_) { /* */ }
+    try {
+      if (session && session.practiceMode && typeof QxSimilarPractice !== "undefined" && QxSimilarPractice.attach) {
+        QxSimilarPractice.attach(root, session);
+      }
     } catch (_) { /* */ }
   }
 
