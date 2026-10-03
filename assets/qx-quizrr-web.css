@@ -1,0 +1,186 @@
+/* qxmd296: website Quizrr NTA only (html[data-qx-shell=web]). App MARKS player untouched. */
+
+html[data-qx-shell="web"] body.marks-test-active:has(.qzrr-cbt),
+html[data-qx-shell="web"] body.allen-cbt-active:has(.qzrr-cbt) {
+  overflow: hidden !important;
+}
+html[data-qx-shell="web"] body.marks-test-active:has(.qzrr-cbt) #app-main,
+html[data-qx-shell="web"] body.allen-cbt-active:has(.qzrr-cbt) #app-main {
+  height: 100dvh !important;
+  max-height: 100dvh !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+html[data-qx-shell="web"] #app-main .qzrr-cbt,
+html[data-qx-shell="web"] #app-main .mtk-test-root.qzrr-cbt {
+  flex: 1 1 auto !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-height: 100% !important;
+  min-height: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+  position: relative !important;
+}
+
+html[data-qx-shell="web"] .qzrr-cbt .qzrr-black-tools {
+  padding-right: 0 !important;
+  flex-wrap: nowrap !important;
+  overflow-x: auto !important;
+}
+html[data-qx-shell="web"] .qzrr-cbt .qzrr-top-zoom,
+html[data-qx-shell="web"] .qzrr-cbt #qzrrTopZoom,
+html[data-qx-shell="web"] .qzrr-cbt .qzrr-side-zoom,
+html[data-qx-shell="web"] .qzrr-cbt #qxSubmitTop,
+html[data-qx-shell="web"] .qzrr-cbt .qzrr-submit-mobile,
+html[data-qx-shell="web"] .qzrr-cbt #qxPrevBtn,
+html[data-qx-shell="web"] .qzrr-cbt .qzrr-side-head {
+  display: none !important;
+}
+
+html[data-qx-shell="web"] .qzrr-cbt .qzrr-body {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  display: grid !important;
+  grid-template-columns: 1fr 280px !important;
+  overflow: hidden !important;
+}
+html[data-qx-shell="web"] .qzrr-cbt .qzrr-main-col {
+  display: flex !important;
+  flex-direction: column !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+}
+html[data-qx-shell="web"] .qzrr-cbt .qzrr-q-area,
+html[data-qx-shell="web"] .qzrr-cbt #qzrrQArea {
+  flex: 1 1 auto !important;
+  min-height: 160px !important;
+  max-height: none !important;
+  height: auto !important;
+  overflow-x: auto !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  padding: 16px 20px 24px !important;
+  background: #fff !important;
+}
+html[data-qx-shell="web"] .qzrr-cbt .qzrr-q-area .qx-content,
+html[data-qx-shell="web"] .qzrr-cbt .qzrr-q-area .mtk-q-text,
+html[data-qx-shell="web"] .qzrr-cbt .qzrr-q-area .qx-question-body,
+html[data-qx-shell="web"] .qzrr-cbt .qzrr-opts,
+html[data-qx-shell="web"] .qzrr-cbt .qzrr-opts .mtk-opt {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  max-height: none !important;
+  height: auto !important;
+  overflow: visible !important;
+  clip: auto !important;
+}
+html[data-qx-shell="web"] .qzrr-cbt .qzrr-opts {
+  display: flex !important;
+  flex-direction: column !important;
+}
+html[data-qx-shell="web"] .qzrr-cbt .qzrr-opts .mtk-opt {
+  display: flex !important;
+}
+
+/* Photo 1193: radio options, not letter chips */
+html[data-qx-shell="web"] .qzrr-cbt .qzrr-opts .mtk-opt-letter {
+  display: none !important;
+}
+html[data-qx-shell="web"] .qzrr-cbt .qzrr-opts .mtk-opt-radio {
+  display: inline-block !important;
+  width: 16px !important;
+  height: 16px !important;
+  min-width: 16px !important;
+  border: 2px solid #555 !important;
+  border-radius: 50% !important;
+  background: #fff !important;
+  margin-top: 3px !important;
+  flex-shrink: 0 !important;
+}
+html[data-qx-shell="web"] .qzrr-cbt .qzrr-opts .mtk-opt.selected .mtk-opt-radio {
+  border-color: #1a73e8 !important;
+  background: radial-gradient(circle, #1a73e8 0 42%, #fff 46%) !important;
+}
+
+html[data-qx-shell="web"] .qzrr-cbt .qzrr-footer-actions {
+  flex-shrink: 0 !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  background: #fff !important;
+  border-top: 1px solid #c5cdd6 !important;
+}
+html[data-qx-shell="web"] .qzrr-cbt #qxSaveBtn {
+  background: #1a73e8 !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  border: 1px solid #1557b0 !important;
+}
+html[data-qx-shell="web"] .qzrr-cbt #qxSubmitBtn {
+  display: flex !important;
+  width: 100% !important;
+  min-height: 40px !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: #1a73e8 !important;
+  color: #fff !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+/* Screen Magnifier — beat ID zoom: var(--qx-content-zoom) */
+html[data-qx-shell="web"] .qzrr-cbt.qzrr-mag-on .qzrr-q-area,
+html[data-qx-shell="web"] .qzrr-cbt.qzrr-mag-on #qzrrQArea {
+  zoom: 1.35 !important;
+  overflow-y: auto !important;
+}
+html[data-qx-shell="web"] .qzrr-cbt .qzrr-tool-mag.on {
+  background: rgba(244, 196, 48, 0.28) !important;
+  color: #ffe082 !important;
+}
+html[data-qx-shell="web"] .qzrr-cbt .qzrr-tool-proctor.on {
+  background: rgba(212, 175, 55, 0.28) !important;
+}
+
+html[data-qx-shell="web"] .qzrr-cbt .qzrr-side {
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  background: #eef3f8 !important;
+  border-left: 1px solid #c5d0db !important;
+}
+html[data-qx-shell="web"] .qzrr-cbt .qzrr-grid {
+  overflow-y: auto !important;
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+}
+
+@media (max-width: 900px) {
+  html[data-qx-shell="web"] .qzrr-cbt .qzrr-body {
+    grid-template-columns: 1fr !important;
+  }
+  html[data-qx-shell="web"] .qzrr-cbt:not(.qzrr-side-collapsed) .qzrr-side {
+    position: absolute !important;
+    right: 0 !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    width: min(280px, 86vw) !important;
+    z-index: 40 !important;
+    box-shadow: -8px 0 24px rgba(15, 23, 42, .18) !important;
+  }
+  html[data-qx-shell="web"] .qzrr-cbt.qzrr-side-collapsed .qzrr-side {
+    display: none !important;
+  }
+}

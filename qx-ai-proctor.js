@@ -128,10 +128,12 @@
     _listening = false;
   }
 
-  function showTabSwitchWarn() {
+  function showTabSwitchWarn(count) {
     if (document.getElementById("qxPrTabWarn")) return;
     ensureCss();
-    var n = (_state && _state.focusChanges) || 1;
+    var n = (count != null && Number(count) > 0)
+      ? Number(count)
+      : ((_state && _state.focusChanges) || 1);
     var overlay = document.createElement("div");
     overlay.id = "qxPrTabWarn";
     overlay.className = "qx-pr-tabwarn";
@@ -611,6 +613,7 @@
     bindReport: bindReport,
     historyHtml: historyHtml,
     getState: function () { return _state; },
+    showTabSwitchWarn: showTabSwitchWarn,
     isGating: function () { return _gating; }
   };
 })(typeof window !== "undefined" ? window : this);

@@ -325,9 +325,10 @@ html body .qzrr-cbt .qzrr-black-bar {
   z-index: 20110 !important;
   overflow: visible !important;
 }
-html body .qzrr-cbt .qzrr-top-zoom {
-  pointer-events: none !important;
-  z-index: 40 !important;
+html body .qzrr-cbt .qzrr-top-zoom,
+html body .qzrr-cbt #qzrrTopZoom,
+html body .qzrr-cbt .qzrr-side-zoom {
+  display: none !important;
 }
 
 /* LIGHT paper: near-black ink on white (site theme must not bleach this) */
@@ -2987,6 +2988,53 @@ html body .eg-test-root.eg-test-root.qx-theme-dark .eg-info-strip.eg-info-strip 
   html body #app-main .qzrr-cbt .qzrr-black-title {
     max-width: min(24vw, 96px) !important;
   }
+}
+
+/* qxmd296 website Quizrr: question column scrolls; options stay on screen. */
+html[data-qx-shell="web"] body.marks-test-active:has(.qzrr-cbt) #app-main,
+html[data-qx-shell="web"] body.allen-cbt-active:has(.qzrr-cbt) #app-main {
+  height: 100dvh !important;
+  max-height: 100dvh !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+html[data-qx-shell="web"] #app-main .qzrr-cbt {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  height: 100% !important;
+  max-height: 100% !important;
+  overflow: hidden !important;
+}
+html[data-qx-shell="web"] #app-main .qzrr-cbt .qzrr-body,
+html[data-qx-shell="web"] #app-main .qzrr-cbt .qzrr-main-col {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+}
+html[data-qx-shell="web"] #app-main .qzrr-cbt .qzrr-q-area,
+html[data-qx-shell="web"] #app-main .qzrr-cbt #qzrrQArea {
+  flex: 1 1 auto !important;
+  min-height: 160px !important;
+  overflow-y: auto !important;
+  overflow-x: auto !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  max-height: none !important;
+}
+html[data-qx-shell="web"] #app-main .qzrr-cbt .qzrr-opts,
+html[data-qx-shell="web"] #app-main .qzrr-cbt .qzrr-opts .mtk-opt {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  max-height: none !important;
+  height: auto !important;
+}
+html[data-qx-shell="web"] #app-main .qzrr-cbt #qxSubmitTop,
+html[data-qx-shell="web"] #app-main .qzrr-cbt .qzrr-submit-mobile,
+html[data-qx-shell="web"] #app-main .qzrr-cbt .qzrr-top-zoom,
+html[data-qx-shell="web"] #app-main .qzrr-cbt .qzrr-side-zoom {
+  display: none !important;
 }
 
 /* ===== qxmd279: toolbar labels always readable; question/options/figures paint ===== */

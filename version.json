@@ -1,10 +1,10 @@
 {
-  "cache": "qx-pwa-qxmd295",
-  "ts": 1791100000295,
-  "title": "qxmd295: website NTA = Quizrr; app MARKS player; fixed toolbar; Q+sol wrap; AI Proctor on toggle",
+  "cache": "qx-pwa-qxmd296",
+  "ts": 1791100000296,
+  "title": "qxmd296: website Quizrr NTA exact — palette Submit, scroll, Screen Magnifier, AI Proctor header",
   "site": "https://www.quantrexacademy.com",
-  "build": "qxmd295",
-  "body": "Website NTA FORMAT is the Quizrr CBT (Accessibility, Screen Magnifier, Instructions, Question Paper). App NTA and QUANTREX keep the MARKS photo player with a pinned bottom toolbar. Question and solution math wrap without breaking. AI Proctor runs on every test mode only after the toggle is ON. Default remains off. Tab-switch shows a warning; it never auto-terminates.",
+  "build": "qxmd296",
+  "body": "Website NTA matches Quizrr: Accessibility, Screen Magnifier, Instructions, Question Paper, AI Proctor in the black bar. Submit only in the right palette. Question and options scroll in the paper column. No right-side zoom toolbar. Tab-switch warning on the website. App MARKS player is unchanged.",
   "package": "com.quantrexacademy.app",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }

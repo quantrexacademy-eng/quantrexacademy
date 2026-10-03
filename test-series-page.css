@@ -425,7 +425,7 @@ body.ts-standalone-body {
 }
 .qzrr-black-tools {
   display: flex; flex-wrap: wrap; gap: 0; align-items: center;
-  padding-right: 44px; /* room for top-right magnifier FAB */
+  padding-right: 0;
 }
 .qzrr-tool-btn {
   background: transparent; border: none; color: #f0f0f0; font-size: 12px;
@@ -861,9 +861,11 @@ body.ts-standalone-body {
   flex: 1; overflow-y: auto; padding: 14px 18px 18px; min-height: 0;
   background: #fff;
 }
-.qzrr-cbt.qzrr-mag-on .qzrr-q-area {
-  zoom: 1.28;
+.qzrr-cbt.qzrr-mag-on .qzrr-q-area,
+.qzrr-cbt.qzrr-mag-on #qzrrQArea {
+  zoom: 1.35 !important;
   transform-origin: top left;
+  overflow-y: auto !important;
 }
 .qzrr-cbt.qzrr-contrast {
   filter: contrast(1.18);
@@ -914,19 +916,17 @@ body.ts-standalone-body {
   color: inherit !important;
 }
 /* Show option letters A/B/C/D as blue circles (readable like exam UI) */
-.qzrr-opts .mtk-opt-letter {
-  display: inline-flex !important;
-  align-items: center; justify-content: center;
-  width: 28px !important; height: 28px !important; min-width: 28px !important;
-  border-radius: 50% !important;
-  background: #1a73e8 !important; color: #fff !important;
-  font-size: 13px !important; font-weight: 800 !important;
-  margin-top: 0 !important;
+.qzrr-opts .mtk-opt-letter { display: none !important; }
+.qzrr-opts .mtk-opt-radio {
+  display: inline-block !important;
+  width: 16px !important; height: 16px !important; min-width: 16px !important;
+  border: 2px solid #555 !important; border-radius: 50% !important;
+  background: #fff !important; margin-top: 2px !important; box-shadow: none !important;
+  flex-shrink: 0 !important;
 }
-.qzrr-opts .mtk-opt-radio { display: none !important; }
-.qzrr-opts .mtk-opt.selected .mtk-opt-letter {
-  background: #0d47a1 !important;
-  box-shadow: 0 0 0 3px rgba(26,115,232,.25);
+.qzrr-opts .mtk-opt.selected .mtk-opt-radio {
+  border-color: #1a73e8 !important;
+  background: radial-gradient(circle, #1a73e8 0 42%, #fff 46%) !important;
 }
 .qzrr-footer-actions {
   display: flex; justify-content: space-between; align-items: center; gap: 12px;
@@ -945,15 +945,7 @@ body.ts-standalone-body {
   width: 100%;
   min-width: 0;
 }
-.qzrr-submit-mobile { display: flex; width: 100%; min-height: 44px; }
-@media (max-width: 720px) {
-  .qzrr-submit-mobile {
-    display: flex;
-    width: 100%;
-    min-width: 0;
-    min-height: 44px;
-  }
-}
+.qzrr-submit-mobile { display: none; }
 .qzrr-btn {
   font-family: Arial, Helvetica, sans-serif; font-size: 13px; font-weight: 600;
   padding: 9px 18px; border-radius: 2px; cursor: pointer; min-width: 140px;

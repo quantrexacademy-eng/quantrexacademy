@@ -703,12 +703,15 @@ html body .eg-test-root[data-eg-mode="test"][data-test-theme="dark"] .mtk-opt {
   border-color: #334155 !important;
 }
 
-/* NTA Submit always tappable (desktop + mobile, side open or collapsed) */
-html body .qzrr-cbt #qxSubmitTop.qzrr-submit-mobile,
-html body .qzrr-cbt #qxSubmitTop,
-html body .qzrr-cbt #qxSubmitHdr,
-html body .qzrr-cbt .qzrr-black-tools #qxSubmitHdr {
-  display: inline-flex !important;
+/* Website Quizrr: Submit lives only in the right palette. */
+html[data-qx-shell="web"] body .qzrr-cbt #qxSubmitTop.qzrr-submit-mobile,
+html[data-qx-shell="web"] body .qzrr-cbt #qxSubmitTop,
+html[data-qx-shell="web"] body .qzrr-cbt #qxSubmitHdr,
+html[data-qx-shell="web"] body .qzrr-cbt .qzrr-black-tools #qxSubmitHdr {
+  display: none !important;
+}
+html[data-qx-shell="web"] body .qzrr-cbt #qxSubmitBtn {
+  display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   pointer-events: auto !important;
@@ -716,16 +719,6 @@ html body .qzrr-cbt .qzrr-black-tools #qxSubmitHdr {
   opacity: 1 !important;
   cursor: pointer !important;
   z-index: 20140 !important;
-}
-html body .qzrr-cbt .qzrr-black-tools #qxSubmitHdr {
-  background: #ef4444 !important;
-  color: #fff !important;
-  -webkit-text-fill-color: #fff !important;
-  border: 1px solid #dc2626 !important;
-  border-radius: 6px !important;
-  font-weight: 800 !important;
-  min-height: 32px !important;
-  padding: 4px 12px !important;
 }
 
 html body .eg-test-root[data-eg-mode="test"] .eg-qbar-n.eg-att-mark::after {

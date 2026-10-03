@@ -1528,25 +1528,13 @@ const QuantrexTestEngine = (() => {
               <span class="qzrr-ico qzrr-ico-blue" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M7 3.5h7.2L19 8.3V20a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1z" stroke="#42a5f5" stroke-width="1.7"/><path d="M14 3.5V9h5.2" stroke="#42a5f5" stroke-width="1.7"/><path d="M9 12h6M9 15.5h6" stroke="#42a5f5" stroke-width="1.5" stroke-linecap="round"/></svg></span>
               Question Paper
             </button>
-            <button type="button" class="qzrr-tool-btn qzrr-exit" id="mtkExitBtn" data-qx-exit="1"
-              title="Exit test"
-              onclick="event.preventDefault();event.stopPropagation();if(window.qxExitTest){window.qxExitTest();}return false;">Exit</button>
+            <button type="button" class="qzrr-tool-btn qzrr-tool-proctor" id="qzrrProctorBtn" title="AI Proctor"
+              onclick="try{event.preventDefault();event.stopPropagation();if(window.qxOpenQzrrProctor)window.qxOpenQzrrProctor(event);}catch(_){}return false;">
+              <span class="qzrr-ico qzrr-ico-gold" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M4 8.2h3.1l1.3-1.9h7.2l1.3 1.9H20a1.4 1.4 0 0 1 1.4 1.4v8A1.4 1.4 0 0 1 20 19H4a1.4 1.4 0 0 1-1.4-1.4v-8A1.4 1.4 0 0 1 4 8.2z" stroke="#d4af37" stroke-width="1.7"/><circle cx="12" cy="13.2" r="3" stroke="#d4af37" stroke-width="1.7"/></svg></span>
+              AI Proctor
+            </button>
           </div>
         </header>
-        <!-- Quizrr top-right zoom: magnifier circle (same corner as screenshot 796) -->
-        <div class="qzrr-top-zoom" id="qzrrTopZoom">
-          <button type="button" class="qzrr-top-zoom-fab" id="qzrrZoomFab" title="Zoom" aria-label="Zoom" aria-expanded="false">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <circle cx="10.5" cy="10.5" r="6.2" stroke="currentColor" stroke-width="2.2"/>
-              <path d="M15.3 15.3L21 21" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
-            </svg>
-          </button>
-          <div class="qzrr-top-zoom-panel" id="qzrrZoomPanel" hidden>
-            <button type="button" class="qzrr-zoom-circle" id="qzrrZoomOutTop" title="Zoom out">−</button>
-            <span class="qzrr-zoom-lbl" id="qzrrZoomLbl">${Math.round(getTestZoom() * 100)}%</span>
-            <button type="button" class="qzrr-zoom-circle qzrr-zoom-circle-plus" id="qzrrZoomInTop" title="Zoom in">+</button>
-          </div>
-        </div>
         <div class="qzrr-sec-strip">
           <div class="qzrr-sec-strip-left">
             <button type="button" class="qzrr-paper-chip" id="qzrrPaperChipBtn" title="Paper info">${titleEsc.length > 22 ? titleEsc.slice(0, 20) + "…" : titleEsc} <span class="qzrr-info-i">i</span></button>
@@ -1615,11 +1603,8 @@ const QuantrexTestEngine = (() => {
                 <button type="button" class="qzrr-btn qzrr-btn-outline" id="qxClearBtn">Clear Response</button>
               </div>
               <div class="qzrr-act-right">
-                <button type="button" class="qzrr-btn qzrr-btn-outline" id="qxPrevBtn" ${session.idx <= 0 ? "disabled" : ""}>Previous</button>
                 <button type="button" class="qzrr-btn qzrr-btn-primary" id="qxSaveBtn">Save &amp; Next</button>
               </div>
-              <button type="button" class="qzrr-btn qzrr-btn-primary qzrr-submit-mobile" id="qxSubmitTop" data-qx-submit="1"
-                onclick="event.preventDefault();event.stopPropagation();if(window.qxSubmitTest){window.qxSubmitTest();}return false;">Submit</button>
             </div>
           </div>
           <button type="button" class="qzrr-side-toggle" id="qzrrSideToggle" title="Show question panel" aria-label="Show question panel">◀</button>
@@ -1635,12 +1620,6 @@ const QuantrexTestEngine = (() => {
                 </div>
               </div>
               <div class="qzrr-profile-name">${userEsc}</div>
-              <!-- Quizrr right-side zoom (profile ke niche) -->
-              <div class="qzrr-side-zoom" role="group" aria-label="Zoom">
-                <button type="button" class="qzrr-zoom-circle" id="qzrrZoomOutSide" title="Zoom out">−</button>
-                <span class="qzrr-zoom-lbl" id="qzrrZoomLblSide">${Math.round(getTestZoom() * 100)}%</span>
-                <button type="button" class="qzrr-zoom-circle qzrr-zoom-circle-plus" id="qzrrZoomInSide" title="Zoom in">+</button>
-              </div>
             </div>
             <div class="qzrr-side-stats">
               <div class="qzrr-stat"><span class="qzrr-pill qzrr-pill-ans">${qzAns}</span><span>Answered</span></div>
@@ -2072,11 +2051,6 @@ const QuantrexTestEngine = (() => {
     const zoomPct = Math.round(getTestZoom() * 100);
     const fontOn = (name) => (scale === name ? " on" : "");
     const medOn = fontOn("medium") || (!["small", "medium", "large", "xlarge"].includes(scale) ? " on" : "");
-    let proctorOn = false;
-    try {
-      if (typeof QxAiProctor !== "undefined" && QxAiProctor.enabled) proctorOn = !!QxAiProctor.enabled();
-      else proctorOn = localStorage.getItem("qx_pref_ai_proctor") === "1";
-    } catch (_) { proctorOn = false; }
     return `<div class="qzrr-a11y-pop qx-a11y-best">
       <p class="qzrr-a11y-sub">Adjust how the paper looks. Changes apply instantly.</p>
       <div class="qzrr-a11y-grid qx-a11y-grid-2">
@@ -2129,15 +2103,6 @@ const QuantrexTestEngine = (() => {
             <span class="qzrr-a11y-slider"></span>
           </label>
           <small class="qzrr-a11y-hint">More space between lines</small>
-        </div>
-        <div class="qzrr-a11y-tile qx-a11y-tile-wide" id="qzrrProctorTile">
-          <div class="qzrr-a11y-tile-ico" aria-hidden="true">📷</div>
-          <div class="qzrr-a11y-tile-title">AI Proctor</div>
-          <label class="qzrr-a11y-switch">
-            <input type="checkbox" id="qzrrProctorToggle" ${proctorOn ? "checked" : ""} aria-label="AI proctor" />
-            <span class="qzrr-a11y-slider"></span>
-          </label>
-          <small class="qzrr-a11y-hint" id="qzrrProctorHint">${proctorOn ? "ON for every test — still photos, flags need review" : "Off until you turn it on. Still photos only."}</small>
         </div>
       </div>
       <div class="qx-a11y-actions">
@@ -2416,11 +2381,26 @@ const QuantrexTestEngine = (() => {
       if (window.__qxQzrrToolLock && Date.now() - window.__qxQzrrToolLock < 400 && window.__qxQzrrToolName === "proctor") return;
       window.__qxQzrrToolLock = Date.now();
       window.__qxQzrrToolName = "proctor";
-      try { __qxOpenA11y(ev); } catch (err) { try { console.error("qxOpenQzrrProctor", err); } catch (_) {} }
-      setTimeout(function () {
-        var tile = document.getElementById("qzrrProctorTile");
-        if (tile && tile.scrollIntoView) tile.scrollIntoView({ block: "nearest", behavior: "smooth" });
-      }, 80);
+      try {
+        var st = (typeof QxAiProctor !== "undefined" && QxAiProctor.getState) ? QxAiProctor.getState() : null;
+        if (st && !st.ended) {
+          if (typeof showToast === "function") showToast("AI Proctor is ON");
+          return;
+        }
+        if (typeof QxAiProctor !== "undefined") {
+          if (QxAiProctor.setEnabled) QxAiProctor.setEnabled(true);
+          if (QxAiProctor.gate) {
+            QxAiProctor.gate({
+              practiceMode: false,
+              timed: true,
+              durationSec: session && session.durationSec,
+              uiMode: "quizrr",
+              title: session && session.title
+            });
+          }
+        }
+        document.querySelectorAll("#qzrrProctorBtn").forEach(function (b) { b.classList.add("on"); });
+      } catch (err) { try { console.error("qxOpenQzrrProctor", err); } catch (_) {} }
     };
     if (a11yBtn) {
       a11yBtn.onclick = window.qxOpenQzrrA11y;
@@ -2445,6 +2425,28 @@ const QuantrexTestEngine = (() => {
       magBtn.setAttribute("aria-pressed", session._qzrrMag ? "true" : "false");
       magBtn.style.setProperty("pointer-events", "auto", "important");
       magBtn.style.setProperty("z-index", "20120", "important");
+    }
+    try {
+      var prOn = false;
+      if (typeof QxAiProctor !== "undefined" && QxAiProctor.enabled) prOn = !!QxAiProctor.enabled();
+      else prOn = localStorage.getItem("qx_pref_ai_proctor") === "1";
+      document.querySelectorAll("#qzrrProctorBtn").forEach(function (b) { b.classList.toggle("on", prOn); });
+    } catch (_) { /* */ }
+    if (!window.__qxQzrrTabWatch) {
+      window.__qxQzrrTabWatch = true;
+      document.addEventListener("visibilitychange", function () {
+        try {
+          if (!document.hidden) return;
+          if (!document.querySelector(".qzrr-cbt")) return;
+          if (!session || session.practiceMode) return;
+          var prState = (typeof QxAiProctor !== "undefined" && QxAiProctor.getState) ? QxAiProctor.getState() : null;
+          if (prState && !prState.ended) return;
+          session._qzrrTabCount = (session._qzrrTabCount || 0) + 1;
+          if (typeof QxAiProctor !== "undefined" && QxAiProctor.showTabSwitchWarn) {
+            QxAiProctor.showTabSwitchWarn(session._qzrrTabCount);
+          }
+        } catch (_) { /* */ }
+      });
     }
     const proctorBtn = root.querySelector("#qzrrProctorBtn");
     if (proctorBtn) {
