@@ -91,9 +91,11 @@ window.QxPerf = (() => {
     const js = (window.QX_SECONDARY_JS || []);
     css.forEach(loadCss);
     try {
-      var bust = (typeof window.QX_BUILD === "string" && window.QX_BUILD) || "qxmd299";
+      var bust = (typeof window.QX_BUILD === "string" && window.QX_BUILD) || "qxmd300";
       loadCss("assets/qx-foot-lock.css?v=" + encodeURIComponent(bust));
       loadCss("assets/qx-katex-lock.css?v=" + encodeURIComponent(bust));
+      loadCss("assets/qx-qfmt-lock.css?v=" + encodeURIComponent(bust));
+      loadCss("assets/qx-ct-lock.css?v=" + encodeURIComponent(bust));
     } catch (_) { /* */ }
     setTimeout(function () {
       try { window.dispatchEvent(new Event("qx:secondary-css")); } catch (_) {}

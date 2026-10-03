@@ -1,0 +1,138 @@
+/* qxmd300 — Create Own Test last step + settings chips (load last). */
+
+html body .ct-wizard-overlay {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 20050 !important;
+  display: flex !important;
+  align-items: stretch !important;
+  justify-content: flex-start !important;
+  pointer-events: auto !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+html body .ct-wizard-shell {
+  min-height: 100dvh !important;
+  max-height: 100dvh !important;
+  overflow-y: auto !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+html body .ct-wizard-shell.wide {
+  width: 100% !important;
+  max-width: none !important;
+}
+html body .ct-wizard-years-split,
+html body .ct-wizard-split.ct-wizard-years-split {
+  display: grid !important;
+  grid-template-columns: min(440px, 46vw) 1fr !important;
+  width: 100% !important;
+  min-height: 100dvh !important;
+  visibility: visible !important;
+}
+html body .ct-wizard-left-panel,
+html body .ct-wizard-left-inner,
+html body .ct-wizard-years,
+html body .ct-wiz-settings,
+html body .ct-wiz-section {
+  visibility: visible !important;
+  opacity: 1 !important;
+  overflow: visible !important;
+}
+html body .ct-wizard-years {
+  padding-bottom: 120px !important;
+  min-height: 100% !important;
+}
+html body .ct-wiz-set-chips {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 10px !important;
+}
+html body .ct-wiz-set-chip {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 44px !important;
+  min-width: 48px !important;
+  padding: 10px 16px !important;
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  line-height: 1 !important;
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+html body .ct-wiz-back-btn,
+html body .ct-wiz-next-btn {
+  min-height: 44px !important;
+  pointer-events: auto !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  cursor: pointer !important;
+}
+html body .ct-wiz-next-btn.disabled,
+html body .ct-wiz-next-btn:disabled {
+  opacity: 0.4 !important;
+  cursor: not-allowed !important;
+}
+html body .ct-wiz-years-summary {
+  visibility: visible !important;
+  opacity: 1 !important;
+  padding: 28px 32px 40px !important;
+}
+html body .ct-wiz-sum-card {
+  background: #1a1d26;
+  border: 1px solid #2a2f3d;
+  border-radius: 14px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+  color: #e2e8f0;
+}
+html body .ct-wiz-sum-card small {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: #64748b;
+  margin-bottom: 4px;
+}
+html body .ct-wiz-sum-card strong {
+  display: block;
+  font-size: 16px;
+  font-weight: 800;
+  color: #f8fafc;
+}
+html body .ct-wiz-sum-card p {
+  margin: 8px 0 0;
+  font-size: 13px;
+  line-height: 1.45;
+  color: #94a3b8;
+}
+html[data-theme="light"] body .ct-wiz-sum-card {
+  background: #fff;
+  border-color: #cbd5e1;
+  color: #0f172a;
+}
+html[data-theme="light"] body .ct-wiz-sum-card strong { color: #0f172a; }
+html[data-theme="light"] body .ct-wiz-sum-card p { color: #475569; }
+
+@media (max-width: 768px) {
+  html body .ct-wizard-years-split,
+  html body .ct-wizard-split.ct-wizard-years-split {
+    display: flex !important;
+    flex-direction: column !important;
+    grid-template-columns: 1fr !important;
+  }
+  html body .ct-wizard-left-panel .ct-wiz-preview-bar {
+    position: fixed !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    z-index: 20060 !important;
+  }
+  html body .ct-wizard-years {
+    padding-bottom: 128px !important;
+  }
+}

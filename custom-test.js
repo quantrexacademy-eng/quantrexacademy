@@ -795,7 +795,15 @@ function ctYearsStepHtml(draft) {
   }).join("");
 
   const customSel = draft.yearPreset === "custom" && draft.customSources.size;
-  return `<div class="ct-wizard-left-inner ct-wizard-years">
+  const chapters = ctSelectedChapters(draft);
+  const subjects = ctSelectedSubjects(draft);
+  const presetLabels = { all: "All Years", last3: "Last 3 Years", last5: "Last 5 Years", last10: "Last 10 Years", custom: "Custom Years" };
+  const chNames = chapters.slice(0, 12).map(c => c.title || c.shortName || "Chapter").join(" · ");
+  const extra = chapters.length > 12 ? ` +${chapters.length - 12} more` : "";
+  const subjLine = subjects.map(s => s.title).filter(Boolean).join(" · ") || "—";
+  return `<div class="ct-wizard-split ct-wizard-years-split">
+    <div class="ct-wizard-left-panel">
+    <div class="ct-wizard-left-inner ct-wizard-years">
     <div class="ct-wiz-head">
       <h2>Create your own test</h2>
       <button type="button" class="ct-wiz-close" onclick="ctCloseWizard()">✕</button>
@@ -825,6 +833,19 @@ function ctYearsStepHtml(draft) {
       </button>
     </section>
     ${ctWizardPreviewBar(draft, ctIsTeacherAssign() ? "Create Assignment" : "Generate Test", "ctGenerateTest()", false)}
+    </div>
+    </div>
+    <div class="ct-wizard-right-inner ct-wiz-years-summary">
+      <div class="ct-wiz-right-head">
+        <strong>Test settings</strong>
+        <small>Review, then tap Generate Test</small>
+      </div>
+      <div class="ct-wiz-sum-card"><small>Exam</small><strong>${draft.examTitle || "Exam"}</strong></div>
+      <div class="ct-wiz-sum-card"><small>Subjects</small><strong>${subjLine}</strong></div>
+      <div class="ct-wiz-sum-card"><small>Chapters</small><strong>${chapters.length} selected</strong><p>${chNames || "—"}${extra}</p></div>
+      <div class="ct-wiz-sum-card"><small>Paper</small><strong>${draft.totalQs} questions · ${mins} min</strong></div>
+      <div class="ct-wiz-sum-card"><small>Years</small><strong>${presetLabels[draft.yearPreset] || "All Years"}</strong></div>
+    </div>
   </div>`;
 }
 
@@ -838,7 +859,7 @@ function ctWizardHtml() {
     return `<div class="ct-wizard-overlay"><div class="ct-wizard-shell wide">${ctChaptersStepHtml(_ctDraft)}</div></div>`;
   }
   if (_ctDraft.wizardStep === "years") {
-    return `<div class="ct-wizard-overlay"><div class="ct-wizard-shell">${ctYearsStepHtml(_ctDraft)}</div></div>`;
+    return `<div class="ct-wizard-overlay"><div class="ct-wizard-shell wide">${ctYearsStepHtml(_ctDraft)}</div></div>`;
   }
   if (_ctDraft.wizardStep === "generating") {
     return `<div class="ct-wizard-overlay"><div class="ct-wizard-shell"><div class="ct-wiz-generating">
@@ -846,7 +867,8 @@ function ctWizardHtml() {
       <strong>Generating your custom test. Please wait…</strong>
     </div></div></div>`;
   }
-  return "";
+  try { _ctDraft.wizardStep = "pick"; } catch (_) { /* */ }
+  return `<div class="ct-wizard-overlay"><div class="ct-wizard-shell">${ctPickStepHtml(_ctDraft, exams)}</div></div>`;
 }
 
 function ctFilterTests(tests, teacher) {

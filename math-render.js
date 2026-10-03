@@ -5795,9 +5795,10 @@ window.Mx = (() => {
           ".qx-match-item-body, .qx-match-grid, .qx-match-col-body, .qx-given-box, " +
           ".mk-sol-stem, .mk-sol-opt-text, .qc-ex-q, .qc-ex-opts, .qx-sum-card, " +
           ".qx-formula-card, .qx-rev-card, .qx-bm-q, .seo-q-stem, .q-stem, " +
-          ".qx-sol-card, .qx-sol-flow, #qaSolReveal, #qaResult";
+          ".qx-sol-card, .qx-sol-flow, #qaSolReveal, #qaResult, .qzrr-qp-snip, .qzrr-qp-list";
         const mathRoots = el.querySelectorAll(SEL);
-        const list = mathRoots.length ? Array.prototype.slice.call(mathRoots, 0, 24) : [];
+        const cap = (el.querySelector && el.querySelector(".qzrr-qp-snip")) ? 200 : 24;
+        const list = mathRoots.length ? Array.prototype.slice.call(mathRoots, 0, cap) : [];
         // qxmd175: when afterRender(solEl) is called on #egSol itself, querySelectorAll
         // misses the root — always include el if it looks like a math host.
         try {

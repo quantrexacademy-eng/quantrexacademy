@@ -2167,24 +2167,95 @@ const QuantrexTestEngine = (() => {
     return wrap;
   }
 
+  function qxEscPaper(s) {
+    return String(s || "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+  }
+
+  function qxClipKeepingMath(s, max) {
+    const str = String(s || "");
+    if (str.length <= max) return str;
+    let cut = max;
+    const before = str.slice(0, cut);
+    const dollars = (before.match(/\$/g) || []).length;
+    if (dollars % 2 === 1) {
+      const next = str.indexOf("$", cut);
+      if (next !== -1 && next < max + 90) cut = next + 1;
+      else {
+        const prev = before.lastIndexOf("$");
+        if (prev > 32) cut = prev;
+      }
+    }
+    const openPar = before.lastIndexOf("\\(");
+    const closePar = before.lastIndexOf("\\)");
+    if (openPar > closePar) {
+      const next = str.indexOf("\\)", cut);
+      if (next !== -1 && next < max + 90) cut = next + 2;
+      else cut = openPar;
+    }
+    return str.slice(0, cut).trim() + (cut < str.length ? "…" : "");
+  }
+
+  function qxPaperSnippet(q) {
+    let s = String((q && (q.q || q.question || q.stem)) || "");
+    s = s.replace(/<script[\s\S]*?<\/script>/gi, " ");
+    s = s.replace(/<style[\s\S]*?<\/style>/gi, " ");
+    s = s.replace(/<img[^>]*>/gi, " ");
+    s = s.replace(/<br\s*\/?>/gi, " ");
+    s = s.replace(/<\/(p|div|li|h[1-6]|tr|td)>/gi, " ");
+    s = s.replace(/<[^>]+>/g, " ");
+    s = s.replace(/&nbsp;/gi, " ").replace(/&amp;/gi, "&").replace(/&lt;/gi, "<").replace(/&gt;/gi, ">").replace(/&quot;/gi, "\"");
+    s = s.replace(/&#(\d+);/g, function (_, n) {
+      try { return String.fromCharCode(+n); } catch (e) { return " "; }
+    });
+    s = s.replace(/\s*,&\s*/g, ", ").replace(/&\s+\$/g, " $").replace(/\s+/g, " ").trim();
+    s = qxClipKeepingMath(s, 180);
+    return s || "—";
+  }
+
+  function typesetQzrrPaperModal(modal) {
+    try {
+      const list = modal && modal.querySelector && modal.querySelector(".qzrr-qp-list");
+      if (!list) return;
+      if (window.Mx && typeof window.Mx.afterRenderLight === "function") {
+        window.Mx.afterRenderLight(list);
+      } else if (window.renderMathInElement && window.katex) {
+        window.renderMathInElement(list, {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "\\[", right: "\\]", display: true },
+            { left: "$", right: "$", display: false },
+            { left: "\\(", right: "\\)", display: false }
+          ],
+          throwOnError: false
+        });
+      }
+    } catch (_) { /* */ }
+  }
+
   function quizrrQuestionPaperHtml() {
     if (!session) return "";
     const rows = session.ids.map((id, i) => {
       const q = getQ(id);
       const st = paletteStatus(i);
       const has = hasAnswerAt(i);
-      const rev = session.review.has(i);
+      const revSet = session.review;
+      const visSet = session.visited;
+      const rev = !!(revSet && (typeof revSet.has === "function" ? revSet.has(i) : (Array.isArray(revSet) && revSet.indexOf(i) >= 0)));
+      const vis = !!(visSet && (typeof visSet.has === "function" ? visSet.has(i) : (Array.isArray(visSet) && visSet.indexOf(i) >= 0)));
       let status = "Not Visited";
       if (rev && has) status = "Answered + Marked";
       else if (rev) status = "Marked for Review";
       else if (has) status = "Answered";
-      else if (session.visited.has(i)) status = "Not Answered";
-      const plain = String((q && q.q) || "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim().slice(0, 120);
+      else if (vis) status = "Not Answered";
+      const snip = qxEscPaper(qxPaperSnippet(q));
       const cur = i === session.idx ? " qzrr-qp-cur" : "";
       return `<button type="button" class="qzrr-qp-row${cur}" data-qidx="${i}">
         <span class="qzrr-qp-no">Q${i + 1}</span>
         <span class="qzrr-qp-st qzrr-qp-st-${st}">${status}</span>
-        <span class="qzrr-qp-snip">${plain || "—"}</span>
+        <span class="qzrr-qp-snip qx-math">${snip}</span>
       </button>`;
     }).join("");
     return `<p class="qzrr-qp-lead">Click a question to jump. Status matches the palette.</p>
@@ -2661,6 +2732,7 @@ const QuantrexTestEngine = (() => {
           if (!Number.isNaN(idx)) goTo(idx);
         };
       });
+      typesetQzrrPaperModal(modal);
     };
     window.qxOpenQzrrPaper = function (ev) {
       if (ev && ev.preventDefault) { try { ev.preventDefault(); ev.stopPropagation(); } catch (_) {} }

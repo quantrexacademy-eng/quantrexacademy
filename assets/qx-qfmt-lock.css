@@ -1,0 +1,215 @@
+/* qxmd300 — last-wins question / option / solution format (Screenshot 1196).
+   Load after quizrr-web / chrome-lock. Display-only. Never rewrite stored answers. */
+
+/* Paper wrap: readable stems. Never smash KaTeX. */
+html body .qzrr-q-area,
+html body #qzrrQArea,
+html body .eg-q-stem,
+html body #egQArea,
+html body .mtk-q-text,
+html body .qx-question-body,
+html body .qx-q-seg-text,
+html body .qx-content.qx-q-text-only,
+html body .qx-prac-q,
+html body .allen-q-body,
+html body .mtk-opt-text,
+html body .qx-prac-opt-text,
+html body .sol-body,
+html body .qx-sol-body,
+html body .qx-sol-card,
+html body .eg-sol,
+html body #egSol,
+html body #egSolPanel,
+html body .mk-sol-body,
+html body .qzrr-qp-snip {
+  overflow-wrap: break-word !important;
+  word-break: normal !important;
+  hyphens: none !important;
+  max-height: none !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+html body .katex,
+html body .katex-display,
+html body mjx-container,
+html body .katex *,
+html body .qzrr-q-area .katex,
+html body .mtk-opt-text .katex,
+html body .sol-body .katex,
+html body .qzrr-qp-snip .katex {
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+  white-space: nowrap !important;
+  box-sizing: content-box !important;
+}
+
+html body .katex-display {
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  max-width: 100% !important;
+  white-space: normal !important;
+}
+
+/* Question column scrolls; stem/options stay fully painted. */
+html body .qzrr-cbt .qzrr-q-area,
+html body .qzrr-cbt #qzrrQArea {
+  overflow-x: auto !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  max-height: none !important;
+  min-height: 160px !important;
+}
+html body .qzrr-cbt .qzrr-q-area .mtk-q-text,
+html body .qzrr-cbt .qzrr-q-area .qx-question-body,
+html body .qzrr-cbt .qzrr-opts,
+html body .eg-test-root .eg-q-stem,
+html body .eg-test-root #egQArea {
+  overflow: visible !important;
+  max-height: none !important;
+  height: auto !important;
+  clip: auto !important;
+}
+
+/* Single Correct A/B/C/D letter chips — paper, practice, books, PYQ, CT. */
+html body .qzrr-opts .mtk-opt-radio,
+html body .eg-opts .mtk-opt-radio,
+html body .qx-prac-opts .mtk-opt-radio {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+}
+html body .qzrr-opts .mtk-opt-letter,
+html body .qzrr-opts .qx-opt-circle,
+html body .eg-opts .mtk-opt-letter,
+html body .eg-opts .qx-opt-circle,
+html body .qx-prac-opts .mtk-opt-letter,
+html body .qx-prac-opt .mtk-opt-letter,
+html body .mtk-opt .mtk-opt-letter,
+html body .mtk-opt .qx-opt-circle {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  width: 32px !important;
+  height: 32px !important;
+  min-width: 32px !important;
+  min-height: 32px !important;
+  flex: 0 0 32px !important;
+  border-radius: 50% !important;
+  background: #1565C0 !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  line-height: 1 !important;
+  font-family: Inter, Segoe UI, Arial, sans-serif !important;
+}
+html body .mtk-opt,
+html body .qx-prac-opt {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 12px !important;
+  width: 100% !important;
+  text-align: left !important;
+  overflow: visible !important;
+}
+html body .mtk-opt-text,
+html body .qx-prac-opt-text {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  color: inherit !important;
+  line-height: 1.5 !important;
+}
+
+/* Question Paper modal (1196): math snippets, not raw TeX dump. */
+html body .qzrr-qp-list {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 6px !important;
+}
+html body .qzrr-qp-row {
+  display: grid !important;
+  grid-template-columns: 48px 130px 1fr !important;
+  gap: 8px !important;
+  align-items: start !important;
+  text-align: left !important;
+  padding: 10px 12px !important;
+  min-height: 44px !important;
+  border: 1px solid #d0d7de !important;
+  border-radius: 6px !important;
+  background: #fff !important;
+  color: #111 !important;
+  cursor: pointer !important;
+}
+html body .qzrr-qp-snip {
+  font-size: 13px !important;
+  line-height: 1.45 !important;
+  color: #1e293b !important;
+  -webkit-text-fill-color: #1e293b !important;
+}
+html body .qzrr-qp-snip .katex,
+html body .qzrr-qp-snip .katex * {
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+  font-size: 0.95em !important;
+}
+@media (max-width: 900px) {
+  html body .qzrr-qp-row {
+    grid-template-columns: 40px 1fr !important;
+  }
+  html body .qzrr-qp-snip { grid-column: 1 / -1 !important; }
+}
+
+/* Palette cells stay 34px — zoom must not change number size. */
+html body .qzrr-cbt .qzrr-grid-cell,
+html body .qzrr-cbt .mtk-pal-cell.qzrr-grid-cell {
+  zoom: 1 !important;
+  transform: none !important;
+  height: 34px !important;
+  min-height: 34px !important;
+  max-height: 34px !important;
+  font-size: 12px !important;
+  line-height: 34px !important;
+  padding: 0 !important;
+}
+
+/* Previous left of Save & Next (Quizrr). Practice footer Previous stays tappable. */
+html body .qzrr-cbt #qxPrevBtn {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 38px !important;
+  min-width: 96px !important;
+  order: 0 !important;
+}
+html body .qzrr-cbt #qxSaveBtn { order: 1 !important; }
+html body .eg-test-root #egFoot #qxPrevBtn,
+html body .eg-test-root #egFoot #qxNextBtn,
+html body .eg-test-root #egFoot #egCheckBtn {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  min-height: 48px !important;
+}
+html body .qx-nav-back {
+  display: inline-flex !important;
+  align-items: center !important;
+  min-height: 44px !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+/* Light paper ink. */
+html body .qzrr-cbt:not(.qzrr-dark) .qzrr-q-area,
+html body .qzrr-cbt:not(.qzrr-dark) .qzrr-q-area .mtk-q-text,
+html body .qzrr-cbt:not(.qzrr-dark) .qzrr-opts .mtk-opt-text {
+  color: #111 !important;
+  -webkit-text-fill-color: #111 !important;
+}
