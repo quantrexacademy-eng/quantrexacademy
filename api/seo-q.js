@@ -57,7 +57,8 @@ async function loadRelated(req, rec) {
   const ck = slugify(rec.chapter, 50);
   const pack = await readJson(req, "data/seo/lists/" + hub + "__" + sk + ".json");
   const items = (pack && pack.chapters && pack.chapters[ck] && pack.chapters[ck].items) || [];
-  return items.filter((x) => String(x.id) !== String(rec.id)).slice(0, 8);
+  const cap = /math/i.test(String(rec.subject || "")) ? 16 : 8;
+  return items.filter((x) => String(x.id) !== String(rec.id)).slice(0, cap);
 }
 
 function esc(s) {
@@ -393,6 +394,7 @@ function render(rec, related) {
   <meta name="twitter:title" content="${esc(title)}">
   <meta name="twitter:description" content="${esc(desc)}">
   <meta name="twitter:image" content="${esc(ogImage)}">
+  <meta name="google-site-verification" content="pemTmZW6o6YInk0dhVyPgIz7R4v4mWvKhIb1AdI9Alw">
   <meta name="theme-color" content="#1565C0">
   <link rel="icon" type="image/png" href="/assets/favicon-32x32.png">
   <!-- KaTeX for remaining $math$ on SEO pages -->
@@ -477,6 +479,7 @@ function render(rec, related) {
       <h2>More from ${esc(rec.chapter)}</h2>
       ${relHtml || `<a href="${esc(topicUrl)}">All ${esc(rec.chapter)} questions</a>`}
       <a href="${esc(topicUrl)}">Full ${esc(rec.chapter)} list</a>
+      ${/math/i.test(String(rec.subject || "")) ? `<a href="/maths/${esc(chSlug)}">${esc(rec.chapter)} formula cards</a><a href="/maths">JEE Mathematics formula hub</a>` : ""}
       <a href="${esc(hubUrl)}">All ${esc(rec.exam)} PYQs</a>
     </section>
   </main>
@@ -687,6 +690,10 @@ async function renderSearch(req, res) {
 
 module.exports = async function handler(req, res) {
   const q = req.query || {};
+  const pathOnly = String(req.url || "").split("?")[0];
+  if (/^\/maths(?:\/|$)/i.test(pathOnly) || q.maths != null) {
+    return require("../lib/seo-maths")(req, res);
+  }
   if (q.mode === "search" || /\/search(?:\?|$)/.test(String(req.url || "").split("#")[0])) {
     return renderSearch(req, res);
   }

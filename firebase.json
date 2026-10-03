@@ -200,6 +200,8 @@
       { "source": "/bitsat/**", "function": { "functionId": "seoQ", "region": "us-central1" } },
       { "source": "/questions", "function": { "functionId": "seoQ", "region": "us-central1" } },
       { "source": "/topic/**", "function": { "functionId": "seoQ", "region": "us-central1" } },
+      { "source": "/maths", "function": { "functionId": "seoQ", "region": "us-central1" } },
+      { "source": "/maths/**", "function": { "functionId": "seoQ", "region": "us-central1" } },
       { "source": "/", "destination": "/login.html" },
       { "source": "/home", "destination": "/login.html" },
       { "source": "/index.html", "destination": "/login.html" },
