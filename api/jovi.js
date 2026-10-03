@@ -121,7 +121,7 @@ const SIMILAR_SYSTEM = `You generate NEW exam practice questions for Quantrex Ac
 Return ONLY valid JSON (no markdown) of the form:
 {"ok":true,"questions":[{"text":"...","type":"mcq","options":["A text","B text","C text","D text"],"answer":"B","sol":"Step 1: ... Final answer: **B**"}]}
 Rules:
-- Same concept/chapter as the source. Different numbers and wording. Never copy the source stem.
+- Same concept/chapter as the source. Different function / numbers / bounds / wording. Never copy or lightly paraphrase the source stem. The student must see a NEW question.
 - type is "mcq" (4 options) or "numerical" (options [] and answer is the numeric string; also set correctValue).
 - answer for MCQ is A, B, C or D.
 - sol is a complete, correct solution with $...$ or $$...$$ LaTeX. End with the final answer.

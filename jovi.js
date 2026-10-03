@@ -702,11 +702,11 @@
           noRepeat: true
         });
         if (r && r.ok) {
-          return { handled: true, reply: "✅ Added **" + r.count + "** similar practice question" + (r.count > 1 ? "s" : "") + " with options and solutions. Scroll Next to attempt them.", skipAi: true };
+          return { handled: true, reply: "✅ **" + r.count + "** new practice question" + (r.count > 1 ? "s" : "") + " ready \u2014 different from the original. **Save to Bookmarks** on the Mistake Booster card. They will not join this question list.", skipAi: true };
         }
-        return { handled: true, reply: "⚠️ Could not add similar questions right now. Open a practice question, then tap **Similar** on the toolbar.", skipAi: true };
+        return { handled: true, reply: "⚠️ Could not generate similar questions right now. Open a practice question, check the answer, then use **Mistake Booster AI** (Settings).", skipAi: true };
       }
-      return { handled: true, reply: "Open a **Practice** question, then tap **Similar** (Mistake Booster) to generate similar / trickier questions.", skipAi: true };
+      return { handled: true, reply: "Open a **Practice** question, check the answer, then use **Mistake Booster AI** in Question View Settings to generate new variations.", skipAi: true };
     }
     return null;
   }

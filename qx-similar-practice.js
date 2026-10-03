@@ -1,7 +1,8 @@
 /**
  * Practice similar-type generator (Mistake Booster AI).
  * Off until Question View Settings. After Check Answer only.
- * Database-first unused same-chapter PYQs, then Jovi-generated items.
+ * Jovi writes NEW variations (different from the original). Save → Bookmarks.
+ * Generated items never join the practice question list / Other palette group.
  */
 (function (global) {
   "use strict";
@@ -10,9 +11,12 @@
   var PREF_TRICK = "qx_pref_similar_trickier";
   var PREF_COUNT = "qx_pref_similar_count";
   var PREF_NOREP = "qx_pref_similar_norepeat";
+  var STORE = "quantrex_jovi_sim_qs_v1";
+  var STORE_MAX = 80;
   var DEFAULT_COUNT = 3;
   var MAX_COUNT = 10;
   var CHIPS = [3, 5, 10];
+  var DIFF_SKIP = 0.50;
   var JOVI_URLS = ["/api/jovi", "https://jovi-rhun66xupa-uc.a.run.app"];
 
   function lsGet(k, fallback) {
@@ -29,7 +33,7 @@
     return lsGet(PREF_SHOW, "0") === "1";
   }
   function trickDefault() {
-    return lsGet(PREF_TRICK, "0") === "1";
+    return lsGet(PREF_TRICK, "1") !== "0";
   }
   function noRepeatOn() {
     return lsGet(PREF_NOREP, "1") !== "0";
@@ -59,6 +63,10 @@
   }
   function toast(msg) {
     if (typeof showToast === "function") showToast(msg);
+  }
+  function esc(s) {
+    return String(s == null ? "" : s)
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
   }
 
   function currentSession() {
@@ -99,6 +107,17 @@
     return hit / ta.length;
   }
 
+  function tooClose(srcText, otherText) {
+    var a = srcText || "";
+    var b = otherText || "";
+    if (!strip(b)) return true;
+    if (fp(a) && fp(a) === fp(b)) return true;
+    if (overlap(a, b) >= DIFF_SKIP) return true;
+    var na = strip(a).toLowerCase().replace(/[^a-z0-9]/g, "").slice(0, 48);
+    var nb = strip(b).toLowerCase().replace(/[^a-z0-9]/g, "").slice(0, 48);
+    return !!(na && nb && na === nb);
+  }
+
   function usedIdSet(session) {
     var set = Object.create(null);
     var ids = (session && session.ids) || [];
@@ -115,6 +134,11 @@
     ids.forEach(function (id) {
       var q = getQSafe(id);
       if (q) set[fp(q.q || q.question || q.text || "")] = 1;
+    });
+    var last = global._qxBoostLast || [];
+    last.forEach(function (x) {
+      var q = x && x.q;
+      if (q) set[fp(q.q || q.question || "")] = 1;
     });
     return set;
   }
@@ -138,36 +162,30 @@
     var bank = src._bank || "";
     var stem = src.q || src.question || src.text || "";
     var scored = [];
-    var sameCh = [];
     for (var i = 0; i < qs.length; i++) {
       var q = qs[i];
       if (!q || q.id == null) continue;
       if (used[String(q.id)]) continue;
       if (q._joviGenerated) continue;
+      if (String(q.id).indexOf("jovi_sim_") === 0) continue;
       if (ch && String(q.chapter || "").toLowerCase() !== ch) continue;
       if (sub && String(q.subject || "").toLowerCase() !== sub) continue;
       if (bank && q._bank && q._bank !== bank) continue;
       var st = q.q || q.question || q.text || "";
       var f = fp(st);
       if (noRepeat && fps[f]) continue;
+      if (tooClose(stem, st)) continue;
       var ov = overlap(stem, st);
-      if (ov >= 0.92) continue;
-      sameCh.push(q);
-      if (ov < 0.12 && tokens(st).length > 6) continue;
+      if (ov < 0.08 && tokens(st).length > 6) continue;
       scored.push({ q: q, ov: ov });
     }
-    scored.sort(function (a, b) { return b.ov - a.ov; });
+    scored.sort(function (a, b) {
+      return Math.abs(a.ov - 0.28) - Math.abs(b.ov - 0.28);
+    });
     scored.forEach(function (x) {
       if (out.length >= want) return;
       out.push(x.q);
     });
-    if (out.length < want) {
-      sameCh.forEach(function (q) {
-        if (out.length >= want) return;
-        if (out.some(function (x) { return String(x.id) === String(q.id); })) return;
-        out.push(q);
-      });
-    }
     return out;
   }
 
@@ -176,6 +194,7 @@
     var text = String(item.text || "").trim();
     var sol = String(item.sol || "").trim();
     var isNum = String(item.type || "").toLowerCase() === "numerical";
+    var subj = (src && (src.subject || src.Subject)) || "Mathematics";
     var q = {
       id: id,
       q: text,
@@ -186,11 +205,11 @@
       correctValue: isNum ? String(item.correctValue || item.answer || "") : undefined,
       sol: sol,
       solution: sol,
-      subject: (src && src.subject) || "",
+      subject: subj,
       chapter: (src && src.chapter) || "",
       exam: (src && src.exam) || "",
       _bank: (src && src._bank) || "",
-      source: "[Jovi-generated]",
+      source: "Jovi practice",
       _joviGenerated: true,
       type: isNum ? "numerical" : "singleCorrect"
     };
@@ -219,7 +238,10 @@
         trickier: !!trickier,
         count: count
       },
-      messages: [{ role: "user", content: "Generate " + count + " similar practice questions with options and full solutions." }]
+      messages: [{
+        role: "user",
+        content: "Generate " + count + " NEW practice questions on the same concept. Different function, numbers, and wording from the source. Never paraphrase the original stem. Each needs options or a numerical answer plus a full solution."
+      }]
     };
     var lastErr = null;
     for (var u = 0; u < JOVI_URLS.length; u++) {
@@ -244,38 +266,102 @@
 
   function indexQ(q) {
     try {
-      if (typeof QUESTIONS !== "undefined" && Array.isArray(QUESTIONS)) QUESTIONS.push(q);
+      if (typeof QUESTIONS !== "undefined" && Array.isArray(QUESTIONS)) {
+        var exists = QUESTIONS.some(function (x) { return x && String(x.id) === String(q.id); });
+        if (!exists) QUESTIONS.push(q);
+      }
     } catch (_) { /* */ }
     try {
       if (typeof _qxIndexQuestion === "function") _qxIndexQuestion(q);
     } catch (_) { /* */ }
   }
 
-  function appendToSession(ids) {
-    if (!ids || !ids.length) return false;
+  function persistQ(q) {
+    if (!q || q.id == null) return;
+    if (!q._joviGenerated && String(q.id).indexOf("jovi_sim_") !== 0) return;
     try {
-      if (typeof QuantrexTestEngine !== "undefined" && QuantrexTestEngine.appendPracticeQuestions) {
-        return !!QuantrexTestEngine.appendPracticeQuestions(ids);
-      }
+      var arr = [];
+      try { arr = JSON.parse(localStorage.getItem(STORE) || "[]"); } catch (_) { arr = []; }
+      if (!Array.isArray(arr)) arr = [];
+      arr = arr.filter(function (x) { return x && String(x.id) !== String(q.id); });
+      arr.unshift({
+        id: q.id,
+        q: q.q,
+        question: q.question,
+        text: q.text,
+        options: q.options,
+        answer: q.answer,
+        correctValue: q.correctValue,
+        sol: q.sol,
+        solution: q.solution,
+        subject: q.subject,
+        chapter: q.chapter,
+        exam: q.exam,
+        _bank: q._bank,
+        source: q.source || "Jovi practice",
+        _joviGenerated: true,
+        type: q.type
+      });
+      if (arr.length > STORE_MAX) arr = arr.slice(0, STORE_MAX);
+      localStorage.setItem(STORE, JSON.stringify(arr));
     } catch (_) { /* */ }
-    var sess = currentSession();
-    if (!sess || !Array.isArray(sess.ids)) return false;
-    var start = sess.ids.length;
-    ids.forEach(function (id) {
-      if (sess.ids.indexOf(id) < 0 && sess.ids.indexOf(String(id)) < 0) sess.ids.push(id);
+  }
+
+  function hydrateStore() {
+    try {
+      var arr = JSON.parse(localStorage.getItem(STORE) || "[]");
+      if (!Array.isArray(arr)) return;
+      arr.forEach(function (q) { if (q && q.id != null) indexQ(q); });
+    } catch (_) { /* */ }
+  }
+
+  function isGeneratedId(id) {
+    var sid = String(id == null ? "" : id);
+    if (sid.indexOf("jovi_sim_") === 0) return true;
+    var q = getQSafe(id);
+    return !!(q && q._joviGenerated);
+  }
+
+  function stripSimilarFromSession(session, silent) {
+    session = session || currentSession();
+    if (!session || !Array.isArray(session.ids) || !session.ids.length) return false;
+    var keep = [];
+    var dropped = 0;
+    var added = session._qxBoostAddedIds || [];
+    var addedSet = Object.create(null);
+    added.forEach(function (id) { addedSet[String(id)] = 1; });
+    session.ids.forEach(function (id, i) {
+      var inSimSec = false;
+      if (session.sections && session.sections.length) {
+        session.sections.forEach(function (s) {
+          if (!s) return;
+          var lab = String(s.subject || s.label || "");
+          if (/similar practice/i.test(lab) && i >= s.start && i < s.start + (s.count || 0)) inSimSec = true;
+        });
+      }
+      if (isGeneratedId(id) || addedSet[String(id)] || inSimSec) {
+        dropped++;
+        return;
+      }
+      keep.push(id);
     });
-    if (sess.sections && sess.sections.length) {
-      sess.sections.push({
-        subject: "Similar practice",
-        label: "Similar practice",
-        start: start,
-        count: sess.ids.length - start
+    if (session.sections && session.sections.length) {
+      session.sections = session.sections.filter(function (s) {
+        return !/similar practice/i.test(String((s && (s.subject || s.label)) || ""));
       });
     }
-    sess.idx = start;
-    try {
-      if (typeof QuantrexTestEngine !== "undefined" && QuantrexTestEngine.refresh) QuantrexTestEngine.refresh();
-    } catch (_) { /* */ }
+    session._qxBoostAddedIds = [];
+    if (!dropped) return false;
+    var oldId = session.ids[session.idx];
+    session.ids = keep;
+    var ni = keep.indexOf(oldId);
+    if (ni < 0) ni = keep.map(String).indexOf(String(oldId));
+    session.idx = ni >= 0 ? ni : Math.min(session.idx || 0, Math.max(0, keep.length - 1));
+    if (!silent) {
+      try {
+        if (typeof QuantrexTestEngine !== "undefined" && QuantrexTestEngine.refresh) QuantrexTestEngine.refresh();
+      } catch (_) { /* */ }
+    }
     return true;
   }
 
@@ -290,8 +376,123 @@
       m.className = "qx-boost-msg";
       m.textContent = msg || "";
     });
-    var bar = document.getElementById("egSimilarBtn");
-    if (bar) bar.classList.toggle("on", !!on);
+  }
+
+  function renderStem(raw) {
+    var t = String(raw || "");
+    try {
+      if (typeof MathTextRenderer !== "undefined" && MathTextRenderer.html) {
+        return MathTextRenderer.html(t);
+      }
+    } catch (_) { /* */ }
+    return esc(strip(t)).slice(0, 280);
+  }
+
+  function previewHtml(items) {
+    if (!items || !items.length) return "";
+    var rows = items.map(function (x, i) {
+      var q = x.q;
+      var kind = x.kind === "jovi" ? "New variation" : "Same chapter, different stem";
+      var id = esc(String(q.id));
+      var saved = false;
+      try {
+        saved = typeof QuantrexBookmarks !== "undefined" && QuantrexBookmarks.isBookmarked(q.id);
+      } catch (_) { /* */ }
+      return '<li class="qx-boost-item" data-qx-boost-id="' + id + '">' +
+        '<div class="qx-boost-item-k">' + (i + 1) + " \u00b7 " + kind + "</div>" +
+        '<div class="qx-boost-item-q">' + renderStem(q.q || q.question || "") + "</div>" +
+        '<button type="button" class="qx-boost-save' + (saved ? " on" : "") + '" data-qx-boost-save="' + id + '">' +
+        (saved ? "Saved" : "Save to Bookmarks") + "</button>" +
+        "</li>";
+    }).join("");
+    return '<div class="qx-boost-preview" id="qxBoostPreview">' +
+      '<p class="qx-boost-preview-h">These questions are different from the original. Save them to Bookmarks. They will not join this question list, so Other stays empty.</p>' +
+      '<ol class="qx-boost-ol">' + rows + "</ol>" +
+      '<button type="button" class="qx-boost-saveall" data-qx-boost-saveall>Save all to Bookmarks</button>' +
+      "</div>";
+  }
+
+  function paintPreview(items) {
+    global._qxBoostLast = items || [];
+    var html = previewHtml(items);
+    document.querySelectorAll(".qx-boost").forEach(function (card) {
+      var hold = card.querySelector(".qx-boost-preview-slot");
+      if (!hold) {
+        hold = document.createElement("div");
+        hold.className = "qx-boost-preview-slot";
+        card.appendChild(hold);
+      }
+      hold.innerHTML = html;
+      try {
+        if (typeof MathTextRenderer !== "undefined" && MathTextRenderer.afterRender) {
+          MathTextRenderer.afterRender(hold);
+        } else if (typeof Mx !== "undefined" && Mx.afterRender) {
+          Mx.afterRender(hold);
+        }
+      } catch (_) { /* */ }
+    });
+  }
+
+  function findPreviewQ(id) {
+    var last = global._qxBoostLast || [];
+    for (var i = 0; i < last.length; i++) {
+      if (last[i] && last[i].q && String(last[i].q.id) === String(id)) return last[i].q;
+    }
+    return getQSafe(id);
+  }
+
+  function saveOne(id, skipStrip) {
+    var q = findPreviewQ(id);
+    if (!q) {
+      toast("Question not ready to save");
+      return false;
+    }
+    indexQ(q);
+    persistQ(q);
+    try {
+      if (typeof QuantrexBookmarks === "undefined" || !QuantrexBookmarks.toggle) {
+        toast("Bookmarks not loaded");
+        return false;
+      }
+      if (!QuantrexBookmarks.isBookmarked(q.id)) {
+        QuantrexBookmarks.toggle(q.id, {
+          exam: q.exam,
+          subject: q.subject,
+          chapter: q.chapter,
+          topic: q.chapter,
+          source: q.source || "Jovi practice"
+        });
+      }
+    } catch (e) {
+      toast("Could not save bookmark");
+      return false;
+    }
+    document.querySelectorAll('[data-qx-boost-save]').forEach(function (btn) {
+      if (String(btn.getAttribute("data-qx-boost-save")) === String(id)) {
+        btn.classList.add("on");
+        btn.textContent = "Saved";
+      }
+    });
+    if (!skipStrip) stripSimilarFromSession(currentSession());
+    return true;
+  }
+
+  function saveAll() {
+    var last = global._qxBoostLast || [];
+    var n = 0;
+    last.forEach(function (x) {
+      if (x && x.q && saveOne(x.q.id, true)) n++;
+    });
+    stripSimilarFromSession(currentSession());
+    if (n) toast("Saved " + n + " question" + (n > 1 ? "s" : "") + " to Bookmarks");
+    else toast("Nothing new to save");
+    document.querySelectorAll(".qx-boost-msg").forEach(function (m) {
+      m.className = "qx-boost-msg";
+      m.textContent = n
+        ? "Saved to Bookmarks. They are not in this question list."
+        : "Already in Bookmarks.";
+    });
+    return n;
   }
 
   var _genLock = 0;
@@ -316,62 +517,61 @@
     if (opts.trickier != null) lsSet(PREF_TRICK, trickier ? "1" : "0");
 
     var host = opts.host || document.querySelector(".eg-test-root") || document;
-    setBusy(host, true, trickier ? "Building trickier variations\u2026" : "Finding similar questions\u2026");
+    setBusy(host, true, trickier ? "Writing trickier variations\u2026" : "Writing new variations\u2026");
+    stripSimilarFromSession(session, true);
 
     var collected = [];
+    var joviErr = null;
     try {
-      var bank = bankSimilar(src, session, count, noRepeat);
-      bank.forEach(function (q) { collected.push({ kind: "bank", q: q }); });
-
-      var need = count - collected.length;
-      if (need > 0) {
-        setBusy(host, true, "Jovi is writing " + need + " new question" + (need > 1 ? "s" : "") + "\u2026");
-        var gen = await callJovi(src, session, need, trickier, noRepeat);
-        gen.forEach(function (item, i) {
-          var built = buildJoviQ(item, src, i);
-          if (!built.q || built.q.length < 8) return;
-          if (noRepeat && fp(built.q) === fp(src.q || src.question || "")) return;
-          if (overlap(src.q || src.question || "", built.q) >= 0.92) return;
-          indexQ(built);
-          rememberFp(session, built.q);
-          collected.push({ kind: "jovi", q: built });
-        });
-      }
-    } catch (e) {
-      setBusy(host, false, "");
-      var errText = collected.length
-        ? "AI fill failed \u2014 using bank similar questions."
-        : ("Could not generate: " + String(e.message || e));
-      document.querySelectorAll(".qx-boost-msg").forEach(function (m) {
-        m.className = "qx-boost-msg err";
-        m.textContent = errText;
+      setBusy(host, true, "Jovi is writing " + count + " new question" + (count > 1 ? "s" : "") + "\u2026");
+      var gen = await callJovi(src, session, count, trickier, noRepeat);
+      gen.forEach(function (item, i) {
+        var built = buildJoviQ(item, src, i);
+        if (!built.q || built.q.length < 8) return;
+        if (tooClose(src.q || src.question || "", built.q)) return;
+        if (noRepeat && fp(built.q) === fp(src.q || src.question || "")) return;
+        indexQ(built);
+        persistQ(built);
+        rememberFp(session, built.q);
+        collected.push({ kind: "jovi", q: built });
       });
-      if (!collected.length) {
-        toast("Could not generate similar questions");
-        return { ok: false, error: e };
-      }
+    } catch (e) {
+      joviErr = e;
     }
 
-    collected = collected.slice(0, count);
+    if (collected.length < count) {
+      var need = count - collected.length;
+      var bank = bankSimilar(src, session, need, noRepeat);
+      bank.forEach(function (q) {
+        if (collected.length >= count) return;
+        if (tooClose(src.q || src.question || "", q.q || q.question || "")) return;
+        collected.push({ kind: "bank", q: q });
+      });
+    }
+
     if (!collected.length) {
       setBusy(host, false, "");
       document.querySelectorAll(".qx-boost-msg").forEach(function (m) {
         m.className = "qx-boost-msg err";
-        m.textContent = "No unused similar questions yet \u2014 try again or another chapter.";
+        m.textContent = joviErr
+          ? ("Could not generate: " + String(joviErr.message || joviErr))
+          : "No unused different questions yet \u2014 try again or another chapter.";
       });
-      toast("No unused similar questions yet \u2014 try again");
-      return { ok: false };
+      toast(joviErr ? "Could not generate similar questions" : "No unused different questions yet");
+      return { ok: false, error: joviErr };
     }
+
+    collected = collected.slice(0, count);
     collected.forEach(function (x) { rememberFp(session, x.q.q || x.q.question || ""); });
-    var ids = collected.map(function (x) { return x.q.id; });
-    var ok = appendToSession(ids);
+    paintPreview(collected);
     setBusy(host, false, "");
-    if (ok) {
-      toast("Added " + ids.length + " similar practice question" + (ids.length > 1 ? "s" : ""));
-    } else {
-      toast("Questions ready but could not add to this session");
-    }
-    return { ok: ok, ids: ids, count: ids.length };
+    document.querySelectorAll(".qx-boost-msg").forEach(function (m) {
+      m.className = "qx-boost-msg";
+      m.textContent = collected.length + " new question" + (collected.length > 1 ? "s" : "") +
+        " ready. Save to Bookmarks \u2014 they stay out of this list.";
+    });
+    toast(collected.length + " new question" + (collected.length > 1 ? "s" : "") + " ready \u2014 Save to Bookmarks");
+    return { ok: true, ids: collected.map(function (x) { return x.q.id; }), count: collected.length, preview: true };
   }
 
   function chipsHtml(count) {
@@ -397,6 +597,7 @@
         '<label class="qx-boost-tog"><input type="checkbox" class="qx-boost-norep"' + (noRepeatOn() ? " checked" : "") + "> Don\u2019t repeat</label>" +
       "</div>" +
       '<p class="qx-boost-msg"></p>' +
+      '<div class="qx-boost-preview-slot"></div>' +
       '<div class="qx-boost-foot-gap" aria-hidden="true"></div>'
     );
   }
@@ -407,7 +608,7 @@
         '<div class="qx-boost-head">' +
           '<span class="qx-boost-spark" aria-hidden="true">\u2726</span>' +
           "<div><h3>Mistake Booster AI</h3>" +
-          "<p>Challenge yourself with trickier, realistic variations of this concept.</p></div>" +
+          "<p>New variations of this concept \u2014 different numbers. Save to Bookmarks; they stay out of this question list.</p></div>" +
         "</div>" +
         controlsHtml(count, trickier, false) +
       "</div>"
@@ -450,7 +651,7 @@
     var l = document.createElement("link");
     l.id = "qxSimilarCss";
     l.rel = "stylesheet";
-    l.href = "assets/qx-similar-practice.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd289");
+    l.href = "assets/qx-similar-practice.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd292");
     document.head.appendChild(l);
   }
 
@@ -458,9 +659,36 @@
     return (t && t.closest && t.closest(".qx-boost")) || document.getElementById("qxBoostCard") || document;
   }
 
+  function readGenOpts(card) {
+    var trickEl = card && card.querySelector(".qx-boost-trick");
+    var nrEl = card && card.querySelector(".qx-boost-norep");
+    return {
+      session: currentSession(),
+      host: card,
+      count: readCount(card),
+      trickier: !!(trickEl && trickEl.checked),
+      noRepeat: !(nrEl) || nrEl.checked
+    };
+  }
+
   function handleBoostEvent(e) {
     var t = e && e.target;
     if (!t || !t.closest) return;
+    var saveAllBtn = t.closest("[data-qx-boost-saveall], .qx-boost-saveall");
+    var saveBtn = t.closest("[data-qx-boost-save], .qx-boost-save");
+    if (saveAllBtn) {
+      if (e && e.preventDefault) e.preventDefault();
+      if (e && e.stopPropagation) e.stopPropagation();
+      saveAll();
+      return;
+    }
+    if (saveBtn) {
+      if (e && e.preventDefault) e.preventDefault();
+      if (e && e.stopPropagation) e.stopPropagation();
+      var sid = saveBtn.getAttribute("data-qx-boost-save");
+      if (sid && saveOne(sid)) toast("Saved to Bookmarks");
+      return;
+    }
     if (t.closest && t.closest("input.qx-boost-trick, input.qx-boost-norep, label.qx-boost-tog, .qx-boost-tog")) {
       return;
     }
@@ -482,15 +710,7 @@
     }
     if (go) {
       if (go.disabled) return;
-      var trickEl = card.querySelector(".qx-boost-trick");
-      var nrEl = card.querySelector(".qx-boost-norep");
-      generate({
-        session: currentSession(),
-        host: card,
-        count: readCount(card),
-        trickier: !!(trickEl && trickEl.checked),
-        noRepeat: !(nrEl) || nrEl.checked
-      });
+      generate(readGenOpts(card));
     }
   }
 
@@ -506,15 +726,7 @@
       go.onclick = function (e) {
         if (e) { e.preventDefault(); e.stopPropagation(); }
         if (go.disabled) return;
-        var trickEl = card.querySelector(".qx-boost-trick");
-        var nrEl = card.querySelector(".qx-boost-norep");
-        generate({
-          session: currentSession(),
-          host: card,
-          count: readCount(card),
-          trickier: !!(trickEl && trickEl.checked),
-          noRepeat: !(nrEl) || nrEl.checked
-        });
+        generate(readGenOpts(card));
       };
     });
     card.querySelectorAll("[data-qx-boost-n]").forEach(function (chip) {
@@ -555,6 +767,7 @@
     var existing = root.querySelector("#qxBoostCard");
     if (existing) {
       wireCard(existing);
+      if (global._qxBoostLast && global._qxBoostLast.length) paintPreview(global._qxBoostLast);
       return;
     }
     var html = cardHtml(savedCount(), trickDefault());
@@ -571,6 +784,7 @@
     }
     var card = root.querySelector("#qxBoostCard");
     wireCard(card);
+    if (global._qxBoostLast && global._qxBoostLast.length) paintPreview(global._qxBoostLast);
     try {
       if (card) {
         card.style.scrollMarginBottom = "120px";
@@ -608,15 +822,6 @@
     var card = root && root.querySelector("#qxBoostCard");
     if (card) {
       try { card.scrollIntoView({ behavior: "smooth", block: "nearest" }); } catch (_) { /* */ }
-      generate({
-        session: session,
-        host: card,
-        count: readCount(card),
-        trickier: trickDefault(),
-        noRepeat: noRepeatOn()
-      });
-    } else {
-      generate({ session: session, count: savedCount(), trickier: trickDefault(), noRepeat: noRepeatOn() });
     }
   }
 
@@ -630,7 +835,7 @@
       foot.style.pointerEvents = "none";
       var under = document.elementFromPoint(x, y);
       foot.style.pointerEvents = prev;
-      var hit = under && under.closest && under.closest("[data-qx-boost-n],[data-qx-boost-pm],[data-qx-boost-go],.qx-boost-go,.qx-boost-chip,.qx-boost-pm,#qxBoostCard");
+      var hit = under && under.closest && under.closest("[data-qx-boost-n],[data-qx-boost-pm],[data-qx-boost-go],[data-qx-boost-save],[data-qx-boost-saveall],.qx-boost-go,.qx-boost-chip,.qx-boost-pm,.qx-boost-save,.qx-boost-saveall,#qxBoostCard");
       if (!hit) return;
       if (e.preventDefault) e.preventDefault();
       if (e.stopPropagation) e.stopPropagation();
@@ -641,6 +846,8 @@
     document.addEventListener("click", punchFoot, true);
   } catch (_) { /* */ }
 
+  try { hydrateStore(); } catch (_) { /* */ }
+
   global.QxSimilarPractice = {
     generate: generate,
     attach: attach,
@@ -648,6 +855,7 @@
     cardHtml: cardHtml,
     settingsHtml: settingsHtml,
     bindSettings: bindSettings,
+    saveAll: saveAll,
     showOn: showOn,
     prefShow: PREF_SHOW,
     prefTrick: PREF_TRICK
