@@ -19,7 +19,6 @@
     "deploy:all": "npm run deploy:github && npm run deploy"
   },
   "devDependencies": {
-    "firebase-admin": "^14.2.0",
     "serve": "^14.2.4"
   },
   "dependencies": {

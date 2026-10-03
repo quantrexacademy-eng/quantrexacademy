@@ -292,6 +292,7 @@
     s = s.replace(/\\\(\s*\\\)/g, "");
     s = s.replace(/\\\[\s*\\\]/g, "");
     try { s = repairMarksDollarSoup(s); } catch (_) { /* */ }
+    try { s = fixProseDollars(s); } catch (_) { /* */ }
     s = healOddDollars(s);
     return s;
   }
@@ -374,6 +375,8 @@
     );
     // Extra $ after the set closer (}$$) opens a false $Let$ / $be a$ island
     s = s.replace(/\\\}(\$)\$+(?=\s)/g, "\\}$1");
+    s = s.replace(/\\left\$/g, "\\left");
+    s = s.replace(/\\right\$/g, "\\right");
     s = s.replace(/\$Let \$R/g, "Let $R");
     s = s.replace(/\$Let \$/g, "Let $");
     // Keep P$ and Q as two islands when the set-builder \text wrap did not fire
@@ -531,6 +534,22 @@
     if (body.startsWith("$")) return prefix + body + "$";
     if (/\\[a-zA-Z]/.test(body) && mix.plainLen <= 80) return prefix + "$" + body;
     return prefix + body.replace(/\$(\s*)(?=<|$)/, "$1");
+  }
+
+  /**
+   * qxmd285 — even-count leftover soup: `$Given that $y=…` and `\left$`.
+   * healOddDollars returns early when `$` count is even, so this always runs.
+   */
+  function fixProseDollars(html) {
+    let s = String(html || "");
+    if (!s) return s;
+    s = s.replace(/\\left\$/g, "\\left");
+    s = s.replace(/\\right\$/g, "\\right");
+    s = s.replace(/\$Let \$R/g, "Let $R");
+    s = s.replace(/\$Let \$/g, "Let $");
+    s = s.replace(/(^|[>\n\r])\$(\s*)(Given|If|Find|The|Simplify|Let|Consider|Which|When|For|Show|Prove|Calculate|Determine|Match|Select|Choose|Suppose|Assume|Evaluate|Obtain|Define|Statement|Assertion|Reason)\b(?!\$)/g, "$1$2$3");
+    s = s.replace(/([\s(])\$(Given|If|Find|The|Simplify|Let|Consider|Which|When|For|Show|Prove|Calculate|Determine|Match|Select|Choose|Suppose|Assume|Evaluate|Obtain|Define)\b(?!\$)/g, "$1$2");
+    return s;
   }
 
   /**
@@ -884,6 +903,7 @@
     // qxmd163: also collapse \\{ before letters already done; repair Marks braces/U+2061
     try { s = repairMarksExportTex(s); } catch (_) { /* */ }
     s = normalizeDelimiters(s);
+    try { s = fixProseDollars(s); } catch (_) { /* */ }
     try { s = healOddDollars(s); } catch (_) { /* */ }
     s = tidyWhitespace(s);
     try { s = chemifyPlain(s); } catch (_) { /* */ }
@@ -1046,6 +1066,7 @@
     detectRawHtml,
     detectUnbalancedLatex,
     healOddDollars,
+    fixProseDollars,
     repairMarksDollarSoup,
     recoverKatexHtml,
     normalizeMathContent,

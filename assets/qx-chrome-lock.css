@@ -3715,7 +3715,8 @@ html body .eg-foot-practice #qxNextBtn {
   html body img.exam-pill-logo,
   html body .dash-card,
   html body .qx-topic-card,
-  html body .eg-top-tools .eg-tool-btn {
+  html body .eg-top-tools .eg-tool-btn,
+  html body .qx-anim-cover {
     animation: none !important;
     transition: none !important;
   }
@@ -3726,6 +3727,34 @@ html body .eg-foot-practice #qxNextBtn {
   html body .eg-top-tools .eg-tool-btn:active {
     transform: none !important;
   }
+}
+
+/* ===== qxmd285: 2D book-cover bob (beats qxCoverFloat rotateY) ===== */
+@keyframes qxCoverFloat {
+  0%, 100% { translate: 0 0; rotate: 0deg; }
+  50% { translate: 0 -5px; rotate: 2deg; }
+}
+@keyframes qxFcTurnNext {
+  0% { opacity: 0; translate: 18px 0; }
+  100% { opacity: 1; translate: 0 0; }
+}
+@keyframes qxFcTurnPrev {
+  0% { opacity: 0; translate: -18px 0; }
+  100% { opacity: 1; translate: 0 0; }
+}
+html body .qx-anim-cover,
+html body .qx-ncert-tool .qx-anim-cover,
+html body .qx-med-fc-chip .qx-anim-cover,
+html[data-theme="light"] .qx-anim-cover,
+html[data-theme="dark"] .qx-anim-cover {
+  animation: qxCoverFloat 3.2s ease-in-out infinite !important;
+  transform: none !important;
+  transform-style: flat !important;
+  perspective: none !important;
+  backface-visibility: visible !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  will-change: translate, rotate;
 }
 
 

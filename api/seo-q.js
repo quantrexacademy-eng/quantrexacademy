@@ -162,8 +162,19 @@ function recBlob(rec) {
     .join(" ");
 }
 
+function healSeoText(s) {
+  let t = String(s == null ? "" : s);
+  if (!t) return t;
+  t = t.replace(/\\left\$/g, "\\left").replace(/\\right\$/g, "\\right");
+  t = t.replace(/\$Let \$/g, "Let $");
+  t = t.replace(/(^|[>\n\r\s])\$(Given|If|Find|The|Simplify|Let|Consider|Which|When|For|Show|Prove|Calculate|Determine)\b(?!\$)/g, "$1$2");
+  t = t.replace(/&#39;|&apos;|&#x27;/gi, "'");
+  t = t.replace(/&nbsp;|&#160;/gi, " ");
+  return t;
+}
+
 function rich(s) {
-  const raw = String(s == null ? "" : s);
+  const raw = healSeoText(String(s == null ? "" : s));
   if (!raw) return "";
   if (!/<[a-z/]/i.test(raw)) return esc(raw);
   let h = raw
@@ -249,11 +260,12 @@ function render(rec, related) {
   const hub = hubOf(rec);
   const subSlug = slugify(rec.subject, 40);
   const chSlug = slugify(rec.chapter, 50);
-  const qtxt = String(rec.text || "").replace(/\s+/g, " ").trim();
-  let short = qtxt.slice(0, 72);
-  if (qtxt.length > 72) short = short.replace(/\s+\S*$/, "") + "...";
-  const title = `${short} | ${rec.exam}${rec.year ? " " + rec.year : ""} | Quantrex Academy`;
-  const desc = `${qtxt.slice(0, 140)}${qtxt.length > 140 ? "..." : ""} ${rec.exam}${rec.year ? " " + rec.year : ""} ${rec.subject} PYQ with answer and solution — Quantrex Academy.`;
+  const qtxt = healSeoText(String(rec.text || "")).replace(/\s+/g, " ").trim();
+  let short = qtxt.slice(0, 68);
+  if (qtxt.length > 68) short = short.replace(/\s+\S*$/, "") + "...";
+  const examBit = [rec.exam, rec.year].filter(Boolean).join(" ");
+  const title = `${short} | ${examBit} PYQ with solution | Quantrex Academy`;
+  const desc = `${qtxt.slice(0, 150)}${qtxt.length > 150 ? "..." : ""} ${examBit} ${rec.subject || ""} previous year question with answer and step-by-step solution on Quantrex Academy.`;
   const url = `${SITE}/q/${encodeURIComponent(rec.id)}/${encodeURIComponent(rec.slug)}`;
   const topicUrl = hub === "other" ? `${SITE}/questions` : `${SITE}/${hub}/${subSlug}/${chSlug}`;
   const hubUrl = hub === "other" ? `${SITE}/questions` : `${SITE}/${hub}`;
@@ -306,15 +318,15 @@ function render(rec, related) {
           { "@type": "ListItem", position: 2, name: rec.exam, item: hubUrl },
           { "@type": "ListItem", position: 3, name: rec.subject, item: hub === "other" ? hubUrl : SITE + "/" + hub + "/" + subSlug },
           { "@type": "ListItem", position: 4, name: rec.chapter, item: topicUrl },
-          { "@type": "ListItem", position: 5, name: rec.text.slice(0, 80), item: url }
+          { "@type": "ListItem", position: 5, name: qtxt.slice(0, 80), item: url }
         ]
       },
       {
         "@type": "QAPage",
         mainEntity: {
           "@type": "Question",
-          name: rec.text.slice(0, 240),
-          text: rec.text,
+          name: qtxt.slice(0, 240),
+          text: qtxt,
           answerCount: ans || rec.sol ? 1 : 0,
           educationalAlignment: {
             "@type": "AlignmentObject",
@@ -330,6 +342,25 @@ function render(rec, related) {
                 }
               : undefined
         }
+      },
+      {
+        "@type": "Quiz",
+        name: examBit + (rec.chapter ? " — " + rec.chapter : "") + " previous year question",
+        educationalLevel: "Class 11-12 / " + (rec.exam || "competitive exam"),
+        about: rec.subject,
+        isAccessibleForFree: true,
+        url: url,
+        provider: { "@id": SITE + "/#org" }
+      },
+      {
+        "@type": "LearningResource",
+        name: title,
+        url: url,
+        learningResourceType: "Practice problem",
+        educationalUse: "practice",
+        isAccessibleForFree: true,
+        inLanguage: "en",
+        about: [rec.exam, rec.subject, rec.chapter].filter(Boolean).join(" · ")
       }
     ]
   };
@@ -396,6 +427,7 @@ function render(rec, related) {
     .pills{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 4px}
     .pill{background:#e8f1fb;color:#1565C0;font-size:11px;font-weight:800;padding:5px 10px;border-radius:999px}
     h1{font-size:clamp(1.12rem,3.2vw,1.48rem);line-height:1.4;margin:10px 0 14px;font-weight:800}
+    .kicker{font-size:13px;font-weight:800;color:var(--brand);margin:4px 0 0}
     .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;margin:14px 0;box-shadow:0 10px 28px rgba(15,40,80,.06)}
     .card h2{margin:0 0 10px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
     ol.opts{list-style:none;margin:0;padding:0}
@@ -432,6 +464,7 @@ function render(rec, related) {
     <div class="pills">
       ${paperDetailPills(rec)}
     </div>
+    <p class="kicker">${esc([examBit, rec.subject, rec.chapter].filter(Boolean).join(" · "))} previous year question with solution</p>
     <h1 class="q-stem">${rich(rec.text)}${stemFigs && !/<img/i.test(String(rec.text || "")) ? stemFigs : ""}</h1>
     ${opts ? `<section class="card"><h2>Options</h2><ol class="opts">${opts}</ol></section>` : ""}
     ${ans ? `<section class="card ans"><h2>Correct answer</h2><p style="margin:0;font-weight:800">${esc(ans)}</p></section>` : ""}
@@ -503,23 +536,29 @@ async function renderSearch(req, res) {
       }
     }
   }
-  rawQ = rawQ.replace(/\s+/g, " ").trim().slice(0, 160);
+  rawQ = rawQ.replace(/\s+/g, " ").trim().slice(0, 400);
   const words = searchWords(rawQ);
   const keys = [];
-  words.slice(0, 6).forEach((w) => {
+  words.slice(0, 12).forEach((w) => {
     const k = searchKey(w);
     if (keys.indexOf(k) < 0) keys.push(k);
   });
   const seen = Object.create(null);
   const hits = [];
-  const need = words.length <= 1 ? 1 : Math.min(2, words.length);
+  const phrase = rawQ.toLowerCase().replace(/[^a-z0-9\s]+/g, " ").replace(/\s+/g, " ").trim();
+  const phraseKey = phrase.slice(0, 48);
+  const need = words.length <= 1 ? 1
+    : words.length >= 8 ? Math.min(5, Math.max(3, Math.ceil(words.length * 0.35)))
+    : Math.min(2, words.length);
   for (const k of keys) {
     const arr = (await readJson(req, "data/seo/qsearch/" + k + ".json")) || [];
     (Array.isArray(arr) ? arr : []).forEach((it) => {
       const id = String(it.id || "");
       if (!id || seen[id]) return;
       const hay = String(it.t || "").toLowerCase();
-      const ok = words.length ? words.filter((w) => hay.indexOf(w) >= 0).length >= need : false;
+      const nHit = words.length ? words.filter((w) => hay.indexOf(w) >= 0).length : 0;
+      const phraseHit = phraseKey.length >= 18 && hay.indexOf(phraseKey) >= 0;
+      const ok = phraseHit || (words.length ? nHit >= need : false);
       if (!ok) return;
       seen[id] = 1;
       hits.push(it);
@@ -536,8 +575,9 @@ async function renderSearch(req, res) {
     if (!words.length) return true;
     const hay = recBlob(rec).toLowerCase();
     const n = words.filter((w) => hay.indexOf(w) >= 0).length;
-    rec._score = n;
-    return n >= need;
+    const phraseHit = phraseKey.length >= 18 && hay.indexOf(phraseKey) >= 0;
+    rec._score = n + (phraseHit ? 20 : 0);
+    return phraseHit || n >= need;
   }).sort((a, b) => (b._score || 0) - (a._score || 0) || String(b.year || "").localeCompare(String(a.year || "")));
 
   if (String(q.format || "") === "json") {

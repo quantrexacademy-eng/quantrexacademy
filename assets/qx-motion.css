@@ -372,8 +372,9 @@ html[data-theme="dark"] .qx-med-nb-card {
 .qx-ac-diagram, .qx-ac-d { background: linear-gradient(160deg,#0f766e,#5eead4); }
 .qx-ac-formula, .qx-ac-folder, .qx-ac-dpp { background: linear-gradient(160deg,#1e3a8a,#60a5fa); }
 @keyframes qxCoverFloat {
-  0%,100% { transform: perspective(420px) rotateY(-12deg) translateY(0); }
-  50% { transform: perspective(420px) rotateY(8deg) translateY(-4px); }
+  /* qxmd285: 2D bob only. rotateY blanks NCERT / digital-book covers. */
+  0%,100% { translate: 0 0; rotate: 0deg; }
+  50% { translate: 0 -5px; rotate: 2deg; }
 }
 @keyframes qxCoverShine {
   0% { transform: translateX(-120%); }

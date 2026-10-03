@@ -30,13 +30,21 @@ function wrap(handler, extra) {
   );
 }
 
-exports.proxyImage = wrap(require("../api/proxy-image"), { memory: "1GiB", timeoutSeconds: 120 });
-exports.restoreImage = wrap(require("../api/restore-image"), { memory: "1GiB", timeoutSeconds: 120 });
-exports.createPayment = wrap(require("../api/create-payment"));
-exports.verifyPayment = wrap(require("../api/verify-payment"));
-exports.paymentWebhook = wrap(require("../api/payment-webhook"));
-exports.jovi = wrap(require("../api/jovi"), { memory: "1GiB", timeoutSeconds: 120 });
-exports.seoQ = wrap(require("../api/seo-q"), { memory: "1GiB", timeoutSeconds: 120 });
-exports.marksQuestion = wrap(require("../api/marks-question"));
-exports.marksNav = wrap(require("../api/marks-nav"));
-exports.adminLogin = wrap(require("../api/admin-login"));
+function load(rel) {
+  let handler;
+  return function (req, res) {
+    if (!handler) handler = require(rel);
+    return handler(req, res);
+  };
+}
+
+exports.proxyImage = wrap(load("../api/proxy-image"), { memory: "1GiB", timeoutSeconds: 120 });
+exports.restoreImage = wrap(load("../api/restore-image"), { memory: "1GiB", timeoutSeconds: 120 });
+exports.createPayment = wrap(load("../api/create-payment"));
+exports.verifyPayment = wrap(load("../api/verify-payment"));
+exports.paymentWebhook = wrap(load("../api/payment-webhook"));
+exports.jovi = wrap(load("../api/jovi"), { memory: "1GiB", timeoutSeconds: 120 });
+exports.seoQ = wrap(load("../api/seo-q"), { memory: "1GiB", timeoutSeconds: 120 });
+exports.marksQuestion = wrap(load("../api/marks-question"));
+exports.marksNav = wrap(load("../api/marks-nav"));
+exports.adminLogin = wrap(load("../api/admin-login"));
