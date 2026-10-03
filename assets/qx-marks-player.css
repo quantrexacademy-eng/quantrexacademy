@@ -1,0 +1,721 @@
+/* qxmd294: MARKS light test player for QUANTREX FORMAT (examgoal data-eg-mode=test).
+   Practice chrome stays Quantrex blue + Previous|Check|Next.
+   NTA/quizrr black bar is unchanged. Last-wins vs chrome-lock / foot-lock. */
+
+html body .eg-test-root[data-eg-mode="test"],
+html body .eg-test-root[data-eg-mode="test"].eg-qxmd182,
+html body .eg-test-root[data-eg-mode="test"].eg-qxtool8 {
+  background: #f4f7fb !important;
+  color: #0f172a !important;
+  --eg-header: #eef3fb;
+}
+
+html body .eg-test-root[data-eg-mode="test"][data-test-theme="dark"] {
+  background: #0b1220 !important;
+  color: #f8fafc !important;
+}
+
+/* ===== Header: X | timer | Submit ===== */
+html body .eg-test-root[data-eg-mode="test"] > .eg-top,
+html body .eg-test-root[data-eg-mode="test"] .eg-top,
+html body .eg-test-root[data-eg-mode="test"].eg-compact .eg-top,
+html body .eg-test-root[data-eg-mode="test"].eg-qxmd182 .eg-top,
+html body .eg-test-root[data-eg-mode="test"].eg-qxtool8 .eg-top,
+html body #app-main .eg-test-root[data-eg-mode="test"] > .eg-top,
+html body #app-main .eg-test-root[data-eg-mode="test"] .eg-top {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 10px !important;
+  min-height: 56px !important;
+  height: 56px !important;
+  max-height: 56px !important;
+  padding: 8px 12px !important;
+  background: #eef3fb !important;
+  background-color: #eef3fb !important;
+  color: #0f172a !important;
+  box-shadow: none !important;
+  border-bottom: 0 !important;
+  overflow: visible !important;
+  flex-wrap: nowrap !important;
+  position: relative !important;
+  z-index: 80 !important;
+  pointer-events: auto !important;
+}
+
+html body .eg-test-root[data-eg-mode="test"][data-test-theme="dark"] > .eg-top,
+html body .eg-test-root[data-eg-mode="test"][data-test-theme="dark"] .eg-top {
+  background: #111827 !important;
+  background-color: #111827 !important;
+  color: #f8fafc !important;
+}
+
+html body .eg-test-root[data-eg-mode="test"] .eg-top-title,
+html body .eg-test-root[data-eg-mode="test"] .eg-top-tools,
+html body .eg-test-root[data-eg-mode="test"] .eg-mode-pill {
+  display: none !important;
+}
+
+html body .eg-test-root[data-eg-mode="test"] .eg-marks-x,
+html body .eg-test-root[data-eg-mode="test"] #egMarksExitBtn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 40px !important;
+  height: 40px !important;
+  min-width: 40px !important;
+  min-height: 40px !important;
+  border-radius: 10px !important;
+  border: 1.6px solid #ef4444 !important;
+  background: #fff !important;
+  color: #ef4444 !important;
+  -webkit-text-fill-color: #ef4444 !important;
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  cursor: pointer !important;
+  pointer-events: auto !important;
+  z-index: 90 !important;
+  box-shadow: none !important;
+}
+
+html body .eg-test-root[data-eg-mode="test"] .eg-marks-timer,
+html body .eg-test-root[data-eg-mode="test"] #qxTimer.eg-timer,
+html body .eg-test-root[data-eg-mode="test"] .eg-timer {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  margin: 0 auto !important;
+  min-width: 118px !important;
+  height: 36px !important;
+  padding: 0 14px !important;
+  border-radius: 999px !important;
+  border: 1.5px dashed #93c5fd !important;
+  background: #fff !important;
+  color: #1d4ed8 !important;
+  -webkit-text-fill-color: #1d4ed8 !important;
+  font-weight: 800 !important;
+  font-size: 14px !important;
+  font-variant-numeric: tabular-nums !important;
+  pointer-events: none !important;
+}
+
+html body .eg-test-root[data-eg-mode="test"] .eg-marks-submit,
+html body .eg-test-root[data-eg-mode="test"] #qxSubmitTop,
+html body .eg-test-root[data-eg-mode="test"] header #qxSubmitTop {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-width: 88px !important;
+  height: 36px !important;
+  padding: 0 16px !important;
+  border-radius: 10px !important;
+  border: 1.6px solid #ef4444 !important;
+  background: #fff !important;
+  color: #ef4444 !important;
+  -webkit-text-fill-color: #ef4444 !important;
+  font-weight: 800 !important;
+  font-size: 14px !important;
+  cursor: pointer !important;
+  pointer-events: auto !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  z-index: 95 !important;
+  position: relative !important;
+}
+
+/* ===== Section tabs ===== */
+html body .eg-test-root[data-eg-mode="test"] .eg-subs {
+  display: flex !important;
+  gap: 18px !important;
+  padding: 4px 16px 0 !important;
+  background: #fff !important;
+  border-bottom: 1px solid #e5e7eb !important;
+  overflow-x: auto !important;
+  flex-shrink: 0 !important;
+  height: auto !important;
+}
+html body .eg-test-root[data-eg-mode="test"] .eg-sub {
+  appearance: none !important;
+  border: 0 !important;
+  background: transparent !important;
+  color: #64748b !important;
+  -webkit-text-fill-color: #64748b !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  padding: 10px 2px 12px !important;
+  border-bottom: 2px solid transparent !important;
+  border-radius: 0 !important;
+  white-space: nowrap !important;
+  cursor: pointer !important;
+}
+html body .eg-test-root[data-eg-mode="test"] .eg-sub.on {
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+  border-bottom-color: #0f172a !important;
+}
+
+/* ===== Question pills (always on in test) ===== */
+html body .eg-test-root[data-eg-mode="test"] .eg-qbar,
+html body .eg-test-root[data-eg-mode="test"] #egQBar,
+html body .eg-test-root[data-eg-mode="test"] .eg-qbar.eg-strip-collapsed,
+html body .eg-test-root[data-eg-mode="test"] .eg-strip-collapsed {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  height: auto !important;
+  max-height: none !important;
+  min-height: 44px !important;
+  padding: 8px 12px !important;
+  background: #fff !important;
+  border-bottom: 0 !important;
+  overflow: visible !important;
+}
+html body .eg-test-root[data-eg-mode="test"] .eg-strip-close {
+  display: none !important;
+}
+html body .eg-test-root[data-eg-mode="test"] .eg-qbar-scroll {
+  display: flex !important;
+  gap: 8px !important;
+  overflow-x: auto !important;
+  padding: 2px 0 !important;
+}
+html body .eg-test-root[data-eg-mode="test"] .eg-qbar-n {
+  flex: 0 0 auto !important;
+  width: 32px !important;
+  height: 32px !important;
+  min-width: 32px !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  background: #eef2f6 !important;
+  color: #64748b !important;
+  -webkit-text-fill-color: #64748b !important;
+  font-weight: 800 !important;
+  font-size: 13px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  pointer-events: auto !important;
+}
+html body .eg-test-root[data-eg-mode="test"] .eg-qbar-n.cur {
+  background: #ef4444 !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+  border-radius: 0 !important;
+}
+html body .eg-test-root[data-eg-mode="test"] .eg-qbar-n.eg-attempted:not(.cur) {
+  background: #22c55e !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+  border-radius: 0 !important;
+}
+html body .eg-test-root[data-eg-mode="test"] .eg-qbar-n.eg-seen-test:not(.cur) {
+  background: #ef4444 !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+  border-radius: 0 !important;
+}
+html body .eg-test-root[data-eg-mode="test"] .eg-qbar-n.eg-marked:not(.cur),
+html body .eg-test-root[data-eg-mode="test"] .eg-qbar-n.eg-att-mark:not(.cur) {
+  background: #8b5cf6 !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+  border-radius: 0 !important;
+}
+
+/* ===== Q meta row: Q2 +4 -1 | View All Qs ===== */
+html body .eg-test-root[data-eg-mode="test"] .eg-info-strip,
+html body .eg-test-root[data-eg-mode="test"] .eg-marks-qrow {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 8px 16px 4px !important;
+  background: #fff !important;
+  min-height: 36px !important;
+  height: auto !important;
+  max-height: none !important;
+  flex-wrap: wrap !important;
+  overflow: visible !important;
+}
+html body .eg-test-root[data-eg-mode="test"] .eg-marks-qno {
+  font-weight: 800 !important;
+  font-size: 16px !important;
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+}
+html body .eg-test-root[data-eg-mode="test"] .eg-mark-pos {
+  color: #16a34a !important;
+  -webkit-text-fill-color: #16a34a !important;
+  font-weight: 800 !important;
+  font-size: 14px !important;
+}
+html body .eg-test-root[data-eg-mode="test"] .eg-mark-neg {
+  color: #dc2626 !important;
+  -webkit-text-fill-color: #dc2626 !important;
+  font-weight: 800 !important;
+  font-size: 14px !important;
+}
+html body .eg-test-root[data-eg-mode="test"] #egViewAllQs,
+html body .eg-test-root[data-eg-mode="test"] .eg-view-all {
+  margin-left: auto !important;
+  appearance: none !important;
+  border: 0 !important;
+  background: transparent !important;
+  color: #2563eb !important;
+  -webkit-text-fill-color: #2563eb !important;
+  font-weight: 800 !important;
+  font-size: 14px !important;
+  cursor: pointer !important;
+  pointer-events: auto !important;
+  z-index: 40 !important;
+  padding: 8px 0 !important;
+}
+
+/* Hide practice-only meta in test */
+html body .eg-test-root[data-eg-mode="test"] .eg-q-time,
+html body .eg-test-root[data-eg-mode="test"] .eg-paper-line,
+html body .eg-test-root[data-eg-mode="test"] .eg-type-pill,
+html body .eg-test-root[data-eg-mode="test"] .eg-meta-sep,
+html body .eg-test-root[data-eg-mode="test"] .eg-info-meta {
+  display: none !important;
+}
+
+/* ===== Question + options: never clip KaTeX ===== */
+html body .eg-test-root[data-eg-mode="test"] .eg-body,
+html body .eg-test-root[data-eg-mode="test"] .eg-main,
+html body .eg-test-root[data-eg-mode="test"] .eg-q-card {
+  background: #fff !important;
+  overflow: visible !important;
+}
+html body .eg-test-root[data-eg-mode="test"] #egQArea,
+html body .eg-test-root[data-eg-mode="test"] .eg-q-stem {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  overflow: visible !important;
+  max-height: none !important;
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+  font-size: 16px !important;
+  line-height: 1.55 !important;
+  padding: 8px 16px 12px !important;
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+}
+html body .eg-test-root[data-eg-mode="test"] .eg-q-stem .katex,
+html body .eg-test-root[data-eg-mode="test"] .eg-q-stem .katex-display,
+html body .eg-test-root[data-eg-mode="test"] .mtk-opt .katex,
+html body .eg-test-root[data-eg-mode="test"] .mtk-opt-text .katex {
+  overflow: visible !important;
+  max-width: 100% !important;
+}
+html body .eg-test-root[data-eg-mode="test"] .katex-display {
+  overflow-x: auto !important;
+  overflow-y: visible !important;
+  max-width: 100% !important;
+}
+
+html body .eg-test-root[data-eg-mode="test"] #qxOpts,
+html body .eg-test-root[data-eg-mode="test"] .eg-opts,
+html body .eg-test-root[data-eg-mode="test"] .mtk-options {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+  padding: 4px 16px 16px !important;
+  overflow: visible !important;
+  height: auto !important;
+}
+html body .eg-test-root[data-eg-mode="test"] .mtk-opt,
+html body .eg-test-root[data-eg-mode="test"] .eg-opt {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 12px !important;
+  width: 100% !important;
+  min-height: 52px !important;
+  padding: 12px 14px !important;
+  border-radius: 14px !important;
+  border: 1.5px solid #e5e7eb !important;
+  background: #fff !important;
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+  text-align: left !important;
+  cursor: pointer !important;
+  overflow: visible !important;
+  box-shadow: none !important;
+}
+html body .eg-test-root[data-eg-mode="test"] .mtk-opt.selected,
+html body .eg-test-root[data-eg-mode="test"] .mtk-opt[aria-pressed="true"] {
+  border-color: #2563eb !important;
+  background: #fff !important;
+  box-shadow: 0 0 0 1px #2563eb inset !important;
+}
+html body .eg-test-root[data-eg-mode="test"] .mtk-opt-letter {
+  flex: 0 0 28px !important;
+  width: 28px !important;
+  height: 28px !important;
+  border-radius: 999px !important;
+  background: #eef2f6 !important;
+  color: #475569 !important;
+  -webkit-text-fill-color: #475569 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-weight: 800 !important;
+  font-size: 13px !important;
+}
+html body .eg-test-root[data-eg-mode="test"] .mtk-opt.selected .mtk-opt-letter {
+  background: #2563eb !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+html body .eg-test-root[data-eg-mode="test"] .mtk-opt-radio {
+  display: none !important;
+}
+html body .eg-test-root[data-eg-mode="test"] .mtk-opt-text {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  overflow: visible !important;
+  color: inherit !important;
+}
+
+/* Hide side palette in MARKS player — View All Qs replaces it */
+html body .eg-test-root[data-eg-mode="test"] .eg-side,
+html body .eg-test-root[data-eg-mode="test"] #egSide,
+html body .eg-test-root[data-eg-mode="test"] .eg-side-scrim,
+html body .eg-test-root[data-eg-mode="test"] .eg-qpreview {
+  display: none !important;
+}
+
+/* ===== 2×2 footer ===== */
+html body .eg-test-root[data-eg-mode="test"] > #egFoot,
+html body .eg-test-root[data-eg-mode="test"] #egFoot,
+html body .eg-test-root[data-eg-mode="test"] .eg-foot,
+html body .eg-test-root[data-eg-mode="test"] .eg-foot.eg-foot-marks-test,
+html body #egFoot.eg-foot-marks-test {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  grid-template-rows: auto auto !important;
+  gap: 8px !important;
+  position: fixed !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  top: auto !important;
+  z-index: 90 !important;
+  min-height: 0 !important;
+  height: auto !important;
+  max-height: none !important;
+  padding: 10px 12px calc(10px + env(safe-area-inset-bottom, 0px)) !important;
+  background: #fff !important;
+  background-color: #fff !important;
+  border-top: 1px solid #e5e7eb !important;
+  box-shadow: 0 -8px 24px rgba(15, 23, 42, .08) !important;
+  pointer-events: auto !important;
+  visibility: visible !important;
+  overflow: visible !important;
+}
+html body .eg-test-root[data-eg-mode="test"] .eg-foot-left,
+html body .eg-test-root[data-eg-mode="test"] .eg-foot-right {
+  display: contents !important;
+}
+html body .eg-test-root[data-eg-mode="test"] #egFoot .eg-btn,
+html body .eg-test-root[data-eg-mode="test"] #qxClearBtn,
+html body .eg-test-root[data-eg-mode="test"] #qxReviewNextBtn,
+html body .eg-test-root[data-eg-mode="test"] #qxPrevBtn,
+html body .eg-test-root[data-eg-mode="test"] #qxSaveBtn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 44px !important;
+  height: 44px !important;
+  max-height: none !important;
+  border-radius: 10px !important;
+  font-weight: 700 !important;
+  font-size: 13px !important;
+  pointer-events: auto !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  cursor: pointer !important;
+  z-index: 40 !important;
+  width: 100% !important;
+}
+html body .eg-test-root[data-eg-mode="test"] #qxClearBtn,
+html body .eg-test-root[data-eg-mode="test"] #qxReviewNextBtn,
+html body .eg-test-root[data-eg-mode="test"] #qxPrevBtn {
+  background: #fff !important;
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+  border: 1.4px solid #cbd5e1 !important;
+}
+html body .eg-test-root[data-eg-mode="test"] #qxSaveBtn,
+html body .eg-test-root[data-eg-mode="test"] #qxSaveBtn.eg-btn-next {
+  background: #0f172a !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  border: 1.4px solid #0f172a !important;
+}
+html body .eg-test-root[data-eg-mode="test"] #egFoot #qxSubmitTop,
+html body .eg-test-root[data-eg-mode="test"] .eg-foot .eg-submit {
+  display: none !important;
+}
+
+html body .eg-test-root[data-eg-mode="test"] .eg-main {
+  padding-bottom: calc(118px + env(safe-area-inset-bottom, 0px)) !important;
+}
+
+/* ===== View All Qs overlay ===== */
+html body .eg-marks-overview,
+html body #egMarksOverview {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 2147483000 !important;
+  background: #f7f9fc !important;
+  display: none !important;
+  flex-direction: column !important;
+  pointer-events: auto !important;
+}
+html body .eg-marks-overview.open,
+html body #egMarksOverview.open {
+  display: flex !important;
+}
+html body .eg-mk-ov-head {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 8px 12px !important;
+  min-height: 56px !important;
+  background: #eef3fb !important;
+  flex-shrink: 0 !important;
+}
+html body .eg-mk-ov-back {
+  width: 40px !important;
+  height: 40px !important;
+  border: 0 !important;
+  background: transparent !important;
+  font-size: 22px !important;
+  cursor: pointer !important;
+  color: #0f172a !important;
+}
+html body .eg-mk-ov-body {
+  flex: 1 1 auto !important;
+  overflow-y: auto !important;
+  padding: 12px 16px 16px !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+html body .eg-mk-legend {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 10px 16px !important;
+  margin: 4px 0 16px !important;
+  font-size: 12px !important;
+  color: #334155 !important;
+}
+html body .eg-mk-legend span {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+html body .eg-mk-pent {
+  width: 18px !important;
+  height: 18px !important;
+  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+  display: inline-block !important;
+  flex-shrink: 0 !important;
+}
+html body .eg-mk-pent.ans { background: #22c55e !important; }
+html body .eg-mk-pent.na { background: #ef4444 !important; }
+html body .eg-mk-pent.nv { background: #cbd5e1 !important; }
+html body .eg-mk-pent.mr { background: #8b5cf6 !important; }
+html body .eg-mk-pent.amr {
+  background: #8b5cf6 !important;
+  position: relative !important;
+}
+html body .eg-mk-ov-sec {
+  margin: 0 0 18px !important;
+}
+html body .eg-mk-ov-sec h4 {
+  margin: 0 0 10px !important;
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  letter-spacing: .04em !important;
+  text-transform: uppercase !important;
+  color: #334155 !important;
+}
+html body .eg-mk-grid {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 10px !important;
+}
+html body .eg-mk-cell {
+  width: 40px !important;
+  height: 40px !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  background: #eef2f6 !important;
+  color: #64748b !important;
+  font-weight: 800 !important;
+  cursor: pointer !important;
+  pointer-events: auto !important;
+}
+html body .eg-mk-cell.eg-attempted { background: #22c55e !important; color: #fff !important; border-radius: 4px !important; clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%); }
+html body .eg-mk-cell.eg-seen-test { background: #ef4444 !important; color: #fff !important; border-radius: 4px !important; clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%); }
+html body .eg-mk-cell.eg-marked,
+html body .eg-mk-cell.eg-att-mark { background: #8b5cf6 !important; color: #fff !important; border-radius: 4px !important; clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%); }
+html body .eg-mk-cell.cur { outline: 2px solid #2563eb !important; outline-offset: 2px !important; }
+html body .eg-mk-ov-foot {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 10px !important;
+  padding: 10px 12px calc(10px + env(safe-area-inset-bottom, 0px)) !important;
+  background: #fff !important;
+  border-top: 1px solid #e5e7eb !important;
+  flex-shrink: 0 !important;
+}
+html body .eg-mk-ov-foot .eg-mk-back-test {
+  min-height: 46px !important;
+  border-radius: 10px !important;
+  border: 0 !important;
+  background: #0f172a !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  font-weight: 800 !important;
+  cursor: pointer !important;
+}
+html body .eg-mk-ov-foot .eg-mk-submit-test,
+html body #egMarksOvSubmit {
+  min-height: 46px !important;
+  border-radius: 10px !important;
+  border: 0 !important;
+  background: #ef4444 !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  font-weight: 800 !important;
+  cursor: pointer !important;
+  pointer-events: auto !important;
+}
+
+/* ===== Exit Test modal ===== */
+html body .eg-marks-exit,
+html body #egExitModal {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 2147483600 !important;
+  background: rgba(15, 23, 42, .45) !important;
+  display: none !important;
+  align-items: flex-end !important;
+  justify-content: center !important;
+  pointer-events: auto !important;
+}
+html body .eg-marks-exit.open,
+html body #egExitModal.open {
+  display: flex !important;
+}
+html body .eg-marks-exit-card {
+  width: 100% !important;
+  max-width: 520px !important;
+  background: #fff !important;
+  border-radius: 18px 18px 0 0 !important;
+  padding: 28px 20px calc(18px + env(safe-area-inset-bottom, 0px)) !important;
+  text-align: center !important;
+  color: #0f172a !important;
+}
+html body .eg-marks-exit-ico {
+  width: 64px !important;
+  height: 64px !important;
+  margin: 0 auto 12px !important;
+  border-radius: 999px !important;
+  background: #fee2e2 !important;
+  color: #ef4444 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 28px !important;
+}
+html body .eg-marks-exit-card h3 {
+  margin: 0 0 8px !important;
+  font-size: 22px !important;
+}
+html body .eg-marks-exit-card p {
+  margin: 0 0 18px !important;
+  color: #475569 !important;
+  font-size: 14px !important;
+  line-height: 1.45 !important;
+}
+html body #egExitConfirm {
+  display: block !important;
+  width: 100% !important;
+  min-height: 48px !important;
+  border: 0 !important;
+  border-radius: 12px !important;
+  background: #ef4444 !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  font-weight: 800 !important;
+  font-size: 16px !important;
+  margin-bottom: 10px !important;
+  cursor: pointer !important;
+}
+html body #egExitCancel {
+  display: block !important;
+  width: 100% !important;
+  min-height: 48px !important;
+  border: 0 !important;
+  border-radius: 12px !important;
+  background: #2563eb !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  font-weight: 800 !important;
+  font-size: 16px !important;
+  cursor: pointer !important;
+}
+
+/* Dark paper */
+html body .eg-test-root[data-eg-mode="test"][data-test-theme="dark"] .eg-subs,
+html body .eg-test-root[data-eg-mode="test"][data-test-theme="dark"] .eg-qbar,
+html body .eg-test-root[data-eg-mode="test"][data-test-theme="dark"] .eg-marks-qrow,
+html body .eg-test-root[data-eg-mode="test"][data-test-theme="dark"] .eg-info-strip,
+html body .eg-test-root[data-eg-mode="test"][data-test-theme="dark"] .eg-body,
+html body .eg-test-root[data-eg-mode="test"][data-test-theme="dark"] .eg-q-card,
+html body .eg-test-root[data-eg-mode="test"][data-test-theme="dark"] .eg-foot {
+  background: #0f172a !important;
+  color: #f8fafc !important;
+  border-color: #1e293b !important;
+}
+html body .eg-test-root[data-eg-mode="test"][data-test-theme="dark"] .eg-q-stem,
+html body .eg-test-root[data-eg-mode="test"][data-test-theme="dark"] .mtk-opt {
+  color: #f8fafc !important;
+  -webkit-text-fill-color: #f8fafc !important;
+  background: #111827 !important;
+  border-color: #334155 !important;
+}
+
+/* NTA Submit always tappable (desktop + mobile, side open or collapsed) */
+html body .qzrr-cbt #qxSubmitTop.qzrr-submit-mobile,
+html body .qzrr-cbt #qxSubmitTop,
+html body .qzrr-cbt #qxSubmitHdr,
+html body .qzrr-cbt .qzrr-black-tools #qxSubmitHdr {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  pointer-events: auto !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  cursor: pointer !important;
+  z-index: 20140 !important;
+}
+html body .qzrr-cbt .qzrr-black-tools #qxSubmitHdr {
+  background: #ef4444 !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  border: 1px solid #dc2626 !important;
+  border-radius: 6px !important;
+  font-weight: 800 !important;
+  min-height: 32px !important;
+  padding: 4px 12px !important;
+}

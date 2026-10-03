@@ -607,26 +607,34 @@ const QuantrexTestEngine = (() => {
 
   function updateTimerEl() {
     if (!session) return;
-    const el = document.getElementById("qxTimer");
-    if (!el) return;
+    const nodes = document.querySelectorAll("#qxTimer, #egTimer, .qx-live-timer");
+    if (!nodes.length) return;
+    const egRoot = document.querySelector('.eg-test-root[data-eg-mode="test"]');
     const eg = session.uiMode === "examgoal"
-      || (typeof ExamgoalTestUI !== "undefined" && ExamgoalTestUI.isExamgoalUi(session))
-      || (el.classList && el.classList.contains("eg-timer"));
-    if (eg) {
+      || (typeof ExamgoalTestUI !== "undefined" && ExamgoalTestUI.isExamgoalUi(session));
+    let text = "";
+    let html = "";
+    if (eg && egRoot) {
+      text = formatMarksTime(session.remainingSec);
+    } else if (eg) {
       const s = Math.max(0, Math.floor(session.remainingSec == null ? 0 : session.remainingSec));
       const h = Math.floor(s / 3600);
       const mi = Math.floor((s % 3600) / 60);
       const r = s % 60;
-      el.textContent = String(h).padStart(2, "0") + ":" + String(mi).padStart(2, "0") + ":" + String(r).padStart(2, "0");
+      text = String(h).padStart(2, "0") + ":" + String(mi).padStart(2, "0") + ":" + String(r).padStart(2, "0");
     } else if (session.uiMode === "quizrr") {
-      el.textContent = formatQuizrrTime(session.remainingSec);
+      text = formatQuizrrTime(session.remainingSec);
     } else if (session.marksMode) {
-      el.innerHTML = `<span class="mtk-timer-ic">🕐</span>${formatMarksTime(session.remainingSec)}`;
+      html = `<span class="mtk-timer-ic">🕐</span>${formatMarksTime(session.remainingSec)}`;
     } else {
-      el.textContent = formatTime(session.remainingSec);
+      text = formatTime(session.remainingSec);
     }
-    el.classList.toggle("warn", session.remainingSec <= 300);
-    el.classList.toggle("danger", session.remainingSec <= 60);
+    nodes.forEach(function (el) {
+      if (html) el.innerHTML = html;
+      else el.textContent = text;
+      el.classList.toggle("warn", session.remainingSec <= 300);
+      el.classList.toggle("danger", session.remainingSec <= 60);
+    });
   }
 
   function hasAnswerAt(i) {
@@ -1523,6 +1531,9 @@ const QuantrexTestEngine = (() => {
             <button type="button" class="qzrr-tool-btn qzrr-exit" id="mtkExitBtn" data-qx-exit="1"
               title="Exit test"
               onclick="event.preventDefault();event.stopPropagation();if(window.qxExitTest){window.qxExitTest();}return false;">Exit</button>
+            <button type="button" class="qzrr-tool-btn qzrr-tool-submit" id="qxSubmitHdr" data-qx-submit="1"
+              title="Submit test"
+              onclick="event.preventDefault();event.stopPropagation();if(window.qxSubmitTest){window.qxSubmitTest();}return false;">Submit</button>
           </div>
         </header>
         <!-- Quizrr top-right zoom: magnifier circle (same corner as screenshot 796) -->
@@ -1894,7 +1905,8 @@ const QuantrexTestEngine = (() => {
     };
     wireSubmit(root.querySelector("#qxSubmitBtn"));
     wireSubmit(root.querySelector("#qxSubmitTop"));
-    root.querySelectorAll("[data-eg-submit], #egSubmit").forEach(wireSubmit);
+    wireSubmit(root.querySelector("#qxSubmitHdr"));
+    root.querySelectorAll("[data-eg-submit], #egSubmit, #egMarksOvSubmit").forEach(wireSubmit);
     // Exit — JS + inline backup
     root.querySelectorAll("#mtkExitBtn, [data-qx-exit]").forEach((mtkExit) => {
       mtkExit.onclick = (e) => {
@@ -6579,9 +6591,14 @@ window.qxExitTest = function qxExitTest(force) {
 /** Global Submit — footer + inline onclick (always works even if re-bind missed) */
 window.qxSubmitTest = function qxSubmitTest() {
   try {
-    if (window._qxSubmitOpenLock && Date.now() - window._qxSubmitOpenLock < 700) return;
+    const existing = document.getElementById("mtkSubmitModal");
+    if (existing) {
+      const vis = window.getComputedStyle(existing).display !== "none" && existing.offsetParent !== null;
+      if (vis || existing.classList.contains("open") || existing.style.display === "flex") return;
+      try { existing.remove(); } catch (_) { /* */ }
+    }
+    if (window._qxSubmitOpenLock && Date.now() - window._qxSubmitOpenLock < 280) return;
     window._qxSubmitOpenLock = Date.now();
-    if (document.getElementById("mtkSubmitModal")) return;
     const eng = typeof QuantrexTestEngine !== "undefined" ? QuantrexTestEngine : null;
     if (!eng || !eng.getSession || !eng.getSession()) {
       if (typeof showToast === "function") showToast("⚠️ No active test to submit");
@@ -6597,6 +6614,8 @@ window.qxSubmitTest = function qxSubmitTest() {
           ov.style.setProperty("inset", "0", "important");
           ov.style.setProperty("pointer-events", "auto", "important");
           ov.style.setProperty("display", "flex", "important");
+          ov.style.setProperty("visibility", "visible", "important");
+          ov.style.setProperty("opacity", "1", "important");
           return;
         }
       }
@@ -6771,7 +6790,7 @@ document.addEventListener("click", function qxSubmitBtnDelegate(ev) {
       if (typeof window.mtkCloseSubmitModal === "function") window.mtkCloseSubmitModal();
       return;
     }
-    const btn = ev.target && ev.target.closest && ev.target.closest("#qxSubmitBtn, #qxSubmitTop, #egSubmit, [data-eg-submit], [data-qx-submit='1']");
+    const btn = ev.target && ev.target.closest && ev.target.closest("#qxSubmitBtn, #qxSubmitTop, #qxSubmitHdr, #egSubmit, #egMarksOvSubmit, [data-eg-submit], [data-qx-submit='1']");
     if (!btn) return;
     if (btn.disabled) return;
     if (document.getElementById("mtkSubmitModal")) return;

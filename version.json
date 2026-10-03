@@ -1,10 +1,10 @@
 {
-  "cache": "qx-pwa-qxmd293",
-  "ts": 1791100000293,
-  "title": "qxmd293: generator typeset, NTA AI Proctor, figures stay visible",
+  "cache": "qx-pwa-qxmd294",
+  "ts": 1791100000294,
+  "title": "qxmd294: MARKS test player, Submit works, Create Own Test generate",
   "site": "https://www.quantrexacademy.com",
-  "build": "qxmd293",
-  "body": "Practice generator preview typesets math. Test Series NTA bar has AI Proctor (off until you turn it on). Questions, options, and figures stay on screen. Solution dump/glue and leftover dfrac are healed on display. Standalone test-series pages load figure rewrite.",
+  "build": "qxmd294",
+  "body": "QUANTREX FORMAT Test Series uses the MARKS light player (X / timer / Submit, View All Qs, 2x2 footer). Header Submit is tappable. Create Own Test generate loads chapter banks so the test is not blank. Question math stays typeset. NTA black bar stays for NTA FORMAT.",
   "package": "com.quantrexacademy.app",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }

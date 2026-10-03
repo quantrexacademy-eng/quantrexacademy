@@ -50,13 +50,20 @@
     }
     if (/^testseries$/i.test(tt)) {
       cfg.practiceMode = false;
-      if (ui === "examgoal" || ui === "quantrex") {
+      var pref = "";
+      try { pref = String(localStorage.getItem(FORMAT_KEY) || ""); } catch (_) { pref = ""; }
+      if (ui === "examgoal" || ui === "quantrex" || pref === "quantrex") {
         cfg.uiMode = "examgoal";
         cfg._qxFormat = "quantrex";
         return cfg;
       }
-      cfg.uiMode = "quizrr";
-      cfg._qxFormat = "nta";
+      if (ui === "quizrr" || ui === "nta" || pref === "nta") {
+        cfg.uiMode = "quizrr";
+        cfg._qxFormat = "nta";
+        return cfg;
+      }
+      cfg.uiMode = "examgoal";
+      cfg._qxFormat = "quantrex";
       return cfg;
     }
 
@@ -589,7 +596,7 @@
   document.addEventListener("click", function (ev) {
     try {
       var t = ev.target && ev.target.closest
-        ? ev.target.closest("#qzrrA11yBtn,#qzrrInstrBtn,#qzrrPaperBtn,#qzrrPaperChipBtn,#qzrrProctorBtn,#qzrrThemeLight,#qzrrThemeDark,#mtkExitBtn,#qxSubmitBtn,#qxSubmitTop,[data-qx-exit='1'],[data-qx-submit='1'],[data-eg-submit]")
+        ? ev.target.closest("#qzrrA11yBtn,#qzrrInstrBtn,#qzrrPaperBtn,#qzrrPaperChipBtn,#qzrrProctorBtn,#qzrrThemeLight,#qzrrThemeDark,#mtkExitBtn,#qxSubmitBtn,#qxSubmitTop,#qxSubmitHdr,#egMarksOvSubmit,[data-qx-exit='1'],[data-qx-submit='1'],[data-eg-submit]")
         : null;
       if (!t) return;
       var id = t.id || "";
@@ -613,7 +620,7 @@
         if (!ev.defaultPrevented) { ev.preventDefault(); window.qxSetQzrrTheme(id === "qzrrThemeDark" ? "dark" : "light"); }
         return;
       }
-      if ((id === "qxSubmitBtn" || id === "qxSubmitTop" || t.getAttribute("data-qx-submit") === "1" || t.getAttribute("data-eg-submit") === "1") && typeof window.qxSubmitTest === "function") {
+      if ((id === "qxSubmitBtn" || id === "qxSubmitTop" || id === "qxSubmitHdr" || id === "egMarksOvSubmit" || t.getAttribute("data-qx-submit") === "1" || t.getAttribute("data-eg-submit") === "1") && typeof window.qxSubmitTest === "function") {
         if (!ev.defaultPrevented) { ev.preventDefault(); }
         try { ev.stopPropagation(); } catch (_) {}
         window.qxSubmitTest();

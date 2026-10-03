@@ -1454,106 +1454,166 @@ function ctYearLabelsForDraft(draft) {
   return shifts.filter(s => ctYearFilterOk(s.source, draft)).map(s => s.label);
 }
 
-async function ctGenerateTest() {
-  if (!_ctDraft) return;
-  const teacherGen = ctTeacherMode() || ctIsTeacherAssign();
-  if (!teacherGen && ctDailyCount() >= CT_DAILY_LIMIT) {
-    showToast("⚠️ Daily limit reached (25 tests). Try tomorrow.");
-    return;
+async function ctLoadChapterPool(draft, chapters) {
+  const banks = ctBanksForYears(draft);
+  const seen = new Set();
+  const pool = [];
+  function take(q) {
+    if (!q || q.id == null) return;
+    const id = String(q.id);
+    if (seen.has(id)) return;
+    seen.add(id);
+    pool.push(q);
   }
-  const chapters = ctSelectedChapters(_ctDraft);
-  if (!chapters.length) return;
+  for (const ch of chapters) {
+    const subj = ch.subjectTitle || (draft.subjectMeta && draft.subjectMeta.title) || "";
+    const names = [ch.title, ch.shortName].filter(Boolean);
+    for (const bank of banks) {
+      for (const name of names) {
+        try {
+          if (typeof loadChapterBank === "function") {
+            const rows = await loadChapterBank(bank, subj, name);
+            (rows || []).forEach(take);
+          }
+        } catch (_) { /* skip missing shard */ }
+        try {
+          if (typeof ensureCpyqbChapterQuestions === "function") {
+            const rows = await ensureCpyqbChapterQuestions(bank, subj, name, null, { mode: "all" });
+            (rows || []).forEach(take);
+          }
+        } catch (_) { /* */ }
+      }
+    }
+  }
+  const allQ = (typeof QUESTIONS !== "undefined" && Array.isArray(QUESTIONS)) ? QUESTIONS : (window.QUESTIONS || []);
+  allQ.forEach(function (q) {
+    try {
+      if (ctMatchQuestion(q, chapters, draft)) take(q);
+    } catch (_) { /* */ }
+  });
+  return pool;
+}
 
-  _ctDraft.wizardStep = "generating";
-  ctRender(ctWizPayload());
+async function ctGenerateTest() {
+  try {
+    if (window._ctGenLock && Date.now() - window._ctGenLock < 1200) return;
+    window._ctGenLock = Date.now();
+    if (!_ctDraft) {
+      if (typeof showToast === "function") showToast("⚠️ Start Create Own Test again");
+      return;
+    }
+    const teacherGen = ctTeacherMode() || ctIsTeacherAssign();
+    if (!teacherGen && ctDailyCount() >= CT_DAILY_LIMIT) {
+      showToast("⚠️ Daily limit reached (25 tests). Try tomorrow.");
+      return;
+    }
+    if (!(_ctDraft.chapterIds instanceof Set)) {
+      _ctDraft.chapterIds = new Set(Array.isArray(_ctDraft.chapterIds) ? _ctDraft.chapterIds : []);
+    }
+    const chapters = ctSelectedChapters(_ctDraft);
+    if (!chapters.length) {
+      showToast("⚠️ Select at least one chapter");
+      _ctDraft.wizardStep = "chapters";
+      ctRender(ctWizPayload());
+      return;
+    }
 
-  const banks = ctBanksForYears(_ctDraft);
-  if (typeof loadMultipleBanks === "function") await loadMultipleBanks(banks);
-  else if (typeof ensureQuestionsLoaded === "function") await ensureQuestionsLoaded(banks[0]);
-  else for (const b of banks) { if (typeof loadSingleBank === "function") await loadSingleBank(b); }
-  _ctYearShiftsCache = null;
+    _ctDraft.wizardStep = "generating";
+    ctRender(ctWizPayload());
 
-  let pool = QUESTIONS.filter(q => banks.includes(q._bank) && ctMatchQuestion(q, chapters, _ctDraft));
-  if (!pool.length) {
-    // Fallback: match by any selected subject + chapter title
-    const allowedSubs = new Set(
+    let pool = [];
+    try {
+      pool = await ctLoadChapterPool(_ctDraft, chapters);
+    } catch (loadErr) {
+      console.warn("ctGenerateTest load", loadErr);
+      pool = [];
+    }
+
+    let filtered = pool.filter(q => {
+      try { return ctYearFilterOk(q && q.source, _ctDraft); } catch (_) { return true; }
+    });
+    if (_ctDraft.hideOutOfSyllabus) {
+      const trimmed = filtered.filter(q => q && q._syllabusCategory !== "outOfSyllabus");
+      if (trimmed.length) filtered = trimmed;
+    }
+    if (!filtered.length) filtered = pool.slice();
+    if (!filtered.length) {
+      showToast("⚠️ No questions found. Try more chapters or different years.");
+      _ctDraft.wizardStep = "years";
+      ctRender(ctWizPayload());
+      return;
+    }
+
+    await new Promise(r => setTimeout(r, 400));
+
+    const shuffled = filtered.sort(() => Math.random() - 0.5);
+    const take = Math.min(_ctDraft.totalQs || shuffled.length, shuffled.length);
+    const ids = shuffled.slice(0, take).map(q => q.id);
+    const title = ctAutoTitle(_ctDraft, chapters);
+    const testId = "ct_" + Date.now();
+    const yearLabels = ctYearLabelsForDraft(_ctDraft);
+    const presetLabels = { all: "All Years", last3: "Last 3 Years", last5: "Last 5 Years", last10: "Last 10 Years", custom: "Custom Years" };
+
+    const subjectTitles = [...new Set(
       ctSelectedSubjects(_ctDraft).map(s => s.title).concat(
         chapters.map(c => c.subjectTitle).filter(Boolean)
       )
-    );
-    pool = QUESTIONS.filter(q => banks.includes(q._bank) && allowedSubs.has(q.subject) && chapters.some(c => {
-      const a = ctNormTitle(q.chapter);
-      const b = ctNormTitle(c.title);
-      return a.includes(b.slice(0, 8)) || b.includes(a.slice(0, 8));
-    })).filter(q => ctYearFilterOk(q.source, _ctDraft));
-  }
-  if (!pool.length) {
-    showToast("⚠️ No questions found. Try more chapters or different years.");
-    _ctDraft.wizardStep = "years";
-    ctRender(ctWizPayload());
-    return;
-  }
+    )];
+    const record = {
+      id: testId,
+      title,
+      examTitle: _ctDraft.examTitle,
+      examSlug: _ctDraft.examSlug || "",
+      subjectTitle: subjectTitles.join(" · ") || _ctDraft.subjectMeta?.title,
+      subjectTitles,
+      chapterCount: chapters.length,
+      chapters: chapters.map(c => ({ id: c.id, title: c.title, shortName: c.shortName, subjectTitle: c.subjectTitle || _ctDraft.subjectMeta?.title })),
+      timePerQ: _ctDraft.timePerQ,
+      totalQs: take,
+      status: "notStarted",
+      createdAt: new Date().toISOString(),
+      questionIds: ids,
+      timed: true,
+      durationSec: _ctDraft.durationSec,
+      modeLabel: `Custom · ${Math.round(_ctDraft.durationSec / 60)} min`,
+      yearPreset: _ctDraft.yearPreset,
+      yearPresetLabel: presetLabels[_ctDraft.yearPreset],
+      yearLabels
+    };
 
-  await new Promise(r => setTimeout(r, 800));
+    if (teacherGen) {
+      const tlist = ctLoadTests(true);
+      tlist.unshift(record);
+      ctSaveTests(tlist, true);
+      _ctDraft = null;
+      _ctPayload = { step: "landing", teacherMode: true };
+      if (typeof QuantrexTeacherBuilder !== "undefined") QuantrexTeacherBuilder.setLanding();
+      ctRender({ step: "landing", teacherMode: true });
+      setTimeout(() => ctShowPreview(testId, true), 200);
+      return;
+    }
 
-  const shuffled = pool.sort(() => Math.random() - 0.5);
-  const take = Math.min(_ctDraft.totalQs, shuffled.length);
-  const ids = shuffled.slice(0, take).map(q => q.id);
-  const title = ctAutoTitle(_ctDraft, chapters);
-  const testId = "ct_" + Date.now();
-  const yearLabels = ctYearLabelsForDraft(_ctDraft);
-  const presetLabels = { all: "All Years", last3: "Last 3 Years", last5: "Last 5 Years", last10: "Last 10 Years", custom: "Custom Years" };
+    const list = ctLoadTests();
+    list.unshift(record);
+    ctSaveTests(list);
+    ctBumpDaily();
 
-  const subjectTitles = [...new Set(
-    ctSelectedSubjects(_ctDraft).map(s => s.title).concat(
-      chapters.map(c => c.subjectTitle).filter(Boolean)
-    )
-  )];
-  const record = {
-    id: testId,
-    title,
-    examTitle: _ctDraft.examTitle,
-    examSlug: _ctDraft.examSlug || "",
-    subjectTitle: subjectTitles.join(" · ") || _ctDraft.subjectMeta?.title,
-    subjectTitles,
-    chapterCount: chapters.length,
-    chapters: chapters.map(c => ({ id: c.id, title: c.title, shortName: c.shortName, subjectTitle: c.subjectTitle || _ctDraft.subjectMeta?.title })),
-    timePerQ: _ctDraft.timePerQ,
-    totalQs: take,
-    status: "notStarted",
-    createdAt: new Date().toISOString(),
-    questionIds: ids,
-    timed: true,
-    durationSec: _ctDraft.durationSec,
-    modeLabel: `Custom · ${Math.round(_ctDraft.durationSec / 60)} min`,
-    yearPreset: _ctDraft.yearPreset,
-    yearPresetLabel: presetLabels[_ctDraft.yearPreset],
-    yearLabels
-  };
-
-  if (teacherGen) {
-    const tlist = ctLoadTests(true);
-    tlist.unshift(record);
-    ctSaveTests(tlist, true);
+    const fromTests = ctFromTests();
     _ctDraft = null;
-    _ctPayload = { step: "landing", teacherMode: true };
-    if (typeof QuantrexTeacherBuilder !== "undefined") QuantrexTeacherBuilder.setLanding();
-    ctRender({ step: "landing", teacherMode: true });
-    setTimeout(() => ctShowPreview(testId, true), 200);
-    return;
+    _ctPayload = { step: "landing", fromTests };
+
+    ctRender({ step: "landing", fromTests });
+    setTimeout(() => ctShowPreview(testId), 150);
+  } catch (err) {
+    console.error("ctGenerateTest", err);
+    try {
+      if (_ctDraft) {
+        _ctDraft.wizardStep = "years";
+        ctRender(ctWizPayload());
+      }
+    } catch (_) { /* */ }
+    if (typeof showToast === "function") showToast("⚠️ Could not generate test. Try again.");
   }
-
-  const list = ctLoadTests();
-  list.unshift(record);
-  ctSaveTests(list);
-  ctBumpDaily();
-
-  const fromTests = ctFromTests();
-  _ctDraft = null;
-  _ctPayload = { step: "landing", fromTests };
-
-  ctRender({ step: "landing", fromTests });
-  setTimeout(() => ctShowPreview(testId), 150);
 }
 
 function ctShowPreview(testId, forTeacher) {
@@ -1604,7 +1664,7 @@ function ctAttemptTest(id) {
     marksMode: true,
     organizeJee: false,
     practiceMode: !t.timed,
-    uiMode: t.timed ? "quizrr" : "examgoal",
+    uiMode: "examgoal",
     onComplete: ctOnCompleteHook(t.id)
   });
 }
@@ -1619,3 +1679,8 @@ window.ctCopyShareLink = ctCopyShareLink;
 window.ctShareUrl = ctShareUrl;
 window.ctShareWhatsApp = ctShareWhatsApp;
 window.ctNativeShare = ctNativeShare;
+window.ctGenerateTest = ctGenerateTest;
+window.ctAttemptTest = ctAttemptTest;
+window.ctShowPreview = ctShowPreview;
+window.ctClosePreview = ctClosePreview;
+window.ctWizardBack = ctWizardBack;

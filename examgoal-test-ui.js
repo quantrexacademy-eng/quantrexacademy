@@ -220,6 +220,10 @@
             if (st278) document.head.appendChild(st278);
             var st280 = document.getElementById("qxmd280EgCss");
             if (st280) document.head.appendChild(st280);
+            var mkEl = document.getElementById("qxMarksPlayerCss");
+            if (mkEl) document.head.appendChild(mkEl);
+            var st294 = document.getElementById("qxmd294EgCss");
+            if (st294) document.head.appendChild(st294);
         });
       }
     } catch (_) {}
@@ -235,6 +239,31 @@
       var cLast = document.getElementById("qxChromeLockCss");
       if (cLast) document.head.appendChild(cLast);
     } catch (_) {}
+    /* qxmd294: MARKS test player last-wins (after chrome-lock) */
+    var mkCss = document.getElementById("qxMarksPlayerCss");
+    if (!mkCss) {
+      mkCss = document.createElement("link");
+      mkCss.id = "qxMarksPlayerCss";
+      mkCss.rel = "stylesheet";
+      document.head.appendChild(mkCss);
+    } else {
+      try { document.head.appendChild(mkCss); } catch (_) {}
+    }
+    var mkh = "assets/qx-marks-player.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd294");
+    if (mkCss.getAttribute("href") !== mkh) mkCss.href = mkh;
+    if (!document.getElementById("qxmd294EgCss")) {
+      var s294 = document.createElement("style");
+      s294.id = "qxmd294EgCss";
+      s294.textContent = [
+        'html body .eg-test-root[data-eg-mode="test"]>.eg-top,html body .eg-test-root[data-eg-mode="test"] .eg-top{background:#eef3fb!important;color:#0f172a!important}',
+        'html body .eg-test-root[data-eg-mode="test"] #qxSubmitTop,html body .eg-test-root[data-eg-mode="test"] .eg-marks-submit{display:inline-flex!important;pointer-events:auto!important;visibility:visible!important;z-index:95!important}',
+        'html body .eg-test-root[data-eg-mode="test"] #egFoot,html body .eg-test-root[data-eg-mode="test"] .eg-foot-marks-test{display:grid!important;grid-template-columns:1fr 1fr!important;max-height:none!important;z-index:90!important}',
+        'html body .eg-test-root[data-eg-mode="test"] #egQArea,html body .eg-test-root[data-eg-mode="test"] .eg-q-stem,html body .eg-test-root[data-eg-mode="test"] .mtk-opt{overflow:visible!important;visibility:visible!important}'
+      ].join("");
+      document.head.appendChild(s294);
+    } else {
+      try { document.head.appendChild(document.getElementById("qxmd294EgCss")); } catch (_) {}
+    }
     /* qxmd278: last-wins mobile Test Series layout — after wrap injects + chrome-lock */
     var s278 = document.getElementById("qxmd278EgCss");
     if (!s278) {
@@ -284,6 +313,12 @@
     } else {
       try { document.head.appendChild(s280); } catch (_) {}
     }
+    try {
+      var mkLast = document.getElementById("qxMarksPlayerCss");
+      if (mkLast) document.head.appendChild(mkLast);
+      var st294Last = document.getElementById("qxmd294EgCss");
+      if (st294Last) document.head.appendChild(st294Last);
+    } catch (_) {}
   }
 
   function isExamgoalUi(session) {
@@ -543,6 +578,59 @@
     const m = Math.floor((s % 3600) / 60);
     const r = s % 60;
     return String(h).padStart(2, "0") + ":" + String(m).padStart(2, "0") + ":" + String(r).padStart(2, "0");
+  }
+
+  function formatMarksClock(sec) {
+    const s = Math.max(0, Math.floor(sec == null ? 0 : sec));
+    const m = Math.floor(s / 60);
+    const r = s % 60;
+    return m + "m " + String(r).padStart(2, "0") + "s";
+  }
+
+  function marksSectionGroups(session, getQFn) {
+    const getQ = getQFn || (typeof global.getQ === "function" ? global.getQ : function () { return null; });
+    const ids = (session && session.ids) || [];
+    if (session && session.sections && session.sections.length) {
+      const out = [];
+      session.sections.forEach(function (s) {
+        const start = s.start || 0;
+        const count = s.count || 0;
+        const indices = [];
+        for (let i = start; i < start + count && i < ids.length; i++) indices.push(i);
+        if (!indices.length) return;
+        out.push({
+          name: s.label || s.shortLabel || s.subject || "Section",
+          indices: indices,
+          type: s.type || ""
+        });
+      });
+      if (out.length) return out;
+    }
+    const map = {};
+    const groups = [];
+    for (let i = 0; i < ids.length; i++) {
+      let subj = "Questions";
+      const q = getQ(ids[i]);
+      if (q && (q.subject || q.Subject)) subj = canonSubject(q.subject || q.Subject);
+      let isNum = false;
+      try {
+        if (typeof QuantrexQFormat !== "undefined" && QuantrexQFormat.getType) {
+          isNum = QuantrexQFormat.getType(q) === "numerical";
+        } else if (q && /num|nat|integer/i.test(String(q.questionType || q.type || ""))) {
+          isNum = true;
+        }
+      } catch (_) { /* */ }
+      const name = subj + (isNum ? " Numerical" : " Single Correct");
+      if (!map[name]) {
+        map[name] = { name: name, indices: [], type: isNum ? "NUM" : "SC" };
+        groups.push(map[name]);
+      }
+      map[name].indices.push(i);
+    }
+    if (!groups.length) {
+      groups.push({ name: "Questions", indices: ids.map(function (_, i) { return i; }) });
+    }
+    return groups;
   }
 
   function qTypeLabel(q, isNumQ, isMultiQ) {
@@ -825,7 +913,9 @@
     const practice = !!session.practiceMode;
     const theme = ctx.testTheme || (typeof getTestTheme === "function" ? getTestTheme() : "light");
     const fontScale = ctx.fontScale || (typeof getTestFontScale === "function" ? getTestFontScale() : "medium");
-    const groups = subjectGroups(session, typeof getQ === "function" ? getQ : null);
+    const groups = practice
+      ? subjectGroups(session, typeof getQ === "function" ? getQ : null)
+      : marksSectionGroups(session, typeof getQ === "function" ? getQ : null);
     const curGroup = groupOf(session, session.idx, groups);
     const qno = localNum(session, session.idx, groups);
     const marks = posNeg(session, q, ctx.isNumQ, ctx.isMultiQ);
@@ -958,8 +1048,10 @@
         '<span><i class="eg-dot att-mark"></i>Ans+Mark</span><span><i class="eg-dot seen-t"></i>Not ans</span>' +
         '<span><i class="eg-dot unseen"></i>Not visited</span></div>';
 
-    const timer = '<span class="eg-timer" id="egTimer">' +
-      formatClock(session.remainingSec != null ? session.remainingSec : 0) + "</span>";
+    const timer = '<span class="eg-timer qx-live-timer" id="qxTimer">' +
+      (practice
+        ? formatClock(session.remainingSec != null ? session.remainingSec : 0)
+        : formatMarksClock(session.remainingSec != null ? session.remainingSec : 0)) + "</span>";
     const palPref = getPalettePref();
     const fmt = fmtOpen ? viewSettingsPopHtml(session, practice, fontScale) : "";
 const checkRow = ""; /* qxmd217: Note moved into View Settings */
@@ -992,17 +1084,11 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
         '<button type="button" class="eg-btn eg-btn-check" id="egCheckBtn"' + (_egCheckedFoot ? " disabled" : "") + '>' + (_egCheckedFoot ? "Checked" : "Check Answer") + '</button>' +
         '<button type="button" class="eg-btn eg-btn-next" id="qxNextBtn"' + (lastQ ? " disabled" : "") + ">Next</button>" +
         "</div>"
-      : '<div class="eg-foot" id="egFoot">' +
-        '<div class="eg-foot-left">' +
+      : '<div class="eg-foot eg-foot-marks-test" id="egFoot">' +
+        '<button type="button" class="eg-btn" id="qxClearBtn">Clear Response</button>' +
         '<button type="button" class="eg-btn" id="qxReviewNextBtn">Mark for Review &amp; Next</button>' +
-        '<button type="button" class="eg-btn" id="qxClearBtn">Clear Response</button></div>' +
-        '<div class="eg-foot-right">' +
-        (footClose || "") +
         '<button type="button" class="eg-btn" id="qxPrevBtn"' + (firstQ ? " disabled" : "") + ">Previous</button>" +
         '<button type="button" class="eg-btn eg-btn-next" id="qxSaveBtn">Save &amp; Next</button>' +
-        "</div>" +
-        '<button type="button" class="eg-submit eg-submit-always" id="qxSubmitTop" data-eg-submit="1"' +
-        ' onclick="event.preventDefault();event.stopPropagation();if(window.qxSubmitTest){window.qxSubmitTest();}return false;">Submit</button>' +
         "</div>";
     const submitSide = practice ? "" :
       '<div class="eg-side-foot"><button type="button" class="eg-submit" id="qxSubmitBtn" data-eg-submit="1"' +
@@ -1036,6 +1122,46 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
       '<button type="button" class="eg-qpreview-close" id="egQPreviewClose" title="Close preview" aria-label="Close">✕</button>' +
       "<strong>Questions Preview</strong></div>" +
       '<div class="eg-qpreview-list" id="egQPreviewList">' + previewRows + "</div></div>";
+    const ovOpen = !practice && !!session._egMarksOverview;
+    const marksOverviewHtml = practice ? "" : (
+      '<div class="eg-marks-overview' + (ovOpen ? " open" : "") + '" id="egMarksOverview" role="dialog" aria-label="View All Questions"' +
+      (ovOpen ? ' aria-hidden="false"' : ' hidden aria-hidden="true"') + ">" +
+      '<div class="eg-mk-ov-head">' +
+      '<button type="button" class="eg-mk-ov-back" id="egMarksOvBack" title="Go back" aria-label="Go back">←</button>' +
+      '<span class="eg-timer qx-live-timer">' + formatMarksClock(session.remainingSec != null ? session.remainingSec : 0) + "</span>" +
+      "<span></span></div>" +
+      '<div class="eg-mk-ov-body">' +
+      '<div class="eg-mk-legend">' +
+      '<span><i class="eg-mk-pent ans"></i>Answered</span>' +
+      '<span><i class="eg-mk-pent na"></i>Not Answered</span>' +
+      '<span><i class="eg-mk-pent nv"></i>Not Visited</span>' +
+      '<span><i class="eg-mk-pent mr"></i>Marked for Review</span>' +
+      '<span><i class="eg-mk-pent amr"></i>Answered and Marked for Review</span>' +
+      "</div>" +
+      groups.map(function (g) {
+        const cells = g.indices.map(function (i, li) {
+          const st = paletteStatus(session, i, ctx);
+          const cur = i === session.idx ? " cur" : "";
+          return '<button type="button" class="eg-mk-cell eg-pal-cell ' + st + cur + '" data-qidx="' + i + '">' + (li + 1) + "</button>";
+        }).join("");
+        return '<section class="eg-mk-ov-sec"><h4>' + String(g.name).replace(/</g, "&lt;") + "</h4>" +
+          '<div class="eg-mk-grid">' + cells + "</div></section>";
+      }).join("") +
+      "</div>" +
+      '<div class="eg-mk-ov-foot">' +
+      '<button type="button" class="eg-mk-back-test" id="egMarksOvGoBack">Go Back to Test</button>' +
+      '<button type="button" class="eg-mk-submit-test" id="egMarksOvSubmit" data-eg-submit="1" data-qx-submit="1"' +
+      ' onclick="event.preventDefault();event.stopPropagation();if(window.qxSubmitTest){window.qxSubmitTest();}return false;">Submit Test</button>' +
+      "</div></div>" +
+      '<div class="eg-marks-exit" id="egExitModal" hidden>' +
+      '<div class="eg-marks-exit-card" onclick="event.stopPropagation()">' +
+      '<div class="eg-marks-exit-ico" aria-hidden="true">↪</div>' +
+      "<h3>Exit Test</h3>" +
+      "<p>Are you sure you want to exit Test? Your attempted questions will be saved and you can resume your test again</p>" +
+      '<button type="button" id="egExitConfirm">Exit Test</button>' +
+      '<button type="button" id="egExitCancel">Go Back to Quiz</button>' +
+      "</div></div>"
+    );
     const qnoPad = String(qno).padStart(2, "0");
     const typeShort = /numerical/i.test(typeLab) ? "Numerical" : (/multiple/i.test(typeLab) ? "MCQ Multiple" : "MCQ");
     const infoChips = dateShiftChips || (examLine
@@ -1044,44 +1170,61 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
 
     /* qxmd207: eg-mobile only on narrow VP; wide desktop keeps row foot even if palette closed */
     const desktopMode = !isMobileEg || !!(stripOpen || sideOpen || previewOpen);
+    const headerHtml = practice
+      ? ('<header class="eg-top" style="display:flex!important;align-items:center!important;gap:8px!important;min-height:40px!important;padding:2px 6px!important;background:#1565C0!important;color:#fff!important;visibility:visible!important;opacity:1!important;position:relative!important;top:auto!important;bottom:auto!important;left:auto!important;right:auto!important;z-index:70!important;flex-shrink:0!important;">' +
+        '<button type="button" class="eg-back" id="mtkExitBtn" data-qx-exit="1" title="Exit" aria-label="Exit">‹</button>' +
+        '<div class="eg-top-title">' + titleEsc + ' <span class="eg-mode-pill">' + mode + "</span></div>" +
+        '<div class="eg-top-tools qx-prac-tools" role="toolbar" aria-label="Question tools">' +
+        sharedToolsHtml({ theme: theme, allQOn: allQOn, allQTitle: allQTitle, sideOpen: sideOpen, sideTitle: sideTitle, bmOn: bmOn, practice: practice }) +
+        "</div>" + fmt + "</header>")
+      : ('<header class="eg-top eg-marks-top">' +
+        '<button type="button" class="eg-marks-x" id="egMarksExitBtn" title="Exit Test" aria-label="Exit Test">✕</button>' +
+        timer +
+        '<button type="button" class="eg-marks-submit" id="qxSubmitTop" data-eg-submit="1" data-qx-submit="1"' +
+        ' onclick="event.preventDefault();event.stopPropagation();if(window.qxSubmitTest){window.qxSubmitTest();}return false;">Submit</button>' +
+        "</header>");
+    const qbarHtml = practice
+      ? ('<div class="eg-qbar eg-strip' + (stripOpen ? "" : " eg-strip-collapsed") + '" id="egQBar" role="navigation" aria-label="Question numbers" aria-hidden="' + (stripOpen ? "false" : "true") + '"' + (stripOpen ? "" : " hidden") + ">" +
+        '<button type="button" class="eg-strip-close" id="egStripClose" title="Close top questions" aria-label="Close top questions">✕</button>' +
+        '<div class="eg-qbar-scroll">' + qbar + "</div></div>")
+      : ('<div class="eg-qbar eg-strip" id="egQBar" role="navigation" aria-label="Question numbers">' +
+        '<div class="eg-qbar-scroll">' + qbar + "</div></div>");
+    const infoHtml = practice
+      ? ('<div class="eg-info-strip eg-info-pills eg-examgoal-meta" id="egInfoStrip" role="status">' +
+        '<span class="eg-q-num" title="Question ' + qno + '">' + qnoPad + "</span>" +
+        (egQsetOn("showTimer", true) ? ('<span class="eg-q-time" id="egQTime" title="Time on this question">' + formatQTime(dwellSec(session)) + "</span>") : "") +
+        '<span class="eg-meta-sep" aria-hidden="true">|</span>' +
+        '<span class="eg-marks" title="Scoring"><span class="eg-mark eg-mark-pos">+' + marks.pos +
+        '</span> <span class="eg-mark eg-mark-neg">' + (marks.neg ? String(marks.neg) : "0") + "</span></span>" +
+        '<span class="eg-meta-sep" aria-hidden="true">|</span>' +
+        (examLine
+          ? '<span class="eg-paper-line qx-paper-exam" title="' + examLine + '">' + examLine + "</span>"
+          : (infoChips
+            ? '<div class="eg-info-meta qx-paper-meta-chips">' + infoChips + "</div>"
+            : '<span class="eg-paper-line eg-paper-empty">—</span>')) +
+        '<span class="eg-meta-sep" aria-hidden="true">|</span>' +
+        '<span class="eg-type eg-type-pill">' + typeLab.replace(/</g, "&lt;") + "</span>" +
+        "</div>")
+      : ('<div class="eg-info-strip eg-marks-qrow" id="egInfoStrip">' +
+        '<span class="eg-marks-qno">Q' + qno + "</span>" +
+        '<span class="eg-mark-pos">+' + marks.pos + "</span>" +
+        '<span class="eg-mark-neg">' + (marks.neg ? String(marks.neg) : "0") + "</span>" +
+        '<button type="button" class="eg-view-all" id="egViewAllQs">View All Qs. ›</button>' +
+        "</div>");
     return '<div class="eg-test-root mtk-test-root' +
       (sideOpen ? " eg-side-open" : " eg-side-collapsed") +
       (stripOpen ? " eg-strip-open" : " eg-strip-collapsed") +
-      " eg-tools-open eg-compact eg-qxmd167 eg-qxmd170 eg-qxmd171 eg-qxmd173 eg-qxmd180 eg-qxmd182 eg-qxmd220 eg-qxmd237 eg-qxmd238 eg-qxmd239 eg-qxmd250 eg-qxmd251 eg-qxtool8 eg-qxeg1 eg-qxeg2 eg-qxeg3 eg-qxeg4 eg-qxeg5 eg-qxeg6 eg-qxeg7" +
+      " eg-tools-open eg-compact eg-qxmd167 eg-qxmd170 eg-qxmd171 eg-qxmd173 eg-qxmd180 eg-qxmd182 eg-qxmd220 eg-qxmd237 eg-qxmd238 eg-qxmd239 eg-qxmd250 eg-qxmd251 eg-qxmd294 eg-qxtool8 eg-qxeg1 eg-qxeg2 eg-qxeg3 eg-qxeg4 eg-qxeg5 eg-qxeg6 eg-qxeg7" +
       (previewOpen ? " eg-preview-open" : " eg-preview-collapsed") +
       (desktopMode ? " eg-desktop-mode" : " eg-mobile") +
       (!desktopMode && isMobileEg ? " eg-mobile-vp" : "") +
       "" +
       '" data-test-theme="' + theme + '" data-font-scale="' + fontScale +
       '" data-eg-mode="' + (practice ? "practice" : "test") + '" data-ui="examgoal" data-eg-cycle="' + (chromeOpen ? "1" : "0") + '">' +
-      '<header class="eg-top" style="display:flex!important;align-items:center!important;gap:8px!important;min-height:40px!important;padding:2px 6px!important;background:#1565C0!important;color:#fff!important;visibility:visible!important;opacity:1!important;position:relative!important;top:auto!important;bottom:auto!important;left:auto!important;right:auto!important;z-index:70!important;flex-shrink:0!important;">' +
-      '<button type="button" class="eg-back" id="mtkExitBtn" data-qx-exit="1" title="Exit" aria-label="Exit">‹</button>' +
-      '<div class="eg-top-title">' + titleEsc + ' <span class="eg-mode-pill">' + mode + "</span></div>" +
-      '<div class="eg-top-tools qx-prac-tools" role="toolbar" aria-label="Question tools">' +
-      (!practice ? timer : "") +
-      sharedToolsHtml({ theme: theme, allQOn: allQOn, allQTitle: allQTitle, sideOpen: sideOpen, sideTitle: sideTitle, bmOn: bmOn, practice: practice }) +
-      "</div>" + fmt +
-
-      "</header>" +
+      headerHtml +
       ((groups && groups.length > 1) ? ('<div class="eg-subs">' + tabs + "</div>") : "") +
-      '<div class="eg-qbar eg-strip' + (stripOpen ? "" : " eg-strip-collapsed") + '" id="egQBar" role="navigation" aria-label="Question numbers" aria-hidden="' + (stripOpen ? "false" : "true") + '"' + (stripOpen ? '' : ' hidden') + '>' +
-      '<button type="button" class="eg-strip-close" id="egStripClose" title="Close top questions" aria-label="Close top questions">✕</button>' +
-      '<div class="eg-qbar-scroll">' + qbar + "</div></div>" +
-      '<div class="eg-info-strip eg-info-pills eg-examgoal-meta" id="egInfoStrip" role="status">' +
-      '<span class="eg-q-num" title="Question ' + qno + '">' + qnoPad + "</span>" +
-      (egQsetOn("showTimer", true) ? ('<span class="eg-q-time" id="egQTime" title="Time on this question">' + formatQTime(dwellSec(session)) + "</span>") : "") +
-      '<span class="eg-meta-sep" aria-hidden="true">|</span>' +
-      '<span class="eg-marks" title="Scoring"><span class="eg-mark eg-mark-pos">+' + marks.pos +
-      '</span> <span class="eg-mark eg-mark-neg">' + (marks.neg ? String(marks.neg) : "0") + "</span></span>" +
-      '<span class="eg-meta-sep" aria-hidden="true">|</span>' +
-      (examLine
-        ? '<span class="eg-paper-line qx-paper-exam" title="' + examLine + '">' + examLine + "</span>"
-        : (infoChips
-          ? '<div class="eg-info-meta qx-paper-meta-chips">' + infoChips + "</div>"
-          : '<span class="eg-paper-line eg-paper-empty">—</span>')) +
-      '<span class="eg-meta-sep" aria-hidden="true">|</span>' +
-      '<span class="eg-type eg-type-pill">' + typeLab.replace(/</g, "&lt;") + "</span>" +
-      "</div>" +
+      qbarHtml +
+      infoHtml +
       '<div class="eg-body">' +
       '<div class="eg-main"><div class="eg-q-card">' +
       /* qxmd180: Check Answer keeps stem + options visible; solution sits below (Exam Goal). */
@@ -1115,6 +1258,7 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
       "</div>" +
       foot +
       previewHtml +
+      marksOverviewHtml +
       "</div>";
     } catch (_renderErr) {
       try { console.warn("[ExamgoalTestUI.render]", _renderErr); } catch (_) { /* */ }
@@ -1863,7 +2007,9 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
         if (!foot) return;
         var h = Math.ceil(foot.getBoundingClientRect().height || foot.offsetHeight || 64);
         if (!isFinite(h) || h < 40) h = 52;
-        if (h > 72) h = 72; /* qxmd217 compact fixed */
+        var testMarksPad = !!(host && host.getAttribute && host.getAttribute("data-eg-mode") === "test");
+        if (!testMarksPad && h > 72) h = 72; /* qxmd217 compact fixed */
+        if (testMarksPad && h < 108) h = 108;
         var pad = h + 12; /* qxmd217 fixed overlay clear */
         var solOpen = !!(host && host.classList && (host.classList.contains("qx-sol-showing") || host.classList.contains("eg-sol-showing")));
         if (solOpen) pad = h + 12; /* qxmd217 */
@@ -1933,6 +2079,40 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
       try {
         const foot = root.querySelector("#egFoot, .eg-foot");
         if (!foot) return;
+        var isTestMarks = root.getAttribute("data-eg-mode") === "test";
+        if (isTestMarks) {
+          foot.style.setProperty("position", "fixed", "important");
+          foot.style.setProperty("left", "0", "important");
+          foot.style.setProperty("right", "0", "important");
+          foot.style.setProperty("bottom", "0", "important");
+          foot.style.setProperty("top", "auto", "important");
+          foot.style.setProperty("display", "grid", "important");
+          foot.style.setProperty("grid-template-columns", "1fr 1fr", "important");
+          foot.style.setProperty("max-height", "none", "important");
+          foot.style.setProperty("min-height", "0", "important");
+          foot.style.setProperty("height", "auto", "important");
+          foot.style.setProperty("z-index", "90", "important");
+          foot.style.setProperty("pointer-events", "auto", "important");
+          foot.style.setProperty("visibility", "visible", "important");
+          foot.style.setProperty("opacity", "1", "important");
+          foot.style.setProperty("width", "100%", "important");
+          foot.style.setProperty("padding", "10px 12px calc(10px + env(safe-area-inset-bottom, 0px))", "important");
+          ["qxPrevBtn", "qxSaveBtn", "qxClearBtn", "qxReviewNextBtn"].forEach(function (id) {
+            var b = foot.querySelector("#" + id);
+            if (!b) return;
+            b.style.setProperty("display", "inline-flex", "important");
+            b.style.setProperty("visibility", "visible", "important");
+            b.style.setProperty("pointer-events", "auto", "important");
+            b.style.setProperty("z-index", "40", "important");
+            b.style.setProperty("min-height", "44px", "important");
+            b.style.setProperty("height", "44px", "important");
+            b.style.setProperty("max-height", "none", "important");
+          });
+          try { if (typeof syncEgFootPad === "function") syncEgFootPad(root); } catch (_) {}
+          _egFootPainted = true;
+          _egFootLast = Date.now();
+          return;
+        }
         /* qxmd217: FIXED transparent pills at true bottom — never reparent into scroll host */
         foot.style.setProperty("position", "fixed", "important");
         foot.style.setProperty("left", "0", "important");
@@ -2323,7 +2503,7 @@ function forceFootVisible(force) {
           /* locked click: non-PointerEvent fallback + doc backup sees onclick */
           el.onclick = fire;
           el.style.setProperty("pointer-events", "auto", "important");
-          el.style.setProperty("z-index", "2147483001", "important");
+          el.style.setProperty("z-index", (root.getAttribute("data-eg-mode") === "test" ? "40" : "2147483001"), "important");
           el.style.setProperty("cursor", "pointer", "important");
           el.style.setProperty("display", "inline-flex", "important");
           el.style.setProperty("visibility", "visible", "important");
@@ -2391,7 +2571,7 @@ function forceFootVisible(force) {
       btn.onclick = function (e) {
         if (e) { e.preventDefault(); e.stopPropagation(); }
         const name = btn.getAttribute("data-eg-sub");
-        const g = subjectGroups(session, api.getQ).find(function (x) { return x.name === name; });
+        const g = (session.practiceMode ? subjectGroups(session, api.getQ) : marksSectionGroups(session, api.getQ)).find(function (x) { return x.name === name; });
         if (g && g.indices.length) goNav(g.indices[0]);
       };
     });
@@ -2850,11 +3030,92 @@ function forceFootVisible(force) {
       window._egSubmitDocBound = true;
       document.addEventListener("click", function (ev) {
         try {
-          const t = ev.target && ev.target.closest && ev.target.closest("#qxSubmitBtn, #qxSubmitTop, [data-eg-submit]");
+          const t = ev.target && ev.target.closest && ev.target.closest("#qxSubmitBtn, #qxSubmitTop, #egMarksOvSubmit, [data-eg-submit]");
           if (!t) return;
           if (window._qxSubmitLock && Date.now() - window._qxSubmitLock < 400) return;
           if (typeof t.onclick === "function") return;
           fireSubmit(ev);
+        } catch (_) { /* */ }
+      }, true);
+    }
+    function openMarksOverview(e) {
+      if (e) { try { e.preventDefault(); e.stopPropagation(); } catch (_) {} }
+      session._egMarksOverview = true;
+      var ov = root.querySelector("#egMarksOverview");
+      if (ov) {
+        ov.hidden = false;
+        ov.removeAttribute("hidden");
+        ov.classList.add("open");
+        ov.setAttribute("aria-hidden", "false");
+      }
+    }
+    function closeMarksOverview(e) {
+      if (e) { try { e.preventDefault(); e.stopPropagation(); } catch (_) {} }
+      session._egMarksOverview = false;
+      var ov = root.querySelector("#egMarksOverview");
+      if (ov) {
+        ov.hidden = true;
+        ov.setAttribute("hidden", "");
+        ov.classList.remove("open");
+        ov.setAttribute("aria-hidden", "true");
+      }
+    }
+    function openExitModal(e) {
+      if (e) { try { e.preventDefault(); e.stopPropagation(); } catch (_) {} }
+      var m = root.querySelector("#egExitModal");
+      if (m) {
+        m.hidden = false;
+        m.removeAttribute("hidden");
+        m.classList.add("open");
+      }
+    }
+    function closeExitModal(e) {
+      if (e) { try { e.preventDefault(); e.stopPropagation(); } catch (_) {} }
+      var m = root.querySelector("#egExitModal");
+      if (m) {
+        m.hidden = true;
+        m.setAttribute("hidden", "");
+        m.classList.remove("open");
+      }
+    }
+    wireTap(root.querySelector("#egViewAllQs"), openMarksOverview);
+    wireTap(root.querySelector("#egMarksOvBack"), closeMarksOverview);
+    wireTap(root.querySelector("#egMarksOvGoBack"), closeMarksOverview);
+    wireTap(root.querySelector("#egMarksExitBtn"), openExitModal);
+    wireTap(root.querySelector("#egExitCancel"), closeExitModal);
+    wireTap(root.querySelector("#egExitConfirm"), function (e) {
+      if (e) { try { e.preventDefault(); e.stopPropagation(); } catch (_) {} }
+      closeExitModal();
+      try {
+        if (typeof window.qxExitTest === "function") window.qxExitTest(true);
+        else if (typeof QuantrexTestEngine !== "undefined" && QuantrexTestEngine.quit) QuantrexTestEngine.quit(true);
+      } catch (err) { console.error("eg exit", err); }
+    });
+    root.querySelectorAll("#egMarksOverview .eg-mk-cell[data-qidx]").forEach(function (cell) {
+      cell.onclick = function (e) {
+        if (e) { try { e.preventDefault(); e.stopPropagation(); } catch (_) {} }
+        var idx = parseInt(cell.getAttribute("data-qidx"), 10);
+        if (Number.isNaN(idx)) return;
+        closeMarksOverview();
+        goNav(idx);
+      };
+    });
+    if (!window._egMarksOvDocBound) {
+      window._egMarksOvDocBound = true;
+      document.addEventListener("click", function (ev) {
+        try {
+          var t = ev.target && ev.target.closest && ev.target.closest("#egViewAllQs, #egMarksOvBack, #egMarksOvGoBack, #egMarksExitBtn, #egExitCancel, #egExitConfirm");
+          if (!t) return;
+          if (typeof t.onclick === "function") return;
+          var id = t.id || "";
+          if (id === "egViewAllQs") openMarksOverview(ev);
+          else if (id === "egMarksOvBack" || id === "egMarksOvGoBack") closeMarksOverview(ev);
+          else if (id === "egMarksExitBtn") openExitModal(ev);
+          else if (id === "egExitCancel") closeExitModal(ev);
+          else if (id === "egExitConfirm") {
+            closeExitModal(ev);
+            if (typeof window.qxExitTest === "function") window.qxExitTest(true);
+          }
         } catch (_) { /* */ }
       }, true);
     }
@@ -3083,6 +3344,7 @@ function forceFootVisible(force) {
     bind: bind,
     paletteStatus: paletteStatus,
     subjectGroups: subjectGroups,
+    marksSectionGroups: marksSectionGroups,
     applyOptDecor: applyOptDecor,
     checkAnswer: checkAnswer,
     ensureCss: ensureCss,
@@ -3113,7 +3375,9 @@ function forceFootVisible(force) {
       if (!foot) return;
       var h = Math.ceil(foot.getBoundingClientRect().height || 64);
       if (!isFinite(h) || h < 40) h = 52;
-      if (h > 72) h = 72; /* qxmd217 compact */
+      var testMarks = !!(host.getAttribute && host.getAttribute("data-eg-mode") === "test");
+      if (!testMarks && h > 72) h = 72; /* qxmd217 compact */
+      if (testMarks && h < 108) h = 108;
       var solOpen = !!(host.classList && (host.classList.contains("qx-sol-showing") || host.classList.contains("eg-sol-showing")));
       var pad = h + 12; /* qxmd217 */
       var cssPad = "calc(" + pad + "px + env(safe-area-inset-bottom, 0px))";

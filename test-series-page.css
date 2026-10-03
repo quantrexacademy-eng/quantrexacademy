@@ -942,10 +942,10 @@ body.ts-standalone-body {
   width: 100%;
   min-width: 0;
 }
-.qzrr-submit-mobile { display: none; }
+.qzrr-submit-mobile { display: flex; width: 100%; min-height: 44px; }
 @media (max-width: 720px) {
   .qzrr-submit-mobile {
-    display: block;
+    display: flex;
     width: 100%;
     min-width: 0;
     min-height: 44px;
