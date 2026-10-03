@@ -299,6 +299,7 @@ html body .qzrr-cbt .qzrr-tool-btn,
 html body .qzrr-cbt #qzrrA11yBtn,
 html body .qzrr-cbt #qzrrInstrBtn,
 html body .qzrr-cbt #qzrrPaperBtn,
+html body .qzrr-cbt #qzrrProctorBtn,
 html body .qzrr-cbt #qzrrThemeLight,
 html body .qzrr-cbt #qzrrThemeDark,
 html body .qzrr-cbt #mtkFontDown,
@@ -3766,6 +3767,42 @@ html[data-theme="dark"] .qx-anim-cover {
   visibility: visible !important;
   opacity: 1 !important;
   will-change: translate, rotate;
+}
+
+/* qxmd293: stem + options stay on screen (practice, NTA, books). Never hide via leftover sol classes. */
+html body .eg-test-root .eg-stem-sol-hidden,
+html body .eg-test-root .qx-stem-sol-hidden,
+html body .eg-stem-sol-hidden,
+html body .qx-stem-sol-hidden,
+html body .eg-test-root #egQArea.eg-stem-sol-hidden,
+html body .eg-test-root .eg-q-stem.eg-stem-sol-hidden {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+html body .eg-test-root #egQArea,
+html body .eg-test-root .eg-q-stem,
+html body .eg-test-root .eg-opts,
+html body .eg-test-root #qxOpts,
+html body .qzrr-cbt #qzrrQArea,
+html body .qzrr-cbt .qzrr-q-area,
+html body .qzrr-cbt .qzrr-opts,
+html body .qzrr-cbt .mtk-q-text,
+html body .allen-practice .mtk-q-text,
+html body .qx-book-page .qx-content {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+html body .qzrr-cbt .qzrr-tool-btn.qzrr-tool-proctor,
+html body .qzrr-cbt #qzrrProctorBtn {
+  pointer-events: auto !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
 }
 
 

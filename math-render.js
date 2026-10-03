@@ -2357,6 +2357,7 @@ window.Mx = (() => {
 
       // \frac{a}{b}  (args may contain \pi etc — wrap whole frac first)
       c = c.replace(/(^|[^\\])(\\frac\s*\{[^{}]*\}\s*\{[^{}]*\})/g, (m, pre, tex) => pre + park("$" + tex + "$"));
+      c = c.replace(/(^|[^\\])(\\(?:dfrac|tfrac|cfrac)\s*\{[^{}]*\}\s*\{[^{}]*\})/g, (m, pre, tex) => pre + park("$" + tex + "$"));
       // \sqrt
       c = c.replace(/(^|[^\\])(\\sqrt(?:\s*\[[^\]]*\])?\s*\{[^{}]*\})/g, (m, pre, tex) => pre + park("$" + tex + "$"));
       // \left ... \right pairs — also \left\{ \right\} \left| \right|
@@ -3677,6 +3678,14 @@ window.Mx = (() => {
     if (!c || c.length < 6) return c;
     // Explicit reported glues
     const pairs = [
+      [/\bisanevenfunction\b/gi, "is an even function"],
+      [/\bitisamanyonefunction\b/gi, "it is a many-one function"],
+      [/\bisamanyonefunction\b/gi, "is a many-one function"],
+      [/\bisaneven\b/gi, "is an even"],
+      [/\bitisamanyone\b/gi, "it is a many-one"],
+      [/\bisamanyone\b/gi, "is a many-one"],
+      [/\bmanyonefunction\b/gi, "many-one function"],
+      [/\bmanyone\b/gi, "many-one"],
       [/\boddodd\b/gi, "odd odd"],
       [/\beveneven\b/gi, "even even"],
       [/\boddoddly\b/gi, "odd oddly"],
@@ -6239,7 +6248,9 @@ window.Mx = (() => {
         }
       } catch (_) { /* */ }
       try { s = stripDumpedKatexProse(s); } catch (_) { /* */ }
+      try { s = unglueLowercaseMathProse(s); } catch (_) { /* */ }
       try { s = wrapBareSetLatex(s); } catch (_) { /* */ }
+      try { s = ensureMathDelimiters(s); } catch (_) { /* */ }
       try {
         if (window.katex && window.katex.renderToString) s = katexRenderIslands(s);
       } catch (_) { /* */ }
@@ -6449,6 +6460,13 @@ window.Mx = (() => {
   }
   w.MathTextRenderer = {
     render,
+    html: render,
+    afterRender: function (root) {
+      try { if (w.Mx && w.Mx.afterRender) return w.Mx.afterRender(root); } catch (_) { /* */ }
+    },
+    afterRenderLight: function (root) {
+      try { if (w.Mx && w.Mx.afterRenderLight) return w.Mx.afterRenderLight(root); } catch (_) { /* */ }
+    },
     renderInline: (t) => render(t, { displayMode: false }),
     renderDisplay: (t) => render(t, { displayMode: true }),
     renderQuestionStem,

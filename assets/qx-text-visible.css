@@ -733,18 +733,18 @@ html[data-theme="dark"] .qx-sum-compare-eq {
   -webkit-text-fill-color: #e2e8f0 !important;
 }
 
-/* qxmd244 — MARKS keeps stem+options while solution is open.
-   Never display:none / height:0 on #egQArea * or .katex (flattens x^2 / x^3). */
+/* qxmd293 — MARKS keeps stem+options while solution is open.
+   Never display:none / height:0 on #egQArea * or leftover stem-sol-hidden. */
 html .eg-test-root .eg-stem-sol-hidden,
-html .eg-test-root .qx-stem-sol-hidden {
-  display: none !important;
-}
-
-
-/* qxmd244: MARKS keeps stem. Hide only explicit stem-sol-hidden. */
+html .eg-test-root .qx-stem-sol-hidden,
 html .eg-stem-sol-hidden,
 html .qx-stem-sol-hidden {
-  display: none !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
 }
 
 /* Solution math readable in both themes */
@@ -854,10 +854,12 @@ html .mtk-test-root[data-test-theme="dark"] .mtk-opt-text img {
   border-radius: 8px;
 }
 
-/* qxmd244: MARKS keeps stem visible. Hide only explicit stem-sol-hidden. */
+/* qxmd293: leftover hide class must not blank the stem. */
 html .eg-stem-sol-hidden,
 html .qx-stem-sol-hidden {
-  display: none !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 html .eg-test-root.eg-qxmd177,
 html .eg-test-root.eg-qxmd177 .eg-body {

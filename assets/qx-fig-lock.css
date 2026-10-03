@@ -54,7 +54,13 @@ img.qx-no-wm,
 .mk-sol-q img,
 .qa-opt img,
 .qx-marks-native img,
-.qx-marks-native-q img {
+.qx-marks-native-q img,
+.qzrr-cbt .qzrr-q-area img,
+.qzrr-cbt .qzrr-opts img,
+.eg-test-root #egQArea img,
+.eg-test-root .eg-opts img,
+.qx-book-page img,
+.qx-book-html img {
   display: block !important;
   visibility: visible !important;
   opacity: 1 !important;

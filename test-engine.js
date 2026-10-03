@@ -1515,6 +1515,11 @@ const QuantrexTestEngine = (() => {
               <span class="qzrr-ico qzrr-ico-blue" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M7 3.5h7.2L19 8.3V20a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1z" stroke="#42a5f5" stroke-width="1.7"/><path d="M14 3.5V9h5.2" stroke="#42a5f5" stroke-width="1.7"/><path d="M9 12h6M9 15.5h6" stroke="#42a5f5" stroke-width="1.5" stroke-linecap="round"/></svg></span>
               Question Paper
             </button>
+            <button type="button" class="qzrr-tool-btn qzrr-tool-proctor" id="qzrrProctorBtn" title="AI Proctor"
+              onclick="try{event.preventDefault();event.stopPropagation();if(window.qxOpenQzrrProctor)window.qxOpenQzrrProctor(event);}catch(_){}return false;">
+              <span class="qzrr-ico qzrr-ico-gold" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M4 8.2h3.1l1.3-1.9h7.2l1.3 1.9H20a1.4 1.4 0 0 1 1.4 1.4v8A1.4 1.4 0 0 1 20 19H4a1.4 1.4 0 0 1-1.4-1.4v-8A1.4 1.4 0 0 1 4 8.2z" stroke="#d4af37" stroke-width="1.7"/><circle cx="12" cy="13.2" r="3" stroke="#d4af37" stroke-width="1.7"/></svg></span>
+              AI Proctor
+            </button>
             <button type="button" class="qzrr-tool-btn qzrr-exit" id="mtkExitBtn" data-qx-exit="1"
               title="Exit test"
               onclick="event.preventDefault();event.stopPropagation();if(window.qxExitTest){window.qxExitTest();}return false;">Exit</button>
@@ -2051,6 +2056,11 @@ const QuantrexTestEngine = (() => {
     const zoomPct = Math.round(getTestZoom() * 100);
     const fontOn = (name) => (scale === name ? " on" : "");
     const medOn = fontOn("medium") || (!["small", "medium", "large", "xlarge"].includes(scale) ? " on" : "");
+    let proctorOn = false;
+    try {
+      if (typeof QxAiProctor !== "undefined" && QxAiProctor.enabled) proctorOn = !!QxAiProctor.enabled();
+      else proctorOn = localStorage.getItem("qx_pref_ai_proctor") === "1";
+    } catch (_) { proctorOn = false; }
     return `<div class="qzrr-a11y-pop qx-a11y-best">
       <p class="qzrr-a11y-sub">Adjust how the paper looks. Changes apply instantly.</p>
       <div class="qzrr-a11y-grid qx-a11y-grid-2">
@@ -2103,6 +2113,15 @@ const QuantrexTestEngine = (() => {
             <span class="qzrr-a11y-slider"></span>
           </label>
           <small class="qzrr-a11y-hint">More space between lines</small>
+        </div>
+        <div class="qzrr-a11y-tile qx-a11y-tile-wide" id="qzrrProctorTile">
+          <div class="qzrr-a11y-tile-ico" aria-hidden="true">📷</div>
+          <div class="qzrr-a11y-tile-title">AI Proctor</div>
+          <label class="qzrr-a11y-switch">
+            <input type="checkbox" id="qzrrProctorToggle" ${proctorOn ? "checked" : ""} aria-label="AI proctor" />
+            <span class="qzrr-a11y-slider"></span>
+          </label>
+          <small class="qzrr-a11y-hint" id="qzrrProctorHint">${proctorOn ? "ON for timed tests — still photos, flags need review" : "Off until you turn it on. Still photos only."}</small>
         </div>
       </div>
       <div class="qx-a11y-actions">
@@ -2300,6 +2319,36 @@ const QuantrexTestEngine = (() => {
         });
         bindToggle("#qzrrContrastToggle", "_qzrrContrast");
         bindToggle("#qzrrSpacingToggle", "_qzrrSpacing");
+        const prToggle = pop.querySelector("#qzrrProctorToggle");
+        if (prToggle) {
+          prToggle.onchange = () => {
+            const on = !!prToggle.checked;
+            try {
+              if (typeof QxAiProctor !== "undefined" && QxAiProctor.setEnabled) QxAiProctor.setEnabled(on);
+              else localStorage.setItem("qx_pref_ai_proctor", on ? "1" : "0");
+            } catch (_) { /* */ }
+            const hint = pop.querySelector("#qzrrProctorHint");
+            if (hint) {
+              hint.textContent = on
+                ? "ON for timed tests — still photos, flags need review"
+                : "Off until you turn it on. Still photos only.";
+            }
+            if (!on) {
+              try { if (typeof QxAiProctor !== "undefined" && QxAiProctor.stop) QxAiProctor.stop(); } catch (_) { /* */ }
+            } else if (session && !session.practiceMode && typeof QxAiProctor !== "undefined" && QxAiProctor.gate) {
+              closeA11y();
+              try {
+                QxAiProctor.gate({
+                  practiceMode: false,
+                  timed: true,
+                  durationSec: session.durationSec,
+                  uiMode: "quizrr",
+                  title: session.title
+                });
+              } catch (_) { /* */ }
+            }
+          };
+        }
         const resetAll = pop.querySelector("#qzrrA11yResetAll");
         if (resetAll) {
           resetAll.onclick = (ev) => {
@@ -2325,7 +2374,10 @@ const QuantrexTestEngine = (() => {
               document.removeEventListener("click", closer, true);
               return;
             }
-            if (!pop.contains(ev.target) && (!a11yBtn || (ev.target !== a11yBtn && !a11yBtn.contains(ev.target)))) {
+            var prBtn = document.getElementById("qzrrProctorBtn");
+            if (!pop.contains(ev.target)
+                && (!a11yBtn || (ev.target !== a11yBtn && !a11yBtn.contains(ev.target)))
+                && (!prBtn || (ev.target !== prBtn && !prBtn.contains(ev.target)))) {
               closeA11y();
               document.removeEventListener("click", closer, true);
             }
@@ -2339,10 +2391,27 @@ const QuantrexTestEngine = (() => {
       window.__qxQzrrToolName = "a11y";
       try { __qxOpenA11y(ev); } catch (err) { try { console.error("qxOpenQzrrA11y", err); } catch (_) {} }
     };
+    window.qxOpenQzrrProctor = function (ev) {
+      if (ev && ev.preventDefault) { try { ev.preventDefault(); ev.stopPropagation(); } catch (_) {} }
+      if (window.__qxQzrrToolLock && Date.now() - window.__qxQzrrToolLock < 400 && window.__qxQzrrToolName === "proctor") return;
+      window.__qxQzrrToolLock = Date.now();
+      window.__qxQzrrToolName = "proctor";
+      try { __qxOpenA11y(ev); } catch (err) { try { console.error("qxOpenQzrrProctor", err); } catch (_) {} }
+      setTimeout(function () {
+        var tile = document.getElementById("qzrrProctorTile");
+        if (tile && tile.scrollIntoView) tile.scrollIntoView({ block: "nearest", behavior: "smooth" });
+      }, 80);
+    };
     if (a11yBtn) {
       a11yBtn.onclick = window.qxOpenQzrrA11y;
       a11yBtn.style.setProperty("pointer-events", "auto", "important");
       a11yBtn.style.setProperty("z-index", "20120", "important");
+    }
+    const proctorBtn = root.querySelector("#qzrrProctorBtn");
+    if (proctorBtn) {
+      proctorBtn.onclick = window.qxOpenQzrrProctor;
+      proctorBtn.style.setProperty("pointer-events", "auto", "important");
+      proctorBtn.style.setProperty("z-index", "20120", "important");
     }
 
     // Top-right magnifier FAB still opens zoom +/−
@@ -2441,7 +2510,7 @@ const QuantrexTestEngine = (() => {
     root.classList.toggle("qzrr-dark", !!session._qzrrDark);
     root.classList.remove("qzrr-mag-on", "qzrr-dyslexia", "qzrr-focus");
     root.setAttribute("data-test-theme", session._qzrrDark ? "dark" : "light");
-    ["#qzrrA11yBtn", "#qzrrInstrBtn", "#qzrrPaperBtn", "#qzrrThemeLight", "#qzrrThemeDark", "#mtkExitBtn", "#qxSubmitBtn", "#qxSubmitTop"].forEach(function (sel) {
+    ["#qzrrA11yBtn", "#qzrrInstrBtn", "#qzrrPaperBtn", "#qzrrProctorBtn", "#qzrrThemeLight", "#qzrrThemeDark", "#mtkExitBtn", "#qxSubmitBtn", "#qxSubmitTop"].forEach(function (sel) {
       const el = root.querySelector(sel);
       if (!el) return;
       el.style.setProperty("pointer-events", "auto", "important");

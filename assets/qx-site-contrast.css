@@ -763,17 +763,17 @@ html[data-theme="dark"] .eg-stem {
   opacity: 1 !important;
 }
 
-/* qxmd244 — MARKS keeps stem visible. Do not smash #egQArea * / .katex. */
+/* qxmd293 — MARKS keeps stem visible. Do not smash #egQArea * / .katex. */
 html .eg-test-root .eg-stem-sol-hidden,
-html .eg-test-root .qx-stem-sol-hidden {
-  display: none !important;
-}
-
-
-/* qxmd244: stem stays visible (MARKS). Hide only explicit stem-sol-hidden. */
+html .eg-test-root .qx-stem-sol-hidden,
 html .eg-stem-sol-hidden,
 html .qx-stem-sol-hidden {
-  display: none !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
 }
 
 /* Solution math readable in both themes */
@@ -1131,21 +1131,16 @@ html[data-theme="light"] .qx-settings-page .qx-set-sec {
 
 
 
-/* qxmd179: site-contrast stem — reinforce static hide + no host bleed */
+/* qxmd293: leftover qxmd179 hide class must not blank stem/options. */
 html .eg-test-root.eg-sol-showing.eg-qxmd179 #egQArea,
 html .eg-test-root.eg-sol-showing.eg-qxmd179 .eg-q-stem,
 html .eg-test-root.eg-qxmd179 .eg-stem-sol-hidden {
-  display: none !important;
-  visibility: hidden !important;
-  height: 0 !important;
-  max-height: 0 !important;
-  overflow: hidden !important;
-  position: static !important;
-  left: auto !important;
-  top: auto !important;
-  clip: auto !important;
-  clip-path: none !important;
-  pointer-events: none !important;
+  display: block !important;
+  visibility: visible !important;
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+  pointer-events: auto !important;
 }
 
 /* qxmd259: course labels stay readable, not the same ink as the card fill */

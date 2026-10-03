@@ -483,7 +483,7 @@
     // View Settings / Instructions / Question Paper onclick from bindQuizrrChrome.
     document.addEventListener("click", function (e) {
       var t = e.target && e.target.closest && e.target.closest(
-        "#qzrrA11yBtn, #qzrrInstrBtn, #qzrrPaperBtn, #qzrrPaperChipBtn, " +
+        "#qzrrA11yBtn, #qzrrInstrBtn, #qzrrPaperBtn, #qzrrPaperChipBtn, #qzrrProctorBtn, " +
         "#qzrrThemeLight, #qzrrThemeDark, #mtkFontDown, #mtkFontUp, #mtkFontDownHdr, #mtkFontUpHdr, " +
         ".qzrr-zoom-circle, .qzrr-top-zoom-fab, [data-qzrr-zoom], " +
         "#egFmtBtn, #mtkThemeBtn, #egMenuBtn, #egFullBtn, #qzrrSideToggle, #qzrrPalClose, #mtkPalClose, " +
@@ -513,6 +513,14 @@
             e.preventDefault();
             e.stopPropagation();
             window.qxOpenQzrrPaper(e);
+          }
+          return;
+        }
+        if (id === "qzrrProctorBtn") {
+          if (typeof window.qxOpenQzrrProctor === "function") {
+            e.preventDefault();
+            e.stopPropagation();
+            window.qxOpenQzrrProctor(e);
           }
           return;
         }
@@ -581,7 +589,7 @@
   document.addEventListener("click", function (ev) {
     try {
       var t = ev.target && ev.target.closest
-        ? ev.target.closest("#qzrrA11yBtn,#qzrrInstrBtn,#qzrrPaperBtn,#qzrrPaperChipBtn,#qzrrThemeLight,#qzrrThemeDark,#mtkExitBtn,#qxSubmitBtn,#qxSubmitTop,[data-qx-exit='1'],[data-qx-submit='1'],[data-eg-submit]")
+        ? ev.target.closest("#qzrrA11yBtn,#qzrrInstrBtn,#qzrrPaperBtn,#qzrrPaperChipBtn,#qzrrProctorBtn,#qzrrThemeLight,#qzrrThemeDark,#mtkExitBtn,#qxSubmitBtn,#qxSubmitTop,[data-qx-exit='1'],[data-qx-submit='1'],[data-eg-submit]")
         : null;
       if (!t) return;
       var id = t.id || "";
@@ -595,6 +603,10 @@
       }
       if ((id === "qzrrPaperBtn" || id === "qzrrPaperChipBtn") && typeof window.qxOpenQzrrPaper === "function") {
         if (!ev.defaultPrevented) { ev.preventDefault(); window.qxOpenQzrrPaper(ev); }
+        return;
+      }
+      if (id === "qzrrProctorBtn" && typeof window.qxOpenQzrrProctor === "function") {
+        if (!ev.defaultPrevented) { ev.preventDefault(); window.qxOpenQzrrProctor(ev); }
         return;
       }
       if ((id === "qzrrThemeLight" || id === "qzrrThemeDark") && typeof window.qxSetQzrrTheme === "function") {

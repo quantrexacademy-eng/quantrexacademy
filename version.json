@@ -1,10 +1,10 @@
 {
-  "cache": "qx-pwa-qxmd292",
-  "ts": 1791100000292,
-  "title": "qxmd292: Similar off toolbar, booster saves to Bookmarks, Q+sol format",
+  "cache": "qx-pwa-qxmd293",
+  "ts": 1791100000293,
+  "title": "qxmd293: generator typeset, NTA AI Proctor, figures stay visible",
   "site": "https://www.quantrexacademy.com",
-  "build": "qxmd292",
-  "body": "Practice toolbar no longer has Similar. Mistake Booster generates new variations (different from the original), previews them, and Save sends them to Bookmarks only — they never join the question list or Other. Display-only heals for letter-spaced KaTeX dumps and sec^{-1}.",
+  "build": "qxmd293",
+  "body": "Practice generator preview typesets math. Test Series NTA bar has AI Proctor (off until you turn it on). Questions, options, and figures stay on screen. Solution dump/glue and leftover dfrac are healed on display. Standalone test-series pages load figure rewrite.",
   "package": "com.quantrexacademy.app",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }

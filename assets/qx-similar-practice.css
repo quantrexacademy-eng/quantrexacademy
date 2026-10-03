@@ -115,8 +115,20 @@
 }
 .qx-boost-item-k{font-size:11px;font-weight:800;color:#6d28d9;margin-bottom:4px}
 .eg-test-root[data-test-theme="dark"] .qx-boost-item-k{color:#c4b5fd}
-.qx-boost-item-q{font-size:14px;line-height:1.45;color:#0f172a;overflow:hidden}
+.qx-boost-item-q{font-size:14px;line-height:1.55;color:#0f172a;overflow:visible}
 .eg-test-root[data-test-theme="dark"] .qx-boost-item-q{color:#e8eefc}
+.qx-boost-item-q .katex,.qx-boost-item-q .katex-display,
+.qx-boost-otx .katex,.qx-boost-otx .katex-display{
+  font-size:1.02em;overflow:visible;letter-spacing:normal
+}
+.qx-boost-opts{display:grid;gap:6px;margin-top:8px}
+.qx-boost-opt{display:flex;gap:8px;align-items:flex-start;font-size:13px;line-height:1.4}
+.qx-boost-oltr{
+  flex:0 0 22px;width:22px;height:22px;border-radius:50%;
+  display:inline-grid;place-items:center;background:#1565C0;color:#fff;
+  font-size:11px;font-weight:800
+}
+.qx-boost-otx{flex:1 1 auto;min-width:0;overflow:visible}
 .qx-boost-save,.qx-boost-saveall{
   margin-top:8px;background:#fff;color:#5b21b6;border:1.5px solid #5b21b6;
   border-radius:10px;padding:8px 12px;font-weight:800;font-size:12px;cursor:pointer;

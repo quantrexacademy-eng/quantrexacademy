@@ -527,7 +527,7 @@ const QuantrexSolution = (() => {
       }
       if (!/\breferrerpolicy=/i.test(a)) a += ' referrerpolicy="no-referrer"';
       if (!/\bonerror=/i.test(a)) {
-        a += ` onerror="if(window.QuantrexSolution&&QuantrexSolution.handleSolImgErr){QuantrexSolution.handleSolImgErr(this);}else if(window.QxOwnedFigs&&QxOwnedFigs.retryOnError){QxOwnedFigs.retryOnError(this);}else{this.style.display='none';}"`;
+        a += ` onerror="if(window.QuantrexSolution&&QuantrexSolution.handleSolImgErr){QuantrexSolution.handleSolImgErr(this);}else if(window.QxOwnedFigs&&QxOwnedFigs.retryOnError){QxOwnedFigs.retryOnError(this);}else{this.style.display='block';this.style.visibility='visible';this.style.opacity='1';}"`;
       }
       if (!/\bclass=/i.test(a)) {
         a += ' class="qx-pool-fig qx-no-wm qx-sol-fig"';

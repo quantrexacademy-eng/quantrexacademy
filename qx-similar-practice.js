@@ -378,14 +378,38 @@
     });
   }
 
+  function optText(o) {
+    if (o == null) return "";
+    if (typeof o === "string") return o;
+    return o.text || o.html || o.q || o.option || "";
+  }
+
   function renderStem(raw) {
     var t = String(raw || "");
+    if (!t) return "";
     try {
-      if (typeof MathTextRenderer !== "undefined" && MathTextRenderer.html) {
-        return MathTextRenderer.html(t);
+      if (typeof MathTextRenderer !== "undefined") {
+        var fn = MathTextRenderer.render || MathTextRenderer.html;
+        if (typeof fn === "function") return fn(t);
       }
     } catch (_) { /* */ }
-    return esc(strip(t)).slice(0, 280);
+    try {
+      if (typeof Mx !== "undefined" && Mx.html) return Mx.html(t);
+    } catch (_) { /* */ }
+    return esc(t);
+  }
+
+  function renderOpts(q) {
+    var opts = q && Array.isArray(q.options) ? q.options : [];
+    if (!opts.length) return "";
+    var letters = "ABCD";
+    var rows = opts.slice(0, 4).map(function (o, i) {
+      var tx = optText(o);
+      if (!tx) return "";
+      return '<div class="qx-boost-opt"><span class="qx-boost-oltr">' + letters.charAt(i) +
+        '</span><span class="qx-boost-otx">' + renderStem(tx) + "</span></div>";
+    }).join("");
+    return rows ? '<div class="qx-boost-opts">' + rows + "</div>" : "";
   }
 
   function previewHtml(items) {
@@ -401,6 +425,7 @@
       return '<li class="qx-boost-item" data-qx-boost-id="' + id + '">' +
         '<div class="qx-boost-item-k">' + (i + 1) + " \u00b7 " + kind + "</div>" +
         '<div class="qx-boost-item-q">' + renderStem(q.q || q.question || "") + "</div>" +
+        renderOpts(q) +
         '<button type="button" class="qx-boost-save' + (saved ? " on" : "") + '" data-qx-boost-save="' + id + '">' +
         (saved ? "Saved" : "Save to Bookmarks") + "</button>" +
         "</li>";
@@ -424,11 +449,9 @@
       }
       hold.innerHTML = html;
       try {
-        if (typeof MathTextRenderer !== "undefined" && MathTextRenderer.afterRender) {
-          MathTextRenderer.afterRender(hold);
-        } else if (typeof Mx !== "undefined" && Mx.afterRender) {
-          Mx.afterRender(hold);
-        }
+        if (typeof Mx !== "undefined" && Mx.afterRender) Mx.afterRender(hold);
+        else if (typeof MathTextRenderer !== "undefined" && MathTextRenderer.afterRender) MathTextRenderer.afterRender(hold);
+        else if (typeof Mx !== "undefined" && Mx.afterRenderLight) Mx.afterRenderLight(hold);
       } catch (_) { /* */ }
     });
   }
@@ -563,6 +586,7 @@
 
     collected = collected.slice(0, count);
     collected.forEach(function (x) { rememberFp(session, x.q.q || x.q.question || ""); });
+    document.querySelectorAll(".qx-boost").forEach(function (card) { syncChips(card, count); });
     paintPreview(collected);
     setBusy(host, false, "");
     document.querySelectorAll(".qx-boost-msg").forEach(function (m) {
@@ -651,7 +675,7 @@
     var l = document.createElement("link");
     l.id = "qxSimilarCss";
     l.rel = "stylesheet";
-    l.href = "assets/qx-similar-practice.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd292");
+    l.href = "assets/qx-similar-practice.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd293");
     document.head.appendChild(l);
   }
 

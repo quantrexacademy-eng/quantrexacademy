@@ -70,3 +70,13 @@
   .qx-pr-sheet{box-shadow:none;border-color:#d4af37}
   body{background:#fff;color:#111}
 }
+
+/* NTA black-bar AI Proctor tool */
+.qzrr-cbt .qzrr-tool-btn.qzrr-tool-proctor,
+.qzrr-cbt #qzrrProctorBtn{
+  color:#fff;font-weight:700;white-space:nowrap
+}
+.qzrr-cbt .qzrr-ico-gold svg{display:block}
+.qzrr-a11y-tile#qzrrProctorTile .qzrr-a11y-tile-title{color:#b8860b}
+html[data-theme="dark"] .qzrr-a11y-tile#qzrrProctorTile .qzrr-a11y-tile-title,
+.qzrr-cbt.qzrr-dark .qzrr-a11y-tile#qzrrProctorTile .qzrr-a11y-tile-title{color:#d4af37}
