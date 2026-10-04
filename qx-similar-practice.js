@@ -388,13 +388,30 @@
     var t = String(raw || "");
     if (!t) return "";
     try {
-      if (typeof MathTextRenderer !== "undefined") {
-        var fn = MathTextRenderer.render || MathTextRenderer.html;
-        if (typeof fn === "function") return fn(t);
+      if (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.rewriteHtml && /<img/i.test(t)) {
+        t = QxOwnedFigs.rewriteHtml(t);
       }
     } catch (_) { /* */ }
     try {
-      if (typeof Mx !== "undefined" && Mx.html) return Mx.html(t);
+      if (typeof Mx !== "undefined" && Mx.qxPreHealTex) t = Mx.qxPreHealTex(t);
+    } catch (_) { /* */ }
+    try {
+      if (typeof Mx !== "undefined" && Mx.ensureMathDelimiters) t = Mx.ensureMathDelimiters(t);
+    } catch (_) { /* */ }
+    try {
+      if (typeof MathTextRenderer !== "undefined") {
+        var fn = MathTextRenderer.render || MathTextRenderer.html;
+        if (typeof fn === "function") {
+          var painted = fn(t);
+          if (painted) return painted;
+        }
+      }
+    } catch (_) { /* */ }
+    try {
+      if (typeof Mx !== "undefined" && Mx.html) {
+        var painted2 = Mx.html(t);
+        if (painted2) return painted2;
+      }
     } catch (_) { /* */ }
     return esc(t);
   }
@@ -407,7 +424,7 @@
       var tx = optText(o);
       if (!tx) return "";
       return '<div class="qx-boost-opt"><span class="qx-boost-oltr">' + letters.charAt(i) +
-        '</span><span class="qx-boost-otx">' + renderStem(tx) + "</span></div>";
+        '</span><span class="qx-boost-otx" data-qx-opt-src="' + esc(tx) + '">' + renderStem(tx) + "</span></div>";
     }).join("");
     return rows ? '<div class="qx-boost-opts">' + rows + "</div>" : "";
   }
@@ -422,9 +439,10 @@
       try {
         saved = typeof QuantrexBookmarks !== "undefined" && QuantrexBookmarks.isBookmarked(q.id);
       } catch (_) { /* */ }
+      var stemSrc = String(q.q || q.question || "");
       return '<li class="qx-boost-item" data-qx-boost-id="' + id + '">' +
         '<div class="qx-boost-item-k">' + (i + 1) + " \u00b7 " + kind + "</div>" +
-        '<div class="qx-boost-item-q">' + renderStem(q.q || q.question || "") + "</div>" +
+        '<div class="qx-boost-item-q" data-qx-stem-src="' + esc(stemSrc) + '">' + renderStem(stemSrc) + "</div>" +
         renderOpts(q) +
         '<button type="button" class="qx-boost-save' + (saved ? " on" : "") + '" data-qx-boost-save="' + id + '">' +
         (saved ? "Saved" : "Save to Bookmarks") + "</button>" +
@@ -449,9 +467,15 @@
       }
       hold.innerHTML = html;
       try {
-        if (typeof Mx !== "undefined" && Mx.afterRender) Mx.afterRender(hold);
+        if (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.paintDom) QxOwnedFigs.paintDom(hold);
+      } catch (_) { /* */ }
+      try {
+        if (typeof Mx !== "undefined" && Mx.upgradeBareTexInDom) Mx.upgradeBareTexInDom(hold);
+      } catch (_) { /* */ }
+      try {
+        if (typeof Mx !== "undefined" && Mx.afterRenderLight) Mx.afterRenderLight(hold);
+        else if (typeof Mx !== "undefined" && Mx.afterRender) Mx.afterRender(hold);
         else if (typeof MathTextRenderer !== "undefined" && MathTextRenderer.afterRender) MathTextRenderer.afterRender(hold);
-        else if (typeof Mx !== "undefined" && Mx.afterRenderLight) Mx.afterRenderLight(hold);
       } catch (_) { /* */ }
     });
   }

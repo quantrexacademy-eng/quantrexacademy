@@ -1,4 +1,4 @@
-/* qxmd301 — last-wins question / option / solution format.
+/* qxmd302 — last-wins question / option / solution / figure format.
    Load after quizrr-web / chrome-lock. Display-only. Never rewrite stored answers. */
 
 /* Paper wrap: readable stems. Never smash KaTeX. */
@@ -252,4 +252,62 @@ html body mjx-container * {
 }
 html body .eg-sol-panel {
   overflow: visible !important;
+}
+
+/* Booster / similar-practice cards typeset like paper. */
+html body .qx-boost-item-q,
+html body .qx-boost-otx,
+html body .qx-boost-item {
+  overflow-wrap: break-word !important;
+  word-break: normal !important;
+  letter-spacing: 0 !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  max-height: none !important;
+}
+html body .qx-boost-item-q .katex,
+html body .qx-boost-otx .katex,
+html body .qx-boost-item-q .katex *,
+html body .qx-boost-otx .katex * {
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+  white-space: nowrap !important;
+  letter-spacing: 0 !important;
+}
+
+/* Figures on stem / options / solution / booster — never hide, never empty 140px box. */
+html body .eg-q-stem img,
+html body #egQArea img,
+html body .mtk-q-text img,
+html body .mtk-opt-text img,
+html body .qx-prac-q img,
+html body .qx-prac-opt-text img,
+html body .sol-body img,
+html body .qx-sol-body img,
+html body #egSol img,
+html body #egSolPanel img,
+html body .eg-sol img,
+html body .mk-sol-view img,
+html body .mk-sol-stem img,
+html body .qzrr-q-area img,
+html body #qzrrQArea img,
+html body .qx-boost-item-q img,
+html body .qx-content img,
+html body img.qx-pool-fig,
+html body img.qx-sol-fig,
+html body img.qx-fig-img,
+html body img.qx-opt-fig-img,
+html body img.qx-no-wm {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  max-width: 100% !important;
+  width: auto !important;
+  height: auto !important;
+  max-height: none !important;
+  min-height: 0 !important;
+  object-fit: contain !important;
+  content-visibility: visible !important;
+  filter: none !important;
+  background: #fff;
 }

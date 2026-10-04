@@ -1953,10 +1953,14 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
         img.style.setProperty("content-visibility", "visible", "important");
         img.style.setProperty("opacity", "1", "important");
         img.style.setProperty("visibility", "visible", "important");
+        img.style.setProperty("display", "block", "important");
         if (img.complete && !img.naturalWidth && window.QxOwnedFigs && QxOwnedFigs.retryOnError) {
           QxOwnedFigs.retryOnError(img);
         }
       });
+      try {
+        if (window.QxOwnedFigs && QxOwnedFigs.paintDom) QxOwnedFigs.paintDom(root);
+      } catch (_) { /* */ }
     } catch (_) { /* */ }
     const session = api.session;
     normalizeSessionSets(session);

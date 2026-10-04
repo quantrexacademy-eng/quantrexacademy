@@ -115,7 +115,7 @@
 }
 .qx-boost-item-k{font-size:11px;font-weight:800;color:#6d28d9;margin-bottom:4px}
 .eg-test-root[data-test-theme="dark"] .qx-boost-item-k{color:#c4b5fd}
-.qx-boost-item-q{font-size:14px;line-height:1.55;color:#0f172a;overflow:visible}
+.qx-boost-item-q{font-size:14px;line-height:1.55;color:#0f172a;overflow:visible;overflow-wrap:break-word;word-break:normal;letter-spacing:0}
 .eg-test-root[data-test-theme="dark"] .qx-boost-item-q{color:#e8eefc}
 .qx-boost-item-q .katex,.qx-boost-item-q .katex-display,
 .qx-boost-otx .katex,.qx-boost-otx .katex-display{

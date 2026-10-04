@@ -3459,15 +3459,25 @@ window.Mx = (() => {
   function healDisplayMathGlues(s) {
     let c = String(s || "");
     if (!c) return c;
-    /* Screenshot 1188: sec ^{ - 1} / \sec ^{ - 1} smashed inverse */
-    c = c.replace(/\^\s*\{\s*-\s*1\s*\}/g, "^{-1}");
-    c = c.replace(/\\(sin|cos|tan|cot|sec|csc|sinh|cosh|tanh)\s*\^\s*\{\s*-1\s*\}/g, "\\$1^{-1}");
-    c = c.replace(/(^|[^\\A-Za-z])(sin|cos|tan|cot|sec|csc)\s*\^\s*\{\s*-1\s*\}/g, "$1\\$2^{-1}");
-    c = c.replace(/\\(sin|cos|tan|cot|sec|csc|sinh|cosh|tanh)\s*\^\s*-1(?=\s*[(\\{])/g, "\\$1^{-1}");
-    c = c.replace(/(^|[^\\A-Za-z])(sin|cos|tan|cot|sec|csc)\s*\^\s*-1(?=\s*[(\\{])/g, "$1\\$2^{-1}");
-    c = c.replace(/\\(sin|cos|tan|cot|sec|csc|sinh|cosh|tanh)\s*-\s*1(?=\s*[(\\{])/g, "\\$1^{-1}");
-    c = c.replace(/(^|[^\\A-Za-z])(sin|cos|tan|cot|sec|csc)\s*-\s*1(?=\s*[(\\{])/g, "$1\\$2^{-1}");
+    /* Screenshot 1188: sec ^{ - 1} / \sec ^{ - 1} smashed inverse. Unicode minus too. */
+    c = c.replace(/\^\s*\{\s*[-−]\s*1\s*\}/g, "^{-1}");
+    c = c.replace(/\\(sin|cos|tan|cot|sec|csc|sinh|cosh|tanh)\s*\^\s*\{\s*[-−]?1\s*\}/g, "\\$1^{-1}");
+    c = c.replace(/(^|[^\\A-Za-z])(sin|cos|tan|cot|sec|csc)\s*\^\s*\{\s*[-−]?1\s*\}/g, "$1\\$2^{-1}");
+    c = c.replace(/\\(sin|cos|tan|cot|sec|csc|sinh|cosh|tanh)\s*\^\s*[-−]?1(?=\s*[(\\{])/g, "\\$1^{-1}");
+    c = c.replace(/(^|[^\\A-Za-z])(sin|cos|tan|cot|sec|csc)\s*\^\s*[-−]?1(?=\s*[(\\{])/g, "$1\\$2^{-1}");
+    c = c.replace(/\\(sin|cos|tan|cot|sec|csc|sinh|cosh|tanh)\s*[-−]\s*1(?=\s*[(\\{])/g, "\\$1^{-1}");
+    c = c.replace(/(^|[^\\A-Za-z])(sin|cos|tan|cot|sec|csc)\s*[-−]\s*1(?=\s*[(\\{])/g, "$1\\$2^{-1}");
     c = c.replace(/(^|[^\\A-Za-z])(sin|cos|tan|cot|sec|csc)\^\{-1\}/g, "$1\\$2^{-1}");
+    try {
+      c = replaceOutsideMathFn(c, (chunk) => {
+        let t = String(chunk || "");
+        t = t.replace(/\^\s*\{\s*[-−]\s*1\s*\}/g, "^{-1}");
+        t = t.replace(/(^|[^\\A-Za-z$])(sin|cos|tan|cot|sec|csc)\s*\^\s*\{\s*[-−]?\s*1\s*\}/g, "$1$\\$2^{-1}$");
+        t = t.replace(/(^|[^\\A-Za-z$])(sin|cos|tan|cot|sec|csc)(?:\s*)\^{-1}/g, "$1$\\$2^{-1}$");
+        t = t.replace(/(^|[^$])\\(sin|cos|tan|cot|sec|csc)\^{-1}(?!\$)/g, "$1$\\$2^{-1}$");
+        return t;
+      });
+    } catch (_) { /* */ }
     c = c.replace(/\\mathrm(?!\{)([A-Z])(?![a-zA-Z])/g, "\\mathrm{$1}");
     c = c.replace(/\\mathbb\{R\}andf/g, "\\mathbb{R} and f");
     c = c.replace(/([}\])])andf\b/g, "$1 and f");
@@ -4882,7 +4892,9 @@ window.Mx = (() => {
     const hosts = el.querySelectorAll(
       ".qx-content, .mtk-opt-text, .qx-prac-opt-text, .mtk-q-text, .q-text, " +
       ".sol-body, .qx-sol-body, .allen-q-body, .qx-prac-q, .qx-q-seg-text, " +
-      ".qx-opt-text-only, .qx-q-text-only, .mtk-numerical, .qx-prac-correct-ans"
+      ".qx-opt-text-only, .qx-q-text-only, .mtk-numerical, .qx-prac-correct-ans, " +
+      ".qx-boost-item-q, .qx-boost-otx, .qx-boost-item, .eg-q-stem, #egQArea, " +
+      ".mk-sol-stem, .mk-sol-opt-text, .qzrr-q-area, #qzrrQArea"
     );
     const bareRx = /\\(?:rightarrow|leftarrow|leftrightarrow|Leftrightarrow|Rightarrow|Leftarrow|longrightarrow|overrightarrow|overleftarrow|to|infty|pm|times|div|cdot|leq|geq|neq|ne|le|ge|lt|gt|approx|equiv|sim|subset|subseteq|supset|supseteq|in|notin|cup|cap|forall|exists|partial|nabla|alpha|beta|gamma|delta|epsilon|theta|lambda|mu|nu|xi|pi|rho|sigma|tau|phi|psi|omega|Gamma|Delta|Theta|Lambda|Pi|Sigma|Phi|Psi|Omega|frac|sqrt|mathrm|mathbf|text|left|right|hat|vec|bar|sin|cos|tan|log|ln|angle|perp|parallel|emptyset|ce)\b/;
     // Also catch missing-backslash vectors: rightarrow{\mathrm{p}}
@@ -5472,7 +5484,8 @@ window.Mx = (() => {
       ".eg-q-stem", "#egQArea",
       ".qx-marks-native", ".qx-marks-native-opt", ".qx-marks-native-q", ".qx-prac-correct-ans",
       ".mtk-main .mtk-opt", ".mtk-main .qx-prac-opt", "#qaOpts", "#qxOpts",
-      ".qx-question-body", ".qx-q-seg-text"
+      ".qx-question-body", ".qx-q-seg-text",
+      ".qx-boost-item-q", ".qx-boost-otx", ".qx-boost-item"
     ].join(", ");
     let nodes = Array.from(el.querySelectorAll(sel)).filter(n =>
       !n.closest(".qx-diagram-slot, #qxDiagramSlot, .mathjax_ignore, .tex2jax_ignore, .qx-opt-diagram-slot, .qx-fig, .qx-pool-fig-wrap")
@@ -5691,6 +5704,8 @@ window.Mx = (() => {
     if (/[A-Za-z]=\\\{/.test(t) || /\\\{[0-9,]{3,}\\\}/.test(t)) return true;
     if (/\b4is the\b|\brelation Ris\b|\bThen the relation Ris\b|\bThen, Pis\b|\bThen,Pis\b|\b1,-1is\b|\b1and\b/i.test(t)) return true;
     if (/\\left|\\right|\\\(|\\\[/.test(t)) return true;
+    if (/\b(?:sin|cos|tan|cot|sec|csc)\s*\^\s*\{\s*[-−]?\s*1\s*\}/i.test(t)) return true;
+    if (/\\mathrm\{[A-Z]\}/.test(t) && /\\cup|\\cap|\\times/.test(t)) return true;
     const compact = t.replace(/\s+/g, "");
     const spaces = (t.match(/ /g) || []).length;
     if (compact.length > 70 && spaces < compact.length / 22 && /[A-Za-z]{18,}/.test(compact)) return true;
@@ -5700,7 +5715,7 @@ window.Mx = (() => {
   function recoverGluedStemInDom(root) {
     const el = root || (typeof document !== "undefined" ? document.getElementById("app-main") : null);
     if (!el || !el.querySelectorAll) return;
-    const hosts = el.querySelectorAll(".eg-q-stem, #egQArea, .mtk-q-text, .qx-q-seg-text, .qx-marks-native-q, .qx-q-text-only");
+    const hosts = el.querySelectorAll(".eg-q-stem, #egQArea, .mtk-q-text, .qx-q-seg-text, .qx-marks-native-q, .qx-q-text-only, .qx-boost-item-q, .qx-prac-q, .allen-q-body");
     if (!hosts.length) return;
     let q = null;
     try {
@@ -5717,9 +5732,15 @@ window.Mx = (() => {
     hosts.forEach((host) => {
       if (host.closest && host.closest("#egSol, #egSolPanel, .eg-sol, .eg-sol-panel, .sol-body, .qx-sol-flow, .qx-sol-card, #qaSolReveal")) return;
       if (host.closest && host.closest(".mtk-opt, .qx-prac-opt, .qa-opt")) return;
+      try {
+        if (host.querySelector && host.querySelector(".katex, .katex-html, .katex-display")
+            && !looksKatexHtmlLeak(host.innerHTML || "") && !/spanclass/i.test(host.innerHTML || "")) return;
+      } catch (_) { /* */ }
       if (!stemLooksGlued(host.innerHTML || host.textContent || "")) return;
       let src = "";
       try { src = host.getAttribute("data-qx-stem-src") || ""; } catch (_) { src = ""; }
+      /* Booster cards are other stems — never re-paint from the live practice question. */
+      if (!src && host.closest && host.closest(".qx-boost-item, .qx-boost-preview, .qx-boost")) return;
       if (!src && q) {
         src = (typeof QxImgClean !== "undefined" && QxImgClean.bestStemHtml)
           ? QxImgClean.bestStemHtml(q, q._qxOrigStem || q._qxBankQ || q.q)
@@ -5856,9 +5877,10 @@ window.Mx = (() => {
           ".qx-match-item-body, .qx-match-grid, .qx-match-col-body, .qx-given-box, " +
           ".mk-sol-stem, .mk-sol-opt-text, .qc-ex-q, .qc-ex-opts, .qx-sum-card, " +
           ".qx-formula-card, .qx-rev-card, .qx-bm-q, .seo-q-stem, .q-stem, " +
-          ".qx-sol-card, .qx-sol-flow, #qaSolReveal, #qaResult, .qzrr-qp-snip, .qzrr-qp-list";
+          ".qx-sol-card, .qx-sol-flow, #qaSolReveal, #qaResult, .qzrr-qp-snip, .qzrr-qp-list, " +
+          ".qx-boost-item-q, .qx-boost-otx, .qx-boost-preview, .qx-boost-item, .mk-sol-view, .mk-sol-body";
         const mathRoots = el.querySelectorAll(SEL);
-        const cap = (el.querySelector && el.querySelector(".qzrr-qp-snip")) ? 200 : 24;
+        const cap = (el.querySelector && el.querySelector(".qzrr-qp-snip, .qx-boost-item-q")) ? 200 : 24;
         const list = mathRoots.length ? Array.prototype.slice.call(mathRoots, 0, cap) : [];
         // qxmd175: when afterRender(solEl) is called on #egSol itself, querySelectorAll
         // misses the root — always include el if it looks like a math host.
@@ -5867,7 +5889,7 @@ window.Mx = (() => {
             const id = el.id || "";
             const cls = el.className && String(el.className) || "";
             if (/^(egSol|egSolPanel|qaSolReveal|qaResult)$/.test(id) ||
-                /eg-sol|sol-body|qx-sol|qx-content|eg-opts|mtk-opt|eg-q-stem/.test(cls)) {
+                /eg-sol|sol-body|qx-sol|qx-content|eg-opts|mtk-opt|eg-q-stem|qx-boost/.test(cls)) {
               if (list.indexOf(el) < 0) list.unshift(el);
             }
           }
@@ -5875,7 +5897,7 @@ window.Mx = (() => {
         return list.length ? list : [el];
       };
       const healStemDollarsInDom = () => {
-        el.querySelectorAll(".mtk-q-text, .qx-q-seg-text, .qx-marks-native-q, .qx-q-text-only, .qx-given-box, .mtk-opt-text, .qx-prac-opt-text, .eg-q-stem, #egQArea, .eg-sol, #egSol, .mk-sol-stem, .qc-ex-q, .sol-body, .qx-sol-body").forEach((node) => {
+        el.querySelectorAll(".mtk-q-text, .qx-q-seg-text, .qx-marks-native-q, .qx-q-text-only, .qx-given-box, .mtk-opt-text, .qx-prac-opt-text, .eg-q-stem, #egQArea, .eg-sol, #egSol, .mk-sol-stem, .qc-ex-q, .sol-body, .qx-sol-body, .qx-boost-item-q, .qx-boost-otx").forEach((node) => {
           if (!node || node.closest(".katex, mjx-container")) return;
           // Never re-process already-typeset KaTeX (annotation TeX looks like \mathrm).
           if (node.querySelector && node.querySelector(".katex, .katex-html, .katex-display, math, mjx-container")) return;
@@ -5947,6 +5969,9 @@ window.Mx = (() => {
             QxImgClean.finalizeAll(el, q);
           }
           try {
+            if (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.paintDom) QxOwnedFigs.paintDom(el);
+          } catch (_) { /* */ }
+          try {
             if (typeof QxImgClean !== "undefined" && QxImgClean.stripStemRescuedFromSolution) {
               QxImgClean.stripStemRescuedFromSolution(el);
             } else if (el && el.querySelectorAll) {
@@ -6005,7 +6030,8 @@ window.Mx = (() => {
             ".mtk-q-text, .qx-q-seg-text, .qx-marks-native-q, .qx-q-text-only, " +
             ".mtk-opt-text, .qx-prac-opt-text, .sol-body, .qx-sol-body, .qx-content, " +
             ".eg-sol, #egSol, .eg-sol-inline, .eg-sol-panel, #egSolPanel, " +
-            ".qx-sol-card, .qx-sol-flow, #qaSolReveal, #qaResult, .eg-opts, .mtk-opt-text"
+            ".qx-sol-card, .qx-sol-flow, #qaSolReveal, #qaResult, .eg-opts, .mtk-opt-text, " +
+            ".qx-boost-item-q, .qx-boost-otx, .mk-sol-stem, .mk-sol-opt-text"
           ).forEach((node) => {
             if (!node || (node.closest && node.closest(".katex, mjx-container"))) return;
             if (node.querySelector && node.querySelector(".katex, .katex-html, .katex-display, mjx-container")) return;
@@ -6241,7 +6267,8 @@ window.Mx = (() => {
     const SEL = "#egSol, .eg-sol, .sol-body, .qx-sol-body, .qx-sol-flow, .qx-sol-card, #egSolPanel, " +
       "#egQArea, .eg-q-stem, .mtk-q-text, .qx-q-seg-text, .qx-q-text-only, " +
       ".mtk-opt-text, .qx-prac-opt-text, #qxOpts, .eg-opts, #qaSolReveal, " +
-      ".mk-sol-stem, .mk-sol-opt-text, .mk-sol-view, .qzrr-q-area, #qzrrQArea";
+      ".mk-sol-stem, .mk-sol-opt-text, .mk-sol-view, .qzrr-q-area, #qzrrQArea, " +
+      ".qx-boost-item-q, .qx-boost-otx";
     let hosts = [];
     try { hosts = Array.prototype.slice.call(el.querySelectorAll(SEL), 0, 48); } catch (_) { hosts = []; }
     try {

@@ -1,10 +1,10 @@
 {
-  "cache": "qx-pwa-qxmd301",
-  "ts": 1791100000301,
-  "title": "qxmd301: Question and solution format proofread",
+  "cache": "qx-pwa-qxmd302",
+  "ts": 1791100000302,
+  "title": "qxmd302: Question, solution, and figure check",
   "site": "https://www.quantrexacademy.com",
-  "build": "qxmd301",
-  "body": "KaTeX HTML dumps on Check Answer and paper no longer paint as spanclass prose. Question stems, options, and official solutions typeset on practice, Test Series, PYQ, Digital Books, and review. Stored answers unchanged.",
+  "build": "qxmd302",
+  "body": "Similar-practice cards typeset math. Inverse trig and figures stay visible on stems, options, official solutions, Test Series, PYQ, Digital Books, and review. Stored answers unchanged.",
   "package": "com.quantrexacademy.app",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }
