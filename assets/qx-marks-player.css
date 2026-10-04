@@ -82,7 +82,8 @@ html body .eg-test-root[data-eg-mode="test"] #egMarksExitBtn {
 
 html body .eg-test-root[data-eg-mode="test"] .eg-marks-timer,
 html body .eg-test-root[data-eg-mode="test"] #qxTimer.eg-timer,
-html body .eg-test-root[data-eg-mode="test"] .eg-timer {
+html body .eg-test-root[data-eg-mode="test"] .eg-timer,
+html body #egMarksOverview .eg-timer {
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -100,6 +101,19 @@ html body .eg-test-root[data-eg-mode="test"] .eg-timer {
   font-size: 14px !important;
   font-variant-numeric: tabular-nums !important;
   pointer-events: none !important;
+}
+html body .eg-test-root[data-eg-mode="test"] .eg-timer::before,
+html body #egMarksOverview .eg-timer::before {
+  content: "" !important;
+  width: 14px !important;
+  height: 14px !important;
+  box-sizing: border-box !important;
+  border: 1.7px solid currentColor !important;
+  border-radius: 50% !important;
+  background:
+    linear-gradient(currentColor, currentColor) 50% 28% / 1.5px 5px no-repeat,
+    linear-gradient(currentColor, currentColor) 64% 54% / 4px 1.5px no-repeat !important;
+  flex-shrink: 0 !important;
 }
 
 html body .eg-test-root[data-eg-mode="test"] .eg-marks-submit,
@@ -188,8 +202,8 @@ html body .eg-test-root[data-eg-mode="test"] .eg-qbar-n {
   height: 32px !important;
   min-width: 32px !important;
   border: 0 !important;
-  border-radius: 0 !important;
-  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+  border-radius: 999px !important;
+  clip-path: none !important;
   background: #eef2f6 !important;
   color: #64748b !important;
   -webkit-text-fill-color: #64748b !important;
@@ -202,34 +216,39 @@ html body .eg-test-root[data-eg-mode="test"] .eg-qbar-n {
   pointer-events: auto !important;
   position: relative !important;
 }
-html body .eg-test-root[data-eg-mode="test"] .eg-qbar-n.cur {
-  background: #ef4444 !important;
-  color: #fff !important;
-  -webkit-text-fill-color: #fff !important;
-  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
-  border-radius: 0 !important;
-}
-html body .eg-test-root[data-eg-mode="test"] .eg-qbar-n.eg-attempted:not(.cur) {
+html body .eg-test-root[data-eg-mode="test"] .eg-qbar-n.eg-attempted {
   background: #22c55e !important;
   color: #fff !important;
   -webkit-text-fill-color: #fff !important;
-  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%) !important;
   border-radius: 0 !important;
 }
-html body .eg-test-root[data-eg-mode="test"] .eg-qbar-n.eg-seen-test:not(.cur) {
+html body .eg-test-root[data-eg-mode="test"] .eg-qbar-n.eg-seen-test,
+html body .eg-test-root[data-eg-mode="test"] .eg-qbar-n.cur:not(.eg-attempted):not(.eg-marked):not(.eg-att-mark) {
   background: #ef4444 !important;
   color: #fff !important;
   -webkit-text-fill-color: #fff !important;
-  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+  clip-path: polygon(18% 0%, 82% 0%, 100% 62%, 50% 100%, 0% 62%) !important;
   border-radius: 0 !important;
 }
-html body .eg-test-root[data-eg-mode="test"] .eg-qbar-n.eg-marked:not(.cur),
-html body .eg-test-root[data-eg-mode="test"] .eg-qbar-n.eg-att-mark:not(.cur) {
-  background: #8b5cf6 !important;
+html body .eg-test-root[data-eg-mode="test"] .eg-qbar-n.eg-marked,
+html body .eg-test-root[data-eg-mode="test"] .eg-qbar-n.eg-att-mark {
+  background: #7c3aed !important;
   color: #fff !important;
   -webkit-text-fill-color: #fff !important;
-  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
-  border-radius: 0 !important;
+  clip-path: none !important;
+  border-radius: 999px !important;
+}
+html body .eg-test-root[data-eg-mode="test"] .eg-qbar-n.cur::after {
+  content: "" !important;
+  position: absolute !important;
+  left: 50% !important;
+  bottom: -5px !important;
+  width: 6px !important;
+  height: 6px !important;
+  margin-left: -3px !important;
+  background: #2563eb !important;
+  border-radius: 999px !important;
 }
 
 /* ===== Q meta row: Q2 +4 -1 | View All Qs ===== */
@@ -292,9 +311,11 @@ html body .eg-test-root[data-eg-mode="test"] .eg-info-meta {
 /* ===== Question + options: never clip KaTeX ===== */
 html body .eg-test-root[data-eg-mode="test"] .eg-body {
   background: #fff !important;
-  overflow-x: hidden !important;
+  overflow-x: auto !important;
   overflow-y: auto !important;
   -webkit-overflow-scrolling: touch !important;
+  overscroll-behavior: contain !important;
+  touch-action: pan-x pan-y !important;
   flex: 1 1 auto !important;
   min-height: 0 !important;
   padding-bottom: calc(120px + env(safe-area-inset-bottom, 0px)) !important;
@@ -521,6 +542,16 @@ html body .eg-mk-ov-head {
   background: #eef3fb !important;
   flex-shrink: 0 !important;
 }
+html body .eg-mk-ov-head .eg-timer {
+  margin: 0 0 0 auto !important;
+}
+html body .eg-mk-ov-title {
+  font-size: 20px !important;
+  font-weight: 800 !important;
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+  margin: 2px 0 16px !important;
+}
 html body .eg-mk-ov-back {
   width: 40px !important;
   height: 40px !important;
@@ -537,17 +568,92 @@ html body .eg-mk-ov-body {
   -webkit-overflow-scrolling: touch !important;
 }
 html body .eg-mk-legend {
-  display: flex !important;
-  flex-wrap: wrap !important;
-  gap: 10px 16px !important;
-  margin: 4px 0 16px !important;
-  font-size: 12px !important;
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 18px 16px !important;
+  margin: 4px 0 22px !important;
+  font-size: 13px !important;
   color: #334155 !important;
 }
-html body .eg-mk-legend span {
+html body .eg-mk-leg-item {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 10px !important;
+  min-width: 0 !important;
+}
+html body .eg-mk-leg-wide {
+  grid-column: 1 / -1 !important;
+}
+html body .eg-mk-leg-txt {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1px !important;
+  min-width: 0 !important;
+  line-height: 1.25 !important;
+}
+html body .eg-mk-leg-txt b {
+  font-size: 16px !important;
+  font-weight: 800 !important;
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+}
+html body .eg-mk-leg-txt span {
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  color: #475569 !important;
+  -webkit-text-fill-color: #475569 !important;
+}
+html body .eg-mk-shape {
+  width: 36px !important;
+  height: 36px !important;
   display: inline-flex !important;
   align-items: center !important;
-  gap: 8px !important;
+  justify-content: center !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  font-weight: 800 !important;
+  font-size: 13px !important;
+  flex-shrink: 0 !important;
+  position: relative !important;
+  font-style: normal !important;
+}
+html body .eg-mk-shape.ans {
+  background: #22c55e !important;
+  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+}
+html body .eg-mk-shape.na {
+  background: #ef4444 !important;
+  clip-path: polygon(18% 0%, 82% 0%, 100% 62%, 50% 100%, 0% 62%);
+}
+html body .eg-mk-shape.nv {
+  background: #e2e8f0 !important;
+  color: #334155 !important;
+  -webkit-text-fill-color: #334155 !important;
+  border-radius: 10px !important;
+}
+html body .eg-mk-shape.mr {
+  background: #7c3aed !important;
+  border-radius: 999px !important;
+}
+html body .eg-mk-shape.amr {
+  background: #7c3aed !important;
+  border-radius: 999px !important;
+}
+html body .eg-mk-shape.amr::after {
+  content: "✓" !important;
+  position: absolute !important;
+  right: -3px !important;
+  bottom: -3px !important;
+  width: 16px !important;
+  height: 16px !important;
+  background: #22c55e !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  border-radius: 999px !important;
+  font-size: 10px !important;
+  line-height: 16px !important;
+  text-align: center !important;
+  clip-path: none !important;
 }
 html body .eg-mk-pent {
   width: 18px !important;
@@ -585,16 +691,58 @@ html body .eg-mk-cell {
   height: 40px !important;
   border: 0 !important;
   border-radius: 999px !important;
+  clip-path: none !important;
   background: #eef2f6 !important;
   color: #64748b !important;
+  -webkit-text-fill-color: #64748b !important;
   font-weight: 800 !important;
   cursor: pointer !important;
   pointer-events: auto !important;
+  position: relative !important;
 }
-html body .eg-mk-cell.eg-attempted { background: #22c55e !important; color: #fff !important; border-radius: 4px !important; clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%); }
-html body .eg-mk-cell.eg-seen-test { background: #ef4444 !important; color: #fff !important; border-radius: 4px !important; clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%); }
-html body .eg-mk-cell.eg-marked,
-html body .eg-mk-cell.eg-att-mark { background: #8b5cf6 !important; color: #fff !important; border-radius: 4px !important; clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%); }
+html body .eg-mk-cell.eg-attempted {
+  background: #22c55e !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  border-radius: 0 !important;
+  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+}
+html body .eg-mk-cell.eg-seen-test {
+  background: #ef4444 !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  border-radius: 0 !important;
+  clip-path: polygon(18% 0%, 82% 0%, 100% 62%, 50% 100%, 0% 62%);
+}
+html body .eg-mk-cell.eg-marked {
+  background: #7c3aed !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  border-radius: 999px !important;
+  clip-path: none !important;
+}
+html body .eg-mk-cell.eg-att-mark {
+  background: #7c3aed !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  border-radius: 999px !important;
+  clip-path: none !important;
+}
+html body .eg-mk-cell.eg-att-mark::after {
+  content: "✓" !important;
+  position: absolute !important;
+  right: -3px !important;
+  bottom: -3px !important;
+  width: 16px !important;
+  height: 16px !important;
+  background: #22c55e !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  border-radius: 999px !important;
+  font-size: 10px !important;
+  line-height: 16px !important;
+  text-align: center !important;
+}
 html body .eg-mk-cell.cur { outline: 2px solid #2563eb !important; outline-offset: 2px !important; }
 html body .eg-mk-ov-foot {
   display: grid !important;
@@ -643,6 +791,30 @@ html body #egExitModal {
 html body .eg-marks-exit.open,
 html body #egExitModal.open {
   display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 12px !important;
+}
+html body .eg-marks-exit-x,
+html body #egExitDismiss {
+  position: relative !important;
+  left: auto !important;
+  bottom: auto !important;
+  transform: none !important;
+  width: 40px !important;
+  height: 40px !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  background: #1f2937 !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  pointer-events: auto !important;
+  z-index: 2 !important;
+  flex-shrink: 0 !important;
 }
 html body .eg-marks-exit-card {
   width: 100% !important;

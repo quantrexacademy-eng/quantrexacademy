@@ -226,6 +226,8 @@
             if (st294) document.head.appendChild(st294);
             var st303 = document.getElementById("qxmd303EgCss");
             if (st303) document.head.appendChild(st303);
+            var st304 = document.getElementById("qxmd304EgCss");
+            if (st304) document.head.appendChild(st304);
             var shEl = document.getElementById("qxShellLockCss");
             if (shEl) document.head.appendChild(shEl);
         });
@@ -353,8 +355,23 @@
     } else {
       try { document.head.appendChild(shCss); } catch (_) {}
     }
-    var shh = "assets/qx-shell-lock.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd303");
+    var shh = "assets/qx-shell-lock.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd304");
     if (shCss.getAttribute("href") !== shh) shCss.href = shh;
+    if (!document.getElementById("qxmd304EgCss")) {
+      var s304 = document.createElement("style");
+      s304.id = "qxmd304EgCss";
+      s304.textContent = [
+        'html.qx-test-zoom,html.qx-test-zoom body,html body.marks-test-active,html body .eg-test-root,html body .eg-test-root .eg-body,html body .qzrr-cbt,html body .qzrr-cbt .qzrr-q-area,html body .qzrr-cbt #qzrrQArea,html body .mtk-main{touch-action:pan-x pan-y!important}',
+        'html body .eg-test-root .eg-q-card,html body .eg-test-root #egMain,html body .eg-test-root .eg-main,html body .qzrr-cbt .qzrr-q-area,html body .qzrr-cbt #qzrrQArea{zoom:1!important;transform:none!important}',
+        'html body .eg-test-root[data-eg-mode="test"] .eg-body{overflow-x:auto!important;overflow-y:auto!important;-webkit-overflow-scrolling:touch!important;touch-action:pan-x pan-y!important}',
+        'html body .eg-test-root[data-eg-mode="test"] > .eg-top{display:flex!important;align-items:center!important;justify-content:space-between!important;position:relative!important;bottom:auto!important}',
+        'html body .eg-test-root[data-eg-mode="test"] #egMarksExitBtn,html body .eg-test-root[data-eg-mode="test"] .eg-marks-x{display:inline-flex!important}',
+        'html body .eg-test-root[data-eg-mode="test"] #qxSubmitTop,html body .eg-test-root[data-eg-mode="test"] .eg-marks-submit{display:inline-flex!important;visibility:visible!important;pointer-events:auto!important}'
+      ].join("");
+      document.head.appendChild(s304);
+    } else {
+      try { document.head.appendChild(document.getElementById("qxmd304EgCss")); } catch (_) {}
+    }
   }
 
   /** Play TWA / installed PWA only. Desktop + phone browser stay "web". */
@@ -1172,7 +1189,7 @@
         '<span><i class="eg-dot att-mark"></i>Ans+Mark</span><span><i class="eg-dot seen-t"></i>Not ans</span>' +
         '<span><i class="eg-dot unseen"></i>Not visited</span></div>';
 
-    const timer = '<span class="eg-timer qx-live-timer" id="qxTimer">' +
+    const timer = '<span class="eg-timer qx-live-timer eg-marks-timer" id="qxTimer">' +
       (practice
         ? formatClock(session.remainingSec != null ? session.remainingSec : 0)
         : formatMarksClock(session.remainingSec != null ? session.remainingSec : 0)) + "</span>";
@@ -1247,20 +1264,39 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
       "<strong>Questions Preview</strong></div>" +
       '<div class="eg-qpreview-list" id="egQPreviewList">' + previewRows + "</div></div>";
     const ovOpen = !practice && !!session._egMarksOverview;
+    function countAllStatus(st) {
+      var n = 0;
+      var ids = session.ids || [];
+      for (var ci = 0; ci < ids.length; ci++) {
+        if (paletteStatus(session, ci, ctx) === st) n++;
+      }
+      return n;
+    }
+    var nAns = countAllStatus("eg-attempted");
+    var nNa = countAllStatus("eg-seen-test");
+    var nNv = countAllStatus("eg-unseen");
+    var nMr = countAllStatus("eg-marked");
+    var nAmr = countAllStatus("eg-att-mark");
+    function mkLeg(shape, n, lab, wide) {
+      return '<div class="eg-mk-leg-item' + (wide ? " eg-mk-leg-wide" : "") + '">' +
+        '<i class="eg-mk-shape ' + shape + '" aria-hidden="true">' + n + "</i>" +
+        '<div class="eg-mk-leg-txt"><b>' + n + "</b><span>" + lab + "</span></div></div>";
+    }
     const marksOverviewHtml = practice ? "" : (
       '<div class="eg-marks-overview' + (ovOpen ? " open" : "") + '" id="egMarksOverview" role="dialog" aria-label="View All Questions"' +
       (ovOpen ? ' aria-hidden="false"' : ' hidden aria-hidden="true"') + ">" +
       '<div class="eg-mk-ov-head">' +
       '<button type="button" class="eg-mk-ov-back" id="egMarksOvBack" title="Go back" aria-label="Go back">←</button>' +
-      '<span class="eg-timer qx-live-timer">' + formatMarksClock(session.remainingSec != null ? session.remainingSec : 0) + "</span>" +
-      "<span></span></div>" +
+      '<span class="eg-timer qx-live-timer eg-marks-timer">' + formatMarksClock(session.remainingSec != null ? session.remainingSec : 0) + "</span>" +
+      "</div>" +
       '<div class="eg-mk-ov-body">' +
+      '<div class="eg-mk-ov-title">Overview</div>' +
       '<div class="eg-mk-legend">' +
-      '<span><i class="eg-mk-pent ans"></i>Answered</span>' +
-      '<span><i class="eg-mk-pent na"></i>Not Answered</span>' +
-      '<span><i class="eg-mk-pent nv"></i>Not Visited</span>' +
-      '<span><i class="eg-mk-pent mr"></i>Marked for Review</span>' +
-      '<span><i class="eg-mk-pent amr"></i>Answered and Marked for Review</span>' +
+      mkLeg("ans", nAns, "Answered") +
+      mkLeg("na", nNa, "Not Answered") +
+      mkLeg("nv", nNv, "Not Visited") +
+      mkLeg("mr", nMr, "Marked for Review") +
+      mkLeg("amr", nAmr, "Answered and Marked for Review (will be considered for evaluation)", true) +
       "</div>" +
       groups.map(function (g) {
         const cells = g.indices.map(function (i, li) {
@@ -1278,6 +1314,7 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
       ' onclick="event.preventDefault();event.stopPropagation();if(window.qxSubmitTest){window.qxSubmitTest();}return false;">Submit Test</button>' +
       "</div></div>" +
       '<div class="eg-marks-exit" id="egExitModal" hidden>' +
+      '<button type="button" class="eg-marks-exit-x" id="egExitDismiss" title="Close" aria-label="Close">✕</button>' +
       '<div class="eg-marks-exit-card" onclick="event.stopPropagation()">' +
       '<div class="eg-marks-exit-ico" aria-hidden="true">↪</div>' +
       "<h3>Exit Test</h3>" +
@@ -1982,6 +2019,7 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
       root.classList.add("eg-qxmd182", "eg-qxmd180");
       root.classList.remove("eg-qxmd175", "eg-qxmd176", "eg-qxmd177", "eg-qxmd179");
       document.documentElement.classList.add("qx-test-zoom");
+      if (typeof window.qxLockPaperScale === "function") window.qxLockPaperScale();
     } catch (_) { /* */ }
     try {
       root.querySelectorAll("img").forEach(function (img) {
@@ -3237,6 +3275,7 @@ function forceFootVisible(force) {
     wireTap(root.querySelector("#egMarksOvGoBack"), closeMarksOverview);
     wireTap(root.querySelector("#egMarksExitBtn"), openExitModal);
     wireTap(root.querySelector("#egExitCancel"), closeExitModal);
+    wireTap(root.querySelector("#egExitDismiss"), closeExitModal);
     wireTap(root.querySelector("#egExitConfirm"), function (e) {
       if (e) { try { e.preventDefault(); e.stopPropagation(); } catch (_) {} }
       closeExitModal();
@@ -3258,14 +3297,14 @@ function forceFootVisible(force) {
       window._egMarksOvDocBound = true;
       document.addEventListener("click", function (ev) {
         try {
-          var t = ev.target && ev.target.closest && ev.target.closest("#egViewAllQs, #egMarksOvBack, #egMarksOvGoBack, #egMarksExitBtn, #egExitCancel, #egExitConfirm");
+          var t = ev.target && ev.target.closest && ev.target.closest("#egViewAllQs, #egMarksOvBack, #egMarksOvGoBack, #egMarksExitBtn, #egExitCancel, #egExitConfirm, #egExitDismiss");
           if (!t) return;
           if (typeof t.onclick === "function") return;
           var id = t.id || "";
           if (id === "egViewAllQs") openMarksOverview(ev);
           else if (id === "egMarksOvBack" || id === "egMarksOvGoBack") closeMarksOverview(ev);
           else if (id === "egMarksExitBtn") openExitModal(ev);
-          else if (id === "egExitCancel") closeExitModal(ev);
+          else if (id === "egExitCancel" || id === "egExitDismiss") closeExitModal(ev);
           else if (id === "egExitConfirm") {
             closeExitModal(ev);
             if (typeof window.qxExitTest === "function") window.qxExitTest(true);
@@ -3428,8 +3467,7 @@ function forceFootVisible(force) {
     function zoomDelta(d) {
       return function (e) {
         if (e) { e.preventDefault(); e.stopPropagation(); }
-        if (typeof bumpTestZoom === "function") bumpTestZoom(d);
-        if (typeof applyTestZoomToDom === "function") applyTestZoomToDom(typeof getTestZoom === "function" ? getTestZoom() : 1);
+        if (typeof applyTestZoomToDom === "function") applyTestZoomToDom(1);
       };
     }
     if (zoomOut) zoomOut.onclick = zoomDelta(-1);
@@ -3441,8 +3479,9 @@ function forceFootVisible(force) {
       btn.onclick = zoomDelta(Number(btn.getAttribute("data-qzrr-zoom")) || 0);
     });
     if (typeof applyTestZoomToDom === "function") {
-      applyTestZoomToDom(typeof getTestZoom === "function" ? getTestZoom() : 1);
+      applyTestZoomToDom(1);
     }
+    try { if (typeof window.qxLockPaperScale === "function") window.qxLockPaperScale(); } catch (_) { /* */ }
     // Light-mode strip: guarantee index numerals are present in each dot
     try {
       root.querySelectorAll(".eg-qbar-n, .eg-q-dot").forEach(function (dot) {

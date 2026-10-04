@@ -1,10 +1,10 @@
 {
-  "cache": "qx-pwa-qxmd303",
-  "ts": 1791100000303,
-  "title": "qxmd303: Mobile website, app footer, draggable AI proctor",
+  "cache": "qx-pwa-qxmd304",
+  "ts": 1791100000304,
+  "title": "qxmd304: App NTA overview + lock question size",
   "site": "https://www.quantrexacademy.com",
-  "build": "qxmd303",
-  "body": "Phone website Quizrr layout. App Save & Next stays bottom-right in the 2x2 footer. AI Proctor camera is draggable. Review-grade integrity only. Stored answers unchanged.",
+  "build": "qxmd304",
+  "body": "App NTA matches MARKS overview (counts, shapes). X left and Submit top-right on QUANTREX and NTA. Pinch/touch zoom off; questions stay standard size and scroll. Stored answers unchanged.",
   "package": "com.quantrexacademy.app",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }

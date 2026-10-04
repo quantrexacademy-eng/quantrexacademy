@@ -1,6 +1,6 @@
 /* qxmd182 — Check Answer keeps Q+opts; scroll solutions; pinch-zoom; round option colours */
 html.qx-test-zoom {
-  touch-action: pan-y pinch-zoom !important;
+  touch-action: pan-x pan-y !important;
 }
 html.qx-test-zoom body,
 body.marks-test-active,
@@ -11,7 +11,7 @@ body.marks-test-active .eg-q-card,
 .eg-test-root.eg-qxmd182 .eg-main,
 .eg-test-root.eg-qxmd182 .eg-opt,
 .eg-test-root.eg-qxmd182 .mtk-opt {
-  touch-action: pan-y pinch-zoom !important;
+  touch-action: pan-x pan-y !important;
 }
 
 .eg-test-root.eg-qxmd182 {

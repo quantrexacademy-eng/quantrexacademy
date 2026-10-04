@@ -258,3 +258,83 @@ html body .eg-test-root[data-eg-mode="practice"] .eg-foot-practice {
     max-width: min(30vw, 110px) !important;
   }
 }
+
+/* ===== qxmd304: standard question size, pan/scroll only, no pinch ===== */
+html.qx-test-zoom,
+html.qx-test-zoom body,
+html body.marks-test-active,
+html body.allen-cbt-active,
+html body .eg-test-root,
+html body .eg-test-root .eg-body,
+html body .eg-test-root .eg-q-card,
+html body .eg-test-root .eg-main,
+html body .qzrr-cbt,
+html body .qzrr-cbt .qzrr-q-area,
+html body .qzrr-cbt #qzrrQArea,
+html body .mtk-main,
+html body .qx-prac-body {
+  touch-action: pan-x pan-y !important;
+}
+
+html body .eg-test-root .eg-q-card,
+html body .eg-test-root #egMain,
+html body .eg-test-root .eg-main,
+html body .eg-test-root #egQArea,
+html body .qzrr-cbt .qzrr-q-area,
+html body .qzrr-cbt #qzrrQArea,
+html body .mtk-main {
+  zoom: 1 !important;
+}
+
+html body .eg-test-root[data-eg-mode="test"] .eg-body,
+html body .qzrr-cbt .qzrr-q-area,
+html body .qzrr-cbt #qzrrQArea {
+  overflow-x: auto !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  overscroll-behavior: contain !important;
+}
+
+html body .eg-test-root[data-eg-mode="test"] > .eg-top,
+html body .eg-test-root[data-eg-mode="test"] .eg-marks-top {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  position: relative !important;
+  bottom: auto !important;
+  top: auto !important;
+}
+html body .eg-test-root[data-eg-mode="test"] #egMarksExitBtn,
+html body .eg-test-root[data-eg-mode="test"] .eg-marks-x {
+  display: inline-flex !important;
+  order: 0 !important;
+  margin-right: 0 !important;
+}
+html body .eg-test-root[data-eg-mode="test"] #qxSubmitTop,
+html body .eg-test-root[data-eg-mode="test"] .eg-marks-submit {
+  display: inline-flex !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  order: 2 !important;
+  margin-left: 0 !important;
+}
+
+html[data-qx-shell="web"] .qzrr-cbt .qzrr-q-area,
+html[data-qx-shell="web"] .qzrr-cbt #qzrrQArea {
+  overflow-x: auto !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  touch-action: pan-x pan-y !important;
+  zoom: 1 !important;
+}
+
+html body .eg-test-root .qzrr-zoom-circle,
+html body .eg-test-root .qzrr-top-zoom-fab,
+html body .qzrr-cbt .qzrr-zoom-circle,
+html body .qzrr-cbt .qzrr-top-zoom-fab,
+html body .eg-test-root #egZoomIn,
+html body .eg-test-root #egZoomOut,
+html body .eg-test-root #egZoomInHdr,
+html body .eg-test-root #egZoomOutHdr {
+  display: none !important;
+}

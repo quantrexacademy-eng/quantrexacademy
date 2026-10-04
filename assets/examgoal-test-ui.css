@@ -226,11 +226,11 @@ body.marks-test-active::before { display: none !important; }
 }
 .eg-q-card {
   flex: 1; min-height: 0;
-  overflow-x: hidden !important;
+  overflow-x: auto !important;
   overflow-y: auto !important;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
-  touch-action: pan-y pinch-zoom;
+  touch-action: pan-x pan-y;
   background: var(--eg-card); border-radius: 0; padding: 16px 18px 18px;
   box-shadow: none;
   border: 0;
@@ -6479,7 +6479,7 @@ html body.marks-test-active:has(.mtk-test-root.allen-practice) #app-main {
   overflow-y: auto !important;
   -webkit-overflow-scrolling: touch !important;
   overscroll-behavior-y: contain !important;
-  touch-action: pan-y pinch-zoom !important;
+  touch-action: pan-x pan-y !important;
   padding-bottom: var(--eg-foot-pad, calc(72px + env(safe-area-inset-bottom, 0px))) !important;
   scroll-padding-bottom: var(--eg-foot-pad, 72px) !important;
 }

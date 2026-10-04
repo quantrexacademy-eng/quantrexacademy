@@ -38,7 +38,7 @@ body.marks-test-active #app-main { padding: 0; min-height: 100vh; }
   overflow-y: auto !important;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
-  touch-action: pan-y pinch-zoom;
+  touch-action: pan-x pan-y;
   min-height: 0;
 }
 .mtk-header, .mtk-header-tools, .mtk-header-tools button {
