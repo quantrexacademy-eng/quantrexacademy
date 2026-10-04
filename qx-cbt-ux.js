@@ -225,7 +225,13 @@
     if (global.__qxQFsObs) return;
     global.__qxQFsObs = true;
     try {
-      var mo = new MutationObserver(function () { sync(); });
+      var _qxFsN = 0, _qxFsT = 0;
+      var mo = new MutationObserver(function () {
+        /* qxmd307: loop breaker - never re-enter more than 40x in one burst */
+        var now = Date.now(); if (now - _qxFsT > 250) { _qxFsT = now; _qxFsN = 0; }
+        if (++_qxFsN > 40) return;
+        sync();
+      });
       mo.observe(document.documentElement, {
         subtree: true,
         childList: true,
@@ -277,7 +283,10 @@
         b.classList.contains("qzrr-instr-active") ||
         b.classList.contains("marks-instr-active") ||
         !!document.querySelector(".mtk-test-root, .eg-test-root, .qzrr-cbt");
-      b.classList.toggle("qx-cbt-session", !!inCbt);
+      /* qxmd307: results/analysis count as a session too, or this observer and qxQFullscreen.sync()
+         flip qx-cbt-session forever (MutationObserver ping-pong froze the page right after Submit). */
+      var resultsView = b.classList.contains("marks-results-active") || b.classList.contains("qzrr-analysis-active");
+      b.classList.toggle("qx-cbt-session", !!inCbt || resultsView);
       b.classList.toggle("mtk-test-open", !!inCbt && b.classList.contains("marks-test-active"));
       var bar = document.querySelector(".qx-update-bar");
       if (bar && inCbt) bar.setAttribute("hidden", "");
@@ -292,7 +301,12 @@
     if (global.__qxCbtBarObs) return;
     global.__qxCbtBarObs = true;
     try {
-      var mo = new MutationObserver(sync);
+      var _qxBarN = 0, _qxBarT = 0;
+      var mo = new MutationObserver(function () {
+        var now = Date.now(); if (now - _qxBarT > 250) { _qxBarT = now; _qxBarN = 0; }
+        if (++_qxBarN > 40) return; /* qxmd307 loop breaker */
+        sync();
+      });
       mo.observe(document.documentElement, {
         subtree: true,
         childList: true,

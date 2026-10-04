@@ -1,10 +1,10 @@
 {
-  "cache": "qx-pwa-qxmd306",
-  "ts": 1791100000306,
-  "title": "qxmd306: Submit works, footer above phone nav, full question pan, left cross",
+  "cache": "qx-pwa-qxmd307",
+  "ts": 1791100000307,
+  "title": "qxmd307: Submit finishes, steady footer above phone nav, full solution visible",
   "site": "https://www.quantrexacademy.com",
-  "build": "qxmd306",
-  "body": "Website Submit opens the confirm modal. QUANTREX 2x2 footer sits above the phone nav and covers the bottom. Wide questions pan. Left header uses a simple cross. Stored answers unchanged.",
+  "build": "qxmd307",
+  "body": "Submit now opens the result screen. Footer stays fixed above the phone nav while scrolling. Full solution text visible above the footer; long equations wrap. All toolbar buttons reachable on phones. Stored answers unchanged.",
   "package": "com.quantrexacademy.app",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }

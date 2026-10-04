@@ -1159,6 +1159,8 @@ window.showAllenInstructions = showAllenInstructions;
 (function () {
   function syncAllenFootPad() {
     try {
+      /* qxmd307: only inside the chapter-practice (allen) shell - never touch examgoal practice/test footers */
+      if (!document.querySelector(".mtk-test-root.allen-practice:not(.eg-test-root)")) return;
       /* qxmd216-force-app-main-scroll */
       try {
         var am = document.getElementById("app-main");
@@ -1238,7 +1240,12 @@ window.showAllenInstructions = showAllenInstructions;
   var _t = 0;
   function paintOnce() {
     try {
-      var foot = document.querySelector("#egFoot, .eg-foot-marks, .eg-foot, .qx-prac-foot");
+      /* qxmd307: scope to the allen practice/CBT root. Before, this grabbed the examgoal test footer too and
+         overwrote its 2x2 layout (3 cols + 84px max-height) on every render/resize -> footer jumped and the
+         lower row slid under the phone nav bar. */
+      var aRoot = document.querySelector(".mtk-test-root.allen-practice:not(.eg-test-root), .mtk-test-root.allen-cbt:not(.eg-test-root)");
+      if (!aRoot) return;
+      var foot = aRoot.querySelector("#egFoot, .eg-foot-marks, .eg-foot, .qx-prac-foot");
       if (!foot) return;
       foot.style.setProperty("position", "fixed", "important");
       foot.style.setProperty("left", "0", "important");

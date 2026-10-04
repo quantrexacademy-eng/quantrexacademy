@@ -1,0 +1,123 @@
+/* qxmd307 layout lock - loaded last. One owner for: session viewport, header toolbars, info strip,
+   question/solution typography, solution end visibility. (Footer geometry stays with examgoal-test-ui.js;
+   allen-test-ui.js no longer paints examgoal footers.) */
+
+/* 1) Session viewport: #app-main is position:fixed inset:0 -> never min-height:100vh (large viewport, taller than the
+      visible area while the mobile browser bar shows -> content ran under the footer), never transformed (a leftover
+      qxPageIn transform turned the fixed footer/header into absolute ones that scrolled away in chapter practice). */
+html body.marks-test-active #app-main#app-main.content,
+html body.marks-test-active #app-main#app-main,
+html body.allen-practice-active #app-main#app-main,
+html body.allen-cbt-active #app-main#app-main,
+html body.qx-cbt-session #app-main#app-main,
+html body.qx-q-fullscreen #app-main#app-main,
+html body #app-main#app-main:has(.eg-test-root),
+html body #app-main#app-main:has(.mtk-test-root) {
+  min-height: 0 !important;
+  animation: none !important;
+  transform: none !important;
+  overscroll-behavior: contain;
+}
+html body #app-main#app-main .eg-test-root.eg-test-root,
+html body #app-main#app-main .eg-test-root.mtk-test-root.mtk-test-root { min-height: 0 !important; }
+html body #app-main#app-main .mtk-test-root.allen-practice.allen-practice:not(.eg-test-root) { min-height: 100% !important; }
+html body #app-main#app-main .mtk-test-root.allen-practice:not(.eg-test-root) > .mtk-header.mtk-header {
+  position: sticky !important; top: 0 !important; z-index: 60 !important;
+}
+/* stable layout while rendering: no scroll anchoring jumps, no horizontal page drift */
+html body.qx-cbt-session, html body.qx-cbt-session #app-main { overflow-x: hidden !important; }
+html body #app-main#app-main .eg-test-root .eg-body, html body #app-main#app-main .eg-test-root .eg-main,
+html body #app-main:has(.mtk-test-root) { overflow-anchor: none; overflow-x: hidden !important; }
+
+/* 2) Header toolbars: never overflow to the LEFT (flex-end + overflow made Theme/All Q/Palette/Bookmark unreachable
+      behind the title). Start-aligned, horizontally scrollable strip, title shrinks first. */
+@media (max-width: 900px) {
+  html body #app-main#app-main .eg-test-root .eg-top > .eg-top-title,
+  html body #app-main#app-main .mtk-test-root .mtk-header .eg-top-title { flex: 1 1 0 !important; min-width: 0 !important; overflow: hidden !important; text-overflow: ellipsis !important; white-space: nowrap !important; }
+  html body #app-main#app-main .eg-test-root .eg-top > .eg-top-tools.eg-top-tools,
+  html body #app-main#app-main .eg-test-root .eg-qx-extras.eg-qx-extras,
+  html body #app-main#app-main .eg-test-root .eg-qx-extras > .eg-top-tools.eg-top-tools,
+  html body #app-main#app-main .mtk-test-root .mtk-header-tools.mtk-header-tools,
+  html body #app-main#app-main .mtk-test-root .qx-prac-tools.qx-prac-tools {
+    flex: 0 1 auto !important; min-width: 0 !important; max-width: 100% !important;
+    justify-content: flex-start !important; flex-wrap: nowrap !important;
+    overflow-x: auto !important; overflow-y: hidden !important; scrollbar-width: none !important;
+    -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; gap: 2px !important; margin-left: auto !important;
+  }
+  html body #app-main#app-main .eg-test-root .eg-top-tools::-webkit-scrollbar, html body #app-main#app-main .eg-test-root .eg-qx-extras *::-webkit-scrollbar, html body #app-main#app-main .eg-test-root .eg-qx-extras::-webkit-scrollbar,
+  html body #app-main#app-main .mtk-test-root .mtk-header-tools::-webkit-scrollbar, html body #app-main#app-main .mtk-test-root .qx-prac-tools::-webkit-scrollbar { display: none !important; }
+  html body #app-main#app-main .eg-test-root .eg-top-tools .eg-tool-btn, html body #app-main#app-main .eg-test-root .eg-qx-extras .eg-tool-btn,
+  html body #app-main#app-main .eg-test-root .eg-qx-extras > button,
+  html body #app-main#app-main .mtk-test-root .mtk-header-tools .eg-tool-btn, html body #app-main#app-main .mtk-test-root .qx-prac-tools .eg-tool-btn {
+    flex: 0 0 auto !important; min-width: 40px !important; width: auto !important; padding-left: 3px !important; padding-right: 3px !important;
+  }
+  html body #app-main#app-main .eg-test-root .eg-tool-btn .eg-tip, html body #app-main#app-main .mtk-test-root .eg-tool-btn .eg-tip { font-size: 10px !important; letter-spacing: 0 !important; white-space: nowrap !important; }
+  /* the test tools row spans the full width: spread evenly when it fits */
+  html body #app-main#app-main .eg-test-root .eg-qx-extras.eg-qx-extras { margin-left: 0 !important; width: 100% !important; }
+  html body #app-main#app-main .eg-test-root .eg-qx-extras.eg-qx-extras > .eg-top-tools.eg-top-tools { flex: 1 1 auto !important; width: 100% !important; margin-left: 0 !important; }
+}
+@media (max-width: 440px) {
+  html body #app-main#app-main .eg-test-root .eg-top > .eg-top-title { min-width: 54px !important; }
+  html body #app-main#app-main .eg-test-root .eg-top-tools .eg-tool-btn,
+  html body #app-main#app-main .mtk-test-root .mtk-header-tools .eg-tool-btn { min-width: 34px !important; padding-left: 1px !important; padding-right: 1px !important; }
+  html body #app-main#app-main .eg-test-root .eg-top-tools .eg-tool-btn .eg-tip,
+  html body #app-main#app-main .mtk-test-root .mtk-header-tools .eg-tool-btn .eg-tip { font-size: 9.5px !important; }
+}
+@media (max-width: 600px) {
+  /* All Q duplicates Palette on phones */
+  html body #app-main#app-main .eg-test-root[data-eg-mode="practice"] #egAllQBtn.eg-allq-btn { display: none !important; }
+}
+
+/* 3) Info strip (Q no, time, marks, exam/date pill, type pill): wrap instead of clipping on phones */
+@media (max-width: 600px) {
+  html body #app-main#app-main .eg-test-root #egInfoStrip.eg-info-strip {
+    flex-wrap: wrap !important; height: auto !important; min-height: 32px !important; max-height: none !important;
+    overflow: visible !important; row-gap: 4px !important; padding-top: 4px !important; padding-bottom: 4px !important; align-items: center !important;
+  }
+  html body #app-main#app-main .eg-test-root #egInfoStrip .eg-paper-line { flex: 0 1 auto !important; max-width: 100% !important; min-width: 0 !important; white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; }
+  html body #app-main#app-main .eg-test-root #egInfoStrip .eg-type-pill { flex: 0 0 auto !important; }
+}
+
+/* 4) One question / solution typography standard (website + app; MARKS photo player untouched) */
+html body #app-main#app-main .eg-test-root .eg-q-stem, html body #app-main#app-main .mtk-test-root .mtk-q-text,
+html body #app-main#app-main .eg-test-root .eg-opt, html body #app-main#app-main .mtk-test-root .mtk-opt {
+  font-size: 18px !important; line-height: 1.65 !important; letter-spacing: 0 !important;
+}
+html body #app-main#app-main .eg-test-root .eg-q-stem *:not(.katex):not(.katex *), html body #app-main#app-main .mtk-test-root .mtk-q-text *:not(.katex):not(.katex *) { font-size: inherit; line-height: inherit; }
+html body #egSolPanel#egSolPanel .qx-sol-flow, html body #qaSolReveal#qaSolReveal .qx-sol-flow, html body #app-main#app-main .qx-sol-card .qx-sol-flow {
+  font-size: 17px !important; line-height: 1.72 !important; letter-spacing: 0 !important;
+}
+html body #egSolPanel#egSolPanel .qx-sol-flow p, html body #qaSolReveal#qaSolReveal .qx-sol-flow p, html body #app-main#app-main .qx-sol-card .qx-sol-flow p,
+html body #egSolPanel#egSolPanel .qx-sol-flow .qx-sol-p, html body #qaSolReveal#qaSolReveal .qx-sol-flow .qx-sol-p { font-size: inherit !important; line-height: inherit !important; margin: 0 0 .55em !important; }
+html body #app-main#app-main .eg-test-root .eg-q-stem .katex, html body #app-main#app-main .mtk-test-root .mtk-q-text .katex,
+html body #app-main#app-main .eg-test-root .eg-opt .katex, html body #app-main#app-main .mtk-test-root .mtk-opt .katex,
+html body #egSolPanel#egSolPanel .katex, html body #qaSolReveal#qaSolReveal .katex, html body #app-main#app-main .qx-sol-card .katex { font-size: 1.08em !important; }
+@media (max-width: 600px) {
+  html body #app-main#app-main .eg-test-root .eg-q-stem, html body #app-main#app-main .mtk-test-root .mtk-q-text,
+  html body #app-main#app-main .eg-test-root .eg-opt, html body #app-main#app-main .mtk-test-root .mtk-opt { font-size: 17px !important; }
+  html body #egSolPanel#egSolPanel .qx-sol-flow, html body #qaSolReveal#qaSolReveal .qx-sol-flow, html body #app-main#app-main .qx-sol-card .qx-sol-flow { font-size: 16.5px !important; }
+}
+
+/* 5) Solution: full text visible. Paragraphs were overflow-x:auto -> also vertical scrollers that clipped tall math
+      and showed inner scrollbars; long inline equations could not wrap (katex-html forced inline-block nowrap). */
+html body #egSolPanel#egSolPanel .qx-sol-flow p, html body #egSolPanel#egSolPanel .qx-sol-flow .qx-sol-p,
+html body #qaSolReveal#qaSolReveal .qx-sol-flow p, html body #qaSolReveal#qaSolReveal .qx-sol-flow .qx-sol-p,
+html body #app-main#app-main .qx-sol-card .qx-sol-flow p, html body #app-main#app-main .qx-sol-card .qx-sol-flow .qx-sol-p {
+  overflow-x: auto !important; overflow-y: hidden !important; padding-top: .3em !important; padding-bottom: .3em !important;
+  max-height: none !important; -webkit-line-clamp: unset !important; scrollbar-width: thin;
+}
+html body #egSolPanel#egSolPanel .katex:not(.katex-display > .katex),
+html body #qaSolReveal#qaSolReveal .katex:not(.katex-display > .katex),
+html body #app-main#app-main .qx-sol-card .katex:not(.katex-display > .katex) { white-space: normal !important; max-width: 100%; }
+html body #egSolPanel#egSolPanel .katex:not(.katex-display > .katex) > .katex-html,
+html body #qaSolReveal#qaSolReveal .katex:not(.katex-display > .katex) > .katex-html,
+html body #app-main#app-main .qx-sol-card .katex:not(.katex-display > .katex) > .katex-html { display: inline !important; white-space: normal !important; }
+/* wide display math / tables / images pan inside their own box only */
+html body #app-main#app-main .eg-test-root .katex-display, html body #app-main#app-main .mtk-test-root .katex-display,
+html body #qaSolReveal#qaSolReveal .katex-display, html body #app-main#app-main .qx-sol-card .katex-display {
+  overflow-x: auto !important; overflow-y: hidden !important; max-width: 100% !important; padding: .35em 0 !important; -webkit-overflow-scrolling: touch;
+}
+html body #app-main#app-main .eg-test-root .eg-q-stem table, html body #app-main#app-main .mtk-test-root .mtk-q-text table, html body #app-main#app-main .qx-sol-flow table { display: block; max-width: 100%; overflow-x: auto; }
+html body #app-main#app-main .eg-test-root .eg-q-stem img, html body #app-main#app-main .mtk-test-root .mtk-q-text img, html body #app-main#app-main .qx-sol-flow img { max-width: 100% !important; height: auto !important; }
+/* clean solution card */
+html body #egSolPanel#egSolPanel .qx-sol-card, html body #qaSolReveal#qaSolReveal .qx-sol-card { border-radius: 14px !important; }
