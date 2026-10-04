@@ -7,7 +7,7 @@
   if (window.__qxToolOverflow309) return;
   window.__qxToolOverflow309 = true;
   var EXTRA = [
-    { id: "egPrintBtn", label: "Print" },
+    /* qxmd311: Print is owned by qx-print.js (one Print entry in Settings > Tools everywhere) */
     { id: "qzrrProctorBtn", label: "Proctor" },
     { id: "qzrrInstrBtn", label: "Instructions" },
     { id: "qzrrPaperBtn", label: "Paper" }

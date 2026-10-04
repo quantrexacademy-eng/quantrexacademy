@@ -206,3 +206,32 @@ html body .eg-test-root.eg-test-root[data-eg-mode="test"][data-test-theme="dark"
 html body .eg-test-root[data-test-theme="dark"] header.eg-marks-top #qxTimer, html body .eg-test-root.qx-theme-dark header.eg-marks-top #qxTimer { background: #1e293b !important; color: #93c5fd !important; border-color: #1e40af !important; }
 html body .eg-test-root[data-test-theme="dark"] header.eg-marks-top #qxSubmitTop, html body .eg-test-root.qx-theme-dark header.eg-marks-top #qxSubmitTop { background: #1e293b !important; color: #fca5a5 !important; border-color: #ef4444 !important; }
 html body .eg-test-root[data-test-theme="dark"] header.eg-marks-top #egMarksExitBtn, html body .eg-test-root.qx-theme-dark header.eg-marks-top #egMarksExitBtn { color: #f8fafc !important; border-color: #f8fafc !important; }
+
+/* qxmd311: footer drift fix. The question host scrolled sideways when one long inline equation was wider than the
+   phone (test-engine set overflow-x:auto on .eg-body / #qzrrQArea), so the question panel slid left against the
+   bottom bar. Hosts never scroll sideways; wide math / tables / code / images scroll inside their own box. */
+html body.marks-test-active, html body.allen-practice-active, html body.allen-cbt-active, html body.qx-cbt-session, html body.qx-q-fullscreen,
+html:has(body .eg-test-root), html:has(body .mtk-test-root) { overflow-x: hidden !important; }
+@supports (overflow: clip) {
+  html:has(body .eg-test-root), html:has(body .mtk-test-root), html body:has(.eg-test-root), html body:has(.mtk-test-root) { overflow-x: clip !important; }
+}
+html body .eg-test-root .eg-body, html body .eg-test-root #egQArea.eg-body, html body #qzrrQArea, html body .qzrr-q-area,
+html body #app-main#app-main .eg-test-root .eg-main, html body #app-main#app-main .eg-test-root .eg-q-card { overscroll-behavior-x: none; }
+html body .eg-test-root .eg-q-stem, html body .eg-test-root .eg-opt, html body .mtk-test-root .mtk-q-text, html body .mtk-test-root .mtk-opt,
+html body .qzrr-cbt .mtk-q-text, html body .qx-sol-flow { min-width: 0; max-width: 100%; overflow-wrap: anywhere; }
+html body .eg-test-root .katex.qx-katex-wide, html body .mtk-test-root .katex.qx-katex-wide, html body .qzrr-cbt .katex.qx-katex-wide,
+html body #qaSolReveal .katex.qx-katex-wide, html body #egSolPanel .katex.qx-katex-wide, html body .qx-sol-card .katex.qx-katex-wide {
+  display: inline-block !important; max-width: 100% !important; overflow-x: auto !important; overflow-y: hidden !important;
+  vertical-align: middle !important; padding: .28em 0 !important; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; scrollbar-width: thin;
+}
+html body .eg-test-root .katex.qx-katex-wide > .katex-html, html body .mtk-test-root .katex.qx-katex-wide > .katex-html, html body .qzrr-cbt .katex.qx-katex-wide > .katex-html,
+html body .qx-sol-card .katex.qx-katex-wide > .katex-html { white-space: nowrap !important; display: inline-block !important; }
+html body .eg-test-root pre, html body .mtk-test-root pre, html body .qzrr-cbt pre, html body .qx-sol-flow pre { max-width: 100%; overflow-x: auto; white-space: pre; }
+html body .eg-test-root .eg-opt img, html body .mtk-test-root .mtk-opt img, html body .qzrr-cbt img, html body .qx-sol-flow img, html body .eg-test-root svg:not(.katex svg) { max-width: 100% !important; height: auto; }
+html body .eg-test-root .eg-opt table, html body .mtk-test-root .mtk-opt table, html body .qzrr-cbt table { display: block; max-width: 100%; overflow-x: auto; }
+html body .eg-test-root mjx-container, html body .mtk-test-root mjx-container { max-width: 100%; overflow-x: auto; overflow-y: hidden; }
+/* fixed footers: full width of the layout viewport, notch-safe side padding */
+html body .eg-test-root > #egFoot, html body .eg-test-root #egFoot, html body .mtk-test-root .qx-prac-foot {
+  left: 0 !important; right: 0 !important; max-width: 100% !important; transform: none !important; translate: none !important; box-sizing: border-box !important;
+  padding-left: max(12px, env(safe-area-inset-left, 0px)) !important; padding-right: max(12px, env(safe-area-inset-right, 0px)) !important;
+}

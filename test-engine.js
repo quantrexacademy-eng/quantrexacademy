@@ -2916,7 +2916,10 @@ const QuantrexTestEngine = (() => {
       if (!area) return;
       var isQuizrr = !!(area.id === "qzrrQArea" || (area.classList && area.classList.contains("qzrr-q-area")));
       area.style.setProperty("overflow-y", "auto", "important");
-      area.style.setProperty("overflow-x", "auto", "important");
+      /* qxmd311: never pan the whole question sideways (a long inline equation made the panel slide left
+         against the footer). Wide math/tables/images scroll inside their own box (qx-layout-guard.js). */
+      area.style.setProperty("overflow-x", "hidden", "important");
+      area.style.setProperty("overscroll-behavior-x", "none", "important");
       area.style.setProperty("visibility", "visible", "important");
       area.style.setProperty("opacity", "1", "important");
       area.style.setProperty("touch-action", "pan-x pan-y", "important");

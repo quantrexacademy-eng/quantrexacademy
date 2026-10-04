@@ -1,10 +1,10 @@
 {
-  "cache": "qx-pwa-qxmd310",
-  "ts": 1791100000310,
-  "title": "qxmd310: Dark test screen and landscape fix",
+  "cache": "qx-pwa-qxmd311",
+  "ts": 1791100000311,
+  "title": "qxmd311: Footer stays fixed, new Print options",
   "site": "https://www.quantrexacademy.com",
-  "build": "qxmd310",
-  "body": "Test screen fully dark in dark mode (Exit button visible again). On short and landscape screens the question now opens at its first line. Stored answers unchanged.",
+  "build": "qxmd311",
+  "body": "The Previous / Check / Next bar no longer slides left on phones when a question has a long equation; wide math scrolls inside its own box. New Print / Save as PDF in Settings > Tools, results and bookmarks: questions only, with answer key, with solutions, answer key only, or just your mistakes. Stored answers unchanged.",
   "package": "com.quantrexacademy.app",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }
