@@ -332,7 +332,9 @@ function ctNewDraft(exam) {
     totalQs: CT_DEFAULT_QS,
     timePerQ: 120,
     durationSec: CT_DEFAULT_QS * 120,
-    durationManual: false
+    durationManual: false,
+    difficulty: new Set(),
+    scoringId: "4_-1"
   };
   ctApplyExamDefaults(draft, exam);
   return draft;
@@ -593,7 +595,7 @@ function ctWizardProgress(step) {
   const steps = [
     { id: "pick", n: "1", lab: "Exam" },
     { id: "chapters", n: "2", lab: "Chapters" },
-    { id: "years", n: "3", lab: "Years" }
+    { id: "years", n: "3", lab: "Settings" }
   ];
   const idx = steps.findIndex(s => s.id === step);
   const pills = steps.map((s, i) => {
@@ -609,12 +611,54 @@ function ctWizardPreviewBar(draft, nextLabel, nextFn, nextDisabled) {
   return `<div class="ct-wiz-preview-bar">
     <button type="button" class="ct-wiz-back-btn" onclick="ctWizardBack()">←</button>
     <div class="ct-wiz-preview-mid">
-      <small>Test Preview</small>
+      <small>Your test</small>
       <div class="ct-wiz-prev-badges">${ctPreviewBadges(draft)}</div>
+      <div class="ct-wiz-sum-line">${ctSummaryLine(draft, mins)}</div>
       ${draft.wizardStep === "years" ? `<div class="ct-wiz-prev-stats"><span><strong>${draft.totalQs}</strong> Qs</span><span><strong>${mins}</strong> Mins</span></div>` : ""}
     </div>
     <button type="button" class="ct-wiz-next-btn ${nextDisabled ? "disabled" : ""}" ${nextDisabled ? "disabled" : ""} onclick="${nextFn}">${nextLabel}</button>
   </div>`;
+}
+
+/* qxmd312: one-line summary for the compact bottom bar (phones) */
+function ctSummaryLine(draft, mins) {
+  const subs = ctSelectedSubjects(draft).map(s => (ctSubjectStyle(s.title).short || s.title));
+  const parts = [draft.examTitle || "Exam"];
+  if (subs.length) parts.push(subs.join("+"));
+  let nch = 0;
+  try { nch = ctSelectedChapters(draft).length; } catch (_) { nch = (draft.chapterIds && draft.chapterIds.size) || 0; }
+  if (draft.wizardStep !== "pick") parts.push(nch + " ch");
+  if (draft.wizardStep === "years") { parts.push(draft.totalQs + " Qs"); parts.push(mins + " min"); }
+  return parts.map(x => String(x).replace(/[<>&"]/g, "")).join(" · ");
+}
+
+const CT_DIFFS = ["Easy", "Medium", "Hard"];
+const CT_SCORING = [
+  { id: "4_-1", label: "+4 / \u22121", sub: "Correct +4, wrong \u22121", sc: { correct: 4, wrong: -1, unattempted: 0, numericalWrong: 0 } },
+  { id: "4_0", label: "+4 / 0", sub: "No negative marking", sc: { correct: 4, wrong: 0, unattempted: 0, numericalWrong: 0 } },
+  { id: "1_0", label: "+1 / 0", sub: "Count correct answers", sc: { correct: 1, wrong: 0, unattempted: 0, numericalWrong: 0 } }
+];
+function ctScoringFor(id) { return (CT_SCORING.find(x => x.id === id) || CT_SCORING[0]); }
+function ctNormDiff(d) {
+  const t = String(d || "").trim().toLowerCase();
+  if (/^e/.test(t)) return "Easy";
+  if (/^m/.test(t)) return "Medium";
+  if (/^h|^d/.test(t)) return "Hard";
+  return "";
+}
+function ctToggleDiff(d) {
+  if (!_ctDraft) return;
+  if (!(_ctDraft.difficulty instanceof Set)) _ctDraft.difficulty = new Set();
+  if (d === "all") _ctDraft.difficulty.clear();
+  else if (_ctDraft.difficulty.has(d)) _ctDraft.difficulty.delete(d);
+  else _ctDraft.difficulty.add(d);
+  if (_ctDraft.difficulty.size === CT_DIFFS.length) _ctDraft.difficulty.clear();
+  ctRender(ctWizPayload());
+}
+function ctSetScoring(id) {
+  if (!_ctDraft) return;
+  _ctDraft.scoringId = ctScoringFor(id).id;
+  ctRender(ctWizPayload());
 }
 
 function ctPickStepHtml(draft, exams) {
@@ -822,6 +866,15 @@ function ctYearsStepHtml(draft) {
         <button type="button" class="ct-wiz-duration-bump" onclick="ctBumpDuration(30)">+30 min</button>
       </div>
       <p class="ct-wiz-est-time">${draft.examTitle || "Exam"} default: <strong>${autoMins} min</strong> (${draft.totalQs} Qs × ${perQLabel}) · Test time: <strong>${mins} min</strong>${draft.durationManual ? " · custom" : ""}</p>
+      <h4 style="margin-top:14px">Difficulty</h4>
+      <div class="ct-wiz-set-chips ct-wiz-diff-chips">${(() => {
+        const ds = draft.difficulty instanceof Set ? draft.difficulty : new Set();
+        return `<button type="button" class="ct-wiz-set-chip ${ds.size ? "" : "on"}" onclick="ctToggleDiff('all')">All</button>` +
+          CT_DIFFS.map(d => `<button type="button" class="ct-wiz-set-chip ${ds.has(d) ? "on" : ""}" aria-pressed="${ds.has(d) ? "true" : "false"}" onclick="ctToggleDiff('${d}')">${d}</button>`).join("");
+      })()}</div>
+      <h4 style="margin-top:14px">Marking scheme</h4>
+      <div class="ct-wiz-set-chips ct-wiz-mark-chips">${CT_SCORING.map(m => `<button type="button" class="ct-wiz-set-chip ${(draft.scoringId || "4_-1") === m.id ? "on" : ""}" title="${m.sub}" onclick="ctSetScoring('${m.id}')">${m.label}</button>`).join("")}</div>
+      <p class="ct-wiz-est-time">${ctScoringFor(draft.scoringId).sub}${draft.difficulty instanceof Set && draft.difficulty.size ? " · " + [...draft.difficulty].join(" + ") + " only" : " · all difficulty levels"}</p>
     </section>
     <section class="ct-wiz-section">
       <h4>Select Year of Paper You Want to Include</h4>
@@ -845,6 +898,7 @@ function ctYearsStepHtml(draft) {
       <div class="ct-wiz-sum-card"><small>Chapters</small><strong>${chapters.length} selected</strong><p>${chNames || "—"}${extra}</p></div>
       <div class="ct-wiz-sum-card"><small>Paper</small><strong>${draft.totalQs} questions · ${mins} min</strong></div>
       <div class="ct-wiz-sum-card"><small>Years</small><strong>${presetLabels[draft.yearPreset] || "All Years"}</strong></div>
+      <div class="ct-wiz-sum-card"><small>Difficulty · Marking</small><strong>${draft.difficulty instanceof Set && draft.difficulty.size ? [...draft.difficulty].join(" + ") : "All levels"} · ${ctScoringFor(draft.scoringId).label}</strong></div>
     </div>
   </div>`;
 }
@@ -1024,7 +1078,9 @@ function ctPreviewModalHtml(test, forTeacher) {
         <div class="marks-preview-stats">
           <div class="marks-preview-stat"><strong>${test.totalQs}</strong><small>Questions</small></div>
           <div class="marks-preview-stat"><strong>${mins} Mins</strong><small>Duration</small></div>
+          <div class="marks-preview-stat"><strong>${test.scoring ? ctScoringFor(test.scoringId).label : "+4 / \u22121"}</strong><small>Marking</small></div>
         </div>
+        ${test.difficulty && test.difficulty.length ? `<p class="ct-preview-years"><strong>Difficulty</strong><br>${test.difficulty.join(" + ")}</p>` : ""}
         ${yearLines ? `<p class="ct-preview-years"><strong>Previous year (${yearMeta})</strong><br>${yearLines}</p>` : ""}
         ${sub ? `<p class="ct-preview-subj"><strong>${sub}</strong><br>${chList}</p>` : (chList ? `<p class="marks-preview-chapters">${chList}</p>` : "")}
         ${shareRow}
@@ -1271,6 +1327,8 @@ function ctRefreshChapterChrome() {
   const sel = ctSelectedChapters(_ctDraft).length;
   const countEl = document.querySelector(".ct-wiz-sel-count");
   if (countEl) countEl.textContent = sel + " chapter" + (sel !== 1 ? "s" : "") + " selected";
+  const sumEl = document.querySelector(".ct-wiz-sum-line");
+  if (sumEl) sumEl.textContent = ctSummaryLine(_ctDraft, Math.round((_ctDraft.durationSec || CT_DEFAULT_MINS * 60) / 60));
   const next = document.querySelector(".ct-wiz-next-btn");
   if (next) {
     next.disabled = !sel;
@@ -1565,6 +1623,21 @@ async function ctGenerateTest() {
       ctRender(ctWizPayload());
       return;
     }
+    /* qxmd312: difficulty filter uses each question's own difficulty tag; never guessed */
+    const diffSel = _ctDraft.difficulty instanceof Set ? _ctDraft.difficulty : new Set();
+    if (diffSel.size) {
+      const byDiff = filtered.filter(q => diffSel.has(ctNormDiff(q && q.difficulty)));
+      if (!byDiff.length) {
+        showToast("⚠️ No " + [...diffSel].join(" / ") + " questions in these chapters. Choose another level.");
+        _ctDraft.wizardStep = "years";
+        ctRender(ctWizPayload());
+        return;
+      }
+      if (byDiff.length < (_ctDraft.totalQs || 0) && typeof showToast === "function") {
+        showToast("Only " + byDiff.length + " " + [...diffSel].join(" / ") + " questions available. Test uses all of them.");
+      }
+      filtered = byDiff;
+    }
 
     await new Promise(r => setTimeout(r, 400));
 
@@ -1600,7 +1673,10 @@ async function ctGenerateTest() {
       modeLabel: `Custom · ${Math.round(_ctDraft.durationSec / 60)} min`,
       yearPreset: _ctDraft.yearPreset,
       yearPresetLabel: presetLabels[_ctDraft.yearPreset],
-      yearLabels
+      yearLabels,
+      difficulty: [...diffSel],
+      scoringId: ctScoringFor(_ctDraft.scoringId).id,
+      scoring: Object.assign({}, ctScoringFor(_ctDraft.scoringId).sc)
     };
 
     if (teacherGen) {
@@ -1698,6 +1774,7 @@ function ctAttemptTest(id) {
     testId: t.id,
     marksMode: true,
     organizeJee: false,
+    scoring: t.scoring || undefined,
     practiceMode: !t.timed,
     uiMode: ui,
     _qxFormat: fmt,

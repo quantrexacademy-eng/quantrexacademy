@@ -158,7 +158,7 @@
         "headers": [
           {
             "key": "Cache-Control",
-            "value": "no-cache"
+            "value": "public, max-age=0, must-revalidate, s-maxage=3600"
           }
         ]
       },
@@ -167,7 +167,7 @@
         "headers": [
           {
             "key": "Cache-Control",
-            "value": "no-cache"
+            "value": "public, max-age=0, must-revalidate, s-maxage=3600"
           }
         ]
       },
@@ -176,7 +176,7 @@
         "headers": [
           {
             "key": "Cache-Control",
-            "value": "no-cache"
+            "value": "public, max-age=0, must-revalidate, s-maxage=3600"
           },
           {
             "key": "Service-Worker-Allowed",
