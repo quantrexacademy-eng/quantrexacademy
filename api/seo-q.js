@@ -7,6 +7,9 @@ const path = require("path");
 const crypto = require("crypto");
 
 const SITE = "https://www.quantrexacademy.com";
+/* qxmd315: SEO wrapper only (robots/JSON-LD/prev-next/cache). Question + solution rendering is unchanged. */
+const seoQuality = require("../lib/seo-quality");
+const seoOrg = require("../lib/seo-org");
 const ROOT = process.env.QX_SITE_ROOT || process.cwd();
 const _shardCache = Object.create(null);
 const _shardOrder = [];
@@ -58,7 +61,11 @@ async function loadRelated(req, rec) {
   const pack = await readJson(req, "data/seo/lists/" + hub + "__" + sk + ".json");
   const items = (pack && pack.chapters && pack.chapters[ck] && pack.chapters[ck].items) || [];
   const cap = /math/i.test(String(rec.subject || "")) ? 16 : 8;
-  return items.filter((x) => String(x.id) !== String(rec.id)).slice(0, cap);
+  const rel = items.filter((x) => String(x.id) !== String(rec.id)).slice(0, cap);
+  /* qxmd315: previous / next question in the chapter list order */
+  const at = items.findIndex((x) => String(x.id) === String(rec.id));
+  rel.nav = at >= 0 ? { prev: items[at - 1] || null, next: items[at + 1] || null, pos: at + 1, total: items.length } : null;
+  return rel;
 }
 
 function esc(s) {
@@ -265,7 +272,9 @@ function render(rec, related) {
   let short = qtxt.slice(0, 68);
   if (qtxt.length > 68) short = short.replace(/\s+\S*$/, "") + "...";
   const examBit = [rec.exam, rec.year].filter(Boolean).join(" ");
-  const title = `${short} | ${examBit} PYQ with solution | Quantrex Academy`;
+  const quality = seoQuality.classify(rec);
+  const indexable = quality === "good";
+  const title = [short, (examBit ? examBit + " " : "") + "PYQ with solution", "Quantrex Academy"].filter(Boolean).join(" | ");
   const desc = `${qtxt.slice(0, 150)}${qtxt.length > 150 ? "..." : ""} ${examBit} ${rec.subject || ""} previous year question with answer and step-by-step solution on Quantrex Academy.`;
   const url = `${SITE}/q/${encodeURIComponent(rec.id)}/${encodeURIComponent(rec.slug)}`;
   const topicUrl = hub === "other" ? `${SITE}/questions` : `${SITE}/${hub}/${subSlug}/${chSlug}`;
@@ -299,60 +308,50 @@ function render(rec, related) {
     .join("");
   const ogImage = stemFigUrls.length ? absoluteUrl(stemFigUrls[0]) : SITE + "/assets/quantrex-logo-3d-192.png";
   const ogIsFig = stemFigUrls.length > 0;
+  const nav = related && related.nav;
+  const pnHtml = nav && (nav.prev || nav.next)
+    ? `<nav class="pn" aria-label="Previous and next question">${nav.prev ? `<a class="pv" href="/q/${esc(nav.prev.id)}/${esc(nav.prev.slug)}" rel="prev"><small>← Previous question</small>${esc(seoOrg.clip(nav.prev.t, 90))}</a>` : ""}${nav.next ? `<a class="nx" href="/q/${esc(nav.next.id)}/${esc(nav.next.slug)}" rel="next"><small>Next question →</small>${esc(seoOrg.clip(nav.next.t, 90))}</a>` : ""}</nav>`
+    : "";
   const relHtml = (related || [])
     .map((x) => `<a href="/q/${esc(x.id)}/${esc(x.slug)}">${esc(x.t)}${x.year ? ` <small>${esc(x.year)}</small>` : ""}</a>`)
     .join("");
+  const crumbItems = [
+    { name: "Quantrex Academy", url: SITE + "/" },
+    { name: rec.exam || "Questions", url: hubUrl },
+    hub === "other" ? null : { name: rec.subject, url: SITE + "/" + hub + "/" + subSlug },
+    hub === "other" ? null : { name: rec.chapter, url: topicUrl },
+    { name: seoOrg.clip(qtxt, 80) || "Question", url: url }
+  ].filter((x) => x && x.name);
+  const solPlain = seoQuality.plain(healSeoText(String(rec.sol || "")));
   const schema = {
     "@context": "https://schema.org",
     "@graph": [
-      {
-        "@type": "EducationalOrganization",
-        "@id": SITE + "/#org",
-        name: "Quantrex Academy",
-        url: SITE,
-        logo: SITE + "/assets/quantrex-logo-3d-192.png"
-      },
-      {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Quantrex Academy", item: SITE + "/" },
-          { "@type": "ListItem", position: 2, name: rec.exam, item: hubUrl },
-          { "@type": "ListItem", position: 3, name: rec.subject, item: hub === "other" ? hubUrl : SITE + "/" + hub + "/" + subSlug },
-          { "@type": "ListItem", position: 4, name: rec.chapter, item: topicUrl },
-          { "@type": "ListItem", position: 5, name: qtxt.slice(0, 80), item: url }
-        ]
-      },
-      {
-        "@type": "QAPage",
-        mainEntity: {
-          "@type": "Question",
-          name: qtxt.slice(0, 240),
-          text: qtxt,
-          answerCount: ans || rec.sol ? 1 : 0,
-          educationalAlignment: {
-            "@type": "AlignmentObject",
-            alignmentType: "educationalSubject",
-            targetName: rec.exam + " " + rec.subject
-          },
-          acceptedAnswer:
-            ans || rec.sol
-              ? {
-                  "@type": "Answer",
-                  text: [ans && "Correct answer: " + ans, rec.sol].filter(Boolean).join("\n\n"),
-                  author: { "@type": "Organization", name: "Quantrex Academy" }
-                }
-              : undefined
-        }
-      },
-      {
-        "@type": "Quiz",
-        name: examBit + (rec.chapter ? " — " + rec.chapter : "") + " previous year question",
-        educationalLevel: "Class 11-12 / " + (rec.exam || "competitive exam"),
-        about: rec.subject,
-        isAccessibleForFree: true,
-        url: url,
-        provider: { "@id": SITE + "/#org" }
-      },
+      seoOrg.ORG,
+      seoOrg.breadcrumb(crumbItems),
+      /* QAPage only when the page has a verified answer and a real solution (education Q&A: one expert answer). */
+      indexable
+        ? {
+            "@type": "QAPage",
+            url: url,
+            mainEntity: {
+              "@type": "Question",
+              name: seoOrg.clip(qtxt, 240),
+              text: qtxt,
+              answerCount: 1,
+              educationalAlignment: {
+                "@type": "AlignmentObject",
+                alignmentType: "educationalSubject",
+                targetName: [rec.exam, rec.subject].filter(Boolean).join(" ")
+              },
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: [ans && "Correct answer: " + seoQuality.plain(ans), solPlain].filter(Boolean).join("\n\n"),
+                url: url + "#solution",
+                author: { "@type": "Organization", name: "Quantrex Academy", url: SITE + "/" }
+              }
+            }
+          }
+        : null,
       {
         "@type": "LearningResource",
         name: title,
@@ -361,11 +360,11 @@ function render(rec, related) {
         educationalUse: "practice",
         isAccessibleForFree: true,
         inLanguage: "en",
+        provider: { "@id": SITE + "/#org" },
         about: [rec.exam, rec.subject, rec.chapter].filter(Boolean).join(" · ")
       }
-    ]
+    ].filter(Boolean)
   };
-  if (!schema["@graph"][2].mainEntity.acceptedAnswer) delete schema["@graph"][2].mainEntity.acceptedAnswer;
   if (ogIsFig) {
     schema["@graph"].push({
       "@type": "ImageObject",
@@ -381,7 +380,7 @@ function render(rec, related) {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>${esc(title)}</title>
   <meta name="description" content="${esc(desc)}">
-  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+  <meta name="robots" content="${indexable ? "index,follow,max-snippet:-1,max-image-preview:large" : "noindex,follow"}">
   <link rel="canonical" href="${esc(url)}">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Quantrex Academy">
@@ -414,7 +413,7 @@ function render(rec, related) {
       }
     });
   </script>
-  <script type="application/ld+json">${JSON.stringify(schema)}</script>
+  <script type="application/ld+json">${JSON.stringify(schema).replace(/</g, "\\u003c")}</script>
   <style>
     :root{--bg:#eef4fb;--card:#fff;--ink:#0b1b33;--muted:#5b6b82;--brand:#1565C0;--line:#d4e3f4;--ok:#0f766e}
     *{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
@@ -447,6 +446,10 @@ function render(rec, related) {
     .rel a:hover{color:var(--brand)}
     .rel small{color:var(--muted);font-weight:750}
     footer{text-align:center;color:var(--muted);font-size:12px;padding:8px 16px 28px}
+    .pn{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
+    .pn a{display:block;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;color:var(--ink);text-decoration:none;font-weight:700;font-size:13px;line-height:1.4}
+    .pn a small{display:block;color:var(--brand);font-weight:800;font-size:11px;letter-spacing:.04em;text-transform:uppercase;margin-bottom:4px}
+    .pn .nx{text-align:right;grid-column:2}
   </style>
 </head>
 <body>
@@ -470,11 +473,12 @@ function render(rec, related) {
     <h1 class="q-stem">${rich(rec.text)}${stemFigs && !/<img/i.test(String(rec.text || "")) ? stemFigs : ""}</h1>
     ${opts ? `<section class="card"><h2>Options</h2><ol class="opts">${opts}</ol></section>` : ""}
     ${ans ? `<section class="card ans"><h2>Correct answer</h2><p style="margin:0;font-weight:800">${esc(ans)}</p></section>` : ""}
-    <section class="card sol">
+    <section class="card sol" id="solution">
       <h2>Step-by-step solution</h2>
       <p>${rich(rec.sol || "Open this question in the Quantrex Academy app for the full interactive solution, figures and similar PYQs.")}</p>
     </section>
     <a class="cta" href="/app.html">Practice ${esc(rec.chapter)} on Quantrex Academy →</a>
+    ${pnHtml}
     <section class="card rel">
       <h2>More from ${esc(rec.chapter)}</h2>
       ${relHtml || `<a href="${esc(topicUrl)}">All ${esc(rec.chapter)} questions</a>`}
@@ -711,10 +715,22 @@ module.exports = async function handler(req, res) {
     const id = parseId(req);
     const rec = await loadRec(req, id);
     res.setHeader("Content-Type", "text/html; charset=utf-8");
-    res.setHeader("Cache-Control", "public, s-maxage=86400, stale-while-revalidate=604800");
+    res.setHeader("Cache-Control", "public, max-age=3600, s-maxage=604800, stale-while-revalidate=2592000");
     if (!rec) {
       res.statusCode = 404;
+      res.setHeader("Cache-Control", "public, max-age=600, s-maxage=3600");
       return res.end(notFound());
+    }
+    /* qxmd315: one URL per question — /q/:id or /q/:id/<old-slug> → 301 to the canonical slug */
+    if (!q.id && rec.slug) {
+      const pm = String(req.url || "").split("?")[0].match(/^\/q\/([^/]+)(?:\/([^/]*))?\/?$/);
+      let given = pm ? pm[2] || "" : null;
+      try { given = given == null ? null : decodeURIComponent(given); } catch (_) {}
+      if (pm && given !== String(rec.slug)) {
+        res.statusCode = 301;
+        res.setHeader("Location", "/q/" + encodeURIComponent(rec.id) + "/" + encodeURIComponent(rec.slug));
+        return res.end();
+      }
     }
     res.statusCode = 200;
     return res.end(render(rec, await loadRelated(req, rec)));

@@ -1,10 +1,10 @@
 {
-  "cache": "qx-pwa-qxmd314",
-  "ts": 1791100000314,
-  "title": "qxmd314: AI Proctor (optional, on-device) and a cleaner test start",
+  "cache": "qx-pwa-qxmd315",
+  "ts": 1791100000315,
+  "title": "Search pages improved",
   "site": "https://www.quantrexacademy.com",
-  "build": "qxmd314",
-  "body": "Choose 'with AI Proctor' or 'without' when a test starts. The proctor runs fully on your device (video is never uploaded) and adds an AI Proctor Report to your analysis. The Take Test screen is shorter and clearer. Fixes a rare error right after submitting.",
+  "build": "qxmd315",
+  "body": "Faster, clearer public PYQ pages and sitemaps. Practice and tests are unchanged.",
   "package": "com.quantrexacademy.app",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }

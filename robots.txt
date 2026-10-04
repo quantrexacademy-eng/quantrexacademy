@@ -14,6 +14,8 @@ Allow: /api/restore-image
 Disallow: /api/
 Disallow: /data/seo/
 Disallow: /admin.html
+# qxmd315: internal search result pages are noindex; keep crawlers on chapter and question pages
+Disallow: /search?
 Disallow: /api/create-payment
 Disallow: /api/verify-payment
 Disallow: /api/payment-webhook
