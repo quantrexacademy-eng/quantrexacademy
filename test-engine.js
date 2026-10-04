@@ -2196,6 +2196,8 @@ const QuantrexTestEngine = (() => {
 
   function openQzrrModal(root, title, bodyHtml, opts) {
     const o = opts || {};
+    /* qxmd309: stale/detached root (QUANTREX test format has no .qzrr-cbt) -> modal never showed */
+    if (!root || !root.isConnected) root = document.querySelector(".qzrr-cbt") || document.querySelector(".eg-test-root") || document.body;
     const host = root.querySelector("#qzrrModalHost") || root;
     closeQzrrModal(root);
     const wrap = document.createElement("div");

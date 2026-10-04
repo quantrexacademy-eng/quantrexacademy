@@ -1,10 +1,10 @@
 {
-  "cache": "qx-pwa-qxmd308",
-  "ts": 1791100000308,
-  "title": "qxmd308: Test footer fully above the phone nav",
+  "cache": "qx-pwa-qxmd309",
+  "ts": 1791100000309,
+  "title": "qxmd309: Toolbars fit on small phones, Palette fixed",
   "site": "https://www.quantrexacademy.com",
-  "build": "qxmd308",
-  "body": "Test footer (Clear, Mark for Review, Previous, Save & Next) now sits fully above the phone navigation bar. Submit opens the result screen. Full solution visible. Stored answers unchanged.",
+  "build": "qxmd309",
+  "body": "Practice and test toolbars now fit on 360px phones (extra tools moved into Settings > Tools). Question Palette opens again in practice. Instructions and Question Paper open correctly in tests. Desktop layout no longer cut off on the right. Better dark mode and login header on phones. Stored answers unchanged.",
   "package": "com.quantrexacademy.app",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }

@@ -2501,6 +2501,16 @@ function forceFootVisible(force) {
         root.classList.toggle("eg-mobile", _egNarrow && !anyOpen);
         root.classList.toggle("eg-preview-open", previewOpen);
         root.classList.toggle("eg-preview-collapsed", !previewOpen);
+        /* qxmd309: practice mounts on #app-main; the palette CSS keys on .eg-test-root -> mirror the chrome classes */
+        try {
+          var _egIn = (root.classList && !root.classList.contains("eg-test-root")) ? root.querySelector(".eg-test-root") : null;
+          if (_egIn) {
+            _egIn.classList.toggle("eg-side-collapsed", !sideOpen); _egIn.classList.toggle("eg-side-open", sideOpen);
+            _egIn.classList.toggle("eg-strip-collapsed", !stripOpen); _egIn.classList.toggle("eg-strip-open", stripOpen);
+            _egIn.classList.toggle("eg-desktop-mode", !_egNarrow || anyOpen); _egIn.classList.toggle("eg-mobile", _egNarrow && !anyOpen);
+            _egIn.classList.toggle("eg-preview-open", previewOpen); _egIn.classList.toggle("eg-preview-collapsed", !previewOpen);
+          }
+        } catch (_) { /* */ }
         root.classList.remove("eg-tools-closed", "eg-tools-open", "eg-sol-showing", "eg-qxmd175", "eg-qxmd176", "eg-qxmd177", "eg-qxmd179");
         root.classList.add("eg-tools-open", "eg-qxmd220", "eg-qxmd237", "eg-qxmd238", "eg-qxmd239", "eg-qxmd250", "eg-qxmd167", "eg-qxmd170", "eg-qxmd171", "eg-qxmd173", "eg-qxmd180", "eg-qxmd182", "eg-qxtool8", "eg-qxeg1", "eg-qxeg2", "eg-qxeg3", "eg-qxeg4", "eg-qxeg5", "eg-qxeg6", "eg-qxeg7", "eg-foot-ready");
         try { root.classList.remove("eg-qxmd217", "eg-qxmd218", "eg-qxmd219"); } catch (_) {}
@@ -3152,8 +3162,10 @@ function forceFootVisible(force) {
     });
     const menu = root.querySelector("#egMenuBtn");
     const allQ = root.querySelector("#egAllQBtn");
-    function wireTap(el, fn) {
+    function wireTap(el, fn0) {
       if (!el) return;
+      /* qxmd309: one tap fires pointerup AND touchend -> toggled open then closed (Palette/All Q did nothing on phones) */
+      var fn = function (e) { var now = Date.now(); if (el._qxTapAt && now - el._qxTapAt < 450) return; el._qxTapAt = now; fn0(e); };
       el.onclick = fn;
       el.ontouchend = function (e) {
         if (!e) return;

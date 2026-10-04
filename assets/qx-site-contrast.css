@@ -1184,3 +1184,14 @@ html[data-theme="dark"] .qx-course-row {
 .qx-course-list { display: flex; flex-direction: column; gap: 8px; margin: 10px 0 12px; }
 .qx-course-row { display: flex; align-items: center; gap: 12px; width: 100%; text-align: left; }
 .qx-course-logo { width: 40px; height: 40px; object-fit: contain; flex-shrink: 0; background: #fff; border-radius: 10px; }
+
+/* qxmd309: login header (brand + JEE/Maths/NEET chips + theme) overflowed to the right on phones -> wrap */
+@media (max-width: 480px) {
+  html body > header.top:has(#themeToggle) { flex-wrap: wrap !important; row-gap: 8px !important; }
+  html body > header.top:has(#themeToggle) > div { flex-wrap: wrap !important; justify-content: flex-end !important; gap: 6px !important; min-width: 0 !important; max-width: 100% !important; margin-left: auto !important; }
+  html body > header.top:has(#themeToggle) > div > a { padding: 5px 10px !important; font-size: 11.5px !important; }
+  /* orbit nodes (Defence / Engineering) and their captions were cut by clip-path at the stage edge */
+  html body .qx-login-shell .hero .stage { clip-path: none !important; }
+  html body .qx-login-shell .hero .stage { margin-top: 18px !important; margin-bottom: 18px !important; }
+  html body .qx-login-shell .hero .stage .cat .sub { display: none !important; }
+}

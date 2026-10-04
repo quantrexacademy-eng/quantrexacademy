@@ -1,4 +1,4 @@
-/* qxmd307 layout lock - loaded last. One owner for: session viewport, header toolbars, info strip,
+/* qxmd307/309 layout lock - loaded last. One owner for: session viewport, header toolbars, info strip,
    question/solution typography, solution end visibility. (Footer geometry stays with examgoal-test-ui.js;
    allen-test-ui.js no longer paints examgoal footers.) */
 
@@ -121,3 +121,80 @@ html body #app-main#app-main .eg-test-root .eg-q-stem table, html body #app-main
 html body #app-main#app-main .eg-test-root .eg-q-stem img, html body #app-main#app-main .mtk-test-root .mtk-q-text img, html body #app-main#app-main .qx-sol-flow img { max-width: 100% !important; height: auto !important; }
 /* clean solution card */
 html body #egSolPanel#egSolPanel .qx-sol-card, html body #qaSolReveal#qaSolReveal .qx-sol-card { border-radius: 14px !important; }
+
+/* qxmd309: phone toolbars fit with no sideways scroll. Low-priority tools move to Settings > Tools
+   (practice/chapter rows already proxy them; qx-tool-overflow.js adds Print/Proctor/Instructions/Paper for tests). */
+@media (max-width: 440px) {
+  html body #app-main#app-main .eg-test-root[data-eg-mode="practice"] .eg-top > .eg-top-tools #egPlusBtn,
+  html body #app-main#app-main .eg-test-root[data-eg-mode="practice"] .eg-top > .eg-top-tools #egFullBtn,
+  html body #app-main#app-main .eg-test-root[data-eg-mode="practice"] .eg-top > .eg-top-tools #mtkReportBtn,
+  html body #app-main#app-main .eg-test-root[data-eg-mode="practice"] .eg-top > .eg-top-tools #egAllQBtn,
+  html body #app-main#app-main .eg-test-root .eg-qx-extras #egPrintBtn,
+  html body #app-main#app-main .eg-test-root .eg-qx-extras #qzrrProctorBtn,
+  html body #app-main#app-main .eg-test-root .eg-qx-extras #qzrrInstrBtn,
+  html body #app-main#app-main .eg-test-root .eg-qx-extras #qzrrPaperBtn,
+  html body #app-main#app-main .mtk-test-root .mtk-header-tools #pracGroupBtn,
+  html body #app-main#app-main .mtk-test-root .mtk-header-tools #pracFullBtn,
+  html body #app-main#app-main .mtk-test-root .mtk-header-tools #pracReportBtn,
+  html body #app-main#app-main .mtk-test-root .mtk-header-tools #pracAllQBtn { display: none !important; }
+  html body #app-main#app-main .eg-test-root .eg-top > .eg-top-tools.eg-top-tools,
+  html body #app-main#app-main .mtk-test-root .mtk-header-tools.mtk-header-tools,
+  html body #app-main#app-main .eg-test-root .eg-qx-extras > .eg-top-tools.eg-top-tools { overflow-x: visible !important; gap: 4px !important; }
+  html body #app-main#app-main .eg-test-root .eg-top > .eg-top-tools .eg-tool-btn,
+  html body #app-main#app-main .mtk-test-root .mtk-header-tools .eg-tool-btn { min-width: 42px !important; padding-left: 4px !important; padding-right: 4px !important; }
+  html body #app-main#app-main .eg-test-root .eg-top-tools .eg-tool-btn .eg-tip,
+  html body #app-main#app-main .mtk-test-root .mtk-header-tools .eg-tool-btn .eg-tip { font-size: 10px !important; }
+  html body #app-main#app-main .eg-test-root .eg-top > .eg-top-title { min-width: 0 !important; }
+  html body #app-main#app-main .eg-test-root .eg-qx-extras > .eg-top-tools.eg-top-tools { justify-content: space-around !important; }
+  html body #app-main#app-main .eg-test-root .eg-qx-extras > .eg-top-tools .eg-tool-btn { flex: 1 1 0 !important; min-width: 0 !important; max-width: 72px !important; }
+}
+
+/* qxmd309: Instructions / Question Paper modals (opened from the test toolbar or Settings > Tools) were created but
+   hidden by a legacy rule in the QUANTREX test format. The wrapper only exists while open (close removes it). */
+html body #app-main#app-main .qzrr-modal-backdrop, html body .qzrr-modal-backdrop.qzrr-modal-backdrop {
+  display: flex !important; visibility: visible !important; opacity: 1 !important; position: fixed !important; inset: 0 !important;
+  z-index: 2147483600 !important; align-items: center !important; justify-content: center !important;
+  padding: max(12px, env(safe-area-inset-top, 0px)) 12px max(12px, env(safe-area-inset-bottom, 0px)) !important;
+  background: rgba(15, 23, 42, .5) !important; box-sizing: border-box !important;
+  width: 100% !important; height: 100% !important; max-height: none !important; min-height: 0 !important; overflow: hidden !important; transform: none !important;
+  pointer-events: auto !important;
+}
+html body .qzrr-modal-backdrop.qzrr-modal-backdrop * { pointer-events: auto !important; }
+html body #app-main#app-main .qzrr-modal-backdrop .qzrr-modal, html body .qzrr-modal-backdrop.qzrr-modal-backdrop .qzrr-modal {
+  display: flex !important; flex-direction: column !important; visibility: visible !important; position: relative !important;
+  width: min(640px, 100%) !important; height: auto !important; min-height: 0 !important; max-height: 100% !important; border-radius: 14px !important; overflow: hidden !important;
+}
+html body .qzrr-modal-backdrop .qzrr-modal-body { flex: 1 1 auto !important; min-height: 0 !important; overflow: auto !important; -webkit-overflow-scrolling: touch; }
+html body .qzrr-modal-backdrop .qzrr-modal-head, html body .qzrr-modal-backdrop .qzrr-modal-foot { flex: 0 0 auto !important; }
+
+/* qxmd309: home hero card (blue gradient) - light theme text was dark slate/navy on blue (poor contrast). Match dark theme. */
+html body .dash-greet-bar.qx-hero h1, html body .dash-greet-bar.qx-hero h2 { color: #ffffff !important; -webkit-text-fill-color: #ffffff !important; }
+html body .dash-greet-bar.qx-hero p { color: rgba(255, 255, 255, .9) !important; -webkit-text-fill-color: rgba(255, 255, 255, .9) !important; }
+html body .dash-greet-bar.qx-hero .qx-plan-chip, html body .dash-greet-bar.qx-hero .dash-premium-btn {
+  color: #ffffff !important; -webkit-text-fill-color: #ffffff !important; border: 1px solid rgba(255, 255, 255, .35) !important;
+}
+
+/* qxmd309: desktop/landscape (sidebar layout) - .main is a flex item with margin-left for the fixed sidebar; min-width:auto let
+   its 1100px content push it past the viewport (topbar Login, hero and stats cut off on the right). */
+html body .app > .main { min-width: 0 !important; }
+
+/* qxmd309: top bar user chip is an empty circle while logged out (Login link is shown instead) */
+html body #qxUserChip.qx-user-chip:empty { display: none !important; }
+
+/* qxmd309: dark theme polish - numeric answer box had a square slate slab behind the input; question palette stayed light */
+html[data-theme="dark"] body #app-main#app-main .qx-num-entry, html body #app-main#app-main .eg-test-root.qx-theme-dark .qx-num-entry,
+html body #app-main#app-main .eg-test-root[data-test-theme="dark"] .qx-num-entry { background: transparent !important; box-shadow: none !important; }
+html[data-theme="dark"] body #app-main#app-main .eg-test-root:not([data-test-theme="light"]) #egSide.eg-side,
+html body #app-main#app-main .eg-test-root[data-test-theme="dark"] #egSide.eg-side {
+  background: #0f172a !important; color: #e2e8f0 !important; border-color: #334155 !important;
+}
+html[data-theme="dark"] body #app-main#app-main .eg-test-root:not([data-test-theme="light"]) #egSide .eg-side-head,
+html[data-theme="dark"] body #app-main#app-main .eg-test-root:not([data-test-theme="light"]) #egSide .eg-legend,
+html body #app-main#app-main .eg-test-root[data-test-theme="dark"] #egSide .eg-side-head,
+html body #app-main#app-main .eg-test-root[data-test-theme="dark"] #egSide .eg-legend { color: #e2e8f0 !important; }
+html[data-theme="dark"] body #app-main#app-main .eg-test-root:not([data-test-theme="light"]) #egSide .eg-pal-cell.eg-unseen,
+html body #app-main#app-main .eg-test-root[data-test-theme="dark"] #egSide .eg-pal-cell.eg-unseen {
+  background: #1e293b !important; color: #e2e8f0 !important; -webkit-text-fill-color: #e2e8f0 !important; border-color: #334155 !important;
+}
+html body #app-main#app-main .eg-test-root #egSide .eg-legend { display: flex !important; flex-wrap: wrap !important; gap: 6px 12px !important; }
+html body #app-main#app-main .eg-test-root #egSide .eg-legend > span { display: inline-flex !important; align-items: center !important; gap: 5px !important; white-space: nowrap !important; }
