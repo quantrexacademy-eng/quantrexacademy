@@ -1717,6 +1717,10 @@ const QuantrexTestEngine = (() => {
               <span class="qzrr-ico qzrr-ico-gold" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M4 8.2h3.1l1.3-1.9h7.2l1.3 1.9H20a1.4 1.4 0 0 1 1.4 1.4v8A1.4 1.4 0 0 1 20 19H4a1.4 1.4 0 0 1-1.4-1.4v-8A1.4 1.4 0 0 1 4 8.2z" stroke="#d4af37" stroke-width="1.7"/><circle cx="12" cy="13.2" r="3" stroke="#d4af37" stroke-width="1.7"/></svg></span>
               AI Proctor
             </button>
+            ${window.QxPrint ? `<button type="button" class="qzrr-tool-btn qzrr-tool-print" id="qzrrPrintBtn" title="Print / Save as PDF">
+              <span class="qzrr-ico qzrr-ico-blue" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M7 8V3.5h10V8" stroke="#42a5f5" stroke-width="1.7"/><rect x="3.5" y="8" width="17" height="8.5" rx="1.6" stroke="#42a5f5" stroke-width="1.7"/><path d="M7 14h10v6.5H7z" stroke="#42a5f5" stroke-width="1.7"/></svg></span>
+              Print
+            </button>` : ""}
           </div>
           <button type="button" class="qzrr-submit-top" id="qxSubmitTop" data-qx-submit="1"
             onclick="event.preventDefault();event.stopPropagation();if(window.qxSubmitTest){window.qxSubmitTest();}return false;">Submit</button>
@@ -3085,6 +3089,8 @@ const QuantrexTestEngine = (() => {
         }
       }
     } catch (_) { /* */ }
+    // qxmd314: the test may have been submitted while we awaited the fetch above
+    if (!session || session.submitted) return;
     const textNeed = questionTextNeedsHydrate(q);
     // Numerical NAT never needs option hydrate
     const isNumNow = q && isCurrentNumericalUI(q);
@@ -3142,6 +3148,7 @@ const QuantrexTestEngine = (() => {
       _optsLoadTimer = setTimeout(() => finishOptsFail(q), 2500);
       QuantrexCatalog.fillQuestion(q).then((updated) => {
         clearTimeout(_optsLoadTimer);
+        if (!session || session.submitted) return;
         const qq = updated || q;
         if (updated && updated.id != null && window.TS_ACTIVE_QMAP) {
           window.TS_ACTIVE_QMAP[updated.id] = updated;
@@ -6241,7 +6248,7 @@ function enterMarksTestMode() {
   // CSS full-window only — never browser Fullscreen (that paints a second layer over subject tabs)
   try {
     if (typeof qxFullWindowWanted === "function" && qxFullWindowWanted()) { if (typeof qxRestoreFullWindow === "function") qxRestoreFullWindow(); }
-    else if (document.fullscreenElement && document.exitFullscreen) document.exitFullscreen().catch(function () {});
+    else if (document.fullscreenElement && document.exitFullscreen && !window.__qxProctorFs) document.exitFullscreen().catch(function () {});
   } catch (_) { /* */ }
 }
 
@@ -6735,9 +6742,9 @@ async function startTest(questionIds, title, returnTo, options) {
       launchTestSession(main);
       _qxStartPainted = true;
       try {
-        if (!config.practiceMode && typeof QxAiProctor !== "undefined" && QxAiProctor.attach) {
-          var gateOn = QxAiProctor.shouldGate ? QxAiProctor.shouldGate(config) : false;
-          if (gateOn) QxAiProctor.attach();
+        if (!config.practiceMode && typeof QxAiProctor !== "undefined") {
+          if (QxAiProctor.begin) QxAiProctor.begin(config);
+          else if (QxAiProctor.attach && QxAiProctor.shouldGate && QxAiProctor.shouldGate(config)) QxAiProctor.attach();
         }
       } catch (_pr) { /* */ }
       try { if (typeof qxClearPracticeFailsafe === "function") qxClearPracticeFailsafe(); } catch (_) { /* */ }
@@ -6836,9 +6843,19 @@ async function startTest(questionIds, title, returnTo, options) {
     }
   };
 
-  const launchMarks = () => {
+  const launchMarks0 = () => {
     if (marksMode && !skipCd) showMarksCountdown(run);
     else { enterMarksTestMode(); run(); }
+  };
+  // qxmd314: AI Proctor choice — once, at test start (after instructions), never for practice/resume.
+  const launchMarks = () => {
+    if (!practiceMode && !opts.resumeData && typeof QxAiProctor !== "undefined" && QxAiProctor.choose) {
+      let went = false;
+      const go = () => { if (went) return; went = true; launchMarks0(); };
+      try { QxAiProctor.choose(config).then(go, go); } catch (_) { go(); }
+      return;
+    }
+    launchMarks0();
   };
 
   // Instructions: Test Series only. PYQ mock + practice never show exam instructions.

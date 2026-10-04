@@ -2386,6 +2386,7 @@ function tsStandaloneLaunchTest(testId, test, meta, seriesId, questionIds, opts,
       if (!mount) throw new Error("No mount element");
       if (typeof launchTestSession === "function") launchTestSession(mount);
       else throw new Error("launchTestSession missing");
+      try { if (typeof QxAiProctor !== "undefined" && QxAiProctor.begin) QxAiProctor.begin(config); } catch (_) { /* */ }
     } catch (err) {
       console.error("tsStandaloneLaunchTest:", err);
       showToast("⚠️ Test could not start: " + (err.message || "error"));
@@ -2394,7 +2395,17 @@ function tsStandaloneLaunchTest(testId, test, meta, seriesId, questionIds, opts,
     }
   };
 
+  // qxmd314: AI Proctor choice once, after instructions are accepted (not on resume)
   const startAfterInstructions = () => {
+    if (!o.resumeData && typeof QxAiProctor !== "undefined" && QxAiProctor.choose) {
+      let went = false;
+      const go = () => { if (went) return; went = true; startAfterInstructions0(); };
+      try { QxAiProctor.choose(config).then(go, go); } catch (_) { go(); }
+      return;
+    }
+    startAfterInstructions0();
+  };
+  const startAfterInstructions0 = () => {
     // Quizrr path: no extra countdown flash — go straight into CBT (like Quizrr)
     if (config.uiMode === "quizrr") {
       if (typeof enterMarksTestMode === "function") enterMarksTestMode();

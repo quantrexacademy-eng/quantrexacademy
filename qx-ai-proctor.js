@@ -1,1082 +1,779 @@
-/**
- * Quantrex AI Proctor — still photos on integrity events. No video recording.
- * Flags are review indicators, never "CHEATING DETECTED". Default OFF until toggle.
- * qxmd297: richer client integrity intelligence for review (tab, focus, copy/paste,
- * print, fullscreen, face hints, rapid-nav, short dwell, display heuristic).
- * qxmd303: draggable camera PIP + extra review-grade signals. Never auto-fail.
+/* Quantrex Academy — AI Proctor v2 (qxmd314)
+ * Opt-in per test (choice shown once at test start). 100% on-device:
+ * - Face AI: TF.js BlazeFace, lazy-loaded from our own hosting only when the student picks AI Proctor.
+ * - Video frames are analysed in memory and never uploaded. Optional tiny thumbnails stay in this tab only.
+ * - Browser signals: tab hidden, window blur, full-screen exit, copy/cut/paste, right-click, restricted keys,
+ *   devtools-like resize, extended display, camera off / permission revoked.
+ * - Events are debounced episodes {type, start, duration, question} — only suspicious moments are kept.
+ * Public API kept compatible with test-engine.js: shouldGate, enabled, setEnabled, gate, attach, stop,
+ * mountReport, noteNav, noteExternal, getState, showTabSwitchWarn, integrityIntel, ensureState, isGating.
+ * New: choose(config) -> Promise<{proctor:boolean}>, begin(config).
  */
 (function (global) {
   "use strict";
-
-  var MAX_SNAPS = 8;
-  var SNAP_W = 480;
+  var VER = "qxmd314";
+  var VENDOR = "vendor/proctor/";
   var LOG_KEY = "qx_ai_proctor_log";
-  var PREF_KEY = "qx_pref_ai_proctor";
   var PIP_POS_KEY = "qx_pr_pip_pos";
+  var MAX_THUMBS = 12;
+  var TICK_MS = 700;
+  // persistence (ms) before a frame condition becomes an event; clear time before it closes
+  var HOLD = { noface: 3000, multiface: 2000, lookaway: 4000, far: 6000, dark: 3000 };
+  var CLEAR_MS = 1500;
+  var TYPES = {
+    noface: { label: "No face visible", sev: "high" },
+    multiface: { label: "Multiple faces", sev: "high" },
+    lookaway: { label: "Looking away / head turned", sev: "medium" },
+    far: { label: "Face too far from camera", sev: "low" },
+    dark: { label: "Camera blocked or too dark", sev: "high" },
+    camoff: { label: "Camera turned off / permission revoked", sev: "high" },
+    tab: { label: "Tab switched / app hidden", sev: "high" },
+    blur: { label: "Left the test window", sev: "medium" },
+    fullscreen: { label: "Exited full screen", sev: "medium" },
+    copy: { label: "Copy / cut", sev: "medium" },
+    paste: { label: "Paste", sev: "medium" },
+    context: { label: "Right-click menu", sev: "low" },
+    hotkey: { label: "Restricted shortcut", sev: "medium" },
+    devtools: { label: "Developer tools suspected", sev: "medium" },
+    display: { label: "Extra display connected", sev: "medium" }
+  };
+  var SEV_W = { high: 12, medium: 6, low: 2 };
+
+  var _pending = null;     // { stream, config } from choose()
   var _state = null;
   var _stream = null;
   var _video = null;
   var _pip = null;
-  var _tick = null;
-  var _faceTimer = null;
-  var _css = false;
-  var _gating = false;
-  var _lastBlur = 0;
-  var _lastVis = 0;
-  var _lastFace = 0;
-  var _lastCopy = 0;
-  var _lastPaste = 0;
-  var _lastPrint = 0;
-  var _lastCtx = 0;
-  var _lastLeave = 0;
-  var _lastResize = 0;
-  var _lastKey = 0;
-  var _lastSel = 0;
-  var _lastDev = 0;
-  var _lastDevice = 0;
+  var _loop = null;
+  var _clock = null;
+  var _model = null;
+  var _modelState = "idle"; // idle|loading|ready|failed
+  var _canvas = null;
   var _listening = false;
-  var _pipDrag = null;
+  var _cssDone = false;
+  var _gating = false;
+  var _drag = null;
+  var _detBusy = false;
 
-  function bust() {
-    return encodeURIComponent((typeof global.QX_BUILD === "string" && global.QX_BUILD) || "qxmd303");
-  }
-  function ensureCss() {
-    if (_css || !document.head) return;
-    if (document.getElementById("qxAiProctorCss")) { _css = true; return; }
-    var l = document.createElement("link");
-    l.id = "qxAiProctorCss";
-    l.rel = "stylesheet";
-    l.href = "assets/qx-ai-proctor.css?v=" + bust();
-    document.head.appendChild(l);
-    _css = true;
-  }
-  function nowLabel(ts) {
-    var d = new Date(ts || Date.now());
-    var p = function (n) { return (n < 10 ? "0" : "") + n; };
-    return p(d.getHours()) + ":" + p(d.getMinutes()) + ":" + p(d.getSeconds());
-  }
+  function $(sel, root) { return (root || document).querySelector(sel); }
   function esc(s) {
-    return String(s || "").replace(/[&<>"]/g, function (c) {
+    return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) {
       return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c];
     });
   }
-  function sessionObj() {
-    try {
-      if (typeof QuantrexTestEngine !== "undefined" && QuantrexTestEngine.getSession) {
-        return QuantrexTestEngine.getSession();
-      }
-    } catch (_) { /* */ }
-    return null;
+  function ensureCss() {
+    if (_cssDone || !document.head) return;
+    _cssDone = true;
+    if (document.getElementById("qxAiProctorCss")) return;
+    var l = document.createElement("link");
+    l.id = "qxAiProctorCss";
+    l.rel = "stylesheet";
+    l.href = "assets/qx-ai-proctor.css?v=" + VER;
+    document.head.appendChild(l);
   }
-  function isPractice(sess) {
-    sess = sess || sessionObj();
-    return !!(sess && sess.practiceMode);
+  function toast(msg) { try { if (typeof global.showToast === "function") global.showToast(msg); } catch (_) { /* */ } }
+  function sess() {
+    try { return (global.QuantrexTestEngine && QuantrexTestEngine.getSession) ? QuantrexTestEngine.getSession() : null; } catch (_) { return null; }
   }
-  function prefOn() {
-    try { return localStorage.getItem(PREF_KEY) === "1"; } catch (_) { return false; }
+  function qNo() {
+    var s = sess();
+    return (s && typeof s.idx === "number") ? s.idx + 1 : null;
   }
-  function setEnabled(on) {
-    try { localStorage.setItem(PREF_KEY, on ? "1" : "0"); } catch (_) { /* */ }
+  function qAt(ts) {
+    var log = _state && _state.qlog, q = null;
+    if (log) for (var i = 0; i < log.length && log[i].t <= ts; i++) q = log[i].q;
+    return q != null ? q : qNo();
   }
-  function shouldGate(config) {
-    if (!prefOn()) return false;
-    if (config && config.practiceMode) return false;
-    if (isPractice()) return false;
-    return true;
-  }
-
-  function bump(field) {
+  function noteQ() {
     if (!_state) return;
-    _state[field] = (_state[field] || 0) + 1;
+    var q = qNo(), log = _state.qlog;
+    if (q != null && (!log.length || log[log.length - 1].q !== q)) log.push({ t: Date.now(), q: q });
   }
+  function since() { return _state ? Math.max(0, Date.now() - _state.startedAt) : 0; }
+  function active() { return !!(_state && !_state.ended); }
 
-  function pushEvent(type, severity, label, note, withPhoto) {
-    if (!_state) return;
+  /* ---------------- episodes (debounced events) ---------------- */
+  function openEp(type, note, atMs) {
+    if (!active()) return null;
+    var cur = _state.open[type];
+    if (cur) return cur;
     var ev = {
-      t: Date.now(),
       type: type,
-      severity: severity || "y",
-      label: label || type,
-      note: note || "",
-      photoId: null
+      label: (TYPES[type] || {}).label || type,
+      sev: (TYPES[type] || {}).sev || "low",
+      t0: Math.max(0, (atMs != null ? atMs : Date.now()) - _state.startedAt),
+      dur: null,
+      q: qAt(atMs != null ? atMs : Date.now()),
+      note: note || ""
     };
     _state.events.push(ev);
-    if (severity === "o" || severity === "r") _state.reviewCount += 1;
-    if (type === "focus" || type === "tab") _state.focusChanges += 1;
-    if (type === "camera") _state.cameraCuts += 1;
-    if (type === "multiface") _state.multiFace += 1;
-    if (withPhoto) snapshot(ev);
+    _state.open[type] = ev;
+    thumb(ev);
+    updatePip();
     return ev;
   }
-
-  function snapshot(ev) {
-    if (!_video || !_state) return;
-    if (_state.snaps.length >= MAX_SNAPS) return;
+  function closeEp(type, atMs) {
+    if (!_state) return;
+    var ev = _state.open[type];
+    if (!ev) return;
+    ev.dur = Math.max(0, (atMs != null ? atMs : Date.now()) - _state.startedAt - ev.t0);
+    delete _state.open[type];
+    updatePip();
+  }
+  var _lastInst = {};
+  function instant(type, note, gapMs) {
+    if (!active()) return null;
+    var now = Date.now();
+    if (_lastInst[type] && now - _lastInst[type] < (gapMs || 1500)) return null;
+    _lastInst[type] = now;
+    var ev = openEp(type, note);
+    if (ev) closeEp(type, now);
+    return ev;
+  }
+  function thumb(ev) {
     try {
-      var w = _video.videoWidth || 640;
-      var h = _video.videoHeight || 480;
-      if (!w || !h) return;
-      var canvas = document.createElement("canvas");
-      var scale = SNAP_W / w;
-      canvas.width = SNAP_W;
-      canvas.height = Math.max(80, Math.round(h * scale));
-      var ctx = canvas.getContext("2d");
-      ctx.drawImage(_video, 0, 0, canvas.width, canvas.height);
-      var url = canvas.toDataURL("image/jpeg", 0.62);
-      var id = "s" + _state.snaps.length;
-      _state.snaps.push({ id: id, t: Date.now(), url: url, event: ev && ev.type });
-      if (ev) ev.photoId = id;
-    } catch (_) { /* stills are best-effort; never record video */ }
+      if (!_video || !_state || _state.thumbs >= MAX_THUMBS) return;
+      if (!_video.videoWidth) return;
+      var c = document.createElement("canvas");
+      c.width = 96;
+      c.height = Math.round(96 * _video.videoHeight / _video.videoWidth) || 72;
+      c.getContext("2d").drawImage(_video, 0, 0, c.width, c.height);
+      ev.thumb = c.toDataURL("image/jpeg", 0.55);
+      _state.thumbs += 1;
+    } catch (_) { /* best effort; stays in this tab */ }
   }
 
-  function unbindIntel() {
+  /* ---------------- vendor loading (lazy, self-hosted) ---------------- */
+  function loadScript(src) {
+    return new Promise(function (res, rej) {
+      var s = document.createElement("script");
+      s.src = src;
+      s.async = true;
+      s.onload = function () { res(); };
+      s.onerror = function () { rej(new Error("load " + src)); };
+      document.head.appendChild(s);
+    });
+  }
+  function loadModel() {
+    if (_modelState === "ready" || _modelState === "loading") return;
+    _modelState = "loading";
+    updatePip();
+    var p = global.tf ? Promise.resolve() : loadScript(VENDOR + "tf.min.js?v=" + VER);
+    p.then(function () {
+      return global.blazeface ? null : loadScript(VENDOR + "blazeface.min.js?v=" + VER);
+    }).then(function () {
+      var tf = global.tf;
+      return tf.setBackend("webgl").catch(function () { return false; }).then(function (ok) {
+        if (ok === false || tf.getBackend() !== "webgl") return tf.setBackend("cpu");
+      }).then(function () { return tf.ready(); });
+    }).then(function () {
+      return global.blazeface.load({ modelUrl: VENDOR + "blazeface/model.json?v=" + VER, maxFaces: 4, scoreThreshold: 0.72 });
+    }).then(function (m) {
+      _model = m;
+      _modelState = "ready";
+      if (_state) { _state.modelReady = true; _state.backend = global.tf.getBackend(); }
+      updatePip();
+    }).catch(function (e) {
+      _modelState = "failed";
+      if (_state) _state.modelFailed = String((e && e.message) || e).slice(0, 120);
+      updatePip();
+    });
+  }
+
+  /* ---------------- frame analysis ---------------- */
+  function lumaStats() {
     try {
-      document.removeEventListener("visibilitychange", onVis);
-      window.removeEventListener("blur", onBlur);
-      document.removeEventListener("fullscreenchange", onFs);
-      document.removeEventListener("webkitfullscreenchange", onFs);
-      document.removeEventListener("copy", onCopy, true);
-      document.removeEventListener("cut", onCut, true);
-      document.removeEventListener("paste", onPaste, true);
-      window.removeEventListener("beforeprint", onBeforePrint);
-      document.removeEventListener("contextmenu", onCtx, true);
-      document.removeEventListener("keydown", onKey, true);
-      document.removeEventListener("pointerleave", onPointerLeave, true);
-      window.removeEventListener("resize", onResize);
-      window.removeEventListener("pagehide", onPageHide);
-      document.removeEventListener("pointerdown", onInput, true);
-      document.removeEventListener("keydown", onInput, true);
-      document.removeEventListener("selectionchange", onSelect);
-      window.removeEventListener("offline", onOffline);
-      window.removeEventListener("online", onOnline);
-      window.removeEventListener("orientationchange", onOrient);
-      if (navigator.mediaDevices && navigator.mediaDevices.removeEventListener) {
-        navigator.mediaDevices.removeEventListener("devicechange", onDeviceChange);
+      if (!_canvas) { _canvas = document.createElement("canvas"); _canvas.width = 32; _canvas.height = 24; }
+      var ctx = _canvas.getContext("2d", { willReadFrequently: true });
+      ctx.drawImage(_video, 0, 0, 32, 24);
+      var d = ctx.getImageData(0, 0, 32, 24).data;
+      var n = d.length / 4, sum = 0, sq = 0;
+      for (var i = 0; i < d.length; i += 4) {
+        var y = 0.299 * d[i] + 0.587 * d[i + 1] + 0.114 * d[i + 2];
+        sum += y; sq += y * y;
       }
-    } catch (_) { /* */ }
-    _listening = false;
+      var mean = sum / n;
+      return { mean: mean, sd: Math.sqrt(Math.max(0, sq / n - mean * mean)) };
+    } catch (_) { return null; }
   }
-
-  function stopStream() {
-    try {
-      if (_stream) _stream.getTracks().forEach(function (t) { try { t.stop(); } catch (_) { /* */ } });
-    } catch (_) { /* */ }
-    _stream = null;
-    if (_tick) { clearInterval(_tick); _tick = null; }
-    if (_faceTimer) { clearInterval(_faceTimer); _faceTimer = null; }
-    unbindPipDrag();
-    if (_pip && _pip.parentNode) _pip.parentNode.removeChild(_pip);
-    _pip = null;
-    _video = null;
-    unbindIntel();
-  }
-
-  function showTabSwitchWarn(count) {
-    if (document.getElementById("qxPrTabWarn")) return;
-    ensureCss();
-    var n = (count != null && Number(count) > 0)
-      ? Number(count)
-      : ((_state && _state.focusChanges) || 1);
-    var overlay = document.createElement("div");
-    overlay.id = "qxPrTabWarn";
-    overlay.className = "qx-pr-tabwarn";
-    overlay.innerHTML =
-      '<div class="qx-pr-tabwarn-card" role="dialog" aria-modal="true" aria-labelledby="qxPrTabWarnTitle">' +
-        '<button type="button" class="qx-pr-tabwarn-x" aria-label="Close">×</button>' +
-        '<h2 id="qxPrTabWarnTitle">Warning: Tab Switching Detected</h2>' +
-        "<p>You have switched tabs " + n + " time" + (n === 1 ? "" : "s") + " during this test.</p>" +
-        "<p>Tab switching is not allowed as it may be considered a violation of test integrity.</p>" +
-        "<p>Please remain on this tab for the duration of the test.</p>" +
-        '<div class="qx-pr-tabwarn-note"><strong>Note:</strong> Repeated tab switching may result in your test being terminated.</div>' +
-        '<div class="qx-pr-tabwarn-act"><button type="button" class="qx-pr-tabwarn-ok">I Understand</button></div>' +
-      "</div>";
-    document.body.appendChild(overlay);
-    function closeWarn() { try { overlay.remove(); } catch (_) { /* */ } }
-    var ok = overlay.querySelector(".qx-pr-tabwarn-ok");
-    var x = overlay.querySelector(".qx-pr-tabwarn-x");
-    if (ok) ok.onclick = closeWarn;
-    if (x) x.onclick = closeWarn;
-  }
-
-  function onVis() {
-    if (!_state || _state.ended) return;
-    if (document.hidden) {
-      if (Date.now() - _lastVis < 1200) return;
-      _lastVis = Date.now();
-      _state._tabHidAt = Date.now();
-      pushEvent("tab", "o", "Browser tab or window hidden", "Potential integrity event detected — requires review.", true);
-      try { showTabSwitchWarn(); } catch (_) { /* */ }
-    } else if (_state._tabHidAt) {
-      var hid = Date.now() - _state._tabHidAt;
-      _state.tabHiddenMs = (_state.tabHiddenMs || 0) + hid;
-      _state._tabHidAt = 0;
-      if (hid > 8000) {
-        pushEvent("tab", "o", "Returned after a long hide", "Tab was hidden for " + Math.round(hid / 1000) + "s. Potential integrity event — requires review.", false);
-      }
+  function classify(preds, vw) {
+    if (!preds.length) return "noface";
+    if (preds.length >= 2) return "multiface";
+    var p = preds[0];
+    var tl = p.topLeft, br = p.bottomRight, lm = p.landmarks || [];
+    var w = Math.abs(br[0] - tl[0]);
+    if (vw && w < vw * 0.11) return "far";
+    if (lm.length >= 4) {
+      var re = lm[0], le = lm[1], nose = lm[2], mouth = lm[3];
+      var eyeDx = Math.abs(le[0] - re[0]) || 1;
+      var midX = (le[0] + re[0]) / 2, midY = (le[1] + re[1]) / 2;
+      var yaw = (nose[0] - midX) / eyeDx;              // ~0 when facing camera
+      var span = (mouth[1] - midY) || 1;
+      var pitch = (nose[1] - midY) / span;             // ~0.45–0.6 when level
+      if (Math.abs(yaw) > 0.5 || eyeDx < w * 0.22) return "lookaway";
+      if (pitch < 0.18 || pitch > 0.9) return "lookaway";
     }
+    return "ok";
   }
-  function onBlur() {
-    if (!_state || _state.ended) return;
-    if (document.hidden) return;
-    if (Date.now() - _lastBlur < 2500) return;
-    _lastBlur = Date.now();
-    pushEvent("focus", "o", "Browser focus changed", "Window lost focus. Potential integrity event — requires review.", true);
+  function applyFrame(kind) {
+    var now = Date.now();
+    var st = _state;
+    st.frames += 1;
+    if (kind === "ok") st.okFrames += 1;
+    ["noface", "multiface", "lookaway", "far", "dark"].forEach(function (k) {
+      if (k === kind) {
+        st.cond[k] = st.cond[k] || { since: now };
+        st.cond[k].clearAt = 0;
+        if (!st.open[k] && now - st.cond[k].since >= HOLD[k]) openEp(k, "", st.cond[k].since);
+      } else if (st.cond[k]) {
+        if (!st.cond[k].clearAt) st.cond[k].clearAt = now;
+        if (now - st.cond[k].clearAt >= CLEAR_MS) {
+          if (st.open[k]) closeEp(k, st.cond[k].clearAt);
+          delete st.cond[k];
+        }
+      }
+    });
+    st.lastKind = kind;
   }
-  function onFs() {
-    if (!_state || _state.ended) return;
+  function tick() {
+    if (!active()) return;
+    noteQ();
+    if (_detBusy) return;
+    if (document.hidden) return; // tab episode already covers this time
+    if (!_video || !_stream) return;
+    var tr = _stream.getVideoTracks()[0];
+    if (!tr || tr.readyState === "ended" || !_stream.active) { openEp("camoff"); return; }
+    if (tr.muted) { applyFrame("dark"); return; }
+    if (_state.open.camoff) closeEp("camoff");
+    if (!_video.videoWidth || _video.readyState < 2) return;
+    var ls = lumaStats();
+    if (ls && (ls.mean < 22 || (ls.sd < 6 && ls.mean < 60))) { applyFrame("dark"); return; }
+    if (_modelState !== "ready" || !_model) return;
+    _detBusy = true;
+    var t0 = performance.now();
+    _model.estimateFaces(_video, false).then(function (preds) {
+      _detBusy = false;
+      if (!active()) return;
+      _state.detMs = Math.round(performance.now() - t0);
+      applyFrame(classify(preds || [], _video.videoWidth));
+    }).catch(function () { _detBusy = false; });
+  }
+
+  /* ---------------- browser signals ---------------- */
+  var H = {};
+  H.vis = function () {
+    if (!active()) return;
+    if (document.hidden) { closeEp("blur"); openEp("tab"); }
+    else closeEp("tab");
+  };
+  H.blur = function () {
+    if (!active() || document.hidden) return;
+    var at = Date.now();
+    clearTimeout(H._blurT);
+    H._blurT = setTimeout(function () {
+      if (!active() || document.hidden || document.hasFocus()) return;
+      var ae = document.activeElement;
+      if (ae && ae.tagName === "IFRAME") return;
+      openEp("blur", "", at);
+    }, 1500);
+  };
+  H.focus = function () { clearTimeout(H._blurT); closeEp("blur"); };
+  H.fs = function () {
+    if (!active()) return;
     var fs = document.fullscreenElement || document.webkitFullscreenElement;
-    if (!fs) {
-      pushEvent("fullscreen", "o", "Full-screen exit", "Full-screen mode ended during the test. Potential integrity event — requires review.", true);
-    }
+    if (fs) { _state.fsSeen = true; closeEp("fullscreen"); hideFsBar(); }
+    else if (_state.fsSeen && Date.now() - _state.startedAt > 2500) { openEp("fullscreen"); showFsBar(); }
+  };
+  H.copy = function () { instant("copy"); };
+  H.paste = function () { instant("paste"); };
+  H.ctx = function () { instant("context", "", 2500); };
+  H.key = function (e) {
+    if (!active() || !e) return;
+    var k = String(e.key || "").toLowerCase();
+    var bad = ((e.ctrlKey || e.metaKey) && /^(c|v|x|p|u|s)$/.test(k)) ||
+      ((e.ctrlKey || e.metaKey) && e.shiftKey && /^(i|j|c)$/.test(k)) || k === "f12" || k === "printscreen";
+    if (bad) instant("hotkey", k.toUpperCase(), 1200);
+  };
+  H.resize = function () {
+    if (!active()) return;
+    clearTimeout(H._rzT);
+    H._rzT = setTimeout(checkDevtools, 600);
+  };
+  function checkDevtools() {
+    if (!active()) return;
+    var wide = (global.outerWidth || 0) - (global.innerWidth || 0);
+    var tall = (global.outerHeight || 0) - (global.innerHeight || 0);
+    var desk = !/Android|iPhone|iPad|Mobile/i.test(navigator.userAgent || "");
+    var sus = desk && global.outerWidth > 0 && (wide > 200 || tall > 260);
+    if (sus) openEp("devtools"); else closeEp("devtools");
   }
-  function onCopy() {
-    if (!_state || _state.ended) return;
-    if (Date.now() - _lastCopy < 1500) return;
-    _lastCopy = Date.now();
-    bump("copyEvents");
-    pushEvent("copy", "o", "Copy or cut attempted", "Potential integrity event — requires review.", true);
-  }
-  function onCut() { onCopy(); }
-  function onPaste() {
-    if (!_state || _state.ended) return;
-    if (Date.now() - _lastPaste < 1500) return;
-    _lastPaste = Date.now();
-    bump("pasteEvents");
-    pushEvent("paste", "o", "Paste attempted", "Potential integrity event — requires review.", true);
-  }
-  function onBeforePrint() {
-    if (!_state || _state.ended) return;
-    if (Date.now() - _lastPrint < 2000) return;
-    _lastPrint = Date.now();
-    bump("printEvents");
-    pushEvent("print", "o", "Print dialog opened", "Potential integrity event — requires review.", false);
-  }
-  function onCtx(e) {
-    if (!_state || _state.ended) return;
-    if (Date.now() - _lastCtx < 2500) return;
-    _lastCtx = Date.now();
-    bump("ctxEvents");
-    pushEvent("context", "y", "Context menu opened", "Right-click during the test. Review indicator.", false);
-    try { if (e && e.preventDefault) e.preventDefault(); } catch (_) { /* */ }
-  }
-  function onKey(e) {
-    if (!_state || _state.ended || !e) return;
-    var k = (e.key || "").toLowerCase();
-    var combo = (e.ctrlKey || e.metaKey) && (k === "c" || k === "v" || k === "x" || k === "p" || k === "u" || k === "s");
-    var shiftI = (e.ctrlKey || e.metaKey) && e.shiftKey && (k === "i" || k === "j" || k === "c");
-    var printScr = k === "printscreen";
-    var f12 = k === "f12";
-    if (!combo && !shiftI && !printScr && !f12) return;
-    if (Date.now() - _lastKey < 1200) return;
-    _lastKey = Date.now();
-    bump("keyFlags");
-    pushEvent("hotkey", "o", "Restricted shortcut", "A copy, paste, print, or similar shortcut was used. Potential integrity event — requires review.", true);
-  }
-  function onPointerLeave(e) {
-    if (!_state || _state.ended) return;
-    if (e && e.target && e.target !== document.documentElement && e.target !== document.body) return;
-    if (Date.now() - _lastLeave < 4000) return;
-    _lastLeave = Date.now();
-    bump("pointerLeaves");
-    pushEvent("pointer", "y", "Pointer left the test window", "Mouse or pointer left the page. Review indicator.", false);
-  }
-  function onResize() {
-    if (!_state || _state.ended) return;
-    if (Date.now() - _lastResize < 4000) return;
-    _lastResize = Date.now();
-    bump("resizeEvents");
-    sampleDisplay();
-  }
-  function onPageHide() {
-    if (!_state || _state.ended) return;
-    pushEvent("pagehide", "o", "Page hide / freeze", "The test page was hidden or frozen. Potential integrity event — requires review.", true);
-  }
-  function onInput() {
-    if (_state) _state.lastInputAt = Date.now();
-  }
-  function onSelect() {
-    if (!_state || _state.ended) return;
+  function checkDisplay() {
+    if (!active()) return;
     try {
-      var sel = window.getSelection && window.getSelection();
-      var t = sel && sel.toString ? String(sel.toString()) : "";
-      if (t.length < 80) return;
-      if (Date.now() - _lastSel < 4000) return;
-      _lastSel = Date.now();
-      bump("selectFlags");
-      pushEvent("select", "y", "Large text selection", "A long passage was selected during the test. Review indicator.", false);
+      if (global.screen && global.screen.isExtended === true) openEp("display");
+      else closeEp("display");
     } catch (_) { /* */ }
   }
-  function onOffline() {
-    if (!_state || _state.ended) return;
-    bump("offlineEvents");
-    pushEvent("net", "y", "Went offline", "Network dropped during the test. Review indicator.", false);
+  H.screen = function () { checkDisplay(); };
+  function bind() {
+    if (_listening) return;
+    _listening = true;
+    document.addEventListener("visibilitychange", H.vis);
+    global.addEventListener("blur", H.blur);
+    global.addEventListener("focus", H.focus);
+    document.addEventListener("fullscreenchange", H.fs);
+    document.addEventListener("webkitfullscreenchange", H.fs);
+    document.addEventListener("copy", H.copy, true);
+    document.addEventListener("cut", H.copy, true);
+    document.addEventListener("paste", H.paste, true);
+    document.addEventListener("contextmenu", H.ctx, true);
+    document.addEventListener("keydown", H.key, true);
+    global.addEventListener("resize", H.resize);
+    try { if (global.screen && global.screen.addEventListener) global.screen.addEventListener("change", H.screen); } catch (_) { /* */ }
   }
-  function onOnline() {
-    if (!_state || _state.ended) return;
-    pushEvent("net", "g", "Back online", "Network restored.", false);
+  function unbind() {
+    if (!_listening) return;
+    _listening = false;
+    document.removeEventListener("visibilitychange", H.vis);
+    global.removeEventListener("blur", H.blur);
+    global.removeEventListener("focus", H.focus);
+    document.removeEventListener("fullscreenchange", H.fs);
+    document.removeEventListener("webkitfullscreenchange", H.fs);
+    document.removeEventListener("copy", H.copy, true);
+    document.removeEventListener("cut", H.copy, true);
+    document.removeEventListener("paste", H.paste, true);
+    document.removeEventListener("contextmenu", H.ctx, true);
+    document.removeEventListener("keydown", H.key, true);
+    global.removeEventListener("resize", H.resize);
+    try { if (global.screen && global.screen.removeEventListener) global.screen.removeEventListener("change", H.screen); } catch (_) { /* */ }
   }
-  function onOrient() {
-    if (!_state || _state.ended) return;
-    bump("orientEvents");
-    pushEvent("orient", "y", "Orientation changed", "Device rotated during the test. Review indicator.", false);
-  }
-  function onDeviceChange() {
-    if (!_state || _state.ended) return;
-    if (Date.now() - _lastDevice < 2500) return;
-    _lastDevice = Date.now();
-    bump("deviceChanges");
-    pushEvent("camera", "o", "Media device changed", "A camera or audio device was added or removed. Potential integrity event — requires review.", true);
-  }
-
-  function sampleDisplay() {
-    if (!_state || _state.ended) return;
+  function watchPermission() {
     try {
-      var scr = window.screen;
-      if (!scr) return;
-      var extra = (scr.width || 0) - (window.innerWidth || 0);
-      var off = (typeof scr.availLeft === "number" && scr.availLeft < 0) ||
-        (typeof window.screenLeft === "number" && window.screenLeft < -80);
-      if ((extra > 520 && off) || (scr.width > 0 && extra > scr.width * 0.45 && off)) {
-        if (!_state.secondScreen) {
-          _state.secondScreen = 1;
-          pushEvent("display", "y", "Additional display heuristic", "Window geometry suggests another screen may be in use. This is a weak signal and requires review.", false);
-        }
-      }
-      if (window.innerWidth >= 900 && Date.now() - _lastDev > 8000) {
-        var gapW = (window.outerWidth || 0) - (window.innerWidth || 0);
-        var gapH = (window.outerHeight || 0) - (window.innerHeight || 0);
-        if (gapW > 280 || gapH > 280) {
-          _lastDev = Date.now();
-          if (!_state.devTools) {
-            _state.devTools = 1;
-            pushEvent("devtools", "y", "Developer-tools heuristic", "Browser chrome is unusually large. Weak signal and requires review.", false);
-          }
-        }
-      }
+      if (!navigator.permissions || !navigator.permissions.query) return;
+      navigator.permissions.query({ name: "camera" }).then(function (p) {
+        p.onchange = function () {
+          if (!active()) return;
+          if (p.state === "denied") openEp("camoff", "permission revoked");
+        };
+      }).catch(function () { /* */ });
     } catch (_) { /* */ }
   }
 
-  function sampleFace() {
-    if (!_state || _state.ended || !_video) return;
-    if (Date.now() - _lastFace < 8000) return;
+  /* ---------------- full-screen helpers ---------------- */
+  function reqFs() {
     try {
-      if (typeof FaceDetector === "undefined") return;
-      if (!_state._fd) _state._fd = new FaceDetector({ fastMode: true, maxDetectedFaces: 4 });
-      _state._fd.detect(_video).then(function (faces) {
-        _lastFace = Date.now();
-        var n = (faces && faces.length) || 0;
-        _state.faceSamples += 1;
-        if (n === 0) {
-          _state.faceMiss += 1;
-          _state._faceStreak = (_state._faceStreak || 0) + 1;
-          if (_state._faceStreak === 3 || _state._faceStreak === 6) {
-            pushEvent("face", "o", "Face not visible for several checks", "Lighting or camera angle may also cause this. Potential integrity event — requires review.", true);
-          } else {
-            pushEvent("face", "y", "Face temporarily not visible", "Lighting or camera angle may also cause this.", true);
-          }
-        } else if (n >= 2) {
-          _state._faceStreak = 0;
-          _state.multiFace += 1;
-          pushEvent("multiface", "r", "Multiple-person event detected", "Potential integrity event detected — requires review.", true);
-        } else {
-          _state._faceStreak = 0;
-          _state.faceHit += 1;
-        }
-      }).catch(function () { /* detector optional */ });
+      var el = document.documentElement;
+      var r = el.requestFullscreen ? el.requestFullscreen() : (el.webkitRequestFullscreen ? el.webkitRequestFullscreen() : null);
+      if (r && r.catch) r.catch(function () { /* phones / iframes may refuse */ });
     } catch (_) { /* */ }
   }
+  function exitFs() {
+    try {
+      if (document.fullscreenElement && document.exitFullscreen) document.exitFullscreen().catch(function () {});
+      else if (document.webkitFullscreenElement && document.webkitExitFullscreen) document.webkitExitFullscreen();
+    } catch (_) { /* */ }
+  }
+  function showFsBar() {
+    if (document.getElementById("qxPrFsBar")) return;
+    var b = document.createElement("div");
+    b.id = "qxPrFsBar";
+    b.className = "qxpr-fsbar";
+    b.innerHTML = '<span>Full screen exited — this is recorded.</span><button type="button">Return to full screen</button>';
+    b.querySelector("button").onclick = function () { reqFs(); };
+    document.body.appendChild(b);
+  }
+  function hideFsBar() { var b = document.getElementById("qxPrFsBar"); if (b) b.remove(); }
 
-  function footReserve() {
-    var h = 0;
-    try {
-      var f = document.getElementById("egFoot") || document.querySelector(".qzrr-footer-actions");
-      if (f && f.getBoundingClientRect) h = Math.max(0, f.getBoundingClientRect().height || 0);
-    } catch (_) { /* */ }
-    return h || 56;
+  /* ---------------- self-view (draggable) ---------------- */
+  function updatePip() {
+    if (!_pip || !_state) return;
+    var st = $(".qxpr-pip-st", _pip);
+    if (!st) return;
+    var openKeys = Object.keys(_state.open).filter(function (k) { return k !== "tab"; });
+    var txt, cls;
+    if (_modelState === "loading") { txt = "Loading AI…"; cls = "wait"; }
+    else if (_modelState === "failed") { txt = "Signals only"; cls = "warn"; }
+    else if (openKeys.length) { txt = (TYPES[openKeys[0]] || {}).label || "Check"; cls = "bad"; }
+    else { txt = "Monitoring"; cls = "ok"; }
+    st.textContent = txt;
+    st.className = "qxpr-pip-st " + cls;
   }
-  function clampPip(el, x, y) {
-    var w = (el && el.offsetWidth) || 88;
-    var h = (el && el.offsetHeight) || 80;
-    var maxX = Math.max(4, (window.innerWidth || 320) - w - 4);
-    var maxY = Math.max(4, (window.innerHeight || 480) - h - footReserve() - 8);
+  function clampPos(x, y) {
+    var w = _pip.offsetWidth || 112, h = _pip.offsetHeight || 96;
     return {
-      x: Math.min(maxX, Math.max(4, x)),
-      y: Math.min(maxY, Math.max(4, y))
+      x: Math.min(Math.max(4, x), Math.max(4, (global.innerWidth || 360) - w - 4)),
+      y: Math.min(Math.max(4, y), Math.max(4, (global.innerHeight || 640) - h - 64))
     };
   }
-  function applyPipPos(el, x, y) {
-    if (!el) return;
-    var p = clampPip(el, x, y);
-    el.classList.add("qx-pr-pip-moved");
-    el.style.setProperty("left", p.x + "px", "important");
-    el.style.setProperty("top", p.y + "px", "important");
-    el.style.setProperty("right", "auto", "important");
-    el.style.setProperty("bottom", "auto", "important");
-    try { localStorage.setItem(PIP_POS_KEY, JSON.stringify({ x: p.x, y: p.y })); } catch (_) { /* */ }
+  function placePip(x, y, save) {
+    var p = clampPos(x, y);
+    _pip.style.left = p.x + "px";
+    _pip.style.top = p.y + "px";
+    _pip.style.right = "auto";
+    _pip.style.bottom = "auto";
+    if (save) { try { localStorage.setItem(PIP_POS_KEY, JSON.stringify(p)); } catch (_) { /* */ } }
   }
-  function restorePipPos(el) {
-    try {
-      var raw = localStorage.getItem(PIP_POS_KEY);
-      if (!raw) return;
-      var p = JSON.parse(raw);
-      if (p && typeof p.x === "number" && typeof p.y === "number") applyPipPos(el, p.x, p.y);
-    } catch (_) { /* */ }
-  }
-  function unbindPipDrag() {
-    if (!_pipDrag) return;
-    try {
-      window.removeEventListener("pointermove", _pipDrag.move);
-      window.removeEventListener("pointerup", _pipDrag.end);
-      window.removeEventListener("pointercancel", _pipDrag.end);
-    } catch (_) { /* */ }
-    _pipDrag = null;
-  }
-  function bindPipDrag(el) {
-    if (!el) return;
-    unbindPipDrag();
-    var dragging = false, sx = 0, sy = 0, ox = 0, oy = 0;
-    function start(e) {
-      if (!e) return;
-      if (e.button != null && e.button !== 0) return;
-      dragging = true;
-      el.classList.add("qx-pr-pip-dragging");
-      var r = el.getBoundingClientRect();
-      sx = e.clientX;
-      sy = e.clientY;
-      ox = r.left;
-      oy = r.top;
-      try { el.setPointerCapture && e.pointerId != null && el.setPointerCapture(e.pointerId); } catch (_) { /* */ }
-      try { e.preventDefault(); e.stopPropagation(); } catch (_) { /* */ }
-    }
-    function move(e) {
-      if (!dragging || !e) return;
-      applyPipPos(el, ox + (e.clientX - sx), oy + (e.clientY - sy));
-      try { e.preventDefault(); } catch (_) { /* */ }
-    }
-    function end() {
-      if (!dragging) return;
-      dragging = false;
-      el.classList.remove("qx-pr-pip-dragging");
-    }
-    _pipDrag = { move: move, end: end };
-    el.addEventListener("pointerdown", start);
-    window.addEventListener("pointermove", move, { passive: false });
-    window.addEventListener("pointerup", end);
-    window.addEventListener("pointercancel", end);
-  }
-  function bindCameraTracks() {
-    if (!_stream) return;
-    try {
-      _stream.getTracks().forEach(function (t) {
-        t.onended = function () {
-          if (!_state || _state.ended) return;
-          pushEvent("camera", "r", "Camera track ended", "Camera track ended. Potential integrity event — requires review.", true);
-        };
-        t.onmute = function () {
-          if (!_state || _state.ended) return;
-          pushEvent("camera", "o", "Camera muted or covered", "Camera feed muted. Potential integrity event — requires review.", true);
-        };
-      });
-    } catch (_) { /* */ }
-  }
-
   function showPip() {
-    if (_pip) return;
-    if (!_stream) return;
+    if (_pip || !_stream) return;
     ensureCss();
     _pip = document.createElement("div");
-    _pip.className = "qx-pr-pip qx-pr-pip-top";
-    _pip.setAttribute("data-qx-pr-pip", "1");
-    _pip.setAttribute("title", "Drag to move the camera preview");
-    _pip.innerHTML = '<video playsinline muted autoplay></video><div class="qx-pr-pip-bar"><span class="qx-pr-live"></span> AI PROCTOR<span class="qx-pr-pip-grip">⋮⋮</span></div>';
+    _pip.className = "qxpr-pip";
+    _pip.id = "qxPrPip";
+    _pip.setAttribute("title", "AI Proctor self-view — drag to move");
+    _pip.innerHTML = '<video playsinline muted autoplay></video>' +
+      '<div class="qxpr-pip-bar"><i class="qxpr-dot"></i><span class="qxpr-pip-st wait">Starting…</span></div>';
     document.body.appendChild(_pip);
-    var v = _pip.querySelector("video");
-    _video = v;
-    if (v && _stream) {
-      v.srcObject = _stream;
-      var p = v.play();
-      if (p && p.catch) p.catch(function () {});
-    }
-    bindPipDrag(_pip);
-    restorePipPos(_pip);
-    bindCameraTracks();
-  }
-
-  function bindIntel() {
-    if (_listening) return;
+    _video = $("video", _pip);
+    _video.srcObject = _stream;
+    var pl = _video.play();
+    if (pl && pl.catch) pl.catch(function () { /* */ });
     try {
-      document.addEventListener("visibilitychange", onVis);
-      window.addEventListener("blur", onBlur);
-      document.addEventListener("fullscreenchange", onFs);
-      document.addEventListener("webkitfullscreenchange", onFs);
-      document.addEventListener("copy", onCopy, true);
-      document.addEventListener("cut", onCut, true);
-      document.addEventListener("paste", onPaste, true);
-      window.addEventListener("beforeprint", onBeforePrint);
-      document.addEventListener("contextmenu", onCtx, true);
-      document.addEventListener("keydown", onKey, true);
-      document.addEventListener("pointerleave", onPointerLeave, true);
-      window.addEventListener("resize", onResize);
-      window.addEventListener("pagehide", onPageHide);
-      document.addEventListener("pointerdown", onInput, true);
-      document.addEventListener("keydown", onInput, true);
-      document.addEventListener("selectionchange", onSelect);
-      window.addEventListener("offline", onOffline);
-      window.addEventListener("online", onOnline);
-      window.addEventListener("orientationchange", onOrient);
-      if (navigator.mediaDevices && navigator.mediaDevices.addEventListener) {
-        navigator.mediaDevices.addEventListener("devicechange", onDeviceChange);
-      }
+      var saved = JSON.parse(localStorage.getItem(PIP_POS_KEY) || "null");
+      if (saved && typeof saved.x === "number") placePip(saved.x, saved.y, false);
     } catch (_) { /* */ }
-    _listening = true;
-  }
-
-  function attach() {
-    if (!_state || _state.ended) return;
-    bindIntel();
-    showPip();
-    if (_tick) clearInterval(_tick);
-    _tick = setInterval(function () {
-      if (!_state || _state.ended) return;
-      var now = Date.now();
-      if (_state._beatAt && now - _state._beatAt > 6000 && !document.hidden) {
-        bump("clockJumps");
-        pushEvent("pause", "o", "Session clock jumped", "The page may have been paused or backgrounded. Potential integrity event — requires review.", true);
-      }
-      _state._beatAt = now;
-      _state.cameraOkSec += (_stream && _stream.active) ? 1 : 0;
-      _state.elapsedSec += 1;
-      if (_stream && !_stream.active) {
-        pushEvent("camera", "r", "Camera temporarily unavailable", "Camera track ended. Potential integrity event — requires review.", true);
-      }
-      if (_state.lastInputAt && Date.now() - _state.lastInputAt > 180000) {
-        if (!_state._idleFlag) {
-          _state._idleFlag = true;
-          bump("idleEvents");
-          pushEvent("idle", "y", "No interaction for 3 minutes", "Long idle stretch. Review indicator — may also be thinking time.", false);
-        }
-      } else {
-        _state._idleFlag = false;
-      }
-    }, 1000);
-    if (_faceTimer) clearInterval(_faceTimer);
-    _faceTimer = setInterval(sampleFace, 5000);
-    try { sampleFace(); } catch (_) { /* */ }
-    try { sampleDisplay(); } catch (_) { /* */ }
-  }
-
-  function emptyState(config) {
-    return {
-      id: "pr_" + Date.now(),
-      title: (config && config.title) || "AI Proctored Test",
-      startedAt: Date.now(),
-      ended: false,
-      events: [],
-      snaps: [],
-      reviewCount: 0,
-      focusChanges: 0,
-      cameraCuts: 0,
-      multiFace: 0,
-      faceSamples: 0,
-      faceHit: 0,
-      faceMiss: 0,
-      cameraOkSec: 0,
-      elapsedSec: 0,
-      cameraOk: false,
-      consent: true,
-      copyEvents: 0,
-      pasteEvents: 0,
-      printEvents: 0,
-      ctxEvents: 0,
-      rapidNav: 0,
-      shortDwell: 0,
-      pointerLeaves: 0,
-      resizeEvents: 0,
-      secondScreen: 0,
-      idleEvents: 0,
-      keyFlags: 0,
-      tabHiddenMs: 0,
-      navHops: [],
-      lastNavAt: 0,
-      lastInputAt: Date.now(),
-      selectFlags: 0,
-      offlineEvents: 0,
-      orientEvents: 0,
-      deviceChanges: 0,
-      clockJumps: 0,
-      devTools: 0
-    };
-  }
-
-  function startState(config) {
-    _state = emptyState(config);
-    pushEvent("start", "g", "Test started", "AI monitoring active. Still photos only on integrity events. No automatic cheating verdict.");
-  }
-
-  function ensureState(config) {
-    if (_state) return _state;
-    startState(config || { title: "Assessment" });
-    _state.cameraOk = false;
-    return _state;
-  }
-
-  function noteExternal(info) {
-    info = info || {};
-    ensureState({ title: info.title || "Assessment" });
-    var n = Number(info.tabCount) || 0;
-    if (n > 0 && n > (_state.focusChanges || 0)) {
-      var add = n - (_state.focusChanges || 0);
-      for (var i = 0; i < add; i++) {
-        pushEvent("tab", "o", "Tab switch (session counter)", "Potential integrity event — requires review.", false);
-      }
+    var sx, sy, ox, oy, on = false;
+    function down(e) {
+      on = true; sx = e.clientX; sy = e.clientY;
+      var r = _pip.getBoundingClientRect(); ox = r.left; oy = r.top;
+      _pip.classList.add("drag");
+      try { _pip.setPointerCapture(e.pointerId); } catch (_) { /* */ }
+      e.preventDefault();
     }
+    function move(e) { if (on) { placePip(ox + e.clientX - sx, oy + e.clientY - sy, false); e.preventDefault(); } }
+    function up() { if (!on) return; on = false; _pip.classList.remove("drag"); var r = _pip.getBoundingClientRect(); placePip(r.left, r.top, true); }
+    _pip.addEventListener("pointerdown", down);
+    _pip.addEventListener("pointermove", move);
+    _pip.addEventListener("pointerup", up);
+    _pip.addEventListener("pointercancel", up);
+    _drag = { down: down };
+    updatePip();
+  }
+  function removePip() {
+    if (_pip && _pip.parentNode) _pip.parentNode.removeChild(_pip);
+    _pip = null; _video = null;
+  }
+  function stopStream(s) {
+    try { (s || _stream).getTracks().forEach(function (t) { try { t.stop(); } catch (_) { /* */ } }); } catch (_) { /* */ }
   }
 
-  function noteNav(fromIdx, toIdx, dwellSec) {
-    if (!_state || _state.ended) return;
-    var now = Date.now();
-    var jump = Math.abs((Number(toIdx) || 0) - (Number(fromIdx) || 0));
-    var dwell = Number(dwellSec) || 0;
-    _state.navHops.push({ t: now, from: fromIdx, to: toIdx, dwell: dwell, jump: jump });
-    if (_state.navHops.length > 80) _state.navHops = _state.navHops.slice(-80);
-    if (_state.lastNavAt && now - _state.lastNavAt < 700 && jump >= 1) {
-      _state.rapidNav += 1;
-      if (_state.rapidNav === 6 || _state.rapidNav === 12) {
-        pushEvent("nav", "y", "Rapid question navigation", "Several questions were skipped quickly. Review indicator.", false);
-      }
-    }
-    if (dwell > 0 && dwell < 4 && jump === 1) {
-      _state.shortDwell += 1;
-      if (_state.shortDwell === 8 || _state.shortDwell === 16) {
-        pushEvent("dwell", "y", "Very short time on several questions", "A cluster of questions was left in under 4 seconds. Review indicator.", false);
-      }
-    }
-    _state.lastNavAt = now;
-    _state.lastInputAt = now;
-  }
-
-  function stop() {
-    if (_state && !_state.ended) {
-      pushEvent("submit", "g", "Test submitted", "Attempt closed. Integrity events are for review only.");
-      _state.ended = true;
-      _state.endedAt = Date.now();
-      persistMeta();
-    }
-    stopStream();
-    global._qxProctorGating = false;
-  }
-
-  function persistMeta() {
-    if (!_state) return;
-    try {
-      var list = [];
-      try { list = JSON.parse(localStorage.getItem(LOG_KEY) || "[]") || []; } catch (_) { list = []; }
-      var intel = integrityIntel();
-      list.unshift({
-        id: _state.id,
-        title: _state.title,
-        startedAt: _state.startedAt,
-        endedAt: _state.endedAt || Date.now(),
-        reviewCount: _state.reviewCount,
-        focusChanges: _state.focusChanges,
-        cameraCuts: _state.cameraCuts,
-        multiFace: _state.multiFace,
-        eventCount: _state.events.length,
-        intelScore: intel.score,
-        intelBand: intel.band
-      });
-      localStorage.setItem(LOG_KEY, JSON.stringify(list.slice(0, 20)));
-    } catch (_) { /* */ }
-  }
-
-  function statusLine() {
-    var intel = integrityIntel();
-    if (!_state) return { label: "Not monitored", sev: "g" };
-    if (intel.score < 60 || _state.multiFace >= 1) return { label: "Review required", sev: "y" };
-    if (_state.reviewCount > 0 || intel.score < 85) return { label: "Some events require review", sev: "y" };
-    return { label: "No significant integrity events", sev: "g" };
-  }
-
-  function integrityIntel() {
-    var s = _state || {};
-    var score = 100;
-    var deductions = [];
-    function sub(n, why) {
-      if (!n) return;
-      n = Math.max(0, Math.round(n));
-      if (!n) return;
-      score -= n;
-      deductions.push({ n: n, why: why });
-    }
-    sub(Math.min(30, (s.focusChanges || 0) * 5), "Tab or window focus changes (" + (s.focusChanges || 0) + ")");
-    sub(Math.min(16, (s.copyEvents || 0) * 8), "Copy / cut events (" + (s.copyEvents || 0) + ")");
-    sub(Math.min(12, (s.pasteEvents || 0) * 6), "Paste events (" + (s.pasteEvents || 0) + ")");
-    sub(Math.min(10, (s.printEvents || 0) * 10), "Print attempts (" + (s.printEvents || 0) + ")");
-    sub(Math.min(15, (s.multiFace || 0) * 15), "Multiple-person camera events (" + (s.multiFace || 0) + ")");
-    sub(s.cameraOk ? 0 : 12, s.cameraOk ? "" : "Camera was not enabled");
-    sub(Math.min(10, (s.cameraCuts || 0) * 5), "Camera interruptions (" + (s.cameraCuts || 0) + ")");
-    sub(Math.min(8, Math.floor((s.rapidNav || 0) / 6) * 4), "Rapid navigation clusters");
-    sub(Math.min(8, Math.floor((s.shortDwell || 0) / 8) * 3), "Very short dwell clusters");
-    sub(s.secondScreen ? 4 : 0, s.secondScreen ? "Additional display heuristic" : "");
-    sub(Math.min(8, (s.keyFlags || 0) * 4), "Restricted shortcuts (" + (s.keyFlags || 0) + ")");
-    sub(Math.min(8, (s.idleEvents || 0) * 2), "Long idle stretches (" + (s.idleEvents || 0) + ")");
-    sub(Math.min(10, Math.floor((s.tabHiddenMs || 0) / 15000) * 2), "Time away from the tab");
-    sub(Math.min(8, (s.deviceChanges || 0) * 4), "Camera / device changes (" + (s.deviceChanges || 0) + ")");
-    sub(Math.min(8, (s.clockJumps || 0) * 4), "Session-clock jumps (" + (s.clockJumps || 0) + ")");
-    sub(s.devTools ? 3 : 0, s.devTools ? "Developer-tools heuristic" : "");
-    sub(Math.min(6, (s.selectFlags || 0) * 2), "Large text selections (" + (s.selectFlags || 0) + ")");
-    sub(Math.min(6, Math.floor((s.faceMiss || 0) / 3) * 2), "Face-not-visible samples");
-    score = Math.max(0, Math.min(100, score));
-    var band = score >= 85 ? "Low review" : (score >= 60 ? "Watch" : "Review required");
-    return { score: score, band: band, deductions: deductions.filter(function (d) { return d.why; }) };
-  }
-
-  function pct(n) {
-    n = Math.max(0, Math.min(100, n));
-    return (Math.round(n * 10) / 10).toFixed(1);
-  }
-
-  function buildAnalytics(data) {
-    data = data || global._qxLastAnalysis || {};
-    var rows = data.rows || [];
-    var total = data.total || rows.length || 0;
-    var correct = data.correct || 0;
-    var wrong = data.wrong || 0;
-    var skipped = data.skipped || 0;
-    var score = data.score != null ? data.score : 0;
-    var max = data.maxScore || (total * 4) || 0;
-    var acc = total ? (correct / total) * 100 : 0;
-    var times = rows.map(function (r) { return Number(r.sec || r.time || 0) || 0; });
-    var avg = times.length ? times.reduce(function (a, b) { return a + b; }, 0) / times.length : 0;
-    var topics = {};
-    rows.forEach(function (r) {
-      var t = r.chapter || r.topic || r.subject || "General";
-      if (!topics[t]) topics[t] = { attempted: 0, correct: 0, wrong: 0, time: 0 };
-      topics[t].attempted += 1;
-      if (r.correct || r.isCorrect) topics[t].correct += 1;
-      else if (!r.skip && !r.skipped && !r.isSkip) topics[t].wrong += 1;
-      topics[t].time += Number(r.sec || r.time || 0) || 0;
-    });
-    var topicRows = Object.keys(topics).map(function (k) {
-      var v = topics[k];
-      return {
-        topic: k,
-        attempted: v.attempted,
-        correct: v.correct,
-        wrong: v.wrong,
-        acc: v.attempted ? Math.round(v.correct / v.attempted * 100) : 0,
-        avg: v.attempted ? Math.round(v.time / v.attempted) : 0
-      };
-    }).sort(function (a, b) { return b.attempted - a.attempted; });
-    var weak = topicRows.filter(function (t) { return t.acc < 70; }).slice(0, 3);
-    var strong = topicRows.filter(function (t) { return t.acc >= 80; }).slice(0, 3);
-    var slow = rows.slice().sort(function (a, b) {
-      return (Number(b.sec || b.time || 0) || 0) - (Number(a.sec || a.time || 0) || 0);
-    }).slice(0, 5);
-    return {
-      total: total, correct: correct, wrong: wrong, skipped: skipped,
-      score: score, max: max, acc: acc, avg: avg, topicRows: topicRows,
-      weak: weak, strong: strong, slow: slow, pct: data.pct, timeUsed: data.timeUsed
-    };
-  }
-
-  function fmtSec(s) {
-    s = Math.max(0, Math.round(Number(s) || 0));
-    if (s < 60) return s + "s";
-    return Math.floor(s / 60) + "m " + (s % 60) + "s";
-  }
-
-  function reportHtml(data) {
-    ensureCss();
-    ensureState({ title: (data && data.title) || "Assessment" });
-    var a = buildAnalytics(data);
-    var st = statusLine();
-    var intel = integrityIntel();
-    var camPct = _state && _state.elapsedSec ? (_state.cameraOkSec / _state.elapsedSec) * 100 : (_state && _state.cameraOk ? 100 : 0);
-    var facePct = _state && _state.faceSamples ? (_state.faceHit / _state.faceSamples) * 100 : 100;
-    var name = "";
-    try {
-      var u = (global.QxAuth && QxAuth.currentUser && QxAuth.currentUser()) ||
-        (global.firebase && firebase.auth && firebase.auth().currentUser);
-      name = (u && (u.displayName || u.phoneNumber || u.email)) || "";
-    } catch (_) { /* */ }
-    var tl = ((_state && _state.events) || []).map(function (ev) {
-      return '<li><span>' + esc(nowLabel(ev.t)) + '</span><i class="qx-pr-sev ' + esc(ev.severity) + '"></i><div><strong>' +
-        esc(ev.label) + "</strong><div>" + esc(ev.note) + "</div></div></li>";
-    }).join("");
-    var photos = ((_state && _state.snaps) || []).map(function (s) {
-      return '<img src="' + s.url + '" alt="Integrity still">';
-    }).join("");
-    var topicTable = a.topicRows.slice(0, 8).map(function (t) {
-      return "<tr><td>" + esc(t.topic) + "</td><td>" + t.attempted + "</td><td>" + t.correct + "</td><td>" + t.wrong +
-        "</td><td>" + t.acc + "%</td><td>" + fmtSec(t.avg) + "</td></tr>";
-    }).join("");
-    var bars = a.topicRows.slice(0, 6).map(function (t) {
-      return '<div style="margin:6px 0 10px"><div style="display:flex;justify-content:space-between;font-size:12px"><span>' +
-        esc(t.topic) + "</span><span>" + t.acc + '%</span></div><div class="qx-pr-bar"><i style="width:' + t.acc + '%"></i></div></div>';
-    }).join("");
-    var next = [];
-    if (a.weak.length) next.push("Revise " + a.weak.map(function (w) { return w.topic; }).join(", ") + " fundamentals.");
-    next.push("Review every incorrect question before the next mock.");
-    next.push("Keep first-pass time under 3 minutes per question.");
-    if (a.avg > 120) next.push("Work on calculation speed — average time is high.");
-    else next.push("Attempt easier questions first, then return to hard items.");
-    var estAcc = Math.min(20, Math.round((100 - a.acc) * 0.25));
-    var estTime = a.avg > 90 ? 8 : 4;
-    var estConcept = a.weak.length * 5;
-    var summary = a.strong.length
-      ? ("Your strongest area was " + a.strong[0].topic + " (" + a.strong[0].acc + "% accuracy).")
-      : "Keep building accuracy across topics.";
-    if (a.weak.length) summary += " Main improvement area: " + a.weak[0].topic + " (" + a.weak[0].acc + "%).";
-    var took = [];
-    took.push((_state && _state.cameraOk) ? "Camera preview was on (still photos only, max 8)." : "Camera was off or skipped.");
-    took.push("Tab / focus changes: " + ((_state && _state.focusChanges) || 0) + ".");
-    took.push("Time away from tab: " + fmtSec((_state && _state.tabHiddenMs || 0) / 1000) + ".");
-    took.push("Copy / paste / print flags: " + (((_state && _state.copyEvents) || 0) + ((_state && _state.pasteEvents) || 0) + ((_state && _state.printEvents) || 0)) + ".");
-    took.push("Rapid-nav clusters: " + ((_state && _state.rapidNav) || 0) + " · short-dwell clusters: " + ((_state && _state.shortDwell) || 0) + ".");
-    took.push("Device / clock / selection flags: " + (((_state && _state.deviceChanges) || 0) + ((_state && _state.clockJumps) || 0) + ((_state && _state.selectFlags) || 0)) + ".");
-    took.push("Integrity intelligence: " + intel.score + "/100 · " + intel.band + ".");
-    var dedul = intel.deductions.map(function (d) {
-      return "<li>−" + d.n + " · " + esc(d.why) + "</li>";
-    }).join("") || "<li>No deductions.</li>";
-    return (
-      '<section class="qx-pr-report" id="qxPrReport">' +
-        '<article class="qx-pr-sheet">' +
-          '<header class="qx-pr-cover">' +
-            '<p class="qx-pr-kicker">Quantrex Academy</p>' +
-            "<h1>AI Test Performance Report</h1>" +
-            '<p class="qx-pr-motto">Concept Create Destiny</p>' +
-            '<div class="qx-pr-meta">' +
-              (name ? "<span>" + esc(name) + "</span>" : "") +
-              "<span>" + esc((_state && _state.title) || "Assessment") + "</span>" +
-              "<span>" + esc(new Date((_state && _state.startedAt) || Date.now()).toLocaleString()) + "</span>" +
-            "</div>" +
-          "</header>" +
-          '<div class="qx-pr-score">' +
-            '<div class="qx-pr-kpi"><small>Score</small><b>' + esc(String(a.score)) + " / " + esc(String(a.max)) + "</b></div>" +
-            '<div class="qx-pr-kpi"><small>Accuracy</small><b>' + pct(a.acc) + "%</b></div>" +
-            '<div class="qx-pr-kpi"><small>Attempted</small><b>' + (a.total - a.skipped) + " / " + a.total + "</b></div>" +
-            '<div class="qx-pr-kpi"><small>Correct</small><b>' + a.correct + "</b></div>" +
-            '<div class="qx-pr-kpi"><small>Wrong</small><b>' + a.wrong + "</b></div>" +
-            '<div class="qx-pr-kpi"><small>Unattempted</small><b>' + a.skipped + "</b></div>" +
-            '<div class="qx-pr-kpi"><small>Integrity</small><b>' + intel.score + "</b></div>" +
-            '<div class="qx-pr-kpi"><small>Review band</small><b>' + esc(intel.band) + "</b></div>" +
-          "</div>" +
-          '<div class="qx-pr-sec"><h3>AI Performance Summary</h3><p>' + esc(summary) + "</p></div>" +
-          '<div class="qx-pr-sec"><h3>How you took this test</h3><ul>' +
-            took.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") +
-          "</ul></div>" +
-          '<div class="qx-pr-sec"><h3>Integrity intelligence</h3>' +
-            "<p>Overall monitoring status: <strong>" + esc(st.label) + "</strong></p>" +
-            "<p>This score is a <strong>review aid</strong>. The system does not declare cheating and does not auto-fail the test.</p>" +
-            "<ul>" + dedul + "</ul>" +
-          "</div>" +
-          '<div class="qx-pr-sec"><h3>Topic-wise Performance</h3>' +
-            (bars || "<p>Topic breakdown appears when chapter tags are present.</p>") +
-            (topicTable
-              ? '<table class="qx-pr-table"><thead><tr><th>Topic</th><th>Attempted</th><th>Correct</th><th>Wrong</th><th>Accuracy</th><th>Avg time</th></tr></thead><tbody>' +
-                topicTable + "</tbody></table>"
-              : "") +
-          "</div>" +
-          '<div class="qx-pr-sec"><h3>Time Analytics</h3><p>Average time / question: <strong>' + fmtSec(a.avg) + "</strong></p></div>" +
-          '<div class="qx-pr-sec"><h3>Score Improvement Estimate</h3>' +
-            "<p>Current score: <strong>" + esc(String(a.score)) + "</strong></p>" +
-            "<ul><li>Accuracy improvement → +" + estAcc + " marks</li>" +
-            "<li>Time management → +" + estTime + " marks</li>" +
-            "<li>Concept revision → +" + estConcept + " marks</li></ul>" +
-            "<p>Potential target range is an estimate, not a guaranteed score.</p>" +
-          "</div>" +
-          '<div class="qx-pr-sec"><h3>Your Next Steps</h3><ol>' +
-            next.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") +
-          "</ol></div>" +
-          '<div class="qx-pr-sec"><h3>AI Proctoring Report</h3>' +
-            "<p>Camera availability: " + pct(camPct) + "% · Face visibility: " + pct(facePct) +
-            "% · Multiple face events: " + ((_state && _state.multiFace) || 0) +
-            " · Focus changes: " + ((_state && _state.focusChanges) || 0) +
-            " · Camera interruptions: " + ((_state && _state.cameraCuts) || 0) +
-            " · Potential integrity events: " + ((_state && _state.reviewCount) || 0) + "</p>" +
-            '<p class="qx-pr-disclaimer">These are indicators for review. The system does not declare cheating automatically. Lighting, connectivity, or camera limits can create false flags.</p>' +
-            (photos ? '<div class="qx-pr-photos" style="margin-top:10px">' + photos + "</div>" : "") +
-          "</div>" +
-          '<div class="qx-pr-sec"><h3>AI Proctoring Timeline</h3><ul class="qx-pr-tl">' + (tl || "<li>No events</li>") + "</ul></div>" +
-          '<div class="qx-pr-sec qx-pr-actions">' +
-            '<button type="button" class="qx-pr-btn qx-pr-btn-gold" data-qx-pr-print>Download / Print PDF</button>' +
-          "</div>" +
-        "</article>" +
-      "</section>"
-    );
-  }
-
-  function bindReport(root) {
-    if (!root) return;
-    root.querySelectorAll("[data-qx-pr-print]").forEach(function (b) {
-      b.onclick = function (e) {
-        if (e) { e.preventDefault(); e.stopPropagation(); }
-        try {
-          document.body.setAttribute("data-qx-print-mode", "report");
-          window.print();
-        } catch (_) { /* */ }
-      };
-    });
-  }
-
-  function mountReport(host, data) {
-    if (!host) return;
-    ensureCss();
-    ensureState({ title: (data && data.title) || "Assessment" });
-    if (host.querySelector && host.querySelector("#qxPrReport")) return;
-    var wrap = document.createElement("div");
-    wrap.innerHTML = reportHtml(data);
-    var node = wrap.firstChild;
-    var rc = host.querySelector && host.querySelector("#mkRcView");
-    if (rc && rc.parentNode) rc.parentNode.insertBefore(node, rc.nextSibling);
-    else host.insertAdjacentElement("afterbegin", node);
-    bindReport(host);
-  }
-
-  function checkNet() {
-    return navigator.onLine !== false;
-  }
-
-  function gate(config) {
+  /* ---------------- choice at test start ---------------- */
+  function choose(config) {
     ensureCss();
     _gating = true;
-    global._qxProctorGating = true;
+    if (_pending && _pending.stream) stopStream(_pending.stream);
+    _pending = null;
     return new Promise(function (resolve) {
+      var root = document.createElement("div");
+      root.className = "qxpr-choice";
+      root.id = "qxPrChoice";
+      root.setAttribute("role", "dialog");
+      root.setAttribute("aria-modal", "true");
+      root.setAttribute("aria-labelledby", "qxPrChoiceT");
+      var title = esc((config && config.title) || "Test");
+      root.innerHTML =
+        '<div class="qxpr-card">' +
+          '<p class="qxpr-kicker">Quantrex Academy</p>' +
+          '<h2 id="qxPrChoiceT">How do you want to take this test?</h2>' +
+          '<p class="qxpr-sub">' + title + '</p>' +
+          '<div class="qxpr-opts" data-step="pick">' +
+            '<button type="button" class="qxpr-opt qxpr-opt-ai" id="qxPrWith">' +
+              '<span class="qxpr-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2.5" y="6" width="13" height="12" rx="2.5"/><path d="M15.5 10.5 21 7.5v9l-5.5-3"/></svg></span>' +
+              '<span class="qxpr-opt-t"><b>Take test with AI Proctor</b><small>Camera + on-device AI · integrity report after submit</small></span></button>' +
+            '<button type="button" class="qxpr-opt" id="qxPrWithout">' +
+              '<span class="qxpr-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16M14 6l6 6-6 6"/></svg></span>' +
+              '<span class="qxpr-opt-t"><b>Take test without AI Proctor</b><small>Start normally</small></span></button>' +
+          '</div>' +
+          '<div class="qxpr-status" id="qxPrStatus" hidden></div>' +
+          '<p class="qxpr-privacy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6z"/></svg>Video is processed on your device and never uploaded.</p>' +
+        '</div>';
+      document.body.appendChild(root);
       var done = false;
-      var finish = function () {
+      function finish(withProctor, stream) {
         if (done) return;
         done = true;
         _gating = false;
-        global._qxProctorGating = false;
-        try { overlay.remove(); } catch (_) { /* */ }
-        resolve(true);
-      };
-      var overlay = document.createElement("div");
-      overlay.className = "qx-pr-root";
-      overlay.innerHTML =
-        '<div class="qx-pr-card" role="dialog" aria-modal="true">' +
-          '<div class="qx-pr-hero">' +
-            '<p class="qx-pr-kicker">Quantrex Academy</p>' +
-            "<h2>AI-Proctored Test</h2>" +
-            "<p>Camera stills are captured only when a potential integrity event is flagged. Video is never recorded. Flags are for review — the test is never auto-failed.</p>" +
-            '<p class="qx-pr-motto">Concept Create Destiny</p>' +
-          "</div>" +
-          '<div class="qx-pr-body">' +
-            "<ul class=\"qx-pr-list\">" +
-              "<li><i class=\"qx-pr-dot\"></i><span>Small live preview starts at the top. Drag it anywhere so questions stay fully visible.</span></li>" +
-              "<li><i class=\"qx-pr-dot\"></i><span>Tab switch, focus loss, copy/paste, print, full-screen exit, camera drop, or device change can take a still (max 8 JPEGs).</span></li>" +
-              "<li><i class=\"qx-pr-dot\"></i><span>Integrity intelligence scores the session for a human reviewer. Never an automatic cheating verdict.</span></li>" +
-              "<li><i class=\"qx-pr-dot\"></i><span>Stills stay on this device for this session. Event counts may be stored with your result.</span></li>" +
-            "</ul>" +
-            '<div class="qx-pr-checks" id="qxPrChecks"></div>' +
-            '<label class="qx-pr-consent"><input type="checkbox" id="qxPrConsent"> I have read the monitoring notice and I consent to AI proctoring with still photos on integrity events.</label>' +
-            '<div class="qx-pr-actions">' +
-              '<button type="button" class="qx-pr-btn qx-pr-btn-gold" id="qxPrStart" disabled>Start AI-Proctored Test</button>' +
-              '<button type="button" class="qx-pr-btn qx-pr-btn-ghost" id="qxPrSkip">Continue without camera</button>' +
-            "</div>" +
-            '<p class="qx-pr-note">Continuing without a camera is logged as a high-priority review event. Integrity signals (tab, copy, print) still run.</p>' +
-          "</div>" +
-        "</div>";
-      document.body.appendChild(overlay);
-      var checksEl = overlay.querySelector("#qxPrChecks");
-      var startBtn = overlay.querySelector("#qxPrStart");
-      var skipBtn = overlay.querySelector("#qxPrSkip");
-      var consent = overlay.querySelector("#qxPrConsent");
-      var rows = {
-        cam: row("Camera"),
-        net: row("Internet"),
-        br: row("Browser"),
-        fs: row("Full-screen"),
-        tab: row("Tab-switch detection"),
-        intel: row("Integrity intelligence")
-      };
-      function row(lab) {
-        var d = document.createElement("div");
-        d.className = "qx-pr-row";
-        d.innerHTML = "<span>" + lab + '</span><strong class="qx-pr-wait">Checking…</strong>';
-        checksEl.appendChild(d);
-        return d.querySelector("strong");
+        _pending = withProctor ? { stream: stream, config: config || {} } : null;
+        global.__qxProctorFs = !!withProctor; // keep the browser full screen the student just entered
+        try { root.remove(); } catch (_) { /* */ }
+        if (withProctor) loadModel();
+        resolve({ proctor: !!withProctor });
       }
-      function setRow(el, ok, lab) {
-        el.className = ok ? "qx-pr-ok" : "qx-pr-bad";
-        el.textContent = lab;
+      var status = $("#qxPrStatus", root);
+      var opts = $(".qxpr-opts", root);
+      function setStatus(html) { status.hidden = false; status.innerHTML = html; }
+      function askCamera() {
+        opts.hidden = true;
+        setStatus('<div class="qxpr-spin" aria-hidden="true"></div><p>Allow camera access to start AI Proctor…</p>');
+        if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) { denied("This browser does not support camera access."); return; }
+        navigator.mediaDevices.getUserMedia({ video: { facingMode: "user", width: { ideal: 640 }, height: { ideal: 480 } }, audio: false })
+          .then(function (stream) { finish(true, stream); })
+          .catch(function (e) {
+            var n = e && e.name;
+            denied(n === "NotAllowedError" ? "Camera permission was denied." : n === "NotFoundError" ? "No camera was found on this device." : "Camera could not be started.");
+          });
       }
-      setRow(rows.net, checkNet(), checkNet() ? "Ready" : "Offline");
-      setRow(rows.br, true, (navigator.userAgent.match(/Chrome|Edg|Firefox|Safari|CriOS/) || ["Browser"])[0]);
-      setRow(rows.tab, typeof document.hidden === "boolean", typeof document.hidden === "boolean" ? "Ready" : "Limited");
-      setRow(rows.fs, !!(document.documentElement.requestFullscreen || document.documentElement.webkitRequestFullscreen), "Available");
-      setRow(rows.intel, true, "Review-grade");
-
-      function syncStart() {
-        startBtn.disabled = !(consent.checked && _stream);
+      function denied(msg) {
+        setStatus('<p class="qxpr-err">' + esc(msg) + '</p><p class="qxpr-hint">You can allow the camera in your browser settings and retry, or continue without AI Proctor.</p>' +
+          '<div class="qxpr-row"><button type="button" class="qxpr-btn" id="qxPrRetry">Retry camera</button>' +
+          '<button type="button" class="qxpr-btn qxpr-btn-p" id="qxPrNo">Continue without AI Proctor</button></div>');
+        $("#qxPrRetry", root).onclick = function () { reqFs(); askCamera(); };
+        $("#qxPrNo", root).onclick = function () { finish(false); };
       }
-      consent.onchange = syncStart;
-
-      navigator.mediaDevices && navigator.mediaDevices.getUserMedia
-        ? navigator.mediaDevices.getUserMedia({ video: { facingMode: "user", width: { ideal: 640 }, height: { ideal: 480 } }, audio: false })
-            .then(function (stream) {
-              _stream = stream;
-              setRow(rows.cam, true, "Ready");
-              syncStart();
-            })
-            .catch(function () {
-              setRow(rows.cam, false, "Permission needed");
-              syncStart();
-            })
-        : (setRow(rows.cam, false, "Not supported"), syncStart());
-
-      startBtn.onclick = function () {
-        if (!consent.checked || !_stream) return;
-        startBtn.disabled = true;
-        startState(config);
-        _state.cameraOk = true;
-        try {
-          var el = document.documentElement;
-          if (el.requestFullscreen) el.requestFullscreen().catch(function () {});
-          else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
-        } catch (_) { /* */ }
-        finish();
-        attach();
-      };
-      skipBtn.onclick = function () {
-        startState(config);
-        _state.cameraOk = false;
-        pushEvent("camera", "r", "Camera not enabled", "Student continued without camera. High-priority review.", false);
-        finish();
-        attach();
-      };
+      $("#qxPrWith", root).onclick = function () { reqFs(); askCamera(); };
+      $("#qxPrWithout", root).onclick = function () { finish(false); };
+      setTimeout(function () { try { $("#qxPrWith", root).focus(); } catch (_) { /* */ } }, 30);
     });
   }
 
-  function historyHtml() {
-    var list = [];
-    try { list = JSON.parse(localStorage.getItem(LOG_KEY) || "[]") || []; } catch (_) { list = []; }
-    if (!list.length) return "";
-    return '<div class="qx-pr-sec"><h3>My Performance</h3><ul>' + list.slice(0, 8).map(function (r) {
-      return "<li>" + esc(r.title || "Test") + " — " + (r.reviewCount || 0) + " review events" +
-        (r.intelScore != null ? " · integrity " + r.intelScore : "") + "</li>";
-    }).join("") + "</ul></div>";
+  /* ---------------- session lifecycle ---------------- */
+  function newState(config) {
+    return {
+      id: "pr_" + Date.now(),
+      proctored: true,
+      title: (config && config.title) || "Test",
+      startedAt: Date.now(),
+      ended: false,
+      events: [],
+      open: {},
+      cond: {},
+      thumbs: 0,
+      qlog: [],
+      frames: 0,
+      okFrames: 0,
+      fsSeen: !!(document.fullscreenElement || document.webkitFullscreenElement),
+      modelReady: _modelState === "ready",
+      backend: global.tf && global.tf.getBackend ? global.tf.getBackend() : null,
+      detMs: null
+    };
+  }
+  function begin(config) {
+    if (!_pending || (config && config.practiceMode)) return false;
+    var p = _pending;
+    _pending = null;
+    if (_state && !_state.ended) stop();
+    _stream = p.stream;
+    _state = newState(config || p.config);
+    noteQ();
+    bind();
+    showPip();
+    watchPermission();
+    try {
+      _stream.getVideoTracks().forEach(function (t) {
+        t.addEventListener("ended", function () { if (active()) openEp("camoff"); });
+      });
+    } catch (_) { /* */ }
+    if (_loop) clearInterval(_loop);
+    _loop = setInterval(tick, TICK_MS);
+    if (_clock) clearInterval(_clock);
+    _clock = setInterval(function () { checkDisplay(); }, 15000);
+    checkDisplay();
+    checkDevtools();
+    if (!_state.fsSeen && document.hidden === false) { /* full screen refused (e.g. iPhone) — not an event */ }
+    loadModel();
+    return true;
+  }
+  function stop() {
+    if (_pending && _pending.stream) { stopStream(_pending.stream); _pending = null; }
+    if (_state && !_state.ended) {
+      var now = Date.now();
+      Object.keys(_state.open).forEach(function (k) { closeEp(k, now); });
+      _state.ended = true;
+      _state.endedAt = now;
+      _state.durationMs = now - _state.startedAt;
+      persist();
+    }
+    if (_loop) { clearInterval(_loop); _loop = null; }
+    if (_clock) { clearInterval(_clock); _clock = null; }
+    unbind();
+    hideFsBar();
+    if (_stream) stopStream(_stream);
+    _stream = null;
+    removePip();
+    if (_state && _state.proctored) exitFs();
+    _gating = false;
+    global._qxProctorGating = false;
+    global.__qxProctorFs = false;
+  }
+
+  /* ---------------- scoring + report ---------------- */
+  function integrityIntel() {
+    var s = _state;
+    if (!s || !s.proctored) return { score: 100, band: "na", deductions: [] };
+    var byType = {};
+    s.events.forEach(function (e) {
+      var w = SEV_W[e.sev] || 2;
+      var extra = e.dur ? Math.min(8, Math.floor(e.dur / 10000)) : 0;
+      byType[e.type] = (byType[e.type] || 0) + w + extra;
+    });
+    var total = 0, ded = [];
+    Object.keys(byType).forEach(function (k) {
+      var d = Math.min(30, byType[k]);
+      total += d;
+      ded.push({ type: k, label: (TYPES[k] || {}).label || k, points: d });
+    });
+    var score = Math.max(0, Math.round(100 - total));
+    var band = score >= 85 ? "good" : score >= 60 ? "review" : "risk";
+    return { score: score, band: band, deductions: ded };
+  }
+  function fmtT(ms) {
+    var s = Math.round((ms || 0) / 1000);
+    var h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60), x = s % 60;
+    var p = function (n) { return (n < 10 ? "0" : "") + n; };
+    return (h ? h + ":" + p(m) : m) + ":" + p(x);
+  }
+  function fmtDur(ms) {
+    if (!ms) return "instant";
+    var s = Math.round(ms / 1000);
+    if (s < 60) return s + "s";
+    return Math.floor(s / 60) + "m " + (s % 60) + "s";
+  }
+  function verdict(intel) {
+    if (intel.band === "good") return { t: "No significant concerns", d: "Monitoring found no major integrity issues in this attempt." };
+    if (intel.band === "review") return { t: "Some suspicious activity", d: "A few moments need a quick human review. AI flags are indicators, not proof." };
+    return { t: "High-risk session — manual review needed", d: "Several serious flags were recorded. Review the timeline below. AI flags are indicators, not proof." };
+  }
+  function reportHtml() {
+    var s = _state;
+    if (!s || !s.proctored) return "";
+    var intel = integrityIntel();
+    var v = verdict(intel);
+    var evs = s.events.slice().sort(function (a, b) { return a.t0 - b.t0; });
+    var counts = {};
+    evs.forEach(function (e) { counts[e.type] = (counts[e.type] || 0) + 1; });
+    var faceCov = s.frames ? Math.round(100 * s.okFrames / s.frames) : null;
+    var aiLine = s.modelReady
+      ? "Face AI: BlazeFace on this device (" + esc(s.backend || "") + ")" + (faceCov != null ? " · face clearly visible in " + faceCov + "% of " + s.frames + " checks" : "")
+      : (s.modelFailed ? "Face AI could not load on this device — browser signals and camera checks only." : "Face AI was still loading — browser signals and camera checks only.");
+    var rows = evs.map(function (e) {
+      return '<tr class="sev-' + e.sev + '"><td data-l="Time">' + fmtT(e.t0) + '</td><td data-l="Duration">' + fmtDur(e.dur) + '</td><td data-l="Type" class="qxpr-ty">' +
+        (e.thumb ? '<img class="qxpr-th" alt="" src="' + e.thumb + '">' : "") + "<span>" + esc(e.label) + (e.note ? ' <small>(' + esc(e.note) + ")</small>" : "") +
+        '</span></td><td data-l="Question">' + (e.q ? "Q" + e.q : "\u2014") + '</td><td data-l="Severity"><em class="qxpr-sev ' + e.sev + '">' + e.sev + "</em></td></tr>";
+    }).join("");
+    var chips = Object.keys(counts).map(function (k) {
+      return '<li><b>' + counts[k] + "</b><span>" + esc((TYPES[k] || {}).label || k) + "</span></li>";
+    }).join("");
+    return '<section class="qxpr-report" id="qxPrReport" aria-labelledby="qxPrRepT">' +
+      '<header class="qxpr-rep-h"><div><h2 id="qxPrRepT">AI Proctor Report</h2><p>' + esc(s.title) + " · monitored " + fmtDur(s.durationMs || 0) + "</p></div>" +
+      '<button type="button" class="qxpr-btn" data-qxpr-print>Print report</button></header>' +
+      '<div class="qxpr-rep-top"><div class="qxpr-score ' + intel.band + '"><b>' + intel.score + "</b><small>/100</small><span>Integrity score</span></div>" +
+      '<div class="qxpr-verdict ' + intel.band + '"><h3>' + esc(v.t) + "</h3><p>" + esc(v.d) + "</p><p class=\"qxpr-ai\">" + aiLine + "</p></div></div>" +
+      (evs.length
+        ? '<h3 class="qxpr-h3">Counts by type</h3><ul class="qxpr-counts">' + chips + "</ul>" +
+          '<h3 class="qxpr-h3">Suspicious moments (' + evs.length + ")</h3>" +
+          '<div class="qxpr-tblw"><table class="qxpr-tbl"><thead><tr><th>Time into test</th><th>Duration</th><th>Type</th><th>Question</th><th>Severity</th></tr></thead><tbody>' + rows + "</tbody></table></div>"
+        : '<p class="qxpr-clean">No suspicious activity was recorded during this attempt.</p>') +
+      '<p class="qxpr-foot">Video was processed on your device and never uploaded. Thumbnails (if any) exist only in this browser tab.</p>' +
+      "</section>";
+  }
+  function printPrep() {
+    var rep = document.getElementById("qxPrReport");
+    if (!rep) return false;
+    printDone();
+    var host = document.createElement("div");
+    host.className = "qxpr-print-host";
+    host.id = "qxPrPrintHost";
+    var c = rep.cloneNode(true);
+    c.id = "qxPrReportPrint";
+    host.appendChild(c);
+    document.body.appendChild(host);
+    document.documentElement.classList.add("qxpr-printing");
+    return true;
+  }
+  function printDone() {
+    document.documentElement.classList.remove("qxpr-printing");
+    var h = document.getElementById("qxPrPrintHost");
+    if (h) h.remove();
+  }
+  function bindReport(root) {
+    if (!root) return;
+    var b = root.querySelector("[data-qxpr-print]");
+    if (b) b.onclick = function (e) {
+      e.preventDefault();
+      if (!printPrep()) return;
+      var off = function () { printDone(); global.removeEventListener("afterprint", off); };
+      global.addEventListener("afterprint", off);
+      try { global.print(); } catch (_) { /* */ }
+      setTimeout(off, 1200);
+    };
+  }
+  function mountReport(host) {
+    if (!host || !_state || !_state.proctored) return; // only when this attempt was proctored
+    ensureCss();
+    if (document.getElementById("qxPrReport")) return;
+    var w = document.createElement("div");
+    w.innerHTML = reportHtml();
+    var node = w.firstChild;
+    if (!node) return;
+    var anchor = host.querySelector("#qxAnalysis") || host.querySelector("#mkRcBody") || host.querySelector("#mkRcView") || host.querySelector(".result-stats");
+    if (anchor && anchor.parentNode) anchor.parentNode.insertBefore(node, anchor.nextSibling);
+    else host.insertAdjacentElement("afterbegin", node);
+    bindReport(node);
+    // keep the report directly after the analysis section once it mounts
+    try {
+      var mo = new MutationObserver(function () {
+        var an = document.getElementById("qxAnalysis"), rep = document.getElementById("qxPrReport");
+        if (an && rep && an.nextSibling !== rep && an.parentNode) { an.parentNode.insertBefore(rep, an.nextSibling); mo.disconnect(); }
+      });
+      mo.observe(host, { childList: true, subtree: true });
+      setTimeout(function () { mo.disconnect(); }, 8000);
+    } catch (_) { /* */ }
+  }
+  function persist() {
+    try {
+      var intel = integrityIntel();
+      var list = JSON.parse(localStorage.getItem(LOG_KEY) || "[]") || [];
+      list.unshift({
+        id: _state.id, title: _state.title, startedAt: _state.startedAt, endedAt: _state.endedAt,
+        score: intel.score, band: intel.band,
+        events: _state.events.map(function (e) { return { type: e.type, t0: e.t0, dur: e.dur, q: e.q, sev: e.sev }; })
+      });
+      localStorage.setItem(LOG_KEY, JSON.stringify(list.slice(0, 10)));
+    } catch (_) { /* */ }
+  }
+
+  /* ---------------- compat API ---------------- */
+  function showTabSwitchWarn(count) {
+    if (document.getElementById("qxPrTabWarn")) return;
+    ensureCss();
+    var n = Number(count) || 1;
+    var o = document.createElement("div");
+    o.id = "qxPrTabWarn";
+    o.className = "qxpr-choice";
+    o.innerHTML = '<div class="qxpr-card" role="alertdialog" aria-modal="true"><h2>Tab switch detected</h2><p class="qxpr-sub">You left this test ' + n + ' time' + (n === 1 ? "" : "s") + '. Please stay on this tab until you submit.</p><div class="qxpr-row"><button type="button" class="qxpr-btn qxpr-btn-p">I understand</button></div></div>';
+    document.body.appendChild(o);
+    o.querySelector("button").onclick = function () { o.remove(); };
+  }
+  function gate() {
+    // Mid-test enabling is not offered: the choice exists only at test start.
+    if (active()) toast("AI Proctor is ON");
+    else toast("AI Proctor can be chosen only when a test starts");
+    return Promise.resolve(true);
   }
 
   global.QxAiProctor = {
-    shouldGate: shouldGate,
-    enabled: prefOn,
-    setEnabled: setEnabled,
+    version: VER,
+    choose: choose,
+    begin: begin,
+    shouldGate: function () { return false; },
+    enabled: function () { return active(); },
+    setEnabled: function () { /* choice is per test now */ },
     gate: gate,
-    attach: attach,
+    attach: function () { /* replaced by begin() */ },
     stop: stop,
-    snapshot: function () { snapshot(null); },
-    reportHtml: reportHtml,
     mountReport: mountReport,
+    reportHtml: reportHtml,
     bindReport: bindReport,
-    historyHtml: historyHtml,
+    printPrep: printPrep,
+    printDone: printDone,
+    noteNav: function () { setTimeout(noteQ, 0); },
+    noteExternal: function () { /* engine tab counter not needed: own visibility episodes */ },
+    ensureState: function () { return _state; },
     getState: function () { return _state; },
+    integrityIntel: integrityIntel,
     showTabSwitchWarn: showTabSwitchWarn,
     isGating: function () { return _gating; },
-    noteNav: noteNav,
-    noteExternal: noteExternal,
-    ensureState: ensureState,
-    integrityIntel: integrityIntel
+    historyHtml: function () { return ""; },
+    snapshot: function () { /* */ },
+    _debug: { classify: classify, modelState: function () { return _modelState; }, events: function () { return _state ? _state.events : []; } }
   };
 })(typeof window !== "undefined" ? window : this);
