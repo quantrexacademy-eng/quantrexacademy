@@ -1,10 +1,10 @@
 {
-  "cache": "qx-pwa-qxmd305",
-  "ts": 1791100000305,
-  "title": "qxmd305: pan wide questions, unfreeze Submit, pin app footer",
+  "cache": "qx-pwa-qxmd306",
+  "ts": 1791100000306,
+  "title": "qxmd306: Submit works, footer above phone nav, full question pan, left cross",
   "site": "https://www.quantrexacademy.com",
-  "build": "qxmd305",
-  "body": "Wide questions pan left/right at standard size. Exit ✕ top-left. Submit tappable (PIP off the button). App MARKS 2×2 footer pinned. Stored answers unchanged.",
+  "build": "qxmd306",
+  "body": "Website Submit opens the confirm modal. QUANTREX 2x2 footer sits above the phone nav and covers the bottom. Wide questions pan. Left header uses a simple cross. Stored answers unchanged.",
   "package": "com.quantrexacademy.app",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }

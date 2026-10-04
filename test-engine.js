@@ -7019,6 +7019,58 @@ window.qxExitTest = function qxExitTest(force) {
   }
 };
 
+function qxGetTestEngine() {
+  try { if (typeof window !== "undefined" && window.QuantrexTestEngine) return window.QuantrexTestEngine; } catch (_) { /* */ }
+  try { if (typeof QuantrexTestEngine !== "undefined") return QuantrexTestEngine; } catch (_) { /* */ }
+  return null;
+}
+
+function qxSubmitModalOnScreen(el) {
+  if (!el) return false;
+  var btn = el.querySelector("[data-qx-confirm-submit]");
+  if (!btn) return false;
+  var r, b;
+  try {
+    r = el.getBoundingClientRect();
+    b = btn.getBoundingClientRect();
+  } catch (_) { return false; }
+  if (!r || r.width < 80 || r.height < 80) return false;
+  if (!b || b.width < 24 || b.height < 16) return false;
+  var vh = window.innerHeight || 800;
+  if (b.bottom < 8 || b.top > vh - 8) return false;
+  return true;
+}
+
+function qxForceSubmitModal(ov) {
+  if (!ov) return;
+  ov.style.setProperty("z-index", "2147483646", "important");
+  ov.style.setProperty("position", "fixed", "important");
+  ov.style.setProperty("inset", "0", "important");
+  ov.style.setProperty("display", "flex", "important");
+  ov.style.setProperty("align-items", "center", "important");
+  ov.style.setProperty("justify-content", "center", "important");
+  ov.style.setProperty("visibility", "visible", "important");
+  ov.style.setProperty("opacity", "1", "important");
+  ov.style.setProperty("pointer-events", "auto", "important");
+  ov.style.setProperty("background", "rgba(0,0,0,0.65)", "important");
+  var card = ov.querySelector(".marks-resume-modal");
+  if (card) {
+    card.style.setProperty("pointer-events", "auto", "important");
+    card.style.setProperty("z-index", "2147483647", "important");
+    card.style.setProperty("position", "relative", "important");
+    card.style.setProperty("display", "block", "important");
+    card.style.setProperty("visibility", "visible", "important");
+    card.style.setProperty("opacity", "1", "important");
+  }
+  var confirmBtn = ov.querySelector("[data-qx-confirm-submit]");
+  if (confirmBtn) {
+    confirmBtn.style.setProperty("pointer-events", "auto", "important");
+    confirmBtn.style.setProperty("z-index", "2147483647", "important");
+    confirmBtn.style.setProperty("display", "inline-flex", "important");
+    confirmBtn.style.setProperty("cursor", "pointer", "important");
+  }
+}
+
 /** Global Submit — footer + inline onclick (always works even if re-bind missed) */
 window.qxSubmitTest = function qxSubmitTest() {
   try {
@@ -7030,32 +7082,15 @@ window.qxSubmitTest = function qxSubmitTest() {
     } catch (_) { /* */ }
     const existing = document.getElementById("mtkSubmitModal");
     if (existing) {
-      let vis = false;
-      try {
-        const cs = window.getComputedStyle(existing);
-        vis = cs.display !== "none" && cs.visibility !== "hidden" && Number(cs.opacity || 1) > 0.05;
-      } catch (_) { vis = !!(existing.offsetParent || existing.getClientRects().length); }
-      const confirmBtn = existing.querySelector("[data-qx-confirm-submit]");
-      const interactable = !!(vis && confirmBtn && existing.offsetWidth > 40 && existing.offsetHeight > 40);
-      if (interactable) {
-        existing.style.setProperty("z-index", "2147483646", "important");
-        existing.style.setProperty("position", "fixed", "important");
-        existing.style.setProperty("inset", "0", "important");
-        existing.style.setProperty("display", "flex", "important");
-        existing.style.setProperty("visibility", "visible", "important");
-        existing.style.setProperty("opacity", "1", "important");
-        existing.style.setProperty("pointer-events", "auto", "important");
-        try {
-          confirmBtn.style.setProperty("pointer-events", "auto", "important");
-          confirmBtn.style.setProperty("z-index", "2147483647", "important");
-        } catch (_) { /* */ }
+      if (qxSubmitModalOnScreen(existing)) {
+        qxForceSubmitModal(existing);
         return;
       }
       try { existing.remove(); } catch (_) { /* */ }
     }
-    const eng = (typeof window !== "undefined" && window.QuantrexTestEngine)
-      || (typeof QuantrexTestEngine !== "undefined" ? QuantrexTestEngine : null);
-    if (!eng || !eng.getSession || !eng.getSession()) {
+    const eng = qxGetTestEngine();
+    const inTest = !!(document.querySelector(".eg-test-root[data-eg-mode='test'], .qzrr-cbt, .mtk-test-root.allen-cbt"));
+    if (!inTest && (!eng || !eng.getSession || !eng.getSession())) {
       if (typeof showToast === "function") showToast("⚠️ No active test to submit");
       return;
     }
@@ -7064,25 +7099,19 @@ window.qxSubmitTest = function qxSubmitTest() {
       else if (typeof mtkShowSubmitModal === "function") mtkShowSubmitModal();
       const ov = document.getElementById("mtkSubmitModal");
       if (ov) {
-        ov.style.setProperty("z-index", "2147483646", "important");
-        ov.style.setProperty("position", "fixed", "important");
-        ov.style.setProperty("inset", "0", "important");
-        ov.style.setProperty("pointer-events", "auto", "important");
-        ov.style.setProperty("display", "flex", "important");
-        ov.style.setProperty("visibility", "visible", "important");
-        ov.style.setProperty("opacity", "1", "important");
+        qxForceSubmitModal(ov);
         return;
       }
     } catch (err) {
       console.warn("submit modal failed", err);
     }
     if (window.confirm("Submit test now? You cannot change answers after submitting.")) {
-      if (eng.submit) eng.submit(false);
+      if (eng && eng.submit) eng.submit(false);
     }
   } catch (e) {
     console.error("qxSubmitTest", e);
     try {
-      const eng2 = window.QuantrexTestEngine || (typeof QuantrexTestEngine !== "undefined" ? QuantrexTestEngine : null);
+      const eng2 = qxGetTestEngine();
       if (eng2 && eng2.submit && window.confirm("Submit test now?")) eng2.submit(false);
     } catch (_) { /* */ }
   }
@@ -7107,14 +7136,16 @@ document.addEventListener("click", function qxExitBtnDelegate(ev) {
 }, true);
 
 function mtkSubmitModalHtml() {
-  const sess = typeof QuantrexTestEngine !== "undefined" ? QuantrexTestEngine.getSession() : null;
-  if (!sess) return "";
-  const s = (() => {
-    let answered = 0, skipped = 0, unvisited = 0, review = 0;
-    sess.ids.forEach((_, i) => {
-      const chosen = sess.answers && sess.answers[i];
-      const visSet = sess.visited;
-      const revSet = sess.review;
+  const eng = qxGetTestEngine();
+  let sess = null;
+  try { if (eng && eng.getSession) sess = eng.getSession(); } catch (_) { sess = null; }
+  let answered = 0, skipped = 0, unvisited = 0, review = 0;
+  try {
+    const ids = (sess && sess.ids) ? sess.ids : [];
+    ids.forEach((_, i) => {
+      const chosen = sess && sess.answers && sess.answers[i];
+      const visSet = sess && sess.visited;
+      const revSet = sess && sess.review;
       const visited = visSet && typeof visSet.has === "function" ? visSet.has(i)
         : (Array.isArray(visSet) && visSet.indexOf(i) >= 0);
       const rev = revSet && typeof revSet.has === "function" ? revSet.has(i)
@@ -7124,22 +7155,15 @@ function mtkSubmitModalHtml() {
       answered++;
       if (rev) review++;
     });
-    return { answered, skipped, unvisited, review };
-  })();
-  const rows = sess.marksMode
-    ? `<div class="marks-submit-stats">
-        <span><strong>${s.answered}</strong> Answered</span>
-        <span><strong>${s.skipped}</strong> Not Answered</span>
-        <span><strong>${s.unvisited}</strong> Not Visited</span>
-        <span><strong>${s.review}</strong> Marked for Review</span>
-      </div>`
-    : `<div class="marks-submit-stats">
-        <span><strong>${s.answered}</strong> Answered</span>
-        <span><strong>${s.review}</strong> Marked for Review</span>
-        <span><strong>${s.unvisited + s.skipped}</strong> Skipped/Unvisited</span>
+  } catch (_) { /* keep zeros */ }
+  const rows = `<div class="marks-submit-stats">
+        <span><strong>${answered}</strong> Answered</span>
+        <span><strong>${skipped}</strong> Not Answered</span>
+        <span><strong>${unvisited}</strong> Not Visited</span>
+        <span><strong>${review}</strong> Marked for Review</span>
       </div>`;
-  return `<div class="marks-modal-overlay" id="mtkSubmitModal" style="z-index:2147483646;position:fixed;inset:0;pointer-events:auto" onclick="if(event.target===this&&window.mtkCloseSubmitModal){window.mtkCloseSubmitModal()}">
-    <div class="marks-resume-modal marks-stop-modal" style="pointer-events:auto;position:relative;z-index:2147483647" onclick="event.stopPropagation()">
+  return `<div class="marks-modal-overlay" id="mtkSubmitModal" style="z-index:2147483646;position:fixed;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:auto;background:rgba(0,0,0,.65)" onclick="if(event.target===this&&window.mtkCloseSubmitModal){window.mtkCloseSubmitModal()}">
+    <div class="marks-resume-modal marks-stop-modal" style="pointer-events:auto;position:relative;z-index:2147483647;display:block;visibility:visible;opacity:1" onclick="event.stopPropagation()">
       <button type="button" class="marks-resume-close" data-qx-submit-cancel="1" onclick="event.preventDefault();event.stopPropagation();if(window.mtkCloseSubmitModal)window.mtkCloseSubmitModal()">✕</button>
       <div class="marks-resume-icon">📋</div>
       <h3>Submit Test?</h3>
@@ -7155,14 +7179,10 @@ function mtkShowSubmitModal() {
   mtkCloseSubmitModal();
   const html = mtkSubmitModalHtml();
   if (!html) return;
-  document.body.insertAdjacentHTML("beforeend", html);
+  (document.body || document.documentElement).insertAdjacentHTML("beforeend", html);
   const ov = document.getElementById("mtkSubmitModal");
   if (!ov) return;
-  // Above eg-foot (z-index 2147483000) so Confirm/Continue receive taps
-  ov.style.zIndex = "2147483646";
-  ov.style.position = "fixed";
-  ov.style.inset = "0";
-  ov.style.pointerEvents = "auto";
+  qxForceSubmitModal(ov);
   try {
     document.querySelectorAll("#egFoot, .eg-foot").forEach(function (el) {
       el.setAttribute("data-qx-under-submit-modal", "1");
@@ -7208,7 +7228,7 @@ function mtkConfirmSubmit() {
   } catch (_) { /* */ }
   mtkCloseSubmitModal();
   try {
-    const eng = typeof QuantrexTestEngine !== "undefined" ? QuantrexTestEngine : null;
+    const eng = qxGetTestEngine();
     if (eng && typeof eng.submit === "function") {
       eng.submit(false);
       return;
@@ -7216,11 +7236,6 @@ function mtkConfirmSubmit() {
   } catch (e) {
     console.error("mtkConfirmSubmit", e);
   }
-  try {
-    if (typeof window.qxSubmitTest === "function") {
-      // last-resort: confirm() path inside qxSubmitTest if modal already closed
-    }
-  } catch (_) { /* */ }
 }
 // Ensure submit/exit modals work from inline onclick on all pages
 window.mtkShowSubmitModal = mtkShowSubmitModal;

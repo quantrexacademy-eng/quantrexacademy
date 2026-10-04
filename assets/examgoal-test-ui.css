@@ -221,7 +221,8 @@ body.marks-test-active .main { margin-left: 0 !important; }
 body.marks-test-active::before { display: none !important; }
 
 .eg-main {
-  min-width: 0; display: flex; flex-direction: column; min-height: 0; overflow: hidden;
+  min-width: 0; display: flex; flex-direction: column; min-height: 0;
+  overflow-x: auto; overflow-y: visible;
   background: var(--eg-bg);
 }
 .eg-q-card {
@@ -6657,17 +6658,15 @@ html body .eg-test-root.eg-qxmd167[data-eg-mode="practice"] .eg-top-tools .eg-to
   opacity: 1 !important;
 }
 
-/* qxmd239: do not clip Prev/Next or wrapping toolbar */
-html body .eg-test-root,
-html body .eg-test-root.eg-qxmd182 {
-  overflow: visible !important;
-}
+/* qxmd306: paper pans; practice 3-col; test 2×2 */
 html body .eg-test-root.eg-qxmd182 .eg-body,
 html body .eg-test-root.eg-qxmd182 .eg-main {
-  overflow: hidden !important;
+  overflow-x: auto !important;
+  overflow-y: auto !important;
+  min-width: 0 !important;
 }
-html body .eg-test-root.eg-qxmd182 > #egFoot,
-html body .eg-test-root.eg-qxmd182 > .eg-foot {
+html body .eg-test-root.eg-qxmd182[data-eg-mode="practice"] > #egFoot,
+html body .eg-test-root.eg-qxmd182[data-eg-mode="practice"] > .eg-foot {
   display: grid !important;
   grid-template-columns: 1fr 1.2fr 1fr !important;
   position: fixed !important;
@@ -6676,4 +6675,22 @@ html body .eg-test-root.eg-qxmd182 > .eg-foot {
   background: #ffffff !important;
   visibility: visible !important;
   pointer-events: auto !important;
+}
+html body .eg-test-root.eg-qxmd182[data-eg-mode="test"] > #egFoot,
+html body .eg-test-root.eg-qxmd182[data-eg-mode="test"] > .eg-foot {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  grid-template-rows: 46px 46px !important;
+  position: fixed !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  height: auto !important;
+  max-height: none !important;
+  min-height: calc(120px + max(36px, env(safe-area-inset-bottom, 0px))) !important;
+  padding: 10px 12px calc(10px + max(36px, env(safe-area-inset-bottom, 0px))) !important;
+  background: #ffffff !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  z-index: 2147483000 !important;
 }

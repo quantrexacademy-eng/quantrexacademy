@@ -3722,13 +3722,13 @@ html body #app-main .qzrr-cbt #qxSaveBtn {
   opacity: 1 !important;
   pointer-events: auto !important;
 }
-html body #egFoot,
+html body #egFoot.eg-foot-practice,
 html body .eg-foot-practice,
-html body #app-main #egFoot {
-  display: flex !important;
+html body #app-main #egFoot.eg-foot-practice {
+  display: grid !important;
   pointer-events: auto !important;
   visibility: visible !important;
-  z-index: 40 !important;
+  z-index: 2147483646 !important;
 }
 html body #egFoot #qxPrevBtn,
 html body #egFoot #qxNextBtn,

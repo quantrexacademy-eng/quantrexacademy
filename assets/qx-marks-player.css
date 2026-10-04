@@ -66,18 +66,25 @@ html body .eg-test-root[data-eg-mode="test"] #egMarksExitBtn {
   height: 40px !important;
   min-width: 40px !important;
   min-height: 40px !important;
-  border-radius: 10px !important;
-  border: 1.6px solid #ef4444 !important;
-  background: #fff !important;
-  color: #ef4444 !important;
-  -webkit-text-fill-color: #ef4444 !important;
-  font-size: 20px !important;
-  font-weight: 700 !important;
+  border-radius: 8px !important;
+  border: 0 !important;
+  background: transparent !important;
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+  font-size: 22px !important;
+  font-weight: 500 !important;
   line-height: 1 !important;
   cursor: pointer !important;
   pointer-events: auto !important;
   z-index: 90 !important;
   box-shadow: none !important;
+}
+html body .eg-test-root[data-eg-mode="test"][data-test-theme="dark"] .eg-marks-x,
+html body .eg-test-root[data-eg-mode="test"][data-test-theme="dark"] #egMarksExitBtn {
+  color: #f8fafc !important;
+  -webkit-text-fill-color: #f8fafc !important;
+  background: transparent !important;
+  border: 0 !important;
 }
 
 html body .eg-test-root[data-eg-mode="test"] .eg-marks-timer,
@@ -446,12 +453,12 @@ html[data-qx-shell="app"] #egFoot.eg-foot-marks-test {
   top: auto !important;
   transform: none !important;
   z-index: 2147483000 !important;
-  min-height: calc(108px + env(safe-area-inset-bottom, 0px)) !important;
-  height: calc(108px + env(safe-area-inset-bottom, 0px)) !important;
-  max-height: calc(108px + env(safe-area-inset-bottom, 0px)) !important;
+  min-height: calc(120px + max(36px, env(safe-area-inset-bottom, 0px))) !important;
+  height: auto !important;
+  max-height: none !important;
   width: 100% !important;
   margin: 0 !important;
-  padding: 8px 12px calc(8px + env(safe-area-inset-bottom, 0px)) !important;
+  padding: 10px 12px calc(10px + max(36px, env(safe-area-inset-bottom, 0px))) !important;
   background: #fff !important;
   background-color: #fff !important;
   border-top: 1px solid #e5e7eb !important;

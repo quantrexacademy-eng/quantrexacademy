@@ -1611,3 +1611,23 @@ html body .eg-test-root.eg-qxmd167[data-eg-mode="practice"] .eg-top-tools .eg-to
   opacity: 1 !important;
   pointer-events: auto !important;
 }
+
+/* qxmd306: unscoped 3-col above is practice-only; test stays 2×2 above phone nav */
+html body .eg-test-root[data-eg-mode="test"] #egFoot,
+html body .eg-test-root[data-eg-mode="test"] .eg-foot,
+html body #egFoot.eg-foot-marks-test {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  grid-template-rows: 46px 46px !important;
+  grid-auto-flow: row !important;
+  position: fixed !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  height: auto !important;
+  max-height: none !important;
+  min-height: calc(120px + max(36px, env(safe-area-inset-bottom, 0px))) !important;
+  padding: 10px 12px calc(10px + max(36px, env(safe-area-inset-bottom, 0px))) !important;
+  background: #ffffff !important;
+  z-index: 2147483000 !important;
+}

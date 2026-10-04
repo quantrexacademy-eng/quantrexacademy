@@ -54,23 +54,24 @@ html[data-qx-shell="web"] .qzrr-cbt .qzrr-exit-x {
   align-items: center !important;
   justify-content: center !important;
   flex: 0 0 auto !important;
-  width: 34px !important;
-  min-width: 34px !important;
+  width: 36px !important;
+  min-width: 36px !important;
   height: 30px !important;
   padding: 0 !important;
   margin: 0 !important;
   border-radius: 8px !important;
-  border: 1px solid rgba(239,68,68,.7) !important;
+  border: 0 !important;
   background: transparent !important;
-  color: #fca5a5 !important;
-  -webkit-text-fill-color: #fca5a5 !important;
-  font-size: 18px !important;
-  font-weight: 700 !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  font-size: 20px !important;
+  font-weight: 500 !important;
   line-height: 1 !important;
   cursor: pointer !important;
   pointer-events: auto !important;
   touch-action: manipulation !important;
   z-index: 20150 !important;
+  box-shadow: none !important;
 }
 html[data-qx-shell="web"] .qzrr-cbt .qzrr-black-title {
   flex: 0 1 auto !important;

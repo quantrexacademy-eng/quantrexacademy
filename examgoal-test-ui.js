@@ -391,6 +391,44 @@
     } else {
       try { document.head.appendChild(document.getElementById("qxmd305EgCss")); } catch (_) {}
     }
+    function pinCssLast(el) {
+      if (!el) return;
+      var host = document.body || document.documentElement;
+      try { host.appendChild(el); } catch (_) {}
+    }
+    if (!document.getElementById("qxmd306EgCss")) {
+      var s306 = document.createElement("style");
+      s306.id = "qxmd306EgCss";
+      s306.textContent = [
+        'html body #app-main .eg-test-root .eg-body,html body .eg-test-root.eg-qxmd182 .eg-body,html body .eg-test-root .eg-body,html body #app-main .qzrr-cbt #qzrrQArea,html body .qzrr-cbt #qzrrQArea,html body .qzrr-cbt .qzrr-q-area{overflow-x:auto!important;overflow-y:auto!important;min-width:0!important;min-height:0!important;-webkit-overflow-scrolling:touch!important;touch-action:pan-x pan-y!important}',
+        'html body #app-main .eg-test-root.eg-qxmd182 .eg-main,html body .eg-test-root.eg-qxmd182 .eg-main,html body .eg-test-root .eg-main,html body .eg-test-root .eg-q-card,html body .eg-test-root.eg-qxmd182 .eg-q-card{overflow-x:auto!important;overflow-y:visible!important;min-width:0!important;max-width:none!important}',
+        'html body .eg-test-root #egQArea,html body .eg-test-root .eg-q-stem,html body .eg-test-root #qxOpts,html body .qzrr-cbt .mtk-q-text,html body .qzrr-cbt .qx-question-body,html body .qzrr-cbt .qzrr-opts .mtk-opt,html body .eg-test-root .mtk-opt{overflow-x:auto!important;overflow-y:visible!important;max-width:100%!important;visibility:visible!important;opacity:1!important}',
+        'html body .eg-test-root .katex-display,html body .qzrr-cbt .katex-display{overflow-x:auto!important;overflow-y:visible!important;max-width:100%!important}',
+        'html body .eg-test-root[data-eg-mode="test"] .eg-qx-extras,html body .eg-test-root[data-eg-mode="test"] .eg-qx-extras .eg-top-tools,html body .eg-test-root[data-eg-mode="test"] .eg-qx-extras-tools{display:flex!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important}',
+        'html body .eg-test-root[data-eg-mode="test"][data-qx-format="nta"] .eg-qx-extras{display:none!important}',
+        'html body .eg-test-root[data-eg-mode="test"] .eg-qx-extras{padding:4px 10px!important;overflow-x:auto!important;flex-shrink:0!important}',
+        'html body #app-main .eg-test-root[data-eg-mode="test"] #egFoot,html body #app-main #egFoot.eg-foot-marks-test,html body .eg-test-root[data-eg-mode="test"] > #egFoot,html body .eg-test-root.eg-qxmd182[data-eg-mode="test"] > #egFoot,html body .eg-test-root[data-eg-mode="test"] #egFoot,html body #egFoot.eg-foot-marks-test{display:grid!important;grid-template-columns:1fr 1fr!important;grid-template-rows:46px 46px!important;grid-auto-flow:row!important;gap:8px!important;position:fixed!important;left:0!important;right:0!important;bottom:0!important;top:auto!important;inset:auto 0 0 0!important;width:100%!important;height:auto!important;min-height:calc(120px + max(36px, env(safe-area-inset-bottom, 0px)))!important;max-height:none!important;padding:10px 12px calc(10px + max(36px, env(safe-area-inset-bottom, 0px)))!important;z-index:2147483000!important;background:#ffffff!important;background-color:#ffffff!important;box-sizing:border-box!important;overflow:visible!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important;transform:none!important;margin:0!important;border-top:1px solid #e5e7eb!important;box-shadow:0 -8px 24px rgba(15,23,42,.12)!important}',
+        'html body .eg-test-root[data-eg-mode="test"][data-test-theme="dark"] #egFoot,html body .eg-test-root[data-eg-mode="test"][data-test-theme="dark"] #egFoot.eg-foot-marks-test{background:#0f172a!important;background-color:#0f172a!important;border-top-color:#334155!important}',
+        'html body #app-main .eg-test-root[data-eg-mode="test"] #egFoot #qxClearBtn,html body .eg-test-root[data-eg-mode="test"] #qxClearBtn{grid-area:1/1!important}',
+        'html body #app-main .eg-test-root[data-eg-mode="test"] #egFoot #qxReviewNextBtn,html body .eg-test-root[data-eg-mode="test"] #qxReviewNextBtn{grid-area:1/2!important}',
+        'html body #app-main .eg-test-root[data-eg-mode="test"] #egFoot #qxPrevBtn,html body .eg-test-root[data-eg-mode="test"] #qxPrevBtn{grid-area:2/1!important}',
+        'html body #app-main .eg-test-root[data-eg-mode="test"] #egFoot #qxSaveBtn,html body .eg-test-root[data-eg-mode="test"] #qxSaveBtn{grid-area:2/2!important;transform:none!important;margin:0!important}',
+        'html body .eg-test-root[data-eg-mode="test"] #egFoot .eg-btn,html body .eg-test-root[data-eg-mode="test"] #egFoot button{display:inline-flex!important;visibility:visible!important;opacity:1!important;min-height:44px!important;height:46px!important;max-height:46px!important;width:100%!important}',
+        'html body .eg-test-root[data-eg-mode="test"] #qxSubmitTop,html body .qzrr-cbt #qxSubmitTop,html body #qxSubmitBtn{display:inline-flex!important;pointer-events:auto!important;visibility:visible!important;z-index:320!important;cursor:pointer!important;touch-action:manipulation!important}',
+        'html body #mtkSubmitModal,html body #mtkSubmitModal.marks-modal-overlay{display:flex!important;position:fixed!important;inset:0!important;z-index:2147483646!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important;background:rgba(0,0,0,.65)!important;align-items:center!important;justify-content:center!important}',
+        'html body .eg-test-root[data-eg-mode="test"] #egMarksExitBtn,html body .eg-test-root[data-eg-mode="test"] .eg-marks-x{display:inline-flex!important;align-items:center!important;justify-content:center!important;width:40px!important;height:40px!important;min-width:40px!important;border:0!important;border-radius:8px!important;background:transparent!important;color:#0f172a!important;-webkit-text-fill-color:#0f172a!important;font-size:22px!important;font-weight:500!important;box-shadow:none!important;cursor:pointer!important;pointer-events:auto!important;z-index:320!important}',
+        'html body .eg-test-root[data-eg-mode="test"][data-test-theme="dark"] #egMarksExitBtn,html body .eg-test-root[data-eg-mode="test"][data-test-theme="dark"] .eg-marks-x{color:#f8fafc!important;-webkit-text-fill-color:#f8fafc!important}',
+        'html[data-qx-shell="web"] .qzrr-cbt #qzrrExitX,html[data-qx-shell="web"] .qzrr-cbt .qzrr-exit-x{display:inline-flex!important;background:transparent!important;border:0!important;color:#fff!important;-webkit-text-fill-color:#fff!important;width:36px!important;min-width:36px!important;height:30px!important;font-size:20px!important;font-weight:500!important;box-shadow:none!important;cursor:pointer!important}'
+      ].join("");
+      pinCssLast(s306);
+    } else {
+      pinCssLast(document.getElementById("qxmd306EgCss"));
+    }
+    [
+      "qxFootLockCss", "qxKatexLockCss", "qxChromeLockCss", "qxMarksPlayerCss",
+      "qxQuizrrWebCss", "qxQfmtLockCss", "qxCtLockCss", "qxShellLockCss",
+      "qxmd294EgCss", "qxmd303EgCss", "qxmd304EgCss", "qxmd305EgCss", "qxmd306EgCss"
+    ].forEach(function (id) { pinCssLast(document.getElementById(id)); });
   }
 
   /** Play TWA / installed PWA only. Desktop + phone browser stay "web". */
@@ -2308,9 +2346,9 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
           foot.style.setProperty("zoom", "unset", "important");
           foot.style.setProperty("filter", "none", "important");
           foot.style.setProperty("contain", "none", "important");
-          foot.style.setProperty("max-height", "calc(108px + env(safe-area-inset-bottom, 0px))", "important");
-          foot.style.setProperty("min-height", "calc(108px + env(safe-area-inset-bottom, 0px))", "important");
-          foot.style.setProperty("height", "calc(108px + env(safe-area-inset-bottom, 0px))", "important");
+          foot.style.setProperty("max-height", "none", "important");
+          foot.style.setProperty("min-height", "calc(120px + max(36px, env(safe-area-inset-bottom, 0px)))", "important");
+          foot.style.setProperty("height", "auto", "important");
           foot.style.setProperty("z-index", "2147483000", "important");
           foot.style.setProperty("pointer-events", "auto", "important");
           foot.style.setProperty("visibility", "visible", "important");
@@ -2318,7 +2356,10 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
           foot.style.setProperty("width", "100%", "important");
           foot.style.setProperty("max-width", "100%", "important");
           foot.style.setProperty("margin", "0", "important");
-          foot.style.setProperty("padding", "8px 12px calc(8px + env(safe-area-inset-bottom, 0px))", "important");
+          foot.style.setProperty("overflow", "visible", "important");
+          foot.style.setProperty("box-sizing", "border-box", "important");
+          foot.style.setProperty("background", "#ffffff", "important");
+          foot.style.setProperty("padding", "10px 12px calc(10px + max(36px, env(safe-area-inset-bottom, 0px)))", "important");
           pinMarksFootCells();
           try { if (typeof syncEgFootPad === "function") syncEgFootPad(root); } catch (_) {}
           _egFootPainted = true;
@@ -3216,12 +3257,10 @@ function forceFootVisible(force) {
     // Submit — always wire (test mode); inline onclick is backup
     function fireSubmit(e) {
       if (e) { try { e.preventDefault(); e.stopPropagation(); } catch (_) { /* */ } }
-      if (window._qxSubmitLock && Date.now() - window._qxSubmitLock < 400) return;
-      window._qxSubmitLock = Date.now();
       try {
         if (typeof window.qxSubmitTest === "function") window.qxSubmitTest();
-        else if (typeof QuantrexTestEngine !== "undefined" && QuantrexTestEngine.submit) {
-          if (window.confirm("Submit test now?")) QuantrexTestEngine.submit(false);
+        else if (window.QuantrexTestEngine && window.QuantrexTestEngine.submit) {
+          if (window.confirm("Submit test now?")) window.QuantrexTestEngine.submit(false);
         }
       } catch (err) { console.error("eg submit", err); }
     }
@@ -3249,7 +3288,6 @@ function forceFootVisible(force) {
         try {
           const t = ev.target && ev.target.closest && ev.target.closest("#qxSubmitBtn, #qxSubmitTop, #egMarksOvSubmit, [data-eg-submit]");
           if (!t) return;
-          if (window._qxSubmitLock && Date.now() - window._qxSubmitLock < 400) return;
           if (typeof t.onclick === "function") return;
           fireSubmit(ev);
         } catch (_) { /* */ }
