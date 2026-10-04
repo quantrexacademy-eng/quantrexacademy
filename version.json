@@ -1,10 +1,10 @@
 {
-  "cache": "qx-pwa-qxmd300",
-  "ts": 1791100000300,
-  "title": "qxmd300: Question format lock + Create Own Test last step",
+  "cache": "qx-pwa-qxmd301",
+  "ts": 1791100000301,
+  "title": "qxmd301: Question and solution format proofread",
   "site": "https://www.quantrexacademy.com",
-  "build": "qxmd300",
-  "body": "Question Paper list typesets math. A-D letter chips, options, and solutions stay in format on every exam and test. Create Own Test last step shows settings with hittable question-count chips. Previous / Back stay visible.",
+  "build": "qxmd301",
+  "body": "KaTeX HTML dumps on Check Answer and paper no longer paint as spanclass prose. Question stems, options, and official solutions typeset on practice, Test Series, PYQ, Digital Books, and review. Stored answers unchanged.",
   "package": "com.quantrexacademy.app",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }

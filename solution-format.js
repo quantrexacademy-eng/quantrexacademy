@@ -1488,7 +1488,11 @@ const QuantrexSolution = (() => {
   }
 
     function unwrapKatexDump(html) {
-      const s = String(html || "");
+      let s = String(html || "");
+      try {
+        if (typeof Mx !== "undefined" && Mx.recoverDumpHtml) s = Mx.recoverDumpHtml(s);
+        else if (typeof Mx !== "undefined" && Mx.recoverLetterSpacedKatexHtml) s = Mx.recoverLetterSpacedKatexHtml(s);
+      } catch (_) { /* */ }
       if (!/\bclass=["'][^"']*\bkatex\b/i.test(s)) return s;
       const bits = [];
       const re = /<annotation[^>]*encoding=["']application\/x-tex["'][^>]*>([\s\S]*?)<\/annotation>/gi;
@@ -1512,6 +1516,10 @@ const QuantrexSolution = (() => {
     function formatBody(solution, q) {
     const _qxSolSrc = String(solution || "");
     let raw = flattenMarksSolTables(_qxSolSrc);
+    try {
+      if (typeof Mx !== "undefined" && Mx.recoverDumpHtml) raw = Mx.recoverDumpHtml(raw);
+      else if (typeof Mx !== "undefined" && Mx.recoverLetterSpacedKatexHtml) raw = Mx.recoverLetterSpacedKatexHtml(raw);
+    } catch (_) { /* */ }
     try { raw = unwrapKatexDump(raw); } catch (_) { /* */ }
     raw = stripLeadingStemEcho(raw, q);
     try { raw = ensureNoStemHead(raw, q); } catch (_) { /* */ }
@@ -1521,8 +1529,9 @@ const QuantrexSolution = (() => {
       _figSlots.push(m);
       return k;
     });
+    const _liveKx0 = /<span\b[^>]*class=["'][^"']*\bkatex\b/i.test(raw) && !/spanclass/i.test(raw);
     // Same deep TeX/symbol repair as stems/options (solutions were missing shatter/tofu fixes)
-    if (typeof Mx !== "undefined" && Mx.cleanQuestionText) {
+    if (!_liveKx0 && typeof Mx !== "undefined" && Mx.cleanQuestionText) {
       try { raw = Mx.cleanQuestionText(raw); } catch (_) { /* */ }
     }
     try {
@@ -1531,26 +1540,26 @@ const QuantrexSolution = (() => {
       }
     } catch (_) { /* */ }
     /* Do not unglue/glue prose here — it produced "Thisisageometricseries". */
-    if (typeof QxProof !== "undefined" && QxProof.proofreadHtml) {
+    if (!_liveKx0 && typeof QxProof !== "undefined" && QxProof.proofreadHtml) {
       try { raw = QxProof.proofreadHtml(raw); } catch (_) { /* */ }
     }
-    raw = repairSolutionProse(raw);
+    if (!_liveKx0) raw = repairSolutionProse(raw);
     try {
-      if (typeof QxMathSanitize !== "undefined" && QxMathSanitize.repairMarksDollarSoup) {
+      if (!_liveKx0 && typeof QxMathSanitize !== "undefined" && QxMathSanitize.repairMarksDollarSoup) {
         raw = QxMathSanitize.repairMarksDollarSoup(raw);
       }
     } catch (_) { /* */ }
-    try { raw = repairSolutionDelimiters(raw); } catch (_) { /* */ }
-    raw = polishScientificSymbols(raw);
+    try { if (!_liveKx0) raw = repairSolutionDelimiters(raw); } catch (_) { /* */ }
+    if (!_liveKx0) raw = polishScientificSymbols(raw);
     try {
-      if (typeof QxMathSanitize !== "undefined" && QxMathSanitize.healOddDollars) {
+      if (!_liveKx0 && typeof QxMathSanitize !== "undefined" && QxMathSanitize.healOddDollars) {
         raw = QxMathSanitize.healOddDollars(raw);
       }
     } catch (_) { /* */ }
     try {
-      if (typeof Mx !== "undefined" && Mx.peelFalseProseMathIslands) raw = Mx.peelFalseProseMathIslands(raw);
+      if (!_liveKx0 && typeof Mx !== "undefined" && Mx.peelFalseProseMathIslands) raw = Mx.peelFalseProseMathIslands(raw);
     } catch (_) { /* */ }
-    if (typeof Mx !== "undefined" && Mx.upgradePlainMathNotation) {
+    if (!_liveKx0 && typeof Mx !== "undefined" && Mx.upgradePlainMathNotation) {
       try {
         const alreadyTex = /\$[^$]+\$|\\\(|\\\[|\\begin\{/.test(raw);
         const plainFn = /(?:^|[^\\$])(?:log|sin|cos|tan)\s*\(/i.test(String(raw).replace(/\$[^$]*\$/g, " "));
@@ -1569,7 +1578,7 @@ const QuantrexSolution = (() => {
     } catch (_) { /* */ }
     let html;
     try {
-      html = solRenderHtml(raw);
+      html = _liveKx0 ? raw : solRenderHtml(raw);
     } catch (err) {
       /* qxmd161: KaTeX/Mx throw must not abort Practice Check/Show Answer refresh */
       try { html = esc(raw); } catch (_) { html = String(raw || ""); }
@@ -1807,7 +1816,7 @@ const QuantrexSolution = (() => {
       ${examMeta || ""}
       ${ansHtml}
       ${shortcutHtml}
-      <div class="qx-content sol-body qx-sol-flow">${body}</div>
+      <div class="qx-content sol-body qx-sol-flow" data-qx-sol-src="${srcAttr}">${body}</div>
     </div>`;
   }
 

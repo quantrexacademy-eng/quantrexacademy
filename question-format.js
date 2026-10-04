@@ -563,6 +563,14 @@ const QuantrexQFormat = (() => {
   function htmlContent(text) {
     let expanded = String(text || "");
     try {
+      if (typeof Mx !== "undefined" && Mx.recoverDumpHtml) expanded = Mx.recoverDumpHtml(expanded);
+      else if (typeof Mx !== "undefined" && Mx.recoverLetterSpacedKatexHtml && Mx.looksKatexHtmlLeak && Mx.looksKatexHtmlLeak(expanded)) {
+        expanded = Mx.recoverLetterSpacedKatexHtml(expanded);
+      }
+    } catch (_) { /* */ }
+    const liveKx = /<span\b[^>]*class=["'][^"']*\bkatex\b/i.test(expanded) && !/spanclass/i.test(expanded);
+    if (liveKx) return expanded;
+    try {
       if (typeof QxMathSanitize !== "undefined" && QxMathSanitize.decodeEntities) {
         expanded = QxMathSanitize.decodeEntities(expanded);
         if (/&(?:#\d+|nbsp|minus|amp;|#x)/i.test(expanded)) {
@@ -1524,7 +1532,8 @@ const QuantrexQFormat = (() => {
       else if (/^[ABCD]$/i.test(plain) && !rawHasImg && !/[\\$]|C_\{|\^\{|\\binom/.test(raw)) {
         // Letter-only stub — never treat ^{n}C_{r} binomial as letter C
         optBody = `<span class="qx-opt-plain qx-letter-opt">${plain.toUpperCase()}</span>`;
-      } else if (plain && plain.length <= 40 && !rawHasImg && !/[\\$]/.test(raw) && !/<math/i.test(raw) && !/C_\{|\^\{/.test(raw)) {
+      } else if (plain && plain.length <= 40 && !rawHasImg && !/[\\$]/.test(raw) && !/<math/i.test(raw) && !/C_\{|\^\{/.test(raw)
+          && !/spanclass|katex\s*-|[\u2200-\u22FF\u2190-\u21FF\u221A\u2264\u2265]/i.test(raw)) {
         // Short plain answers (0, 1, 2, 3, numbers, short words) — always crystal clear
         optBody = `<span class="qx-opt-plain">${plain.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")}</span>`;
       } else {

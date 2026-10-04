@@ -1,4 +1,4 @@
-/* qxmd300 — last-wins question / option / solution format (Screenshot 1196).
+/* qxmd301 — last-wins question / option / solution format.
    Load after quizrr-web / chrome-lock. Display-only. Never rewrite stored answers. */
 
 /* Paper wrap: readable stems. Never smash KaTeX. */
@@ -212,4 +212,44 @@ html body .qzrr-cbt:not(.qzrr-dark) .qzrr-q-area .mtk-q-text,
 html body .qzrr-cbt:not(.qzrr-dark) .qzrr-opts .mtk-opt-text {
   color: #111 !important;
   -webkit-text-fill-color: #111 !important;
+}
+
+/* qxmd301 — solution + stem format. Display-only. Never smash KaTeX. */
+html body .eg-sol-panel,
+html body #egSolPanel,
+html body .eg-sol-inline,
+html body .qx-sol-flow,
+html body .mk-sol-view,
+html body .mk-sol-row,
+html body .mk-sol-stem,
+html body .qx-sol-ans-val,
+html body .eg-sol-panel .eg-sol {
+  overflow: visible !important;
+  overflow-wrap: break-word !important;
+  word-break: normal !important;
+  hyphens: none !important;
+  max-height: none !important;
+  letter-spacing: 0 !important;
+}
+html body .eg-q-stem,
+html body #egQArea,
+html body .mtk-q-text,
+html body .mtk-opt-text,
+html body .sol-body,
+html body .qx-sol-card,
+html body .qx-sol-body,
+html body .qx-content,
+html body .qzrr-q-area,
+html body #qzrrQArea {
+  letter-spacing: 0 !important;
+}
+html body .katex,
+html body .katex-display,
+html body .katex *,
+html body mjx-container,
+html body mjx-container * {
+  letter-spacing: 0 !important;
+}
+html body .eg-sol-panel {
+  overflow: visible !important;
 }

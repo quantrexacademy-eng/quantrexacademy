@@ -918,6 +918,11 @@
            stem echo above Medium/Chemistry Solution while .qx-sol-flow still started at math. */
         solContent = QuantrexSolution.renderBlock(q);
         fromRenderBlock = !!solContent;
+        try {
+          if (typeof Mx !== "undefined" && Mx.recoverDumpHtml && Mx.looksKatexHtmlLeak && Mx.looksKatexHtmlLeak(solContent)) {
+            solContent = Mx.recoverDumpHtml(solContent);
+          }
+        } catch (_) { /* */ }
         /* qxmd208: drop any stem / rescued-stem wrappers that leaked into solution HTML */
         solContent = String(solContent || "").replace(/<(div|p|section)[^>]*class="[^"]*(?:eg-q-stem|mtk-q-text|qa-q|qx-stem-rescued|qx-stem-forced|qx-question-body)[^"]*"[\s\S]*?<\/\1>/gi, "");
         try {
