@@ -30,46 +30,60 @@
 .qx-pr-btn:disabled{opacity:.5;cursor:wait}
 .qx-pr-note{font-size:12px;color:#94a3b8;margin-top:12px;line-height:1.45}
 
-/* qxmd297: PIP stays TOP so stem, options, and footer never hide — website AND app */
+/* Default top-right so paper stays clear. Drag moves it anywhere (qx-pr-pip-moved). */
 .qx-pr-pip,
 .qx-pr-pip.qx-pr-pip-top{
   position:fixed !important;
-  top: calc(6px + env(safe-area-inset-top, 0px)) !important;
-  right: 10px !important;
-  bottom: auto !important;
-  left: auto !important;
-  z-index:2147483002;
+  top: calc(6px + env(safe-area-inset-top, 0px));
+  right: 10px;
+  bottom: auto;
+  left: auto;
+  z-index:2147482500;
   width:88px;
   border-radius:12px;overflow:hidden;border:1px solid rgba(212,175,55,.45);
   box-shadow:0 10px 24px rgba(0,0,0,.4);background:#0b1220;
   pointer-events:auto;
+  cursor:grab;
+  touch-action:none;
+  user-select:none;
+  -webkit-user-select:none;
 }
-.qx-pr-pip video,.qx-pr-pip canvas{display:block;width:100%;height:56px;object-fit:cover;background:#111}
-html[data-qx-shell="web"] body.marks-test-active .qx-pr-pip,
-html[data-qx-shell="web"] body.allen-cbt-active .qx-pr-pip{
-  top: calc(4px + env(safe-area-inset-top, 0px)) !important;
-  right: 292px !important;
+.qx-pr-pip.qx-pr-pip-moved{
+  right:auto !important;
+  bottom:auto !important;
+}
+.qx-pr-pip.qx-pr-pip-dragging{
+  cursor:grabbing;
+  opacity:.92;
+  box-shadow:0 16px 36px rgba(0,0,0,.5),0 0 0 2px rgba(212,175,55,.55);
+}
+.qx-pr-pip video,.qx-pr-pip canvas{display:block;width:100%;height:56px;object-fit:cover;background:#111;pointer-events:none}
+html[data-qx-shell="web"] body.marks-test-active .qx-pr-pip:not(.qx-pr-pip-moved),
+html[data-qx-shell="web"] body.allen-cbt-active .qx-pr-pip:not(.qx-pr-pip-moved){
+  top: calc(4px + env(safe-area-inset-top, 0px));
+  right: 292px;
   width: 80px;
 }
-html[data-qx-shell="app"] .qx-pr-pip{
-  top: calc(52px + env(safe-area-inset-top, 0px)) !important;
-  right: 8px !important;
+html[data-qx-shell="app"] .qx-pr-pip:not(.qx-pr-pip-moved){
+  top: calc(52px + env(safe-area-inset-top, 0px));
+  right: 8px;
   width: 76px;
 }
 @media (max-width: 900px){
-  html[data-qx-shell="web"] body.marks-test-active .qx-pr-pip,
-  html[data-qx-shell="web"] body.allen-cbt-active .qx-pr-pip{
-    right: 8px !important;
-    top: calc(4px + env(safe-area-inset-top, 0px)) !important;
+  html[data-qx-shell="web"] body.marks-test-active .qx-pr-pip:not(.qx-pr-pip-moved),
+  html[data-qx-shell="web"] body.allen-cbt-active .qx-pr-pip:not(.qx-pr-pip-moved){
+    right: 8px;
+    top: calc(4px + env(safe-area-inset-top, 0px));
     width: 72px;
   }
-  html[data-qx-shell="app"] .qx-pr-pip{
-    top: calc(48px + env(safe-area-inset-top, 0px)) !important;
+  html[data-qx-shell="app"] .qx-pr-pip:not(.qx-pr-pip-moved){
+    top: calc(48px + env(safe-area-inset-top, 0px));
     width: 70px;
   }
 }
-.qx-pr-pip-bar{display:flex;align-items:center;gap:6px;padding:6px 8px;background:#0b1220;color:#f8fafc;font-size:10px;font-weight:800;letter-spacing:.04em}
+.qx-pr-pip-bar{display:flex;align-items:center;gap:6px;padding:6px 8px;background:#0b1220;color:#f8fafc;font-size:10px;font-weight:800;letter-spacing:.04em;pointer-events:none}
 .qx-pr-live{width:7px;height:7px;border-radius:50%;background:#4ade80;box-shadow:0 0 8px #4ade80}
+.qx-pr-pip-grip{margin-left:auto;letter-spacing:-.12em;color:#d4af37;font-size:12px;line-height:1}
 
 .qx-pr-report{position:relative;z-index:1;margin:18px auto;width:min(980px,100%);padding:0 12px 40px}
 .qx-pr-sheet{

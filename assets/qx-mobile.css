@@ -65,7 +65,7 @@ body.qx-nav-open::before {
     gap: 10px;
   }
   .qx-prac-foot.eg-foot {
-    flex-direction: column;
+    flex-direction: row;
     align-items: stretch;
     gap: 8px;
   }
@@ -947,4 +947,17 @@ html { -webkit-text-size-adjust: 100%; }
     padding-bottom: calc(18px + env(safe-area-inset-bottom, 0px)) !important;
     z-index: 2147483601 !important;
   }
+}
+
+/* qxmd303: MARKS test footer stays 2×2 grid — never flex-stack */
+.eg-test-root[data-eg-mode="test"] #egFoot,
+.eg-test-root[data-eg-mode="test"] .eg-foot-marks-test,
+.eg-test-root.eg-qxeg2[data-eg-mode="test"] #egFoot,
+.eg-test-root.eg-qxeg4[data-eg-mode="test"] #egFoot,
+.eg-test-root.eg-qxeg5[data-eg-mode="test"] #egFoot,
+.eg-test-root.eg-qxeg6[data-eg-mode="test"] #egFoot {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  grid-template-rows: 48px 48px !important;
+  flex-direction: unset !important;
 }

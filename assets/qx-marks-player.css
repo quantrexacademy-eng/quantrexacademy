@@ -442,6 +442,16 @@ html body .eg-test-root[data-eg-mode="test"] .eg-foot-left,
 html body .eg-test-root[data-eg-mode="test"] .eg-foot-right {
   display: contents !important;
 }
+html body .eg-test-root[data-eg-mode="test"] #qxClearBtn { grid-area: 1 / 1 !important; }
+html body .eg-test-root[data-eg-mode="test"] #qxReviewNextBtn { grid-area: 1 / 2 !important; }
+html body .eg-test-root[data-eg-mode="test"] #qxPrevBtn { grid-area: 2 / 1 !important; }
+html body .eg-test-root[data-eg-mode="test"] #qxSaveBtn,
+html body .eg-test-root[data-eg-mode="test"] #qxSaveBtn.eg-btn-next {
+  grid-area: 2 / 2 !important;
+  order: 4 !important;
+  margin-left: 0 !important;
+  transform: none !important;
+}
 html body .eg-test-root[data-eg-mode="test"] #egFoot .eg-btn,
 html body .eg-test-root[data-eg-mode="test"] #qxClearBtn,
 html body .eg-test-root[data-eg-mode="test"] #qxReviewNextBtn,

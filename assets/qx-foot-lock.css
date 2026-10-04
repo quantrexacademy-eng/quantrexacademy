@@ -172,4 +172,9 @@ html body #egFoot.eg-foot-marks-test {
   margin: 0 !important;
   padding: 8px 12px calc(8px + env(safe-area-inset-bottom, 0px)) !important;
   z-index: 2147483000 !important;
+  grid-auto-flow: row !important;
 }
+html body .eg-test-root[data-eg-mode="test"] #qxClearBtn { grid-area: 1 / 1 !important; }
+html body .eg-test-root[data-eg-mode="test"] #qxReviewNextBtn { grid-area: 1 / 2 !important; }
+html body .eg-test-root[data-eg-mode="test"] #qxPrevBtn { grid-area: 2 / 1 !important; }
+html body .eg-test-root[data-eg-mode="test"] #qxSaveBtn { grid-area: 2 / 2 !important; transform: none !important; }

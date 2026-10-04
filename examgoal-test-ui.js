@@ -190,7 +190,7 @@
       var s250 = document.createElement("style");
       s250.id = "qxmd250EgCss";
       s250.textContent = [
-        'html body .eg-test-root .eg-top-tools .eg-tool-btn,html body .eg-test-root .eg-top-tools .eg-tool-sec,html body .eg-test-root[data-eg-mode="test"] .eg-top-tools .eg-tool-btn{display:inline-flex!important;visibility:visible!important;opacity:1!important;flex-direction:column!important;width:auto!important;min-width:36px!important;height:auto!important;min-height:40px!important;color:#fff!important}',
+        'html body .eg-test-root[data-eg-mode="practice"] .eg-top-tools .eg-tool-btn,html body .eg-test-root[data-eg-mode="practice"] .eg-top-tools .eg-tool-sec{display:inline-flex!important;visibility:visible!important;opacity:1!important;flex-direction:column!important;width:auto!important;min-width:36px!important;height:auto!important;min-height:40px!important;color:#fff!important}',
         'html body .eg-test-root .eg-top-tools .eg-tip{display:block!important;position:static!important;opacity:1!important;color:#fff!important;background:transparent!important;font-size:9px!important}',
         '@media (max-width:768px){html body .eg-test-root #egFmtPop,html body .eg-fmt-pop.eg-vs-marks{position:fixed!important;top:auto!important;bottom:0!important;left:0!important;right:0!important;width:100%!important;max-height:min(82vh,calc(100dvh - 48px))!important;transform:none!important;overflow-y:auto!important;z-index:2147483601!important}}'
       ].join("");
@@ -224,6 +224,10 @@
             if (mkEl) document.head.appendChild(mkEl);
             var st294 = document.getElementById("qxmd294EgCss");
             if (st294) document.head.appendChild(st294);
+            var st303 = document.getElementById("qxmd303EgCss");
+            if (st303) document.head.appendChild(st303);
+            var shEl = document.getElementById("qxShellLockCss");
+            if (shEl) document.head.appendChild(shEl);
         });
       }
     } catch (_) {}
@@ -257,7 +261,11 @@
       s294.textContent = [
         'html body .eg-test-root[data-eg-mode="test"]>.eg-top,html body .eg-test-root[data-eg-mode="test"] .eg-top{background:#eef3fb!important;color:#0f172a!important}',
         'html body .eg-test-root[data-eg-mode="test"] #qxSubmitTop,html body .eg-test-root[data-eg-mode="test"] .eg-marks-submit{display:inline-flex!important;pointer-events:auto!important;visibility:visible!important;z-index:95!important}',
-        'html body .eg-test-root[data-eg-mode="test"] #egFoot,html body .eg-test-root[data-eg-mode="test"] .eg-foot-marks-test{display:grid!important;grid-template-columns:1fr 1fr!important;max-height:none!important;z-index:90!important}',
+        'html body .eg-test-root[data-eg-mode="test"] #egFoot,html body .eg-test-root[data-eg-mode="test"] .eg-foot-marks-test{display:grid!important;grid-template-columns:1fr 1fr!important;grid-template-rows:48px 48px!important;grid-auto-flow:row!important;max-height:calc(108px + env(safe-area-inset-bottom,0px))!important;height:calc(108px + env(safe-area-inset-bottom,0px))!important;z-index:2147483000!important;left:0!important;right:0!important;bottom:0!important;transform:none!important}',
+        'html body .eg-test-root[data-eg-mode="test"] #qxClearBtn{grid-area:1/1!important}',
+        'html body .eg-test-root[data-eg-mode="test"] #qxReviewNextBtn{grid-area:1/2!important}',
+        'html body .eg-test-root[data-eg-mode="test"] #qxPrevBtn{grid-area:2/1!important}',
+        'html body .eg-test-root[data-eg-mode="test"] #qxSaveBtn{grid-area:2/2!important;transform:none!important;margin-left:0!important}',
         'html body .eg-test-root[data-eg-mode="test"] #egQArea,html body .eg-test-root[data-eg-mode="test"] .eg-q-stem,html body .eg-test-root[data-eg-mode="test"] .mtk-opt{overflow:visible!important;visibility:visible!important}'
       ].join("");
       document.head.appendChild(s294);
@@ -319,6 +327,34 @@
       var st294Last = document.getElementById("qxmd294EgCss");
       if (st294Last) document.head.appendChild(st294Last);
     } catch (_) {}
+    if (!document.getElementById("qxmd303EgCss")) {
+      var s303 = document.createElement("style");
+      s303.id = "qxmd303EgCss";
+      s303.textContent = [
+        'html body .eg-test-root[data-eg-mode="test"] #egFoot,html body .eg-test-root[data-eg-mode="test"] .eg-foot-marks-test,html body #egFoot.eg-foot-marks-test{display:grid!important;grid-template-columns:1fr 1fr!important;grid-template-rows:48px 48px!important;grid-auto-flow:row!important;position:fixed!important;left:0!important;right:0!important;bottom:0!important;top:auto!important;transform:none!important;height:calc(108px + env(safe-area-inset-bottom,0px))!important;min-height:calc(108px + env(safe-area-inset-bottom,0px))!important;max-height:calc(108px + env(safe-area-inset-bottom,0px))!important;z-index:2147483000!important}',
+        'html body .eg-test-root[data-eg-mode="test"] #qxClearBtn{grid-area:1/1!important}',
+        'html body .eg-test-root[data-eg-mode="test"] #qxReviewNextBtn{grid-area:1/2!important}',
+        'html body .eg-test-root[data-eg-mode="test"] #qxPrevBtn{grid-area:2/1!important}',
+        'html body .eg-test-root[data-eg-mode="test"] #qxSaveBtn,html body .eg-test-root[data-eg-mode="test"] #qxSaveBtn.eg-btn-next{grid-area:2/2!important;transform:none!important;margin-left:0!important}',
+        'html body .eg-test-root[data-eg-mode="test"][data-qx-format="nta"] .eg-qx-extras,html body .eg-test-root[data-eg-mode="test"][data-qx-format="nta"] > .eg-top-tools{display:none!important}',
+        'html body .eg-test-root[data-eg-mode="test"] > .eg-top{position:relative!important;bottom:auto!important}',
+        'html[data-qx-shell="app"] body:has(.eg-test-root) .qzrr-cbt,html[data-qx-shell="app"] body:has(.eg-test-root) .qzrr-footer-actions{display:none!important}'
+      ].join("");
+      document.head.appendChild(s303);
+    } else {
+      try { document.head.appendChild(document.getElementById("qxmd303EgCss")); } catch (_) {}
+    }
+    var shCss = document.getElementById("qxShellLockCss");
+    if (!shCss) {
+      shCss = document.createElement("link");
+      shCss.id = "qxShellLockCss";
+      shCss.rel = "stylesheet";
+      document.head.appendChild(shCss);
+    } else {
+      try { document.head.appendChild(shCss); } catch (_) {}
+    }
+    var shh = "assets/qx-shell-lock.css?v=" + encodeURIComponent(global.QX_BUILD || "qxmd303");
+    if (shCss.getAttribute("href") !== shh) shCss.href = shh;
   }
 
   /** Play TWA / installed PWA only. Desktop + phone browser stay "web". */
@@ -2178,6 +2214,32 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
         if (!foot) return;
         var isTestMarks = root.getAttribute("data-eg-mode") === "test";
         if (isTestMarks) {
+          var areas = { qxClearBtn: "1 / 1", qxReviewNextBtn: "1 / 2", qxPrevBtn: "2 / 1", qxSaveBtn: "2 / 2" };
+          function pinMarksFootCells() {
+            foot.style.setProperty("display", "grid", "important");
+            foot.style.setProperty("grid-template-columns", "1fr 1fr", "important");
+            foot.style.setProperty("grid-template-rows", "48px 48px", "important");
+            foot.style.setProperty("grid-auto-flow", "row", "important");
+            foot.style.setProperty("flex-direction", "unset", "important");
+            Object.keys(areas).forEach(function (id) {
+              var b = foot.querySelector("#" + id);
+              if (!b) return;
+              b.style.setProperty("grid-area", areas[id], "important");
+              b.style.setProperty("display", "inline-flex", "important");
+              b.style.setProperty("visibility", "visible", "important");
+              b.style.setProperty("pointer-events", "auto", "important");
+              b.style.setProperty("z-index", "40", "important");
+              b.style.setProperty("min-height", "44px", "important");
+              b.style.setProperty("height", "44px", "important");
+              b.style.setProperty("max-height", "44px", "important");
+              b.style.setProperty("width", "100%", "important");
+              b.style.setProperty("margin", "0", "important");
+              b.style.setProperty("transform", "none", "important");
+              b.style.setProperty("left", "auto", "important");
+              b.style.setProperty("right", "auto", "important");
+            });
+          }
+          pinMarksFootCells();
           if (!force && foot.getAttribute("data-qx-foot-lock") === "1") {
             try { if (typeof syncEgFootPad === "function") syncEgFootPad(root); } catch (_) {}
             return;
@@ -2189,9 +2251,6 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
           foot.style.setProperty("bottom", "0", "important");
           foot.style.setProperty("top", "auto", "important");
           foot.style.setProperty("transform", "none", "important");
-          foot.style.setProperty("display", "grid", "important");
-          foot.style.setProperty("grid-template-columns", "1fr 1fr", "important");
-          foot.style.setProperty("grid-template-rows", "48px 48px", "important");
           foot.style.setProperty("max-height", "calc(108px + env(safe-area-inset-bottom, 0px))", "important");
           foot.style.setProperty("min-height", "calc(108px + env(safe-area-inset-bottom, 0px))", "important");
           foot.style.setProperty("height", "calc(108px + env(safe-area-inset-bottom, 0px))", "important");
@@ -2202,17 +2261,7 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
           foot.style.setProperty("width", "100%", "important");
           foot.style.setProperty("margin", "0", "important");
           foot.style.setProperty("padding", "8px 12px calc(8px + env(safe-area-inset-bottom, 0px))", "important");
-          ["qxPrevBtn", "qxSaveBtn", "qxClearBtn", "qxReviewNextBtn"].forEach(function (id) {
-            var b = foot.querySelector("#" + id);
-            if (!b) return;
-            b.style.setProperty("display", "inline-flex", "important");
-            b.style.setProperty("visibility", "visible", "important");
-            b.style.setProperty("pointer-events", "auto", "important");
-            b.style.setProperty("z-index", "40", "important");
-            b.style.setProperty("min-height", "44px", "important");
-            b.style.setProperty("height", "44px", "important");
-            b.style.setProperty("max-height", "none", "important");
-          });
+          pinMarksFootCells();
           try { if (typeof syncEgFootPad === "function") syncEgFootPad(root); } catch (_) {}
           _egFootPainted = true;
           _egFootLast = Date.now();

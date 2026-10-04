@@ -1,0 +1,260 @@
+/* qxmd303 last-wins: mobile website Quizrr, app MARKS 2×2 footer, draggable PIP room.
+   Website rules stay under html[data-qx-shell="web"]. App MARKS player stays 2×2. */
+
+/* ===== App: if MARKS player is on screen, hide leaked Quizrr chrome ===== */
+html[data-qx-shell="app"] body:has(.eg-test-root) .qzrr-cbt,
+html[data-qx-shell="app"] body:has(.eg-test-root) .qzrr-footer-actions,
+html[data-qx-shell="app"] body:has(.eg-test-root) .qzrr-black-bar,
+html[data-qx-shell="app"] body:has(.eg-test-root) .qzrr-side-toggle {
+  display: none !important;
+}
+
+/* ===== App + any MARKS test: ONE pinned 2×2 footer (two above, two below) ===== */
+html body .eg-test-root[data-eg-mode="test"] > #egFoot,
+html body .eg-test-root[data-eg-mode="test"] #egFoot,
+html body .eg-test-root[data-eg-mode="test"] .eg-foot,
+html body .eg-test-root[data-eg-mode="test"] .eg-foot-marks-test,
+html body #egFoot.eg-foot-marks-test,
+html[data-qx-shell="app"] .eg-test-root[data-eg-mode="test"] #egFoot,
+html[data-qx-shell="app"] #egFoot.eg-foot-marks-test,
+.eg-test-root.eg-qxeg2[data-eg-mode="test"] #egFoot,
+.eg-test-root.eg-qxeg4[data-eg-mode="test"] #egFoot,
+.eg-test-root.eg-qxeg5[data-eg-mode="test"] #egFoot,
+.eg-test-root.eg-qxeg6[data-eg-mode="test"] #egFoot {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  grid-template-rows: 48px 48px !important;
+  grid-auto-flow: row !important;
+  grid-auto-rows: 48px !important;
+  flex-direction: unset !important;
+  flex-wrap: nowrap !important;
+  align-content: start !important;
+  align-items: stretch !important;
+  justify-content: stretch !important;
+  gap: 8px !important;
+  position: fixed !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  top: auto !important;
+  inset: auto 0 0 0 !important;
+  transform: none !important;
+  margin: 0 !important;
+  width: 100% !important;
+  max-width: none !important;
+  height: calc(108px + env(safe-area-inset-bottom, 0px)) !important;
+  min-height: calc(108px + env(safe-area-inset-bottom, 0px)) !important;
+  max-height: calc(108px + env(safe-area-inset-bottom, 0px)) !important;
+  padding: 8px 12px calc(8px + env(safe-area-inset-bottom, 0px)) !important;
+  z-index: 2147483000 !important;
+  overflow: visible !important;
+  pointer-events: auto !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  box-sizing: border-box !important;
+}
+
+html body .eg-test-root[data-eg-mode="test"] #egFoot #qxClearBtn,
+html body .eg-test-root[data-eg-mode="test"] #qxClearBtn {
+  grid-area: 1 / 1 !important;
+  order: 1 !important;
+}
+html body .eg-test-root[data-eg-mode="test"] #egFoot #qxReviewNextBtn,
+html body .eg-test-root[data-eg-mode="test"] #qxReviewNextBtn {
+  grid-area: 1 / 2 !important;
+  order: 2 !important;
+}
+html body .eg-test-root[data-eg-mode="test"] #egFoot #qxPrevBtn,
+html body .eg-test-root[data-eg-mode="test"] #qxPrevBtn {
+  grid-area: 2 / 1 !important;
+  order: 3 !important;
+}
+html body .eg-test-root[data-eg-mode="test"] #egFoot #qxSaveBtn,
+html body .eg-test-root[data-eg-mode="test"] #qxSaveBtn,
+html body .eg-test-root[data-eg-mode="test"] #qxSaveBtn.eg-btn-next {
+  grid-area: 2 / 2 !important;
+  order: 4 !important;
+  justify-self: stretch !important;
+  margin-left: 0 !important;
+  left: auto !important;
+  right: auto !important;
+  transform: none !important;
+}
+
+html body .eg-test-root[data-eg-mode="test"] #egFoot .eg-btn,
+html body .eg-test-root[data-eg-mode="test"] #qxClearBtn,
+html body .eg-test-root[data-eg-mode="test"] #qxReviewNextBtn,
+html body .eg-test-root[data-eg-mode="test"] #qxPrevBtn,
+html body .eg-test-root[data-eg-mode="test"] #qxSaveBtn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  min-height: 44px !important;
+  height: 44px !important;
+  max-height: 44px !important;
+  position: relative !important;
+  float: none !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+/* Second copy of the footer must never paint */
+html body .eg-test-root[data-eg-mode="test"] #egFoot ~ #egFoot,
+html body .eg-test-root[data-eg-mode="test"] .eg-foot-marks-test ~ .eg-foot-marks-test {
+  display: none !important;
+}
+
+/* NTA test: only MARKS header (X | timer | Submit). Hide extras / leaked tools. */
+html body .eg-test-root[data-eg-mode="test"][data-qx-format="nta"] > .eg-top-tools,
+html body .eg-test-root[data-eg-mode="test"][data-qx-format="nta"] .eg-qx-extras,
+html body .eg-test-root[data-eg-mode="test"][data-qx-format="nta"] .qx-prac-tools {
+  display: none !important;
+}
+
+/* Header stays at the top — never a second bottom bar */
+html body .eg-test-root[data-eg-mode="test"] > .eg-top,
+html body .eg-test-root[data-eg-mode="test"] .eg-top {
+  position: relative !important;
+  bottom: auto !important;
+  top: auto !important;
+}
+
+/* Practice stays Previous | Check | Next — one row */
+html body .eg-test-root[data-eg-mode="practice"] #egFoot,
+html body .eg-test-root[data-eg-mode="practice"] .eg-foot-practice {
+  display: grid !important;
+  grid-template-columns: 1fr 1.2fr 1fr !important;
+  grid-template-rows: none !important;
+  flex-direction: row !important;
+}
+
+/* ===== Website mobile Quizrr — phone Chrome only ===== */
+@media (max-width: 900px) {
+  html[data-qx-shell="web"] body.marks-test-active:has(.qzrr-cbt),
+  html[data-qx-shell="web"] body.allen-cbt-active:has(.qzrr-cbt) {
+    overflow: hidden !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    overscroll-behavior: none !important;
+  }
+  html[data-qx-shell="web"] .qzrr-cbt {
+    width: 100% !important;
+    max-width: 100vw !important;
+    min-width: 0 !important;
+  }
+  html[data-qx-shell="web"] .qzrr-cbt .qzrr-black-bar {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    gap: 8px !important;
+    min-height: 40px !important;
+    max-height: 44px !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding: 4px 8px !important;
+  }
+  html[data-qx-shell="web"] .qzrr-cbt .qzrr-black-title {
+    flex: 0 1 auto !important;
+    max-width: min(38vw, 160px) !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+  }
+  html[data-qx-shell="web"] .qzrr-cbt .qzrr-black-tools {
+    flex: 1 1 auto !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    min-width: 0 !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  html[data-qx-shell="web"] .qzrr-cbt .qzrr-tool-btn {
+    flex: 0 0 auto !important;
+    min-height: 36px !important;
+    padding: 6px 8px !important;
+    font-size: 12px !important;
+  }
+  html[data-qx-shell="web"] .qzrr-cbt .qzrr-body {
+    grid-template-columns: 1fr !important;
+    min-width: 0 !important;
+  }
+  html[data-qx-shell="web"] .qzrr-cbt .qzrr-main-col,
+  html[data-qx-shell="web"] .qzrr-cbt .qzrr-q-area,
+  html[data-qx-shell="web"] .qzrr-cbt #qzrrQArea {
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+  html[data-qx-shell="web"] .qzrr-cbt .qzrr-q-area,
+  html[data-qx-shell="web"] .qzrr-cbt #qzrrQArea {
+    padding: 12px 12px 28px !important;
+  }
+  html[data-qx-shell="web"] .qzrr-cbt .qzrr-footer-actions {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    grid-template-rows: auto auto !important;
+    gap: 8px !important;
+    flex-wrap: nowrap !important;
+    align-items: stretch !important;
+    justify-content: stretch !important;
+    padding: 8px 10px calc(8px + env(safe-area-inset-bottom, 0px)) !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  html[data-qx-shell="web"] .qzrr-cbt .qzrr-act-left,
+  html[data-qx-shell="web"] .qzrr-cbt .qzrr-act-right {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    grid-column: 1 / -1 !important;
+    gap: 8px !important;
+    width: 100% !important;
+    flex-wrap: nowrap !important;
+    min-width: 0 !important;
+  }
+  html[data-qx-shell="web"] .qzrr-cbt .qzrr-footer-actions .qzrr-btn,
+  html[data-qx-shell="web"] .qzrr-cbt #qxReviewNextBtn,
+  html[data-qx-shell="web"] .qzrr-cbt #qxClearBtn,
+  html[data-qx-shell="web"] .qzrr-cbt #qxPrevBtn,
+  html[data-qx-shell="web"] .qzrr-cbt #qxSaveBtn {
+    width: 100% !important;
+    min-width: 0 !important;
+    min-height: 44px !important;
+    height: 44px !important;
+    margin: 0 !important;
+    white-space: nowrap !important;
+    font-size: 13px !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+  html[data-qx-shell="web"] .qzrr-cbt #qxPrevBtn { order: 0 !important; }
+  html[data-qx-shell="web"] .qzrr-cbt #qxSaveBtn { order: 1 !important; }
+  html[data-qx-shell="web"] .qzrr-cbt .qzrr-side-toggle {
+    display: flex !important;
+    z-index: 60 !important;
+  }
+  html[data-qx-shell="web"] .qzrr-cbt:not(.qzrr-side-collapsed) .qzrr-side {
+    position: absolute !important;
+    right: 0 !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    width: min(280px, 88vw) !important;
+    z-index: 80 !important;
+    max-width: 88vw !important;
+  }
+}
+
+@media (max-width: 420px) {
+  html[data-qx-shell="web"] .qzrr-cbt .qzrr-footer-actions .qzrr-btn,
+  html[data-qx-shell="web"] .qzrr-cbt #qxReviewNextBtn,
+  html[data-qx-shell="web"] .qzrr-cbt #qxClearBtn,
+  html[data-qx-shell="web"] .qzrr-cbt #qxPrevBtn,
+  html[data-qx-shell="web"] .qzrr-cbt #qxSaveBtn {
+    font-size: 12px !important;
+    padding: 0 6px !important;
+  }
+  html[data-qx-shell="web"] .qzrr-cbt .qzrr-black-title {
+    max-width: min(30vw, 110px) !important;
+  }
+}

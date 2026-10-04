@@ -3,6 +3,7 @@
  * Flags are review indicators, never "CHEATING DETECTED". Default OFF until toggle.
  * qxmd297: richer client integrity intelligence for review (tab, focus, copy/paste,
  * print, fullscreen, face hints, rapid-nav, short dwell, display heuristic).
+ * qxmd303: draggable camera PIP + extra review-grade signals. Never auto-fail.
  */
 (function (global) {
   "use strict";
@@ -11,6 +12,7 @@
   var SNAP_W = 480;
   var LOG_KEY = "qx_ai_proctor_log";
   var PREF_KEY = "qx_pref_ai_proctor";
+  var PIP_POS_KEY = "qx_pr_pip_pos";
   var _state = null;
   var _stream = null;
   var _video = null;
@@ -29,10 +31,14 @@
   var _lastLeave = 0;
   var _lastResize = 0;
   var _lastKey = 0;
+  var _lastSel = 0;
+  var _lastDev = 0;
+  var _lastDevice = 0;
   var _listening = false;
+  var _pipDrag = null;
 
   function bust() {
-    return encodeURIComponent((typeof global.QX_BUILD === "string" && global.QX_BUILD) || "qxmd297");
+    return encodeURIComponent((typeof global.QX_BUILD === "string" && global.QX_BUILD) || "qxmd303");
   }
   function ensureCss() {
     if (_css || !document.head) return;
@@ -140,6 +146,13 @@
       window.removeEventListener("pagehide", onPageHide);
       document.removeEventListener("pointerdown", onInput, true);
       document.removeEventListener("keydown", onInput, true);
+      document.removeEventListener("selectionchange", onSelect);
+      window.removeEventListener("offline", onOffline);
+      window.removeEventListener("online", onOnline);
+      window.removeEventListener("orientationchange", onOrient);
+      if (navigator.mediaDevices && navigator.mediaDevices.removeEventListener) {
+        navigator.mediaDevices.removeEventListener("devicechange", onDeviceChange);
+      }
     } catch (_) { /* */ }
     _listening = false;
   }
@@ -151,6 +164,7 @@
     _stream = null;
     if (_tick) { clearInterval(_tick); _tick = null; }
     if (_faceTimer) { clearInterval(_faceTimer); _faceTimer = null; }
+    unbindPipDrag();
     if (_pip && _pip.parentNode) _pip.parentNode.removeChild(_pip);
     _pip = null;
     _video = null;
@@ -249,8 +263,10 @@
     if (!_state || _state.ended || !e) return;
     var k = (e.key || "").toLowerCase();
     var combo = (e.ctrlKey || e.metaKey) && (k === "c" || k === "v" || k === "x" || k === "p" || k === "u" || k === "s");
+    var shiftI = (e.ctrlKey || e.metaKey) && e.shiftKey && (k === "i" || k === "j" || k === "c");
     var printScr = k === "printscreen";
-    if (!combo && !printScr) return;
+    var f12 = k === "f12";
+    if (!combo && !shiftI && !printScr && !f12) return;
     if (Date.now() - _lastKey < 1200) return;
     _lastKey = Date.now();
     bump("keyFlags");
@@ -278,6 +294,39 @@
   function onInput() {
     if (_state) _state.lastInputAt = Date.now();
   }
+  function onSelect() {
+    if (!_state || _state.ended) return;
+    try {
+      var sel = window.getSelection && window.getSelection();
+      var t = sel && sel.toString ? String(sel.toString()) : "";
+      if (t.length < 80) return;
+      if (Date.now() - _lastSel < 4000) return;
+      _lastSel = Date.now();
+      bump("selectFlags");
+      pushEvent("select", "y", "Large text selection", "A long passage was selected during the test. Review indicator.", false);
+    } catch (_) { /* */ }
+  }
+  function onOffline() {
+    if (!_state || _state.ended) return;
+    bump("offlineEvents");
+    pushEvent("net", "y", "Went offline", "Network dropped during the test. Review indicator.", false);
+  }
+  function onOnline() {
+    if (!_state || _state.ended) return;
+    pushEvent("net", "g", "Back online", "Network restored.", false);
+  }
+  function onOrient() {
+    if (!_state || _state.ended) return;
+    bump("orientEvents");
+    pushEvent("orient", "y", "Orientation changed", "Device rotated during the test. Review indicator.", false);
+  }
+  function onDeviceChange() {
+    if (!_state || _state.ended) return;
+    if (Date.now() - _lastDevice < 2500) return;
+    _lastDevice = Date.now();
+    bump("deviceChanges");
+    pushEvent("camera", "o", "Media device changed", "A camera or audio device was added or removed. Potential integrity event — requires review.", true);
+  }
 
   function sampleDisplay() {
     if (!_state || _state.ended) return;
@@ -291,6 +340,17 @@
         if (!_state.secondScreen) {
           _state.secondScreen = 1;
           pushEvent("display", "y", "Additional display heuristic", "Window geometry suggests another screen may be in use. This is a weak signal and requires review.", false);
+        }
+      }
+      if (window.innerWidth >= 900 && Date.now() - _lastDev > 8000) {
+        var gapW = (window.outerWidth || 0) - (window.innerWidth || 0);
+        var gapH = (window.outerHeight || 0) - (window.innerHeight || 0);
+        if (gapW > 280 || gapH > 280) {
+          _lastDev = Date.now();
+          if (!_state.devTools) {
+            _state.devTools = 1;
+            pushEvent("devtools", "y", "Developer-tools heuristic", "Browser chrome is unusually large. Weak signal and requires review.", false);
+          }
         }
       }
     } catch (_) { /* */ }
@@ -308,14 +368,115 @@
         _state.faceSamples += 1;
         if (n === 0) {
           _state.faceMiss += 1;
-          pushEvent("face", "y", "Face temporarily not visible", "Lighting or camera angle may also cause this.", true);
+          _state._faceStreak = (_state._faceStreak || 0) + 1;
+          if (_state._faceStreak === 3 || _state._faceStreak === 6) {
+            pushEvent("face", "o", "Face not visible for several checks", "Lighting or camera angle may also cause this. Potential integrity event — requires review.", true);
+          } else {
+            pushEvent("face", "y", "Face temporarily not visible", "Lighting or camera angle may also cause this.", true);
+          }
         } else if (n >= 2) {
+          _state._faceStreak = 0;
           _state.multiFace += 1;
           pushEvent("multiface", "r", "Multiple-person event detected", "Potential integrity event detected — requires review.", true);
         } else {
+          _state._faceStreak = 0;
           _state.faceHit += 1;
         }
       }).catch(function () { /* detector optional */ });
+    } catch (_) { /* */ }
+  }
+
+  function footReserve() {
+    var h = 0;
+    try {
+      var f = document.getElementById("egFoot") || document.querySelector(".qzrr-footer-actions");
+      if (f && f.getBoundingClientRect) h = Math.max(0, f.getBoundingClientRect().height || 0);
+    } catch (_) { /* */ }
+    return h || 56;
+  }
+  function clampPip(el, x, y) {
+    var w = (el && el.offsetWidth) || 88;
+    var h = (el && el.offsetHeight) || 80;
+    var maxX = Math.max(4, (window.innerWidth || 320) - w - 4);
+    var maxY = Math.max(4, (window.innerHeight || 480) - h - footReserve() - 8);
+    return {
+      x: Math.min(maxX, Math.max(4, x)),
+      y: Math.min(maxY, Math.max(4, y))
+    };
+  }
+  function applyPipPos(el, x, y) {
+    if (!el) return;
+    var p = clampPip(el, x, y);
+    el.classList.add("qx-pr-pip-moved");
+    el.style.setProperty("left", p.x + "px", "important");
+    el.style.setProperty("top", p.y + "px", "important");
+    el.style.setProperty("right", "auto", "important");
+    el.style.setProperty("bottom", "auto", "important");
+    try { localStorage.setItem(PIP_POS_KEY, JSON.stringify({ x: p.x, y: p.y })); } catch (_) { /* */ }
+  }
+  function restorePipPos(el) {
+    try {
+      var raw = localStorage.getItem(PIP_POS_KEY);
+      if (!raw) return;
+      var p = JSON.parse(raw);
+      if (p && typeof p.x === "number" && typeof p.y === "number") applyPipPos(el, p.x, p.y);
+    } catch (_) { /* */ }
+  }
+  function unbindPipDrag() {
+    if (!_pipDrag) return;
+    try {
+      window.removeEventListener("pointermove", _pipDrag.move);
+      window.removeEventListener("pointerup", _pipDrag.end);
+      window.removeEventListener("pointercancel", _pipDrag.end);
+    } catch (_) { /* */ }
+    _pipDrag = null;
+  }
+  function bindPipDrag(el) {
+    if (!el) return;
+    unbindPipDrag();
+    var dragging = false, sx = 0, sy = 0, ox = 0, oy = 0;
+    function start(e) {
+      if (!e) return;
+      if (e.button != null && e.button !== 0) return;
+      dragging = true;
+      el.classList.add("qx-pr-pip-dragging");
+      var r = el.getBoundingClientRect();
+      sx = e.clientX;
+      sy = e.clientY;
+      ox = r.left;
+      oy = r.top;
+      try { el.setPointerCapture && e.pointerId != null && el.setPointerCapture(e.pointerId); } catch (_) { /* */ }
+      try { e.preventDefault(); e.stopPropagation(); } catch (_) { /* */ }
+    }
+    function move(e) {
+      if (!dragging || !e) return;
+      applyPipPos(el, ox + (e.clientX - sx), oy + (e.clientY - sy));
+      try { e.preventDefault(); } catch (_) { /* */ }
+    }
+    function end() {
+      if (!dragging) return;
+      dragging = false;
+      el.classList.remove("qx-pr-pip-dragging");
+    }
+    _pipDrag = { move: move, end: end };
+    el.addEventListener("pointerdown", start);
+    window.addEventListener("pointermove", move, { passive: false });
+    window.addEventListener("pointerup", end);
+    window.addEventListener("pointercancel", end);
+  }
+  function bindCameraTracks() {
+    if (!_stream) return;
+    try {
+      _stream.getTracks().forEach(function (t) {
+        t.onended = function () {
+          if (!_state || _state.ended) return;
+          pushEvent("camera", "r", "Camera track ended", "Camera track ended. Potential integrity event — requires review.", true);
+        };
+        t.onmute = function () {
+          if (!_state || _state.ended) return;
+          pushEvent("camera", "o", "Camera muted or covered", "Camera feed muted. Potential integrity event — requires review.", true);
+        };
+      });
     } catch (_) { /* */ }
   }
 
@@ -326,7 +487,8 @@
     _pip = document.createElement("div");
     _pip.className = "qx-pr-pip qx-pr-pip-top";
     _pip.setAttribute("data-qx-pr-pip", "1");
-    _pip.innerHTML = '<video playsinline muted autoplay></video><div class="qx-pr-pip-bar"><span class="qx-pr-live"></span> AI PROCTOR</div>';
+    _pip.setAttribute("title", "Drag to move the camera preview");
+    _pip.innerHTML = '<video playsinline muted autoplay></video><div class="qx-pr-pip-bar"><span class="qx-pr-live"></span> AI PROCTOR<span class="qx-pr-pip-grip">⋮⋮</span></div>';
     document.body.appendChild(_pip);
     var v = _pip.querySelector("video");
     _video = v;
@@ -335,6 +497,9 @@
       var p = v.play();
       if (p && p.catch) p.catch(function () {});
     }
+    bindPipDrag(_pip);
+    restorePipPos(_pip);
+    bindCameraTracks();
   }
 
   function bindIntel() {
@@ -355,6 +520,13 @@
       window.addEventListener("pagehide", onPageHide);
       document.addEventListener("pointerdown", onInput, true);
       document.addEventListener("keydown", onInput, true);
+      document.addEventListener("selectionchange", onSelect);
+      window.addEventListener("offline", onOffline);
+      window.addEventListener("online", onOnline);
+      window.addEventListener("orientationchange", onOrient);
+      if (navigator.mediaDevices && navigator.mediaDevices.addEventListener) {
+        navigator.mediaDevices.addEventListener("devicechange", onDeviceChange);
+      }
     } catch (_) { /* */ }
     _listening = true;
   }
@@ -366,6 +538,12 @@
     if (_tick) clearInterval(_tick);
     _tick = setInterval(function () {
       if (!_state || _state.ended) return;
+      var now = Date.now();
+      if (_state._beatAt && now - _state._beatAt > 6000 && !document.hidden) {
+        bump("clockJumps");
+        pushEvent("pause", "o", "Session clock jumped", "The page may have been paused or backgrounded. Potential integrity event — requires review.", true);
+      }
+      _state._beatAt = now;
       _state.cameraOkSec += (_stream && _stream.active) ? 1 : 0;
       _state.elapsedSec += 1;
       if (_stream && !_stream.active) {
@@ -420,7 +598,13 @@
       tabHiddenMs: 0,
       navHops: [],
       lastNavAt: 0,
-      lastInputAt: Date.now()
+      lastInputAt: Date.now(),
+      selectFlags: 0,
+      offlineEvents: 0,
+      orientEvents: 0,
+      deviceChanges: 0,
+      clockJumps: 0,
+      devTools: 0
     };
   }
 
@@ -535,6 +719,13 @@
     sub(Math.min(8, Math.floor((s.shortDwell || 0) / 8) * 3), "Very short dwell clusters");
     sub(s.secondScreen ? 4 : 0, s.secondScreen ? "Additional display heuristic" : "");
     sub(Math.min(8, (s.keyFlags || 0) * 4), "Restricted shortcuts (" + (s.keyFlags || 0) + ")");
+    sub(Math.min(8, (s.idleEvents || 0) * 2), "Long idle stretches (" + (s.idleEvents || 0) + ")");
+    sub(Math.min(10, Math.floor((s.tabHiddenMs || 0) / 15000) * 2), "Time away from the tab");
+    sub(Math.min(8, (s.deviceChanges || 0) * 4), "Camera / device changes (" + (s.deviceChanges || 0) + ")");
+    sub(Math.min(8, (s.clockJumps || 0) * 4), "Session-clock jumps (" + (s.clockJumps || 0) + ")");
+    sub(s.devTools ? 3 : 0, s.devTools ? "Developer-tools heuristic" : "");
+    sub(Math.min(6, (s.selectFlags || 0) * 2), "Large text selections (" + (s.selectFlags || 0) + ")");
+    sub(Math.min(6, Math.floor((s.faceMiss || 0) / 3) * 2), "Face-not-visible samples");
     score = Math.max(0, Math.min(100, score));
     var band = score >= 85 ? "Low review" : (score >= 60 ? "Watch" : "Review required");
     return { score: score, band: band, deductions: deductions.filter(function (d) { return d.why; }) };
@@ -643,6 +834,7 @@
     took.push("Time away from tab: " + fmtSec((_state && _state.tabHiddenMs || 0) / 1000) + ".");
     took.push("Copy / paste / print flags: " + (((_state && _state.copyEvents) || 0) + ((_state && _state.pasteEvents) || 0) + ((_state && _state.printEvents) || 0)) + ".");
     took.push("Rapid-nav clusters: " + ((_state && _state.rapidNav) || 0) + " · short-dwell clusters: " + ((_state && _state.shortDwell) || 0) + ".");
+    took.push("Device / clock / selection flags: " + (((_state && _state.deviceChanges) || 0) + ((_state && _state.clockJumps) || 0) + ((_state && _state.selectFlags) || 0)) + ".");
     took.push("Integrity intelligence: " + intel.score + "/100 · " + intel.band + ".");
     var dedul = intel.deductions.map(function (d) {
       return "<li>−" + d.n + " · " + esc(d.why) + "</li>";
@@ -772,8 +964,8 @@
           "</div>" +
           '<div class="qx-pr-body">' +
             "<ul class=\"qx-pr-list\">" +
-              "<li><i class=\"qx-pr-dot\"></i><span>Small live preview stays at the top so questions stay fully visible.</span></li>" +
-              "<li><i class=\"qx-pr-dot\"></i><span>Tab switch, focus loss, copy/paste, print, full-screen exit, or camera drop can take a still (max 8 JPEGs).</span></li>" +
+              "<li><i class=\"qx-pr-dot\"></i><span>Small live preview starts at the top. Drag it anywhere so questions stay fully visible.</span></li>" +
+              "<li><i class=\"qx-pr-dot\"></i><span>Tab switch, focus loss, copy/paste, print, full-screen exit, camera drop, or device change can take a still (max 8 JPEGs).</span></li>" +
               "<li><i class=\"qx-pr-dot\"></i><span>Integrity intelligence scores the session for a human reviewer. Never an automatic cheating verdict.</span></li>" +
               "<li><i class=\"qx-pr-dot\"></i><span>Stills stay on this device for this session. Event counts may be stored with your result.</span></li>" +
             "</ul>" +

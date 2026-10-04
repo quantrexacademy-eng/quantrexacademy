@@ -387,4 +387,48 @@ html[data-qx-shell="web"] .qzrr-cbt .qzrr-q-area .katex {
   html[data-qx-shell="web"] .qzrr-cbt.qzrr-side-collapsed .qzrr-side {
     display: none !important;
   }
+  html[data-qx-shell="web"] .qzrr-cbt .qzrr-black-bar {
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    min-height: 40px !important;
+    max-height: 44px !important;
+  }
+  html[data-qx-shell="web"] .qzrr-cbt .qzrr-footer-actions {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    grid-template-rows: auto auto !important;
+    gap: 8px !important;
+    flex-wrap: nowrap !important;
+    padding: 8px 10px calc(8px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+  html[data-qx-shell="web"] .qzrr-cbt .qzrr-act-left,
+  html[data-qx-shell="web"] .qzrr-cbt .qzrr-act-right {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    grid-column: 1 / -1 !important;
+    gap: 8px !important;
+    width: 100% !important;
+    flex-wrap: nowrap !important;
+  }
+  html[data-qx-shell="web"] .qzrr-cbt .qzrr-footer-actions .qzrr-btn,
+  html[data-qx-shell="web"] .qzrr-cbt #qxReviewNextBtn,
+  html[data-qx-shell="web"] .qzrr-cbt #qxClearBtn,
+  html[data-qx-shell="web"] .qzrr-cbt #qxPrevBtn,
+  html[data-qx-shell="web"] .qzrr-cbt #qxSaveBtn {
+    width: 100% !important;
+    min-height: 44px !important;
+    height: 44px !important;
+    min-width: 0 !important;
+    white-space: nowrap !important;
+  }
+  html[data-qx-shell="web"] .qzrr-cbt .qzrr-q-area,
+  html[data-qx-shell="web"] .qzrr-cbt #qzrrQArea {
+    padding: 12px 12px 28px !important;
+  }
+  html[data-qx-shell="web"] .qzrr-cbt .qzrr-side-toggle {
+    display: flex !important;
+    z-index: 60 !important;
+  }
 }
