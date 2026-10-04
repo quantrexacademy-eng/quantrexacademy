@@ -30,15 +30,15 @@
 .qx-pr-btn:disabled{opacity:.5;cursor:wait}
 .qx-pr-note{font-size:12px;color:#94a3b8;margin-top:12px;line-height:1.45}
 
-/* Default top-right so paper stays clear. Drag moves it anywhere (qx-pr-pip-moved). */
+/* Default left, below header — never cover ✕ or Submit. Drag moves it (qx-pr-pip-moved). */
 .qx-pr-pip,
 .qx-pr-pip.qx-pr-pip-top{
   position:fixed !important;
-  top: calc(6px + env(safe-area-inset-top, 0px));
-  right: 10px;
+  top: calc(64px + env(safe-area-inset-top, 0px));
+  left: 8px;
+  right: auto;
   bottom: auto;
-  left: auto;
-  z-index:2147482500;
+  z-index:40;
   width:88px;
   border-radius:12px;overflow:hidden;border:1px solid rgba(212,175,55,.45);
   box-shadow:0 10px 24px rgba(0,0,0,.4);background:#0b1220;
@@ -60,24 +60,31 @@
 .qx-pr-pip video,.qx-pr-pip canvas{display:block;width:100%;height:56px;object-fit:cover;background:#111;pointer-events:none}
 html[data-qx-shell="web"] body.marks-test-active .qx-pr-pip:not(.qx-pr-pip-moved),
 html[data-qx-shell="web"] body.allen-cbt-active .qx-pr-pip:not(.qx-pr-pip-moved){
-  top: calc(4px + env(safe-area-inset-top, 0px));
-  right: 292px;
+  top: calc(48px + env(safe-area-inset-top, 0px));
+  left: 8px;
+  right: auto;
   width: 80px;
+  z-index: 40;
 }
 html[data-qx-shell="app"] .qx-pr-pip:not(.qx-pr-pip-moved){
-  top: calc(52px + env(safe-area-inset-top, 0px));
-  right: 8px;
+  top: calc(64px + env(safe-area-inset-top, 0px));
+  left: 8px;
+  right: auto;
   width: 76px;
+  z-index: 40;
 }
 @media (max-width: 900px){
   html[data-qx-shell="web"] body.marks-test-active .qx-pr-pip:not(.qx-pr-pip-moved),
   html[data-qx-shell="web"] body.allen-cbt-active .qx-pr-pip:not(.qx-pr-pip-moved){
-    right: 8px;
-    top: calc(4px + env(safe-area-inset-top, 0px));
+    left: 8px;
+    right: auto;
+    top: calc(48px + env(safe-area-inset-top, 0px));
     width: 72px;
   }
   html[data-qx-shell="app"] .qx-pr-pip:not(.qx-pr-pip-moved){
-    top: calc(48px + env(safe-area-inset-top, 0px));
+    top: calc(64px + env(safe-area-inset-top, 0px));
+    left: 8px;
+    right: auto;
     width: 70px;
   }
 }

@@ -136,8 +136,9 @@ html body .eg-test-root[data-eg-mode="test"] header #qxSubmitTop {
   pointer-events: auto !important;
   visibility: visible !important;
   opacity: 1 !important;
-  z-index: 95 !important;
+  z-index: 320 !important;
   position: relative !important;
+  touch-action: manipulation !important;
 }
 
 /* ===== Section tabs ===== */
@@ -895,12 +896,16 @@ html body .eg-test-root[data-eg-mode="test"][data-test-theme="dark"] .mtk-opt {
   border-color: #334155 !important;
 }
 
-/* Website Quizrr: Submit lives only in the right palette. */
+/* Website Quizrr: Submit stays on the black bar (palette Submit remains too). */
 html[data-qx-shell="web"] body .qzrr-cbt #qxSubmitTop.qzrr-submit-mobile,
 html[data-qx-shell="web"] body .qzrr-cbt #qxSubmitTop,
-html[data-qx-shell="web"] body .qzrr-cbt #qxSubmitHdr,
-html[data-qx-shell="web"] body .qzrr-cbt .qzrr-black-tools #qxSubmitHdr {
-  display: none !important;
+html[data-qx-shell="web"] body .qzrr-cbt #qxSubmitHdr {
+  display: inline-flex !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  opacity: 1 !important;
+  cursor: pointer !important;
+  touch-action: manipulation !important;
 }
 html[data-qx-shell="web"] body .qzrr-cbt #qxSubmitBtn {
   display: flex !important;

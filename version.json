@@ -1,10 +1,10 @@
 {
-  "cache": "qx-pwa-qxmd304",
-  "ts": 1791100000304,
-  "title": "qxmd304: App NTA overview + lock question size",
+  "cache": "qx-pwa-qxmd305",
+  "ts": 1791100000305,
+  "title": "qxmd305: pan wide questions, unfreeze Submit, pin app footer",
   "site": "https://www.quantrexacademy.com",
-  "build": "qxmd304",
-  "body": "App NTA matches MARKS overview (counts, shapes). X left and Submit top-right on QUANTREX and NTA. Pinch/touch zoom off; questions stay standard size and scroll. Stored answers unchanged.",
+  "build": "qxmd305",
+  "body": "Wide questions pan left/right at standard size. Exit ✕ top-left. Submit tappable (PIP off the button). App MARKS 2×2 footer pinned. Stored answers unchanged.",
   "package": "com.quantrexacademy.app",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }

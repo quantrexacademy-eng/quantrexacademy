@@ -9,34 +9,36 @@ html body .mtk-test-root.allen-practice {
 }
 
 html body .eg-test-root.eg-qxmd182 .eg-body,
-html body .eg-test-root.eg-qxmd182 .eg-main,
-html body .eg-test-root .eg-body,
-html body .eg-test-root .eg-main {
-  overflow: hidden !important;
+html body .eg-test-root .eg-body {
+  overflow-x: auto !important;
+  overflow-y: auto !important;
   min-height: 0 !important;
+  -webkit-overflow-scrolling: touch !important;
+  touch-action: pan-x pan-y !important;
 }
-
+html body .eg-test-root.eg-qxmd182 .eg-main,
+html body .eg-test-root .eg-main,
 html body .eg-test-root.eg-qxmd182 .eg-q-card,
 html body .eg-test-root .eg-q-card,
 html body .mtk-test-root .mtk-main {
-  overflow-x: hidden !important;
-  overflow-y: auto !important;
+  overflow: visible !important;
+  min-height: 0 !important;
 }
 
-html body .eg-test-root > #egFoot,
-html body .eg-test-root > .eg-foot,
-html body .eg-test-root.eg-qxmd182 > #egFoot,
-html body .eg-test-root.eg-qxmd182 > .eg-foot,
-html body .eg-test-root.eg-qxtool8 > #egFoot,
-html body .eg-test-root #egFoot,
-html body .eg-test-root .eg-foot,
-html body .eg-test-root .eg-foot.eg-foot-marks,
-html body .eg-test-root .eg-foot.eg-foot-practice,
+html body .eg-test-root[data-eg-mode="practice"] > #egFoot,
+html body .eg-test-root[data-eg-mode="practice"] > .eg-foot,
+html body .eg-test-root.eg-qxmd182[data-eg-mode="practice"] > #egFoot,
+html body .eg-test-root.eg-qxmd182[data-eg-mode="practice"] > .eg-foot,
+html body .eg-test-root.eg-qxtool8[data-eg-mode="practice"] > #egFoot,
+html body .eg-test-root[data-eg-mode="practice"] #egFoot,
+html body .eg-test-root[data-eg-mode="practice"] .eg-foot,
+html body .eg-test-root[data-eg-mode="practice"] .eg-foot.eg-foot-marks,
+html body .eg-test-root[data-eg-mode="practice"] .eg-foot.eg-foot-practice,
 html body .allen-practice #egFoot,
 html body .allen-practice .eg-foot,
 html body.allen-practice-active .mtk-test-root.allen-practice .eg-foot,
 html body.allen-practice-active .mtk-test-root.allen-practice .mtk-controls,
-html body #egFoot.eg-foot.eg-foot-marks {
+html body #egFoot.eg-foot.eg-foot-marks.eg-foot-practice {
   display: grid !important;
   grid-template-columns: 1fr 1.2fr 1fr !important;
   flex-direction: row !important;

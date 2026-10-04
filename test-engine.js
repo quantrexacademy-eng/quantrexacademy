@@ -1688,6 +1688,8 @@ const QuantrexTestEngine = (() => {
       const qzrrDark = !!(session && session._qzrrDark);
       return `<div class="mtk-test-root allen-cbt qzrr-cbt${magOn ? " qzrr-mag-on" : ""}${sideCollapsed ? " qzrr-side-collapsed" : ""}${qzrrDark ? " qzrr-dark" : ""}" data-test-theme="${qzrrDark ? "dark" : "light"}" data-font-scale="${fontScale}" data-ui="quizrr">
         <header class="qzrr-black-bar">
+          <button type="button" class="qzrr-exit-x" id="qzrrExitX" data-qx-exit="1" title="Exit" aria-label="Exit"
+            onclick="event.preventDefault();event.stopPropagation();if(window.qxExitTest){window.qxExitTest();}return false;">✕</button>
           <div class="qzrr-black-title">${titleEsc}</div>
           <div class="qzrr-black-tools">
             <button type="button" class="qzrr-tool-btn qzrr-tool-a11y" id="qzrrA11yBtn" title="Accessibility"
@@ -1716,6 +1718,8 @@ const QuantrexTestEngine = (() => {
               AI Proctor
             </button>
           </div>
+          <button type="button" class="qzrr-submit-top" id="qxSubmitTop" data-qx-submit="1"
+            onclick="event.preventDefault();event.stopPropagation();if(window.qxSubmitTest){window.qxSubmitTest();}return false;">Submit</button>
         </header>
         <div class="qzrr-sec-strip">
           <div class="qzrr-sec-strip-left">
@@ -2064,13 +2068,13 @@ const QuantrexTestEngine = (() => {
     const wireSubmit = (el) => {
       if (!el) return;
       el.onclick = fireSubmit;
-      el.onpointerup = function (e) {
-        if (!e || (e.button != null && e.button !== 0)) return;
-        fireSubmit(e);
-      };
+      el.ontouchend = null;
+      el.onpointerup = null;
       try {
         el.style.setProperty("pointer-events", "auto", "important");
         el.style.setProperty("z-index", "20200", "important");
+        el.style.setProperty("touch-action", "manipulation", "important");
+        el.style.setProperty("cursor", "pointer", "important");
         el.removeAttribute("disabled");
       } catch (_) { /* */ }
     };
@@ -2079,7 +2083,7 @@ const QuantrexTestEngine = (() => {
     wireSubmit(root.querySelector("#qxSubmitHdr"));
     root.querySelectorAll("[data-eg-submit], #egSubmit, #egMarksOvSubmit").forEach(wireSubmit);
     // Exit — JS + inline backup
-    root.querySelectorAll("#mtkExitBtn, [data-qx-exit]").forEach((mtkExit) => {
+    root.querySelectorAll("#mtkExitBtn, #qzrrExitX, [data-qx-exit]").forEach((mtkExit) => {
       mtkExit.onclick = (e) => {
         if (e) { e.preventDefault(); e.stopPropagation(); }
         try {
@@ -2830,7 +2834,7 @@ const QuantrexTestEngine = (() => {
     root.classList.toggle("qzrr-mag-on", !!session._qzrrMag);
     root.classList.remove("qzrr-dyslexia", "qzrr-focus");
     root.setAttribute("data-test-theme", session._qzrrDark ? "dark" : "light");
-    ["#qzrrA11yBtn", "#qzrrMagBtn", "#qzrrInstrBtn", "#qzrrPaperBtn", "#qzrrProctorBtn", "#qzrrThemeLight", "#qzrrThemeDark", "#mtkExitBtn", "#qxSubmitBtn", "#qxSubmitTop"].forEach(function (sel) {
+    ["#qzrrA11yBtn", "#qzrrMagBtn", "#qzrrInstrBtn", "#qzrrPaperBtn", "#qzrrProctorBtn", "#qzrrThemeLight", "#qzrrThemeDark", "#mtkExitBtn", "#qzrrExitX", "#qxSubmitBtn", "#qxSubmitTop"].forEach(function (sel) {
       const el = root.querySelector(sel);
       if (!el) return;
       el.style.setProperty("pointer-events", "auto", "important");
@@ -2915,6 +2919,10 @@ const QuantrexTestEngine = (() => {
       area.style.setProperty("opacity", "1", "important");
       area.style.setProperty("touch-action", "pan-x pan-y", "important");
       area.style.scrollPaddingBottom = "32px";
+      root.querySelectorAll(".eg-main, .eg-q-card").forEach(function (el) {
+        el.style.setProperty("overflow", "visible", "important");
+        el.style.setProperty("overflow-x", "visible", "important");
+      });
       if (isQuizrr) {
         area.style.setProperty("zoom", "1", "important");
       }
@@ -7027,7 +7035,9 @@ window.qxSubmitTest = function qxSubmitTest() {
         const cs = window.getComputedStyle(existing);
         vis = cs.display !== "none" && cs.visibility !== "hidden" && Number(cs.opacity || 1) > 0.05;
       } catch (_) { vis = !!(existing.offsetParent || existing.getClientRects().length); }
-      if (vis) {
+      const confirmBtn = existing.querySelector("[data-qx-confirm-submit]");
+      const interactable = !!(vis && confirmBtn && existing.offsetWidth > 40 && existing.offsetHeight > 40);
+      if (interactable) {
         existing.style.setProperty("z-index", "2147483646", "important");
         existing.style.setProperty("position", "fixed", "important");
         existing.style.setProperty("inset", "0", "important");
@@ -7035,6 +7045,10 @@ window.qxSubmitTest = function qxSubmitTest() {
         existing.style.setProperty("visibility", "visible", "important");
         existing.style.setProperty("opacity", "1", "important");
         existing.style.setProperty("pointer-events", "auto", "important");
+        try {
+          confirmBtn.style.setProperty("pointer-events", "auto", "important");
+          confirmBtn.style.setProperty("z-index", "2147483647", "important");
+        } catch (_) { /* */ }
         return;
       }
       try { existing.remove(); } catch (_) { /* */ }
@@ -7077,7 +7091,7 @@ window.qxSubmitTest = function qxSubmitTest() {
 // Capture-phase backup if header re-render loses handlers
 document.addEventListener("click", function qxExitBtnDelegate(ev) {
   try {
-    const btn = ev.target && ev.target.closest && ev.target.closest("#mtkExitBtn, [data-qx-exit], .mtk-exit-only");
+    const btn = ev.target && ev.target.closest && ev.target.closest("#mtkExitBtn, #qzrrExitX, [data-qx-exit], .mtk-exit-only");
     if (!btn) return;
     // Let inline handler run first; if it already prevented, still ensure exit
     if (ev.eventPhase === Event.CAPTURING_PHASE) {

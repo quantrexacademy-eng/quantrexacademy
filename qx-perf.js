@@ -91,7 +91,7 @@ window.QxPerf = (() => {
     const js = (window.QX_SECONDARY_JS || []);
     css.forEach(loadCss);
     try {
-      var bust = (typeof window.QX_BUILD === "string" && window.QX_BUILD) || "qxmd304";
+      var bust = (typeof window.QX_BUILD === "string" && window.QX_BUILD) || "qxmd305";
       loadCss("assets/qx-foot-lock.css?v=" + encodeURIComponent(bust));
       loadCss("assets/qx-katex-lock.css?v=" + encodeURIComponent(bust));
       loadCss("assets/qx-qfmt-lock.css?v=" + encodeURIComponent(bust));
