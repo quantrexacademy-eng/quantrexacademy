@@ -1,10 +1,10 @@
 {
-  "cache": "qx-pwa-qxmd307",
-  "ts": 1791100000307,
-  "title": "qxmd307: Submit finishes, steady footer above phone nav, full solution visible",
+  "cache": "qx-pwa-qxmd308",
+  "ts": 1791100000308,
+  "title": "qxmd308: Test footer fully above the phone nav",
   "site": "https://www.quantrexacademy.com",
-  "build": "qxmd307",
-  "body": "Submit now opens the result screen. Footer stays fixed above the phone nav while scrolling. Full solution text visible above the footer; long equations wrap. All toolbar buttons reachable on phones. Stored answers unchanged.",
+  "build": "qxmd308",
+  "body": "Test footer (Clear, Mark for Review, Previous, Save & Next) now sits fully above the phone navigation bar. Submit opens the result screen. Full solution visible. Stored answers unchanged.",
   "package": "com.quantrexacademy.app",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }

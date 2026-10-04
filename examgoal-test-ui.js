@@ -2307,7 +2307,7 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
       try {
         const foot = root.querySelector("#egFoot, .eg-foot");
         if (!foot) return;
-        var isTestMarks = root.getAttribute("data-eg-mode") === "test";
+        var isTestMarks = root.getAttribute("data-eg-mode") === "test" || foot.classList.contains("eg-foot-marks-test") || !!foot.querySelector("#qxSaveBtn, #qxReviewNextBtn"); /* qxmd308: never paint the practice row onto the test 2x2 footer */
         if (isTestMarks) {
           var areas = { qxClearBtn: "1 / 1", qxReviewNextBtn: "1 / 2", qxPrevBtn: "2 / 1", qxSaveBtn: "2 / 2" };
           function pinMarksFootCells() {
