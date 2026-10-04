@@ -2358,7 +2358,9 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
           foot.style.setProperty("margin", "0", "important");
           foot.style.setProperty("overflow", "visible", "important");
           foot.style.setProperty("box-sizing", "border-box", "important");
-          foot.style.setProperty("background", "#ffffff", "important");
+          /* qxmd310: honour dark theme (footer stayed white in dark tests) */
+          var _dkT = !!(root && (root.getAttribute("data-test-theme") === "dark" || (document.documentElement.getAttribute("data-theme") === "dark" && root.getAttribute("data-test-theme") !== "light")));
+          foot.style.setProperty("background", _dkT ? "#0f172a" : "#ffffff", "important");
           foot.style.setProperty("padding", "10px 12px calc(10px + max(36px, env(safe-area-inset-bottom, 0px)))", "important");
           pinMarksFootCells();
           try { if (typeof syncEgFootPad === "function") syncEgFootPad(root); } catch (_) {}

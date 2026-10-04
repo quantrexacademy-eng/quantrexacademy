@@ -544,7 +544,7 @@ const QuantrexQFormat = (() => {
       emit();
     };
     if (!input.disabled) {
-      try { input.focus(); input.setSelectionRange(input.value.length, input.value.length); } catch (err) { /* ignore */ }
+      try { /* qxmd310: no scroll jump - focusing pushed the first line of the question out of view on short screens */ input.focus({ preventScroll: true }); input.setSelectionRange(input.value.length, input.value.length); } catch (err) { /* ignore */ }
     }
     emit();
   }

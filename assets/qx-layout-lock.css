@@ -198,3 +198,11 @@ html body #app-main#app-main .eg-test-root[data-test-theme="dark"] #egSide .eg-p
 }
 html body #app-main#app-main .eg-test-root #egSide .eg-legend { display: flex !important; flex-wrap: wrap !important; gap: 6px 12px !important; }
 html body #app-main#app-main .eg-test-root #egSide .eg-legend > span { display: inline-flex !important; align-items: center !important; gap: 5px !important; white-space: nowrap !important; }
+
+/* qxmd310: test header stayed light in dark theme -> white Exit (X) was invisible */
+html body #app-main .eg-test-root.eg-test-root[data-eg-mode="test"][data-test-theme="dark"] header.eg-top.eg-marks-top, html body .eg-test-root.eg-test-root[data-eg-mode="test"][data-test-theme="dark"] header.eg-top.eg-marks-top { background: #0f172a !important; background-color: #0f172a !important; background-image: none !important; border-bottom-color: #1e293b !important; }
+html body .eg-test-root.eg-test-root[data-eg-mode="test"][data-test-theme="dark"] #egFoot#egFoot, html body .eg-test-root.eg-test-root[data-eg-mode="test"][data-test-theme="dark"] #egFoot#egFoot.eg-foot-marks-test { background: #0f172a !important; background-color: #0f172a !important; background-image: none !important; border-top-color: #1e293b !important; }
+html body .eg-test-root.eg-test-root[data-eg-mode="test"][data-test-theme="dark"] .eg-main.eg-main { background: #0f172a !important; background-color: #0f172a !important; background-image: none !important; }
+html body .eg-test-root[data-test-theme="dark"] header.eg-marks-top #qxTimer, html body .eg-test-root.qx-theme-dark header.eg-marks-top #qxTimer { background: #1e293b !important; color: #93c5fd !important; border-color: #1e40af !important; }
+html body .eg-test-root[data-test-theme="dark"] header.eg-marks-top #qxSubmitTop, html body .eg-test-root.qx-theme-dark header.eg-marks-top #qxSubmitTop { background: #1e293b !important; color: #fca5a5 !important; border-color: #ef4444 !important; }
+html body .eg-test-root[data-test-theme="dark"] header.eg-marks-top #egMarksExitBtn, html body .eg-test-root.qx-theme-dark header.eg-marks-top #egMarksExitBtn { color: #f8fafc !important; border-color: #f8fafc !important; }

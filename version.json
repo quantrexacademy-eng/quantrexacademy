@@ -1,10 +1,10 @@
 {
-  "cache": "qx-pwa-qxmd309",
-  "ts": 1791100000309,
-  "title": "qxmd309: Toolbars fit on small phones, Palette fixed",
+  "cache": "qx-pwa-qxmd310",
+  "ts": 1791100000310,
+  "title": "qxmd310: Dark test screen and landscape fix",
   "site": "https://www.quantrexacademy.com",
-  "build": "qxmd309",
-  "body": "Practice and test toolbars now fit on 360px phones (extra tools moved into Settings > Tools). Question Palette opens again in practice. Instructions and Question Paper open correctly in tests. Desktop layout no longer cut off on the right. Better dark mode and login header on phones. Stored answers unchanged.",
+  "build": "qxmd310",
+  "body": "Test screen fully dark in dark mode (Exit button visible again). On short and landscape screens the question now opens at its first line. Stored answers unchanged.",
   "package": "com.quantrexacademy.app",
   "play": "https://play.google.com/store/apps/details?id=com.quantrexacademy.app"
 }
