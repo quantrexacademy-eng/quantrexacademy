@@ -8,6 +8,8 @@ Allow: /bitsat
 Allow: /questions
 Allow: /search
 Allow: /maths
+Allow: /maths/pyq
+Disallow: /maths/
 Allow: /app.html
 Allow: /api/proxy-image
 Allow: /api/restore-image

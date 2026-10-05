@@ -882,7 +882,10 @@
     t = t.replace(/\\left\$\s*\(/g, "\\left(");
     t = t.replace(/\\right\$\s*\)/g, "\\right)");
     t = t.replace(/\\left\$/g, "\\left(");
-    t = t.replace(/\\right\$/g, "\\right)");
+    t = t.replace(/\\right\$/g, "\\right)$");
+    t = t.replace(/\\right\)\$\s*\$/g, "\\right)$");
+    t = t.replace(/((?:^|>|\n|\r)\s*)\$([A-Z][a-z]{2,})(?=\s|[^A-Za-z$]|$)/g, "$1$2");
+    t = t.replace(/((?:^|>|\n|\r)\s*)\$(An|In|At|On|By|To)(?=\s)/g, "$1$2");
     t = t.replace(/(?:\\)?(sin|cos|tan|cot|sec|csc|cosec)\s*[-−]\s*1\b/g, "\\$1^{-1}");
     t = t.replace(/\bandf\b/g, "and f");
     t = t.replace(/\bwherex\b/g, "where x");
@@ -890,7 +893,7 @@
     t = t.replace(/\bhencex\b/g, "hence x");
     t = t.replace(/\bthusx\b/g, "thus x");
     t = t.replace(/\bsincex\b/g, "since x");
-    t = t.replace(/\biffx\b/g, "if fx");
+    t = t.replace(/\biffx\b/g, "iff x");
     t = t.replace(/\b(and|if|where|then)(?=\\frac|\\mathrm|\$)/g, "$1 ");
     t = t.replace(/(^|>|\n)\s*ray\}\{/g, "$1\\begin{array}{");
     t = t.replace(/(^|>|\n)\s*gin\{array\}/g, "$1\\begin{array}");

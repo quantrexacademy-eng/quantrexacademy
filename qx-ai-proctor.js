@@ -1,4 +1,4 @@
-/* Quantrex Academy — AI Proctor v2 (qxmd316)
+/* Quantrex Academy — AI Proctor v2 (qxmd317)
  * Opt-in per test (choice shown once at test start). 100% on-device:
  * - Face AI: TF.js BlazeFace, lazy-loaded from our own hosting only when the student picks AI Proctor.
  * - Video frames are analysed in memory and never uploaded. Optional tiny thumbnails stay in this tab only.
@@ -11,10 +11,12 @@
  */
 (function (global) {
   "use strict";
-  var VER = "qxmd316";
+  var VER = "qxmd317";
   var VENDOR = "vendor/proctor/";
   var LOG_KEY = "qx_ai_proctor_log";
   var PIP_POS_KEY = "qx_pr_pip_pos_tr";
+  var PIP_SIZE_KEY = "qx_pr_pip_size";
+  var PIP_SIZES = { sm: 96, md: 112, lg: 168 };
   var MAX_THUMBS = 8;
   var TICK_MS = 700;
   // persistence (ms) before a frame condition becomes an event; clear time before it closes
@@ -200,6 +202,7 @@
     } catch (_) { return null; }
   }
   function classify(preds, vw) {
+    if (_state) _state.faces = preds.length;
     if (!preds.length) return "noface";
     if (preds.length >= 2) return "multiface";
     var p = preds[0];
@@ -270,6 +273,7 @@
       if (!active()) return;
       _state.detMs = Math.round(performance.now() - t0);
       applyFrame(classify(preds || [], _video.videoWidth));
+      updatePip();
     }).catch(function () { _detBusy = false; });
   }
 
@@ -408,20 +412,66 @@
     if (_modelState === "loading") { txt = "Loading AI…"; cls = "wait"; }
     else if (_modelState === "failed") { txt = "Signals only"; cls = "warn"; }
     else if (openKeys.length) { txt = (TYPES[openKeys[0]] || {}).label || "Check"; cls = "bad"; }
-    else { txt = "Monitoring"; cls = "ok"; }
+    else {
+      var n = (_state && _state.faces) || 0;
+      txt = n ? (n === 1 ? "1 face" : n + " faces") : "Monitoring";
+      cls = "ok";
+    }
     st.textContent = txt;
     st.className = "qxpr-pip-st " + cls;
   }
+  function pipSizeKey() {
+    var k = "md";
+    try { k = localStorage.getItem(PIP_SIZE_KEY) || "md"; } catch (_) { /* */ }
+    return PIP_SIZES[k] ? k : "md";
+  }
+  function pipSizePx() { return PIP_SIZES[pipSizeKey()] || 112; }
+  function applyPipSize() {
+    if (!_pip) return;
+    var k = pipSizeKey();
+    var w = PIP_SIZES[k] || 112;
+    _pip.setAttribute("data-sz", k);
+    _pip.style.width = w + "px";
+    var vid = $("video", _pip);
+    if (vid) vid.style.height = Math.round(w * 0.68) + "px";
+  }
+  function cyclePipSize() {
+    var order = ["sm", "md", "lg"];
+    var next = order[(order.indexOf(pipSizeKey()) + 1) % 3];
+    try { localStorage.setItem(PIP_SIZE_KEY, next); } catch (_) { /* */ }
+    applyPipSize();
+    if (_pip) {
+      var r = _pip.getBoundingClientRect();
+      placePip(r.left, r.top, true);
+    }
+  }
   function defaultPipPos() {
-    var w = (_pip && _pip.offsetWidth) || 112;
+    var w = pipSizePx();
     return { x: Math.max(8, (global.innerWidth || 360) - w - 8), y: 12 };
   }
   function clampPos(x, y) {
-    var w = _pip.offsetWidth || 112, h = _pip.offsetHeight || 96;
+    var w = (_pip && _pip.offsetWidth) || pipSizePx(), h = (_pip && _pip.offsetHeight) || 96;
     return {
       x: Math.min(Math.max(4, x), Math.max(4, (global.innerWidth || 360) - w - 4)),
       y: Math.min(Math.max(4, y), Math.max(4, (global.innerHeight || 640) - h - 4))
     };
+  }
+  function nearestCorner(x, y) {
+    var w = (_pip && _pip.offsetWidth) || pipSizePx();
+    var h = (_pip && _pip.offsetHeight) || 96;
+    var vw = global.innerWidth || 360, vh = global.innerHeight || 640;
+    var spots = [
+      { x: 8, y: 12 },
+      { x: Math.max(8, vw - w - 8), y: 12 },
+      { x: 8, y: Math.max(12, vh - h - 8) },
+      { x: Math.max(8, vw - w - 8), y: Math.max(12, vh - h - 8) }
+    ];
+    var best = spots[1], bestD = 1e9;
+    spots.forEach(function (c) {
+      var d = Math.hypot(x - c.x, y - c.y);
+      if (d < bestD) { bestD = d; best = c; }
+    });
+    return bestD < 80 ? best : { x: x, y: y };
   }
   function placePip(x, y, save) {
     var p = clampPos(x, y);
@@ -440,8 +490,10 @@
     _pip.setAttribute("title", "AI Proctor self-view — drag to move");
     _pip.innerHTML = '<video playsinline muted autoplay></video>' +
       '<div class="qxpr-pip-bar"><i class="qxpr-dot"></i><span class="qxpr-pip-st wait">Starting…</span>' +
+      '<button type="button" class="qxpr-pip-sz" title="Resize camera" aria-label="Resize camera">⤢</button>' +
       '<button type="button" class="qxpr-pip-pin" title="Reset camera to top right" aria-label="Reset camera position">⌂</button></div>';
     document.body.appendChild(_pip);
+    applyPipSize();
     _video = $("video", _pip);
     _video.srcObject = _stream;
     var pl = _video.play();
@@ -461,10 +513,16 @@
       e.preventDefault();
       snapTopRight(true);
     });
+    var szBtn = $(".qxpr-pip-sz", _pip);
+    if (szBtn) szBtn.addEventListener("pointerdown", function (e) {
+      e.stopPropagation();
+      e.preventDefault();
+      cyclePipSize();
+    });
     var sx, sy, ox, oy, on = false;
     function down(e) {
       if (e.button != null && e.button !== 0) return;
-      if (e.target && e.target.closest && e.target.closest(".qxpr-pip-pin")) return;
+      if (e.target && e.target.closest && e.target.closest(".qxpr-pip-pin, .qxpr-pip-sz")) return;
       on = true; sx = e.clientX; sy = e.clientY;
       var r = _pip.getBoundingClientRect(); ox = r.left; oy = r.top;
       _pip.classList.add("drag");
@@ -472,7 +530,14 @@
       e.preventDefault();
     }
     function move(e) { if (on) { placePip(ox + e.clientX - sx, oy + e.clientY - sy, false); e.preventDefault(); } }
-    function up() { if (!on) return; on = false; _pip.classList.remove("drag"); var r = _pip.getBoundingClientRect(); placePip(r.left, r.top, true); }
+    function up() {
+      if (!on) return;
+      on = false;
+      _pip.classList.remove("drag");
+      var r = _pip.getBoundingClientRect();
+      var sn = nearestCorner(r.left, r.top);
+      placePip(sn.x, sn.y, true);
+    }
     _pip.addEventListener("pointerdown", down);
     _pip.addEventListener("pointermove", move);
     _pip.addEventListener("pointerup", up);

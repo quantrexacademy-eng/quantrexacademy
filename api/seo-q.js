@@ -7,12 +7,13 @@ const path = require("path");
 const crypto = require("crypto");
 
 const SITE = "https://www.quantrexacademy.com";
-/* qxmd316: render-time math sanitize + MARKS-like Q/sol/options. Formula cards stay in-app. */
+/* qxmd317: keep $TeX$ on /q/ pages; formula cards stay in-app. */
 const seoQuality = require("../lib/seo-quality");
 const seoOrg = require("../lib/seo-org");
 let qxSanitize = null;
 try { qxSanitize = require("../qx-math-sanitize"); } catch (_) { qxSanitize = null; }
 const ROOT = process.env.QX_SITE_ROOT || process.cwd();
+const SEO_ASSET_V = "qxmd317";
 const _shardCache = Object.create(null);
 const _shardOrder = [];
 
@@ -40,7 +41,7 @@ async function readJson(req, rel) {
       .split(",")[0]
       .trim();
     const proto = String((req.headers && req.headers["x-forwarded-proto"]) || "https").split(",")[0].trim();
-    const r = await fetch(proto + "://" + host + "/" + rel.replace(/\\/g, "/"));
+    const r = await fetch(proto + "://" + host + "/" + rel.replace(/\\/g, "/") + "?v=" + SEO_ASSET_V);
     if (r.ok) return await r.json();
   } catch (_) {}
   return null;
@@ -192,6 +193,31 @@ function healSeoText(s) {
   return t;
 }
 
+function plainSnippet(s, n) {
+  let t = healSeoText(String(s == null ? "" : s));
+  t = t.replace(/<[^>]+>/g, " ");
+  t = t.replace(/&nbsp;/gi, " ").replace(/&amp;/gi, "&");
+  for (let i = 0; i < 8; i++) {
+    const n2 = t.replace(/\\(?:d|t)?frac\s*\{([^{}]*)\}\s*\{([^{}]*)\}/g, "($1)/($2)");
+    if (n2 === t) break;
+    t = n2;
+  }
+  t = t.replace(/\\mathbb\s*\{([A-Za-z])\}/g, (_, c) => ({ R: "ℝ", N: "ℕ", Z: "ℤ", Q: "ℚ", C: "ℂ" }[c] || c));
+  t = t.replace(/\\(?:left|right)\s*/g, "");
+  t = t.replace(/\\(?:mathrm|mathbf|mathit|operatorname|text|textrm|textbf)\s*\{([^{}]*)\}/g, "$1");
+  const uni = { infty: "∞", times: "×", cdot: "·", pm: "±", leq: "≤", geq: "≥", le: "≤", ge: "≥", neq: "≠", ne: "≠", in: "∈", to: "→", rightarrow: "→", leftarrow: "←", pi: "π", theta: "θ", alpha: "α", beta: "β", gamma: "γ", lambda: "λ", mu: "μ", sigma: "σ", omega: "ω", phi: "φ", Delta: "Δ", sum: "∑", int: "∫", partial: "∂", geqslant: "≥", leqslant: "≤" };
+  t = t.replace(/\\([a-zA-Z]+)\*?/g, (m, name) => (uni[name] != null ? uni[name] : " "));
+  t = t.replace(/\$+/g, " ").replace(/[{}]/g, " ").replace(/\\\\/g, " ");
+  t = t.replace(/\s+/g, " ").trim();
+  if (n && t.length > n) {
+    t = t.slice(0, n);
+    const sp = t.lastIndexOf(" ");
+    if (sp > n * 0.55) t = t.slice(0, sp);
+    t = t.replace(/[ ,;:-]+$/, "");
+  }
+  return t;
+}
+
 function rich(s) {
   const raw = healSeoText(String(s == null ? "" : s));
   if (!raw) return "";
@@ -279,7 +305,7 @@ function render(rec, related) {
   const hub = hubOf(rec);
   const subSlug = slugify(rec.subject, 40);
   const chSlug = slugify(rec.chapter, 50);
-  const qtxt = healSeoText(String(rec.text || "")).replace(/\s+/g, " ").trim();
+  const qtxt = plainSnippet(rec.text, 220);
   let short = qtxt.slice(0, 68);
   if (qtxt.length > 68) short = short.replace(/\s+\S*$/, "") + "...";
   const examBit = [rec.exam, rec.year].filter(Boolean).join(" ");
@@ -291,11 +317,17 @@ function render(rec, related) {
   const topicUrl = hub === "other" ? `${SITE}/questions` : `${SITE}/${hub}/${subSlug}/${chSlug}`;
   const hubUrl = hub === "other" ? `${SITE}/questions` : `${SITE}/${hub}`;
   const optsArr = optList(rec);
-  const ans =
+  const ansPlain =
     rec.answer != null && optsArr[Number(rec.answer)] != null
-      ? `${letters(Number(rec.answer))}. ${optsArr[Number(rec.answer)]}`
+      ? `${letters(Number(rec.answer))}. ${plainSnippet(optsArr[Number(rec.answer)], 220)}`
       : rec.answer != null
         ? String(rec.answer)
+        : "";
+  const ansHtml =
+    rec.answer != null && optsArr[Number(rec.answer)] != null
+      ? `${letters(Number(rec.answer))}. ${rich(optsArr[Number(rec.answer)])}`
+      : rec.answer != null
+        ? esc(String(rec.answer))
         : "";
   const opts = optList(rec)
     .map((o, i) => {
@@ -333,7 +365,7 @@ function render(rec, related) {
     hub === "other" ? null : { name: rec.chapter, url: topicUrl },
     { name: seoOrg.clip(qtxt, 80) || "Question", url: url }
   ].filter((x) => x && x.name);
-  const solPlain = seoQuality.plain(healSeoText(String(rec.sol || "")));
+  const solPlain = plainSnippet(rec.sol || "", 4000);
   const schema = {
     "@context": "https://schema.org",
     "@graph": [
@@ -356,7 +388,7 @@ function render(rec, related) {
               },
               acceptedAnswer: {
                 "@type": "Answer",
-                text: [ans && "Correct answer: " + seoQuality.plain(ans), solPlain].filter(Boolean).join("\n\n"),
+                text: [ansPlain && "Correct answer: " + ansPlain, solPlain].filter(Boolean).join("\n\n"),
                 url: url + "#solution",
                 author: { "@type": "Organization", name: "Quantrex Academy", url: SITE + "/" }
               }
@@ -406,6 +438,7 @@ function render(rec, related) {
   <meta name="twitter:image" content="${esc(ogImage)}">
   <meta name="google-site-verification" content="pemTmZW6o6YInk0dhVyPgIz7R4v4mWvKhIb1AdI9Alw">
   <meta name="theme-color" content="#1565C0">
+  <meta name="qx-build" content="qxmd317">
   <link rel="icon" type="image/png" href="/assets/favicon-32x32.png">
   <!-- KaTeX for remaining $math$ on SEO pages -->
   <link rel="stylesheet" href="/assets/katex/katex.min.css">
@@ -453,8 +486,9 @@ function render(rec, related) {
     .ltr{flex:0 0 32px;width:32px;height:32px;border-radius:50%;background:#1565C0;color:#fff;font-weight:800;display:grid;place-items:center;font-size:14px;line-height:1}
     .hit .ltr{background:#0f766e;color:#fff}
     .ans{background:#ecfdf5;border-color:#99f6e4}
-    .qx-seo-sol{margin:0;overflow-wrap:break-word;word-break:normal;white-space:normal}
+    .qx-seo-sol{margin:0;overflow-wrap:break-word;word-break:normal;white-space:normal;line-height:1.65}
     .qx-seo-sol .katex,.q-stem .katex,.opt-body .katex{white-space:nowrap}
+    .qx-seo-sol .katex-display,.q-stem .katex-display{margin:10px 0;overflow-x:auto;overflow-y:hidden}
     .cta{display:block;text-align:center;background:linear-gradient(90deg,#1565C0,#8450CB);color:#fff;font-weight:800;padding:14px;border-radius:14px;text-decoration:none;margin-top:8px}
     .rel a{display:block;padding:12px 0;border-top:1px solid #eef3f9;color:var(--ink);font-weight:700;text-decoration:none}
     .rel a:hover{color:var(--brand)}
@@ -486,7 +520,7 @@ function render(rec, related) {
     <p class="kicker">${esc([examBit, rec.subject, rec.chapter].filter(Boolean).join(" · "))} previous year question with solution</p>
     <h1 class="q-stem">${rich(rec.text)}${stemFigs && !/<img/i.test(String(rec.text || "")) ? stemFigs : ""}</h1>
     ${opts ? `<section class="card"><h2>Options</h2><ol class="opts">${opts}</ol></section>` : ""}
-    ${ans ? `<section class="card ans"><h2>Correct answer</h2><p style="margin:0;font-weight:800">${esc(ans)}</p></section>` : ""}
+    ${ansHtml ? `<section class="card ans"><h2>Correct answer</h2><p style="margin:0;font-weight:800">${ansHtml}</p></section>` : ""}
     <section class="card sol" id="solution">
       <h2>Step-by-step solution</h2>
       <div class="qx-seo-sol">${rich(rec.sol || "Open this question in the Quantrex Academy app for the full interactive solution, figures and similar PYQs.")}</div>
@@ -729,7 +763,7 @@ module.exports = async function handler(req, res) {
     const id = parseId(req);
     const rec = await loadRec(req, id);
     res.setHeader("Content-Type", "text/html; charset=utf-8");
-    res.setHeader("Cache-Control", "public, max-age=3600, s-maxage=604800, stale-while-revalidate=2592000");
+    res.setHeader("Cache-Control", "public, max-age=120, s-maxage=300, stale-while-revalidate=3600");
     if (!rec) {
       res.statusCode = 404;
       res.setHeader("Cache-Control", "public, max-age=600, s-maxage=3600");
