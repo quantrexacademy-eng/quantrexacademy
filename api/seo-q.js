@@ -7,13 +7,14 @@ const path = require("path");
 const crypto = require("crypto");
 
 const SITE = "https://www.quantrexacademy.com";
-/* qxmd317: keep $TeX$ on /q/ pages; formula cards stay in-app. */
+/* qxmd318: server-side KaTeX (htmlAndMathml) so Google sees real math, not $TeX$. */
 const seoQuality = require("../lib/seo-quality");
 const seoOrg = require("../lib/seo-org");
+const seoKatex = require("../lib/seo-katex");
 let qxSanitize = null;
 try { qxSanitize = require("../qx-math-sanitize"); } catch (_) { qxSanitize = null; }
 const ROOT = process.env.QX_SITE_ROOT || process.cwd();
-const SEO_ASSET_V = "qxmd317";
+const SEO_ASSET_V = "qxmd318";
 const _shardCache = Object.create(null);
 const _shardOrder = [];
 
@@ -221,8 +222,12 @@ function plainSnippet(s, n) {
 function rich(s) {
   const raw = healSeoText(String(s == null ? "" : s));
   if (!raw) return "";
-  if (!/<[a-z/]/i.test(raw)) return esc(raw);
-  let h = raw
+  const pack = seoKatex.holdMath(raw);
+  let h = pack.out;
+  if (!/<[a-z/]/i.test(h)) {
+    return seoKatex.restoreMath(esc(h), pack.held);
+  }
+  h = h
     .replace(/<script[\s\S]*?<\/script>/gi, "")
     .replace(/<style[\s\S]*?<\/style>/gi, "")
     .replace(/\son\w+\s*=\s*("[^"]*"|'[^']*'|[^\s>]+)/gi, "");
@@ -231,21 +236,18 @@ function rich(s) {
     if (!p) return "";
     return "<img" + stripHtmlAlt(a) + ' src="' + esc(p) + '" alt="' + esc(figAlt(qxSeoAlt)) + '" loading="lazy" decoding="async"' + stripHtmlAlt(b) + ">";
   });
-  return h;
+  return seoKatex.restoreMath(h, pack.held);
 }
 
 function letters(i) {
   return String.fromCharCode(65 + i);
 }
 
-function paperDetailPills(rec) {
-  const src = String(rec.source || rec.paperSource || "");
-  const pills = [];
-  if (rec.exam) pills.push(rec.exam);
-  if (rec.year) pills.push(String(rec.year));
+function paperMeta(rec) {
+  const src = String((rec && (rec.source || rec.paperSource)) || (rec && rec.meta && rec.meta.source) || "");
   let date = "";
   let shift = "";
-  let m = src.match(/\(?\s*(\d{1,2})(?:st|nd|rd|th)?[\s\-/]+([A-Za-z]{3,9})\.?(?:[\s\-/]+(\d{4}))?\s*[,\s]+Shift\s*[-–]?\s*([12])/i)
+  let m = src.match(/\(?\s*(\d{1,2})(?:st|nd|rd|th)?[\s\-/]+([A-Za-z]{3,9})\.?(?:[\s\-/]+(\d{4}))?\s*[,\s]+(?:Online|Offline)?\s*Shift\s*[-–]?\s*([12])/i)
     || src.match(/\b(\d{1,2})(?:st|nd|rd|th)?\s+([A-Za-z]{3,9})\.?(?:\s+(\d{4}))?\s*(?:Online|Offline)?\s*Shift\s*[-–]?\s*([12])\b/i);
   if (m) {
     const mon = m[2].charAt(0).toUpperCase() + m[2].slice(1).toLowerCase();
@@ -260,15 +262,38 @@ function paperDetailPills(rec) {
       if (m) shift = m[1] === "1" ? "Morning Shift" : "Evening Shift";
     }
   }
-  if (date) pills.push(date);
-  if (shift) pills.push(shift);
-  if (rec.subject) pills.push(rec.subject);
-  if (rec.chapter) pills.push(rec.chapter);
-  const blob = (src + " " + String(rec.bank || "")).toLowerCase();
-  if (/abhyas|dpp/.test(blob)) pills.push("Practice");
-  else if (rec.year && /jee|neet|nda|bitsat|shift/.test(blob)) pills.push("Actual");
-  if (rec.diff || rec.difficulty) pills.push(String(rec.diff || rec.difficulty));
-  return pills.filter(Boolean).map((p) => `<span class="pill">${esc(p)}</span>`).join("");
+  if (!date) {
+    m = src.match(/\b(\d{1,2})(?:st|nd|rd|th)?[\s\-/]+([A-Za-z]{3,9})\.?(?:[\s\-/]+(\d{4}))?\b/);
+    if (m && /jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec/i.test(m[2])) {
+      const mon = m[2].charAt(0).toUpperCase() + m[2].slice(1).toLowerCase();
+      date = [String(m[1]).replace(/^0/, ""), mon, m[3] || rec.year].filter(Boolean).join(" ");
+    }
+  }
+  const blob = (src + " " + String((rec && rec.bank) || "")).toLowerCase();
+  let actual = "";
+  if (/abhyas|dpp/.test(blob)) actual = "Practice";
+  else if (rec && rec.year && /jee|neet|nda|bitsat|shift|eamcet|eapcet|kcet|comedk/.test(blob)) actual = "Actual";
+  const parts = [rec.exam, rec.year && String(rec.year), date, shift, rec.subject, rec.chapter, actual, rec.diff || rec.difficulty].filter(Boolean);
+  const line = [rec.exam, rec.year && String(rec.year), date, shift].filter(Boolean).join(" · ");
+  return { date: date, shift: shift, actual: actual, src: src, line: line, parts: parts };
+}
+
+function paperDetailPills(rec) {
+  return paperMeta(rec).parts.map((p) => `<span class="pill">${esc(p)}</span>`).join("");
+}
+
+function paperDl(rec) {
+  const p = paperMeta(rec);
+  const rows = [];
+  if (rec.exam) rows.push(["Exam", rec.exam]);
+  if (rec.year) rows.push(["Year", String(rec.year)]);
+  if (p.date) rows.push(["Date", p.date]);
+  if (p.shift) rows.push(["Shift", p.shift]);
+  if (rec.subject) rows.push(["Subject", rec.subject]);
+  if (rec.chapter) rows.push(["Chapter", rec.chapter]);
+  if (p.actual) rows.push(["Paper", p.actual]);
+  if (!rows.length) return "";
+  return `<dl class="paper-dl">${rows.map((r) => `<div><dt>${esc(r[0])}</dt><dd>${esc(r[1])}</dd></div>`).join("")}</dl>`;
 }
 
 function hubOf(rec) {
@@ -308,11 +333,13 @@ function render(rec, related) {
   const qtxt = plainSnippet(rec.text, 220);
   let short = qtxt.slice(0, 68);
   if (qtxt.length > 68) short = short.replace(/\s+\S*$/, "") + "...";
+  const paper = paperMeta(rec);
   const examBit = [rec.exam, rec.year].filter(Boolean).join(" ");
+  const paperLine = paper.line || examBit;
   const quality = seoQuality.classify(rec);
   const indexable = quality === "good";
-  const title = [short, (examBit ? examBit + " " : "") + "PYQ with solution", "Quantrex Academy"].filter(Boolean).join(" | ");
-  const desc = `${qtxt.slice(0, 150)}${qtxt.length > 150 ? "..." : ""} ${examBit} ${rec.subject || ""} previous year question with answer and step-by-step solution on Quantrex Academy.`;
+  const title = [short, paperLine, ((rec.subject ? rec.subject + " " : "") + "PYQ with solution"), "Quantrex Academy"].filter(Boolean).join(" | ");
+  const desc = `${qtxt.slice(0, 140)}${qtxt.length > 140 ? "..." : ""} ${paperLine} ${rec.subject || ""} ${rec.chapter || ""} previous year question with answer and step-by-step solution on Quantrex Academy.`.replace(/\s+/g, " ").trim();
   const url = `${SITE}/q/${encodeURIComponent(rec.id)}/${encodeURIComponent(rec.slug)}`;
   const topicUrl = hub === "other" ? `${SITE}/questions` : `${SITE}/${hub}/${subSlug}/${chSlug}`;
   const hubUrl = hub === "other" ? `${SITE}/questions` : `${SITE}/${hub}`;
@@ -384,7 +411,7 @@ function render(rec, related) {
               educationalAlignment: {
                 "@type": "AlignmentObject",
                 alignmentType: "educationalSubject",
-                targetName: [rec.exam, rec.subject].filter(Boolean).join(" ")
+                targetName: [rec.exam, rec.year, paper.date, paper.shift, rec.subject, rec.chapter].filter(Boolean).join(" ")
               },
               acceptedAnswer: {
                 "@type": "Answer",
@@ -404,7 +431,7 @@ function render(rec, related) {
         isAccessibleForFree: true,
         inLanguage: "en",
         provider: { "@id": SITE + "/#org" },
-        about: [rec.exam, rec.subject, rec.chapter].filter(Boolean).join(" · ")
+        about: [rec.exam, rec.year, paper.date, paper.shift, rec.subject, rec.chapter].filter(Boolean).join(" · ")
       }
     ].filter(Boolean)
   };
@@ -438,12 +465,13 @@ function render(rec, related) {
   <meta name="twitter:image" content="${esc(ogImage)}">
   <meta name="google-site-verification" content="pemTmZW6o6YInk0dhVyPgIz7R4v4mWvKhIb1AdI9Alw">
   <meta name="theme-color" content="#1565C0">
-  <meta name="qx-build" content="qxmd317">
+  <meta name="qx-build" content="qxmd318">
   <link rel="icon" type="image/png" href="/assets/favicon-32x32.png">
-  <!-- KaTeX for remaining $math$ on SEO pages -->
   <link rel="stylesheet" href="/assets/katex/katex.min.css">
-  <script defer src="/assets/katex/katex.min.js"></script>
-  <script defer src="/assets/katex/auto-render.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/mhchem.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       if (window.renderMathInElement) {
@@ -473,6 +501,10 @@ function render(rec, related) {
     main{max-width:880px;margin:0 auto;padding:8px 16px 48px}
     .pills{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 4px}
     .pill{background:#e8f1fb;color:#1565C0;font-size:11px;font-weight:800;padding:5px 10px;border-radius:999px}
+    .paper-dl{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;margin:10px 0 6px;padding:12px 14px;background:#fff;border:1px solid var(--line);border-radius:14px}
+    .paper-dl div{min-width:0}
+    .paper-dl dt{font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0}
+    .paper-dl dd{margin:2px 0 0;font-size:13px;font-weight:800;color:var(--ink)}
     h1{font-size:clamp(1.12rem,3.2vw,1.48rem);line-height:1.4;margin:10px 0 14px;font-weight:800}
     .kicker{font-size:13px;font-weight:800;color:var(--brand);margin:4px 0 0}
     .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;margin:14px 0;box-shadow:0 10px 28px rgba(15,40,80,.06)}
@@ -486,8 +518,9 @@ function render(rec, related) {
     .ltr{flex:0 0 32px;width:32px;height:32px;border-radius:50%;background:#1565C0;color:#fff;font-weight:800;display:grid;place-items:center;font-size:14px;line-height:1}
     .hit .ltr{background:#0f766e;color:#fff}
     .ans{background:#ecfdf5;border-color:#99f6e4}
-    .qx-seo-sol{margin:0;overflow-wrap:break-word;word-break:normal;white-space:normal;line-height:1.65}
-    .qx-seo-sol .katex,.q-stem .katex,.opt-body .katex{white-space:nowrap}
+    .qx-seo-sol{margin:0;overflow-wrap:break-word;word-break:normal;white-space:normal;line-height:1.65;font-size:16px;font-weight:500}
+    .qx-seo-sol .katex,.q-stem .katex,.opt-body .katex,.ans .katex{white-space:nowrap;font-size:1.05em}
+    math{font-family:KaTeX_Main,Times New Roman,serif}
     .qx-seo-sol .katex-display,.q-stem .katex-display{margin:10px 0;overflow-x:auto;overflow-y:hidden}
     .cta{display:block;text-align:center;background:linear-gradient(90deg,#1565C0,#8450CB);color:#fff;font-weight:800;padding:14px;border-radius:14px;text-decoration:none;margin-top:8px}
     .rel a{display:block;padding:12px 0;border-top:1px solid #eef3f9;color:var(--ink);font-weight:700;text-decoration:none}
@@ -517,7 +550,8 @@ function render(rec, related) {
     <div class="pills">
       ${paperDetailPills(rec)}
     </div>
-    <p class="kicker">${esc([examBit, rec.subject, rec.chapter].filter(Boolean).join(" · "))} previous year question with solution</p>
+    ${paperDl(rec)}
+    <p class="kicker">${esc([paperLine, rec.subject, rec.chapter].filter(Boolean).join(" · "))} previous year question with solution</p>
     <h1 class="q-stem">${rich(rec.text)}${stemFigs && !/<img/i.test(String(rec.text || "")) ? stemFigs : ""}</h1>
     ${opts ? `<section class="card"><h2>Options</h2><ol class="opts">${opts}</ol></section>` : ""}
     ${ansHtml ? `<section class="card ans"><h2>Correct answer</h2><p style="margin:0;font-weight:800">${ansHtml}</p></section>` : ""}

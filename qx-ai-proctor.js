@@ -1,4 +1,4 @@
-/* Quantrex Academy — AI Proctor v2 (qxmd317)
+/* Quantrex Academy — AI Proctor v2 (qxmd318)
  * Opt-in per test (choice shown once at test start). 100% on-device:
  * - Face AI: TF.js BlazeFace, lazy-loaded from our own hosting only when the student picks AI Proctor.
  * - Video frames are analysed in memory and never uploaded. Optional tiny thumbnails stay in this tab only.
@@ -11,7 +11,7 @@
  */
 (function (global) {
   "use strict";
-  var VER = "qxmd317";
+  var VER = "qxmd318";
   var VENDOR = "vendor/proctor/";
   var LOG_KEY = "qx_ai_proctor_log";
   var PIP_POS_KEY = "qx_pr_pip_pos_tr";
@@ -481,27 +481,70 @@
     _pip.style.bottom = "auto";
     if (save) { try { localStorage.setItem(PIP_POS_KEY, JSON.stringify(p)); } catch (_) { /* */ } }
   }
+  function pipHost() {
+    return document.documentElement || document.body;
+  }
+  function stylePipBox(el) {
+    if (!el) return;
+    el.style.setProperty("position", "fixed", "important");
+    el.style.setProperty("z-index", "2147483646", "important");
+    el.style.setProperty("display", "block", "important");
+    el.style.setProperty("visibility", "visible", "important");
+    el.style.setProperty("opacity", "1", "important");
+    el.style.setProperty("pointer-events", "auto", "important");
+    el.style.setProperty("transform", "none", "important");
+    el.style.setProperty("clip", "auto", "important");
+    el.style.setProperty("clip-path", "none", "important");
+    el.style.setProperty("max-width", "none", "important");
+    el.style.setProperty("max-height", "none", "important");
+    el.style.setProperty("background", "#000", "important");
+    el.style.setProperty("border", "2px solid #2563eb", "important");
+    el.style.setProperty("border-radius", "12px", "important");
+    el.style.setProperty("overflow", "hidden", "important");
+  }
   function showPip() {
-    if (_pip || !_stream) return;
+    if (!_stream) return;
     ensureCss();
-    _pip = document.createElement("div");
-    _pip.className = "qxpr-pip";
-    _pip.id = "qxPrPip";
-    _pip.setAttribute("title", "AI Proctor self-view — drag to move");
-    _pip.innerHTML = '<video playsinline muted autoplay></video>' +
-      '<div class="qxpr-pip-bar"><i class="qxpr-dot"></i><span class="qxpr-pip-st wait">Starting…</span>' +
-      '<button type="button" class="qxpr-pip-sz" title="Resize camera" aria-label="Resize camera">⤢</button>' +
-      '<button type="button" class="qxpr-pip-pin" title="Reset camera to top right" aria-label="Reset camera position">⌂</button></div>';
-    document.body.appendChild(_pip);
-    applyPipSize();
-    _video = $("video", _pip);
-    _video.srcObject = _stream;
-    var pl = _video.play();
-    if (pl && pl.catch) pl.catch(function () { /* */ });
     function snapTopRight(save) {
       var d = defaultPipPos();
       placePip(d.x, d.y, !!save);
     }
+    if (_pip && _pip.isConnected) {
+      stylePipBox(_pip);
+      applyPipSize();
+      if (_video && _stream) {
+        try { _video.srcObject = _stream; } catch (_) { /* */ }
+        var p0 = _video.play();
+        if (p0 && p0.catch) p0.catch(function () { /* */ });
+      }
+      var r0 = _pip.getBoundingClientRect();
+      if (r0.width < 40 || r0.bottom < 8 || r0.right < 8 || r0.left > (global.innerWidth || 360) - 8) snapTopRight(false);
+      return;
+    }
+    if (_pip && _pip.parentNode) {
+      try { _pip.parentNode.removeChild(_pip); } catch (_) { /* */ }
+    }
+    _pip = document.createElement("div");
+    _pip.className = "qxpr-pip";
+    _pip.id = "qxPrPip";
+    _pip.setAttribute("title", "AI Proctor camera — drag to move");
+    _pip.innerHTML = '<video playsinline muted autoplay></video>' +
+      '<div class="qxpr-pip-bar"><i class="qxpr-dot"></i><span class="qxpr-pip-st wait">Camera</span>' +
+      '<button type="button" class="qxpr-pip-sz" title="Resize camera" aria-label="Resize camera">⤢</button>' +
+      '<button type="button" class="qxpr-pip-pin" title="Reset camera to top right" aria-label="Reset camera position">⌂</button></div>';
+    stylePipBox(_pip);
+    pipHost().appendChild(_pip);
+    applyPipSize();
+    _video = $("video", _pip);
+    _video.setAttribute("playsinline", "");
+    _video.setAttribute("muted", "");
+    _video.setAttribute("autoplay", "");
+    _video.muted = true;
+    _video.playsInline = true;
+    _video.style.cssText = "display:block;width:100%;height:76px;object-fit:cover;transform:scaleX(-1);background:#111;";
+    _video.srcObject = _stream;
+    var pl = _video.play();
+    if (pl && pl.catch) pl.catch(function () { /* */ });
     try {
       var saved = JSON.parse(localStorage.getItem(PIP_POS_KEY) || "null");
       if (saved && typeof saved.x === "number" && typeof saved.y === "number") placePip(saved.x, saved.y, false);
@@ -846,11 +889,17 @@
     document.body.appendChild(o);
     o.querySelector("button").onclick = function () { o.remove(); };
   }
-  function gate() {
-    // Mid-test enabling is not offered: the choice exists only at test start.
-    if (active()) toast("AI Proctor is ON");
-    else toast("AI Proctor can be chosen only when a test starts");
-    return Promise.resolve(true);
+  function gate(config) {
+    if (config && config.practiceMode) return Promise.resolve(true);
+    if (active()) {
+      showPip();
+      toast("AI Proctor camera is on");
+      return Promise.resolve(true);
+    }
+    return choose(config || {}).then(function (r) {
+      if (r && r.proctor) begin(config || {});
+      return true;
+    }).catch(function () { return true; });
   }
 
   global.QxAiProctor = {
@@ -859,7 +908,10 @@
     begin: begin,
     shouldGate: function () { return false; },
     enabled: function () { return active(); },
-    setEnabled: function () { /* choice is per test now */ },
+    setEnabled: function (on) {
+      try { localStorage.setItem("qx_pref_ai_proctor", on ? "1" : "0"); } catch (_) { /* */ }
+      if (!on && active()) stop();
+    },
     gate: gate,
     attach: function () { /* replaced by begin() */ },
     stop: stop,

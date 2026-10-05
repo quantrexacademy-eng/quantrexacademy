@@ -9,6 +9,7 @@ Allow: /questions
 Allow: /search
 Allow: /maths
 Allow: /maths/pyq
+# Formula cards / revision notes stay in the app — never for Google
 Disallow: /maths/
 Allow: /app.html
 Allow: /api/proxy-image
