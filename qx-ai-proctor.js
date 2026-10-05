@@ -1,4 +1,4 @@
-/* Quantrex Academy — AI Proctor v2 (qxmd314)
+/* Quantrex Academy — AI Proctor v2 (qxmd316)
  * Opt-in per test (choice shown once at test start). 100% on-device:
  * - Face AI: TF.js BlazeFace, lazy-loaded from our own hosting only when the student picks AI Proctor.
  * - Video frames are analysed in memory and never uploaded. Optional tiny thumbnails stay in this tab only.
@@ -11,14 +11,14 @@
  */
 (function (global) {
   "use strict";
-  var VER = "qxmd314";
+  var VER = "qxmd316";
   var VENDOR = "vendor/proctor/";
   var LOG_KEY = "qx_ai_proctor_log";
-  var PIP_POS_KEY = "qx_pr_pip_pos";
-  var MAX_THUMBS = 12;
+  var PIP_POS_KEY = "qx_pr_pip_pos_tr";
+  var MAX_THUMBS = 8;
   var TICK_MS = 700;
   // persistence (ms) before a frame condition becomes an event; clear time before it closes
-  var HOLD = { noface: 3000, multiface: 2000, lookaway: 4000, far: 6000, dark: 3000 };
+  var HOLD = { noface: 3000, multiface: 2000, lookaway: 4000, far: 6000, dark: 3000, freeze: 8000 };
   var CLEAR_MS = 1500;
   var TYPES = {
     noface: { label: "No face visible", sev: "high" },
@@ -35,7 +35,8 @@
     context: { label: "Right-click menu", sev: "low" },
     hotkey: { label: "Restricted shortcut", sev: "medium" },
     devtools: { label: "Developer tools suspected", sev: "medium" },
-    display: { label: "Extra display connected", sev: "medium" }
+    display: { label: "Extra display connected", sev: "medium" },
+    freeze: { label: "Camera image frozen", sev: "high" }
   };
   var SEV_W = { high: 12, medium: 6, low: 2 };
 
@@ -54,6 +55,8 @@
   var _gating = false;
   var _drag = null;
   var _detBusy = false;
+  var _freezeHash = "";
+  var _freezeSince = 0;
 
   function $(sel, root) { return (root || document).querySelector(sel); }
   function esc(s) {
@@ -248,6 +251,17 @@
     if (!_video.videoWidth || _video.readyState < 2) return;
     var ls = lumaStats();
     if (ls && (ls.mean < 22 || (ls.sd < 6 && ls.mean < 60))) { applyFrame("dark"); return; }
+    if (ls) {
+      var fh = Math.round(ls.mean) + ":" + Math.round(ls.sd * 10);
+      if (fh === _freezeHash) {
+        if (!_freezeSince) _freezeSince = Date.now();
+        if (Date.now() - _freezeSince >= HOLD.freeze && _state && !_state.open.dark && !_state.open.noface) openEp("freeze");
+      } else {
+        _freezeHash = fh;
+        _freezeSince = 0;
+        closeEp("freeze");
+      }
+    }
     if (_modelState !== "ready" || !_model) return;
     _detBusy = true;
     var t0 = performance.now();
@@ -398,11 +412,15 @@
     st.textContent = txt;
     st.className = "qxpr-pip-st " + cls;
   }
+  function defaultPipPos() {
+    var w = (_pip && _pip.offsetWidth) || 112;
+    return { x: Math.max(8, (global.innerWidth || 360) - w - 8), y: 12 };
+  }
   function clampPos(x, y) {
     var w = _pip.offsetWidth || 112, h = _pip.offsetHeight || 96;
     return {
       x: Math.min(Math.max(4, x), Math.max(4, (global.innerWidth || 360) - w - 4)),
-      y: Math.min(Math.max(4, y), Math.max(4, (global.innerHeight || 640) - h - 64))
+      y: Math.min(Math.max(4, y), Math.max(4, (global.innerHeight || 640) - h - 4))
     };
   }
   function placePip(x, y, save) {
@@ -421,18 +439,32 @@
     _pip.id = "qxPrPip";
     _pip.setAttribute("title", "AI Proctor self-view — drag to move");
     _pip.innerHTML = '<video playsinline muted autoplay></video>' +
-      '<div class="qxpr-pip-bar"><i class="qxpr-dot"></i><span class="qxpr-pip-st wait">Starting…</span></div>';
+      '<div class="qxpr-pip-bar"><i class="qxpr-dot"></i><span class="qxpr-pip-st wait">Starting…</span>' +
+      '<button type="button" class="qxpr-pip-pin" title="Reset camera to top right" aria-label="Reset camera position">⌂</button></div>';
     document.body.appendChild(_pip);
     _video = $("video", _pip);
     _video.srcObject = _stream;
     var pl = _video.play();
     if (pl && pl.catch) pl.catch(function () { /* */ });
+    function snapTopRight(save) {
+      var d = defaultPipPos();
+      placePip(d.x, d.y, !!save);
+    }
     try {
       var saved = JSON.parse(localStorage.getItem(PIP_POS_KEY) || "null");
-      if (saved && typeof saved.x === "number") placePip(saved.x, saved.y, false);
-    } catch (_) { /* */ }
+      if (saved && typeof saved.x === "number" && typeof saved.y === "number") placePip(saved.x, saved.y, false);
+      else snapTopRight(false);
+    } catch (_) { snapTopRight(false); }
+    var pin = $(".qxpr-pip-pin", _pip);
+    if (pin) pin.addEventListener("pointerdown", function (e) {
+      e.stopPropagation();
+      e.preventDefault();
+      snapTopRight(true);
+    });
     var sx, sy, ox, oy, on = false;
     function down(e) {
+      if (e.button != null && e.button !== 0) return;
+      if (e.target && e.target.closest && e.target.closest(".qxpr-pip-pin")) return;
       on = true; sx = e.clientX; sy = e.clientY;
       var r = _pip.getBoundingClientRect(); ox = r.left; oy = r.top;
       _pip.classList.add("drag");
@@ -445,6 +477,12 @@
     _pip.addEventListener("pointermove", move);
     _pip.addEventListener("pointerup", up);
     _pip.addEventListener("pointercancel", up);
+    _pip.addEventListener("dblclick", function () { snapTopRight(true); });
+    global.addEventListener("resize", function pipClamp() {
+      if (!_pip) return;
+      var r = _pip.getBoundingClientRect();
+      placePip(r.left, r.top, false);
+    });
     _drag = { down: down };
     updatePip();
   }
@@ -628,9 +666,9 @@
     return Math.floor(s / 60) + "m " + (s % 60) + "s";
   }
   function verdict(intel) {
-    if (intel.band === "good") return { t: "No significant concerns", d: "Monitoring found no major integrity issues in this attempt." };
-    if (intel.band === "review") return { t: "Some suspicious activity", d: "A few moments need a quick human review. AI flags are indicators, not proof." };
-    return { t: "High-risk session — manual review needed", d: "Several serious flags were recorded. Review the timeline below. AI flags are indicators, not proof." };
+    if (intel.band === "good") return { t: "No significant concerns", d: "Monitoring found no major integrity issues in this attempt. Flags are indicators for review, never automatic proof of cheating." };
+    if (intel.band === "review") return { t: "Potential integrity event — requires review", d: "A few moments need a human review. AI flags are indicators, not proof. This is not an automatic cheating decision." };
+    return { t: "Potential integrity event — requires review", d: "Several flags were recorded. Review the timeline below. AI flags are indicators, not proof. This is not an automatic cheating decision." };
   }
   function reportHtml() {
     var s = _state;
@@ -659,7 +697,7 @@
       '<div class="qxpr-verdict ' + intel.band + '"><h3>' + esc(v.t) + "</h3><p>" + esc(v.d) + "</p><p class=\"qxpr-ai\">" + aiLine + "</p></div></div>" +
       (evs.length
         ? '<h3 class="qxpr-h3">Counts by type</h3><ul class="qxpr-counts">' + chips + "</ul>" +
-          '<h3 class="qxpr-h3">Suspicious moments (' + evs.length + ")</h3>" +
+          '<h3 class="qxpr-h3">Moments that need review (' + evs.length + ")</h3>" +
           '<div class="qxpr-tblw"><table class="qxpr-tbl"><thead><tr><th>Time into test</th><th>Duration</th><th>Type</th><th>Question</th><th>Severity</th></tr></thead><tbody>' + rows + "</tbody></table></div>"
         : '<p class="qxpr-clean">No suspicious activity was recorded during this attempt.</p>') +
       '<p class="qxpr-foot">Video was processed on your device and never uploaded. Thumbnails (if any) exist only in this browser tab.</p>' +

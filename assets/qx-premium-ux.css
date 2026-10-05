@@ -108,8 +108,8 @@ h3, .cpyqb-exam-sec-title, .qx-all-topics-label, .ch-hub-panel h4 {
 p, .sec-desc, .page-head p, small, .result-count, .empty {
   font-family: var(--qx-font-body) !important;
   line-height: var(--qx-lh) !important;
-  overflow-wrap: anywhere;
-  word-break: break-word;
+  overflow-wrap: break-word;
+  word-break: normal;
   hyphens: auto;
 }
 .q-text, .eg-q-stem, .mtk-q-text, .qx-content, .qx-prac-q {

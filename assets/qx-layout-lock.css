@@ -218,7 +218,7 @@ html:has(body .eg-test-root), html:has(body .mtk-test-root) { overflow-x: hidden
 html body .eg-test-root .eg-body, html body .eg-test-root #egQArea.eg-body, html body #qzrrQArea, html body .qzrr-q-area,
 html body #app-main#app-main .eg-test-root .eg-main, html body #app-main#app-main .eg-test-root .eg-q-card { overscroll-behavior-x: none; }
 html body .eg-test-root .eg-q-stem, html body .eg-test-root .eg-opt, html body .mtk-test-root .mtk-q-text, html body .mtk-test-root .mtk-opt,
-html body .qzrr-cbt .mtk-q-text, html body .qx-sol-flow { min-width: 0; max-width: 100%; overflow-wrap: anywhere; }
+html body .qzrr-cbt .mtk-q-text, html body .qx-sol-flow { min-width: 0; max-width: 100%; overflow-wrap: break-word; word-break: normal; }
 html body .eg-test-root .katex.qx-katex-wide, html body .mtk-test-root .katex.qx-katex-wide, html body .qzrr-cbt .katex.qx-katex-wide,
 html body #qaSolReveal .katex.qx-katex-wide, html body #egSolPanel .katex.qx-katex-wide, html body .qx-sol-card .katex.qx-katex-wide {
   display: inline-block !important; max-width: 100% !important; overflow-x: auto !important; overflow-y: hidden !important;

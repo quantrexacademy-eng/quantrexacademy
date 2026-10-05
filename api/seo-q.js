@@ -7,9 +7,11 @@ const path = require("path");
 const crypto = require("crypto");
 
 const SITE = "https://www.quantrexacademy.com";
-/* qxmd315: SEO wrapper only (robots/JSON-LD/prev-next/cache). Question + solution rendering is unchanged. */
+/* qxmd316: render-time math sanitize + MARKS-like Q/sol/options. Formula cards stay in-app. */
 const seoQuality = require("../lib/seo-quality");
 const seoOrg = require("../lib/seo-org");
+let qxSanitize = null;
+try { qxSanitize = require("../qx-math-sanitize"); } catch (_) { qxSanitize = null; }
 const ROOT = process.env.QX_SITE_ROOT || process.cwd();
 const _shardCache = Object.create(null);
 const _shardOrder = [];
@@ -113,7 +115,9 @@ function absoluteUrl(u) {
 }
 
 function publicImg(u) {
-  const s = String(u || "").trim();
+  let s = String(u || "").trim();
+  s = s.replace(/cdn-question-pool\.{2,}app/g, "cdn-question-pool.getmarks.app");
+  s = s.replace(/cdn-assets\.{2,}app/g, "cdn-assets.getmarks.app");
   if (!s || /^data:/i.test(s) || /^javascript:/i.test(s)) return "";
   if (/quantrex-logo|favicon/i.test(s)) return s;
   // already proxied — ensure clean=1 for watermark wipe (no crop)
@@ -173,9 +177,16 @@ function recBlob(rec) {
 function healSeoText(s) {
   let t = String(s == null ? "" : s);
   if (!t) return t;
-  t = t.replace(/\\left\$/g, "\\left").replace(/\\right\$/g, "\\right");
-  t = t.replace(/\$Let \$/g, "Let $");
-  t = t.replace(/(^|[>\n\r\s])\$(Given|If|Find|The|Simplify|Let|Consider|Which|When|For|Show|Prove|Calculate|Determine)\b(?!\$)/g, "$1$2");
+  try {
+    if (qxSanitize && typeof qxSanitize.healDisplayBreaks === "function") t = qxSanitize.healDisplayBreaks(t);
+  } catch (_) { /* */ }
+  try {
+    if (qxSanitize && typeof qxSanitize.normalizeMathContent === "function") t = qxSanitize.normalizeMathContent(t).html;
+  } catch (_) {
+    t = t.replace(/\\left\$/g, "\\left(").replace(/\\right\$/g, "\\right)");
+    t = t.replace(/\$Let \$/g, "Let $");
+    t = t.replace(/(^|[>\n\r\s])\$(Given|If|Find|The|Simplify|Let|Consider|Which|When|For|Show|Prove|Calculate|Determine)\b(?!\$)/g, "$1$2");
+  }
   t = t.replace(/&#39;|&apos;|&#x27;/gi, "'");
   t = t.replace(/&nbsp;|&#160;/gi, " ");
   return t;
@@ -406,7 +417,9 @@ function render(rec, related) {
         renderMathInElement(document.body, {
           delimiters: [
             {left: "$$", right: "$$", display: true},
-            {left: "$", right: "$", display: false}
+            {left: "\\\\[", right: "\\\\]", display: true},
+            {left: "$", right: "$", display: false},
+            {left: "\\\\(", right: "\\\\)", display: false}
           ],
           throwOnError: false
         });
@@ -435,12 +448,13 @@ function render(rec, related) {
     ol.opts li{display:flex;gap:10px;align-items:flex-start;padding:11px 0;border-top:1px solid #eef3f9}
     ol.opts li:first-child{border-top:0}
     ol.opts li.hit{background:#ecfdf5;margin:0 -10px;padding:11px 10px;border-radius:12px;border-top:0}
-    .opt-body img,.stem-fig,.q-stem img{max-width:min(100%,420px);height:auto;display:block;margin:8px 0;border-radius:10px;background:#fff}
-    .q-stem{font-size:clamp(1.12rem,3.2vw,1.48rem);line-height:1.45;margin:10px 0 14px;font-weight:800}
-    .ltr{flex:0 0 28px;height:28px;border-radius:8px;background:#e8f1fb;color:#1565C0;font-weight:800;display:grid;place-items:center;font-size:13px}
+    .opt-body img,.stem-fig,.q-stem img,.qx-seo-sol img{max-width:min(100%,420px);height:auto;display:block;margin:8px 0;border-radius:10px;background:#fff}
+    .q-stem{font-size:clamp(1.12rem,3.2vw,1.48rem);line-height:1.45;margin:10px 0 14px;font-weight:800;overflow-wrap:break-word;word-break:normal}
+    .ltr{flex:0 0 32px;width:32px;height:32px;border-radius:50%;background:#1565C0;color:#fff;font-weight:800;display:grid;place-items:center;font-size:14px;line-height:1}
     .hit .ltr{background:#0f766e;color:#fff}
     .ans{background:#ecfdf5;border-color:#99f6e4}
-    .sol p{margin:0;white-space:pre-wrap}
+    .qx-seo-sol{margin:0;overflow-wrap:break-word;word-break:normal;white-space:normal}
+    .qx-seo-sol .katex,.q-stem .katex,.opt-body .katex{white-space:nowrap}
     .cta{display:block;text-align:center;background:linear-gradient(90deg,#1565C0,#8450CB);color:#fff;font-weight:800;padding:14px;border-radius:14px;text-decoration:none;margin-top:8px}
     .rel a{display:block;padding:12px 0;border-top:1px solid #eef3f9;color:var(--ink);font-weight:700;text-decoration:none}
     .rel a:hover{color:var(--brand)}
@@ -475,7 +489,7 @@ function render(rec, related) {
     ${ans ? `<section class="card ans"><h2>Correct answer</h2><p style="margin:0;font-weight:800">${esc(ans)}</p></section>` : ""}
     <section class="card sol" id="solution">
       <h2>Step-by-step solution</h2>
-      <p>${rich(rec.sol || "Open this question in the Quantrex Academy app for the full interactive solution, figures and similar PYQs.")}</p>
+      <div class="qx-seo-sol">${rich(rec.sol || "Open this question in the Quantrex Academy app for the full interactive solution, figures and similar PYQs.")}</div>
     </section>
     <a class="cta" href="/app.html">Practice ${esc(rec.chapter)} on Quantrex Academy →</a>
     ${pnHtml}
@@ -483,7 +497,7 @@ function render(rec, related) {
       <h2>More from ${esc(rec.chapter)}</h2>
       ${relHtml || `<a href="${esc(topicUrl)}">All ${esc(rec.chapter)} questions</a>`}
       <a href="${esc(topicUrl)}">Full ${esc(rec.chapter)} list</a>
-      ${/math/i.test(String(rec.subject || "")) ? `<a href="/maths/${esc(chSlug)}">${esc(rec.chapter)} formula cards</a><a href="/maths">JEE Mathematics formula hub</a>` : ""}
+      ${/math/i.test(String(rec.subject || "")) ? `<a href="/jee/mathematics/${esc(chSlug)}">${esc(rec.chapter)} JEE Maths PYQs</a><a href="/maths">JEE Mathematics PYQs</a>` : ""}
       <a href="${esc(hubUrl)}">All ${esc(rec.exam)} PYQs</a>
     </section>
   </main>

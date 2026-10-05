@@ -866,6 +866,38 @@
   }
 
   /**
+   * High-confidence display repairs for scanned Q/sol/option TeX.
+   * Never wraps bare LaTeX. Never touches answers.
+   */
+  function healDisplayBreaks(s) {
+    let t = String(s == null ? "" : s);
+    if (!t) return t;
+    t = t.replace(/cdn-question-pool\.{2,}app/g, "cdn-question-pool.getmarks.app");
+    t = t.replace(/cdn-assets\.{2,}app/g, "cdn-assets.getmarks.app");
+    t = t.replace(/\\mathrm([A-Z])/g, "\\mathrm{$1}");
+    t = t.replace(/\\left\$\\\{/g, "\\left\\{");
+    t = t.replace(/\\left\$\{/g, "\\left\\{");
+    t = t.replace(/\\right\$\\\}/g, "\\right\\}");
+    t = t.replace(/\\right\$\}/g, "\\right\\}");
+    t = t.replace(/\\left\$\s*\(/g, "\\left(");
+    t = t.replace(/\\right\$\s*\)/g, "\\right)");
+    t = t.replace(/\\left\$/g, "\\left(");
+    t = t.replace(/\\right\$/g, "\\right)");
+    t = t.replace(/(?:\\)?(sin|cos|tan|cot|sec|csc|cosec)\s*[-−]\s*1\b/g, "\\$1^{-1}");
+    t = t.replace(/\bandf\b/g, "and f");
+    t = t.replace(/\bwherex\b/g, "where x");
+    t = t.replace(/\bthenx\b/g, "then x");
+    t = t.replace(/\bhencex\b/g, "hence x");
+    t = t.replace(/\bthusx\b/g, "thus x");
+    t = t.replace(/\bsincex\b/g, "since x");
+    t = t.replace(/\biffx\b/g, "if fx");
+    t = t.replace(/\b(and|if|where|then)(?=\\frac|\\mathrm|\$)/g, "$1 ");
+    t = t.replace(/(^|>|\n)\s*ray\}\{/g, "$1\\begin{array}{");
+    t = t.replace(/(^|>|\n)\s*gin\{array\}/g, "$1\\begin{array}");
+    return t;
+  }
+
+  /**
    * Full pipeline for any stem/option/solution/hint string.
    * Returns { html, meta }
    */
@@ -910,6 +942,7 @@
     try { s = collapseEscapedBackslashes(s); } catch (_) { /* */ }
     // qxmd163: also collapse \\{ before letters already done; repair Marks braces/U+2061
     try { s = repairMarksExportTex(s); } catch (_) { /* */ }
+    try { s = healDisplayBreaks(s); } catch (_) { /* */ }
     s = normalizeDelimiters(s);
     try { s = fixProseDollars(s); } catch (_) { /* */ }
     try { s = healOddDollars(s); } catch (_) { /* */ }
@@ -1075,6 +1108,7 @@
     detectUnbalancedLatex,
     healOddDollars,
     fixProseDollars,
+    healDisplayBreaks,
     repairMarksDollarSoup,
     recoverKatexHtml,
     normalizeMathContent,
