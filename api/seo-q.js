@@ -11,10 +11,11 @@ const SITE = "https://www.quantrexacademy.com";
 const seoQuality = require("../lib/seo-quality");
 const seoOrg = require("../lib/seo-org");
 const seoKatex = require("../lib/seo-katex");
+const seoPaper = require("../lib/seo-paper");
 let qxSanitize = null;
 try { qxSanitize = require("../qx-math-sanitize"); } catch (_) { qxSanitize = null; }
 const ROOT = process.env.QX_SITE_ROOT || process.cwd();
-const SEO_ASSET_V = "qxmd318";
+const SEO_ASSET_V = "qxmd319";
 const _shardCache = Object.create(null);
 const _shardOrder = [];
 
@@ -244,54 +245,44 @@ function letters(i) {
 }
 
 function paperMeta(rec) {
-  const src = String((rec && (rec.source || rec.paperSource)) || (rec && rec.meta && rec.meta.source) || "");
-  let date = "";
-  let shift = "";
-  let m = src.match(/\(?\s*(\d{1,2})(?:st|nd|rd|th)?[\s\-/]+([A-Za-z]{3,9})\.?(?:[\s\-/]+(\d{4}))?\s*[,\s]+(?:Online|Offline)?\s*Shift\s*[-–]?\s*([12])/i)
-    || src.match(/\b(\d{1,2})(?:st|nd|rd|th)?\s+([A-Za-z]{3,9})\.?(?:\s+(\d{4}))?\s*(?:Online|Offline)?\s*Shift\s*[-–]?\s*([12])\b/i);
-  if (m) {
-    const mon = m[2].charAt(0).toUpperCase() + m[2].slice(1).toLowerCase();
-    date = [String(m[1]).replace(/^0/, ""), mon, m[3] || rec.year].filter(Boolean).join(" ");
-    shift = m[4] === "1" ? "Morning Shift" : "Evening Shift";
-  }
-  if (!shift) {
-    m = src.match(/\b(Morning|Evening)\s*Shift\b/i);
-    if (m) shift = /morning/i.test(m[1]) ? "Morning Shift" : "Evening Shift";
-    else {
-      m = src.match(/\bShift\s*[-–]?\s*([12])\b/i);
-      if (m) shift = m[1] === "1" ? "Morning Shift" : "Evening Shift";
-    }
-  }
-  if (!date) {
-    m = src.match(/\b(\d{1,2})(?:st|nd|rd|th)?[\s\-/]+([A-Za-z]{3,9})\.?(?:[\s\-/]+(\d{4}))?\b/);
-    if (m && /jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec/i.test(m[2])) {
-      const mon = m[2].charAt(0).toUpperCase() + m[2].slice(1).toLowerCase();
-      date = [String(m[1]).replace(/^0/, ""), mon, m[3] || rec.year].filter(Boolean).join(" ");
-    }
-  }
-  const blob = (src + " " + String((rec && rec.bank) || "")).toLowerCase();
-  let actual = "";
-  if (/abhyas|dpp/.test(blob)) actual = "Practice";
-  else if (rec && rec.year && /jee|neet|nda|bitsat|shift|eamcet|eapcet|kcet|comedk/.test(blob)) actual = "Actual";
-  const parts = [rec.exam, rec.year && String(rec.year), date, shift, rec.subject, rec.chapter, actual, rec.diff || rec.difficulty].filter(Boolean);
-  const line = [rec.exam, rec.year && String(rec.year), date, shift].filter(Boolean).join(" · ");
-  return { date: date, shift: shift, actual: actual, src: src, line: line, parts: parts };
+  const p = seoPaper.parsePaperMeta(rec);
+  return {
+    date: p.date,
+    shift: p.shift,
+    mode: p.mode,
+    paper: p.paper,
+    exam: p.exam,
+    year: p.year,
+    src: p.raw,
+    line: p.line,
+    chips: p.chips,
+    parts: p.chips
+  };
 }
 
 function paperDetailPills(rec) {
-  return paperMeta(rec).parts.map((p) => `<span class="pill">${esc(p)}</span>`).join("");
+  const p = paperMeta(rec);
+  const chips = [];
+  const examTxt = p.exam ? (p.year ? p.exam + " " + p.year : p.exam) : p.year;
+  if (examTxt) chips.push(`<span class="pill pill-exam">${esc(examTxt)}</span>`);
+  if (p.date) chips.push(`<span class="pill pill-date">${esc(p.date)}</span>`);
+  if (p.shift) chips.push(`<span class="pill pill-shift">${esc(p.shift)}</span>`);
+  if (p.mode) chips.push(`<span class="pill">${esc(p.mode)}</span>`);
+  if (p.paper) chips.push(`<span class="pill">${esc(p.paper)}</span>`);
+  return chips.join("");
 }
 
 function paperDl(rec) {
   const p = paperMeta(rec);
   const rows = [];
-  if (rec.exam) rows.push(["Exam", rec.exam]);
-  if (rec.year) rows.push(["Year", String(rec.year)]);
+  if (p.exam || rec.exam) rows.push(["Exam", p.exam || rec.exam]);
+  if (p.year || rec.year) rows.push(["Year", String(p.year || rec.year)]);
   if (p.date) rows.push(["Date", p.date]);
   if (p.shift) rows.push(["Shift", p.shift]);
+  if (p.mode) rows.push(["Mode", p.mode]);
+  if (p.paper) rows.push(["Paper", p.paper]);
   if (rec.subject) rows.push(["Subject", rec.subject]);
   if (rec.chapter) rows.push(["Chapter", rec.chapter]);
-  if (p.actual) rows.push(["Paper", p.actual]);
   if (!rows.length) return "";
   return `<dl class="paper-dl">${rows.map((r) => `<div><dt>${esc(r[0])}</dt><dd>${esc(r[1])}</dd></div>`).join("")}</dl>`;
 }
@@ -336,10 +327,9 @@ function render(rec, related) {
   const paper = paperMeta(rec);
   const examBit = [rec.exam, rec.year].filter(Boolean).join(" ");
   const paperLine = paper.line || examBit;
-  const quality = seoQuality.classify(rec);
-  const indexable = quality === "good";
-  const title = [short, paperLine, ((rec.subject ? rec.subject + " " : "") + "PYQ with solution"), "Quantrex Academy"].filter(Boolean).join(" | ");
-  const desc = `${qtxt.slice(0, 140)}${qtxt.length > 140 ? "..." : ""} ${paperLine} ${rec.subject || ""} ${rec.chapter || ""} previous year question with answer and step-by-step solution on Quantrex Academy.`.replace(/\s+/g, " ").trim();
+  const indexable = seoQuality.isIndexable(rec);
+  const title = [short, paperLine, rec.subject, "Quantrex Academy"].filter(Boolean).join(" | ");
+  const desc = `${qtxt.slice(0, 150)}${qtxt.length > 150 ? "..." : ""} ${paperLine}${rec.chapter ? " · " + rec.chapter : ""}. Answer and step-by-step solution on Quantrex Academy.`.replace(/\s+/g, " ").trim();
   const url = `${SITE}/q/${encodeURIComponent(rec.id)}/${encodeURIComponent(rec.slug)}`;
   const topicUrl = hub === "other" ? `${SITE}/questions` : `${SITE}/${hub}/${subSlug}/${chSlug}`;
   const hubUrl = hub === "other" ? `${SITE}/questions` : `${SITE}/${hub}`;
@@ -383,7 +373,11 @@ function render(rec, related) {
     ? `<nav class="pn" aria-label="Previous and next question">${nav.prev ? `<a class="pv" href="/q/${esc(nav.prev.id)}/${esc(nav.prev.slug)}" rel="prev"><small>← Previous question</small>${esc(seoOrg.clip(nav.prev.t, 90))}</a>` : ""}${nav.next ? `<a class="nx" href="/q/${esc(nav.next.id)}/${esc(nav.next.slug)}" rel="next"><small>Next question →</small>${esc(seoOrg.clip(nav.next.t, 90))}</a>` : ""}</nav>`
     : "";
   const relHtml = (related || [])
-    .map((x) => `<a href="/q/${esc(x.id)}/${esc(x.slug)}">${esc(x.t)}${x.year ? ` <small>${esc(x.year)}</small>` : ""}</a>`)
+    .map((x) => {
+      const teaser = seoOrg.clip(plainSnippet(x.t || x.text || "", 180), 90);
+      const when = [x.exam, x.year].filter(Boolean).join(" ");
+      return `<a href="/q/${esc(x.id)}/${esc(x.slug)}">${esc(teaser)}${when ? ` <small>${esc(when)}</small>` : ""}</a>`;
+    })
     .join("");
   const crumbItems = [
     { name: "Quantrex Academy", url: SITE + "/" },
@@ -465,7 +459,7 @@ function render(rec, related) {
   <meta name="twitter:image" content="${esc(ogImage)}">
   <meta name="google-site-verification" content="pemTmZW6o6YInk0dhVyPgIz7R4v4mWvKhIb1AdI9Alw">
   <meta name="theme-color" content="#1565C0">
-  <meta name="qx-build" content="qxmd318">
+  <meta name="qx-build" content="qxmd319">
   <link rel="icon" type="image/png" href="/assets/favicon-32x32.png">
   <link rel="stylesheet" href="/assets/katex/katex.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
@@ -501,6 +495,9 @@ function render(rec, related) {
     main{max-width:880px;margin:0 auto;padding:8px 16px 48px}
     .pills{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 4px}
     .pill{background:#e8f1fb;color:#1565C0;font-size:11px;font-weight:800;padding:5px 10px;border-radius:999px}
+    .pill-exam{background:#1565C0;color:#fff}
+    .pill-date{background:#fff;border:1px solid #c5d8ee;color:#0b1b33}
+    .pill-shift{background:#dbeafe;color:#1e3a8a}
     .paper-dl{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;margin:10px 0 6px;padding:12px 14px;background:#fff;border:1px solid var(--line);border-radius:14px}
     .paper-dl div{min-width:0}
     .paper-dl dt{font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0}
@@ -518,6 +515,7 @@ function render(rec, related) {
     .ltr{flex:0 0 32px;width:32px;height:32px;border-radius:50%;background:#1565C0;color:#fff;font-weight:800;display:grid;place-items:center;font-size:14px;line-height:1}
     .hit .ltr{background:#0f766e;color:#fff}
     .ans{background:#ecfdf5;border-color:#99f6e4}
+    .sol-diff{margin:0 0 10px;font-size:12px;font-weight:800;color:#0f766e}
     .qx-seo-sol{margin:0;overflow-wrap:break-word;word-break:normal;white-space:normal;line-height:1.65;font-size:16px;font-weight:500}
     .qx-seo-sol .katex,.q-stem .katex,.opt-body .katex,.ans .katex{white-space:nowrap;font-size:1.05em}
     math{font-family:KaTeX_Main,Times New Roman,serif}
@@ -551,12 +549,13 @@ function render(rec, related) {
       ${paperDetailPills(rec)}
     </div>
     ${paperDl(rec)}
-    <p class="kicker">${esc([paperLine, rec.subject, rec.chapter].filter(Boolean).join(" · "))} previous year question with solution</p>
+    <p class="kicker">${esc([paperLine, rec.subject, rec.chapter].filter(Boolean).join(" · "))}</p>
     <h1 class="q-stem">${rich(rec.text)}${stemFigs && !/<img/i.test(String(rec.text || "")) ? stemFigs : ""}</h1>
     ${opts ? `<section class="card"><h2>Options</h2><ol class="opts">${opts}</ol></section>` : ""}
     ${ansHtml ? `<section class="card ans"><h2>Correct answer</h2><p style="margin:0;font-weight:800">${ansHtml}</p></section>` : ""}
     <section class="card sol" id="solution">
       <h2>Step-by-step solution</h2>
+      ${rec.diff || rec.difficulty ? `<p class="sol-diff">Difficulty: ${esc(String(rec.diff || rec.difficulty))}</p>` : ""}
       <div class="qx-seo-sol">${rich(rec.sol || "Open this question in the Quantrex Academy app for the full interactive solution, figures and similar PYQs.")}</div>
     </section>
     <a class="cta" href="/app.html">Practice ${esc(rec.chapter)} on Quantrex Academy →</a>
