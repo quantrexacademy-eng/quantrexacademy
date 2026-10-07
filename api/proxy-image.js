@@ -382,13 +382,17 @@ module.exports = async function handler(req, res) {
     }
 
     res.setHeader("Content-Type", outType);
+    // qxmd328: versioned (&v=) proxy URLs are content-addressed -> 1y immutable in browser + CDN.
+    const _qxVersioned = !!(req.query && req.query.v);
     res.setHeader(
       "Cache-Control",
-      "public, max-age=2592000, s-maxage=2592000, stale-while-revalidate=31536000"
+      _qxVersioned
+        ? "public, max-age=31536000, s-maxage=31536000, immutable"
+        : "public, max-age=2592000, s-maxage=31536000, stale-while-revalidate=31536000"
     );
     res.setHeader(
       "CDN-Cache-Control",
-      "public, max-age=2592000, stale-while-revalidate=31536000"
+      "public, max-age=31536000, stale-while-revalidate=31536000"
     );
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader("X-Qx-Proxy", "1");

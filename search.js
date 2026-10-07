@@ -104,7 +104,7 @@ const QuantrexSearch = (() => {
 
   async function searchRemote(query) {
     try {
-      const r = await fetch("/api/seo-q?mode=search&format=json&q=" + encodeURIComponent(query), { cache: "no-store" });
+      const r = await fetch("/api/seo-q?mode=search&format=json&q=" + encodeURIComponent(query), { cache: "default" });
       if (!r.ok) return [];
       const d = await r.json();
       return (d && d.hits) || (d && d.results) || [];

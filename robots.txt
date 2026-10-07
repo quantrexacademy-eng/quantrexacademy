@@ -15,6 +15,7 @@ Allow: /app.html
 Allow: /api/proxy-image
 Allow: /api/restore-image
 Disallow: /api/
+Disallow: /data/
 Disallow: /data/seo/
 Disallow: /admin.html
 # qxmd315: internal search result pages are noindex; keep crawlers on chapter and question pages

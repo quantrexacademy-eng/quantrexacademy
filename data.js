@@ -674,7 +674,7 @@ async function qxLoadChapterIndex(slug) {
   if (_qxChapterIndexPromises[slug]) return _qxChapterIndexPromises[slug];
   _qxChapterIndexPromises[slug] = (async () => {
     try {
-      const bust = (typeof window !== "undefined" && window.QX_BUILD) || "qxmd159";
+      const bust = (typeof window !== "undefined" && (window.QX_DATA_VER || window.QX_BUILD)) || "qxmd159";
       const res = await fetch("data/banks/chapters/" + encodeURIComponent(slug) + "/index.json?v=" + encodeURIComponent(bust), { cache: "force-cache" });
       _qxChapterIndex[slug] = res.ok ? await res.json() : null;
     } catch (_) {
@@ -724,7 +724,7 @@ async function loadChapterBank(slug, subject, chapter) {
     const idx = await qxLoadChapterIndex(slug);
     let rel = qxFindChapterRel(idx, subject, chapter);
     if (!rel) rel = qxBankPathSlug(subject) + "/" + qxBankPathSlug(chapter) + ".json";
-    const bust = (typeof window !== "undefined" && window.QX_BUILD) || "qxmd159";
+    const bust = (typeof window !== "undefined" && (window.QX_DATA_VER || window.QX_BUILD)) || "qxmd159";
     const parts = String(rel).split("/").map(encodeURIComponent).join("/");
     const url = "data/banks/chapters/" + encodeURIComponent(slug) + "/" + parts + "?v=" + encodeURIComponent(bust);
     let res;
@@ -956,7 +956,7 @@ async function loadSingleBank(slug, opts) {
 
 async function loadDppBank() {
   if (_dppLoaded) return QUESTIONS.filter(q => q._bank === "dpp");
-  const res = await fetch("data/banks/dpp.json?v=qxbank684", { cache: "no-store" });
+  const res = await fetch("data/banks/dpp.json?v=qxbank684");
   if (!res.ok) {
     console.warn("DPP bank unavailable on hosting:", res.status);
     _dppLoaded = true;
@@ -995,7 +995,7 @@ let FORMULAS = [];
 let _formulasLoaded = false;
 async function loadFormulas() {
   if (_formulasLoaded && FORMULAS && FORMULAS.length) return FORMULAS;
-  const bust = (typeof window !== "undefined" && window.QX_BUILD) || "qxfc1";
+  const bust = (typeof window !== "undefined" && (window.QX_DATA_VER || window.QX_BUILD)) || "qxfc1";
   const res = await fetch("data/formulas.json?v=" + encodeURIComponent(bust), { cache: "force-cache" });
   if (!res.ok) throw new Error("formulas HTTP " + res.status);
   const data = await res.json();
@@ -14497,7 +14497,7 @@ if (typeof window !== "undefined") {
 
 function qxPatchOrganicFigUrl(s) {
   if (!s || typeof s !== "string") return s;
-  const ver = encodeURIComponent((typeof window !== "undefined" && window.QX_BUILD) || "bbjson1");
+  const ver = encodeURIComponent((typeof window !== "undefined" && (window.QX_DATA_VER || window.QX_BUILD)) || "bbjson1");
   const qx = `/assets/diagrams/qx-org-$1.png?v=${ver}`;
   let out = s
     .replace(/\/assets\/diagrams\/qx-org-([a-f0-9]{16})\.png(\?[^"'\s]*)?/gi, qx)
@@ -14547,7 +14547,7 @@ function qxPatchOrganicBookQuestion(q) {
   return out;
 }
 
-const _qxBookDataVer = (typeof window !== "undefined" && window.QX_BUILD) || "bbexsplit1";
+const _qxBookDataVer = (typeof window !== "undefined" && (window.QX_DATA_VER || window.QX_BUILD)) || "bbexsplit1";
 if (typeof sessionStorage !== "undefined") {
   const prev = sessionStorage.getItem("qxBookDataVer");
   if (prev !== _qxBookDataVer) {

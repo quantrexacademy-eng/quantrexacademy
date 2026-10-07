@@ -164,6 +164,15 @@ function bindMarksGoDelegate() {
       startDppSet(dppEl.getAttribute("data-dpp-start"));
       return;
     }
+    const driveEl = e.target && e.target.closest && e.target.closest("[data-qx-drive]");
+    if (driveEl) {
+      e.preventDefault();
+      e.stopPropagation();
+      const id = driveEl.getAttribute("data-qx-drive") || "";
+      const title = driveEl.getAttribute("data-qx-drive-title") || "Notes";
+      if (typeof qxOpenDrivePreview === "function") qxOpenDrivePreview(title, id, "Notes");
+      return;
+    }
     const el = e.target && e.target.closest && e.target.closest("[data-mg]");
     if (!el) return;
     e.preventDefault();
@@ -236,7 +245,7 @@ async function fetchNav(name) {
   if (name === "cpyqb") {
     const instant = qxBankIndexCpyqbNav();
     if (!_navCache[name] || !_navCache[name].length) _navCache[name] = instant;
-    const ver = (typeof QX_BUILD !== "undefined" && QX_BUILD) || "qxmd184";
+    const ver = ((typeof QX_DATA_VER !== "undefined" && QX_DATA_VER) || (typeof QX_BUILD !== "undefined" && QX_BUILD)) || "qxmd184";
     fetch("data/nav/cpyqb.json?v=" + encodeURIComponent(ver), { cache: "default" }).then(function (res) {
       if (!res || !res.ok) return null;
       return res.json();
@@ -261,7 +270,7 @@ async function fetchNav(name) {
     return _navCache[name];
   }
   try {
-    const ver = (typeof QX_BUILD !== "undefined" && QX_BUILD) || "qxmd184";
+    const ver = ((typeof QX_DATA_VER !== "undefined" && QX_DATA_VER) || (typeof QX_BUILD !== "undefined" && QX_BUILD)) || "qxmd184";
     const ac = typeof AbortController !== "undefined" ? new AbortController() : null;
     const to = setTimeout(() => { try { ac && ac.abort(); } catch (_) {} }, 20000);
     const res = await fetch("data/nav/" + name + ".json?v=" + encodeURIComponent(ver), { cache: "default", signal: ac ? ac.signal : undefined });
@@ -281,7 +290,7 @@ async function fetchModuleNav(name) {
   const key = `mod:${name}`;
   if (_navCache[key]) return _navCache[key];
   try {
-    const ver = (typeof QX_BUILD !== "undefined" && QX_BUILD) || "qxmed6";
+    const ver = ((typeof QX_DATA_VER !== "undefined" && QX_DATA_VER) || (typeof QX_BUILD !== "undefined" && QX_BUILD)) || "qxmed6";
     const ac = typeof AbortController !== "undefined" ? new AbortController() : null;
     const to = setTimeout(() => { try { ac && ac.abort(); } catch (_) {} }, 8000);
     const res = await fetch(`data/nav/${name}.json?v=${encodeURIComponent(ver)}`, { signal: ac ? ac.signal : undefined });
@@ -2523,15 +2532,14 @@ function renderChapterHubPage(exam, p, meta, qs, stats) {
   // JEE Advanced: resources (Video/PDF/Formula like Main) + type folders + PYQs
   // IMPORTANT: do NOT use .ch-hub-page (1fr 280px) — it shoved type cards into a 280px column.
   if (isAdv && typeBuckets.length) {
-    const formulaPayload = mg("formula", { step: "chapters", subject: p.subject });
-    const notesPayload = mg("quickconcepts", { step: "subjects" });
-    const videoPayload = mg("quickconcepts", { step: "subjects" });
-    const revisionPayload = mg("quickconcepts", { step: "subjects" });
+    const formulaPayload = mg("qxsheets", { kind: "adv_formula", step: "open", subject: p.subject, chapter: p.chapter });
+    const notesPayload = mg("qxsheets", { kind: "adv_notes", step: "open", subject: p.subject, chapter: p.chapter });
+    const revisionPayload = mg("qxsheets", { kind: "adv_notes", step: "open", subject: p.subject, chapter: p.chapter });
     /* qxmd172: no Concept Videos — Quantrex practice/notes/formula/revision only */
     const resourceMods = [
-      { id: "notes", title: "Notes (PDF)", sub: "Downloadable chapter notes", payload: notesPayload, soon: false },
-      { id: "formula", title: "Formula Sheet (PDF)", sub: "Quick-reference formulas", payload: formulaPayload, soon: false },
-      { id: "revision", title: "Revision / Quick Concepts", sub: "Last-minute revision notes", payload: revisionPayload, soon: false }
+      { id: "notes", title: "Notes (PDF)", sub: "Chapter notes · Quantrex Academy", payload: notesPayload, soon: false },
+      { id: "formula", title: "Formula Sheet (PDF)", sub: "Chapter formulae · Quantrex Academy", payload: formulaPayload, soon: false },
+      { id: "revision", title: "Revision Notes", sub: "Last-minute notes · Quantrex Academy", payload: revisionPayload, soon: false }
     ];
     const resourceCards = resourceMods.map((m) => {
       const click = m.soon
@@ -2598,9 +2606,16 @@ function renderChapterHubPage(exam, p, meta, qs, stats) {
       ? mg("cpyqb", { step: buckets.length ? "buckets" : "questions", exam: p.exam, subject: p.subject, chapter: p.chapter })
       : null;
     const pyqPayload = practicePayload;
-    const revisionPayload = mg("quickconcepts", { step: "subjects" });
-    const formulaPayload = mg("formula", { step: "chapters", subject: p.subject });
-    const notesPayload = mg("quickconcepts", { step: "subjects" });
+    const isMain = p.exam === "jee_main" || /jee.?main/i.test(String(exam.title || p.exam || ""));
+    const revisionPayload = isMain
+      ? mg("qxsheets", { kind: "revision", step: "open", subject: p.subject, chapter: p.chapter })
+      : mg("quickconcepts", { step: "subjects" });
+    const formulaPayload = isMain
+      ? mg("qxsheets", { kind: "formula", step: "open", subject: p.subject, chapter: p.chapter })
+      : mg("formula", { step: "chapters", subject: p.subject });
+    const notesPayload = isMain
+      ? mg("qxsheets", { kind: "revision", step: "open", subject: p.subject, chapter: p.chapter })
+      : mg("quickconcepts", { step: "subjects" });
     const videoPayload = null; /* qxmd172: videos excluded */
     const hub = QxRedesign.renderChapterHub({
       title: p.chapter,
@@ -4743,13 +4758,13 @@ function qxEnsureFormulaCardSkin() {
     const link = document.createElement("link");
     link.id = "qxFcCardCss";
     link.rel = "stylesheet";
-    link.href = "assets/qx-formula-cards.css?v=qxmd227";
+    link.href = "assets/qx-formula-cards.css?v=qxmd321";
     document.head.appendChild(link);
   }
   if (!document.getElementById("qxFcCardJs")) {
     const s = document.createElement("script");
     s.id = "qxFcCardJs";
-    s.src = "assets/qx-formula-cards.js?v=qxmd227";
+    s.src = "assets/qx-formula-cards.js?v=qxmd321";
     document.head.appendChild(s);
   }
   setTimeout(function () {
@@ -5310,11 +5325,11 @@ function qxEnsureRfcSkin() {
     link.rel = "stylesheet";
     document.head.appendChild(link);
   }
-  link.href = "assets/qx-rfc.css?v=qxmd227";
+  link.href = "assets/qx-rfc.css?v=qxmd321";
   if (!document.getElementById("qxRfcJs")) {
     const s = document.createElement("script");
     s.id = "qxRfcJs";
-    s.src = "assets/qx-rfc.js?v=qxmd227";
+    s.src = "assets/qx-rfc.js?v=qxmd321";
     s.onload = function () { window._qxRfcReady = true; };
     document.head.appendChild(s);
   } else {
@@ -5413,8 +5428,15 @@ async function viewRfcMarks(payload) {
   const track = qxRfcTrack();
 
   if (p.step === "subjects" || !p.subject) {
+    let extra = "";
+    try {
+      if (STATE.exam !== "Medical") {
+        const sheetNav = await qxLoadSheetNav("revision");
+        extra = qxSheetsSectionHtml(sheetNav, "revision", "JEE Main Revision Notes", "Chapter notes · Quantrex Academy");
+      }
+    } catch (_) { extra = ""; }
     return `${topbar(QX_UX.flash, QX_UX.flashSub + " · " + track)}
-      ${qxRfcSubjectSectionHtml(nav) || '<div class="empty">Flash cards are loading…</div>'}`;
+      ${qxRfcSubjectSectionHtml(nav) || '<div class="empty">Flash cards are loading…</div>'}${extra}`;
   }
 
   const subj = nav.find((s) => s.name === p.subject && (!p.subjectId || s.id === p.subjectId))
@@ -5477,6 +5499,352 @@ async function viewRfcMarks(payload) {
     <p class="sec-desc">Tap a card to open the full revision page. Next / Prev or swipe to move.</p>
     <div class="qx-rfc-ch-grid">${thumbs}</div>`;
 }
+
+// ============ Quantrex JEE Main formula sheets + revision notes (qxmd321) ============
+let _qxSheetPayload = { kind: "formula", step: "subjects" };
+
+async function qxLoadSheetNav(kind) {
+  const bust = ((typeof QX_DATA_VER !== "undefined" && QX_DATA_VER) || (typeof QX_BUILD !== "undefined" && QX_BUILD)) || "qxmd323";
+  const fileKind = kind === "adv_formula" ? "adv_formula"
+    : kind === "adv_notes" ? "adv_notes"
+    : kind === "revision" ? "revision"
+    : "formula";
+  try {
+    const res = await fetch("data/nav/qx_" + fileKind + ".json?v=" + encodeURIComponent(bust), { cache: "no-cache" });
+    if (!res.ok) return null;
+    return await res.json();
+  } catch (_) { return null; }
+}
+
+function qxSheetSlug(s) {
+  return String(s || "").toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_|_$/g, "").slice(0, 80) || "x";
+}
+
+function qxSheetAliases(slug) {
+  const map = {
+    units_and_dimensions: ["physical_world_and_measurement", "experimental_physics"],
+    motion_in_one_dimension: ["kinematics", "kinematics_in_one_dimension"],
+    motion_in_two_dimensions: ["motion_in_2d", "circular_motion", "motion_in_two_dimension_and_circular_motion"],
+    laws_of_motion: ["newton_s_laws_of_motion", "friction", "force_including_friction_and_laws_of_motion"],
+    center_of_mass_momentum_and_collision: ["centre_of_mass_collision", "centre_of_mass_and_momentum"],
+    oscillations: ["simple_harmonic_motion"],
+    mechanical_properties_of_solids: ["elasticity"],
+    mechanical_properties_of_fluids: ["fluid_mechanics", "pressure_in_a_fluid"],
+    thermal_properties_of_matter: ["heat_part_1", "heat_part_2", "thermodynamics"],
+    kinetic_theory_of_gases: ["heat_part_1", "thermodynamics"],
+    electrostatics: ["electrostats", "electrostatics", "electric_charges_and_fields"],
+    capacitance: ["capacitor", "electrostatic_potential_and_capacitance", "electrostatics", "electrostats"],
+    magnetic_properties_of_matter: ["magnetism", "magnetic_effects_of_current"],
+    electromagnetic_induction: ["emi"],
+    electromagnetic_waves: ["em_waves"],
+    semiconductors: ["logic_gates"],
+    atomic_physics: ["modern_physics", "atoms"],
+    nuclear_physics: ["modern_physics", "nuclei"],
+    dual_nature_of_matter: ["modern_physics", "dual_nature_of_matter_radiation"],
+    waves_and_sound: ["waves_and_sounds", "wave_motion"],
+    some_basic_concepts_of_chemistry: ["some_basic_concept_of_chemistry", "stoichiometry", "general_topics"],
+    structure_of_atom: ["atomic_structure"],
+    classification_of_elements_and_periodicity_in_properties: ["periodic_properties", "periodic_table"],
+    chemical_bonding_and_molecular_structure: ["chemical_bonding"],
+    states_of_matter: ["gaseous_state"],
+    thermodynamics_c: ["thermodynamics", "thermochemistry", "energetics"],
+    p_block_elements_group_13_14: ["p_block"],
+    p_block_elements_group_15_16_17_18: ["p_block"],
+    s_block_elements: ["s_block"],
+    d_and_f_block_elements: ["d_f_block_elements", "d_block_and_coordination_compounds", "transition_elements"],
+    coordination_compounds: ["d_block_and_coordination_compounds"],
+    general_principles_and_processes_of_isolation_of_metals: ["metallurgy", "ores_and_minerals_including_reduction_methods"],
+    haloalkanes_and_haloarenes: ["halogen_derivatives", "alkyl_halide", "organic_compounds_containing_halogens"],
+    alcohols_phenols_and_ethers: ["alcohol_phenol_ether"],
+    aldehydes_and_ketones: ["aldehydes_ketones", "aldehyde_and_ketones"],
+    carboxylic_acid_derivatives: ["carboxylic_acids", "carboxylic_acid"],
+    solutions: ["solution"],
+    polymers: ["polymer"],
+    hydrocarbons: ["hydrocarbon", "alkanes", "alkenes_alkynes", "aromatic_hydrocarbons"],
+    practical_chemistry: ["qualitative_analysis", "salt_analysis", "principles_related_to_practical_chemistry"],
+    redox_reactions: ["redox_reaction"],
+    complex_number: ["complex_numbers"],
+    sequences_and_series: ["progressions", "sequence_series"],
+    trigonometric_ratios_identities: ["trigonometric_ratios", "trigonometrical_functions"],
+    trigonometric_equations: ["trigonometric_equation", "trigonometrical_identities_and_equations"],
+    properties_of_triangles: ["properties_of_triangle", "solution_of_a_triangle"],
+    heights_and_distances: ["height_distances"],
+    inverse_trigonometric_functions: ["inverse_trigonometry", "inverse_trigonometrical_functions"],
+    continuity_and_differentiability: ["continuity_differntiability", "continuity"],
+    application_of_derivatives: ["application_of_derivative", "increasing_decreasing_maxima_minima", "tangent_normal"],
+    area_under_curves: ["area", "area_under_curve"],
+    three_dimensional_geometry: ["vector_3d", "3_dimensional_geometry"],
+    functions: ["functions_relations"],
+    limits: ["limit"],
+    sets_and_relations: ["functions_relations"],
+    matrices: ["matrices_determinants"],
+    determinants: ["matrices_determinants"],
+    differential_equations: ["differential_equation"],
+    straight_lines: ["straight_line"],
+    permutation_combination: ["permutations_combinations"],
+    binomial_theorem: ["binomial_theorem_and_mathematical_induction"],
+    pair_of_lines: ["straight_line"],
+    experimental_physics: ["units_and_dimensions", "physical_world_and_measurement"],
+    mathematics_in_physics: ["units_and_dimensions"],
+    mathematical_induction: ["exponential_series_induction", "binomial_theorem"],
+    magnetic_effects_of_current: ["magnetic_effects_of_current", "magnetism"],
+    ray_optics: ["ray_optics", "optical_instruments"],
+    general_organic_chemistry: ["general_organic_chemistry", "nomenclature", "mechanisms_basics", "isomerism"],
+    thermodynamics: ["thermodynamics", "heat_part_1", "heat_part_2"],
+    work_power_and_energy: ["work_power_energy"],
+    permutation_and_combination: ["permutation_combination", "permutations_combinations"],
+    sets_and_relations: ["functions", "functions_relations"],
+    motion_in_two_dimensions: ["motion_in_2d", "circular_motion", "kinematics", "motion_in_two_dimension_and_circular_motion"]
+  };
+  return map[slug] || [];
+}
+
+function qxSheetKey(c) {
+  return qxSheetSlug((c && (c.slug || c.name)) || "");
+}
+
+function qxSheetMatchChapter(nav, subject, chapter) {
+  const subs = (nav && nav.subjects) || [];
+  const subWant = qxSheetSlug(subject);
+  const subj = subs.find((s) => qxSheetSlug(s.name) === subWant)
+    || subs.find((s) => qxSheetSlug(s.slug || "") === subWant)
+    || subs.find((s) => qxSheetSlug(s.name).indexOf(subWant) >= 0 || subWant.indexOf(qxSheetSlug(s.name)) >= 0)
+    || subs[0];
+  if (!subj) return null;
+  const want = qxSheetSlug(chapter);
+  const chs = subj.chapters || [];
+  const aliases = qxSheetAliases(want);
+  const names = [want].concat(aliases);
+  const compact = want.replace(/_and_/g, "_");
+  if (compact !== want) names.push(compact);
+  let hit = chs.find((c) => names.indexOf(qxSheetSlug(c.name)) >= 0 || names.indexOf(qxSheetKey(c)) >= 0);
+  if (hit) return { subject: subj.name, chapter: hit };
+  hit = chs.find((c) => {
+    const have = qxSheetSlug(c.name);
+    const sl = qxSheetKey(c);
+    return have.indexOf(want) >= 0 || want.indexOf(have) >= 0 || sl.indexOf(want) >= 0 || want.indexOf(sl) >= 0;
+  });
+  if (hit) return { subject: subj.name, chapter: hit };
+  const tokens = want.split("_").filter((t) => t.length > 3);
+  if (tokens.length) {
+    hit = chs.find((c) => {
+      const have = qxSheetSlug(c.name) + "_" + qxSheetKey(c);
+      return tokens.filter((t) => have.indexOf(t) >= 0).length >= Math.min(2, tokens.length);
+    });
+  }
+  return hit ? { subject: subj.name, chapter: hit } : null;
+}
+
+function qxSheetsSectionHtml(nav, kind, title, sub) {
+  if (!nav || !nav.subjects || !nav.subjects.length) return "";
+  const cards = nav.subjects.map((s) => {
+    const tone = (typeof qxRfcTone === "function" ? qxRfcTone(s.name) : "blue");
+    const n = (s.chapters || []).length;
+    const ready = (s.chapters || []).filter((c) => c.ready).length;
+    return `<button type="button" class="qx-rfc-deck qx-rfc-${tone}" ${mg("qxsheets", { kind: kind, step: "chapters", subject: s.name })}>
+      <span class="qx-rfc-face">
+        <i class="qx-rfc-hole" aria-hidden="true"></i>
+        <span class="qx-rfc-ic">${qxRoboWrap((typeof QxCardIcons !== "undefined" ? QxCardIcons.chapterIconHtml(s.name, s.name) : ""), s.name, "md")}</span>
+        <strong>${String(s.name || "").toUpperCase()}</strong>
+        <small>${ready}/${n} chapters · Quantrex</small>
+        <span class="qx-rfc-eq">${typeof qxRfcEq === "function" ? qxRfcEq(s.name) : ""}</span>
+      </span>
+    </button>`;
+  }).join("");
+  return `<div class="marks-section">
+    <div class="qx-rfc-head">
+      <h2>${title}</h2>
+      <small>${sub}</small>
+      <span class="qx-rfc-new">NEW</span>
+    </div>
+    <div class="qx-rfc-grid">${cards}</div>
+  </div>`;
+}
+
+function qxOpenDrivePreview(title, driveId, kindLabel) {
+  const id = String(driveId || "").replace(/[^a-zA-Z0-9_-]/g, "");
+  if (!id) {
+    if (typeof showToast === "function") showToast("This file link is missing.");
+    return;
+  }
+  const preview = "https://drive.google.com/file/d/" + id + "/preview";
+  const viewUrl = "https://drive.google.com/file/d/" + id + "/view";
+  const old = document.getElementById("qxDrivePrev");
+  if (old) old.remove();
+  const wrap = document.createElement("div");
+  wrap.id = "qxDrivePrev";
+  wrap.setAttribute("role", "dialog");
+  wrap.style.cssText = "position:fixed;inset:0;z-index:99999;background:#071428;display:flex;flex-direction:column;";
+  const safeTitle = String(title || "Notes").replace(/[<>]/g, "");
+  const safeKind = String(kindLabel || "Notes").replace(/[<>]/g, "");
+  wrap.innerHTML = `<div style="display:flex;align-items:center;gap:10px;padding:10px 14px;background:#071428;border-bottom:1px solid rgba(212,175,55,.35);">
+      <img src="assets/quantrex-logo-3d-on-clear.png" alt="" style="height:28px;width:auto;">
+      <div style="flex:1;min-width:0;">
+        <div style="color:#d4af37;font-weight:800;font-size:12px;letter-spacing:.08em;">QUANTREX ACADEMY</div>
+        <div style="color:#fff;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${safeTitle} · ${safeKind}</div>
+      </div>
+      <button type="button" id="qxDrivePrevExt" style="background:transparent;color:#d4af37;border:1px solid #d4af37;border-radius:8px;padding:8px 12px;font-weight:800;cursor:pointer;">Open PDF</button>
+      <button type="button" id="qxDrivePrevX" style="background:#d4af37;color:#071428;border:0;border-radius:8px;padding:8px 12px;font-weight:800;cursor:pointer;">Close</button>
+    </div>
+    <iframe src="${preview}" title="${safeTitle.replace(/"/g, "")}" allow="fullscreen" allowfullscreen style="flex:1;width:100%;border:0;background:#fff;"></iframe>`;
+  document.body.appendChild(wrap);
+  const close = () => { try { wrap.remove(); } catch (_) {} };
+  wrap.querySelector("#qxDrivePrevX").onclick = close;
+  wrap.querySelector("#qxDrivePrevExt").onclick = function () {
+    try { window.open(viewUrl, "_blank", "noopener"); } catch (_) {
+      try { location.assign(viewUrl); } catch (__) { /* */ }
+    }
+  };
+  wrap.addEventListener("keydown", (e) => { if (e.key === "Escape") close(); });
+}
+window.qxOpenDrivePreview = qxOpenDrivePreview;
+
+async function qxOpenSheetMaterial(kind, subject, chapter, matSlug) {
+  const bust = ((typeof QX_DATA_VER !== "undefined" && QX_DATA_VER) || (typeof QX_BUILD !== "undefined" && QX_BUILD)) || "qxmd323";
+  const file = "data/qx_sheets/" + kind + "/" + qxSheetSlug(subject) + "/" + qxSheetSlug(chapter) + "/" + qxSheetSlug(matSlug) + "/cards.json?v=" + encodeURIComponent(bust);
+  try {
+    const res = await fetch(file, { cache: "no-cache" });
+    if (!res.ok) throw new Error("missing");
+    const data = await res.json();
+    const cards = (data && data.cards) || [];
+    if (!cards.length) throw new Error("empty");
+    if (typeof qxRfcOpenWhenReady === "function") qxRfcOpenWhenReady(cards, 0);
+    else if (window.QxRfcCards && window.QxRfcCards.open) window.QxRfcCards.open(cards, 0);
+    else if (typeof showToast === "function") showToast("Card reader not ready.");
+  } catch (_) {
+    if (typeof showToast === "function") showToast("This pack is still being prepared — try again shortly.");
+  }
+}
+
+async function qxOpenSheetChapter(kind, subject, chapter) {
+  const bust = ((typeof QX_DATA_VER !== "undefined" && QX_DATA_VER) || (typeof QX_BUILD !== "undefined" && QX_BUILD)) || "qxmd323";
+  const base = "data/qx_sheets/" + kind + "/" + qxSheetSlug(subject) + "/" + qxSheetSlug(chapter);
+  try {
+    const res = await fetch(base + "/cards.json?v=" + encodeURIComponent(bust), { cache: "no-cache" });
+    if (!res.ok) throw new Error("missing");
+    const data = await res.json();
+    if (data && data.mode === "drive" && data.driveId) {
+      qxOpenDrivePreview(data.chapter || chapter, data.driveId, data.kind || kind);
+      return;
+    }
+    const cards = (data && data.cards) || [];
+    if (!cards.length) throw new Error("empty");
+    if (typeof qxRfcOpenWhenReady === "function") qxRfcOpenWhenReady(cards, 0);
+    else if (window.QxRfcCards && window.QxRfcCards.open) window.QxRfcCards.open(cards, 0);
+    else if (typeof showToast === "function") showToast("Card reader not ready.");
+  } catch (_) {
+    if (typeof showToast === "function") showToast("This chapter is still being prepared — try again shortly.");
+  }
+}
+
+async function viewQxSheets(payload) {
+  try {
+    const locked = typeof qxAccessBlock === "function" ? qxAccessBlock("formula", payload || {}) : "";
+    if (locked) return locked;
+  } catch (_) { /* */ }
+  if (typeof qxEnsureRfcSkin === "function") qxEnsureRfcSkin();
+  const p = { ..._qxSheetPayload, ...(payload || {}) };
+  _qxSheetPayload = p;
+  const kind = p.kind === "revision" ? "revision"
+    : p.kind === "adv_notes" ? "adv_notes"
+    : p.kind === "adv_formula" ? "adv_formula"
+    : "formula";
+  const label = kind === "revision" ? "JEE Main Revision Notes"
+    : kind === "adv_notes" ? "JEE Advanced Notes"
+    : kind === "adv_formula" ? "JEE Advanced Formula List"
+    : "JEE Main Formula Sheets";
+  const sub = kind.indexOf("adv_") === 0
+    ? "Chapterwise · Quantrex Academy"
+    : kind === "revision"
+      ? "Chapter notes · Quantrex Academy"
+      : "Chapter formula sheets · Quantrex Academy";
+  const nav = await qxLoadSheetNav(kind);
+  if (!nav) return `${topbar(label, sub)}<div class="empty">Sheets are still being prepared.</div>`;
+
+  if (p.step === "open") {
+    const hit = qxSheetMatchChapter(nav, p.subject, p.chapter);
+    const mats = hit && hit.chapter && Array.isArray(hit.chapter.materials)
+      ? hit.chapter.materials.filter((m) => {
+          if (!m || !m.ready) return false;
+          const t = String(m.label || m.slug || "");
+          return !/pyq|previous.?year|past many|question\s*bank/i.test(t);
+        })
+      : [];
+    if (mats.length) {
+      const bc = breadcrumb([
+        { label: label, view: "qxsheets", payload: { kind: kind, step: "subjects" } },
+        { label: (hit && hit.subject) || p.subject, view: "qxsheets", payload: { kind: kind, step: "chapters", subject: (hit && hit.subject) || p.subject } },
+        { label: hit.chapter.name }
+      ]);
+      const tiles = mats.map((m) => {
+        const driveId = String(m.driveId || "").replace(/[^a-zA-Z0-9_-]/g, "");
+        if (driveId) {
+          const lab = String(m.label || m.slug || "Notes").replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
+          return `<button type="button" class="qx-rfc-ch qx-rfc-ch-rich" data-qx-drive="${driveId}" data-qx-drive-title="${lab}">
+            <span class="qx-rfc-ch-ic">📄</span>
+            <strong>${m.label || m.slug}</strong>
+            <small>Open</small>
+          </button>`;
+        }
+        const slug = String(m.slug || m.label || "notes").replace(/'/g, "\\'");
+        const subj = String(hit.subject).replace(/'/g, "\\'");
+        const chn = String(hit.chapter.name).replace(/'/g, "\\'");
+        return `<button type="button" class="qx-rfc-ch qx-rfc-ch-rich" onclick="qxOpenSheetMaterial('${kind}','${subj}','${chn}','${slug}')">
+          <span class="qx-rfc-ch-ic">📄</span>
+          <strong>${m.label || m.slug}</strong>
+          <small>${(m.pages || 0) + " pages · flash cards"}</small>
+        </button>`;
+      }).join("");
+      return `${topbar(hit.chapter.name, label)}${bc}
+        <div class="marks-section">
+          <div class="qx-rfc-head"><h2>Notes and Study Materials</h2><small>${hit.chapter.name} · Quantrex Academy</small></div>
+          <p class="sec-desc">Same chapter files as listed on the source page. Previous-year question packs are not included.</p>
+          <div class="qx-rfc-ch-grid">${tiles}</div>
+        </div>`;
+    }
+    if (hit && hit.chapter && hit.chapter.ready) {
+      qxOpenSheetChapter(kind, hit.subject, hit.chapter.name);
+      return `${topbar(hit.chapter.name, label)}<div class="empty">Opening ${hit.chapter.name}…</div>`;
+    }
+    if (kind === "adv_formula") {
+      const notesNav = await qxLoadSheetNav("adv_notes");
+      const nh = qxSheetMatchChapter(notesNav, p.subject, p.chapter);
+      if (nh && nh.chapter && nh.chapter.ready) {
+        return viewQxSheets({ kind: "adv_notes", step: "open", subject: nh.subject, chapter: nh.chapter.name });
+      }
+    }
+    if (hit && hit.chapter) {
+      return `${topbar(p.chapter || label, sub)}<div class="empty">This chapter pack is still being prepared. Open the subject list to see ready chapters.</div>
+        <p class="sec-desc"><button type="button" class="btn" ${mg("qxsheets", { kind: kind, step: "chapters", subject: (hit && hit.subject) || p.subject })}>See chapters</button></p>`;
+    }
+    return viewQxSheets({ kind: kind, step: "subjects" });
+  }
+
+  if (p.step === "subjects" || !p.subject) {
+    return `${topbar(label, sub)}${qxSheetsSectionHtml(nav, kind, label, sub)}`;
+  }
+  const subj = (nav.subjects || []).find((s) => s.name === p.subject);
+  if (!subj) return viewQxSheets({ kind: kind, step: "subjects" });
+  const bc = breadcrumb([
+    { label: label, view: "qxsheets", payload: { kind: kind, step: "subjects" } },
+    { label: p.subject }
+  ]);
+  const tiles = (subj.chapters || []).map((c) => {
+    const ready = !!c.ready;
+    const hasMats = Array.isArray(c.materials) && c.materials.some((m) => m && m.ready);
+    const nMat = hasMats ? c.materials.filter((m) => m && m.ready).length : 0;
+    const open = hasMats
+      ? mg("qxsheets", { kind: kind, step: "open", subject: p.subject, chapter: c.name })
+      : (ready ? `onclick="qxOpenSheetChapter('${kind}','${String(p.subject).replace(/'/g, "\\'")}','${String(c.name).replace(/'/g, "\\'")}')"` : "");
+    return `<button type="button" class="qx-rfc-ch qx-rfc-ch-rich${ready ? "" : " is-soon"}" ${open}>
+      <span class="qx-rfc-ch-ic">${ready ? "📄" : "⏳"}</span>
+      <strong>${c.name}</strong>
+      <small>${ready ? (hasMats ? (nMat + " files") : ((c.pages || 0) + " pages")) : "Preparing…"}</small>
+    </button>`;
+  }).join("");
+  return `${topbar(p.subject, label)}${bc}<div class="qx-rfc-ch-grid">${tiles || '<div class="empty">No chapters.</div>'}</div>`;
+}
+window.viewQxSheets = viewQxSheets;
 
 // ============ FORMULA CARDS (Subject → Chapter) ============
 let _fcPayload = { step: "subjects" };
@@ -5545,8 +5913,19 @@ async function viewFormulaMarks(payload) {
     }).join("");
     const previewCh = (nav.find((s) => /physics/i.test(s.name || "")) || nav[0] || {}).chapters || [];
     const tiles = previewCh.length ? `<div class="marks-section"><h3 class="qx-fc-recent-h">Recent chapters</h3>${renderFormulaChapterTiles(previewCh, (nav.find((s) => /physics/i.test(s.name || "")) || nav[0]).name, 8)}</div>` : "";
+    let extra = "";
+    try {
+      if (STATE.exam !== "Medical") {
+        const sheetNav = await qxLoadSheetNav("formula");
+        extra = qxSheetsSectionHtml(sheetNav, "formula", "JEE Main Formula Sheets", "Chapter formula sheets · Quantrex Academy");
+        const advF = await qxLoadSheetNav("adv_formula");
+        extra += qxSheetsSectionHtml(advF, "adv_formula", "JEE Advanced Formula List", "Chapterwise · Quantrex Academy");
+        const advN = await qxLoadSheetNav("adv_notes");
+        extra += qxSheetsSectionHtml(advN, "adv_notes", "JEE Advanced Notes", "Chapterwise · Quantrex Academy");
+      }
+    } catch (_) { extra = extra || ""; }
     return `${topbar("Formula Cards", "Every important formula — chapter tiles like a card deck")}
-      <div class="subj-grid qx-fc-folder-grid">${cards || '<div class="empty">Browse by subject below</div>'}</div>${tiles}`;
+      <div class="subj-grid qx-fc-folder-grid">${cards || '<div class="empty">Browse by subject below</div>'}</div>${tiles}${extra}`;
   }
 
   const subj = nav.find(s => s.name === p.subject)
@@ -7065,7 +7444,7 @@ async function buildPyqPaperIndex(slug) {
 
   // 1) Lightweight paper index (instant — no 40MB bank parse). Built offline for PYQ mock list.
   try {
-    const res = await fetch(`data/nav/pyq_paper_index/${encodeURIComponent(slug)}.json?v=${encodeURIComponent((typeof QX_BUILD !== "undefined" && QX_BUILD) || "qxmd184")}`, { cache: "no-cache" });
+    const res = await fetch(`data/nav/pyq_paper_index/${encodeURIComponent(slug)}.json?v=${encodeURIComponent(((typeof QX_DATA_VER !== "undefined" && QX_DATA_VER) || (typeof QX_BUILD !== "undefined" && QX_BUILD)) || "qxmd184")}`, { cache: "no-cache" });
     if (res.ok) {
       const byYear = await res.json();
       if (byYear && typeof byYear === "object" && Object.keys(byYear).length) {
@@ -7306,7 +7685,7 @@ async function qxLoadPyqPaper(slug, source) {
   const src = String(source || "");
   const norm = (s) => String(s || "").replace(/\s+/g, " ").trim().toLowerCase();
   const want = norm(src);
-  const bust = (typeof window !== "undefined" && window.QX_BUILD) ? window.QX_BUILD : "qxmd194";
+  const bust = (typeof window !== "undefined" && (window.QX_DATA_VER || window.QX_BUILD)) ? (window.QX_DATA_VER || window.QX_BUILD) : "qxmd194";
   function ingest(list) {
     return (list || []).map(function (rec) {
       const q = Object.assign({}, rec, { _bank: slug, source: rec.source || src, _catalogTried: true });

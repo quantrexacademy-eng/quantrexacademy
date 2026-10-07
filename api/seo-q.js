@@ -34,19 +34,9 @@ function rememberShard(key, obj) {
   }
 }
 
+const _qxStore = require("../lib/qx-data-store");
 async function readJson(req, rel) {
-  try {
-    return JSON.parse(fs.readFileSync(path.join(ROOT, rel), "utf8"));
-  } catch (_) {}
-  try {
-    const host = String((req.headers && (req.headers["x-forwarded-host"] || req.headers.host)) || "www.quantrexacademy.com")
-      .split(",")[0]
-      .trim();
-    const proto = String((req.headers && req.headers["x-forwarded-proto"]) || "https").split(",")[0].trim();
-    const r = await fetch(proto + "://" + host + "/" + rel.replace(/\\/g, "/") + "?v=" + SEO_ASSET_V);
-    if (r.ok) return await r.json();
-  } catch (_) {}
-  return null;
+  return _qxStore.readJson(req, rel);
 }
 
 async function loadRec(req, id) {
@@ -670,7 +660,7 @@ async function renderSearch(req, res) {
 
   if (String(q.format || "") === "json") {
     res.setHeader("Content-Type", "application/json; charset=utf-8");
-    res.setHeader("Cache-Control", "public, s-maxage=60, stale-while-revalidate=300");
+    res.setHeader("Cache-Control", "public, max-age=300, s-maxage=3600, stale-while-revalidate=86400");
     res.statusCode = 200;
     return res.end(JSON.stringify({
       q: rawQ,
@@ -770,7 +760,7 @@ async function renderSearch(req, res) {
 </body>
 </html>`;
   res.setHeader("Content-Type", "text/html; charset=utf-8");
-  res.setHeader("Cache-Control", "public, s-maxage=120, stale-while-revalidate=600");
+  res.setHeader("Cache-Control", "public, max-age=300, s-maxage=86400, stale-while-revalidate=604800");
   res.statusCode = 200;
   return res.end(html);
 }
@@ -796,7 +786,7 @@ module.exports = async function handler(req, res) {
     const id = parseId(req);
     const rec = await loadRec(req, id);
     res.setHeader("Content-Type", "text/html; charset=utf-8");
-    res.setHeader("Cache-Control", "public, max-age=120, s-maxage=300, stale-while-revalidate=3600");
+    res.setHeader("Cache-Control", "public, max-age=600, s-maxage=86400, stale-while-revalidate=604800");
     if (!rec) {
       res.statusCode = 404;
       res.setHeader("Cache-Control", "public, max-age=600, s-maxage=3600");

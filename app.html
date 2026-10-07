@@ -4396,7 +4396,7 @@
                     <span class="dot"></span>
                     <span id="examPill">Engineering</span>
                 </div>
-                <div class="qx-build-pill" id="qxBuildPill" title="App build · hard refresh if outdated">Build qxmd186</div>
+                <div class="qx-build-pill" id="qxBuildPill" title="App build · hard refresh if outdated">Build qxmd328</div>
             </div>
         </aside>
 
@@ -4438,7 +4438,10 @@
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js" defer></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js" defer></script>
     <script>
-      window.QX_BUILD = "qxmd318";
+      window.QX_BUILD = "qxmd328";
+      /* qxmd328: data JSON cache-bust. Bump ONLY when question/nav/book JSON under data/ changes,
+         so code-only releases do not force every student to re-download chapter data. */
+      window.QX_DATA_VER = "qxmd327";
       window.QxNavGuard = {
         _until: 0,
         block: function () {
@@ -4506,14 +4509,15 @@
         "assets/qx-mobile.css?v=qxmd306",
         "assets/qx-foot-lock.css?v=qxmd306",
         "assets/qx-katex-lock.css?v=qxmd306",
-        "assets/qx-chrome-lock.css?v=qxmd306",
+        "assets/qx-chrome-lock.css?v=qxmd320",
         "assets/qx-marks-player.css?v=qxmd306",
         "assets/qx-quizrr-web.css?v=qxmd306",
         "assets/qx-qfmt-lock.css?v=qxmd306",
         "assets/qx-ct-lock.css?v=qxmd306",
         "assets/qx-shell-lock.css?v=qxmd306",
-        "assets/qx-layout-lock.css?v=qxmd317",
-        "assets/qx-cot.css?v=qxmd312"
+        "assets/qx-layout-lock.css?v=qxmd327",
+        "assets/qx-cot.css?v=qxmd312",
+        "assets/qx-report-card.css?v=qxmd327"
       ];
       window.QX_SECONDARY_JS = [
         "https://www.gstatic.com/firebasejs/10.14.1/firebase-analytics-compat.js",
@@ -4541,7 +4545,7 @@
         "qx-figure-viewer.js?v=qxfull1",
         "qx-proofread.js?v=qxmd285",
         "assets/qx-question-qa.js?v=qxfull1",
-        "search.js?v=qxfull1",
+        "search.js?v=qxmd328",
         "jovi.js?v=qxmd292"
       ];
     </script>
@@ -4593,14 +4597,14 @@
     <script src="qx-redesign-nav.js?v=qxmd220" defer></script>
     <script src="qx-card-icons.js?v=qxmd285" defer></script>
     <script src="qx-owned-figures.js?v=qxmd265" defer></script>
-    <script src="qx-image-clean.js?v=qxmd261" defer></script>
+    <script src="qx-image-clean.js?v=qxmd328" defer></script>
     <script src="qx-test-engine-perf.js?v=qxmd285" defer></script>
-    <script src="qx-math-sanitize.js?v=qxmd317" defer></script>
+    <script src="qx-math-sanitize.js?v=qxmd320" defer></script>
     <script src="math-render.js?v=qxmd306" defer></script>
     <script src="question-format.js?v=qxmd310" defer></script>
     <script src="solution-format.js?v=qxmd306" defer></script>
     <script src="assets/qx-question-cache.js?v=qxfix17" defer></script>
-    <script src="data.js?v=qxmd246" defer></script>
+    <script src="data.js?v=qxmd328" defer></script>
     <script src="firebase-db.js?v=qxfix115" defer></script>
     <script src="qx-firebase-bank.js?v=qxfix110" defer></script>
     <script src="quantrex-auth-otp.js?v=qxfix72" defer></script>
@@ -4614,11 +4618,11 @@
     <script src="marks-shell.js?v=qxvis4" defer></script>
     <script src="marks-live.js?v=qxmd244" defer></script>
     <script src="book-covers.js?v=qxmd250" defer></script>
-    <script src="marks-features.js?v=qxmd250" defer></script>
+    <script src="marks-features.js?v=qxmd328" defer></script>
     <!-- qx-local-fig-map.js is 1.4MB — idle secondary, Storage URLs work without it -->
-    <script src="assets/qx-card-viewer.js?v=qxmd277" defer></script>
-<script src="assets/qx-rfc.js?v=qxmd273" defer></script>
-    <script src="assets/qx-formula-cards.js?v=qxmd273" defer></script>
+    <script src="assets/qx-card-viewer.js?v=qxmd323" defer></script>
+<script src="assets/qx-rfc.js?v=qxmd323" defer></script>
+    <script src="assets/qx-formula-cards.js?v=qxmd323" defer></script>
     <script src="qx-practice-voice.js?v=qxmd290" defer></script>
     <script src="examgoal-test-ui.js?v=qxmd310" defer></script>
     <script src="allen-test-ui.js?v=qxmd307" defer></script>
@@ -4631,21 +4635,23 @@
         provider: "examgoal"
       };
     </script>
-    <script src="test-series.js?v=qxmd314" defer></script>
-    <script src="test-engine.js?v=qxmd314" defer></script>
+    <script src="test-series.js?v=qxmd327" defer></script>
+    <script src="assets/qx-rank-est.js?v=qxmd321" defer></script>
+    <script src="assets/qx-report-card.js?v=qxmd327" defer></script>
+    <script src="test-engine.js?v=qxmd327" defer></script>
     <script src="qx-similar-practice.js?v=qxmd306" defer></script>
-    <script src="qx-ai-proctor.js?v=qxmd318" defer></script>
+    <script src="qx-ai-proctor.js?v=qxmd321" defer></script>
     <script src="bookmarks.js?v=qxmd258" defer></script>
     <script src="theme.js?v=qxmd220" defer></script>
     <script src="qx-guest-trial.js?v=qxfix115" defer></script>
     <script src="custom-test.js?v=qxmd312" defer></script>
-    <script src="app.js?v=qxmd260" defer></script>
+    <script src="app.js?v=qxmd325" defer></script>
 <script src="qx-settings.js?v=qxmd291" defer></script>
-<script src="qx-cbt-ux.js?v=qxmd307" defer></script>
+<script src="qx-cbt-ux.js?v=qxmd327" defer></script>
 <script src="qx-tool-overflow.js?v=qxmd311" defer></script>
 <script src="qx-layout-guard.js?v=qxmd311" defer></script>
-<script src="qx-print.js?v=qxmd311" defer></script>
-<script src="qx-analysis.js?v=qxmd313" defer></script>
+<script src="qx-print.js?v=qxmd320" defer></script>
+<script src="qx-analysis.js?v=qxmd321" defer></script>
 <script src="qx-test-open.js?v=qxmd314" defer></script>
 <script src="qx-q-fast.js?v=qxmd285" defer></script>
     <script>
@@ -4679,7 +4685,7 @@
 <link rel="stylesheet" href="assets/qx-practice-read.css?v=qxmd244">
 <link rel="stylesheet" href="assets/qx-foot-lock.css?v=qxmd306" id="qxFootLockCss">
 <link rel="stylesheet" href="assets/qx-katex-lock.css?v=qxmd306" id="qxKatexLockCss">
-<link rel="stylesheet" href="assets/qx-chrome-lock.css?v=qxmd306" id="qxChromeLockCss">
+<link rel="stylesheet" href="assets/qx-chrome-lock.css?v=qxmd320" id="qxChromeLockCss">
 <link rel="stylesheet" href="assets/qx-marks-player.css?v=qxmd306" id="qxMarksPlayerCss">
 <link rel="stylesheet" href="assets/qx-similar-practice.css?v=qxmd306" id="qxSimilarCss">
 <link rel="stylesheet" href="assets/qx-ai-proctor.css?v=qxmd318" id="qxAiProctorCss">
@@ -4688,8 +4694,9 @@
 <link rel="stylesheet" href="assets/qx-qfmt-lock.css?v=qxmd306" id="qxQfmtLockCss">
 <link rel="stylesheet" href="assets/qx-ct-lock.css?v=qxmd306" id="qxCtLockCss">
 <link rel="stylesheet" href="assets/qx-shell-lock.css?v=qxmd306" id="qxShellLockCss">
-<link rel="stylesheet" href="assets/qx-layout-lock.css?v=qxmd317" id="qxLayoutLockCss">
+<link rel="stylesheet" href="assets/qx-layout-lock.css?v=qxmd327" id="qxLayoutLockCss">
 <link rel="stylesheet" href="assets/qx-cot.css?v=qxmd312" id="qxCotCss">
-<script src="pwa-register.js?v=qxmd306"></script>
+<link rel="stylesheet" href="assets/qx-report-card.css?v=qxmd327" id="qxReportCardCss">
+<script src="pwa-register.js?v=qxmd328"></script>
 </body>
 </html>

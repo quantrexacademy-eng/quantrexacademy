@@ -49,7 +49,7 @@ module.exports = async (req, res) => {
       .toBuffer();
 
     res.setHeader("Content-Type", "image/png");
-    res.setHeader("Cache-Control", "public, max-age=604800, immutable");
+    res.setHeader("Cache-Control", "public, max-age=31536000, s-maxage=31536000, immutable");
     return res.status(200).send(out);
   } catch (e) {
     return res.status(502).json({ error: "Restore error", detail: String(e.message || e) });

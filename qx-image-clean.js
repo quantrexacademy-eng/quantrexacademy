@@ -333,7 +333,7 @@ window.QxImgClean = (() => {
     bookFigureMapLoading = (async () => {
       bookFigureMap = new Map();
       try {
-        const bust = (typeof window !== "undefined" && window.QX_BUILD) || "irodov3";
+        const bust = (typeof window !== "undefined" && (window.QX_DATA_VER || window.QX_BUILD)) || "irodov3";
         const r = await fetch(IRODOV_FIG_MANIFEST_URL + "?v=" + bust, { cache: "force-cache" });
         if (r.ok) {
           const j = await r.json();
@@ -794,7 +794,7 @@ window.QxImgClean = (() => {
   async function loadReview() {
     if (reviewSet) return reviewSet;
     try {
-      const r = await fetch(REVIEW_URL, { cache: "no-store" });
+      const r = await fetch(REVIEW_URL, { cache: "no-cache" });
       if (r.ok) {
         const j = await r.json();
         reviewSet = new Set((j.flagged || []).map(fixUrl));
@@ -808,7 +808,7 @@ window.QxImgClean = (() => {
   async function loadFigureOverrides() {
     if (figureOverrides) return figureOverrides;
     try {
-      const r = await fetch(FIGURE_OVERRIDES_URL, { cache: "no-store" });
+      const r = await fetch(FIGURE_OVERRIDES_URL, { cache: "no-cache" });
       if (r.ok) figureOverrides = await r.json();
       else figureOverrides = { version: 1, rules: [] };
     } catch (_) {
@@ -822,8 +822,8 @@ window.QxImgClean = (() => {
     if (permFigureMap) return permFigureMap;
     permFigureMap = new Map();
     try {
-      const bust = (typeof window !== "undefined" && window.QX_BUILD) || "1";
-      const r = await fetch(PERM_MANIFEST_URL + "?v=" + bust, { cache: "no-store" });
+      const bust = (typeof window !== "undefined" && (window.QX_DATA_VER || window.QX_BUILD)) || "1";
+      const r = await fetch(PERM_MANIFEST_URL + "?v=" + bust);
       if (r.ok) {
         const j = await r.json();
         (j.figures || []).forEach((f) => {
@@ -856,7 +856,7 @@ window.QxImgClean = (() => {
       let path = s.startsWith("/") ? s : "/" + s;
       const q = path.indexOf("?");
       const base = q >= 0 ? path.slice(0, q) : path;
-      const build = (typeof window !== "undefined" && window.QX_BUILD) || "1";
+      const build = (typeof window !== "undefined" && (window.QX_DATA_VER || window.QX_BUILD)) || "1";
       return `${base}?v=${build}`;
     }
     return s;
@@ -3061,7 +3061,7 @@ window.QxImgClean = (() => {
 
   async function fetchRestoredBlob(cdnSrc) {
     try {
-      const r = await fetch(restoreImageUrl(cdnSrc), { cache: "no-store" });
+      const r = await fetch(restoreImageUrl(cdnSrc));
       if (!r.ok) return null;
       const blob = await r.blob();
       if (!blob || !blob.size) return null;
