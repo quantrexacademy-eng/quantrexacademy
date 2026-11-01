@@ -1,0 +1,56 @@
+/* qxmd387: phone and the Play app show the whole question and the whole solution.
+   One scrollport: .eg-body (Quizrr: #qzrrQArea). The card, the stem, and the
+   solution must not be their own scroll boxes. A nested overflow-y:auto box
+   that is as tall as the text swallows the finger and the rest stays off screen.
+   Specificity beats #app-main#app-main and the pinned qxmd306 sheet. */
+
+html body #app-main#app-main .eg-test-root.eg-test-root,
+html body #app-main#app-main .mtk-test-root.eg-test-root.eg-test-root {
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 0 !important;
+  height: 100dvh !important;
+  max-height: 100dvh !important;
+  overflow: hidden !important;
+}
+
+html body #app-main#app-main .eg-test-root.eg-test-root > .eg-body.eg-body,
+html body #app-main#app-main .mtk-test-root.allen-practice.allen-practice > .mtk-body.mtk-body,
+html body #app-main#app-main .qzrr-cbt.qzrr-cbt #qzrrQArea#qzrrQArea,
+html body #app-main#app-main .qzrr-cbt.qzrr-cbt .qzrr-q-area.qzrr-q-area {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  height: auto !important;
+  max-height: none !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  touch-action: pan-y !important;
+  overscroll-behavior-y: auto !important;
+  padding-bottom: calc(140px + env(safe-area-inset-bottom, 0px)) !important;
+  scroll-padding-bottom: calc(140px + env(safe-area-inset-bottom, 0px)) !important;
+}
+
+html body #app-main#app-main .eg-test-root.eg-test-root .eg-main.eg-main,
+html body #app-main#app-main .eg-test-root.eg-test-root .eg-q-card.eg-q-card,
+html body #app-main#app-main .eg-test-root.eg-test-root #egQArea#egQArea,
+html body #app-main#app-main .eg-test-root.eg-test-root .eg-q-stem.eg-q-stem,
+html body #app-main#app-main .eg-test-root.eg-test-root #egSolPanel#egSolPanel,
+html body #app-main#app-main .eg-test-root.eg-test-root #egSol#egSol,
+html body #app-main#app-main .eg-test-root.eg-test-root .eg-sol.eg-sol,
+html body #app-main#app-main .eg-test-root.eg-test-root .qx-sol-flow.qx-sol-flow,
+html body #app-main#app-main .eg-test-root.eg-test-root .sol-body.sol-body,
+html body #app-main#app-main .allen-practice.allen-practice .mtk-main.mtk-main,
+html body #app-main#app-main .allen-practice.allen-practice #qaSolReveal#qaSolReveal,
+html body #app-main#app-main .qzrr-cbt.qzrr-cbt .mtk-q-text.mtk-q-text,
+html body #app-main#app-main .qzrr-cbt.qzrr-cbt .qx-sol-flow.qx-sol-flow {
+  overflow: visible !important;
+  height: auto !important;
+  max-height: none !important;
+  min-height: 0 !important;
+  flex: 0 0 auto !important;
+  -webkit-line-clamp: unset !important;
+  line-clamp: unset !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}

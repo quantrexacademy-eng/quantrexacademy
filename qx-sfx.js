@@ -3,7 +3,7 @@
 (function () {
   "use strict";
   if (window.QxSfx) return;
-  var BASE = "assets/sfx/", V = "qxmd390";
+  var BASE = "assets/sfx/", V = "qxmd391";
   var K = { on: "qx_sfx_on", pack: "qx_sfx_pack", vol: "qx_sfx_vol", rnd: "qx_sfx_random" };
   function g(k, d) { try { var v = localStorage.getItem(k); return v == null ? d : v; } catch (_) { return d; } }
   function s(k, v) { try { localStorage.setItem(k, v); } catch (_) {} }
@@ -75,7 +75,7 @@
     var packs = PACKS.concat((man && man.packs || window.__qxSfxPacks || []).map(function (p) { return [p.id, p.label + " (" + p.count + ")"]; }));
     if (!man) load().then(function (m) { if (m) { window.__qxSfxPacks = m.packs; var box = document.getElementById("qxSfxPacks"); if (box) { box.innerHTML = chips(K.pack, PACKS.concat(m.packs.map(function (p) { return [p.id, p.label + " (" + p.count + ")"]; })), g(K.pack, "all"), "data-qx-sfx-pack"); } } });
     return '<section class="eg-vs-sec" id="qxSfxSec"><h5 class="eg-vs-h">Sounds</h5>' +
-      '<div class="eg-vs-row"><div class="eg-vs-lab"><span class="eg-vs-lab-t">Feedback sounds</span><span class="eg-vs-hint">Meme sound on Check Answer in practice. Never during a live test.</span></div>' +
+      '<div class="eg-vs-row"><div class="eg-vs-lab"><span class="eg-vs-lab-t">Meme Sounds (Original)</span><span class="eg-vs-hint">Meme sound on Check Answer in practice. Never during a live test.</span></div>' +
       '<button type="button" class="eg-vs-tog' + (on ? " on" : "") + '" data-eg-pref="' + K.on + '" data-qx-sfx-tog aria-pressed="' + on + '" role="switch"><span class="eg-vs-knob"></span></button></div>' +
       '<div class="qx-sfx-packrow" style="display:block;padding:6px 0"><div class="eg-vs-lab-t" style="display:block;margin-bottom:6px">Sound pack</div><div id="qxSfxPacks">' + chips(K.pack, packs, pk, "data-qx-sfx-pack") + "</div></div>" +
       '<div class="eg-vs-row"><div class="eg-vs-lab"><span class="eg-vs-lab-t">Volume</span></div><input type="range" min="0" max="100" step="5" value="' + g(K.vol, "70") + '" data-qx-sfx-vol aria-label="Sound volume" style="width:140px"></div>' +
