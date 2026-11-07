@@ -12,5 +12,5 @@ t("mixed real values with an A-D letter stays real", () => { const m = ["A", "5"
 t("empty option remains a stub", () => assert(stub("", 1, live)));
 t("all call sites pass the option list", () => { const lines = src.split("\n").filter((l) => l.includes("isStubOptionText(") && !l.includes("function isStubOptionText")); assert.strictEqual(lines.length, 5); lines.forEach((l) => assert(/, (opts|optsList|optsRaw)\)/.test(l), l)); });
 t("CSS: wide math scrolls instead of clipping (katex + mathjax, 3 players)", () => { const css = fs.readFileSync(path.join(__dirname, "..", "assets/qxmd392-layout.css"), "utf8");
-  assert(/\.eg-test-root \.katex-display[\s\S]*?overflow-x: auto/.test(css)); assert(/:not\(\.katex-display\) > \.katex[\s\S]*?max-width: 100%[\s\S]*?overflow-x: auto/.test(css)); assert(/mjx-container[\s\S]*?overflow-x: auto/.test(css)); });
+  assert(/\.eg-test-root \.katex-display[\s\S]*?overflow-x: auto/.test(css)); assert(/\.qx-mscroll \{[^}]*max-width: 100%[^}]*overflow-x: auto/.test(css)); /* qxmd392e: inline formulas scroll via qx-math-scroll.js wrapper (see mathscroll test) */ assert(/mjx-container[\s\S]*?overflow-x: auto/.test(css)); });
 console.log("PASS", n);

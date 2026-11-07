@@ -70,14 +70,8 @@ html body #app-main#app-main .qzrr-cbt .katex-display > .katex,
 html body #app-main#app-main .qx-practice-page .katex-display > .katex {
   display: inline-block !important; max-width: none !important; overflow: visible !important; white-space: nowrap !important;
 }
-html body #app-main#app-main .eg-test-root :not(.katex-display) > .katex,
-html body #app-main#app-main .mtk-test-root :not(.katex-display) > .katex,
-html body #app-main#app-main .qzrr-cbt :not(.katex-display) > .katex,
-html body #app-main#app-main .qx-practice-page :not(.katex-display) > .katex {
-  display: inline-block !important; max-width: 100% !important;
-  overflow-x: auto !important; overflow-y: hidden !important; vertical-align: middle !important;
-  padding: 2px 0 4px !important; -webkit-overflow-scrolling: touch !important; touch-action: pan-x pan-y !important;
-}
+/* qxmd392e: blanket inline-.katex scroll removed (it could break fractions/min-width boxes);
+   qx-math-scroll.js now wraps ONLY formulas that really overflow in a .qx-mscroll box. */
 /* containers of math must not hide horizontal overflow of their own children */
 html body #app-main#app-main .eg-test-root .eg-body :is(.eg-q-stem,.eg-sol-panel,.q-text,.eg-q-text,.eg-qtext,.qx-sol,.qx-solution,.eg-sol,.eg-opt-text,.eg-opt,.qx-opt-body) {
   max-width: 100% !important; min-width: 0 !important; overflow-wrap: anywhere !important;
@@ -119,3 +113,15 @@ html body #app-main#app-main .qx-practice-page :is(.qx-prac-q,.qx-prac-opt,.qx-p
 .qx-pg-na { opacity: .6; }
 /* qxmd392c: stored numeric difficulty level badge - neutral (no implied Easy/Medium/Hard) */
 .tag.tag-diff.diff-level { background: rgba(100,116,139,.15) !important; color: inherit !important; }
+
+/* qxmd392e: real horizontal scroll box for a formula wider than its card (added by qx-math-scroll.js) */
+.qx-mscroll { display: inline-block; max-width: 100%; overflow-x: auto; overflow-y: hidden; vertical-align: middle;
+  -webkit-overflow-scrolling: touch; touch-action: pan-x pan-y; overscroll-behavior-x: contain; padding: 2px 0 6px;
+  scrollbar-width: thin; outline-offset: 2px;
+  background: linear-gradient(to left, rgba(59,130,246,.28), transparent 14px) right / 14px 100% no-repeat local,
+              linear-gradient(to left, rgba(59,130,246,.28), transparent 14px) right / 14px 100% no-repeat scroll; }
+.qx-mscroll.qx-mscroll-block { display: block; }
+.qx-mscroll > .katex-display, .qx-mscroll > mjx-container { overflow: visible !important; max-width: none !important; margin: 0 !important; }
+.qx-mscroll:focus-visible { outline: 2px solid #3b82f6; }
+/* containers of wide math must be allowed to shrink to the card */
+html body #app-main#app-main :is(.qx-hw-sol, .qx-hw-paper, .qx-hw-ink, .eg-sol-panel, .eg-q-stem, .qx-prac-q) { max-width: 100% !important; min-width: 0 !important; box-sizing: border-box !important; }
