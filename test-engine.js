@@ -3693,6 +3693,14 @@ const QuantrexTestEngine = (() => {
           breakdown.difficulty[diff].correct++;
         }
         breakdown.subject[sub].score += award.marks;
+        breakdown.subject[sub].maxMarks = (breakdown.subject[sub].maxMarks || 0) + qxAwardMarks({ graded: { correct: true }, isMulti, isNum: isNumQ, scoring }).marks;
+        /* qxmd392: chapter breakdown from the question's own chapter field only; else "Unclassified" */
+        const chName = (q.chapter != null && String(q.chapter).trim()) ? String(q.chapter).trim() : "Unclassified";
+        const chKey = sub + "\u0001" + chName;
+        if (!breakdown.chapter) breakdown.chapter = {};
+        const chB = breakdown.chapter[chKey] || (breakdown.chapter[chKey] = { subject: sub, chapter: chName, total: 0, correct: 0, partial: 0, incorrect: 0, skipped: 0, score: 0, timeSec: 0 });
+        chB.total++; chB.score += award.marks; chB.timeSec += qSec;
+        if (award.status === "correct") chB.correct++; else if (award.status === "partial") chB.partial++; else if (award.status === "incorrect") chB.incorrect++; else chB.skipped++;
         if (award.status === "partial") breakdown.subject[sub].partial = (breakdown.subject[sub].partial || 0) + 1;
         if (award.status === "incorrect") breakdown.subject[sub].incorrect = (breakdown.subject[sub].incorrect || 0) + 1;
         if (isWrong || isPartial) {
@@ -4250,18 +4258,27 @@ const QuantrexTestEngine = (() => {
     }).join("")}</div>`;
   }
 
+  /* qxmd392-split-begin: legacy `wrong` = partial + incorrect. Older saved attempts have no split. */
+  function qxSplitCounts(correct, wrong, partial, incorrect) {
+    const c = Number(correct) || 0, w = Number(wrong) || 0;
+    const known = partial != null && incorrect != null;
+    const p = known ? Number(partial) || 0 : 0, inc = known ? Number(incorrect) || 0 : w;
+    const attempted = c + w;
+    return { correct: c, wrong: w, partial: p, incorrect: inc, splitKnown: known, attempted,
+      accuracy: attempted ? Math.round(c / attempted * 1000) / 10 : null };
+  }
+  /* qxmd392-split-end */
   function mkScopeStats(data, scope) {
     // scope = "overall" or subject name
     if (!scope || scope === "overall") {
       return {
         label: "Overall",
-        score: Math.max(0, data.score),
+        score: data.score,
         maxScore: data.maxScore || (data.total * 4),
-        correct: data.correct,
-        wrong: data.wrong,
+        ...qxSplitCounts(data.correct, data.wrong, data.partial, data.incorrect),
         skip: data.skipped,
         total: data.total,
-        attempted: data.correct + data.wrong,
+        chapters: data.breakdown && data.breakdown.chapter ? Object.values(data.breakdown.chapter) : null,
         timeSec: data.timeUsed || 0,
         timeCorrect: data.timeCorrect || 0,
         timeWrong: data.timeWrong || 0,
@@ -4276,13 +4293,12 @@ const QuantrexTestEngine = (() => {
     };
     return {
       label: scope,
-      score: Math.max(0, v.score != null ? v.score : (v.correct * 4)),
-      maxScore: (v.total || 0) * 4,
-      correct: v.correct || 0,
-      wrong: v.wrong || 0,
+      score: v.score != null ? v.score : (v.correct * 4),
+      maxScore: v.maxMarks != null ? v.maxMarks : (v.total || 0) * 4,
+      ...qxSplitCounts(v.correct || 0, v.wrong || 0, v.partial, v.incorrect),
       skip: v.skipped != null ? v.skipped : Math.max(0, (v.total || 0) - (v.correct || 0) - (v.wrong || 0)),
       total: v.total || 0,
-      attempted: (v.correct || 0) + (v.wrong || 0),
+      chapters: data.breakdown && data.breakdown.chapter ? Object.values(data.breakdown.chapter).filter((c) => c.subject === scope) : null,
       timeSec: v.timeSec || 0,
       timeCorrect: v.timeCorrect || 0,
       timeWrong: v.timeWrong || 0,
@@ -4292,8 +4308,13 @@ const QuantrexTestEngine = (() => {
   }
 
   function renderMarksRcPanel(st, durationMin, showSubjectChart) {
-    const acc = st.attempted ? ((st.correct / st.attempted) * 100) : 0;
-    const accStr = Math.round(acc) + "%";
+    /* qxmd392: accuracy = fully correct / attempted; nothing attempted -> "—" not 0% */
+    const accStr = st.accuracy == null ? "—" : (st.accuracy + "%");
+    const chRows = (st.chapters || []).slice().sort((a, b) => a.subject.localeCompare(b.subject) || (a.chapter === "Unclassified") - (b.chapter === "Unclassified") || a.chapter.localeCompare(b.chapter)).map((c) => {
+      const att = c.correct + c.partial + c.incorrect;
+      return `<tr><td>${qxEscPaper(c.chapter)}</td><td>${c.total}</td><td>${c.correct}</td><td>${c.partial}</td><td>${c.incorrect}</td><td>${c.skipped}</td><td>${att ? (Math.round(c.correct / att * 1000) / 10) + "%" : "—"}</td><td>${c.score}</td></tr>`;
+    }).join("");
+    const chTable = chRows ? `<div class="mk-rc-section qx-rc-chapters"><h3>Chapter Breakdown (${st.label})</h3><div style="overflow-x:auto"><table class="qx-rc-ch-table" style="width:100%;border-collapse:collapse;font-size:13px"><thead><tr><th style="text-align:left">Chapter</th><th>Qs</th><th>Correct</th><th>Partial</th><th>Incorrect</th><th>Skipped</th><th>Accuracy</th><th>Marks</th></tr></thead><tbody>${chRows}</tbody></table></div><p class="mk-rc-chart-sub">Chapter comes from each question's own data; questions without one are listed as Unclassified.</p></div>` : "";
     const tMin = fmtMarksMin(st.timeSec);
     const tMax = Math.max(st.timeCorrect, st.timeWrong, st.timeSkip, 1);
     const qualityBars = mkBarChart([
@@ -4332,7 +4353,7 @@ const QuantrexTestEngine = (() => {
           </div>
           <div class="mk-rc-pill green">
             <div class="mk-rc-pill-val">${accStr}</div>
-            <div class="mk-rc-pill-lab">Accuracy</div>
+            <div class="mk-rc-pill-lab">Accuracy${st.accuracy == null ? " (no Qs attempted)" : " · fully correct / attempted"}</div>
           </div>
           <div class="mk-rc-pill orang">
             <div class="mk-rc-pill-val">${tMin}</div>
@@ -4351,7 +4372,10 @@ const QuantrexTestEngine = (() => {
           </div>
           <div class="mk-rc-attempt-stats">
             <div class="mk-rc-as ok"><i></i><div><span>Correct:</span><strong>${st.correct} Qs</strong></div></div>
-            <div class="mk-rc-as no"><i></i><div><span>Incorrect:</span><strong>${st.wrong} Qs</strong></div></div>
+            ${st.splitKnown
+              ? `<div class="mk-rc-as part"><i></i><div><span>Partially correct:</span><strong>${st.partial} Qs</strong></div></div>
+            <div class="mk-rc-as no"><i></i><div><span>Incorrect:</span><strong>${st.incorrect} Qs</strong></div></div>`
+              : `<div class="mk-rc-as no"><i></i><div><span>Incorrect / partial:</span><strong>${st.wrong} Qs</strong></div></div>`}
             <div class="mk-rc-as skip"><i></i><div><span>Not Answered:</span><strong>${st.skip} Qs</strong></div></div>
           </div>
         </div>
@@ -4368,7 +4392,7 @@ const QuantrexTestEngine = (() => {
           </div>
         </div>
         ${subChart}
-      </div>`;
+      </div>${chTable}`;
   }
 
   /** Quantrex Report Card + Solution view (qxmd321 mockup, real attempt data) */
