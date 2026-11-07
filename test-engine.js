@@ -4925,6 +4925,8 @@ const QuantrexTestEngine = (() => {
       showToast("⚠️ No questions available for this test.");
       return false;
     }
+    /* qxmd392: remember the clicked question by id so paper re-ordering below cannot shift it */
+    const qxStartId = resume ? null : ids[Math.max(0, Math.min(ids.length - 1, Number(config.startIdx) || 0))];
     let sections = resume ? resume.sections : (config.sections || null);
     const wantQuizrrUi = ((resume && resume.uiMode) || config.uiMode) === "quizrr";
     const isPyqMock = config.testType === "pyqmock";
@@ -4955,7 +4957,9 @@ const QuantrexTestEngine = (() => {
     }
     // Resume / stale saves often lose start= or leave Math covering the whole paper
     let fixedSecs = repairSessionSections(ids, sections);
-    if (!isTlxPaper && !fixedSecs && ids.length >= 8) {
+    /* qxmd392: chapter/book/board practice keeps the list order the student saw (Prev/Next follow it) */
+    const qxKeepListOrder = !resume && config.practiceMode && /^(chapter|book|board)$/.test(String(config.testType || ""));
+    if (!isTlxPaper && !fixedSecs && !qxKeepListOrder && ids.length >= 8) {
       try {
         const rebuilt = organizeMarksPaper(ids, orgOpts);
         if (rebuilt && rebuilt.sections && rebuilt.sections.length) {
@@ -4973,6 +4977,12 @@ const QuantrexTestEngine = (() => {
       : (rawDur == null || rawDur <= 0
         ? (timed ? Math.max(600, ids.length * 90) : null)
         : rawDur);
+    const qxStartIdx = (function () {
+      const fallback = Math.max(0, Math.min(ids.length - 1, Number(config.startIdx) || 0));
+      if (qxStartId == null) return fallback;
+      const at = ids.findIndex(function (x) { return String(x) === String(qxStartId); });
+      return at >= 0 ? at : fallback;
+    })();
     session = {
       ids,
       title: config.title || "Quantrex Assessment",
@@ -4983,14 +4993,14 @@ const QuantrexTestEngine = (() => {
       remainingSec: practiceMode ? null : (resume ? resume.remainingSec : duration),
       practiceMode,
       scoring: config.scoring || defaultScoring(STATE.exam),
-      idx: resume ? (resume.idx || 0) : Math.max(0, Math.min(ids.length - 1, Number(config.startIdx) || 0)),
+      idx: resume ? (resume.idx || 0) : qxStartIdx,
       answers: resume ? { ...resume.answers } : {},
       review: toIndexSet(resume ? resume.review : [], []),
       visited: toIndexSet(
         resume ? resume.visited : null,
         resume
           ? [resume.idx || 0]
-          : [Math.max(0, Math.min(ids.length - 1, Number(config.startIdx) || 0))]
+          : [qxStartIdx]
       ),
       startedAt: resume ? (resume.startedAt || Date.now()) : Date.now(),
       submitted: false,

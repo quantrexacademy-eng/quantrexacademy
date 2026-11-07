@@ -1677,7 +1677,10 @@ function openPracticeQuestion(id) {
     if (fromEg && list.length && typeof cpyqbLaunchList === "function") {
       const ids = list.map((x) => x && x.id).filter(Boolean);
       const openId = id;
-      const idx = Math.max(0, ids.findIndex((x) => String(x) === String(openId)));
+      /* qxmd392: match list stubs by id OR marksId so the clicked question opens, not Q1 */
+      let idx = ids.findIndex((x) => String(x) === String(openId));
+      if (idx < 0) idx = list.findIndex((x) => x && (String(x._marksId) === String(openId) || String(x.marksId) === String(openId) || String(x.qid) === String(openId)));
+      if (idx < 0) idx = 0;
       const keys = typeof cpyqbSessionKeys === "function" ? cpyqbSessionKeys({ returnTo: view }) : {};
       const ch = keys.chapter || (view === "books" ? "Digital Book" : (view === "board" ? "Board PYQ" : "Chapter PYQ"));
       const sub = keys.subject || "";

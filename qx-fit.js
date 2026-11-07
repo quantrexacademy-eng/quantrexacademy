@@ -1,16 +1,18 @@
-/* qx-fit (qxmd391): practice/test screen fits the real visible viewport on phones and the Android WebView.
-   100dvh can be taller than the visible area (nav bar, WebView), so the bottom of the question and solution
-   ended up under the Prev/Check/Next footer. Layout only, no content change. */
+/* qx-fit (qxmd392): event-driven, no timers. Writes the real visible viewport height to
+   --qx-vh (100dvh is taller than the visible area in the Android WebView / with nav bars).
+   Layout itself lives in assets/qxmd392-layout.css. No content change. */
 (function(){
+  var raf=0, de=document.documentElement;
   function fit(){
-    var r=document.querySelector('.eg-test-root');
-    if(!r) return;
+    raf=0;
     var vv=window.visualViewport, h=Math.round(vv?vv.height:window.innerHeight);
-    if(h>200){ r.style.setProperty('height',h+'px','important'); r.style.setProperty('max-height',h+'px','important'); }
-    var b=r.querySelector('.eg-body,.mtk-body'), f=r.querySelector('.eg-foot,.eg-footer,.mtk-foot,.mtk-footer,footer');
-    if(b){ var fh=f?f.getBoundingClientRect().height:0; b.style.setProperty('padding-bottom',Math.max(140,Math.round(fh)+48)+'px','important'); }
+    if(h>200) de.style.setProperty('--qx-vh',h+'px');
   }
-  window.addEventListener('resize',fit); if(window.visualViewport) visualViewport.addEventListener('resize',fit);
-  window.addEventListener('orientationchange',function(){setTimeout(fit,300);});
-  setInterval(fit,700); document.addEventListener('DOMContentLoaded',fit);
+  function q(){ if(!raf) raf=requestAnimationFrame(fit); }
+  window.addEventListener('resize',q,{passive:true});
+  window.addEventListener('orientationchange',function(){ q(); setTimeout(q,300); });
+  if(window.visualViewport) visualViewport.addEventListener('resize',q,{passive:true});
+  window.addEventListener('pageshow',q);
+  document.addEventListener('visibilitychange',function(){ if(!document.hidden) q(); });
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',q); else q();
 })();
