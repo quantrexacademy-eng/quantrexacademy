@@ -21,4 +21,15 @@ t("runtime files still deployed", () => {
 });
 t("stable-name JS/CSS revalidate (no 1-year immutable)", () => { ["app.js", "test-engine.js", "assets/qxmd392-layout.css"].forEach((f) => assert.strictEqual(cacheFor(f), "public, max-age=0, must-revalidate")); });
 t("HTML/sw/version still revalidate or no-store; images keep long cache", () => { assert(/max-age=0/.test(cacheFor("app.html"))); assert(/max-age=0/.test(cacheFor("sw.js"))); assert(/no-store/.test(cacheFor("version.json"))); assert(/immutable/.test(cacheFor("assets/x.png"))); });
+t("preview config = live config + noindex; live config has no noindex", () => {
+  const pv = JSON.parse(fs.readFileSync(path.join(root, "firebase.preview.json"), "utf8")); const ph = Array.isArray(pv.hosting) ? pv.hosting[0] : pv.hosting;
+  assert(ph.headers.some((x) => x.source === "**" && x.headers.some((k) => k.key === "X-Robots-Tag" && /noindex/.test(k.value))));
+  assert(!JSON.stringify(h.headers).includes("X-Robots-Tag"));
+  assert.deepStrictEqual(ph.rewrites, h.rewrites); assert(h.ignore.every((g) => ph.ignore.includes(g)));
+});
+t("account deletion request page deploys and is linked; no invented promises", () => {
+  assert(!ignored("delete-account.html")); const d = fs.readFileSync(path.join(root, "delete-account.html"), "utf8");
+  assert(d.includes("quantrexacademy@gmail.com") && d.includes("com.quantrexacademy.app")); assert(!/\b\d+\s*(days|hours)\b/i.test(d), "no turnaround promise");
+  ["index.html", "login.html", "privacy.html", "terms.html"].forEach((f) => assert(fs.readFileSync(path.join(root, f), "utf8").includes('href="delete-account.html"'), f));
+});
 console.log("PASS", n);
