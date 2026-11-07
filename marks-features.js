@@ -681,22 +681,25 @@ function renderQList(qs, page, testMeta, opts) {
   opts = opts || {};
   qxRegisterOfflineQuestions(qs);
   const allQs = opts.allQs || (!opts.skipResetAll ? qs : (window._qxListQsAll || qs));
+  /* qxmd392c: filters belong to ONE list (exam/subject/chapter/bucket). Coming back to the same list
+     re-applies the same chips to the predicate; any other list starts with all filters cleared.
+     Chips and predicate are always set from the same state, so they cannot disagree. */
   if (!opts.skipResetAll) {
     window._qxListQsAll = qs.slice();
-    _qxListDiffFilter = "all";
-    _qxListYearFilter = "all";
-    _qxListTypeFilter = "all";
+    const scope = qxListScopeKey();
+    if (!scope || scope !== _qxListScope) {
+      _qxListDiffFilter = "all";
+      _qxListYearFilter = "all";
+      _qxListTypeFilter = "all";
+      _qxListAttFilter = "all";
+    }
+    _qxListScope = scope;
   } else {
     window._qxListQsAll = allQs;
   }
-  // Apply difficulty filter on real bank difficulty
   let viewQs = qs;
-  if (!opts.skipResetAll && _qxListDiffFilter && _qxListDiffFilter !== "all") {
-    viewQs = (typeof QxListFilters !== "undefined" && QxListFilters.diffOk)
-      ? qs.filter(q => QxListFilters.diffOk(q, _qxListDiffFilter))
-      : qs.filter(q => qxNormDifficulty(q.difficulty) === _qxListDiffFilter);
-  } else if (opts.skipResetAll) {
-    viewQs = qs;
+  if (!opts.skipResetAll && qxListFiltersActive()) {
+    viewQs = typeof QxListFilters !== "undefined" ? QxListFilters.apply(qs, qxListFilterState(), qxNormDifficulty) : qs;
   }
   window._qxListQs = viewQs;
   // Cap prefetch hard — was 250 and flooded Marks API + froze low-end phones
@@ -1164,12 +1167,10 @@ function qxQuestionDifficulty(q) {
 /** Real Marks difficulty labels: Easy / Medium / Hard (map Moderate→Medium, Tough→Hard). Empty if unknown. */
 function qxNormDifficulty(raw) {
   if (raw == null || raw === "") return "";
-  // Numeric Marks level (0/1 Easy, 2 Medium, 3 Hard)
+  /* qxmd392c: numeric levels are NOT mapped to Easy/Medium/Hard - that mapping is undocumented in the data
+     (NEET chapters mix "1/2/3" with words). Show the stored level as-is. */
   if (typeof raw === "number" || /^\d+$/.test(String(raw).trim())) {
-    const n = Number(raw);
-    if (n <= 1) return "Easy";
-    if (n === 2) return "Medium";
-    if (n >= 3) return "Hard";
+    return "Level " + String(raw).trim();
   }
   const d = String(raw || "").trim().toLowerCase();
   if (!d) return "";
@@ -1271,7 +1272,7 @@ function qxDifficultyTag(rawOrQ) {
     ? qxQuestionDifficulty(rawOrQ)
     : qxNormDifficulty(rawOrQ);
   if (!d) return "";
-  const cls = d === "Easy" ? "diff-easy" : (d === "Hard" ? "diff-hard" : "diff-medium");
+  const cls = d === "Easy" ? "diff-easy" : (d === "Hard" ? "diff-hard" : (d === "Medium" ? "diff-medium" : "diff-level"));
   return `<span class="tag tag-diff ${cls}" data-diff="${d}">${d}</span>`;
 }
 
@@ -1280,7 +1281,8 @@ function qxDifficultyRank(raw) {
   if (d === "Easy") return 1;
   if (d === "Hard") return 3;
   if (d === "Medium") return 2;
-  return 2;
+  const lv = /^Level (\d+)$/.exec(d || "");
+  return lv ? 10 + Number(lv[1]) : 99; /* stored levels / unrated sort after named levels; never guessed */
 }
 
 try {
@@ -1391,6 +1393,23 @@ let _qxListDiffFilter = "all";
 let _qxListYearFilter = "all";
 let _qxListTypeFilter = "all";
 let _qxListAttFilter = "all";
+let _qxListScope = null;
+function qxListScopeKey() {
+  try {
+    const p = (typeof _cpyqbPayload !== "undefined" && _cpyqbPayload) || null;
+    const v = typeof currentView !== "undefined" ? currentView : "";
+    if (!p || !p.chapter) return null;
+    return [v, p.exam, p.subject, p.chapter, p.mode || "", p.bucketId || "", p.topicId || ""].map((x) => String(x == null ? "" : x)).join("\u0001");
+  } catch (_) { return null; }
+}
+function qxListFiltersActive() {
+  return [_qxListDiffFilter, _qxListYearFilter, _qxListTypeFilter, _qxListAttFilter].some((x) => x && x !== "all");
+}
+function qxListFilterState() {
+  const x = qxAttemptIndexes();
+  return { diff: _qxListDiffFilter, year: _qxListYearFilter, type: _qxListTypeFilter,
+    rawDiff: typeof QxListFilters !== "undefined" && !!QxListFilters.diffOk, att: _qxListAttFilter, attIndex: x.att, bmIndex: x.bm };
+}
 function qxAttemptIndexes() {
   const att = (typeof QxProgress !== "undefined" && typeof STATE !== "undefined") ? QxProgress.practiceIndex(STATE.solved) : {};
   const bm = {};
@@ -1417,8 +1436,7 @@ function qxSetListDiffFilter(diff) {
   const all = window._qxListQsAll || window._qxListQs || [];
   /* qxmd392: difficulty + year + type combined; original list order kept */
   const filtered = typeof QxListFilters !== "undefined"
-    ? QxListFilters.apply(all, Object.assign({ diff: _qxListDiffFilter, year: _qxListYearFilter, type: _qxListTypeFilter,
-        rawDiff: !!QxListFilters.diffOk, att: _qxListAttFilter }, (function () { const x = qxAttemptIndexes(); return { attIndex: x.att, bmIndex: x.bm }; })()), qxNormDifficulty)
+    ? QxListFilters.apply(all, qxListFilterState(), qxNormDifficulty)
     : (_qxListDiffFilter === "all" ? all.slice() : all.filter(q => qxNormDifficulty(q.difficulty) === _qxListDiffFilter));
   _listPage = 1;
   const testMeta = window._qxChapterMeta || null;

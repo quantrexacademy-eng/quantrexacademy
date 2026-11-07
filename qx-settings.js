@@ -517,6 +517,9 @@
       '<button type="button" class="qx-set-row" id="qxSetLogout">' +
       '<div class="qx-set-lab-wrap"><span class="qx-set-lab">Sign out</span>' +
       '<span class="qx-set-hint">Return to login</span></div></button>' +
+      '<a class="qx-set-row" id="qxSetDeleteAccount" href="/delete-account.html">' +
+      '<div class="qx-set-lab-wrap"><span class="qx-set-lab">Request account deletion</span>' +
+      '<span class="qx-set-hint">How to ask us to delete your account and data</span></div></a>' +
       "</div></div>" +
 
       '<p class="qx-set-foot-note qx-set-span">Quantrex Academy · English UI · Free access</p>' +

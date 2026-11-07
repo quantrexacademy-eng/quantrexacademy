@@ -117,3 +117,5 @@ html body #app-main#app-main .qx-practice-page :is(.qx-prac-q,.qx-prac-opt,.qx-p
 .qx-pg-t th, .qx-pg-t td { padding: 6px 8px; border-bottom: 1px solid rgba(127,127,127,.2); text-align: left; white-space: nowrap; }
 .qx-pg-t th[scope=row] { white-space: normal; font-weight: 600; } .qx-pg-t small { opacity: .7; font-weight: 400; }
 .qx-pg-na { opacity: .6; }
+/* qxmd392c: stored numeric difficulty level badge - neutral (no implied Easy/Medium/Hard) */
+.tag.tag-diff.diff-level { background: rgba(100,116,139,.15) !important; color: inherit !important; }

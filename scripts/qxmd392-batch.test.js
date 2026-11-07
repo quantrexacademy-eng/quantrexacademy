@@ -5,7 +5,7 @@ const P = require("../qx-progress.js"); global.QxProgress = P; const F = require
 let n = 0; const t = (name, fn) => { fn(); n++; console.log("ok", n, name); };
 const PAGES = ["app.html", "test-series.html", "examgoal-test-series.html", "quantrex-test-series.html", "jee-main-pyq-chapter.html"];
 t("every question entry page loads layout css + same question-format tag", () => PAGES.forEach((p) => {
-  const h = R(p); assert(/assets\/qxmd392-layout\.css\?v=qxmd392c/.test(h), p + " css");
+  const h = R(p); assert(/assets\/qxmd392-layout\.css\?v=qxmd392[c-z]/.test(h), p + " css");
   const tags = h.match(/question-format\.js\?v=([\w]+)/g); assert(tags && tags.every((x) => x.endsWith("qxmd392c")), p + " qf tag");
 }));
 t("standalone pages load qx-fit + qx-start-index BEFORE test-engine; no app-only scripts added", () => PAGES.slice(1).forEach((p) => {

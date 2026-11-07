@@ -39,3 +39,27 @@
     setTimeout(function(){ sync(false); var b=document.getElementById('egFmtBtn'); if(b) try{b.focus({preventScroll:true});}catch(_){} },0);
   });
 })();
+/* qxmd392c: practice "Question View Settings" (#pracViewPanel, allen-test-ui.js) - same a11y:
+   focus moves into the panel on open, Escape closes it, focus returns to the gear (#pracViewMenuBtn). */
+(function(){
+  function P(){ return document.getElementById('pracViewPanel'); }
+  function B(){ return document.getElementById('pracViewMenuBtn'); }
+  function isOpen(p){ return !!p && !p.hasAttribute('hidden'); }
+  function focusBtn(){ var b=B(); if(b) try{b.focus({preventScroll:true});}catch(_){} }
+  document.addEventListener('click',function(e){
+    var t=e.target&&e.target.closest?e.target.closest('#pracViewMenuBtn,#pracViewClose'):null; if(!t) return;
+    setTimeout(function(){
+      var p=P();
+      if(t.id==='pracViewMenuBtn'&&isOpen(p)&&!p.contains(document.activeElement)){
+        var f=p.querySelector('button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])'); if(f) try{f.focus({preventScroll:true});}catch(_){}
+      }
+      if(t.id==='pracViewClose') focusBtn();
+    },0);
+  },true);
+  document.addEventListener('keydown',function(e){
+    if(e.key!=='Escape') return; var p=P(); if(!isOpen(p)) return;
+    e.preventDefault(); p.setAttribute('hidden','');
+    var b=B(); if(b) b.setAttribute('aria-expanded','false');
+    focusBtn();
+  });
+})();
