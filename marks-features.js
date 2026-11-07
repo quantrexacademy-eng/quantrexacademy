@@ -708,7 +708,8 @@ function renderQList(qs, page, testMeta, opts) {
       qxBackgroundPrefetch(viewQs.slice(0, 8).map(q => q.id));
     }
   }, 80);
-  const shown = Math.min(viewQs.length, PAGE_SIZE * Math.max(1, page || _listPage || 1));
+  const qxRetPage = !opts.skipResetAll && typeof qxListReturnPage === "function" ? qxListReturnPage() : 0;
+  const shown = Math.min(viewQs.length, PAGE_SIZE * Math.max(1, page || _listPage || 1, qxRetPage));
   _listPage = Math.ceil(shown / PAGE_SIZE) || 1;
   if (testMeta && viewQs.length >= 5) {
     window._qxChapterIds = viewQs.map(q => q.id);

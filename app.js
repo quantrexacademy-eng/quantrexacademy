@@ -528,6 +528,7 @@ function finishRender(html) {
   if (typeof bindMarksGo === "function") bindMarksGo(main);
   if (typeof bindCpyqbFilters === "function") bindCpyqbFilters(main);
   if (typeof bindMarksInfiniteScroll === "function") bindMarksInfiniteScroll(main);
+  if (typeof qxRestoreListReturn === "function") { try { qxRestoreListReturn(main); } catch (_) { /* */ } }
   if (typeof bindBooksOpen === "function") bindBooksOpen(main);
   if (typeof bindQcExamples === "function") bindQcExamples(main);
   if (typeof bindDashHome === "function") bindDashHome(main);
@@ -1705,6 +1706,7 @@ function openPracticeQuestion(id) {
   try {
     const view = typeof currentView !== "undefined" ? currentView : "";
     const pick = qxListForClicked(id);
+    if (pick.from === "list") qxCaptureListReturn(id);
     /* qxmd392c: a stale _cpyqbPayload from an earlier chapter must not hijack a search click */
     const fromEg = (view === "cpyqb" || view === "books" || view === "board"
       || (view !== "search" && typeof _cpyqbPayload !== "undefined" && _cpyqbPayload && _cpyqbPayload.chapter))
@@ -2052,6 +2054,66 @@ function qxPracticeBack() {
   if (typeof history !== "undefined" && history.length > 1) history.back();
 }
 window.qxPracticeBack = qxPracticeBack;
+
+/* qxmd392j: list return position. go() zeroes #app-main and resets the page, and on phones the
+   element that really scrolls is often the document, so returning from practice (Save & Exit / Back)
+   landed at the top. Remember the clicked card + its offset inside the ACTUAL scroller, restore once
+   when the same list (same scope) is painted again; a few bounded re-anchors cover async typeset. */
+let _qxListReturn = null;
+function qxScrollerOf(el) {
+  for (let n = el && el.parentElement; n && n !== document.body && n !== document.documentElement; n = n.parentElement) {
+    const cs = getComputedStyle(n);
+    if (/(auto|scroll)/.test(cs.overflowY) && n.scrollHeight > n.clientHeight + 1) return n;
+  }
+  return document.scrollingElement || document.documentElement;
+}
+function qxCardFor(root, qid) {
+  const list = root && root.querySelector ? root.querySelector("#marksQList") : null;
+  if (!list) return null;
+  const want = String(qid);
+  return Array.prototype.find.call(list.querySelectorAll(".q-card[data-qid]"), (c) => c.getAttribute("data-qid") === want) || null;
+}
+function qxTopIn(scroller, el) {
+  const top = (scroller === document.scrollingElement || scroller === document.documentElement) ? 0 : scroller.getBoundingClientRect().top;
+  return el.getBoundingClientRect().top - top;
+}
+function qxCaptureListReturn(qid) {
+  try {
+    const card = qxCardFor(document, qid);
+    if (!card) { _qxListReturn = null; return; }
+    const sc = qxScrollerOf(card);
+    _qxListReturn = { view: currentView, scope: typeof qxListScopeKey === "function" ? qxListScopeKey() : "",
+      qid: String(qid), page: typeof _listPage !== "undefined" ? _listPage : 1, offset: qxTopIn(sc, card), scrollTop: sc.scrollTop };
+  } catch (_) { _qxListReturn = null; }
+}
+function qxListReturnPage() {
+  const r = _qxListReturn;
+  return r && r.view === currentView && typeof qxListScopeKey === "function" && r.scope === qxListScopeKey() ? r.page : 0;
+}
+function qxRestoreListReturn(root) {
+  const r = _qxListReturn;
+  if (!r || r.view !== currentView || !root || !root.querySelector("#marksQList")) return false;
+  _qxListReturn = null;
+  if (typeof qxListScopeKey === "function" && r.scope !== qxListScopeKey()) return false;
+  if (!qxCardFor(root, r.qid)) return false;
+  let stop = false;
+  const quit = () => { stop = true; };
+  const evs = ["wheel", "touchstart", "keydown", "mousedown"];
+  evs.forEach((e) => window.addEventListener(e, quit, { passive: true, once: true }));
+  const anchor = () => {
+    if (stop) return;
+    const card = qxCardFor(root, r.qid);
+    if (!card) return;
+    const sc = qxScrollerOf(card);
+    const d = qxTopIn(sc, card) - r.offset;
+    if (Math.abs(d) > 1) sc.scrollTop += d;
+  };
+  anchor();
+  if (typeof requestAnimationFrame === "function") requestAnimationFrame(anchor);
+  setTimeout(anchor, 120);
+  setTimeout(() => { anchor(); evs.forEach((e) => window.removeEventListener(e, quit)); }, 400);
+  return true;
+}
 
 function qxPracticeNav(delta) {
   const ctx = window._qxPracticeCtx;
