@@ -77,21 +77,52 @@ def glob_to_regex(g):
 SOLUTION_FIELDS = ("solution", "explanation")
 def _qs(doc):
     return doc if isinstance(doc, list) else (doc.get("questions") or doc.get("items") or [])
-def verify_solution_only(old_bytes, new_bytes, approved_ids):
-    """Approved data change = ONLY a solution/explanation that was empty gets filled, for approved ids.
-    Every other field, question order, ids, options and answer keys must be identical."""
-    old, new = json.loads(old_bytes), json.loads(new_bytes)
+def _nodup(pairs):
+    keys = [k for k, _ in pairs]
+    if len(keys) != len(set(keys)): raise ValueError("duplicate JSON object key: " + ", ".join(sorted({k for k in keys if keys.count(k) > 1})))
+    return dict(pairs)
+
+def _load_strict(b):
+    return json.loads(b, object_pairs_hook=_nodup)
+
+def verify_solution_only(old_bytes, new_bytes, approved_ids, entry=None):
+    """Approved data change = ONLY a solution/explanation that was empty (or EXACTLY one of the manifest's
+    allowed_original_values placeholders, e.g. "No Solution") gets a new non-empty string, for approved ids.
+    Every other field, question order, ids, options and answer keys must be identical; no duplicate keys/ids;
+    baseline/patched sha256 and provenance in the manifest must match when given."""
+    entry = entry or {}
+    errs = []
+    if entry:
+        if not str(entry.get("provenance") or "").strip(): errs.append("manifest provenance empty")
+        if entry.get("official_solution_claim") is not False: errs.append("manifest must state official_solution_claim false")
+        if entry.get("baseline_sha256") and hashlib.sha256(old_bytes).hexdigest() != entry["baseline_sha256"]: errs.append("fresh baseline sha256 differs from manifest")
+        if entry.get("patched_sha256") and hashlib.sha256(new_bytes).hexdigest() != entry["patched_sha256"]: errs.append("patched sha256 differs from manifest")
+    try: old, new = _load_strict(old_bytes), _load_strict(new_bytes)
+    except ValueError as e: return errs + [str(e)]
+    if isinstance(old, dict) != isinstance(new, dict): return errs + ["file structure changed"]
     if isinstance(old, dict):
+        if list(old.keys()) != list(new.keys()): return errs + ["file-level key order changed"]
         if {k: v for k, v in old.items() if k not in ("questions", "items")} != {k: v for k, v in new.items() if k not in ("questions", "items")}:
-            return ["file-level fields changed"]
-    a, b = _qs(old), _qs(new); errs = []
-    if [q.get("id") for q in a] != [q.get("id") for q in b]: return ["question ids/order changed"]
+            return errs + ["file-level fields changed"]
+    a, b = _qs(old), _qs(new)
+    ids = [q.get("id") for q in a]
+    if any(x is None for x in ids): return errs + ["question without id"]
+    if len(set(map(str, ids))) != len(ids): return errs + ["duplicate question ids"]
+    if ids != [q.get("id") for q in b]: return errs + ["question ids/order changed"]
+    placeholders = set(entry.get("allowed_original_values") or [])
+    fields = set(entry.get("allowed_fields") or SOLUTION_FIELDS) & set(SOLUTION_FIELDS)
+    filled = set()
     for qa, qb in zip(a, b):
-        for k in set(qa) | set(qb):
-            if qa.get(k) == qb.get(k): continue
-            empty = not str(qa.get(k) or "").strip()
-            if k in SOLUTION_FIELDS and empty and str(qa.get("id")) in approved_ids: continue
+        if list(qa.keys()) != list(qb.keys()): errs.append(f"id {qa.get('id')} key set/order changed"); continue
+        for k in qa:
+            if qa[k] == qb[k]: continue
+            was = qa[k]; now = qb[k]
+            gap = (was is None) or (isinstance(was, str) and (not was.strip() or was in placeholders))
+            if k in fields and gap and str(qa.get("id")) in approved_ids and isinstance(now, str) and now.strip():
+                filled.add(str(qa.get("id"))); continue
             errs.append(f"id {qa.get('id')} field {k} changed")
+    missing = set(approved_ids) - filled
+    if missing: errs.append("approved ids not filled: " + ",".join(sorted(missing)))
     return errs
 
 def preview_config(live_cfg, csp):
@@ -127,7 +158,7 @@ def build_plan(base, patch_dir, patched_paths, exclusion_globs, guard_paths_html
         if PROTECTED.match(p) and not ok_ids: raise SystemExit(f"refusing: patch touches protected data path {p} (not in approved solution manifest)")
         data = open(os.path.join(patch_dir, p.lstrip("/")), "rb").read()
         if PROTECTED.match(p):
-            errs = verify_solution_only(fetch(p), data, ok_ids)
+            errs = verify_solution_only(fetch(p), data, ok_ids, (approved_data or {}).get(p))
             if errs: raise SystemExit(f"refusing {p}: not a solution-only addition: {errs[:5]}")
         h, gz = gz_hash(data)
         populate[p] = {"hash": h, "gz": gz, "rawBytes": len(data), "was": files.get(p, {}).get("hash"), "kind": "patch"}

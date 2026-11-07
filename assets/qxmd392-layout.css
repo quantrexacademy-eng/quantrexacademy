@@ -87,8 +87,8 @@ html body #app-main#app-main .qx-practice-page mjx-container {
 }
 html body #app-main#app-main .eg-test-root mjx-container[display="true"],
 html body #app-main#app-main .mtk-test-root mjx-container[display="true"],
-html body #app-main#app-main .qzrr-cbt mjx-container[display="true"] { display: block !important;,
-html body #app-main#app-main .qx-practice-page mjx-container[display="true"] { display: block !important; },
+html body #app-main#app-main .qzrr-cbt mjx-container[display="true"],
+html body #app-main#app-main .qx-practice-page mjx-container[display="true"] { display: block !important; max-width: 100% !important; overflow-x: auto !important; overflow-y: hidden !important; }
 
 /* qxmd392c: chapter practice + revealed solution (app.js .qx-practice-page) get the same no-clip rule */
 html body #app-main#app-main .qx-practice-page :is(.qx-prac-q,.qx-prac-opt,.qx-prac-opt-text,.qx-sol-reveal-box,.result-box,.qx-content,.qx-sol,.qx-solution) {
@@ -125,3 +125,21 @@ html body #app-main#app-main .qx-practice-page :is(.qx-prac-q,.qx-prac-opt,.qx-p
 .qx-mscroll:focus-visible { outline: 2px solid #3b82f6; }
 /* containers of wide math must be allowed to shrink to the card */
 html body #app-main#app-main :is(.qx-hw-sol, .qx-hw-paper, .qx-hw-ink, .eg-sol-panel, .eg-q-stem, .qx-prac-q) { max-width: 100% !important; min-width: 0 !important; box-sizing: border-box !important; }
+
+/* qxmd392f: LAST, scoped without #app-main so standalone pages match too. Beats qx-hw-sol.css
+   `.qx-hw-ink .katex-display:not(.qx-math-block){display:inline;overflow:visible}` (0,3,0) and
+   qxmd385 notebook overflow:visible, so the display formula itself is a real scroll box. */
+html body :is(.qx-hw-sol, .qx-hw-paper, .qx-hw-ink, .sol-body, .qx-sol-flow, .qx-sol-body-wrap) {
+  min-width: 0 !important; max-width: 100% !important; box-sizing: border-box !important;
+}
+html body .qx-hw-ink .katex-display.katex-display,
+html body .sol-body .katex-display.katex-display,
+html body .qx-sol-flow .katex-display.katex-display {
+  display: block !important; max-width: 100% !important; min-width: 0 !important;
+  overflow-x: auto !important; overflow-y: hidden !important; -webkit-overflow-scrolling: touch;
+}
+html body :is(.qx-hw-ink, .sol-body, .qx-sol-flow) .katex-display > .katex {
+  max-width: none !important; white-space: nowrap !important;
+}
+html body .qx-mscroll.qx-mscroll { max-width: 100%; overflow-x: auto !important; overflow-y: hidden !important; }
+html body .qx-mscroll > .katex-display.katex-display { overflow: visible !important; max-width: none !important; }

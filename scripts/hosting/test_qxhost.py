@@ -53,7 +53,30 @@ def t8():
     bad = json.loads(old); bad["questions"][1]["solution"] = "overwrite"; assert Q.verify_solution_only(old, json.dumps(bad).encode(), {"2"})
     bad2 = json.loads(json.dumps(good)); bad2["questions"][0]["options"][2] = "5"; assert Q.verify_solution_only(old, json.dumps(bad2).encode(), {"1"})
     os.makedirs(os.path.join(d, "data/banks"), exist_ok=True); open(os.path.join(d, "data/banks/x.json"), "wb").write(json.dumps(good).encode())
-    p = Q.build_plan(base, d, ["/data/banks/x.json"], [], None, None, lambda _: old, approved_data={"/data/banks/x.json": {"ids": [1], "provenance": "math-verified"}})
+    p = Q.build_plan(base, d, ["/data/banks/x.json"], [], None, None, lambda _: old, approved_data={"/data/banks/x.json": {"ids": [1], "provenance": "math-verified", "official_solution_claim": False}})
     assert "/data/banks/x.json" in p["populate"]
 t("data patch allowed ONLY as approved fill of an empty solution; options/answer/existing solutions immutable", t8)
+def t9():
+    E = {"ids": [1], "provenance": "Quantrex explanation", "official_solution_claim": False, "allowed_fields": ["solution"], "allowed_original_values": ["No Solution"]}
+    old = json.dumps({"questions": [{"id": 1, "q": "x", "solution": "No Solution"}, {"id": 2, "q": "y", "solution": "real worked steps"}]}).encode()
+    g = json.loads(old); g["questions"][0]["solution"] = "<p><strong>Quantrex Explanation</strong></p>"
+    assert Q.verify_solution_only(old, json.dumps(g).encode(), {"1"}, E) == []
+    # placeholder must match EXACTLY; a legitimate worked solution is never replaceable
+    o2 = old.replace(b'"No Solution"', b'"No solution yet"'); assert Q.verify_solution_only(o2, json.dumps(g).encode(), {"1"}, E)
+    b = json.loads(json.dumps(g)); b["questions"][1]["solution"] = "replaced"; assert Q.verify_solution_only(old, json.dumps(b).encode(), {"1", "2"}, E)
+    assert Q.verify_solution_only(old, json.dumps(g).encode(), {"1"}, dict(E, provenance=""))
+    assert Q.verify_solution_only(old, json.dumps(g).encode(), {"1"}, dict(E, official_solution_claim=True))
+    assert Q.verify_solution_only(old, json.dumps(g).encode(), {"1"}, dict(E, baseline_sha256="0"*64))
+    dup = b'{"questions": [{"id": 1, "q": "x", "q": "z", "solution": "No Solution"}]}'; assert any("duplicate JSON" in e for e in Q.verify_solution_only(dup, json.dumps(g).encode(), {"1"}, E))
+    dids = json.dumps({"questions": [{"id": 1, "solution": ""}, {"id": 1, "solution": ""}]}).encode(); assert Q.verify_solution_only(dids, dids, {"1"}, E)
+    e = json.loads(json.dumps(g)); e["questions"][0]["solution"] = "  "; assert Q.verify_solution_only(old, json.dumps(e).encode(), {"1"}, E)
+    assert Q.verify_solution_only(old, old, {"1"}, E)  # approved id not filled
+    k = json.loads(json.dumps(g)); k["questions"][0] = {"solution": k["questions"][0]["solution"], "id": 1, "q": "x"}; assert Q.verify_solution_only(old, json.dumps(k).encode(), {"1"}, E)  # key order
+    W = "/workspace/qx-solutions-20261107"; P = "/data/banks/chapters/ap_eamcet/mathematics/trigonometric-ratios-and-identities.json"
+    if os.path.exists(W + "/patches" + P) and os.path.exists("/tmp/ap-trig-fresh.json"):
+        man = json.load(open(W + "/approved-solutions-provenance.json"))[P]
+        r = Q.verify_solution_only(open("/tmp/ap-trig-fresh.json", "rb").read(), open(W + "/patches" + P, "rb").read(), {str(x) for x in man["ids"]}, man)
+        assert r == [], r
+        print("   real AP EAMCET Trig patch validated against fresh canonical baseline")
+t("placeholder 'No Solution' fill: exact placeholder only, provenance+non-official+sha gates, dup keys/ids, key order", t9)
 print("PASS", n)
