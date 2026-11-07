@@ -1,3 +1,4 @@
+# SEO on (qxmd357). Quantrex Academy pages only. Formula cards and internal test HTML stay out.
 User-agent: *
 Allow: /
 Allow: /q/
@@ -18,8 +19,11 @@ Disallow: /api/
 Disallow: /data/
 Disallow: /data/seo/
 Disallow: /admin.html
-# qxmd315: internal search result pages are noindex; keep crawlers on chapter and question pages
+# Internal search result pages are noindex; keep crawlers on chapter and question pages
 Disallow: /search?
+# URLs that are not public Quantrex branding
+Disallow: /examgoal-test-series
+Disallow: /iit-jee-mathematics
 Disallow: /api/create-payment
 Disallow: /api/verify-payment
 Disallow: /api/payment-webhook
