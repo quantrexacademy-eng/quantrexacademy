@@ -16,3 +16,26 @@
   document.addEventListener('visibilitychange',function(){ if(!document.hidden) q(); });
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',q); else q();
 })();
+/* qxmd392: Question View Settings panel a11y - aria-expanded, focus into panel on open,
+   Escape closes via the panel's own close button, focus returns to the gear. Event-driven only. */
+(function(){
+  function pop(){ return document.getElementById('egFmtPop'); }
+  function open(p){ if(!p||p.hidden) return false; var cs=getComputedStyle(p); return cs.display!=='none'&&cs.visibility!=='hidden'; }
+  function sync(focusIn){
+    var b=document.getElementById('egFmtBtn'), p=pop(); if(!b) return;
+    var o=open(p); b.setAttribute('aria-expanded',o?'true':'false'); if(p) b.setAttribute('aria-controls','egFmtPop');
+    if(o&&focusIn&&p&&!p.contains(document.activeElement)){
+      var f=p.querySelector('button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])'); if(f) try{f.focus({preventScroll:true});}catch(_){}
+    }
+  }
+  document.addEventListener('click',function(e){
+    var t=e.target&&e.target.closest?e.target.closest('#egFmtBtn,#egFmtClose'):null;
+    if(t) setTimeout(function(){ sync(t.id==='egFmtBtn'); if(t.id==='egFmtClose'){ var b=document.getElementById('egFmtBtn'); if(b) try{b.focus({preventScroll:true});}catch(_){} } },0);
+  },true);
+  document.addEventListener('keydown',function(e){
+    if(e.key!=='Escape') return; var p=pop(); if(!open(p)) return;
+    var c=document.getElementById('egFmtClose'); if(!c) return;
+    e.preventDefault(); c.click();
+    setTimeout(function(){ sync(false); var b=document.getElementById('egFmtBtn'); if(b) try{b.focus({preventScroll:true});}catch(_){} },0);
+  });
+})();

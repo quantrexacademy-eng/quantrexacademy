@@ -950,6 +950,9 @@ function viewPractice() {
   if (practicePage > totalPages) practicePage = totalPages;
   const pageQs = qs.slice((practicePage - 1) * PRACTICE_PAGE_SIZE, practicePage * PRACTICE_PAGE_SIZE);
   window._qxListQs = pageQs;
+  /* qxmd392: remember the full filtered list (same array reference, no copy) so Prev/Next cross page edges */
+  window._qxListQsFull = qs;
+  window._qxListQsFullFor = pageQs;
   setTimeout(() => qxBackgroundPrefetch(pageQs.map(q => q.id)), 0);
 
   const subjects = ["all", ...EXAMS[STATE.exam].subjects];
@@ -1653,6 +1656,12 @@ function exitAllenPracticeMode() {
   if (typeof qxClearMountInlineStyles === "function") qxClearMountInlineStyles(document.getElementById("app-main"));
 }
 
+/* qxmd392: list used for Prev/Next. Paginated practice page -> its full filtered list; otherwise the visible list. */
+function qxNavList() {
+  const vis = window._qxListQs;
+  if (vis && window._qxListQsFull && window._qxListQsFullFor === vis) return window._qxListQsFull;
+  return vis || window._qxListQsAll || [];
+}
 function openPracticeQuestion(id) {
   try {
     const ctx = window._qxPracticeCtx || {};
@@ -1673,7 +1682,7 @@ function openPracticeQuestion(id) {
     const view = typeof currentView !== "undefined" ? currentView : "";
     const fromEg = view === "cpyqb" || view === "books" || view === "board"
       || (typeof _cpyqbPayload !== "undefined" && _cpyqbPayload && _cpyqbPayload.chapter);
-    const list = window._qxListQs || window._qxListQsAll || [];
+    const list = qxNavList();
     if (fromEg && list.length && typeof cpyqbLaunchList === "function") {
       const ids = list.map((x) => x && x.id).filter(Boolean);
       const openId = id;
@@ -1712,7 +1721,7 @@ function openPracticeQuestion(id) {
     if (full) q = full;
   }
   const openId = q && q.id != null ? q.id : id;
-  const list = window._qxListQs || window._qxListQsAll || [];
+  const list = qxNavList();
   const ids = list.length ? list.map(x => x.id) : [openId];
   const idx = Math.max(0, ids.findIndex(x => String(x) === String(openId) || String(x) === String(id)));
   window._qxPracticeCtx = {

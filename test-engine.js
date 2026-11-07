@@ -4837,11 +4837,13 @@ const QuantrexTestEngine = (() => {
     }
 
     const pass = data.pct >= 60;
+    const ov = qxSplitCounts(data.correct, data.wrong, data.partial, data.incorrect);
     const subjectBars = Object.entries(data.breakdown.subject || {}).map(([sub, v]) => {
-      const acc = v.total ? Math.round(v.correct / v.total * 100) : 0;
-      return `<div class="qx-subj-bar"><div class="qx-subj-label"><span>${sub}</span><span>${acc}%</span></div>
-        <div class="qx-bar-track"><div class="qx-bar-fill" style="width:${acc}%"></div></div>
-        <small>${v.correct}/${v.total} correct</small></div>`;
+      const sv = qxSplitCounts(v.correct, v.wrong, v.partial, v.incorrect);
+      const w = sv.accuracy == null ? 0 : Math.round(sv.accuracy);
+      return `<div class="qx-subj-bar"><div class="qx-subj-label"><span>${qxEscPaper(sub)}</span><span>${sv.accuracy == null ? "—" : sv.accuracy + "%"}</span></div>
+        <div class="qx-bar-track"><div class="qx-bar-fill" style="width:${w}%"></div></div>
+        <small>${sv.correct}/${sv.attempted} attempted fully correct · ${v.total} Qs</small></div>`;
     }).join("");
     const reviewRows = data.rows.map((r, i) => renderReviewRow(r, i)).join("");
     const reviewBlock = `<div class="qx-review-split" id="qxReviewSplit">
@@ -4858,7 +4860,11 @@ const QuantrexTestEngine = (() => {
       </div>
       <div class="result-stats">
         <div class="rs"><strong style="color:#2bc48a">${data.correct}</strong><small>Correct</small></div>
-        <div class="rs"><strong style="color:#ef4444">${data.wrong}</strong><small>Incorrect</small></div>
+        ${ov.splitKnown
+          ? `<div class="rs"><strong style="color:#f59e0b">${ov.partial}</strong><small>Partially correct</small></div>
+        <div class="rs"><strong style="color:#ef4444">${ov.incorrect}</strong><small>Incorrect</small></div>`
+          : `<div class="rs"><strong style="color:#ef4444">${ov.wrong}</strong><small>Incorrect / partial</small></div>`}
+        <div class="rs"><strong>${ov.accuracy == null ? "—" : ov.accuracy + "%"}</strong><small>Accuracy (fully correct / attempted)</small></div>
         <div class="rs"><strong style="color:#6b7280">${data.skipped}</strong><small>Skipped</small></div>
         <div class="rs"><strong>${data.score}</strong><small>Total Score</small></div>
       </div>
