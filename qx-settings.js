@@ -19,7 +19,8 @@
     lang: "qx_pref_lang",
     aiProctor: "qx_pref_ai_proctor",
     qset: "qx_marks_question_settings",
-    themePref: "quantrex_theme"
+    themePref: "quantrex_theme",
+    cbtFormat: "qx_cbt_format_pref"
   };
 
   /* MARKS /api/v4/user/me → user.questionSettings (exact keys) */
@@ -45,7 +46,7 @@
       });
     } catch (_) { /* */ }
     var font = getFont();
-    d.textSize = font === "small" ? 14 : font === "large" ? 20 : 18;
+    d.textSize = font === "small" ? 17 : font === "large" ? 23 : font === "xlarge" ? 26 : 20;
     return d;
   }
 
@@ -181,25 +182,31 @@
   function getFont() {
     if (typeof getTestFontScale === "function") {
       var s = getTestFontScale();
-      if (s === "xlarge") return "large";
-      return s || "medium";
+      if (s === "small" || s === "medium" || s === "large" || s === "xlarge") return s;
     }
     var v = lsGet(PREF.font, "medium");
-    if (v === "xlarge") return "large";
-    return v === "small" || v === "large" ? v : "medium";
+    return v === "small" || v === "large" || v === "xlarge" ? v : "medium";
+  }
+
+  function fontPx(scale) {
+    if (scale === "small") return 17;
+    if (scale === "large") return 23;
+    if (scale === "xlarge") return 26;
+    return 20;
   }
 
   function setFont(scale) {
-    var s = scale === "small" || scale === "large" ? scale : "medium";
+    var s = scale === "small" || scale === "large" || scale === "xlarge" ? scale : "medium";
     if (typeof setTestFontScale === "function") setTestFontScale(s);
     else if (typeof applyTestFontScaleToDom === "function") applyTestFontScaleToDom(s);
     else {
       lsSet(PREF.font, s);
       document.documentElement.setAttribute("data-font-scale", s);
       if (document.body) document.body.setAttribute("data-font-scale", s);
-      document.documentElement.style.setProperty("--qx-q-font", s === "small" ? "14px" : s === "large" ? "20px" : "18px");
+      document.documentElement.style.setProperty("--qx-q-font", fontPx(s) + "px");
     }
-    setQuestionSetting("textSize", s === "small" ? 14 : s === "large" ? 20 : 18);
+    setQuestionSetting("textSize", fontPx(s));
+    return s;
   }
 
   function getPaletteMode() {
@@ -212,6 +219,19 @@
     var m = mode === "side" || mode === "strip" || mode === "both" ? mode : "side";
     lsSet(PREF.palette, m);
     return m;
+  }
+
+  function getCbtFormat() {
+    var v = lsGet(PREF.cbtFormat, "nta");
+    if (v === "quantrex" || v === "examgoal") return "quantrex";
+    return "nta";
+  }
+
+  function setCbtFormat(mode) {
+    var f = mode === "quantrex" || mode === "examgoal" ? "quantrex" : "nta";
+    lsSet(PREF.cbtFormat, f);
+    try { localStorage.setItem("ts_last_ui_mode", f === "quantrex" ? "examgoal" : "quizrr"); } catch (_) { /* */ }
+    return f;
   }
 
   function profileData() {
@@ -286,6 +306,10 @@
       ".qx-set-seg{display:inline-flex;background:#f1f5f9;border-radius:12px;padding:3px;gap:2px;flex-shrink:0}",
       "html[data-theme=dark] .qx-set-seg{background:#0f172a}",
       ".qx-set-seg button{border:0;background:transparent;padding:8px 12px;border-radius:10px;font-size:13px;font-weight:700;color:#64748b;cursor:pointer;min-width:0;min-height:36px;-webkit-tap-highlight-color:transparent}",
+      ".qx-set-zoom{display:flex;align-items:center;gap:8px;flex-shrink:0}",
+      ".qx-set-zoom button{width:44px;height:44px;border-radius:12px;border:1px solid #cbd5e1;background:#fff;color:#0f172a;font-size:22px;font-weight:800;line-height:1;cursor:pointer}",
+      "html[data-theme=dark] .qx-set-zoom button{background:#0f172a;color:#f8fafc;border-color:#334155}",
+      ".qx-set-zoom span{min-width:36px;text-align:center;font-size:14px;font-weight:800;color:#1565C0}",
       "@media (max-width:420px){.qx-set-seg button{padding:7px 9px;font-size:12px}}",
       ".qx-set-seg button.on{background:#2563eb;color:#fff;box-shadow:0 1px 3px rgba(37,99,235,.35)}",
       "html[data-theme=dark] .qx-set-seg button.on{background:#2563eb;color:#fff}",
@@ -420,18 +444,6 @@
       '<div class="qx-set-body" id="qxSetBody">' +
       examTrackHtml() +
 
-      /* Notifications — Marks primary list */
-      '<div class="qx-set-sec">' +
-      '<div class="qx-set-sec-h">Notifications</div>' +
-      '<div class="qx-set-list">' +
-      '<div class="qx-set-row"><div class="qx-set-lab-wrap"><span class="qx-set-lab">Push Notifications</span>' +
-      '<span class="qx-set-hint">Practice reminders &amp; updates</span></div>' +
-      toggleHtml("qxSetPush", getPush()) + "</div>" +
-      '<div class="qx-set-row"><div class="qx-set-lab-wrap"><span class="qx-set-lab">Email Notifications</span>' +
-      '<span class="qx-set-hint">Digest &amp; important alerts</span></div>' +
-      toggleHtml("qxSetEmail", getEmail()) + "</div>" +
-      "</div></div>" +
-
       /* Appearance */
       '<div class="qx-set-sec">' +
       '<div class="qx-set-sec-h">Appearance</div>' +
@@ -441,8 +453,25 @@
       segHtml("qxSetTheme", getThemePref(), [{ v: "light", l: "Light" }, { v: "dark", l: "Dark" }, { v: "system", l: "Auto" }]) +
       "</div>" +
       '<div class="qx-set-row"><div class="qx-set-lab-wrap"><span class="qx-set-lab">Text size</span>' +
-      '<span class="qx-set-hint">Question &amp; solution font</span></div>' +
-      segHtml("qxSetFont", font, [{ v: "small", l: "S" }, { v: "medium", l: "M" }, { v: "large", l: "L" }]) +
+      '<span class="qx-set-hint">Question and solution, website and app</span></div>' +
+      segHtml("qxSetFont", font, [{ v: "small", l: "S" }, { v: "medium", l: "M" }, { v: "large", l: "L" }, { v: "xlarge", l: "XL" }]) +
+      "</div>" +
+      '<div class="qx-set-row"><div class="qx-set-lab-wrap"><span class="qx-set-lab">Zoom</span>' +
+      '<span class="qx-set-hint">Zoom out and zoom in while a question is open</span></div>' +
+      '<div class="qx-set-zoom" id="qxSetZoom">' +
+      '<button type="button" id="qxSetZoomOut" aria-label="Zoom out">−</button>' +
+      '<span id="qxSetZoomLbl">' + (font === "xlarge" ? "XL" : font === "large" ? "L" : font === "small" ? "S" : "M") + "</span>" +
+      '<button type="button" id="qxSetZoomIn" aria-label="Zoom in">+</button>' +
+      "</div></div>" +
+      "</div></div>" +
+
+      /* Test paper — same key as Test Series start chooser */
+      '<div class="qx-set-sec">' +
+      '<div class="qx-set-sec-h">Test paper</div>' +
+      '<div class="qx-set-list">' +
+      '<div class="qx-set-row"><div class="qx-set-lab-wrap"><span class="qx-set-lab">Paper format</span>' +
+      '<span class="qx-set-hint">Timed Test Series. Practice and PYQ mocks stay QUANTREX.</span></div>' +
+      segHtml("qxSetCbtFormat", getCbtFormat(), [{ v: "quantrex", l: "QUANTREX" }, { v: "nta", l: "NTA" }]) +
       "</div>" +
       "</div></div>" +
 
@@ -463,10 +492,6 @@
       '<div class="qx-set-row"><div class="qx-set-lab-wrap"><span class="qx-set-lab">Haptic tap</span>' +
       '<span class="qx-set-hint">Vibrate when you select an option</span></div>' +
       toggleHtml("qxSetHaptic", lsGet(PREF.haptic, "1") !== "0") + "</div>" +
-      '<div class="qx-set-row"><div class="qx-set-lab-wrap"><span class="qx-set-lab">Language</span>' +
-      '<span class="qx-set-hint">App language</span></div>' +
-      segHtml("qxSetLang", lsGet(PREF.lang, "en"), [{ v: "en", l: "English" }]) +
-      "</div>" +
       "</div></div>" +
 
       /* Question — MARKS user.questionSettings */
@@ -538,9 +563,7 @@
       if (!btn) return;
       btn.onclick = function () {
         var next = !btn.classList.contains("on");
-        if (btn.id === "qxSetPush") setPush(next);
-        else if (btn.id === "qxSetEmail") setEmail(next);
-        else if (btn.id === "qxSetAutoNext") lsSet(PREF.autoNext, next ? "1" : "0");
+        if (btn.id === "qxSetAutoNext") lsSet(PREF.autoNext, next ? "1" : "0");
         else if (btn.id === "qxSetHaptic") lsSet(PREF.haptic, next ? "1" : "0");
         else if (btn.id === "qxSetAwake") applyKeepAwake(next);
         else if (btn.id === "qxSetShowTimer") setQuestionSetting("showTimer", next);
@@ -582,8 +605,6 @@
       };
     });
 
-    wireToggle(root.querySelector("#qxSetPush"));
-    wireToggle(root.querySelector("#qxSetEmail"));
     wireToggle(root.querySelector("#qxSetAutoNext"));
     wireToggle(root.querySelector("#qxSetHaptic"));
     wireToggle(root.querySelector("#qxSetAwake"));
@@ -608,14 +629,45 @@
         showToast(v === "system" ? "Theme: Auto" : (v === "dark" ? "Dark mode" : "Light mode"));
       }
     });
+    function paintZoom(scale) {
+      var short = { small: "S", medium: "M", large: "L", xlarge: "XL" };
+      var seg = root.querySelector("#qxSetFont");
+      if (seg) seg.querySelectorAll("button").forEach(function (x) {
+        x.classList.toggle("on", x.getAttribute("data-val") === scale);
+      });
+      var lbl = root.querySelector("#qxSetZoomLbl");
+      if (lbl) lbl.textContent = short[scale] || "M";
+    }
     wireSeg(root.querySelector("#qxSetFont"), function (v) {
-      setFont(v);
-      if (typeof showToast === "function") showToast("Font: " + v);
+      paintZoom(setFont(v));
+      if (typeof showToast === "function") showToast("Text: " + v);
     });
+    var zoomOut = root.querySelector("#qxSetZoomOut");
+    var zoomIn = root.querySelector("#qxSetZoomIn");
+    function stepZoom(delta) {
+      var next;
+      if (typeof bumpTestFont === "function") next = bumpTestFont(delta);
+      else {
+        var order = ["small", "medium", "large", "xlarge"];
+        var i = order.indexOf(getFont());
+        if (i < 0) i = 1;
+        next = order[Math.max(0, Math.min(order.length - 1, i + delta))];
+        setFont(next);
+      }
+      paintZoom(next || getFont());
+    }
+    if (zoomOut) zoomOut.onclick = function () { stepZoom(-1); };
+    if (zoomIn) zoomIn.onclick = function () { stepZoom(1); };
     wireSeg(root.querySelector("#qxSetPalette"), function (v) {
       setPaletteMode(v);
       if (typeof showToast === "function") {
         showToast(v === "side" ? "Palette: Right sidebar" : v === "strip" ? "Palette: Top bar" : "Palette: Both");
+      }
+    });
+    wireSeg(root.querySelector("#qxSetCbtFormat"), function (v) {
+      setCbtFormat(v);
+      if (typeof showToast === "function") {
+        showToast(v === "quantrex" ? "Paper: QUANTREX FORMAT" : "Paper: NTA FORMAT");
       }
     });
     try {
@@ -844,6 +896,8 @@
     setFont: setFont,
     getPaletteMode: getPaletteMode,
     setPaletteMode: setPaletteMode,
+    getCbtFormat: getCbtFormat,
+    setCbtFormat: setCbtFormat,
     getQuestionSettings: getQuestionSettings,
     setQuestionSetting: setQuestionSetting,
     playAnswerSound: playAnswerSound,

@@ -1,3 +1,45 @@
+/* qxmd377 speed: card/nav cache + direct CDN flash images + sheet prefetch */
+
+/* qxmd372 chapter katex: typeset math in chapter/topic list cards (√ etc.) */
+function qxTypesetChapterCards(root) {
+  try {
+    /* qxmd383: never re-typeset whole practice/test chrome (MO↔KaTeX hang) */
+    var el = root || document.getElementById("app-main") || document;
+    if (el && el.querySelector && el.querySelector(".eg-test-root, .mtk-test-root, .qx-practice-page, .allen-practice, #egFoot")) {
+      return;
+    }
+    if (window.__qxTypesetBusy) return;
+    window.__qxTypesetBusy = true;
+    try {
+      if (window.renderMathInElement) {
+        renderMathInElement(el, {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false },
+            { left: "\\(", right: "\\)", display: false },
+            { left: "\\[", right: "\\]", display: true }
+          ],
+          throwOnError: false
+        });
+      } else if (window.MathJax && MathJax.typesetPromise) {
+        MathJax.typesetPromise([el]).catch(function () {});
+      }
+    } finally {
+      window.__qxTypesetBusy = false;
+    }
+  } catch (_) { try { window.__qxTypesetBusy = false; } catch (e) {} }
+}
+window.qxTypesetChapterCards = qxTypesetChapterCards;
+
+/* qxmd376: list-card math must not clip on mobile */
+(function(){
+  if (document.getElementById("qxmd376ListMathCss")) return;
+  var st = document.createElement("style");
+  st.id = "qxmd376ListMathCss";
+  st.textContent = ".q-card .q-text{overflow:visible;line-height:1.45}.q-card .q-text .katex{font-size:1.05em;max-width:100%}.q-card .q-text .katex-display{margin:.35em 0;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch}.q-card .q-text .katex-display>.katex{white-space:normal}.q-card .q-text .katex .base{white-space:normal}";
+  document.head.appendChild(st);
+})();
+
 // MARKS web-style drill-down modules (CPYQB, All Qs, DPP, Formula, Tests, Quick Concepts)
 
 const PAGE_SIZE = 24; // smaller first paint — infinite scroll loads more
@@ -18,7 +60,7 @@ function sanitizeCpyqbNavPayload(prev, incoming) {
   const src = incoming || {};
   const p = Object.assign({}, prev || {}, src);
   const step = String(src.step || p.step || "");
-  const shallow = /^(exams|subjects|chapters|chapterHub|topics|buckets|classExams|class12boards)$/.test(step);
+  const shallow = /^(exams|subjects|chapters|chapterHub|topics|buckets|classExams|class12boards|tallentexFolder)$/.test(step);
   const examChanged = src.exam != null && src.exam !== (prev && prev.exam);
   const subjectChanged = src.subject != null && src.subject !== (prev && prev.subject);
   const chapterChanged = src.chapter != null && src.chapter !== (prev && prev.chapter);
@@ -261,7 +303,7 @@ async function fetchNav(name) {
             title: e.title || bi.title,
             category: bi.category || e.category,
             count: Math.max(Number(e.count) || 0, Number(bi.count) || 0),
-            isComingSoon: bi.isComingSoon === true || /^class_(7|8|10)$/.test(String(e.slug))
+            isComingSoon: bi.isComingSoon === true || /^class_(7|8)$/.test(String(e.slug))
           });
         });
       }
@@ -311,41 +353,39 @@ function qPreview(text) {
     const qn = s.match(/\bQ\.?\s*(\d+)/i);
     return qn ? `Q.${qn[1]} · Tap to open book page` : "Tap to open book page";
   }
-  // Drop tables/images — list cards are text previews only
+  // Drop tables/images — list cards are text+math previews
   s = s.replace(/<table[\s\S]*?<\/table>/gi, " ");
   s = s.replace(/<img\b[^>]*>/gi, " ");
+  // Protect math islands, strip other HTML, then restore (qxmd376: keep LaTeX for Mx/KaTeX)
+  const islands = [];
+  const stash = (m) => { islands.push(m); return `@@QXMATH${islands.length - 1}@@`; };
+  s = s.replace(/\$\$[\s\S]*?\$\$/g, stash);
+  s = s.replace(/\\\[[\s\S]*?\\\]/g, stash);
+  s = s.replace(/\\\([\s\S]*?\\\)/g, stash);
+  s = s.replace(/\$[^$\n]{1,800}\$/g, stash);
   s = s.replace(/<[^>]+>/g, " ");
-  // Decode common entities
   s = s.replace(/&nbsp;/gi, " ").replace(/&amp;/gi, "&")
     .replace(/&lt;/gi, "<").replace(/&gt;/gi, ">")
     .replace(/&[a-z]+;/gi, " ");
-  // Strip display math blocks
-  s = s.replace(/\$\$[\s\S]*?\$\$/g, " ");
-  s = s.replace(/\\\[[\s\S]*?\\\]/g, " ");
-  const SUB = { "0": "₀", "1": "₁", "2": "₂", "3": "₃", "4": "₄", "5": "₅", "6": "₆", "7": "₇", "8": "₈", "9": "₉" };
-  const toSub = (d) => String(d).split("").map((ch) => SUB[ch] || ch).join("");
-  // $...$ → readable chemistry / math (CH₃ not CH_3)
-  s = s.replace(/\$([^$]*)\$/g, (_, inner) => {
-    return String(inner)
-      .replace(/\\(?:textbf|mathrm|mathbf|textit|text|rm|bf|it)\s*\{([^{}]*)\}/gi, "$1")
-      .replace(/\\(?:textbf|mathrm|mathbf|textit|text)\b/gi, " ")
-      .replace(/_\{(\d+)\}/g, (_, d) => toSub(d))
-      .replace(/_(\d)/g, (_, d) => SUB[d] || d)
-      .replace(/\^\{([^{}]+)\}/g, "^$1")
-      .replace(/\\[a-zA-Z]+\s*\{([^{}]*)\}/g, "$1")
-      .replace(/\\[a-zA-Z]+/g, " ")
-      .replace(/[{}]/g, "");
-  });
-  // Bare leftover LaTeX commands (e.g. \textbf{P} without $)
-  s = s.replace(/\\(?:textbf|mathrm|mathbf|textit|text|rm|bf|it)\s*\{([^{}]*)\}/gi, "$1");
-  s = s.replace(/\\[a-zA-Z]+\s*\{([^{}]*)\}/g, "$1");
-  s = s.replace(/\\[a-zA-Z]+/g, " ");
-  s = s.replace(/[{}$]/g, " ");
   s = s.replace(/\s+/g, " ").trim();
-  // Truncate on word boundary — never cut mid-command (was: "statemen t{…")
-  if (s.length > 150) {
-    s = s.slice(0, 150).replace(/\s+\S*$/, "").replace(/[.,;:]\s*$/, "") + "…";
+  // Soft length cap without cutting inside a math token
+  if (s.length > 220) {
+    let cut = 220;
+    const at = s.lastIndexOf("@@QXMATH", cut);
+    if (at > 120) cut = at;
+    else {
+      cut = s.slice(0, 220).replace(/\s+\S*$/, "").length || 200;
+    }
+    s = s.slice(0, cut).replace(/[.,;:]\s*$/, "") + "…";
   }
+  s = s.replace(/@@QXMATH(\d+)@@/g, (_, i) => islands[Number(i)] || "");
+  // Prefer Mx.html when ready so Matrix/fractions paint immediately on cards
+  try {
+    if (typeof Mx !== "undefined" && Mx.html) {
+      const painted = Mx.html(s);
+      if (painted && !/@@QXMATH/.test(painted)) return painted;
+    }
+  } catch (_) { /* */ }
   return s || "Question";
 }
 
@@ -458,14 +498,15 @@ function renderDashExamScroll(exams) {
   const track = typeof cpyqbActiveTrack === "function" ? cpyqbActiveTrack() : (STATE && STATE.exam);
   // Academic dashboard: Class 7–12 folders (not raw bank list)
   if (track === "Academic") {
-    return academicClassFolderDefs(exams).map(f => {
+    const folders = academicClassFolderDefs(exams).slice().sort(function (a, b) {
+      return Number(!!a.soon) - Number(!!b.soon);
+    });
+    return folders.map(f => {
       let click;
       if (f.soon) {
         click = `onclick="typeof showToast==='function'&&showToast('📚 ${f.label} — Coming Soon')"`;
-      } else if (f.boards) {
-        click = mg("cpyqb", { step: "class12boards" });
       } else {
-        click = mg("cpyqb", { step: "subjects", exam: f.slug, forceExamList: false });
+        click = mg("cpyqb", { step: "classExams", classSlug: f.slug, exam: f.slug, forceExamList: false });
       }
       const logo = typeof QuantrexExamLogos !== "undefined"
         ? QuantrexExamLogos.html(f.slug === "class_12" ? "cbse" : f.slug, 32, "exam-pill-logo")
@@ -522,15 +563,10 @@ function dppSubjectStyle(name, iconUrl) {
   return { ...base, icon: subjectIcon(name, iconUrl, 28) };
 }
 
-function dppLiveAspirantCount() {
-  const base = 620 + (new Date().getHours() % 12) * 7;
-  return base + (new Date().getMinutes() % 50);
-}
-
 function dppTotalSets(nav) {
   let n = 0;
   (nav || []).forEach(s => (s.chapters || []).forEach(c => { n += (c.sets || []).length; }));
-  return n || 700;
+  return n;
 }
 
 function bookQuestionLabel(q) {
@@ -637,6 +673,11 @@ function qxRegisterOfflineQuestions(qs) {
 }
 
 function renderQList(qs, page, testMeta, opts) {
+  /* qxmd372 practice list filter: hide empty-sol items without remote Marks id */
+  if (Array.isArray(qs) && typeof qxEligibleForPracticeList === "function") {
+    qs = qs.filter(function (q) { return qxEligibleForPracticeList(q); });
+  }
+
   opts = opts || {};
   qxRegisterOfflineQuestions(qs);
   const allQs = opts.allQs || (!opts.skipResetAll ? qs : (window._qxListQsAll || qs));
@@ -688,6 +729,17 @@ function renderQList(qs, page, testMeta, opts) {
   const list = slice.length ? slice.map(renderQCard).join("") : `<div class="empty">No questions${cur !== "all" ? " for " + cur : ""} found.</div>`;
   const more = viewQs.length > shown ? `<div class="qx-load-more" id="qxLoadMore"><span>Loading more…</span></div>` : "";
   const filterNote = cur !== "all" ? ` · <span class="qx-diff-active">${cur}</span>` : "";
+  try {
+    setTimeout(function(){
+      var root = document.getElementById("marksQList") || document.getElementById("qxQListWrap");
+      if (typeof Mx !== "undefined" && Mx.afterRender && root) {
+        var texts = root.querySelectorAll(".q-text");
+        texts.forEach(function(el){ try { Mx.afterRender(el); } catch(_e){} });
+      } else if (window.qxTypesetChapterCards) {
+        qxTypesetChapterCards(root);
+      }
+    }, 40);
+  } catch(_qxK){}
   return `<div id="qxQListWrap" class="qx-qlist-wrap">${testBar}${diffBar}<p class="result-count">${viewQs.length.toLocaleString()} questions${filterNote}${viewQs.length > PAGE_SIZE ? ` · showing ${shown}` : ""}</p>
     <div class="q-list" id="marksQList">${list}</div>${more}</div>`;
 }
@@ -702,11 +754,21 @@ function bindMarksInfiniteScroll(root) {
     const list = document.getElementById("marksQList");
     if (!list || list.children.length >= qs.length) return;
     const next = qs.slice(list.children.length, list.children.length + PAGE_SIZE);
+    const added = [];
     next.forEach(q => {
       const div = document.createElement("div");
       div.innerHTML = renderQCard(q);
-      list.appendChild(div.firstElementChild);
+      const node = div.firstElementChild;
+      list.appendChild(node);
+      added.push(node);
     });
+    try {
+      added.forEach(function (node) {
+        const t = node && node.querySelector ? node.querySelector(".q-text") : null;
+        if (t && typeof Mx !== "undefined" && Mx.afterRender) Mx.afterRender(t);
+        else if (window.qxTypesetChapterCards) qxTypesetChapterCards(node || list);
+      });
+    } catch (_qxMathMore) { /* */ }
     if (list.children.length >= qs.length) el.remove();
   }, { rootMargin: "120px" });
   obs.observe(el);
@@ -1492,7 +1554,9 @@ function cpyqbActiveTrack() {
 
 /**
  * PRODUCT RULE (owner):
- *  Class 7–10  → questions NOT added yet → Coming Soon
+ *  Class 7–8   → questions NOT added yet → Coming Soon
+ *  Class 9     → CBSE Board · Number System
+ *  Class 10    → TALENTEX folder (official 2024 PYP CBT)
  *  Class 11    → JEE Main chapters + JEE Advanced chapters
  *  Class 12    → CBSE Board + JEE Main chapters + JEE Advanced chapters
  */
@@ -1508,7 +1572,10 @@ function academicClassFolderDefs(allExams) {
     if (n === 9) {
       sub = "CBSE Board · Number System";
       soon = false;
-    } else if (n >= 7 && n <= 10) {
+    } else if (n === 10) {
+      sub = "TALENTEX · 2024 PYP · 2 papers";
+      soon = false;
+    } else if (n >= 7 && n <= 8) {
       sub = "Coming Soon · questions not added yet";
       soon = true;
     } else if (n === 11) {
@@ -1559,8 +1626,27 @@ function academicClassExamTracks(classNum) {
     ];
   }
 
-  // Class 7 / 8 / 10: no question packs yet
-  if (n >= 7 && n <= 10) {
+  // Class 10: TALENTEX folder (official ALLEN 2024 PYP)
+  if (n === 10) {
+    return [
+      {
+        id: "tallentex",
+        label: "TALENTEX",
+        sub: "Class 10 · TALLENTEX 2024 PYP · 2 papers",
+        logoSlug: "tallentex",
+        iconFallback: "📘",
+        click: {
+          step: "tallentexFolder",
+          exam: "class_10",
+          classSlug: "class_10",
+          trackKind: "tallentex"
+        }
+      }
+    ];
+  }
+
+  // Class 7 / 8: no question packs yet
+  if (n >= 7 && n <= 8) {
     return [
       {
         id: "coming_soon",
@@ -1683,18 +1769,20 @@ function renderAcademicClassExamTracks(classSlug) {
     : "";
   const hint = n === 9
     ? "CBSE Board · Mathematics · Number System"
-    : (n <= 10
-      ? "Questions for Class " + n + " are not added yet"
-      : (n === 11
-        ? "Class 11 · open JEE Main or JEE Advanced chapter list"
-        : "Class 12 · CBSE Board · JEE Main · JEE Advanced chapter lists"));
+    : (n === 10
+      ? "TALENTEX folder · official TALLENTEX 2024 Class 10 papers"
+      : (n <= 8
+        ? "Questions for Class " + n + " are not added yet"
+        : (n === 11
+          ? "Class 11 · open JEE Main or JEE Advanced chapter list"
+          : "Class 12 · CBSE Board · JEE Main · JEE Advanced chapter lists")));
   return `<div class="cpyqb-exam-bank-page qx-academic-page">
     <div class="cpyqb-exam-bank-head">
       <h1>Class ${n}</h1>
       <p class="sec-desc">${hint}</p>
     </div>
     ${bc}
-    <h2 class="cpyqb-exam-sec-title">${n === 9 ? "Select track" : (n <= 10 ? "Status" : "Select track")}</h2>
+    <h2 class="cpyqb-exam-sec-title">${n === 9 || n === 10 ? "Select track" : (n <= 8 ? "Status" : "Select track")}</h2>
     <div class="cpyqb-exam-grid qx-class-exam-grid qx-class-exam-grid-${tracks.length}">${tiles}</div>
   </div>`;
 }
@@ -1711,7 +1799,8 @@ function renderAcademicClassFolders(allExams) {
     const metaLine = f.soon
       ? "Coming Soon"
       : (f.classNum === 9 ? "CBSE · Number System"
-        : (f.classNum === 11 ? "2 tracks · JEE Main + Advanced" : "3 tracks · CBSE + JEE Main + Advanced"));
+        : (f.classNum === 10 ? "TALENTEX · 2 papers"
+          : (f.classNum === 11 ? "2 tracks · JEE Main + Advanced" : "3 tracks · CBSE + JEE Main + Advanced")));
     return `<div class="cpyqb-exam-tile qx-class-folder-tile${f.soon ? " soon" : ""}" ${click} data-class="${f.classNum}">
       <div class="cpyqb-exam-tile-ic">${logo}</div>
       <strong>${f.label}${f.soon ? " · Soon" : ""}</strong>
@@ -1722,12 +1811,202 @@ function renderAcademicClassFolders(allExams) {
   return `<div class="cpyqb-exam-bank-page qx-academic-page">
     <div class="cpyqb-exam-bank-head">
       <h1>Class 7–12</h1>
-      <p class="sec-desc"><b>7–8, 10:</b> Coming Soon &nbsp;·&nbsp; <b>9:</b> CBSE Number System &nbsp;·&nbsp; <b>11:</b> JEE Main + JEE Advanced &nbsp;·&nbsp; <b>12:</b> CBSE Board + JEE Main + JEE Advanced</p>
+      <p class="sec-desc"><b>7–8:</b> Coming Soon &nbsp;·&nbsp; <b>9:</b> CBSE Number System &nbsp;·&nbsp; <b>10:</b> TALENTEX &nbsp;·&nbsp; <b>11:</b> JEE Main + JEE Advanced &nbsp;·&nbsp; <b>12:</b> CBSE Board + JEE Main + JEE Advanced</p>
     </div>
     <h2 class="cpyqb-exam-sec-title">Select Class</h2>
     <div class="cpyqb-exam-grid qx-class-folder-grid">${tiles}</div>
   </div>`;
 }
+
+function renderTallentexFolder() {
+  const papers = [
+    {
+      id: "set1",
+      label: "Paper 1",
+      sub: "TALLENTEX 2024 · 29 Oct 2023 · Code U",
+      meta: "80 MCQ · 320 marks · 2 hours"
+    },
+    {
+      id: "set2",
+      label: "Paper 2",
+      sub: "TALLENTEX 2024 · 05 Nov 2023 · Code A",
+      meta: "80 MCQ · 320 marks · 2 hours"
+    }
+  ];
+  const tiles = papers.map(p => {
+    const sid = String(p.id).replace(/[^a-z0-9_]/gi, "");
+    let saved = null;
+    try {
+      saved = typeof marksLoadSession === "function" ? marksLoadSession("tlx10_2024_" + sid) : null;
+    } catch (_) { saved = null; }
+    const meta = saved
+      ? ("Resume Q" + ((saved.idx || 0) + 1) + " · " + (saved.answers ? Object.keys(saved.answers).length : 0) + " answered")
+      : p.meta;
+    return `<div class="cpyqb-exam-tile qx-tlx-paper-tile" onclick="startTallentexPaper('${sid}')" data-tlx-paper="${sid}">
+      <div class="cpyqb-exam-tile-ic"><span class="cpyqb-exam-tile-folder" aria-hidden="true">📝</span></div>
+      <strong>${p.label}${saved ? " · Resume" : ""}</strong>
+      <small>${p.sub}</small>
+      <span class="qx-class-folder-meta">${meta}</span>
+    </div>`;
+  }).join("");
+  const bc = typeof breadcrumb === "function"
+    ? breadcrumb([
+      { label: "Class 7–12", view: "cpyqb", payload: { step: "exams", forceExamList: true } },
+      { label: "Class 10", view: "cpyqb", payload: { step: "classExams", classSlug: "class_10", exam: "class_10" } },
+      { label: "TALENTEX" }
+    ])
+    : "";
+  return `<div class="cpyqb-exam-bank-page qx-academic-page qx-tlx-folder">
+    <div class="cpyqb-exam-bank-head">
+      <h1>TALENTEX</h1>
+      <p class="sec-desc">Official TALLENTEX 2024 Class 10 previous year papers · CBT mock with booklet instructions and official answer key. Source: allen.in</p>
+    </div>
+    ${bc}
+    <div class="qx-tlx-pattern">
+      <span>80 MCQ</span>
+      <span>Physics 15 · Chemistry 15 · Biology 15 · Maths 15 · IQ 20</span>
+      <span>+4 / −1 / 0</span>
+      <span>2 hours</span>
+    </div>
+    <h2 class="cpyqb-exam-sec-title">Select paper</h2>
+    <div class="cpyqb-exam-grid qx-class-exam-grid qx-class-exam-grid-2">${tiles}</div>
+  </div>`;
+}
+
+let _tlxPaperCache = Object.create(null);
+
+async function loadTallentexPaper(setId) {
+  const id = String(setId || "").replace(/[^a-z0-9_]/gi, "");
+  if (_tlxPaperCache[id]) return _tlxPaperCache[id];
+  const bust = (typeof window !== "undefined" && window.QX_BUILD) ? window.QX_BUILD : "qxmd345";
+  let url = "data/tests/tallentex/papers/" + id + ".json?v=" + encodeURIComponent(bust);
+  try { url = new URL(url, location.href).href; } catch (_) { /* keep relative */ }
+  const res = await fetch(url, { cache: "default" });
+  if (!res.ok) throw new Error("TALENTEX paper " + id + " HTTP " + res.status);
+  const data = await res.json();
+  let bag = null;
+  try { if (typeof QUESTIONS !== "undefined" && Array.isArray(QUESTIONS)) bag = QUESTIONS; } catch (_) { bag = null; }
+  if (!bag) {
+    try {
+      if (typeof window !== "undefined") {
+        if (!Array.isArray(window.QUESTIONS)) window.QUESTIONS = [];
+        bag = window.QUESTIONS;
+      }
+    } catch (_) { bag = []; }
+  }
+  (data.questions || []).forEach(function (q) {
+    if (!q || q.id == null) return;
+    let existing = null;
+    try { existing = typeof getQ === "function" ? getQ(q.id) : null; } catch (_) { existing = null; }
+    if (existing) {
+      Object.assign(existing, q);
+      try { if (typeof _qxIndexQuestion === "function") _qxIndexQuestion(existing); } catch (_) { /* */ }
+    } else if (bag) {
+      bag.push(q);
+      try { if (typeof _qxIndexQuestion === "function") _qxIndexQuestion(q); } catch (_) { /* */ }
+    }
+  });
+  _tlxPaperCache[id] = data;
+  return data;
+}
+try { window.loadTallentexPaper = loadTallentexPaper; } catch (_) { /* */ }
+
+async function startTallentexPaper(setId) {
+  const id = String(setId || "").replace(/[^a-z0-9_]/gi, "");
+  if (!id) return;
+  try {
+    if (typeof showToast === "function") showToast("Opening TALENTEX CBT…");
+  } catch (_) { /* */ }
+  let paper;
+  try {
+    paper = await loadTallentexPaper(id);
+  } catch (err) {
+    console.error("startTallentexPaper", err);
+    if (typeof showToast === "function") showToast("Could not load TALENTEX paper. Try again.");
+    return;
+  }
+  const ids = (paper.questionIds && paper.questionIds.length)
+    ? paper.questionIds.slice()
+    : (paper.questions || []).map(function (q) { return q && q.id; }).filter(Boolean);
+  if (ids.length !== 80) {
+    if (typeof showToast === "function") showToast("TALENTEX paper is incomplete (" + ids.length + "/80).");
+    return;
+  }
+  try {
+    const missing = ids.filter(function (qid) {
+      try { return typeof getQ !== "function" || !getQ(qid); } catch (_) { return true; }
+    });
+    if (missing.length && Array.isArray(paper.questions)) {
+      paper.questions.forEach(function (q) {
+        if (!q || q.id == null) return;
+        try { if (typeof _qxIndexQuestion === "function") _qxIndexQuestion(q); } catch (_) { /* */ }
+      });
+    }
+  } catch (_) { /* */ }
+  if (typeof startTest !== "function") {
+    if (typeof showToast === "function") showToast("Test player is not ready. Refresh and try again.");
+    return;
+  }
+  const persistKey = "tlx10_2024_" + id;
+  let saved = null;
+  try { saved = typeof marksLoadSession === "function" ? marksLoadSession(persistKey) : null; } catch (_) { saved = null; }
+  if (saved && saved.ids && saved.ids.length && typeof qxResumeSavedTest === "function") {
+    try {
+      if (window.confirm("Resume TALENTEX from Q" + ((saved.idx || 0) + 1) + "? Cancel starts a fresh paper.")) {
+        qxResumeSavedTest(persistKey);
+        return;
+      }
+    } catch (_) { /* start fresh */ }
+  }
+  const sections = (paper.sections || []).map(function (s) {
+    return {
+      id: s.id,
+      subject: s.subject,
+      label: s.label || s.subject,
+      start: s.start,
+      count: s.count
+    };
+  });
+  try {
+  startTest(ids, paper.title || "TALLENTEX 2024", "cpyqb", {
+    testType: "tallentex",
+    timed: true,
+    durationSec: paper.durationSec || 7200,
+    modeLabel: "TALLENTEX · 120 min",
+    marksMode: true,
+    shuffle: false,
+    organizeJee: false,
+    questionsReady: true,
+    skipInstructions: false,
+    skipCountdown: false,
+    scoring: paper.marking || { correct: 4, wrong: -1, unattempted: 0 },
+    sections: sections,
+    totalMarks: paper.totalMarks || 320,
+    catalogTotalQs: 80,
+    catalogDurationMin: 120,
+    uiMode: "examgoal",
+    _qxFormat: "quantrex",
+    persistKey: "tlx10_2024_" + id,
+    meta: {
+      exam: "tallentex",
+      examTitle: "TALLENTEX",
+      slug: "tallentex",
+      year: 2024,
+      source: paper.source || "https://allen.in/10-tallentx-pyp-2024",
+      paperCode: paper.paperCode,
+      paperId: paper.id,
+      optionScheme: "1234",
+      classSlug: "class_10",
+      returnView: "cpyqb",
+      returnPayload: { step: "tallentexFolder", classSlug: "class_10", exam: "class_10", trackKind: "tallentex" }
+    }
+  });
+  } catch (err) {
+    console.error("startTallentexPaper startTest", err);
+    if (typeof showToast === "function") showToast("Could not open TALENTEX CBT. Try again.");
+  }
+}
+try { window.startTallentexPaper = startTallentexPaper; } catch (_) { /* */ }
 
 function renderClass12BoardPicker() {
   // Owner rule: Class 12 → CBSE Board (primary). Keep HSC optional.
@@ -1788,8 +2067,8 @@ function renderCpyqbExamBank(allExams) {
   const tile = e => {
     const bi = (typeof BANK_INDEX !== "undefined" && BANK_INDEX[e.slug]) || null;
     const count = Math.max(Number(e.count) || 0, Number(bi && bi.count) || 0);
-    // Only mark Coming Soon for explicit flags / Class 7–10 — never hide real PYQ banks with 0 nav count
-    const soon = !!(e.isComingSoon || (bi && bi.isComingSoon) || /^class_(7|8|10)$/.test(String(e.slug || "")) || (count <= 0 && !/^class_9$/.test(String(e.slug || ""))));
+    // Only mark Coming Soon for explicit flags / Class 7–8 — never hide real PYQ banks with 0 nav count
+    const soon = !!(e.isComingSoon || (bi && bi.isComingSoon) || /^class_(7|8)$/.test(String(e.slug || "")) || (count <= 0 && !/^class_(9|10)$/.test(String(e.slug || ""))));
     const yrs = typeof cpyqbExamYearLabel === "function" ? cpyqbExamYearLabel(e.slug) : "";
     const sub = soon
       ? "Coming Soon"
@@ -2266,9 +2545,20 @@ async function ensureCpyqbChapterQuestions(examSlug, subject, chapter, meta, opt
     return qs;
   }
 
-  // Single clear empty state — avoid toast + banner + empty triple noise
-  if (typeof showToast === "function") {
-    showToast("No questions in this topic yet.");
+  // qxmd372: never false-toast when chapter/topic still has ids or a later path may fill qs
+  try {
+    const pendingIds = (typeof marksIdsFromMeta === "function" && arguments && arguments.length)
+      ? null : null;
+  } catch (_) { /* */ }
+  if (!qs.length && typeof showToast === "function") {
+    /* Only toast when definitively empty — suppress if QUESTIONS already has chapter hits */
+    var hasLocal = false;
+    try {
+      if (typeof QUESTIONS !== "undefined" && Array.isArray(QUESTIONS) && QUESTIONS.length) {
+        hasLocal = true; /* local bank present; UI empty-state handles topic miss without alarming toast */
+      }
+    } catch (_) { /* */ }
+    if (!hasLocal) showToast("No questions in this topic yet.");
   }
   return qs;
 }
@@ -2532,14 +2822,12 @@ function renderChapterHubPage(exam, p, meta, qs, stats) {
   // JEE Advanced: resources (Video/PDF/Formula like Main) + type folders + PYQs
   // IMPORTANT: do NOT use .ch-hub-page (1fr 280px) — it shoved type cards into a 280px column.
   if (isAdv && typeBuckets.length) {
-    const formulaPayload = mg("qxsheets", { kind: "adv_formula", step: "open", subject: p.subject, chapter: p.chapter });
+        const formulaPayload = mg("qxsheets", { kind: "adv_formula", step: "open", subject: p.subject, chapter: p.chapter });
     const notesPayload = mg("qxsheets", { kind: "adv_notes", step: "open", subject: p.subject, chapter: p.chapter });
-    const revisionPayload = mg("qxsheets", { kind: "adv_notes", step: "open", subject: p.subject, chapter: p.chapter });
-    /* qxmd172: no Concept Videos — Quantrex practice/notes/formula/revision only */
+    /* qxmd375: drop duplicate Revision Notes tile (same as Notes PDF) — faltu Important Readings twin */
     const resourceMods = [
       { id: "notes", title: "Notes (PDF)", sub: "Chapter notes · Quantrex Academy", payload: notesPayload, soon: false },
-      { id: "formula", title: "Formula Sheet (PDF)", sub: "Chapter formulae · Quantrex Academy", payload: formulaPayload, soon: false },
-      { id: "revision", title: "Revision Notes", sub: "Last-minute notes · Quantrex Academy", payload: revisionPayload, soon: false }
+      { id: "formula", title: "Formula Sheet (PDF)", sub: "Chapter formulae · Quantrex Academy", payload: formulaPayload, soon: false }
     ];
     const resourceCards = resourceMods.map((m) => {
       const click = m.soon
@@ -2582,7 +2870,7 @@ function renderChapterHubPage(exam, p, meta, qs, stats) {
           <p>JEE (Advanced) · ${p.subject} · ${pyqCount} PYQs</p>
         </div></div>
 
-        <h3 class="qx-all-topics-label">Study Resources <small style="font-weight:600;opacity:.75">· Notes · PDF · Formula</small></h3>
+        <h3 class="qx-all-topics-label">Study Resources <small style="font-weight:600;opacity:.75">· Notes PDF · Formula Sheet</small></h3>
         <div class="qx-module-grid qx-adv-resource-grid">${resourceCards}</div>
 
         ${renderJeeAdvTypeLevelCards(p, typeBuckets)}
@@ -2607,9 +2895,7 @@ function renderChapterHubPage(exam, p, meta, qs, stats) {
       : null;
     const pyqPayload = practicePayload;
     const isMain = p.exam === "jee_main" || /jee.?main/i.test(String(exam.title || p.exam || ""));
-    const revisionPayload = isMain
-      ? mg("qxsheets", { kind: "revision", step: "open", subject: p.subject, chapter: p.chapter })
-      : mg("quickconcepts", { step: "subjects" });
+    const revisionPayload = null; /* qxmd375: faltu duplicate of Notes (PDF) removed */
     const formulaPayload = isMain
       ? mg("qxsheets", { kind: "formula", step: "open", subject: p.subject, chapter: p.chapter })
       : mg("formula", { step: "chapters", subject: p.subject });
@@ -2766,10 +3052,18 @@ async function viewCpyqb(payload) {
     return false;
   });
 
-  // Class N → product tracks (7–10 Soon · 11 JEE M+A · 12 CBSE+JEE M+A)
-  // Never open raw class_7…class_10 banks — owner has not added questions for those yet
-  if (p.exam && /^class_(7|8|10)$/.test(String(p.exam)) && p.step !== "classExams" && p.step !== "exams") {
+  // Class N → product tracks (7–8 Soon · 9 CBSE · 10 TALENTEX · 11 JEE M+A · 12 CBSE+JEE M+A)
+  if (p.step === "tallentexFolder") {
+    _lastListFn = () => ({ step: "tallentexFolder", classSlug: "class_10", exam: "class_10", trackKind: "tallentex" });
+    return `${topbar("TALENTEX", "Class 10 · TALLENTEX 2024 PYP")}
+      ${renderTallentexFolder()}`;
+  }
+  // Never open raw class_7 / class_8 banks
+  if (p.exam && /^class_(7|8)$/.test(String(p.exam)) && p.step !== "classExams" && p.step !== "exams") {
     return viewCpyqb({ step: "classExams", classSlug: p.exam, exam: p.exam, forceExamList: false });
+  }
+  if (p.exam === "class_10" && p.step !== "classExams" && p.step !== "exams" && p.step !== "tallentexFolder") {
+    return viewCpyqb({ step: "classExams", classSlug: "class_10", exam: "class_10", forceExamList: false });
   }
   if (p.exam === "class_9" && p.trackKind !== "cbse_board" && p.step !== "classExams" && p.step !== "exams"
     && p.step !== "subjects" && p.step !== "chapters" && p.step !== "questions" && p.step !== "topics" && p.step !== "buckets") {
@@ -2781,7 +3075,8 @@ async function viewCpyqb(payload) {
     const n = parseInt(String(cs).replace("class_", ""), 10) || 0;
     const sub = n === 9
       ? "CBSE Board · Number System"
-      : (n <= 10 ? "Coming Soon" : (n === 11 ? "JEE Main · JEE Advanced" : "CBSE Board · JEE Main · JEE Advanced"));
+      : (n === 10 ? "TALENTEX · 2024 PYP"
+        : (n <= 8 ? "Coming Soon" : (n === 11 ? "JEE Main · JEE Advanced" : "CBSE Board · JEE Main · JEE Advanced")));
     return `${topbar(`Class ${n || ""}`.trim(), sub)}
       ${renderAcademicClassExamTracks(cs)}`;
   }
@@ -2828,7 +3123,7 @@ async function viewCpyqb(payload) {
   if (p.step === "exams" || !p.exam) {
     _lastListFn = () => ({ step: "exams", forceExamList: true });
     const sub = track === "Academic"
-      ? "7–10 Coming Soon · 11: JEE Main + Advanced · 12: CBSE Board + JEE Main + Advanced"
+      ? "7–8 Coming Soon · 9: CBSE · 10: TALENTEX · 11: JEE Main + Advanced · 12: CBSE Board + JEE Main + Advanced"
       : track === "Defence"
         ? "Defence exams only"
         : track === "Medical"
@@ -4477,7 +4772,7 @@ function qxNcertProxyHtml(html) {
     const owned = (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.ownedFigureUrl)
       ? QxOwnedFigs.ownedFigureUrl(u)
       : "";
-    return "/api/proxy-image?clean=1&v=qxfig110&url=" + encodeURIComponent(owned || u);
+    return owned || u;
   });
 }
 
@@ -4758,13 +5053,13 @@ function qxEnsureFormulaCardSkin() {
     const link = document.createElement("link");
     link.id = "qxFcCardCss";
     link.rel = "stylesheet";
-    link.href = "assets/qx-formula-cards.css?v=qxmd321";
+    link.href = "assets/qx-formula-cards.css?v=qxmd351";
     document.head.appendChild(link);
   }
   if (!document.getElementById("qxFcCardJs")) {
     const s = document.createElement("script");
     s.id = "qxFcCardJs";
-    s.src = "assets/qx-formula-cards.js?v=qxmd321";
+    s.src = "assets/qx-formula-cards.js?v=qxmd351";
     document.head.appendChild(s);
   }
   setTimeout(function () {
@@ -4775,13 +5070,9 @@ function qxEnsureFormulaCardSkin() {
 function qxFormulaMarkup(html) {
   let s = String(html || "");
   function fcUrl(u) {
-    if (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.displaySrc) {
-      const d = QxOwnedFigs.displaySrc(u);
-      if (d) return d;
-    }
-    return "/api/proxy-image?clean=1&fc=1&v=qxfig110&url=" + encodeURIComponent(u);
+    return "/api/proxy-image?clean=1&fc=1&v=qxmd351&url=" + encodeURIComponent(u);
   }
-  // Always route formula art through fc=1 wipe (tiled MARKS → white, colour stays)
+  // Route formula art through fc=1 wipe (pale MARKS only; ink stays).
   s = s.replace(/https?:\/\/(?:cdn-assets\.)?getmarks\.app\/[^"'>\s]+/gi, fcUrl);
   s = s.replace(/\/\/cdn-assets\.getmarks\.app\/[^"'>\s]+/gi, (u) => fcUrl("https:" + u));
   s = s.replace(/https?:\/\/firebasestorage\.googleapis\.com\/[^"'>\s]+/gi, (u) => {
@@ -5132,7 +5423,6 @@ async function viewDppMarks(payload) {
 
   if (p.step === "subjects" || !p.subject) {
     _lastListFn = () => ({ step: "subjects" });
-    const aspirants = dppLiveAspirantCount();
     const totalSets = dppTotalSets(nav);
     const cards = nav.map(s => {
       const st = dppSubjectStyle(s.name);
@@ -5148,12 +5438,12 @@ async function viewDppMarks(payload) {
     }).join("");
     return `<div class="dpp-marks-page">
       <div class="dpp-marks-head">
-        <h1>${QX_UX.drills} <span class="qx-premium-pill">PREMIUM</span></h1>
+        <h1>${QX_UX.drills}</h1>
         <p class="dpp-social-proof">Chapter DPP packs · Starter · Core · Challenge</p>
       </div>
       <div class="dpp-promo-banner">
         <span class="dpp-promo-ic">›</span>
-        <span><b>${totalSets}+</b> chapter DPP packs, sorted Starter · Core · Challenge</span>
+        <span>${totalSets ? `<b>${totalSets}</b> chapter DPP packs, sorted Starter · Core · Challenge` : "Chapter DPP packs, sorted Starter · Core · Challenge"}</span>
       </div>
       <div class="dpp-subj-row">${cards || '<div class="empty">No DPP packs yet.</div>'}</div>
     </div>`;
@@ -5281,6 +5571,8 @@ async function startDppSet(dppId) {
 
 // ============ REVISION FLASH CARDS (Marks extract) ============
 let _rfcPayload = { step: "subjects" };
+var _qxSheetCardCache = _qxSheetCardCache || Object.create(null);
+var _qxSheetNavCache = _qxSheetNavCache || Object.create(null);
 
 function qxRfcTone(name) {
   const n = String(name || "").toLowerCase();
@@ -5307,14 +5599,15 @@ function qxRfcFileKey(subj) {
 }
 
 function qxRfcImg(src) {
-  const u = String(src || "");
+  /* qxmd377: direct CDN first (proxy clean ~5s cold); local sheets unchanged */
+  let u = String(src || "");
   if (!u) return "";
-  if (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.displaySrc) {
-    const d = QxOwnedFigs.displaySrc(u);
-    if (d) return d;
+  if (/proxy-image/i.test(u)) {
+    try { u = new URL(u, location.origin).searchParams.get("url") || u; } catch (_) { /* */ }
   }
-  if (/proxy-image/i.test(u) && /fc=1/i.test(u)) return u;
-  return "/api/proxy-image?clean=1&fc=1&v=qxfig110&url=" + encodeURIComponent(u);
+  if (/qx_sheets\//i.test(u) || (/^data\//i.test(u) && !/^https?:/i.test(u))) return u;
+  if (/cdn-assets\.getmarks\.app|firebasestorage\.googleapis\.com|googleusercontent\.com/i.test(u)) return u;
+  return "/api/proxy-image?clean=1&fc=1&v=qxmd377&url=" + encodeURIComponent(u);
 }
 
 function qxEnsureRfcSkin() {
@@ -5325,11 +5618,11 @@ function qxEnsureRfcSkin() {
     link.rel = "stylesheet";
     document.head.appendChild(link);
   }
-  link.href = "assets/qx-rfc.css?v=qxmd321";
+  link.href = "assets/qx-rfc.css?v=qxmd377";
   if (!document.getElementById("qxRfcJs")) {
     const s = document.createElement("script");
     s.id = "qxRfcJs";
-    s.src = "assets/qx-rfc.js?v=qxmd321";
+    s.src = "assets/qx-rfc.js?v=qxmd377";
     s.onload = function () { window._qxRfcReady = true; };
     document.head.appendChild(s);
   } else {
@@ -5338,6 +5631,20 @@ function qxEnsureRfcSkin() {
 }
 
 function qxRfcOpenWhenReady(cards, start) {
+  const i0 = start || 0;
+  const first = cards && cards[i0];
+  if (first && first.src) {
+    try {
+      for (let k = 0; k < 3; k++) {
+        const c = cards[i0 + k];
+        if (!c || !c.src) continue;
+        const im = new Image();
+        im.fetchPriority = k === 0 ? "high" : "low";
+        im.decoding = "async";
+        im.src = qxRfcImg(c.src);
+      }
+    } catch (_) { /* */ }
+  }
   function tryOpen(n) {
     if (window.QxRfcCards && window.QxRfcCards.open) {
       window.QxRfcCards.open(cards, start || 0);
@@ -5382,9 +5689,15 @@ async function qxRfcLoadChapter(subj, chapterName) {
   slugs.push(base.replace(/__+/g, "_"));
   for (let i = 0; i < slugs.length; i++) {
     const file = "data/rfc_offline/chapters/" + key + "_" + slugs[i] + ".json";
+    const ck = "rfc|" + file;
+    if (_qxSheetCardCache[ck]) return _qxSheetCardCache[ck];
     try {
-      const res = await fetch(file + "?v=qxrfc3");
-      if (res.ok) return await res.json();
+      const res = await fetch(file + "?v=qxmd377", { cache: "force-cache" });
+      if (res.ok) {
+        const j = await res.json();
+        _qxSheetCardCache[ck] = j;
+        return j;
+      }
     } catch (_) { /* try next slug */ }
   }
   return null;
@@ -5482,7 +5795,6 @@ async function viewRfcMarks(payload) {
   qxRfcOpenWhenReady(cards, 0);
   const thumbs = cards.slice(0, 24).map((c, i) =>
     `<button type="button" class="qx-rfc-ch" data-rfc-i="${i}">
-      <img src="${qxRfcImg(c.src)}" alt="">
       <strong>${p.chapter}</strong>
       <small>Card ${c.n || (i + 1)}</small>
     </button>`
@@ -5510,9 +5822,12 @@ async function qxLoadSheetNav(kind) {
     : kind === "revision" ? "revision"
     : "formula";
   try {
-    const res = await fetch("data/nav/qx_" + fileKind + ".json?v=" + encodeURIComponent(bust), { cache: "no-cache" });
+    if (_qxSheetNavCache[fileKind]) return _qxSheetNavCache[fileKind];
+    const res = await fetch("data/nav/qx_" + fileKind + ".json?v=" + encodeURIComponent(bust), { cache: "force-cache" });
     if (!res.ok) return null;
-    return await res.json();
+    const j = await res.json();
+    _qxSheetNavCache[fileKind] = j;
+    return j;
   } catch (_) { return null; }
 }
 
@@ -5609,6 +5924,7 @@ function qxSheetMatchChapter(nav, subject, chapter) {
   const subj = subs.find((s) => qxSheetSlug(s.name) === subWant)
     || subs.find((s) => qxSheetSlug(s.slug || "") === subWant)
     || subs.find((s) => qxSheetSlug(s.name).indexOf(subWant) >= 0 || subWant.indexOf(qxSheetSlug(s.name)) >= 0)
+    || subs.find((s) => (/math/.test(subWant) && /math/.test(qxSheetSlug(s.name))))
     || subs[0];
   if (!subj) return null;
   const want = qxSheetSlug(chapter);
@@ -5667,6 +5983,8 @@ function qxOpenDrivePreview(title, driveId, kindLabel) {
     if (typeof showToast === "function") showToast("This file link is missing.");
     return;
   }
+  const bust = ((typeof QX_DATA_VER !== "undefined" && QX_DATA_VER) || (typeof QX_BUILD !== "undefined" && QX_BUILD)) || "qxmd375";
+  const viewer = "assets/qx-pdf-viewer.html?v=" + encodeURIComponent(bust) + "&drive=" + encodeURIComponent(id);
   const preview = "https://drive.google.com/file/d/" + id + "/preview";
   const viewUrl = "https://drive.google.com/file/d/" + id + "/view";
   const old = document.getElementById("qxDrivePrev");
@@ -5677,19 +5995,26 @@ function qxOpenDrivePreview(title, driveId, kindLabel) {
   wrap.style.cssText = "position:fixed;inset:0;z-index:99999;background:#071428;display:flex;flex-direction:column;";
   const safeTitle = String(title || "Notes").replace(/[<>]/g, "");
   const safeKind = String(kindLabel || "Notes").replace(/[<>]/g, "");
-  wrap.innerHTML = `<div style="display:flex;align-items:center;gap:10px;padding:10px 14px;background:#071428;border-bottom:1px solid rgba(212,175,55,.35);">
+  wrap.innerHTML = `<div style="display:flex;align-items:center;gap:10px;padding:10px 14px;background:linear-gradient(90deg,#071428,#0b1f3a);border-bottom:1px solid rgba(212,175,55,.45);box-shadow:0 8px 24px rgba(0,0,0,.35);">
       <img src="assets/quantrex-logo-3d-on-clear.png" alt="" style="height:28px;width:auto;">
       <div style="flex:1;min-width:0;">
-        <div style="color:#d4af37;font-weight:800;font-size:12px;letter-spacing:.08em;">QUANTREX ACADEMY</div>
+        <div style="color:#d4af37;font-weight:800;font-size:12px;letter-spacing:.1em;">QUANTREX ACADEMY</div>
         <div style="color:#fff;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${safeTitle} · ${safeKind}</div>
       </div>
+      <button type="button" id="qxDrivePrevRetry" style="background:transparent;color:#e8d48b;border:1px solid rgba(212,175,55,.55);border-radius:8px;padding:8px 12px;font-weight:800;cursor:pointer;">Reload</button>
       <button type="button" id="qxDrivePrevExt" style="background:transparent;color:#d4af37;border:1px solid #d4af37;border-radius:8px;padding:8px 12px;font-weight:800;cursor:pointer;">Open PDF</button>
-      <button type="button" id="qxDrivePrevX" style="background:#d4af37;color:#071428;border:0;border-radius:8px;padding:8px 12px;font-weight:800;cursor:pointer;">Close</button>
+      <button type="button" id="qxDrivePrevX" style="background:linear-gradient(135deg,#d4af37,#f0d78c);color:#071428;border:0;border-radius:8px;padding:8px 12px;font-weight:800;cursor:pointer;">Close</button>
     </div>
-    <iframe src="${preview}" title="${safeTitle.replace(/"/g, "")}" allow="fullscreen" allowfullscreen style="flex:1;width:100%;border:0;background:#fff;"></iframe>`;
+    <iframe id="qxDrivePrevFrame" src="${viewer}" title="${safeTitle.replace(/"/g, "")}" allow="fullscreen" allowfullscreen style="flex:1;width:100%;border:0;background:#0b1220;"></iframe>`;
   document.body.appendChild(wrap);
+  let mode = 0;
+  const frame = wrap.querySelector("#qxDrivePrevFrame");
   const close = () => { try { wrap.remove(); } catch (_) {} };
   wrap.querySelector("#qxDrivePrevX").onclick = close;
+  wrap.querySelector("#qxDrivePrevRetry").onclick = function () {
+    mode = (mode + 1) % 2;
+    if (frame) frame.src = mode === 0 ? viewer : preview;
+  };
   wrap.querySelector("#qxDrivePrevExt").onclick = function () {
     try { window.open(viewUrl, "_blank", "noopener"); } catch (_) {
       try { location.assign(viewUrl); } catch (__) { /* */ }
@@ -5700,14 +6025,25 @@ function qxOpenDrivePreview(title, driveId, kindLabel) {
 window.qxOpenDrivePreview = qxOpenDrivePreview;
 
 async function qxOpenSheetMaterial(kind, subject, chapter, matSlug) {
-  const bust = ((typeof QX_DATA_VER !== "undefined" && QX_DATA_VER) || (typeof QX_BUILD !== "undefined" && QX_BUILD)) || "qxmd323";
+  const bust = ((typeof QX_DATA_VER !== "undefined" && QX_DATA_VER) || (typeof QX_BUILD !== "undefined" && QX_BUILD)) || "qxmd377";
   const file = "data/qx_sheets/" + kind + "/" + qxSheetSlug(subject) + "/" + qxSheetSlug(chapter) + "/" + qxSheetSlug(matSlug) + "/cards.json?v=" + encodeURIComponent(bust);
+  const ck = "mat|" + file;
   try {
-    const res = await fetch(file, { cache: "no-cache" });
-    if (!res.ok) throw new Error("missing");
-    const data = await res.json();
+    let data = _qxSheetCardCache[ck];
+    if (!data) {
+      const res = await fetch(file, { cache: "force-cache" });
+      if (!res.ok) throw new Error("missing");
+      data = await res.json();
+      _qxSheetCardCache[ck] = data;
+    }
     const cards = (data && data.cards) || [];
     if (!cards.length) throw new Error("empty");
+    try {
+      cards.slice(0, 3).forEach(function (c) {
+        if (!c || !c.src) return;
+        var im = new Image(); im.decoding = "async"; im.fetchPriority = "high"; im.src = qxRfcImg(c.src);
+      });
+    } catch (_) { /* */ }
     if (typeof qxRfcOpenWhenReady === "function") qxRfcOpenWhenReady(cards, 0);
     else if (window.QxRfcCards && window.QxRfcCards.open) window.QxRfcCards.open(cards, 0);
     else if (typeof showToast === "function") showToast("Card reader not ready.");
@@ -5717,25 +6053,55 @@ async function qxOpenSheetMaterial(kind, subject, chapter, matSlug) {
 }
 
 async function qxOpenSheetChapter(kind, subject, chapter) {
-  const bust = ((typeof QX_DATA_VER !== "undefined" && QX_DATA_VER) || (typeof QX_BUILD !== "undefined" && QX_BUILD)) || "qxmd323";
+  const bust = ((typeof QX_DATA_VER !== "undefined" && QX_DATA_VER) || (typeof QX_BUILD !== "undefined" && QX_BUILD)) || "qxmd377";
   const base = "data/qx_sheets/" + kind + "/" + qxSheetSlug(subject) + "/" + qxSheetSlug(chapter);
+  const ck = kind + "|" + qxSheetSlug(subject) + "|" + qxSheetSlug(chapter);
   try {
-    const res = await fetch(base + "/cards.json?v=" + encodeURIComponent(bust), { cache: "no-cache" });
-    if (!res.ok) throw new Error("missing");
-    const data = await res.json();
+    let data = _qxSheetCardCache[ck];
+    if (!data) {
+      const res = await fetch(base + "/cards.json?v=" + encodeURIComponent(bust), { cache: "force-cache" });
+      if (!res.ok) throw new Error("missing");
+      data = await res.json();
+      _qxSheetCardCache[ck] = data;
+    }
     if (data && data.mode === "drive" && data.driveId) {
       qxOpenDrivePreview(data.chapter || chapter, data.driveId, data.kind || kind);
       return;
     }
     const cards = (data && data.cards) || [];
     if (!cards.length) throw new Error("empty");
+    /* qxmd377: warm first 3 webps before/while reader opens */
+    try {
+      cards.slice(0, 3).forEach(function (c) {
+        if (!c || !c.src) return;
+        var im = new Image();
+        im.decoding = "async";
+        im.fetchPriority = "high";
+        im.src = qxRfcImg(c.src);
+      });
+    } catch (_) { /* */ }
     if (typeof qxRfcOpenWhenReady === "function") qxRfcOpenWhenReady(cards, 0);
     else if (window.QxRfcCards && window.QxRfcCards.open) window.QxRfcCards.open(cards, 0);
     else if (typeof showToast === "function") showToast("Card reader not ready.");
   } catch (_) {
+    /* qxmd381: cards.json missing → open chapter's Drive materials from nav (Adv Formula/Notes) */
+    try {
+      const nav = await qxLoadSheetNav(kind);
+      const hit = qxSheetMatchChapter(nav, subject, chapter);
+      const mats = (hit && hit.chapter && Array.isArray(hit.chapter.materials) ? hit.chapter.materials : [])
+        .filter((m) => m && m.ready && m.driveId);
+      if (mats.length === 1) { qxOpenDrivePreview(hit.chapter.name, mats[0].driveId, mats[0].label || kind); return; }
+      if (mats.length > 1 && typeof go === "function") { go("qxsheets", { kind: kind, step: "open", subject: hit.subject, chapter: hit.chapter.name }); return; }
+      if (kind === "adv_formula") {
+        const nn = await qxLoadSheetNav("adv_notes");
+        const nh = qxSheetMatchChapter(nn, subject, chapter);
+        if (nh && nh.chapter && typeof go === "function") { go("qxsheets", { kind: "adv_notes", step: "open", subject: nh.subject, chapter: nh.chapter.name }); return; }
+      }
+    } catch (__) { /* */ }
     if (typeof showToast === "function") showToast("This chapter is still being prepared — try again shortly.");
   }
 }
+window.qxOpenSheetChapter = qxOpenSheetChapter;
 
 async function viewQxSheets(payload) {
   try {
@@ -5770,6 +6136,9 @@ async function viewQxSheets(payload) {
           return !/pyq|previous.?year|past many|question\s*bank/i.test(t);
         })
       : [];
+    if (mats.length === 1 && mats[0].driveId && !p._qx381list) {
+      setTimeout(function () { try { qxOpenDrivePreview(hit.chapter.name, mats[0].driveId, mats[0].label || label); } catch (_) { /* */ } }, 30);
+    }
     if (mats.length) {
       const bc = breadcrumb([
         { label: label, view: "qxsheets", payload: { kind: kind, step: "subjects" } },
@@ -6037,8 +6406,8 @@ const TEST_SERIES_META = {
   jeemain: {
     id: "jeemain", tone: "jeemain", logo: "JEE MAIN",
     title: "JEE Main New Question Test Series 2027",
-    tagline: "Quantrex Ultimate Series · New Questions Only · 458 tests",
-    tests: 458, fullMocks: 30, partTests: 10, price: "Included",
+    tagline: "Quantrex Ultimate Series · New Questions Only · 583 live · 828 listed",
+    tests: 828, fullMocks: 30, partTests: 10, price: "Included",
     features: ["100% new questions", "Part & full tests", "Topic & chapter tests", "Scheduled releases", "NTA-style CBT"]
   },
 
@@ -6138,10 +6507,10 @@ function marksTestSeriesCards() {
 }
 
 function viewTests() {
-  const hour = new Date().getHours();
-  const pyqCount = 600 + (hour * 9) % 110;
+  const resumeHtml = typeof qxStudentResumeHtml === "function" ? (qxStudentResumeHtml() || "") : "";
   if (STATE.exam === "Medical") {
     return `<div class="marks-tests-page qx-med-tests-page">
+      ${resumeHtml}
       <div class="qx-folder-nav-actions" style="margin-bottom:12px">
         <button type="button" class="qx-nav-back" onclick="go('dashboard')">← Home</button>
       </div>
@@ -6157,14 +6526,14 @@ function viewTests() {
           <div class="mth-sq mth-sq-blue"></div><span class="mth-arrow">›</span>
         </div>
         <div class="mth-card" ${mg("pyqmock", { step: "exams" })}>
-          <div class="mth-body"><strong>PYQ Mock Tests</strong><small>${pyqCount}+ students took a PYQ Mock Test in last hour!</small></div>
+          <div class="mth-body"><strong>PYQ Mock Tests</strong><small>Official previous-year papers as full mocks</small></div>
           <div class="mth-sq mth-sq-pink"></div><span class="mth-arrow">›</span>
         </div>
       </div>
       <div class="marks-ts-section">
         <h3>PYQ Mock Tests · official papers</h3>
         <div class="mth-card" ${mg("pyqmock", { step: "modules", exam: "neet" })}>
-          <div class="mth-body"><strong>NEET PYQ Mock Tests</strong><small>92 official NEET papers on USB</small></div>
+          <div class="mth-body"><strong>NEET PYQ Mock Tests</strong><small>92 official NEET papers</small></div>
           <span class="mth-arrow">›</span>
         </div>
         <div class="mth-card" ${mg("pyqmock", { step: "modules", exam: "aiims" })}>
@@ -6183,6 +6552,7 @@ function viewTests() {
     </div>`;
   }
   return `<div class="marks-tests-page">
+    ${resumeHtml}
     <div class="qx-folder-nav-actions" style="margin-bottom:12px">
       <button type="button" class="qx-nav-back" onclick="go('dashboard')">← Home</button>
     </div>
@@ -6202,15 +6572,15 @@ function viewTests() {
       <div class="mth-card" ${mg("pyqmock", { step: "exams" })}>
         <div class="mth-body">
           <strong>PYQ Mock Tests</strong>
-          <small>${pyqCount}+ students took a PYQ Mock Test in last hour!</small>
+          <small>Official previous-year papers as full mocks</small>
         </div>
         <div class="mth-sq mth-sq-pink"></div>
         <span class="mth-arrow">›</span>
       </div>
     </div>
     <div class="marks-ts-section">
-      <h3>Test Series · NTA FORMAT</h3>
-      <p class="marks-ts-sub">JEE Main 2027 series · 562 live papers · 370 PYQ chapter tests · 266 upcoming scheduled</p>
+      <h3>Test Series · JEE Main 2027</h3>
+      <p class="marks-ts-sub">583 live papers · 370 PYQ chapter tests · 246 upcoming · 828 listed</p>
       <div class="marks-ts-grid">${marksTestSeriesCards()}</div>
       <div class="mth-card" ${mg("cpyqb", { step: "exams", forceExamList: true })} style="margin-top:12px">
         <div class="mth-body"><strong>Chapter-wise PYQ (all exams)</strong><small>JEE Main · Advanced · BITSAT · MHT CET · WBJEE · KCET · and more</small></div>
@@ -8858,27 +9228,44 @@ function renderMedicalMarksHomeExtras(rfcNav) {
         <div class="qx-med-goal-bar"><i style="width:0%"></i></div>
       </div>
       <div class="marks-section">
-        <div class="marks-sec-head"><h3>${QX_UX.allBank}</h3>
-          <a href="#" ${mg("allqs", { step: "subjects" })}>View all PCB →</a>
-        </div>
-        <p class="sec-desc">Physics · Chemistry · Botany · Zoology · ${neetCount.toLocaleString()} complete questions</p>
-        <div class="qx-med-subj-grid">${subjCards}</div>
-      </div>
-      ${qxRfcSubjectSectionHtml(rfcNav || [])}
-      <div class="marks-section">
-        <div class="marks-sec-head"><h3>${QX_UX.review}</h3></div>
-        <p class="sec-desc">${QX_UX.fault} · ${QX_UX.drift} · ${QX_UX.core}</p>
-        ${revisionBuckets}
-      </div>
-      <div class="marks-section">
         <div class="marks-sec-head"><h3>Tests</h3>
           <a href="#" ${mg("testseries", {})}>View All →</a>
         </div>
         ${testsBlock}
       </div>
       <div class="marks-section">
-        <div class="marks-sec-head"><h3>Notebooks</h3></div>
-        ${notebooks}
+        <div class="marks-sec-head"><h3>${QX_UX.allBank}</h3>
+          <a href="#" ${mg("allqs", { step: "subjects" })}>View all PCB →</a>
+        </div>
+        <p class="sec-desc">Physics · Chemistry · Botany · Zoology · ${neetCount.toLocaleString()} complete questions</p>
+        <div class="qx-med-subj-grid">${subjCards}</div>
+      </div>
+      <div class="marks-section">
+        <div class="marks-sec-head"><h3>Formula Cards</h3>
+          <a href="#" ${mg("formula", { step: "subjects" })}>View All →</a>
+        </div>
+        <div class="qx-med-fc-row">
+          <button type="button" class="qx-med-fc-chip phy" ${mg("formula", { step: "chapters", subject: "Physics" })}>${qxAnimCover("physics", "P", "Formula")} Physics</button>
+          <button type="button" class="qx-med-fc-chip chem" ${mg("formula", { step: "chapters", subject: "Chemistry" })}>${qxAnimCover("chemistry", "C", "Formula")} Chemistry</button>
+          <button type="button" class="qx-med-fc-chip bot" ${mg("formula", { step: "chapters", subject: "Botany" })}>${qxAnimCover("botany", "B", "Formula")} Botany</button>
+          <button type="button" class="qx-med-fc-chip zoo" ${mg("formula", { step: "chapters", subject: "Zoology" })}>${qxAnimCover("zoology", "Z", "Formula")} Zoology</button>
+        </div>
+        <div id="qxMedFormulaMount" class="qx-med-fc-mount"></div>
+        <div class="qx-med-util-row" style="margin-top:10px">
+          <button type="button" class="qx-med-util" ${mg("quickconcepts", { step: "subjects" })}>Concept-wise Notes</button>
+        </div>
+      </div>
+      <div class="marks-section qx-med-dpp-banner">
+        <div class="marks-sec-head"><h3>${QX_UX.drills}</h3>
+          <a href="#" ${mg("dpp", { step: "subjects" })}>View DPPs →</a>
+        </div>
+        <p class="sec-desc">Easy · Moderate · Tough · Physics · Chemistry · Botany · Zoology</p>
+        <div class="qx-med-dpp-subj">
+          <button type="button" class="qx-med-fc-chip phy" ${mg("dpp", { step: "chapters", subject: "Physics" })}>${qxAnimCover("physics", "P", "DPP")} Physics</button>
+          <button type="button" class="qx-med-fc-chip chem" ${mg("dpp", { step: "chapters", subject: "Chemistry" })}>${qxAnimCover("chemistry", "C", "DPP")} Chemistry</button>
+          <button type="button" class="qx-med-fc-chip bot" ${mg("dpp", { step: "chapters", subject: "Botany" })}>${qxAnimCover("botany", "B", "DPP")} Botany</button>
+          <button type="button" class="qx-med-fc-chip zoo" ${mg("dpp", { step: "chapters", subject: "Zoology" })}>${qxAnimCover("zoology", "Z", "DPP")} Zoology</button>
+        </div>
       </div>
       <div class="marks-section">
         <div class="marks-sec-head"><h3>${QX_UX.library}</h3>
@@ -8887,21 +9274,15 @@ function renderMedicalMarksHomeExtras(rfcNav) {
         <p class="sec-desc">HC Verma Objective I / II / Exercises · Organic · Irodov · Biology 360 · Top 500</p>
         <div id="qxMedBooksMount" class="qx-med-books-mount">Loading books…</div>
       </div>
-      <div class="marks-section qx-med-board-banner">
-        <div class="marks-sec-head"><h3>CBSE Board PYQs</h3>
-          <a href="#" ${mg("board", { step: "subjects", board: "CBSE" })}>Open →</a>
-        </div>
-        <p class="sec-desc">Physics · Chemistry · Biology — chapter-wise board practice</p>
-        <div class="qx-ncert-tools">
-          <button type="button" class="qx-ncert-tool qx-folder-card" ${mg("board", { step: "subjects", board: "CBSE" })}>
-            ${typeof qxAnimCover === "function" ? qxAnimCover("ncert", "B", "CBSE") : ""}
-            <strong>CBSE Board</strong><small>Chapter-wise PYQs</small>
-          </button>
-          <button type="button" class="qx-ncert-tool qx-folder-card" ${mg("board", { step: "subjects", board: "HSC" })}>
-            ${typeof qxAnimCover === "function" ? qxAnimCover("exemplar", "H", "HSC") : ""}
-            <strong>HSC (Maharashtra)</strong><small>State board PYQs</small>
-          </button>
-        </div>
+      ${qxRfcSubjectSectionHtml(rfcNav || [])}
+      <div class="marks-section">
+        <div class="marks-sec-head"><h3>${QX_UX.review}</h3></div>
+        <p class="sec-desc">${QX_UX.fault} · ${QX_UX.drift} · ${QX_UX.core}</p>
+        ${revisionBuckets}
+      </div>
+      <div class="marks-section">
+        <div class="marks-sec-head"><h3>Notebooks</h3></div>
+        ${notebooks}
       </div>
       <div class="marks-section qx-med-ncert-banner">
         <div class="marks-sec-head"><h3>${QX_UX.ncertBox}</h3>
@@ -8923,37 +9304,21 @@ function renderMedicalMarksHomeExtras(rfcNav) {
           </button>
         </div>
       </div>
-      <div class="marks-section qx-med-dpp-banner">
-        <div class="marks-sec-head"><h3>${QX_UX.drills}</h3>
-          <a href="#" ${mg("dpp", { step: "subjects" })}>View DPPs →</a>
+      <div class="marks-section qx-med-board-banner">
+        <div class="marks-sec-head"><h3>CBSE Board PYQs</h3>
+          <a href="#" ${mg("board", { step: "subjects", board: "CBSE" })}>Open →</a>
         </div>
-        <p class="sec-desc">Easy · Moderate · Tough · Physics · Chemistry · Botany · Zoology</p>
-        <div class="qx-med-dpp-subj">
-          <button type="button" class="qx-med-fc-chip phy" ${mg("dpp", { step: "chapters", subject: "Physics" })}>${qxAnimCover("physics", "P", "DPP")} Physics</button>
-          <button type="button" class="qx-med-fc-chip chem" ${mg("dpp", { step: "chapters", subject: "Chemistry" })}>${qxAnimCover("chemistry", "C", "DPP")} Chemistry</button>
-          <button type="button" class="qx-med-fc-chip bot" ${mg("dpp", { step: "chapters", subject: "Botany" })}>${qxAnimCover("botany", "B", "DPP")} Botany</button>
-          <button type="button" class="qx-med-fc-chip zoo" ${mg("dpp", { step: "chapters", subject: "Zoology" })}>${qxAnimCover("zoology", "Z", "DPP")} Zoology</button>
+        <p class="sec-desc">Physics · Chemistry · Biology — chapter-wise board practice</p>
+        <div class="qx-ncert-tools">
+          <button type="button" class="qx-ncert-tool qx-folder-card" ${mg("board", { step: "subjects", board: "CBSE" })}>
+            ${typeof qxAnimCover === "function" ? qxAnimCover("ncert", "B", "CBSE") : ""}
+            <strong>CBSE Board</strong><small>Chapter-wise PYQs</small>
+          </button>
+          <button type="button" class="qx-ncert-tool qx-folder-card" ${mg("board", { step: "subjects", board: "HSC" })}>
+            ${typeof qxAnimCover === "function" ? qxAnimCover("exemplar", "H", "HSC") : ""}
+            <strong>HSC (Maharashtra)</strong><small>State board PYQs</small>
+          </button>
         </div>
-      </div>
-      <div class="marks-section">
-        <div class="marks-sec-head"><h3>Formula Cards</h3>
-          <a href="#" ${mg("formula", { step: "subjects" })}>View All →</a>
-        </div>
-        <div class="qx-med-fc-row">
-          <button type="button" class="qx-med-fc-chip phy" ${mg("formula", { step: "chapters", subject: "Physics" })}>${qxAnimCover("physics", "P", "Formula")} Physics</button>
-          <button type="button" class="qx-med-fc-chip chem" ${mg("formula", { step: "chapters", subject: "Chemistry" })}>${qxAnimCover("chemistry", "C", "Formula")} Chemistry</button>
-          <button type="button" class="qx-med-fc-chip bot" ${mg("formula", { step: "chapters", subject: "Botany" })}>${qxAnimCover("botany", "B", "Formula")} Botany</button>
-          <button type="button" class="qx-med-fc-chip zoo" ${mg("formula", { step: "chapters", subject: "Zoology" })}>${qxAnimCover("zoology", "Z", "Formula")} Zoology</button>
-        </div>
-        <div id="qxMedFormulaMount" class="qx-med-fc-mount"></div>
-        <div class="qx-med-util-row" style="margin-top:10px">
-          <button type="button" class="qx-med-util" ${mg("quickconcepts", { step: "subjects" })}>Concept-wise Notes</button>
-          <button type="button" class="qx-med-util" ${mg("analytics", {})}>Analytics</button>
-        </div>
-      </div>
-      <div class="marks-section qx-med-an-card" ${mg("analytics", {})}>
-        <div class="marks-sec-head"><h3>Analytics</h3><a href="#" ${mg("analytics", {})}>Open →</a></div>
-        <p class="sec-desc">Accuracy · weak chapters · Physics / Chem / Botany / Zoology mastery</p>
       </div>
     </div>`;
 }
@@ -8993,14 +9358,14 @@ async function marksDashboardSections() {
           fcTiles || ""
         );
       return `
-        ${medHydrated}
         <div class="marks-section">
-          <div class="marks-sec-head"><h3>Medical Exams (All PYQ Banks)</h3>
+          <div class="marks-sec-head"><h3>Chapter-wise PYQ Bank</h3>
             <a href="#" ${mg("cpyqb", { step: "exams", forceExamList: true })}>View All →</a>
           </div>
           <p class="sec-desc">NEET · AIIMS · JIPMER · NTA Abhyas · MHT CET Medical</p>
           <div class="exam-scroll">${examScroll || ""}</div>
         </div>
+        ${medHydrated}
         <div class="dash-util-row">
           <div class="dash-util-card" ${mg("examinfo", {})}>
             <span class="dash-util-ic">📘</span>
@@ -9123,37 +9488,76 @@ async function marksDashboardSections() {
       <small>${c.sub}</small>
     </div>`).join("");
 
-  const exploreBlock = (typeof QxRedesign !== "undefined" && QxRedesign.exploreSectionHtml)
-    ? QxRedesign.exploreSectionHtml()
+  const rfcHtml = qxRfcSubjectSectionHtml(await fetchNav("rfc").catch(() => []));
+  const formulaCovers = (STATE.exam === "Medical"
+    ? ["Physics", "Chemistry", "Botany", "Zoology"]
+    : ["Physics", "Chemistry", "Mathematics"]).map((s) => {
+      const tone = typeof qxFcTone === "function" ? qxFcTone(s) : "gen";
+      const ic = (typeof QxCardIcons !== "undefined" && QxCardIcons.chapterIconHtml)
+        ? QxCardIcons.chapterIconHtml(s, s)
+        : (typeof subjectIcon === "function" ? subjectIcon(s, null, 28) : s.slice(0, 1));
+      const badge = (typeof qxRoboWrap === "function") ? qxRoboWrap(ic, s, "md") : ic;
+      return `<button type="button" class="qx-fc-subj qx-fc-folder qx-fc-folder-${tone} qx-dash-fc-cover" ${mg("formula", { step: "chapters", subject: s })}>
+        <span class="qx-fc-tab" aria-hidden="true"></span>
+        <span class="qx-fc-folder-shine" aria-hidden="true"></span>
+        <span class="qx-fc-folder-art" aria-hidden="true"><i class="qx-fc-a"></i><i class="qx-fc-b"></i><i class="qx-fc-c"></i></span>
+        <span class="qx-fc-folder-badge">${badge}</span>
+        <div class="qx-fc-folder-meta">
+          <strong>${s}</strong>
+          <small>Formula Cards</small>
+          <em>Open deck</em>
+        </div>
+      </button>`;
+    }).join("");
+  const chapterwiseDesc = STATE.exam === "Academic"
+    ? "Class 7–12 · 9 CBSE · 10 TALENTEX · 11–12 JEE"
+    : (dashExams.length ? (dashExams.length + " exams · tap to practice PYQs") : "Tap an exam to open chapter-wise PYQs");
+  const academicTlxCard = STATE.exam === "Academic"
+    ? `<button type="button" class="qx-home-test-card qx-home-test-hot" ${mg("cpyqb", { step: "tallentexFolder", classSlug: "class_10", exam: "class_10", trackKind: "tallentex" })}>
+            <strong>TALENTEX 2024</strong><small>Class 10 · both official papers</small>
+          </button>`
     : "";
   return `
     <div class="dash-marks-home">
-      ${exploreBlock}
       <div class="marks-section">
         <div class="marks-sec-head"><h3>Chapter-wise PYQ Bank</h3><a href="#" ${mg("cpyqb", { step: "exams", forceExamList: true })}>View All →</a></div>
-        <p class="sec-desc">${dashExams.length} exams · tap to practice PYQs</p>
+        <p class="sec-desc">${chapterwiseDesc}</p>
         <div class="exam-scroll">${examScroll || '<div class="empty">No exams loaded.</div>'}</div>
+      </div>
+      <div class="marks-section">
+        <div class="marks-sec-head"><h3>Tests</h3><a href="#" ${mg("tests", {})}>View All →</a></div>
+        <div class="qx-home-tests">
+          ${academicTlxCard}
+          <button type="button" class="qx-home-test-card" ${mg("pyqmock", { step: "exams" })}>
+            <strong>PYQ Mock Tests</strong><small>Full official papers</small>
+          </button>
+          <button type="button" class="qx-home-test-card" ${mg("testseries", {})}>
+            <strong>Test Series</strong><small>NTA CBT · scheduled</small>
+          </button>
+          <button type="button" class="qx-home-test-card" ${mg("custom", { step: "landing" })}>
+            <strong>Create Own Test</strong><small>Custom mix</small>
+          </button>
+        </div>
       </div>
       <div class="marks-section">
         <div class="marks-sec-head"><h3>All Question Bank</h3><a href="#" ${mg("allqs", { step: "subjects" })}>View All →</a></div>
         <p class="sec-desc">${subjects.join(" · ") || "Chapter-wise questions"}</p>
         <div class="subj-mini-grid">${subjGrid}</div>
       </div>
-      ${qxRfcSubjectSectionHtml(await fetchNav("rfc").catch(() => []))}
       <div class="marks-section">
-        <div class="marks-sec-head"><h3>${QX_UX.ncertBox}</h3><a href="#" ${mg("ncert", { step: "kinds" })}>Open →</a></div>
-        <p class="sec-desc">${qxFolderTrack() === "Medical"
-          ? `${QX_UX.lineScan} · ${QX_UX.textPlus} · ${QX_UX.figureLab} · Physics · Chemistry · Botany · Zoology`
-          : qxFolderTrack() === "Defence"
-            ? "Mathematics · GAT science · textbook-aligned practice"
-            : `${QX_UX.lineScan} · ${QX_UX.textPlus} · ${QX_UX.figureLab} · Physics · Chemistry`}</p>
+        <div class="marks-sec-head"><h3>Formula Cards</h3><a href="#" ${mg("formula", { step: "subjects" })}>View All →</a></div>
+        <p class="sec-desc">Subject decks with icons and covers — tap to open formulas</p>
+        <div class="qx-dash-fc-covers">${formulaCovers}</div>
       </div>
-      <div class="dash-ncert-block dash-board-block">
-        <div class="dash-ncert-head">
-          <h2>Board Exam PYQs</h2>
-          <p>Previous year papers with solutions</p>
-        </div>
-        ${boardPyqCard}
+      <div class="marks-section">
+        <div class="marks-sec-head"><h3>Digital Books</h3><a href="#" ${mg("books", { step: "list" })}>View books →</a></div>
+        <p class="sec-desc">Expert-picked question banks — tap a cover to practice</p>
+        ${bookScroll}
+      </div>
+      ${rfcHtml}
+      <div class="marks-section">
+        <div class="marks-sec-head"><h3>Quantrex Archive</h3><a href="#" onclick="go('archive',{step:'home'});return false">Open archive →</a></div>
+        <p class="sec-desc">Class-wise PDFs, notes, PYQ, tests and answer keys — tap a category</p>
       </div>
       <div class="dash-ncert-block">
         <div class="dash-ncert-head">
@@ -9162,6 +9566,14 @@ async function marksDashboardSections() {
         </div>
         <div class="dash-tool-scroll">${toolCards}</div>
       </div>
+      <div class="dash-ncert-block dash-board-block">
+        <div class="dash-ncert-head">
+          <h2>Board Exam PYQs</h2>
+          <p>Previous year papers with solutions</p>
+        </div>
+        ${boardPyqCard}
+      </div>
+      <div class="dash-util-row">${utilCards}</div>
       <div class="dash-promo-duo">
         <div class="dash-assign-box">
           <h3>Quantrex Assignment</h3>
@@ -9174,40 +9586,15 @@ async function marksDashboardSections() {
           <button type="button" class="dash-teach-btn" onclick="go('teacher')">Open Teacher Portal →</button>
         </div>
       </div>
-      <div class="dash-util-row">${utilCards}</div>
-      <div class="marks-section">
-        <div class="marks-sec-head"><h3>Formula Cards</h3><a href="#" ${mg("formula", { step: "subjects" })}>View All →</a></div>
-        <p class="sec-desc">Subject decks with icons and covers — tap to open formulas</p>
-        <div class="qx-dash-fc-covers">${(STATE.exam === "Medical"
-          ? ["Physics", "Chemistry", "Botany", "Zoology"]
-          : ["Physics", "Chemistry", "Mathematics"]).map((s) => {
-            const tone = typeof qxFcTone === "function" ? qxFcTone(s) : "gen";
-            const ic = (typeof QxCardIcons !== "undefined" && QxCardIcons.chapterIconHtml)
-              ? QxCardIcons.chapterIconHtml(s, s)
-              : (typeof subjectIcon === "function" ? subjectIcon(s, null, 28) : s.slice(0, 1));
-            const badge = (typeof qxRoboWrap === "function") ? qxRoboWrap(ic, s, "md") : ic;
-            return `<button type="button" class="qx-fc-subj qx-fc-folder qx-fc-folder-${tone} qx-dash-fc-cover" ${mg("formula", { step: "chapters", subject: s })}>
-              <span class="qx-fc-tab" aria-hidden="true"></span>
-              <span class="qx-fc-folder-shine" aria-hidden="true"></span>
-              <span class="qx-fc-folder-art" aria-hidden="true"><i class="qx-fc-a"></i><i class="qx-fc-b"></i><i class="qx-fc-c"></i></span>
-              <span class="qx-fc-folder-badge">${badge}</span>
-              <div class="qx-fc-folder-meta">
-                <strong>${s}</strong>
-                <small>Formula Cards</small>
-                <em>Open deck</em>
-              </div>
-            </button>`;
-          }).join("")}</div>
-      </div>
-      <div class="marks-section">
-        <div class="marks-sec-head"><h3>Digital Books</h3><a href="#" ${mg("books", { step: "list" })}>View books →</a></div>
-        <p class="sec-desc">Expert-picked question banks — tap a cover to practice</p>
-        ${bookScroll}
-      </div>
     </div>`;
 }
 
 function bindDashHome(root) {
+  const mount = root || document;
+  mount.querySelectorAll(".qx-sd-report, .qx-sd-resume, .qx-sd-quick button").forEach(function (el) {
+    el.style.pointerEvents = "auto";
+  });
+  try { if (typeof qxSdHydrateLeaderboard === "function") qxSdHydrateLeaderboard(mount); } catch (_) { /* */ }
   (root || document).querySelectorAll("[data-dash-board]").forEach(btn => {
     btn.onclick = async (e) => {
       e.preventDefault();

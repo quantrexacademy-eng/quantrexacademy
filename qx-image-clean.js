@@ -6,7 +6,7 @@ window.QxImgClean = (() => {
   const REVIEW_URL = "data/qx_image_review.json";
   const CLEAN_VER = 100; // PYQ proxy Marks fallback; no hang on all-img rewrite
   /** true = show pool figures from Marks CDN like Marks website (figures never blank) */
-  const MARKS_NATIVE_PYQ = false; // clean-proxy PYQ — no Marks logo; color kept
+  const MARKS_NATIVE_PYQ = false; // pool figures go through the clean proxy (no MARKS logo)
   const CENTER_WM_MAX = 0.006;
   const WM_DETECT_MIN = 0.0035;
   const CDN_ONLY = false;
@@ -50,9 +50,7 @@ window.QxImgClean = (() => {
   function keepWipeProxy(src) {
     const s = String(src || "");
     if (CARD_ART_RX.test(s)) return true;
-    if (/irodov|qx-irodov/i.test(s)) return false;
-    if (typeof needsMarksCleanProxy === "function" && needsMarksCleanProxy(s)) return true;
-    return /questions(%2F|\/)figs/i.test(s) && /firebasestorage/i.test(s);
+    return false;
   }
 
   function shouldRotatePortrait(img) {
@@ -643,7 +641,7 @@ window.QxImgClean = (() => {
   function rewriteHtmlFigures(html) {
     return rewriteBookFigureHtml(html);
   }
-  const LOCAL_CLEAN_RX = /^\.?\/?assets\/(diagrams|clean-diagrams|qx-figures)\//i;
+  const LOCAL_CLEAN_RX = /^\.?\/?(?:assets\/(?:diagrams|clean-diagrams|qx-figures)|data\/tests\/tallentex\/figures)\//i;
 
   const PERM_FIG_RX = /\/assets\/qx-figures\/perm\/qx-perm-[a-f0-9]+\.png/i;
   let permFigureMap = null;
@@ -1137,7 +1135,7 @@ window.QxImgClean = (() => {
     if (!raw) return null;
     const cdn = fixUrl(typeof raw === "string" ? raw : (raw.url || raw.src || raw.href || ""));
     if (!cdn) return null;
-    if (isPoolDiagram(cdn) || /2026_modules|AKCR2_|modules\/ms\/|getmarks\.app|quizrr/i.test(cdn)) {
+    if (isPoolDiagram(cdn) || /2026_modules|AKCR2_|modules\/ms\/|getmarks\.app|quizrr|tallentex\/figures/i.test(cdn)) {
       return normalizeAssetSrc(cdn) || cdn;
     }
     return null;
@@ -2572,11 +2570,10 @@ window.QxImgClean = (() => {
     if (isAlreadyCleanFigure(s)) return false;
     if (SKIP_RX.test(s)) return false;
     if (CARD_ART_RX.test(s)) return true;
-    if (isGetmarksPool(s) || POOL_RX.test(s)) return true;
-    // Firebase copies of Marks pool figures — wipe via our proxy (fetch is Firebase, not Marks).
+    if (isGetmarksPool(s) || POOL_RX.test(s)) return false;
     if (/firebasestorage/i.test(s) && /questions(%2F|\/)figs/i.test(s)
-      && !/getmarks-assets/i.test(s)) return true;
-    if (/\/assets\/diagrams\/qx-self-/i.test(s)) return true;
+      && !/getmarks-assets/i.test(s) && !CARD_ART_RX.test(s)) return false;
+    if (/\/assets\/diagrams\/qx-self-/i.test(s)) return false;
     // Local baked book figures must load as files. Proxying them blanks HCV / Rank Booster.
     if (/\/assets\/diagrams\/qx-(?:book|org)-/i.test(s)) return false;
     return false;
@@ -2590,19 +2587,25 @@ window.QxImgClean = (() => {
       const mapped = QxOwnedFigs.displaySrc(fixed);
       if (mapped && mapped !== fixed) return mapped;
     }
-    // Already on clean proxy — keep (idempotent — no thrash)
-    if (/\/api\/proxy-image/i.test(fixed) && /[?&]clean=1\b/i.test(fixed) && /[?&]v=qxfig110\b/i.test(fixed)) {
+    // Old question proxy URLs unwrap to original CDN. RFC cards keep fc=1 wipe.
+    if (/\/api\/proxy-image/i.test(fixed) && /[?&]clean=1\b/i.test(fixed)) {
       try {
-        const inner = extractProxiedUrl(fixed);
-        if (inner && /getmarks|quizrr/i.test(inner) && typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.ownedFigureUrl) {
-          const owned = QxOwnedFigs.ownedFigureUrl(inner);
-          if (owned && /firebasestorage/i.test(owned)) {
-            const fc = CARD_ART_RX.test(owned + " " + inner) ? "&fc=1" : "";
-            return "/api/proxy-image?url=" + encodeURIComponent(owned) + "&clean=1" + fc + "&v=qxfig110";
-          }
+        const inner = extractProxiedUrl(fixed) || "";
+        if (CARD_ART_RX.test(inner + " " + fixed)) {
+          if (/fc=1/i.test(fixed) && /v=qxmd343/i.test(fixed)) return fixed;
+          return "/api/proxy-image?clean=1&fc=1&v=qxmd351&url=" + encodeURIComponent(inner || fixed);
         }
+        /* Already wiped. Do not unwrap back to the Marks CDN (that paints the logo). */
+        if (/[?&]v=qxmd359(?:&|$)/i.test(fixed)) return fixed;
+        if (inner && !/\/api\/proxy-image/i.test(inner)) {
+          if (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.displaySrc) {
+            const d = QxOwnedFigs.displaySrc(inner);
+            if (d && /\/api\/proxy-image/i.test(d) && /clean=1/i.test(d)) return d;
+          }
+          return "/api/proxy-image?clean=1&v=qxmd359&url=" + encodeURIComponent(inner);
+        }
+        return fixed;
       } catch (_) { /* keep */ }
-      return fixed;
     }
     // Organic / smiles / local baked books: Storage-first (Hosting 404s /assets/diagrams)
     if (isAlreadyCleanFigure(fixed) || /\/assets\/diagrams\/qx-(?:book|org|self)-/i.test(fixed)) {
@@ -2625,12 +2628,24 @@ window.QxImgClean = (() => {
       }
       return fixUrl(rel).split("?")[0] || rel;
     }
-    // ALWAYS clean-proxy pool / quizrr / watermarked_images (remove MARKS watermark)
-    // Do NOT return raw CDN — user requirement: Marks WM must not show
-    if (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.ownedFigureUrl
-      && /getmarks|quizrr/i.test(fixed)) {
-      const owned = QxOwnedFigs.ownedFigureUrl(fixed);
-      if (owned && /firebasestorage/i.test(owned)) fixed = owned;
+    if (CARD_ART_RX.test(fixed)) {
+      const inner = extractProxiedUrl(fixed) || fixed;
+      return "/api/proxy-image?clean=1&fc=1&v=qxmd351&url=" + encodeURIComponent(inner);
+    }
+    // Question figures: same-origin clean proxy. Never the raw Marks CDN.
+    if (isGetmarksPool(fixed) || POOL_RX.test(fixed) || (/getmarks\.app|quizrr\.in/i.test(fixed)
+      && !/app_assets\/img\/(?:exams|ui|cpyqb)|ic_content_exam_|getmarks-brand|marks-premium/i.test(fixed))) {
+      const inner = extractProxiedUrl(fixed) || fixed;
+      const bare = String(inner || fixed).split("#")[0];
+      if (bare && !/\/api\/proxy-image/i.test(bare)) {
+        if (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.displaySrc) {
+          const d = QxOwnedFigs.displaySrc(bare);
+          if (d && /\/api\/proxy-image/i.test(d) && /clean=1/i.test(d)) return d;
+        }
+        return "/api/proxy-image?clean=1&v=qxmd359&url=" + encodeURIComponent(bare);
+      }
+      if (/\/api\/proxy-image/i.test(fixed) && /clean=1/i.test(fixed)) return fixed;
+      return "/api/proxy-image?clean=1&v=qxmd359&url=" + encodeURIComponent(bare);
     }
     const perm = permCleanSrc(fixed);
     if (perm) return perm;
@@ -2646,16 +2661,7 @@ window.QxImgClean = (() => {
       // Non-diagram local assets (UI) — leave
       if (isBookOrLocalFigure(cdnSrc) && !/qx-book-/i.test(String(cdnSrc))) return fixUrl(cdnSrc);
     }
-    // Server MARKS wipe (ink + multi-color preserved; logo bleached)
-    const fc = CARD_ART_RX.test(fixed) ? "&fc=1" : "";
-    const q = `url=${encodeURIComponent(fixed)}&clean=1${fc}&v=qxfig110`;
-    try {
-      if (typeof location !== "undefined" && location.origin && !/localhost|127\.0\.0\.1/i.test(location.origin)) {
-        return `/api/proxy-image?${q}`;
-      }
-    } catch (_) { /* */ }
-    const base = String(PROXY_BASE || apiBase() || "https://quantrexacademy-live.web.app").replace(/\/$/, "");
-    return `${base}/api/proxy-image?${q}`;
+    return fixUrl(cdnSrc || fixed);
   }
 
   /** True only for question-pool diagrams — never exam/subject/UI icons */
@@ -4413,7 +4419,7 @@ window.QxImgClean = (() => {
       if (CARD_ART_RX.test(src) || /fc-img|qx-fc-img|qx-rfc-img/i.test(a)) {
         const cardDisp = (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.displaySrc)
           ? QxOwnedFigs.displaySrc(src)
-          : ("/api/proxy-image?url=" + encodeURIComponent(src) + "&clean=1&fc=1&v=qxfig110");
+          : ("/api/proxy-image?url=" + encodeURIComponent(src) + "&clean=1&fc=1&v=qxmd351");
         if (cardDisp && cardDisp !== src) {
           const safeCard = String(cardDisp).replace(/&/g, "&amp;").replace(/"/g, "&quot;");
           a = a.replace(/(?<![\w-])src\s*=\s*(["'])[\s\S]*?\1/i, "src=$1" + safeCard + "$1")
@@ -4518,14 +4524,14 @@ window.QxImgClean = (() => {
     if (isApiFigureSrc(raw)) raw = canonicalCdnSrc(raw) || "";
     if (!raw) return null;
     let src = "";
-    if (isLocalCleanAsset(raw) || /\/assets\/(diagrams|qx-figures)\//i.test(raw)) {
+    if (isLocalCleanAsset(raw) || /\/assets\/(diagrams|qx-figures)\//i.test(raw) || /tallentex\/figures/i.test(raw)) {
       src = normalizeAssetSrc(raw);
     } else {
       const cdn = canonicalCdnSrc(raw) || (POOL_RX.test(raw) ? raw : "");
       if (cdn) src = cdn;
     }
     if (!src) return null;
-    if (!isPoolDiagram(src) && !isLocalCleanAsset(src) && !/\/assets\/(diagrams|qx-figures)\//i.test(src)) {
+    if (!isPoolDiagram(src) && !isLocalCleanAsset(src) && !/\/assets\/(diagrams|qx-figures)\//i.test(src) && !/tallentex\/figures/i.test(src)) {
       // Still accept obvious PYQ figure paths
       if (!/\/pyq\/|cdn-question-pool|cdn\.quizrr/i.test(src)) return null;
     }
@@ -5430,14 +5436,54 @@ window.QxImgClean = (() => {
     } catch (_) { /* */ }
   }
 
+  function isTallentexQuestion(q, qid) {
+    if (q && (q._tallentex || q._bank === "tallentex_2024")) return true;
+    const exam = String((q && (q.examName || q.exam)) || "");
+    if (/tallentex/i.test(exam)) return true;
+    const id = String((q && q.id != null) ? q.id : (qid || ""));
+    return /^tlx10_/i.test(id);
+  }
+
+  function tallentexFigureSrc(q, rawHtml) {
+    const fromQ = q && (q.image || q.questionImage || q._questionImage);
+    if (fromQ && /tallentex\/figures/i.test(String(fromQ))) {
+      return String(fromQ).replace(/^\.\//, "").split("?")[0];
+    }
+    const s = String(rawHtml || (q && (q.q || q.question)) || "");
+    const m = s.match(/src=["']([^"']*tallentex\/figures\/[^"']+)["']/i);
+    if (m) return m[1].replace(/^\.\//, "").split("?")[0];
+    return "";
+  }
+
+  function bustTallentexSrc(src) {
+    let path = String(src || "").replace(/^\.\//, "").split("?")[0];
+    if (!path) return "";
+    if (!path.startsWith("/")) path = "/" + path;
+    const bust = (typeof window !== "undefined" && (window.QX_BUILD || window.QX_DATA_VER)) || "1";
+    return path + "?v=" + encodeURIComponent(bust);
+  }
+
+  function tallentexStemHtml(qid, rawHtml, q) {
+    const src = bustTallentexSrc(tallentexFigureSrc(q, rawHtml));
+    const inner = src
+      ? `<figure class="tlx-qfig"><img class="qx-no-wm qx-tlx-qimg" src="${escAttr(src)}" alt="TALLENTEX" loading="eager" decoding="async" data-qx-pinned="1" data-qx-has-wm="0" data-qx-cleaned="1"></figure>`
+      : String(rawHtml || (q && q.q) || "");
+    return `<div class="qx-question-body qx-question-flow qx-tlx-stem" data-qx-qid="${escAttr(String(qid == null ? "" : qid))}">${inner}</div>`;
+  }
+
   function buildQuestionBodyHtml(qid, rawHtml, renderText, q) {
     if (qid == null || qid === "") return "";
     try {
-      applyMatchStemToQuestion(q, q && (q.id != null ? q.id : qid));
-      pinOriginalQuestion(q);
-      restoreOptionsFromPin(q);
+      if (!isTallentexQuestion(q, qid)) {
+        applyMatchStemToQuestion(q, q && (q.id != null ? q.id : qid));
+        pinOriginalQuestion(q);
+        restoreOptionsFromPin(q);
+      }
     } catch (_) { /* */ }
     const source = bestStemHtml(q, rawHtml);
+    if (isTallentexQuestion(q, qid) || /tallentex\/figures/i.test(String(source || "") + " " + String((q && q.image) || ""))) {
+      return tallentexStemHtml(qid, source, q);
+    }
     const render = typeof renderText === "function" ? renderText : (t => t);
     let html = "";
     try {
@@ -5806,6 +5852,7 @@ window.QxImgClean = (() => {
     buildOptSlotHtml,
     renderOptionContent,
     buildQuestionBodyHtml,
+    isTallentexQuestion,
     pinOriginalQuestion,
     bestStemHtml,
     stemPlainText,

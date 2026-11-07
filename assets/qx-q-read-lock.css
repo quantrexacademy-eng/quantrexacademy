@@ -1,0 +1,498 @@
+/* qxmd350: Play app + phone web + landscape/portrait.
+   Question text ~MARKS reading size. Stem/solution figures fill the paper
+   (lift the 240/280px laptop cap). Option figures stay compact. Table cells stay in-cell. */
+
+html[data-qx-shell="app"],
+html[data-qx-shell="app"] body {
+  --nta-q: 20px;
+  --nta-lh: 1.65;
+  --qx-read-stem: 20px;
+  --qx-read-opt: 20px;
+  --qx-read-sol: 20px;
+  --qx-read-lh: 1.65;
+}
+html[data-qx-shell="app"][data-font-scale="small"],
+html[data-qx-shell="app"][data-font-scale="small"] body {
+  --nta-q: 17px; --qx-read-stem: 17px; --qx-read-opt: 17px; --qx-read-sol: 17px;
+}
+html[data-qx-shell="app"][data-font-scale="large"],
+html[data-qx-shell="app"][data-font-scale="large"] body {
+  --nta-q: 23px; --qx-read-stem: 23px; --qx-read-opt: 23px; --qx-read-sol: 23px;
+}
+html[data-qx-shell="app"][data-font-scale="xlarge"],
+html[data-qx-shell="app"][data-font-scale="xlarge"] body {
+  --nta-q: 26px; --qx-read-stem: 26px; --qx-read-opt: 26px; --qx-read-sol: 26px;
+}
+
+html[data-qx-shell="app"] body #app-main .eg-test-root .eg-q-stem,
+html[data-qx-shell="app"] body #app-main .eg-test-root .eg-opt,
+html[data-qx-shell="app"] body #app-main .eg-test-root #egQArea,
+html[data-qx-shell="app"] body #app-main .eg-test-root .qx-question-body,
+html[data-qx-shell="app"] body #app-main .mtk-test-root .mtk-q-text,
+html[data-qx-shell="app"] body #app-main .mtk-test-root .mtk-opt,
+html[data-qx-shell="app"] body #app-main .mtk-test-root .mtk-opt-text,
+html[data-qx-shell="app"] body #app-main .qzrr-cbt .mtk-q-text,
+html[data-qx-shell="app"] body #app-main .qzrr-cbt .mtk-opt,
+html[data-qx-shell="app"] body #app-main .qzrr-cbt .mtk-opt-text,
+html[data-qx-shell="app"] body #app-main .qx-sol-flow,
+html[data-qx-shell="app"] body #app-main #egSol,
+html[data-qx-shell="app"] body #app-main .sol-body,
+html[data-qx-shell="app"] body #app-main .eg-sol,
+html[data-qx-shell="app"] body #app-main .qx-sol-card .qx-sol-flow,
+html[data-qx-shell="app"] body #app-main #qaSolReveal .qx-sol-flow,
+html[data-qx-shell="app"] body #app-main .allen-practice .mtk-q-text,
+html[data-qx-shell="app"] body #app-main .allen-practice .mtk-opt-text {
+  font-size: var(--nta-q, 18px) !important;
+  line-height: var(--nta-lh, 1.65) !important;
+}
+
+html[data-qx-shell="app"] body #app-main .eg-q-stem img,
+html[data-qx-shell="app"] body #app-main .mtk-q-text img,
+html[data-qx-shell="app"] body #app-main .qx-question-body img,
+html[data-qx-shell="app"] body #app-main .qx-diagram-slot img,
+html[data-qx-shell="app"] body #app-main #qxDiagramSlot img,
+html[data-qx-shell="app"] body #app-main .qx-diagram-seg img,
+html[data-qx-shell="app"] body #app-main .qx-sol-flow img,
+html[data-qx-shell="app"] body #app-main #egSol img,
+html[data-qx-shell="app"] body #app-main .sol-body img,
+html[data-qx-shell="app"] body #app-main .qx-sol-fig,
+html[data-qx-shell="app"] body #app-main .tlx-qfig img,
+html[data-qx-shell="app"] body #app-main .qx-tlx-stem img,
+html[data-qx-shell="app"] body #app-main .qx-tlx-qimg {
+  max-width: 100% !important;
+  width: auto !important;
+  height: auto !important;
+  max-height: none !important;
+  min-height: 0 !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+}
+html[data-qx-shell="app"] body #app-main .tlx-qfig img,
+html[data-qx-shell="app"] body #app-main .qx-tlx-stem img,
+html[data-qx-shell="app"] body #app-main .qx-tlx-qimg {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  max-height: none !important;
+}
+html[data-qx-shell="app"] body #app-main .eg-opt img,
+html[data-qx-shell="app"] body #app-main .mtk-opt img,
+html[data-qx-shell="app"] body #app-main #qxOpts img,
+html[data-qx-shell="app"] body #app-main .qzrr-opts img,
+html[data-qx-shell="app"] body #app-main img.qx-opt-fig-img,
+html[data-qx-shell="app"] body #app-main .qx-opt-diagram-slot img,
+html[data-qx-shell="app"] body #app-main .qx-prac-opt img {
+  max-width: 100% !important;
+  width: auto !important;
+  height: auto !important;
+  max-height: min(42vh, 320px) !important;
+  object-fit: contain !important;
+}
+html[data-qx-shell="app"] body #app-main table img {
+  max-width: 100% !important;
+  width: auto !important;
+  height: auto !important;
+  max-height: min(28vh, 220px) !important;
+}
+
+@media (max-width: 900px), (pointer: coarse) and (hover: none), (orientation: landscape) and (max-height: 580px) {
+  :root, html, html[data-font-scale="medium"], html[data-font-scale="medium"] body {
+    --nta-q: 20px;
+    --nta-lh: 1.65;
+    --qx-read-stem: 20px;
+    --qx-read-opt: 20px;
+    --qx-read-sol: 20px;
+    --qx-read-lh: 1.65;
+  }
+  html[data-font-scale="small"], html[data-font-scale="small"] body {
+    --nta-q: 17px; --qx-read-stem: 17px; --qx-read-opt: 17px; --qx-read-sol: 17px;
+  }
+  html[data-font-scale="large"], html[data-font-scale="large"] body {
+    --nta-q: 23px; --qx-read-stem: 23px; --qx-read-opt: 23px; --qx-read-sol: 23px;
+  }
+  html[data-font-scale="xlarge"], html[data-font-scale="xlarge"] body {
+    --nta-q: 26px; --qx-read-stem: 26px; --qx-read-opt: 26px; --qx-read-sol: 26px;
+  }
+
+  html body #app-main .eg-test-root .eg-q-stem,
+  html body #app-main .eg-test-root .eg-opt,
+  html body #app-main .eg-test-root #egQArea,
+  html body #app-main .eg-test-root .qx-question-body,
+  html body #app-main .mtk-test-root .mtk-q-text,
+  html body #app-main .mtk-test-root .mtk-opt,
+  html body #app-main .mtk-test-root .mtk-opt-text,
+  html body #app-main .qzrr-cbt .mtk-q-text,
+  html body #app-main .qzrr-cbt .mtk-opt,
+  html body #app-main .qzrr-cbt .mtk-opt-text,
+  html body #app-main .qx-sol-flow,
+  html body #app-main #egSol,
+  html body #app-main .sol-body,
+  html body #app-main .eg-sol,
+  html body #app-main .qx-sol-card .qx-sol-flow,
+  html body #app-main #qaSolReveal .qx-sol-flow,
+  html body #app-main .allen-practice .mtk-q-text,
+  html body #app-main .allen-practice .mtk-opt-text,
+  html body .eg-test-root .eg-q-stem,
+  html body .eg-test-root .eg-opt,
+  html body .mtk-test-root .mtk-q-text,
+  html body .mtk-test-root .mtk-opt-text,
+  html body .qzrr-cbt .mtk-q-text,
+  html body .qzrr-cbt .mtk-opt-text {
+    font-size: var(--nta-q, 18px) !important;
+    line-height: var(--nta-lh, 1.65) !important;
+  }
+
+  html body #app-main .eg-q-stem img,
+  html body #app-main .mtk-q-text img,
+  html body #app-main .qx-question-body img,
+  html body #app-main .qx-diagram-slot img,
+  html body #app-main #qxDiagramSlot img,
+  html body #app-main .qx-diagram-seg img,
+  html body #app-main .qx-sol-flow img,
+  html body #app-main #egSol img,
+  html body #app-main .sol-body img,
+  html body #app-main .qx-sol-fig,
+  html body #app-main .tlx-qfig img,
+  html body #app-main .qx-tlx-stem img,
+  html body #app-main .qx-tlx-qimg,
+  html body .eg-test-root .eg-q-stem img,
+  html body .mtk-test-root .mtk-q-text img,
+  html body .qzrr-cbt .mtk-q-text img {
+    max-width: 100% !important;
+    width: auto !important;
+    height: auto !important;
+    max-height: none !important;
+    min-height: 0 !important;
+    object-fit: contain !important;
+    object-position: center center !important;
+  }
+  html body #app-main .tlx-qfig img,
+  html body #app-main .qx-tlx-stem img,
+  html body #app-main .qx-tlx-qimg,
+  html body .tlx-qfig img,
+  html body .qx-tlx-stem img,
+  html body .qx-tlx-qimg {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: none !important;
+  }
+  html body #app-main .eg-opt img,
+  html body #app-main .mtk-opt img,
+  html body #app-main #qxOpts img,
+  html body #app-main .qzrr-opts img,
+  html body #app-main img.qx-opt-fig-img,
+  html body #app-main .qx-opt-diagram-slot img,
+  html body #app-main .qx-prac-opt img,
+  html body .eg-test-root .eg-opt img,
+  html body .mtk-test-root .mtk-opt img {
+    max-width: 100% !important;
+    width: auto !important;
+    height: auto !important;
+    max-height: min(42vh, 320px) !important;
+    object-fit: contain !important;
+  }
+  html body #app-main table img,
+  html body .eg-test-root table img,
+  html body .mtk-test-root table img {
+    max-width: 100% !important;
+    width: auto !important;
+    height: auto !important;
+    max-height: min(28vh, 220px) !important;
+  }
+
+  html body #app-main .eg-test-root .eg-q-card,
+  html body #app-main .mtk-test-root .mtk-q-wrap,
+  html body .eg-test-root .eg-q-card {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 500px) {
+  html body #app-main .eg-test-root > .eg-top,
+  html body #app-main .eg-test-root .eg-top,
+  html body .eg-test-root > .eg-top {
+    min-height: 44px !important;
+    height: auto !important;
+    max-height: none !important;
+  }
+  html body #app-main .eg-test-root .eg-info-strip,
+  html body .eg-test-root .eg-info-strip {
+    min-height: 28px !important;
+    padding-top: 2px !important;
+    padding-bottom: 2px !important;
+  }
+  html body #app-main .eg-test-root .eg-body,
+  html body .eg-test-root .eg-body {
+    padding-bottom: calc(88px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+}
+
+html body .mtk-opt-letter,
+html body .qx-opt-circle,
+html[data-qx-shell="app"] body .mtk-opt-letter,
+html[data-qx-shell="app"] body .qx-opt-circle {
+  font-size: 14px !important;
+}
+
+/* qxmd361: one reading size for question + solution on website and app.
+   Zoom out / Zoom in steps small → medium → large → XL. */
+html,
+html[data-font-scale="medium"] {
+  --nta-q: 20px;
+  --nta-lh: 1.65;
+  --qx-read-stem: 20px;
+  --qx-read-opt: 20px;
+  --qx-read-sol: 20px;
+  --qx-read-lh: 1.65;
+}
+html[data-font-scale="small"] {
+  --nta-q: 17px; --qx-read-stem: 17px; --qx-read-opt: 17px; --qx-read-sol: 17px;
+}
+html[data-font-scale="large"] {
+  --nta-q: 23px; --qx-read-stem: 23px; --qx-read-opt: 23px; --qx-read-sol: 23px;
+}
+html[data-font-scale="xlarge"] {
+  --nta-q: 26px; --qx-read-stem: 26px; --qx-read-opt: 26px; --qx-read-sol: 26px;
+}
+html body #app-main .eg-q-stem,
+html body #app-main #egQArea,
+html body #app-main .mtk-q-text,
+html body #app-main .qx-question-body,
+html body #app-main .qx-prac-q,
+html body #app-main .allen-q-body,
+html body #app-main .qx-book-q,
+html body #app-main .mtk-opt-text,
+html body #app-main .qx-prac-opt-text,
+html body #app-main .qx-sol-flow,
+html body #app-main .qx-sol-flow p,
+html body #app-main .qx-sol-card,
+html body #app-main .sol-body,
+html body #app-main #egSol,
+html body #app-main .eg-sol,
+html body .eg-test-root .eg-q-stem,
+html body .eg-test-root #egQArea,
+html body .mtk-test-root .mtk-q-text,
+html body .mtk-test-root .mtk-opt-text,
+html body .qzrr-cbt .mtk-q-text,
+html body .qzrr-cbt .mtk-opt-text,
+html body .qx-sol-flow,
+html body .qx-sol-flow p,
+html body .qx-book-q {
+  font-size: var(--nta-q, 20px) !important;
+  line-height: var(--nta-lh, 1.65) !important;
+}
+html body .qx-sol-card-h,
+html body .qx-sol-ans-lab {
+  font-size: 13px !important;
+  line-height: 1.3 !important;
+}
+
+/* Math keeps its own line box so a fraction bar stays on the fraction,
+   not a rule through the sentence. */
+html body .katex,
+html body .qx-sol-flow .katex,
+html body .eg-q-stem .katex,
+html body .mtk-q-text .katex,
+html body .mtk-opt-text .katex,
+html body #egQArea .katex,
+html body .qx-book-q .katex {
+  line-height: 1.2 !important;
+}
+html body .qx-sol-flow > p,
+html body .qx-sol-flow > .qx-sol-p,
+html body .sol-body > p,
+html body .qx-sol-card .qx-sol-flow p {
+  margin: 0 0 14px !important;
+  line-height: 1.75 !important;
+  border: 0 !important;
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+  background-image: none !important;
+  max-width: none !important;
+}
+html body .qx-sol-card-h {
+  border-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* NTA chip stays 16px on website and app. Figure rules must not stretch it. */
+html body #app-main img.qx-nta-chip,
+html body #app-main img.qx-paper-exam-logo,
+html body #app-main img.qx-card-exam-logo,
+html body #app-main .qx-paper-meta img.qx-exam-logo,
+html body #app-main .qx-paper-chip img.qx-exam-logo,
+html body .eg-q-stem img.qx-nta-chip,
+html body .mtk-q-text img.qx-nta-chip,
+html body .qx-sol-flow img.qx-nta-chip,
+html body .qzrr-cbt img.qx-nta-chip,
+html[data-qx-shell="app"] body #app-main img.qx-nta-chip,
+html[data-qx-shell="app"] body #app-main img.qx-paper-exam-logo,
+html[data-qx-shell="app"] body #app-main .eg-q-stem img.qx-exam-logo,
+html[data-qx-shell="app"] body #app-main .mtk-q-text img.qx-exam-logo,
+html[data-qx-shell="web"] body #app-main img.qx-nta-chip,
+html[data-qx-shell="web"] body #app-main img.qx-paper-exam-logo,
+html body #app-main .eg-q-stem img.qx-nta-chip,
+html body #app-main .eg-q-stem img.qx-paper-exam-logo,
+html body #app-main .eg-q-stem img.qx-card-exam-logo,
+html body #app-main .eg-q-stem img.qx-exam-logo,
+html body #app-main .mtk-q-text img.qx-nta-chip,
+html body #app-main .mtk-q-text img.qx-exam-logo,
+html body #app-main .qx-sol-flow img.qx-nta-chip,
+html body #app-main .qx-sol-flow img.qx-exam-logo,
+html body #app-main .qx-question-body img.qx-exam-logo,
+html body #app-main .sol-body img.qx-exam-logo,
+html body #app-main #egSol img.qx-exam-logo,
+html body .eg-test-root .eg-q-stem img.qx-exam-logo,
+html body .mtk-test-root .mtk-q-text img.qx-exam-logo,
+html body .qzrr-cbt .mtk-q-text img.qx-exam-logo,
+html[data-qx-shell="app"] body #app-main .qx-sol-flow img.qx-exam-logo,
+html[data-qx-shell="web"] body #app-main .eg-q-stem img.qx-exam-logo,
+html[data-qx-shell="web"] body #app-main .mtk-q-text img.qx-exam-logo {
+  width: 16px !important;
+  height: 16px !important;
+  max-width: 16px !important;
+  max-height: 16px !important;
+  min-width: 16px !important;
+  min-height: 16px !important;
+  display: inline-block !important;
+  object-fit: contain !important;
+  margin: 0 4px 0 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border-radius: 3px !important;
+  vertical-align: -3px !important;
+  float: none !important;
+}
+
+/* Keep each formula one box. display:inline on .katex-html let the fraction
+   bar grow to the paragraph and hid the denominator. */
+html body #app-main#app-main .qx-sol-card .qx-sol-flow .katex:not(.katex-display > .katex),
+html body #app-main#app-main .eg-test-root .eg-q-stem .katex:not(.katex-display > .katex),
+html body #app-main#app-main .mtk-test-root .mtk-q-text .katex:not(.katex-display > .katex),
+html body #app-main#app-main .mtk-test-root .mtk-opt-text .katex:not(.katex-display > .katex),
+html body #egSolPanel#egSolPanel .katex:not(.katex-display > .katex),
+html body #qaSolReveal#qaSolReveal .katex:not(.katex-display > .katex) {
+  display: inline-block !important;
+  white-space: nowrap !important;
+  overflow: visible !important;
+  max-width: none !important;
+  vertical-align: middle !important;
+}
+html body #app-main#app-main .qx-sol-card .qx-sol-flow .katex:not(.katex-display > .katex) > .katex-html,
+html body #app-main#app-main .eg-test-root .eg-q-stem .katex:not(.katex-display > .katex) > .katex-html,
+html body #app-main#app-main .mtk-test-root .mtk-q-text .katex:not(.katex-display > .katex) > .katex-html,
+html body #app-main#app-main .mtk-test-root .mtk-opt-text .katex:not(.katex-display > .katex) > .katex-html,
+html body #egSolPanel#egSolPanel .katex:not(.katex-display > .katex) > .katex-html,
+html body #qaSolReveal#qaSolReveal .katex:not(.katex-display > .katex) > .katex-html {
+  display: inline-block !important;
+  white-space: nowrap !important;
+}
+html body .qx-sol-ans .katex .katex-mathml,
+html body .katex annotation {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+}
+
+/* qxmd366: display math and solution lines used overflow-y:hidden.
+   A fraction's denominator sits under the bar and was cut off, so the bar
+   looked like a lone underline. visible+auto is not allowed: the browser
+   turns the visible axis into auto and clips again. Both axes stay visible.
+   Do not pad the fraction cell — that shoved the denominator into the clip. */
+html body #app-main#app-main .eg-test-root .katex-display,
+html body #app-main#app-main .mtk-test-root .katex-display,
+html body #qaSolReveal#qaSolReveal .katex-display,
+html body #egSolPanel#egSolPanel .katex-display,
+html body #app-main#app-main .qx-sol-card .katex-display,
+html body #app-main#app-main .qx-sol-flow .katex-display {
+  overflow-x: visible !important;
+  overflow-y: visible !important;
+  max-height: none !important;
+  height: auto !important;
+}
+html body #egSolPanel#egSolPanel .qx-sol-flow p,
+html body #egSolPanel#egSolPanel .qx-sol-flow .qx-sol-p,
+html body #qaSolReveal#qaSolReveal .qx-sol-flow p,
+html body #qaSolReveal#qaSolReveal .qx-sol-flow .qx-sol-p,
+html body #app-main#app-main .qx-sol-card .qx-sol-flow p,
+html body #app-main#app-main .qx-sol-card .qx-sol-flow .qx-sol-p,
+html body #app-main#app-main .eg-test-root .eg-q-stem,
+html body #app-main#app-main .eg-test-root #egQArea,
+html body #app-main#app-main .mtk-test-root .mtk-q-text {
+  overflow-x: visible !important;
+  overflow-y: visible !important;
+  max-height: none !important;
+}
+html body .katex .mfrac > .vlist-t > .vlist-r > .vlist {
+  padding-bottom: 0 !important;
+}
+html body #egSolPanel#egSolPanel .qx-sol-shortcut-text .katex,
+html body #qaSolReveal#qaSolReveal .qx-sol-shortcut-text .katex,
+html body #app-main#app-main .qx-sol-shortcut-text .katex,
+html body #egSolPanel#egSolPanel .qx-sol-shortcut-text .katex > .katex-html,
+html body #qaSolReveal#qaSolReveal .qx-sol-shortcut-text .katex > .katex-html,
+html body #app-main#app-main .qx-sol-shortcut-text .katex > .katex-html {
+  display: inline-block !important;
+  white-space: nowrap !important;
+  overflow: visible !important;
+  max-width: none !important;
+}
+
+/* qxmd367: Full on a phone. The mobile sheet forced the player back to
+   position:relative, and the native fullscreen call then left the question
+   and the solution outside the visible window. This player fills the screen
+   and scrolls inside .eg-body. The card is not a second scrollport
+   (visible+auto would clip again). */
+html.qx-immersive body.qx-immersive #app-main .eg-test-root.qx-immersive,
+html.qx-immersive body.qx-immersive #app-main .mtk-test-root.qx-immersive {
+  position: fixed !important;
+  inset: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100% !important;
+  height: 100dvh !important;
+  max-height: 100dvh !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  z-index: 2147483000 !important;
+}
+html.qx-immersive body.qx-immersive #app-main .eg-test-root.qx-immersive > .eg-body,
+html.qx-immersive body.qx-immersive #app-main .mtk-test-root.qx-immersive > .eg-body {
+  flex: 1 1 auto !important;
+  min-height: 120px !important;
+  height: auto !important;
+  max-height: none !important;
+  overflow-x: auto !important;
+  overflow-y: auto !important;
+  touch-action: pan-x pan-y !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+html.qx-immersive body.qx-immersive #app-main .eg-test-root.qx-immersive .eg-main,
+html.qx-immersive body.qx-immersive #app-main .eg-test-root.qx-immersive .eg-q-card,
+html.qx-immersive body.qx-immersive #app-main .mtk-test-root.qx-immersive .eg-main,
+html.qx-immersive body.qx-immersive #app-main .mtk-test-root.qx-immersive .eg-q-card {
+  overflow-x: visible !important;
+  overflow-y: visible !important;
+  max-height: none !important;
+  height: auto !important;
+  flex: 0 0 auto !important;
+}
+html.qx-immersive body.qx-immersive #app-main .eg-test-root.qx-immersive #egQArea,
+html.qx-immersive body.qx-immersive #app-main .eg-test-root.qx-immersive .eg-q-stem,
+html.qx-immersive body.qx-immersive #app-main .eg-test-root.qx-immersive #egSolPanel {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  height: auto !important;
+  max-height: none !important;
+}
+html.qx-immersive body.qx-immersive #app-main .eg-test-root.qx-immersive #qxOpts {
+  visibility: visible !important;
+  opacity: 1 !important;
+  height: auto !important;
+  max-height: none !important;
+}

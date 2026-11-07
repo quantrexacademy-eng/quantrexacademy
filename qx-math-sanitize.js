@@ -494,44 +494,76 @@
     return { plainLen: plain.length, words: words, mixed: plain.length > 80 || words >= 6 };
   }
 
+  function unescapedDollarCount(s) {
+    const t = String(s || "").replace(/\$\$/g, "");
+    let n = 0;
+    for (let i = 0; i < t.length; i++) {
+      if (t[i] === "$" && t[i - 1] !== "\\") n++;
+    }
+    return n;
+  }
+
   /** Stem-echo cuts often eat the opening `$` of the next math island. Pair or drop the leftover. */
   function healOddDollars(html) {
     let s = String(html || "");
     if (!s) return s;
-    const n = (s.match(/\$/g) || []).length;
-    if (n % 2 === 0) return s;
+    if (unescapedDollarCount(s) % 2 === 0) return s;
     const m = /^((?:(?:\s|&nbsp;|<br\s*\/?\s*>|<\/?(?:p|div|span)[^>]*>)*)?)/i.exec(s);
     const prefix = m ? m[0] : "";
     const body = s.slice(prefix.length);
-    const count = (body.match(/\$/g) || []).length;
-    if (count % 2 === 0) return s;
+    if (unescapedDollarCount(body) % 2 === 0) return s;
     const mix = mixedProseLen(body);
+    const even = (x) => unescapedDollarCount(x) % 2 === 0;
+
+    const trail = body.replace(/([A-Za-z.,;:])\s*\$(\s*)$/g, "$1$2");
+    if (trail !== body && even(trail)) return prefix + trail;
+
+    const wrapped = body.replace(
+      /(^|[^$\\])(\\left[\s\S]{0,220}?\\right[)\]\}][^\n$\s]{0,16})\$(?=\s|[A-Za-z]|$)/g,
+      (all, pre, math) => {
+        if (/\b(?:are|is|of|and|the|to|in|with|oxidises|oxidizes)\b/i.test(math)) return all;
+        return pre + "$" + math + "$";
+      }
+    );
+    if (wrapped !== body && even(wrapped)) return prefix + wrapped;
+
+    const charge = body.replace(/(\^{[^}]{0,24}})\$(\s+(?:are|is|of|and|the|in|to|with)\b)/gi, "$1$2");
+    if (charge !== body && even(charge)) return prefix + charge;
+
     // Never prepend $ before English ("$Let $R" smashed set-builders).
-    if (/^(Let|If|Then|Consider|Define|For|The|Given|Which|When)\b/.test(body)) {
+    if (/^(Let|If|Then|Consider|Define|For|The|Given|Which|When|An\b|In\b|At\b|A\s+[a-z])/i.test(body.replace(/^\$/, ""))) {
+      const strippedLead = body.replace(/^\$A /g, "A ").replace(/^\$/, "");
+      if (even(strippedLead)) return prefix + strippedLead;
       const collapsed = body.replace(/\\\}(\$)\$+(?=\s)/g, "\\}$1").replace(/\$Let \$R/g, "Let $R");
-      if ((collapsed.match(/\$/g) || []).length % 2 === 0) return prefix + collapsed;
+      if (even(collapsed)) return prefix + collapsed;
       const drop = collapsed.replace(/\$(\s+(?:be a |then |is the |and |or ))/i, "$1");
-      if ((drop.match(/\$/g) || []).length % 2 === 0) return prefix + drop;
+      if (even(drop)) return prefix + drop;
       const idx = collapsed.lastIndexOf("$");
       if (idx >= 0) {
         const after = collapsed.slice(idx + 1);
         if (/^\s*(?:be a |is the |then |and |or |of |is )/i.test(after) || !String(after).trim()) {
-          return prefix + collapsed.slice(0, idx) + collapsed.slice(idx + 1);
+          const cut = collapsed.slice(0, idx) + collapsed.slice(idx + 1);
+          if (even(cut)) return prefix + cut;
         }
       }
-      return prefix + collapsed;
+      return prefix + strippedLead;
     }
     if (mix.mixed) {
       if (body.startsWith("$") && mix.plainLen > 80) {
-        return prefix + body.replace(/^\$/, "");
+        const drop = body.replace(/^\$/, "");
+        if (even(drop)) return prefix + drop;
       }
       const idx = body.lastIndexOf("$");
-      if (idx >= 0) return prefix + body.slice(0, idx) + body.slice(idx + 1);
+      if (idx >= 0) {
+        const cut = body.slice(0, idx) + body.slice(idx + 1);
+        if (even(cut)) return prefix + cut;
+      }
       return s;
     }
     if (!body.startsWith("$") && /^(?:\\(?:mathrm|mathbf|text|frac|dfrac|tfrac|sqrt|left|right|begin|end|sin|cos|tan|log|ln|cdot|times|pm|infty|alpha|beta|gamma|theta|overline|underline|hat|vec)|\\[a-zA-Z]+|\\end\{)/.test(body)) {
       return prefix + "$" + body;
     }
+    const count = unescapedDollarCount(body);
     if (body.startsWith("$") && count === 1) return prefix + body + "$";
     if (count === 1 && !body.startsWith("$") && /\$\s*(?:<|$)/.test(body)) {
       return prefix + body.replace(/\$(\s*)(?=<|$)/, "$1");
@@ -539,8 +571,11 @@
     if (count === 1 && /(?:\\[a-zA-Z]+|[A-Za-z])\$-(?=[A-Za-z])/.test(body)) {
       return prefix + body.replace(/\$-(?=[A-Za-z])/g, "-");
     }
-    if (body.startsWith("$")) return prefix + body + "$";
-    if (/\\[a-zA-Z]/.test(body) && mix.plainLen <= 80) return prefix + "$" + body;
+    if (body.startsWith("$")) {
+      const drop = body.replace(/^\$/, "");
+      if (even(drop)) return prefix + drop;
+      return prefix + body + "$";
+    }
     return prefix + body.replace(/\$(\s*)(?=<|$)/, "$1");
   }
 
@@ -882,10 +917,27 @@
     t = t.replace(/\\left\$\s*\(/g, "\\left(");
     t = t.replace(/\\right\$\s*\)/g, "\\right)");
     t = t.replace(/\\left\$/g, "\\left(");
-    t = t.replace(/\\right\$/g, "\\right)$");
+    t = t.replace(/\\right\$/g, "\\right)");
     t = t.replace(/\\right\)\$\s*\$/g, "\\right)$");
+    t = t.replace(/((?:^|>|\n|\r)\s*)\$A ([a-z]{3,})/g, "$1A $2");
     t = t.replace(/((?:^|>|\n|\r)\s*)\$([A-Z][a-z]{2,})(?=\s|[^A-Za-z$]|$)/g, "$1$2");
-    t = t.replace(/((?:^|>|\n|\r)\s*)\$(An|In|At|On|By|To)(?=\s)/g, "$1$2");
+    t = t.replace(/((?:^|>|\n|\r)\s*)\$(An|In|At|On|By|To|As|If)(?=\s)/g, "$1$2");
+    {
+      const merged = t.replace(/\$([^$\n]{1,80})\$(\\left)/g, "$$$1\\left");
+      const oddNow = (function (s) {
+        const u = String(s || "").replace(/\$\$/g, "");
+        let n = 0;
+        for (let i = 0; i < u.length; i++) if (u[i] === "$" && u[i - 1] !== "\\") n++;
+        return n % 2 === 1;
+      })(t);
+      const oddMerged = (function (s) {
+        const u = String(s || "").replace(/\$\$/g, "");
+        let n = 0;
+        for (let i = 0; i < u.length; i++) if (u[i] === "$" && u[i - 1] !== "\\") n++;
+        return n % 2 === 1;
+      })(merged);
+      if (oddNow && !oddMerged) t = merged;
+    }
     t = t.replace(/(?:\\)?(sin|cos|tan|cot|sec|csc|cosec)\s*[-−]\s*1\b/g, "\\$1^{-1}");
     t = t.replace(/\bandf\b/g, "and f");
     t = t.replace(/\bwherex\b/g, "where x");

@@ -1,0 +1,512 @@
+/* qxmd352 — last-wins light + dark for tests, practice, solutions.
+   Paper theme is data-test-theme / .qzrr-dark. Site html[data-theme] must not
+   bleach white paper or hide ink on dark paper. #egQArea is the stem (ID). */
+
+/* ========== LIGHT paper: near-black ink on white ========== */
+html body .eg-test-root[data-test-theme="light"],
+html body .mtk-test-root[data-test-theme="light"],
+html body .qzrr-cbt:not(.qzrr-dark),
+html[data-theme="dark"] body .eg-test-root[data-test-theme="light"],
+html[data-theme="dark"] body .qzrr-cbt:not(.qzrr-dark) {
+  color: #0b1220 !important;
+}
+
+html body .eg-test-root[data-test-theme="light"] .eg-body,
+html body .eg-test-root[data-test-theme="light"] .eg-main,
+html body .eg-test-root[data-test-theme="light"] .eg-q-card,
+html body .eg-test-root[data-eg-mode="test"][data-test-theme="light"] .eg-body,
+html body .eg-test-root[data-eg-mode="test"][data-test-theme="light"] .eg-q-card,
+html body .qzrr-cbt:not(.qzrr-dark) .qzrr-q-area,
+html body .qzrr-cbt:not(.qzrr-dark) .qzrr-main-col,
+html[data-theme="dark"] body .eg-test-root[data-test-theme="light"] .eg-q-card,
+html[data-theme="dark"] body .qzrr-cbt:not(.qzrr-dark) .qzrr-q-area {
+  background: #ffffff !important;
+  color: #0b1220 !important;
+}
+
+html body .eg-test-root[data-test-theme="light"] #egQArea,
+html body .eg-test-root[data-eg-mode="test"][data-test-theme="light"] #egQArea,
+html body .eg-test-root[data-eg-mode="practice"][data-test-theme="light"] #egQArea,
+html body .eg-test-root[data-test-theme="light"] .eg-q-stem,
+html body .eg-test-root[data-test-theme="light"] .mtk-q-text,
+html body .eg-test-root[data-test-theme="light"] .qx-content,
+html body .eg-test-root[data-test-theme="light"] .qx-question-body,
+html body .eg-test-root[data-test-theme="light"] .mtk-opt,
+html body .eg-test-root[data-test-theme="light"] .eg-opt,
+html body .eg-test-root[data-test-theme="light"] .mtk-opt-text,
+html body .eg-test-root[data-test-theme="light"] .mtk-opt-text *:not(.mtk-opt-letter):not(.eg-opt-letter):not(.qx-opt-circle):not(img):not(svg):not(path),
+html body .eg-test-root[data-test-theme="light"] .katex,
+html body .eg-test-root[data-test-theme="light"] .katex *,
+html body .eg-test-root[data-test-theme="light"].eg-sol-showing #egQArea,
+html body .eg-test-root[data-test-theme="light"].qx-sol-showing #egQArea,
+html[data-theme="dark"] body .eg-test-root[data-test-theme="light"] #egQArea,
+html[data-theme="dark"] body .eg-test-root[data-test-theme="light"] .katex *,
+html body .qzrr-cbt:not(.qzrr-dark) #qzrrQArea,
+html body .qzrr-cbt:not(.qzrr-dark) .qzrr-q-area,
+html body .qzrr-cbt:not(.qzrr-dark) .mtk-q-text,
+html body .qzrr-cbt:not(.qzrr-dark) .qx-content,
+html body .qzrr-cbt:not(.qzrr-dark) .mtk-opt-text,
+html body .qzrr-cbt:not(.qzrr-dark) .mtk-opt-text *:not(.mtk-opt-letter):not(img):not(svg):not(path),
+html body .qzrr-cbt:not(.qzrr-dark) .katex,
+html body .qzrr-cbt:not(.qzrr-dark) .katex *,
+html[data-theme="dark"] body .qzrr-cbt:not(.qzrr-dark) .qx-content,
+html[data-theme="dark"] body .qzrr-cbt:not(.qzrr-dark) .katex * {
+  color: #0b1220 !important;
+  -webkit-text-fill-color: #0b1220 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+html body .eg-test-root[data-test-theme="light"] .mtk-opt,
+html body .eg-test-root[data-test-theme="light"] .eg-opt,
+html body .qzrr-cbt:not(.qzrr-dark) .qzrr-opts .mtk-opt {
+  background: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: #0b1220 !important;
+  -webkit-text-fill-color: #0b1220 !important;
+}
+
+html body .eg-test-root[data-test-theme="light"] .eg-sol,
+html body .eg-test-root[data-test-theme="light"] #egSol,
+html body .eg-test-root[data-test-theme="light"] #egSolPanel,
+html body .eg-test-root[data-test-theme="light"] .sol-body,
+html body .eg-test-root[data-test-theme="light"] .qx-sol-flow,
+html body .eg-test-root[data-test-theme="light"] .qx-sol-card,
+html body .eg-test-root[data-test-theme="light"] .qx-sol-flow p,
+html[data-theme="dark"] body .eg-test-root[data-test-theme="light"] .eg-sol,
+html[data-theme="dark"] body .eg-test-root[data-test-theme="light"] .qx-sol-flow {
+  background: #ffffff !important;
+  color: #0b1220 !important;
+  -webkit-text-fill-color: #0b1220 !important;
+}
+/* Do not fill every KaTeX span. An opaque span covers the radicand and the denominator. */
+html body .eg-test-root[data-test-theme="light"] .eg-sol .katex,
+html body .eg-test-root[data-test-theme="light"] .eg-sol .katex * {
+  color: #0b1220 !important;
+  -webkit-text-fill-color: #0b1220 !important;
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+html body .eg-test-root[data-test-theme="light"] #egFoot,
+html body .eg-test-root[data-test-theme="light"] .eg-foot,
+html body .eg-test-root[data-eg-mode="practice"][data-test-theme="light"] #egFoot {
+  background: #ffffff !important;
+  border-top-color: #e5e7eb !important;
+  color: #0b1220 !important;
+}
+html body .eg-test-root[data-test-theme="light"] #qxPrevBtn,
+html body .eg-test-root[data-test-theme="light"] #qxNextBtn,
+html body .eg-test-root[data-test-theme="light"] #qxClearBtn,
+html body .eg-test-root[data-test-theme="light"] #egCheckBtn {
+  color: #0b1220 !important;
+  -webkit-text-fill-color: #0b1220 !important;
+}
+
+/* ========== DARK paper: near-white ink on near-black ========== */
+html body .eg-test-root[data-test-theme="dark"],
+html body .mtk-test-root[data-test-theme="dark"],
+html body .qzrr-cbt.qzrr-dark,
+html[data-theme="light"] body .eg-test-root[data-test-theme="dark"],
+html[data-theme="light"] body .qzrr-cbt.qzrr-dark {
+  color: #f8fafc !important;
+}
+
+html body .eg-test-root[data-test-theme="dark"] .eg-body,
+html body .eg-test-root[data-test-theme="dark"] .eg-main,
+html body .eg-test-root[data-test-theme="dark"] .eg-q-card,
+html body .eg-test-root[data-eg-mode="test"][data-test-theme="dark"] .eg-body,
+html body .eg-test-root[data-eg-mode="test"][data-test-theme="dark"] .eg-main,
+html body .eg-test-root[data-eg-mode="test"][data-test-theme="dark"] .eg-q-card,
+html body .eg-test-root[data-eg-mode="practice"][data-test-theme="dark"] .eg-body,
+html body .eg-test-root[data-eg-mode="practice"][data-test-theme="dark"] .eg-q-card,
+html body .qzrr-cbt.qzrr-dark,
+html body .qzrr-cbt.qzrr-dark .qzrr-q-area,
+html body .qzrr-cbt.qzrr-dark .qzrr-main-col,
+html[data-theme="light"] body .eg-test-root[data-test-theme="dark"] .eg-q-card {
+  background: #0b1220 !important;
+  color: #f8fafc !important;
+}
+
+html body .eg-test-root[data-test-theme="dark"] #egQArea,
+html body .eg-test-root[data-eg-mode="test"][data-test-theme="dark"] #egQArea,
+html body .eg-test-root[data-eg-mode="practice"][data-test-theme="dark"] #egQArea,
+html body .eg-test-root[data-eg-mode="test"][data-test-theme="dark"] .eg-q-stem,
+html body .eg-test-root[data-test-theme="dark"] .eg-q-stem,
+html body .eg-test-root[data-test-theme="dark"] .mtk-q-text,
+html body .eg-test-root[data-test-theme="dark"] .qx-content,
+html body .eg-test-root[data-test-theme="dark"] .qx-question-body,
+html body .eg-test-root[data-test-theme="dark"] .mtk-opt,
+html body .eg-test-root[data-test-theme="dark"] .eg-opt,
+html body .eg-test-root[data-test-theme="dark"] .mtk-opt-text,
+html body .eg-test-root[data-test-theme="dark"] .mtk-opt-text *:not(.mtk-opt-letter):not(.eg-opt-letter):not(.qx-opt-circle):not(img):not(svg):not(path),
+html body .eg-test-root[data-test-theme="dark"] .katex,
+html body .eg-test-root[data-test-theme="dark"] .katex *,
+html body .eg-test-root[data-test-theme="dark"].eg-sol-showing #egQArea,
+html body .eg-test-root[data-test-theme="dark"].qx-sol-showing #egQArea,
+html body .eg-test-root[data-test-theme="dark"].eg-sol-showing .eg-q-stem,
+html[data-theme="light"] body .eg-test-root[data-test-theme="dark"] #egQArea,
+html[data-theme="dark"] body .eg-test-root[data-test-theme="dark"] #egQArea,
+html body .qzrr-cbt.qzrr-dark #qzrrQArea,
+html body .qzrr-cbt.qzrr-dark .qzrr-q-area,
+html body .qzrr-cbt.qzrr-dark .mtk-q-text,
+html body .qzrr-cbt.qzrr-dark .qx-content,
+html body .qzrr-cbt.qzrr-dark .mtk-opt,
+html body .qzrr-cbt.qzrr-dark .mtk-opt-text,
+html body .qzrr-cbt.qzrr-dark .mtk-opt-text *:not(.mtk-opt-letter):not(img):not(svg):not(path),
+html body .qzrr-cbt.qzrr-dark .katex,
+html body .qzrr-cbt.qzrr-dark .katex *,
+html[data-theme="light"] body .qzrr-cbt.qzrr-dark .qx-content,
+html[data-theme="dark"] body .qzrr-cbt.qzrr-dark .mtk-opt-text {
+  color: #f8fafc !important;
+  -webkit-text-fill-color: #f8fafc !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+html body .eg-test-root[data-test-theme="dark"] .mtk-opt,
+html body .eg-test-root[data-test-theme="dark"] .eg-opt,
+html body .eg-test-root[data-eg-mode="test"][data-test-theme="dark"] .mtk-opt,
+html body .qzrr-cbt.qzrr-dark .qzrr-opts .mtk-opt,
+html[data-theme="dark"] body .qzrr-cbt.qzrr-dark .qzrr-opts .mtk-opt {
+  background: #1e293b !important;
+  border-color: #475569 !important;
+  color: #f8fafc !important;
+  -webkit-text-fill-color: #f8fafc !important;
+}
+
+html body .eg-test-root[data-test-theme="dark"] .mtk-opt.eg-opt-right,
+html body .eg-test-root[data-test-theme="dark"] .mtk-opt.correct,
+html body .eg-test-root[data-test-theme="dark"] .mtk-opt.eg-opt-right .mtk-opt-text,
+html body .eg-test-root[data-test-theme="dark"] .mtk-opt.correct .katex * {
+  background: #14532d !important;
+  border-color: #22c55e !important;
+  color: #dcfce7 !important;
+  -webkit-text-fill-color: #dcfce7 !important;
+}
+html body .eg-test-root[data-test-theme="dark"] .mtk-opt.eg-opt-wrong,
+html body .eg-test-root[data-test-theme="dark"] .mtk-opt.wrong,
+html body .eg-test-root[data-test-theme="dark"] .mtk-opt.eg-opt-wrong .mtk-opt-text,
+html body .eg-test-root[data-test-theme="dark"] .mtk-opt.wrong .katex * {
+  background: #7f1d1d !important;
+  border-color: #ef4444 !important;
+  color: #fecaca !important;
+  -webkit-text-fill-color: #fecaca !important;
+}
+
+html body .eg-test-root[data-test-theme="light"] .mtk-opt.eg-opt-right,
+html body .eg-test-root[data-test-theme="light"] .mtk-opt.correct {
+  background: #dcfce7 !important;
+  border-color: #16a34a !important;
+  color: #14532d !important;
+}
+html body .eg-test-root[data-test-theme="light"] .mtk-opt.eg-opt-wrong,
+html body .eg-test-root[data-test-theme="light"] .mtk-opt.wrong {
+  background: #fee2e2 !important;
+  border-color: #dc2626 !important;
+  color: #7f1d1d !important;
+}
+
+html body .eg-test-root[data-test-theme="dark"] .eg-sol,
+html body .eg-test-root[data-test-theme="dark"] #egSol,
+html body .eg-test-root[data-test-theme="dark"] #egSolPanel,
+html body .eg-test-root[data-test-theme="dark"] .sol-body,
+html body .eg-test-root[data-test-theme="dark"] .qx-sol-flow,
+html body .eg-test-root[data-test-theme="dark"] .qx-sol-card,
+html body .eg-test-root[data-test-theme="dark"] .qx-sol-flow p,
+html[data-theme="light"] body .eg-test-root[data-test-theme="dark"] .eg-sol,
+html[data-theme="dark"] body .eg-test-root[data-test-theme="dark"] .qx-sol-flow {
+  background: #111827 !important;
+  color: #f8fafc !important;
+  -webkit-text-fill-color: #f8fafc !important;
+}
+html body .eg-test-root[data-test-theme="dark"] .eg-sol .katex,
+html body .eg-test-root[data-test-theme="dark"] .eg-sol .katex *,
+html body .eg-test-root[data-test-theme="dark"] .qx-sol-card .katex * {
+  color: #f8fafc !important;
+  -webkit-text-fill-color: #f8fafc !important;
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+html body .eg-sol-panel-head,
+html body .eg-sol-panel-head strong {
+  background: #1565C0 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+html body .eg-test-root[data-test-theme="dark"] #egFoot,
+html body .eg-test-root[data-test-theme="dark"] .eg-foot,
+html body .eg-test-root[data-eg-mode="test"][data-test-theme="dark"] #egFoot,
+html body .eg-test-root[data-eg-mode="practice"][data-test-theme="dark"] #egFoot,
+html[data-theme="dark"] body .eg-test-root[data-test-theme="dark"] #egFoot {
+  background: #0f172a !important;
+  background-color: #0f172a !important;
+  border-top-color: #334155 !important;
+  color: #f8fafc !important;
+}
+html body .eg-test-root[data-test-theme="dark"] #qxPrevBtn,
+html body .eg-test-root[data-test-theme="dark"] #qxNextBtn,
+html body .eg-test-root[data-test-theme="dark"] #qxClearBtn,
+html body .eg-test-root[data-test-theme="dark"] #qxReviewNextBtn,
+html body .eg-test-root[data-test-theme="dark"] #egCheckBtn,
+html body .eg-test-root[data-eg-mode="test"][data-test-theme="dark"] #qxPrevBtn,
+html body .eg-test-root[data-eg-mode="test"][data-test-theme="dark"] #qxClearBtn,
+html body .eg-test-root[data-eg-mode="practice"][data-test-theme="dark"] #qxPrevBtn,
+html body .eg-test-root[data-eg-mode="practice"][data-test-theme="dark"] #qxNextBtn {
+  color: #f8fafc !important;
+  -webkit-text-fill-color: #f8fafc !important;
+  background: #1e293b !important;
+  border-color: #475569 !important;
+}
+html body .eg-test-root[data-test-theme="dark"] #egCheckBtn,
+html body .eg-test-root[data-eg-mode="practice"][data-test-theme="dark"] #egCheckBtn {
+  background: #1565C0 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  border-color: #1565C0 !important;
+}
+html body .eg-test-root[data-test-theme="dark"] #qxSaveBtn,
+html body .eg-test-root[data-eg-mode="test"][data-test-theme="dark"] #qxSaveBtn {
+  background: #1565C0 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  border-color: #1565C0 !important;
+}
+
+html body .eg-test-root[data-test-theme="dark"] .eg-subs,
+html body .eg-test-root[data-test-theme="dark"] .eg-qbar,
+html body .eg-test-root[data-test-theme="dark"] .eg-marks-qrow,
+html body .eg-test-root[data-test-theme="dark"] .eg-info-strip {
+  background: #0f172a !important;
+  color: #f8fafc !important;
+  border-color: #1e293b !important;
+}
+html body .eg-test-root[data-test-theme="dark"] .eg-marks-qno,
+html body .eg-test-root[data-test-theme="dark"] .eg-sub.on {
+  color: #f8fafc !important;
+  -webkit-text-fill-color: #f8fafc !important;
+}
+
+html body .eg-test-root .mtk-opt-letter,
+html body .eg-test-root .eg-opt-letter,
+html body .eg-test-root .qx-opt-circle,
+html body .qzrr-cbt .mtk-opt-letter,
+html body .eg-test-root[data-test-theme="dark"] .mtk-opt-letter,
+html body .eg-test-root[data-test-theme="light"] .mtk-opt-letter {
+  background: #1565C0 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+html body .eg-test-root[data-test-theme="dark"] .eg-q-stem img,
+html body .eg-test-root[data-test-theme="dark"] .mtk-q-text img,
+html body .eg-test-root[data-test-theme="dark"] .mtk-opt img,
+html body .qzrr-cbt.qzrr-dark .qzrr-q-area img {
+  background: #ffffff !important;
+}
+
+html body .eg-test-root[data-test-theme="dark"] .eg-fmt-pop,
+html body .eg-test-root[data-test-theme="dark"] #egFmtPop,
+html body .eg-test-root[data-test-theme="dark"] #pracViewPanel,
+html[data-theme="dark"] body #egFmtPop.eg-vs-marks {
+  background: #111827 !important;
+  color: #f8fafc !important;
+}
+html body .eg-test-root[data-test-theme="dark"] .eg-fmt-pop .eg-fmt-title,
+html body .eg-test-root[data-test-theme="dark"] .eg-vs-lab-t,
+html body .eg-test-root[data-test-theme="dark"] #egFmtPop .eg-vs-row,
+html body .eg-test-root[data-test-theme="dark"] #egFmtPop label {
+  color: #f8fafc !important;
+  -webkit-text-fill-color: #f8fafc !important;
+}
+
+html body .qzrr-cbt.qzrr-dark .qzrr-instr-page,
+html body .qzrr-cbt.qzrr-dark .qzrr-modal,
+html[data-theme="dark"] body .qzrr-instr-page.qzrr-instr-dark,
+html body .eg-test-root[data-test-theme="dark"] .eg-marks-overview,
+html body .eg-test-root[data-test-theme="dark"] #egMarksOverview {
+  background: #0b1220 !important;
+  color: #f8fafc !important;
+}
+html body .qzrr-cbt.qzrr-dark .qzrr-instr-body,
+html body .qzrr-cbt.qzrr-dark .qzrr-instr-ol li,
+html body .qzrr-cbt.qzrr-dark .qzrr-modal-body,
+html body .eg-test-root[data-test-theme="dark"] .eg-mk-ov-title,
+html body .eg-test-root[data-test-theme="dark"] .eg-mk-leg-txt b {
+  color: #f8fafc !important;
+  -webkit-text-fill-color: #f8fafc !important;
+}
+
+html[data-theme="dark"] body .mk-sol-view,
+html[data-theme="dark"] body .mk-sol-view .mtk-q-text,
+html[data-theme="dark"] body .mk-sol-view .mtk-opt-text,
+html[data-theme="dark"] body .mk-sol-view .qx-sol-flow,
+html[data-theme="dark"] body .mk-sol-view .katex * {
+  color: #0b1220 !important;
+  -webkit-text-fill-color: #0b1220 !important;
+}
+html[data-theme="dark"] body .mk-sol-view {
+  background: #ffffff !important;
+}
+
+/* ========== qxmd353: Quizrr NTA paper follows site theme ==========
+   Screenshot (1211): html[data-theme=dark] painted pale stem + navy options
+   while .qzrr-cbt lacked .qzrr-dark and quizrr-web forced #fff on .qzrr-q-area.
+   Site dark → full dark paper. Site light / light paper → white paper + dark ink. */
+
+html[data-theme="dark"] body .qzrr-cbt,
+html[data-theme="dark"] body .qzrr-cbt:not(.qzrr-dark),
+html[data-theme="dark"] body .qzrr-cbt[data-test-theme="light"],
+html[data-theme="dark"] body .qzrr-cbt .qzrr-body,
+html[data-theme="dark"] body .qzrr-cbt .qzrr-main-col,
+html[data-theme="dark"] body .qzrr-cbt .qzrr-q-area,
+html[data-theme="dark"] body .qzrr-cbt #qzrrQArea,
+html[data-theme="dark"][data-qx-shell="web"] body .qzrr-cbt .qzrr-q-area,
+html[data-theme="dark"][data-qx-shell="web"] body .qzrr-cbt #qzrrQArea,
+html[data-theme="dark"] body.marks-test-active #app-main:has(.qzrr-cbt),
+html body .qzrr-cbt.qzrr-dark .qzrr-q-area,
+html body .qzrr-cbt.qzrr-dark #qzrrQArea,
+html[data-qx-shell="web"] body .qzrr-cbt.qzrr-dark .qzrr-q-area,
+html[data-qx-shell="web"] body .qzrr-cbt.qzrr-dark #qzrrQArea {
+  background: #0b1220 !important;
+  background-color: #0b1220 !important;
+  color: #f8fafc !important;
+}
+
+html[data-theme="dark"] body .qzrr-cbt .qzrr-sec-strip,
+html[data-theme="dark"] body .qzrr-cbt .qzrr-sec-row,
+html[data-theme="dark"] body .qzrr-cbt .qzrr-q-meta-row,
+html[data-theme="dark"] body .qzrr-cbt .qzrr-sec-tabs-wrap,
+html body .qzrr-cbt.qzrr-dark .qzrr-sec-strip,
+html body .qzrr-cbt.qzrr-dark .qzrr-sec-row,
+html body .qzrr-cbt.qzrr-dark .qzrr-q-meta-row {
+  background: #0f172a !important;
+  color: #f8fafc !important;
+  border-color: #1e293b !important;
+}
+
+html[data-theme="dark"] body .qzrr-cbt .qzrr-qno,
+html[data-theme="dark"] body .qzrr-cbt .qzrr-qtype,
+html[data-theme="dark"] body .qzrr-cbt .qzrr-marks-line,
+html[data-theme="dark"] body .qzrr-cbt .qzrr-time-box,
+html[data-theme="dark"] body .qzrr-cbt .qzrr-sec-lbl,
+html[data-theme="dark"] body .qzrr-cbt #egQArea,
+html[data-theme="dark"] body .qzrr-cbt .mtk-q-text,
+html[data-theme="dark"] body .qzrr-cbt .qx-content,
+html[data-theme="dark"] body .qzrr-cbt .qx-question-body,
+html[data-theme="dark"] body .qzrr-cbt .qzrr-q-area,
+html[data-theme="dark"] body .qzrr-cbt .qzrr-q-area .qx-content,
+html[data-theme="dark"] body .qzrr-cbt .qzrr-q-area .mtk-q-text,
+html[data-theme="dark"] body .qzrr-cbt .qzrr-q-area .qx-content *:not(.mtk-opt-letter):not(.qx-opt-circle):not(.eg-opt-letter):not(img):not(svg):not(path):not(.qzrr-pill),
+html[data-theme="dark"] body .qzrr-cbt .katex,
+html[data-theme="dark"] body .qzrr-cbt .katex *,
+html[data-theme="dark"] body .qzrr-cbt .mtk-opt-text,
+html[data-theme="dark"] body .qzrr-cbt .mtk-opt-text *:not(.mtk-opt-letter):not(.qx-opt-circle):not(img):not(svg):not(path),
+html body .qzrr-cbt.qzrr-dark .qzrr-qno,
+html body .qzrr-cbt.qzrr-dark .qzrr-qtype,
+html body .qzrr-cbt.qzrr-dark .qzrr-marks-line,
+html[data-qx-shell="web"] html[data-theme="dark"] body .qzrr-cbt .qx-content,
+html[data-theme="dark"][data-qx-shell="web"] body .qzrr-cbt .qzrr-q-area .qx-content {
+  color: #f8fafc !important;
+  -webkit-text-fill-color: #f8fafc !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+html[data-theme="dark"] body .qzrr-cbt .qzrr-opts .mtk-opt,
+html[data-theme="dark"] body .qzrr-cbt .mtk-opt,
+html[data-theme="dark"][data-qx-shell="web"] body .qzrr-cbt .qzrr-opts .mtk-opt,
+html[data-qx-shell="web"] body .qzrr-cbt.qzrr-dark .qzrr-opts .mtk-opt,
+html body .qzrr-cbt.qzrr-dark .qzrr-opts .mtk-opt {
+  background: #1e293b !important;
+  background-color: #1e293b !important;
+  border: 1px solid #475569 !important;
+  color: #f8fafc !important;
+  -webkit-text-fill-color: #f8fafc !important;
+}
+html[data-theme="dark"] body .qzrr-cbt .qzrr-opts .mtk-opt:hover,
+html body .qzrr-cbt.qzrr-dark .qzrr-opts .mtk-opt:hover {
+  background: #243044 !important;
+  border-color: #64748b !important;
+}
+html[data-theme="dark"] body .qzrr-cbt .qzrr-opts .mtk-opt.selected,
+html body .qzrr-cbt.qzrr-dark .qzrr-opts .mtk-opt.selected {
+  background: #1e3a5f !important;
+  border-color: #1565C0 !important;
+}
+
+html[data-theme="dark"] body .qzrr-cbt .qzrr-side,
+html[data-theme="dark"] body .qzrr-cbt .qzrr-side-profile,
+html[data-theme="dark"] body .qzrr-cbt .qzrr-side-stats,
+html[data-theme="dark"] body .qzrr-cbt .qzrr-side-foot,
+html body .qzrr-cbt.qzrr-dark .qzrr-side {
+  background: #111827 !important;
+  color: #e2e8f0 !important;
+  border-color: #1e293b !important;
+}
+html[data-theme="dark"] body .qzrr-cbt .qzrr-profile-name,
+html[data-theme="dark"] body .qzrr-cbt .qzrr-side .qzrr-profile-name,
+html[data-theme="dark"] body .qzrr-cbt .qzrr-side-stats,
+html[data-theme="dark"] body .qzrr-cbt .qzrr-side-stats span,
+html body .qzrr-cbt.qzrr-dark .qzrr-profile-name {
+  color: #e2e8f0 !important;
+  -webkit-text-fill-color: #e2e8f0 !important;
+}
+
+html[data-theme="light"] body .qzrr-cbt:not(.qzrr-dark),
+html[data-theme="light"] body .qzrr-cbt:not(.qzrr-dark) .qzrr-main-col,
+html[data-theme="light"] body .qzrr-cbt:not(.qzrr-dark) .qzrr-q-area,
+html[data-theme="light"] body .qzrr-cbt:not(.qzrr-dark) #qzrrQArea,
+html[data-qx-shell="web"] body .qzrr-cbt:not(.qzrr-dark) .qzrr-q-area,
+html[data-qx-shell="web"] body .qzrr-cbt:not(.qzrr-dark) #qzrrQArea {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  color: #0b1220 !important;
+}
+
+html[data-theme="light"] body .qzrr-cbt:not(.qzrr-dark) .qzrr-qno,
+html[data-theme="light"] body .qzrr-cbt:not(.qzrr-dark) .qzrr-qtype,
+html[data-theme="light"] body .qzrr-cbt:not(.qzrr-dark) .qzrr-marks-line,
+html[data-theme="light"] body .qzrr-cbt:not(.qzrr-dark) #egQArea,
+html[data-theme="light"] body .qzrr-cbt:not(.qzrr-dark) .mtk-q-text,
+html[data-theme="light"] body .qzrr-cbt:not(.qzrr-dark) .qx-content,
+html[data-theme="light"] body .qzrr-cbt:not(.qzrr-dark) .qx-question-body,
+html[data-theme="light"] body .qzrr-cbt:not(.qzrr-dark) .qzrr-q-area .qx-content,
+html[data-theme="light"] body .qzrr-cbt:not(.qzrr-dark) .qzrr-q-area .qx-content *:not(.mtk-opt-letter):not(.qx-opt-circle):not(img):not(svg):not(path):not(.qzrr-pill),
+html[data-theme="light"] body .qzrr-cbt:not(.qzrr-dark) .mtk-opt-text,
+html[data-theme="light"] body .qzrr-cbt:not(.qzrr-dark) .katex,
+html[data-theme="light"] body .qzrr-cbt:not(.qzrr-dark) .katex * {
+  color: #0b1220 !important;
+  -webkit-text-fill-color: #0b1220 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+html[data-theme="light"] body .qzrr-cbt:not(.qzrr-dark) .qzrr-opts .mtk-opt,
+html[data-qx-shell="web"] body .qzrr-cbt:not(.qzrr-dark) .qzrr-opts .mtk-opt {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  color: #0b1220 !important;
+  -webkit-text-fill-color: #0b1220 !important;
+}
+html[data-theme="light"] body .qzrr-cbt:not(.qzrr-dark) .qzrr-opts .mtk-opt.selected {
+  background: #eef5ff !important;
+  border-color: #1565C0 !important;
+}
+
+html[data-theme="light"] body .qzrr-cbt:not(.qzrr-dark) .qzrr-side {
+  background: #f4f7fb !important;
+  color: #0b1220 !important;
+}
+
+html body .qzrr-cbt .mtk-opt-letter,
+html body .qzrr-cbt .qx-opt-circle,
+html[data-theme="dark"] body .qzrr-cbt .mtk-opt-letter,
+html[data-theme="light"] body .qzrr-cbt .mtk-opt-letter {
+  background: #1565C0 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}

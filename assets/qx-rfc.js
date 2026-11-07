@@ -1,3 +1,4 @@
+/* qxmd377 flash card fast-load */
 /* Revision Flash Cards reader — zoom + / zoom −, scroll-zoom, pinch, pan. */
 (function () {
   "use strict";
@@ -64,15 +65,17 @@
   function proxy(src) {
     var u = rawSrc(src);
     if (!u) return "";
-    if (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.displaySrc) {
-      var d = QxOwnedFigs.displaySrc(u);
-      if (d) return d;
-    }
-    if (/getmarks\.app|quizrr\.in/i.test(u) && !/proxy-image/i.test(u)) {
-      return "/api/proxy-image?clean=1&fc=1&v=qxfig110&url=" + encodeURIComponent(u);
-    }
-    if (/proxy-image/i.test(String(src || "")) && /fc=1/i.test(String(src || ""))) return String(src);
-    return "/api/proxy-image?clean=1&fc=1&v=qxfig110&url=" + encodeURIComponent(u);
+    if (/qx_sheets\//i.test(u) || (/^data\//i.test(u) && !/^https?:/i.test(u))) return u;
+    return "/api/proxy-image?clean=1&fc=1&v=qxmd377&url=" + encodeURIComponent(u);
+  }
+
+  /* qxmd377: first paint from CDN/Firebase direct (proxy clean is slow when cold). CSS hides foreign marks. */
+  function fastSrc(src) {
+    var u = rawSrc(src);
+    if (!u) return "";
+    if (/qx_sheets\//i.test(u) || (/^data\//i.test(u) && !/^https?:/i.test(u))) return u;
+    if (/cdn-assets\.getmarks\.app|firebasestorage\.googleapis\.com|googleusercontent\.com/i.test(u)) return u;
+    return proxy(u);
   }
 
   function close() {
@@ -333,7 +336,7 @@
         kind: "rfc",
         start: cur,
         items: deck.map(function (it) {
-          return { src: proxy(it.src), raw: rawSrc(it.src), title: (it.chapter || "Revision Flash Card") + (it.title ? " \u00b7 " + it.title : ""), sub: "Revision Flash Cards" };
+          return { src: /qx_sheets\//i.test(it.src || "") ? it.src : fastSrc(it.src), raw: rawSrc(it.src), title: (it.chapter || "Quantrex card") + (it.title ? " \u00b7 " + it.title : ""), sub: "Quantrex Academy" };
         }),
         onError: function (img, it) {
           if (img.dataset.qxCvRaw !== "1" && it.raw && /firebasestorage/i.test(it.raw)) { img.dataset.qxCvRaw = "1"; img.setAttribute("src", it.raw); return true; }

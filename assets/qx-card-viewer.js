@@ -1,4 +1,4 @@
-/* qxmd273 QxCardViewer: one full-screen reader for Revision Flash Cards + Formula Cards.
+/* qxmd377 speed + qxmd376 chrome + qxmd273 QxCardViewer: one full-screen reader for Revision Flash Cards + Formula Cards.
    Fit-width by default, zoom 50-400% (buttons, ctrl/trackpad wheel, pinch, double-tap), pans/scrolls to every edge,
    fit-page toggle, light/dark, fullscreen (where supported), re-fits on resize / orientation change. */
 (function () {
@@ -8,10 +8,14 @@
   var S = null; // live state
   var LS_FIT = "qx_cv_fit", LS_THEME = "qx_cv_theme";
   var CSS = [
-    "#qxCvReader{position:fixed;left:0;top:0;right:0;bottom:0;width:100vw;height:100vh;height:100dvh;z-index:2147483647;display:flex;flex-direction:column;--cv-bg:#e9eef5;--cv-bar:#ffffff;--cv-ink:#0f172a;--cv-sub:#64748b;--cv-btn:#f1f5f9;--cv-btn-h:#e2e8f0;--cv-line:#e2e8f0;--cv-acc:#2563eb;background:var(--cv-bg);color:var(--cv-ink);font-family:inherit;-webkit-tap-highlight-color:transparent;overscroll-behavior:contain;touch-action:manipulation}",
-    "#qxCvReader[data-theme=dark]{--cv-bg:#0b1220;--cv-bar:#111827;--cv-ink:#f1f5f9;--cv-sub:#94a3b8;--cv-btn:#1f2937;--cv-btn-h:#334155;--cv-line:#1f2937;--cv-acc:#3b82f6}",
+    "#qxCvReader{position:fixed;left:0;top:0;right:0;bottom:0;width:100vw;height:100vh;height:100dvh;z-index:2147483647;display:flex;flex-direction:column;--cv-bg:#e8f1fb;--cv-bar:#0d47a1;--cv-ink:#f8fafc;--cv-sub:#c5dcff;--cv-btn:rgba(255,255,255,.16);--cv-btn-h:rgba(255,255,255,.28);--cv-line:rgba(255,255,255,.18);--cv-acc:#F59E0B;background:radial-gradient(900px 420px at 8% -10%,rgba(56,189,248,.28),transparent 55%),radial-gradient(700px 380px at 100% 0,rgba(245,158,11,.22),transparent 50%),linear-gradient(180deg,#0b1b33,#0d47a1 42%,#082044);color:var(--cv-ink);font-family:inherit;-webkit-tap-highlight-color:transparent;overscroll-behavior:contain;touch-action:manipulation}",
+    "#qxCvReader.qx-cv-rfc{--cv-acc:#34d399}",
+    "#qxCvReader.qx-cv-fc{--cv-acc:#F97316}",
+    "#qxCvReader[data-theme=dark]{--cv-bg:#060b16;--cv-bar:#071526;--cv-ink:#f1f5f9;--cv-sub:#93c5fd;--cv-btn:#1e3254;--cv-btn-h:#334155;--cv-line:#1e3254;--cv-acc:#38bdf8}",
     "#qxCvReader *{box-sizing:border-box}",
-    "#qxCvReader .qx-cv-bar{flex:0 0 auto;display:flex;align-items:center;gap:6px;min-height:52px;padding:6px max(8px,env(safe-area-inset-right,0px)) 6px max(8px,env(safe-area-inset-left,0px));padding-top:calc(6px + env(safe-area-inset-top,0px));background:var(--cv-bar);border-bottom:1px solid var(--cv-line);position:relative;z-index:3}",
+    "#qxCvReader .qx-cv-bar{flex:0 0 auto;display:flex;align-items:center;gap:6px;min-height:52px;padding:6px max(8px,env(safe-area-inset-right,0px)) 6px max(8px,env(safe-area-inset-left,0px));padding-top:calc(6px + env(safe-area-inset-top,0px));background:linear-gradient(90deg,#0d47a1 0%,#1565C0 42%,#0ea5e9 72%,#F59E0B 100%);border-bottom:0;box-shadow:0 8px 24px rgba(13,71,161,.35);position:relative;z-index:3}",
+    "#qxCvReader .qx-cv-bar::after{content:'';position:absolute;left:12px;right:12px;bottom:0;height:3px;border-radius:3px 3px 0 0;background:linear-gradient(90deg,#38bdf8,#F59E0B,#fb7185,#38bdf8);background-size:200% 100%;animation:qxCvShine 5s linear infinite}",
+    "@keyframes qxCvShine{to{background-position:200% 0}}",
     "#qxCvReader .qx-cv-title{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;line-height:1.15}",
     "#qxCvReader .qx-cv-title strong{font-size:14px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}",
     "#qxCvReader .qx-cv-title small{font-size:11.5px;font-weight:700;color:var(--cv-sub);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}",
@@ -26,16 +30,24 @@
     "#qxCvReader .qx-cv-ib.on{background:var(--cv-acc);color:#fff}",
     "#qxCvReader .qx-cv-stage{flex:1 1 auto;min-height:0;position:relative;overflow:auto;-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y;overscroll-behavior:contain;padding:10px max(10px,env(safe-area-inset-right,0px)) 14px max(10px,env(safe-area-inset-left,0px));cursor:default;outline:0}",
     "#qxCvReader[data-pan=on] .qx-cv-stage{cursor:grab}#qxCvReader .qx-cv-stage.is-panning{cursor:grabbing}",
-    "#qxCvReader .qx-cv-page{position:relative;margin:0 auto;background:#fff;border-radius:12px;box-shadow:0 10px 30px rgba(2,6,23,.18);overflow:hidden;color:#0f172a}",
-    "#qxCvReader[data-theme=dark] .qx-cv-page{box-shadow:0 14px 40px rgba(0,0,0,.55)}",
-    "#qxCvReader .qx-cv-page img.qx-cv-img{display:block;border:0;background:#fff;-webkit-user-drag:none;user-select:none;filter:none;opacity:1;visibility:visible;content-visibility:visible}",
+    "#qxCvReader .qx-cv-page{position:relative;margin:0 auto;background:#fff;border-radius:16px;box-shadow:0 18px 48px rgba(2,6,23,.28),0 0 0 3px rgba(56,189,248,.35),0 0 0 6px rgba(245,158,11,.22);overflow:hidden;color:#0f172a}",
+    "#qxCvReader.qx-cv-rfc .qx-cv-page{box-shadow:0 18px 48px rgba(2,6,23,.28),0 0 0 3px rgba(52,211,153,.4),0 0 0 6px rgba(21,101,192,.22)}",
+    "#qxCvReader.qx-cv-fc .qx-cv-page{box-shadow:0 18px 48px rgba(2,6,23,.28),0 0 0 3px rgba(249,115,22,.4),0 0 0 6px rgba(21,101,192,.22)}",
+    "#qxCvReader[data-theme=dark] .qx-cv-page{box-shadow:0 14px 40px rgba(0,0,0,.55),0 0 0 3px rgba(56,189,248,.35)}",
+    "#qxCvReader .qx-cv-page img.qx-cv-img{display:block;border:0;background:#fff;-webkit-user-drag:none;user-select:none;filter:none;opacity:1;visibility:visible;content-visibility:visible;position:relative;z-index:1}",
+    "#qxCvReader .qx-cv-brand{pointer-events:none;position:absolute;inset:0;z-index:2;background:url('/assets/quantrex-logo-3d-on-clear.png') 96% 3%/72px no-repeat,url('/assets/quantrex-logo-3d-on-clear.png') 4% 96%/56px no-repeat;opacity:.22}",
+    "#qxCvReader .qx-cv-ribbon{pointer-events:none;position:absolute;left:0;right:0;bottom:0;z-index:3;padding:7px 12px;font:800 10px/1.2 Inter,system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase;text-align:center;color:#fff;background:linear-gradient(90deg,#0d47a1,#1565C0 40%,#F59E0B);box-shadow:0 -6px 18px rgba(13,71,161,.25)}",
+    "#qxCvReader.qx-cv-rfc .qx-cv-ribbon{background:linear-gradient(90deg,#065f46,#0d9488 45%,#1565C0)}",
+    "#qxCvReader.qx-cv-fc .qx-cv-ribbon{background:linear-gradient(90deg,#9a3412,#F97316 40%,#1565C0)}",
     "#qxCvReader .qx-cv-html{padding:18px 16px;font-size:16px;line-height:1.55;overflow-wrap:anywhere}",
     "#qxCvReader .qx-cv-html img{max-width:100%;height:auto}",
     "#qxCvReader .qx-cv-mean{margin:0;padding:10px 16px 14px;font-size:14px;font-weight:600;color:#334155;border-top:1px solid #e2e8f0}",
     "#qxCvReader .qx-cv-load{position:absolute;left:50%;top:40%;transform:translate(-50%,-50%);font-size:13px;font-weight:700;color:var(--cv-sub);pointer-events:none}",
     "#qxCvReader .qx-cv-nav{flex:0 0 auto;display:grid;grid-template-columns:minmax(0,260px) auto minmax(0,260px);justify-content:center;align-items:center;gap:10px;padding:8px max(12px,env(safe-area-inset-right,0px)) calc(8px + env(safe-area-inset-bottom,0px)) max(12px,env(safe-area-inset-left,0px));background:var(--cv-bar);border-top:1px solid var(--cv-line);position:relative;z-index:3}",
     "#qxCvReader .qx-cv-nb{height:44px;border-radius:999px;font-size:14.5px;font-weight:800;background:var(--cv-btn);display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:0 14px}",
-    "#qxCvReader .qx-cv-nb.next{background:var(--cv-acc);color:#fff}",
+    "#qxCvReader .qx-cv-nb.next{background:linear-gradient(90deg,#1565C0,#0ea5e9 55%,#F59E0B);color:#fff;box-shadow:0 8px 18px rgba(21,101,192,.35)}",
+    "#qxCvReader.qx-cv-rfc .qx-cv-nb.next{background:linear-gradient(90deg,#0d9488,#1565C0)}",
+    "#qxCvReader.qx-cv-fc .qx-cv-nb.next{background:linear-gradient(90deg,#ea580c,#1565C0)}",
     "#qxCvReader .qx-cv-nb:disabled{opacity:.4;cursor:default}",
     "#qxCvReader .qx-cv-count{font-size:13px;font-weight:800;color:var(--cv-sub);font-variant-numeric:tabular-nums;min-width:56px;text-align:center}",
     "#qxCvReader .qx-cv-side{position:absolute;top:50%;transform:translateY(-50%);z-index:4;width:42px;height:42px;border-radius:999px;background:rgba(15,23,42,.55);color:#fff;display:none;align-items:center;justify-content:center;padding:0;box-shadow:0 6px 18px rgba(0,0,0,.3)}",
@@ -44,7 +56,7 @@
     "#qxCvReader .qx-cv-side.prev{left:max(6px,env(safe-area-inset-left,0px))}#qxCvReader .qx-cv-side.next{right:max(6px,env(safe-area-inset-right,0px))}",
     "#qxCvReader .qx-cv-mid{flex:1 1 auto;min-height:0;position:relative;display:flex;flex-direction:column}",
     "#qxCvReader .qx-cv-inlinecount{display:none}",
-    "@media (max-width:420px){#qxCvReader .qx-cv-ib{width:32px;height:32px;min-width:32px}#qxCvReader .qx-cv-pct{min-width:46px;height:32px;font-size:12px}#qxCvReader .qx-cv-tools{gap:2px}#qxCvReader .qx-cv-bar{gap:5px}}",
+    "@media (max-width:420px){#qxCvReader .qx-cv-ib{width:34px;height:34px;min-width:34px}#qxCvReader .qx-cv-pct{min-width:48px;height:34px;font-size:12px}#qxCvReader .qx-cv-tools{gap:3px;padding:2px 4px}#qxCvReader .qx-cv-bar{gap:8px;align-items:center;min-height:52px}#qxCvReader .qx-cv-title strong{font-size:13px}#qxCvReader .qx-cv-title small{font-size:10.5px}#qxCvReader .qx-cv-nav{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px))}#qxCvReader .qx-cv-nb{height:42px;font-size:13.5px;width:100%}#qxCvReader .qx-cv-count{min-width:52px}}",
     "@media (max-width:359px){#qxCvReader .qx-cv-fs{display:none!important}}",
     /* landscape phones: thin top bar, no bottom bar, side arrows -> card gets max height */
     "@media (orientation:landscape) and (max-height:560px){#qxCvReader .qx-cv-bar{min-height:42px;padding-top:calc(3px + env(safe-area-inset-top,0px));padding-bottom:3px}#qxCvReader .qx-cv-title{flex-direction:row;align-items:baseline;gap:8px}#qxCvReader .qx-cv-nav{display:none}#qxCvReader .qx-cv-side{display:inline-flex}#qxCvReader .qx-cv-inlinecount{display:inline}#qxCvReader .qx-cv-stage{padding-top:6px;padding-bottom:calc(6px + env(safe-area-inset-bottom,0px));padding-left:max(54px,env(safe-area-inset-left,0px));padding-right:max(54px,env(safe-area-inset-right,0px))}}",
@@ -99,7 +111,7 @@
       "</div>" +
       '<div class="qx-cv-mid">' +
         '<div class="qx-cv-stage" id="qxCvStage" tabindex="-1">' +
-          '<div class="qx-cv-page" id="qxCvPage"><img id="qxCvImg" class="qx-cv-img qx-rfc-img qx-fc-img qx-no-wm" alt="" decoding="async" referrerpolicy="no-referrer"><div class="qx-cv-html" id="qxCvHtml"></div><p class="qx-cv-mean" id="qxCvMean"></p></div>' +
+          '<div class="qx-cv-page" id="qxCvPage"><div class="qx-cv-brand" aria-hidden="true"></div><img id="qxCvImg" class="qx-cv-img qx-rfc-img qx-fc-img qx-no-wm" alt="" decoding="async" fetchpriority="high" loading="eager" referrerpolicy="no-referrer"><div class="qx-cv-html" id="qxCvHtml"></div><p class="qx-cv-mean" id="qxCvMean"></p><div class="qx-cv-ribbon" id="qxCvRibbon">Quantrex Academy</div></div>' +
           '<div class="qx-cv-load" id="qxCvLoad">Loading card...</div>' +
         "</div>" +
         '<button type="button" class="qx-cv-side prev" data-cv="prev" aria-label="Previous card">' + svg("left") + "</button>" +
@@ -194,6 +206,8 @@
     var img = $("qxCvImg"), html = $("qxCvHtml"), mean = $("qxCvMean"), load = $("qxCvLoad"), st = $("qxCvStage");
     $("qxCvTitle").textContent = it.title || S.title || "Card";
     var sub = it.sub || S.sub || ""; $("qxCvSub").textContent = sub; $("qxCvSub").style.display = sub ? "" : "none";
+    var rib = $("qxCvRibbon");
+    if (rib) rib.textContent = S.kind === "rfc" ? "Quantrex Academy  ·  Revision Flash" : S.kind === "fc" ? "Quantrex Academy  ·  Formula Flash" : "Quantrex Academy";
     S.isImg = !!it.src;
     if (html) { html.innerHTML = it.html || ""; html.style.display = it.html ? "" : "none"; }
     if (mean) { mean.textContent = it.meaning || ""; mean.style.display = it.meaning ? "" : "none"; }
@@ -205,6 +219,7 @@
           if (typeof S.onError === "function" && S.onError(img, it) === true) return;
           if (load) { load.style.display = ""; load.textContent = "Card could not load"; }
         };
+        img.setAttribute("fetchpriority", "high");
         if (img.getAttribute("src") !== it.src) img.setAttribute("src", it.src);
         else if (img.complete && img.naturalWidth) { if (load) load.style.display = "none"; }
       } else { img.removeAttribute("src"); img.style.display = "none"; if (load) load.style.display = "none"; }
@@ -212,7 +227,11 @@
     }
     layout();
     if (st) { st.scrollTop = 0; st.scrollLeft = Math.max(0, (st.scrollWidth - st.clientWidth) / 2); }
-    var nx = S.items[S.cur + 1]; if (nx && nx.src) { var pre = new Image(); pre.referrerPolicy = "no-referrer"; pre.src = nx.src; }
+    /* qxmd377: prefetch next 3 cards so swipe feels instant */
+    for (var pi = 1; pi <= 3; pi++) {
+      var nx = S.items[S.cur + pi];
+      if (nx && nx.src) { var pre = new Image(); pre.referrerPolicy = "no-referrer"; pre.decoding = "async"; pre.src = nx.src; }
+    }
     if (typeof S.onChange === "function") { try { S.onChange(S.cur); } catch (_) { /* */ } }
   }
   function go(d) {
@@ -338,6 +357,7 @@
     var th = null; try { th = localStorage.getItem(LS_THEME); } catch (_) { /* */ }
     S = {
       items: items, cur: clamp(opts.start | 0, 0, items.length - 1), zoom: 1, fit: fit,
+      kind: opts.kind || "",
       title: opts.title || "", sub: opts.sub || "", onEdge: opts.onEdge || null, hasEdge: !!opts.onEdge,
       onError: opts.onError || null, onChange: opts.onChange || null, onClose: opts.onClose || null,
       prevOverflow: [document.documentElement.style.overflow, document.body.style.overflow]
@@ -360,9 +380,8 @@
   }
   function rfcSrc(src) {
     var u = rfcRaw(src); if (!u) return "";
-    if (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.displaySrc) { var d = QxOwnedFigs.displaySrc(u); if (d) return d; }
-    if (/proxy-image/i.test(String(src || "")) && /fc=1/i.test(String(src || ""))) return String(src);
-    return "/api/proxy-image?clean=1&fc=1&v=qxfig110&url=" + encodeURIComponent(u);
+    if (/qx_sheets\//i.test(u) || (/^data\//i.test(u) && !/^https?:/i.test(u))) return u;
+    return "/api/proxy-image?clean=1&fc=1&v=qxmd351&url=" + encodeURIComponent(u);
   }
   function rfcOnError(img, it) {
     if (img.dataset.qxCvRaw !== "1" && it.raw && /firebasestorage/i.test(it.raw)) { img.dataset.qxCvRaw = "1"; img.setAttribute("src", it.raw); return true; }
@@ -374,7 +393,7 @@
     var orig = obj.open;
     obj.open = function (list, start) {
       var items = (list || []).filter(function (c) { return c && c.src; }).map(function (c) {
-        return { src: rfcSrc(c.src), raw: rfcRaw(c.src), title: (c.chapter || "Revision Flash Card") + (c.title ? " \u00b7 " + c.title : ""), sub: "Revision Flash Cards" };
+        return { src: rfcSrc(c.src), raw: rfcRaw(c.src), title: (c.chapter || "Quantrex card") + (c.title ? " \u00b7 " + c.title : ""), sub: "Quantrex Academy" };
       });
       if (items.length && open({ kind: "rfc", start: start | 0, items: items, onError: rfcOnError })) {
         var old = document.getElementById("qxRfcReader"); if (old) old.remove();

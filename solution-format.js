@@ -231,11 +231,17 @@ const QuantrexSolution = (() => {
     try {
       if (typeof Mx !== "undefined" && Mx.ensureMathDelimiters) t = Mx.ensureMathDelimiters(t);
     } catch (_) { /* */ }
+    let html = "";
     try {
-      if (typeof MathTextRenderer !== "undefined" && MathTextRenderer.render) return MathTextRenderer.render(t);
-    } catch (_) { /* */ }
-    if (typeof Mx !== "undefined" && Mx.html) return Mx.html(t);
-    return esc(t);
+      if (typeof MathTextRenderer !== "undefined" && MathTextRenderer.render) html = MathTextRenderer.render(t);
+      else if (typeof Mx !== "undefined" && Mx.html) html = Mx.html(t);
+      else html = esc(t);
+    } catch (_) {
+      html = esc(t);
+    }
+    const vis = String(html || "").replace(/<annotation[\s\S]*?<\/annotation>/gi, "").replace(/<[^>]+>/g, "");
+    if (/QXKP|\\[A-Za-z]{2,}|§/.test(vis)) return "";
+    return html;
   }
 
   function extractFinalAnswerLine(raw, q) {
@@ -328,10 +334,17 @@ const QuantrexSolution = (() => {
 
   function renderShortcutPanel(shortcuts) {
     if (!shortcuts || !shortcuts.length) return "";
-    const items = shortcuts.map((t, i) =>
+    const lines = [];
+    shortcuts.forEach((t) => {
+      const html = formatShortcutLine(t);
+      if (!html) return;
+      lines.push(html);
+    });
+    if (!lines.length) return "";
+    const items = lines.map((html, i) =>
       `<li class="qx-sol-shortcut-item">
         <span class="qx-sol-shortcut-num">${i + 1}</span>
-        <span class="qx-sol-shortcut-text qx-content">${formatShortcutLine(t)}</span>
+        <span class="qx-sol-shortcut-text qx-content">${html}</span>
       </li>`
     ).join("");
     return `<div class="qx-sol-shortcut-panel" aria-label="Quick shortcut">
@@ -466,26 +479,14 @@ const QuantrexSolution = (() => {
   }
 
   function renderEasyExplain(q, sol, fullHtml) {
-    const easy = extractEasyExplain(sol, q);
-    const shortAlready = plainText(sol).length < 200 && !(easy.steps && easy.steps.length);
-    const ideaHtml = easy.idea
-      ? (typeof Mx !== "undefined" ? Mx.html(easy.idea) : esc(easy.idea))
-      : "";
-    const stepsHtml = (easy.steps || []).map((st, i) =>
-      `<li><span class="qx-easy-n">${i + 1}</span><span class="qx-easy-t qx-content">${typeof Mx !== "undefined" ? Mx.html(st) : esc(st)}</span></li>`
-    ).join("");
-    const ansHtml = easy.answer
-      ? `<div class="qx-easy-ans"><span class="qx-easy-ans-lab">Answer</span><span class="qx-easy-ans-val qx-content">${typeof Mx !== "undefined" ? Mx.html(easy.answer) : esc(easy.answer)}</span></div>`
-      : "";
-    const more = shortAlready ? "" : `<details class="qx-easy-more"><summary>See full steps</summary>${fullHtml}</details>`;
-    return `<div class="qx-easy-sol ${subjectTheme(q)}">
-      <div class="qx-easy-head">Easy explanation</div>
-      ${ansHtml}
-      ${ideaHtml ? `<p class="qx-easy-idea qx-content">${ideaHtml}</p>` : ""}
-      ${stepsHtml ? `<ol class="qx-easy-steps">${stepsHtml}</ol>` : ""}
-      ${more || fullHtml}
-    </div>`;
+    /* qxmd385: never stub/shorten — always full detailed paragraph solution */
+    var body = fullHtml;
+    if (!body) {
+      try { body = formatBody(sol, q); } catch (_) { body = String(sol || ""); }
+    }
+    return renderTeacherWrap(q, body);
   }
+
 
   function subjectTheme(q) {
     const s = ((q && q.subject) || "").toLowerCase();
@@ -732,10 +733,9 @@ const QuantrexSolution = (() => {
     }
     function wrapTexFragments(L) {
       let t = String(L || "");
-      t = t.replace(
-        /\\left\s*(?:\\[{}()[\].|]|[()\[\]{}.|])[\s\S]{0,240}?\\right\s*(?:\\[{}()[\].|]|[()\[\]{}.|])/g,
-        (m) => (/\$/.test(m) ? m : ("$" + m + "$"))
-      );
+      /* A line that already has \begin / \left is one formula. Wrapping the first
+         \right or an inner \frac puts a $ in the middle and the rest prints raw. */
+      if (/\\begin\{|\\end\{|\\left(?![A-Za-z])|\\right(?![A-Za-z])/.test(t)) return t;
       t = t.replace(
         /\\(?:frac|dfrac|tfrac|sqrt|mathrm|mathbf|textbf|text|mathbb|operatorname|ce)(?:\s*\[[^\]]*\])?(?:\s*\{[^{}]*\}){1,3}(?:\s*[_^](?:\{[^{}]*\}|[A-Za-z0-9]+))?/g,
         (m) => (/\$/.test(m) ? m : ("$" + m + "$"))
@@ -787,8 +787,11 @@ const QuantrexSolution = (() => {
           if (/^\\|^[|=]/.test(L) || /\\left|\\frac|\\dfrac/.test(L)) L = "$" + L.replace(/\$/g, "");
           else L = L + "$";
         } else if (!/^\$/.test(L) && /\\(?:left|frac|dfrac|sqrt|sin|cos|log)/.test(L)) {
-          // bare prefix then closed $…$ — merge into one island
-          L = "$" + L.replace(/\$/g, "") + "$";
+          /* Keep a leading <p> outside the dollars. "$<p>\\left" makes the next > reset math mode. */
+          const tag = /^(<\/?[^>]+>)/.exec(L);
+          const head = tag ? tag[1] : "";
+          const rest = head ? L.slice(head.length) : L;
+          if (!/^\$/.test(rest)) L = head + "$" + rest.replace(/\$/g, "") + "$";
         }
         return L;
       }
@@ -801,6 +804,21 @@ const QuantrexSolution = (() => {
       return "$" + L.trim() + "$";
     }
 
+    /* A $...$ or \begin...\end that spans lines is already one formula.
+       Splitting it on <br>/newline and wrapping each piece inserts $ before
+       an inner \right (screenshot: raw lim line + QXKPPLACEHOLDER). */
+    const _mathPark = [];
+    const _parkMath = (m) => {
+      const k = "\uE720" + _mathPark.length + "\uE721";
+      _mathPark.push(m);
+      return k;
+    };
+    s = s.replace(/\$\$[\s\S]+?\$\$/g, _parkMath);
+    s = s.replace(/\\\[[\s\S]+?\\\]/g, _parkMath);
+    s = s.replace(/\\\([\s\S]+?\\\)/g, _parkMath);
+    s = s.replace(/\$[^$]+\$/g, _parkMath);
+    s = s.replace(/\\begin\{([a-zA-Z*]+)\}[\s\S]*?\\end\{\1\}/g, _parkMath);
+
     // Process by <br>/newline segments outside existing math (simple split)
     const parts = s.split(/(<br\s*\/?\s*>|\n+|<\/(?:p|div)>)/i);
     for (let i = 0; i < parts.length; i++) {
@@ -808,6 +826,13 @@ const QuantrexSolution = (() => {
       parts[i] = wrapBareLine(parts[i]);
     }
     s = parts.join("");
+    if (_mathPark.length) {
+      for (let n = 0; n < 6; n++) {
+        const next = s.replace(/\uE720(\d+)\uE721/g, (_, i) => (_mathPark[+i] != null ? _mathPark[+i] : ""));
+        if (next === s) break;
+        s = next;
+      }
+    }
 
     // Final: ensureMathDelimiters if Mx exposes it
     try {
@@ -1133,8 +1158,27 @@ const QuantrexSolution = (() => {
     if (/QXKH/.test(out)) return s;
     return out;
   }
-  function stripLeadingStemEcho(html, q) { return qxKatexSafe(stripLeadingStemEchoCore, html, q); }
-  function ensureNoStemHead(html, q) { return qxKatexSafe(ensureNoStemHeadCore, html, q); }
+  function stripLeadingStemEcho(html, q) {
+    const src0 = String(html || "");
+    const out = qxKatexSafe(stripLeadingStemEchoCore, html, q);
+    const lead = String(out || "").replace(/^(?:\s|<\/?(?:blockquote|p|div|span)[^>]*>|<br\s*\/?\s*>)*/gi, "");
+    /* A cut that lands on _ or a bare command chopped the middle of a formula. */
+    if (/^[_^]/.test(lead) || /^\\(?:dfrac|frac|tfrac|left|right|mathrm|text|begin|end)(?![A-Za-z])/.test(lead)) {
+      return src0;
+    }
+    /* qxmd385/t228u: stem-echo cut must never swallow solution <img> figures */
+    if (/<img\b/i.test(src0) && !/<img\b/i.test(String(out || ""))) {
+      return src0;
+    }
+    return out;
+  }
+  function ensureNoStemHead(html, q) {
+    const src0 = String(html || "");
+    const out = qxKatexSafe(ensureNoStemHeadCore, html, q);
+    /* qxmd385/t228u: never drop solution figures */
+    if (/<img\b/i.test(src0) && !/<img\b/i.test(String(out || ""))) return src0;
+    return out;
+  }
   function dropRepeatedQuestionBlocks(html, q) { return qxKatexSafe(dropRepeatedQuestionBlocksCore, html, q); }
   function ensureNoStemHeadCore(html, q) {
     let out = String(html || "");
@@ -1688,7 +1732,13 @@ const QuantrexSolution = (() => {
       if (typeof QuantrexQFormat !== "undefined" && QuantrexQFormat.formatCorrectAnswer) {
         /* qxmd272: keep TeX in the answer label (plainText turned "A. $\\sqrt{19}$" into "A. 19") */
         const rawLab = String(QuantrexQFormat.formatCorrectAnswer(q) || "");
-        label = /\$|\\[a-zA-Z]/.test(rawLab) ? rawLab.replace(/<(?!img)[^>]*>/gi, " ").replace(/\s+/g, " ").trim() : plainText(rawLab);
+        /* Already typeset. Flattening KaTeX HTML reads MathML + annotation + the
+           visible number, so "$17$" became "17 17 17". */
+        if (/\bkatex\b/i.test(rawLab)) {
+          label = rawLab;
+        } else {
+          label = /\$|\\[a-zA-Z]/.test(rawLab) ? rawLab.replace(/<(?!img)[^>]*>/gi, " ").replace(/\s+/g, " ").trim() : plainText(rawLab);
+        }
       }
     } catch (_) { /* */ }
     let qType = "";
@@ -1701,10 +1751,12 @@ const QuantrexSolution = (() => {
     if (!label && q.correctValue != null && String(q.correctValue).trim()) {
       label = String(q.correctValue).trim();
     }
-    if (!label || label.length > 160) return "";
+    if (!label) return "";
+    if (!/\bkatex\b/i.test(label) && label.length > 160) return "";
     let val;
     try {
-      val = typeof Mx !== "undefined" ? Mx.html(label) : esc(label);
+      if (/\bkatex\b/i.test(label)) val = label;
+      else val = typeof Mx !== "undefined" ? Mx.html(label) : esc(label);
     } catch (_) {
       val = esc(label);
     }
@@ -1712,7 +1764,10 @@ const QuantrexSolution = (() => {
   }
 
   function isPlaceholderSolution(sol) {
-    const plain = String(sol || "").replace(/<[^>]+>/g, " ").replace(/&nbsp;/gi, " ").replace(/\s+/g, " ").trim().toLowerCase();
+    const raw = String(sol || "");
+    /* qxmd385/t228u: image-only / figure solutions are REAL content — do not treat as missing */
+    if (/<img\b|<svg\b|<canvas\b|<math\b|\\begin\{|data:image\//i.test(raw)) return false;
+    const plain = raw.replace(/<[^>]+>/g, " ").replace(/&nbsp;/gi, " ").replace(/\s+/g, " ").trim().toLowerCase();
     if (!plain) return true;
     if (/^no solution\.?$/.test(plain)) return true;
     if (/solution not available|official solution is not available/.test(plain)) return true;
@@ -1808,6 +1863,18 @@ const QuantrexSolution = (() => {
     // qxmd217: keep original sol source on card for one-shot re-render if letter-spaced
     const solAttr = parkedSol ? solSrc0 : sol;
     const srcAttr = (typeof esc === "function" ? esc(String(solAttr || "").slice(0, 12000)) : String(solAttr || "").slice(0, 12000).replace(/"/g, "&quot;"));
+    /* qxmd385: full detailed paragraph body (never easy-stub); keep images + math */
+    let detailedBody = body;
+    try {
+      const plainBody = String(body || "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+      const plainSrc = String(solSrc0 || sol || "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+      if (plainSrc.length > 80 && plainBody.length < Math.max(40, plainSrc.length * 0.25)) {
+        try { detailedBody = formatBody(solSrc0 || sol, q); } catch (_) { detailedBody = body; }
+      }
+    } catch (_) { /* */ }
+    try { detailedBody = renderTeacherWrap(q, detailedBody); } catch (_) {
+      detailedBody = `<div class="qx-content sol-body qx-sol-flow" data-qx-sol-src="${srcAttr}">${detailedBody}</div>`;
+    }
     return `<div class="qx-sol-card ${theme}" data-qx-sol-src="${srcAttr}">
       <div class="qx-sol-card-h" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
         <span>${head}</span>
@@ -1816,7 +1883,7 @@ const QuantrexSolution = (() => {
       ${examMeta || ""}
       ${ansHtml}
       ${shortcutHtml}
-      <div class="qx-content sol-body qx-sol-flow" data-qx-sol-src="${srcAttr}">${body}</div>
+      ${detailedBody}
     </div>`;
   }
 

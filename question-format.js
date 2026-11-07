@@ -1193,6 +1193,10 @@ const QuantrexQFormat = (() => {
     } else if (q.answer != null && q.answer !== "") {
       push(q.answer);
     }
+    // TALENTEX official key may list two accepted options (still single-correct)
+    if (q._tallentex && Array.isArray(q.acceptedAnswers) && q.acceptedAnswers.length) {
+      q.acceptedAnswers.forEach(push);
+    }
     out.sort((a, b) => a - b);
     return out.length ? out : [];
   }
@@ -1723,8 +1727,12 @@ const QuantrexQFormat = (() => {
     // Single / column-match MCQ
     const sel = normalizeResponseIndices(response);
     const ans = sel.length ? sel[0] : null;
-    const cor = correctIndices(q)[0];
+    const corList = correctIndices(q);
+    const cor = corList[0];
     if (ans == null || cor == null) return { correct: false, partial: false };
+    if (q && q._tallentex && corList.length > 1) {
+      return { correct: corList.indexOf(ans) >= 0, partial: false };
+    }
     return { correct: ans === cor, partial: false };
   }
 
@@ -1760,6 +1768,12 @@ const QuantrexQFormat = (() => {
     const opt = (q.options || [])[i];
     if (getType(q) === "columnMatch") {
       return `<b>${letter(i)}.</b> ${formatMatchCombo(opt || "")}`;
+    }
+    if (q && q._tallentex && cor.length > 1) {
+      return cor.map(function (ci) {
+        const o = (q.options || [])[ci];
+        return `<span class="qx-ans-item"><b>${letter(ci)}.</b> <span class="qx-content">${htmlContent(o || "")}</span></span>`;
+      }).join(" / ");
     }
     return `<b>${letter(i)}.</b> <span class="qx-content">${htmlContent(opt || "")}</span>`;
   }

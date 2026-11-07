@@ -895,10 +895,19 @@ html body .eg-test-root[data-eg-mode="test"][data-test-theme="dark"] .eg-foot {
   color: #f8fafc !important;
   border-color: #1e293b !important;
 }
+html body .eg-test-root[data-eg-mode="test"][data-test-theme="dark"] #egQArea,
 html body .eg-test-root[data-eg-mode="test"][data-test-theme="dark"] .eg-q-stem,
-html body .eg-test-root[data-eg-mode="test"][data-test-theme="dark"] .mtk-opt {
+html body .eg-test-root[data-eg-mode="test"][data-test-theme="dark"] .mtk-opt,
+html body .eg-test-root[data-eg-mode="test"][data-test-theme="dark"] .mtk-opt-text,
+html body .eg-test-root[data-eg-mode="test"][data-test-theme="dark"] .qx-content,
+html body .eg-test-root[data-eg-mode="test"][data-test-theme="dark"] .katex,
+html body .eg-test-root[data-eg-mode="test"][data-test-theme="dark"] .katex * {
   color: #f8fafc !important;
   -webkit-text-fill-color: #f8fafc !important;
+}
+html body .eg-test-root[data-eg-mode="test"][data-test-theme="dark"] .eg-q-stem,
+html body .eg-test-root[data-eg-mode="test"][data-test-theme="dark"] #egQArea,
+html body .eg-test-root[data-eg-mode="test"][data-test-theme="dark"] .mtk-opt {
   background: #111827 !important;
   border-color: #334155 !important;
 }

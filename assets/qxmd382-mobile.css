@@ -1,0 +1,239 @@
+/* qxmd382 — force phone/app compact layout; practice close & readable. Loaded LAST. */
+/* WebView / "Desktop site" on phones often reports ~980 CSS px — media(max-width:900px) never fires. */
+
+html.qx-phone .sidebar,
+html.qx-compact .sidebar,
+html.qx-app .sidebar,
+html[data-qx-shell="app"] .sidebar {
+  transform: translateX(-100%) !important;
+  box-shadow: 2px 0 30px rgba(0,0,0,.15);
+}
+html.qx-phone .sidebar.open,
+html.qx-compact .sidebar.open,
+html.qx-app .sidebar.open,
+html[data-qx-shell="app"] .sidebar.open {
+  transform: translateX(0) !important;
+}
+html.qx-phone .main,
+html.qx-compact .main,
+html.qx-app .main,
+html[data-qx-shell="app"] .main {
+  margin-left: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+html.qx-phone .menu-btn,
+html.qx-compact .menu-btn,
+html.qx-app .menu-btn,
+html[data-qx-shell="app"] .menu-btn {
+  display: block !important;
+}
+
+html.qx-phone #app-main.content,
+html.qx-compact #app-main.content,
+html.qx-app #app-main.content,
+html[data-qx-shell="app"] #app-main.content,
+html.qx-phone .content,
+html.qx-compact .content,
+html.qx-app .content,
+html[data-qx-shell="app"] .content {
+  padding: 10px 12px 20px !important;
+  max-width: 100% !important;
+}
+html.qx-phone .page-head h1,
+html.qx-compact .page-head h1,
+html.qx-app .page-head h1,
+html[data-qx-shell="app"] .page-head h1 {
+  font-size: 22px !important;
+  line-height: 1.25 !important;
+}
+html.qx-phone .q-card,
+html.qx-compact .q-card,
+html.qx-app .q-card,
+html.qx-phone .marks-q-row,
+html.qx-compact .marks-q-row,
+html.qx-app .marks-q-row {
+  padding: 12px 12px !important;
+  font-size: 15px !important;
+}
+html.qx-phone .qx-module-grid,
+html.qx-compact .qx-module-grid,
+html.qx-app .qx-module-grid,
+html.qx-phone .dash-grid,
+html.qx-compact .dash-grid,
+html.qx-app .dash-grid,
+html.qx-phone .fc-grid,
+html.qx-compact .fc-grid,
+html.qx-app .fc-grid {
+  grid-template-columns: 1fr 1fr !important;
+  gap: 10px !important;
+}
+@media (max-width: 420px) {
+  html.qx-phone .qx-module-grid,
+  html.qx-compact .qx-module-grid,
+  html.qx-app .qx-module-grid,
+  html.qx-phone .dash-grid,
+  html.qx-compact .dash-grid,
+  html.qx-app .dash-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Practice / CBT — close readable type even at ~980 CSS px */
+html.qx-phone .eg-test-root,
+html.qx-compact .eg-test-root,
+html.qx-app .eg-test-root,
+html.qx-phone .mtk-test-root,
+html.qx-compact .mtk-test-root,
+html.qx-app .mtk-test-root,
+html.qx-phone .qx-practice-page,
+html.qx-compact .qx-practice-page,
+html.qx-app .qx-practice-page,
+html.qx-phone .allen-practice,
+html.qx-compact .allen-practice,
+html.qx-app .allen-practice {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  min-height: 100% !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+html.qx-phone .eg-test-root .eg-q-stem,
+html.qx-compact .eg-test-root .eg-q-stem,
+html.qx-app .eg-test-root .eg-q-stem,
+html.qx-phone .eg-test-root .eg-q-text,
+html.qx-compact .eg-test-root .eg-q-text,
+html.qx-app .eg-test-root .eg-q-text,
+html.qx-phone .mtk-q-text,
+html.qx-compact .mtk-q-text,
+html.qx-app .mtk-q-text,
+html.qx-phone .qx-prac-q,
+html.qx-compact .qx-prac-q,
+html.qx-app .qx-prac-q,
+html.qx-phone .mq-stem,
+html.qx-compact .mq-stem,
+html.qx-app .mq-stem {
+  font-size: 17px !important;
+  line-height: 1.6 !important;
+  overflow: visible !important;
+  max-height: none !important;
+}
+html.qx-phone .eg-options,
+html.qx-compact .eg-options,
+html.qx-app .eg-options,
+html.qx-phone .eg-opts,
+html.qx-compact .eg-opts,
+html.qx-app .eg-opts,
+html.qx-phone .mtk-options-grid,
+html.qx-compact .mtk-options-grid,
+html.qx-app .mtk-options-grid,
+html.qx-phone .qx-prac-opts,
+html.qx-compact .qx-prac-opts,
+html.qx-app .qx-prac-opts {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+  width: 100% !important;
+}
+html.qx-phone .eg-opt,
+html.qx-compact .eg-opt,
+html.qx-app .eg-opt,
+html.qx-phone .mtk-opt,
+html.qx-compact .mtk-opt,
+html.qx-app .mtk-opt,
+html.qx-phone .qx-prac-opts .qx-opt,
+html.qx-compact .qx-prac-opts .qx-opt,
+html.qx-app .qx-prac-opts .qx-opt {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: flex-start !important;
+  gap: 10px !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  font-size: 15px !important;
+  padding: 12px 14px !important;
+  min-height: 48px !important;
+  box-sizing: border-box !important;
+}
+/* Default mobile: hide desktop side rail unless Full toolbar / strip open */
+html.qx-compact body:not(.qx-full-toolbar) .eg-test-root.eg-mobile .eg-side,
+html.qx-app body:not(.qx-full-toolbar) .eg-test-root.eg-mobile .eg-side,
+html.qx-phone body:not(.qx-full-toolbar) .eg-test-root.eg-mobile .eg-side {
+  display: none !important;
+}
+html.qx-compact body:not(.qx-full-toolbar) .eg-test-root.eg-mobile .eg-body,
+html.qx-app body:not(.qx-full-toolbar) .eg-test-root.eg-mobile .eg-body,
+html.qx-phone body:not(.qx-full-toolbar) .eg-test-root.eg-mobile .eg-body {
+  margin-right: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+/* Always show Full toolbar control on app/phone so student can expand */
+html.qx-compact #qxFullToolbarBtn,
+html.qx-app #qxFullToolbarBtn,
+html.qx-phone #qxFullToolbarBtn,
+html.qx-compact [data-qx-full-toolbar],
+html.qx-app [data-qx-full-toolbar],
+html.qx-phone [data-qx-full-toolbar],
+html.qx-compact #pracFullBtn,
+html.qx-app #pracFullBtn,
+html.qx-phone #pracFullBtn {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+html.qx-phone .topbar,
+html.qx-compact .topbar,
+html.qx-app .topbar,
+html[data-qx-shell="app"] .topbar {
+  padding: 8px 10px !important;
+  gap: 8px !important;
+}
+
+/* Practice mount must never look like a blank login page */
+body.allen-practice-active #app-main,
+body.marks-test-active #app-main {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+body.allen-practice-active #app-main:empty::before,
+body.marks-test-active #app-main:empty::before {
+  content: "Opening practice…" !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 50vh !important;
+  color: #1565C0 !important;
+  font-weight: 800 !important;
+  font-size: 15px !important;
+}
+
+#app-main:empty::before {
+  content: "Loading Quantrex…" !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 40vh !important;
+  height: auto !important;
+  margin: 24px 16px !important;
+  padding: 28px 16px !important;
+  border-radius: 16px !important;
+  background: linear-gradient(90deg,#e8f1fb 25%,#f7fbff 50%,#e8f1fb 75%) !important;
+  background-size: 200% 100% !important;
+  animation: qxShimmer382 1.1s ease infinite !important;
+  color: #1565C0 !important;
+  font-weight: 800 !important;
+  font-size: 15px !important;
+  text-align: center !important;
+}
+html[data-theme="dark"] #app-main:empty::before {
+  background: linear-gradient(90deg,#152033 25%,#1c2b44 50%,#152033 75%) !important;
+  background-size: 200% 100% !important;
+  color: #93c5fd !important;
+}
+@keyframes qxShimmer382 {
+  0% { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}

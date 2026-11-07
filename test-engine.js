@@ -79,7 +79,7 @@ function setTestTheme(mode) {
     document.documentElement.setAttribute("data-test-theme", m);
   } catch (_) { /* */ }
   document.querySelectorAll(
-    ".mtk-test-root, .eg-test-root, .allen-practice, .qx-practice-page, #app, #app-main, .app"
+    ".mtk-test-root, .eg-test-root, .qzrr-cbt, .allen-practice, .qx-practice-page, #app, #app-main, .app"
   ).forEach(root => {
     try {
       root.setAttribute("data-test-theme", m);
@@ -146,9 +146,10 @@ const TEST_FONT_LABELS = { small: "Standard", medium: "Medium", large: "Large", 
 const TEST_FONT_KEY = "quantrex_test_font";
 // Continuous zoom for practice / CBT reading (best-practice range)
 const TEST_ZOOM_KEY = "quantrex_content_zoom";
-const TEST_ZOOM_MIN = 0.5;
-const TEST_ZOOM_MAX = 3.0;
-const TEST_ZOOM_STEP = 0.05;
+/* qxmd385: effectively unlimited zoom in/out (soft browser-safe rails only) */
+const TEST_ZOOM_MIN = 0.15;
+const TEST_ZOOM_MAX = 12.0;
+const TEST_ZOOM_STEP = 0.08;
 
 function paperScaleLocked() {
   try {
@@ -251,7 +252,12 @@ function setTestZoom(zoom) {
 }
 
 function bumpTestZoom(deltaSteps) {
-  if (paperScaleLocked()) return applyTestZoomToDom(1);
+  /* Question paper keeps zoom at 1 so it can scroll. Zoom buttons change text size instead. */
+  if (paperScaleLocked()) {
+    const step = Number(deltaSteps) || 0;
+    if (!step) return typeof getTestFontScale === "function" ? getTestFontScale() : "medium";
+    return bumpTestFont(step < 0 ? -1 : 1);
+  }
   const step = Number(deltaSteps) || 0;
   const cur = getTestZoom();
   const next = Math.round((cur + step * TEST_ZOOM_STEP) * 100) / 100;
@@ -508,22 +514,78 @@ function applyTestFontScaleToDom(scale) {
 function setTestFontScale(scale) {
   const s = applyTestFontScaleToDom(scale);
   localStorage.setItem(TEST_FONT_KEY, s);
+  /* qxmd385: named presets also set continuous read-zoom so +/- continues from here */
+  try {
+    var map = { small: 0.9, medium: 1, large: 1.2, xlarge: 1.4 };
+    if (map[s] != null && typeof setTestReadZoom === "function") setTestReadZoom(map[s]);
+  } catch (_) { /* */ }
   return s;
 }
 
-function bumpTestFont(delta) {
-  const cur = getTestFontScale();
-  const idx = TEST_FONT_ORDER.indexOf(cur);
-  const next = TEST_FONT_ORDER[Math.max(0, Math.min(TEST_FONT_ORDER.length - 1, idx + delta))];
-  setTestFontScale(next);
-  return next;
+/* qxmd385: continuous unlimited +/- text zoom (named S/M/L/XL still work as presets) */
+const TEST_READ_ZOOM_KEY = "quantrex_read_zoom_v385";
+const TEST_READ_ZOOM_STEP = 0.08;
+function getTestReadZoom() {
+  let z = parseFloat(localStorage.getItem(TEST_READ_ZOOM_KEY) || "1");
+  if (!Number.isFinite(z) || z <= 0) z = 1;
+  /* soft rails only — effectively unlimited for students */
+  if (z < 0.15) z = 0.15;
+  if (z > 12) z = 12;
+  return z;
 }
+function applyTestReadZoomToDom(z) {
+  const zz = (Number(z) > 0 && Number.isFinite(Number(z))) ? Number(z) : 1;
+  const clamped = Math.max(0.15, Math.min(12, zz));
+  try {
+    document.documentElement.style.setProperty("--qx-read-zoom", String(clamped));
+    document.documentElement.setAttribute("data-read-zoom", String(clamped));
+    if (document.body) {
+      document.body.style.setProperty("--qx-read-zoom", String(clamped));
+      document.body.setAttribute("data-read-zoom", String(clamped));
+    }
+    document.querySelectorAll(".eg-test-root, .mtk-test-root, .qx-practice-page, .qx-font-host").forEach(function (el) {
+      el.style.setProperty("--qx-read-zoom", String(clamped));
+      el.setAttribute("data-read-zoom", String(clamped));
+    });
+  } catch (_) { /* */ }
+  const pct = Math.round(clamped * 100) + "%";
+  document.querySelectorAll("#mtkFontLbl, .mtk-font-lbl, #qxFontLbl, .qx-font-lbl, #qxSetZoomLbl").forEach(function (lbl) {
+    try { lbl.textContent = pct; } catch (_) { /* */ }
+  });
+  return clamped;
+}
+function setTestReadZoom(z) {
+  const v = applyTestReadZoomToDom(z);
+  try { localStorage.setItem(TEST_READ_ZOOM_KEY, String(v)); } catch (_) { /* */ }
+  return v;
+}
+function bumpTestFont(delta) {
+  const step = Number(delta) || 0;
+  if (!step) return getTestFontScale();
+  const cur = getTestReadZoom();
+  const next = Math.round((cur + step * TEST_READ_ZOOM_STEP) * 1000) / 1000;
+  setTestReadZoom(next);
+  /* keep nearest named preset attribute in sync for CSS that still keys off data-font-scale */
+  try {
+    var nearest = "medium";
+    if (next < 0.85) nearest = "small";
+    else if (next < 1.15) nearest = "medium";
+    else if (next < 1.45) nearest = "large";
+    else nearest = "xlarge";
+    applyTestFontScaleToDom(nearest);
+  } catch (_) { /* */ }
+  return getTestFontScale();
+}
+window.getTestReadZoom = getTestReadZoom;
+window.setTestReadZoom = setTestReadZoom;
+window.applyTestReadZoomToDom = applyTestReadZoomToDom;
 
 /** Call after any question HTML mounts (practice / books / PYQ / CBT). */
 function syncQuestionFontScale(root) {
   const s = getTestFontScale();
   if (root && root.setAttribute) root.setAttribute("data-font-scale", s);
   applyTestFontScaleToDom(s);
+  try { applyTestReadZoomToDom(getTestReadZoom()); } catch (_) { /* */ }
   applyTestZoomToDom(getTestZoom());
   return s;
 }
@@ -552,7 +614,14 @@ function qxApplyFullWindow(on) {
       });
     } catch (_) { /* */ }
     var nativeFs = document.fullscreenElement || document.webkitFullscreenElement || null;
-    if (!nativeFs) {
+    /* Phone and the Play app already fill the window. The Fullscreen API
+       there drops the question and the solution off the visible page. */
+    var phone = false;
+    try {
+      phone = !!(window.matchMedia && window.matchMedia("(max-width: 768px)").matches);
+      if (html.getAttribute("data-qx-shell") === "app") phone = true;
+    } catch (_) { /* */ }
+    if (!nativeFs && !phone) {
       var req = html.requestFullscreen || html.webkitRequestFullscreen || html.webkitRequestFullScreen;
       if (typeof req === "function") {
         try {
@@ -582,7 +651,25 @@ function toggleQxImmersiveFullscreen(target) {
     || !!(document.fullscreenElement || document.webkitFullscreenElement);
   return qxApplyFullWindow(!on);
 }
+function qxIsPhoneShell() {
+  try {
+    var html = document.documentElement;
+    if (html && (html.getAttribute("data-qx-shell") === "app"
+      || html.classList.contains("qx-app")
+      || html.classList.contains("qx-phone")
+      || html.classList.contains("qx-compact"))) return true;
+    if (typeof window.qxEgIsNarrow === "function" && window.qxEgIsNarrow()) return true;
+    if (window.matchMedia && window.matchMedia("(max-width: 768px)").matches) return true;
+  } catch (_) { /* */ }
+  return false;
+}
 function qxRestoreFullWindow() {
+  /* Phone and the Play app open straight into the full-window player.
+     A Full tap stores false and this does not turn it back on. */
+  if (window._qxFullWindowOn == null && qxIsPhoneShell()) {
+    qxApplyFullWindow(true);
+    return;
+  }
   if (!qxFullWindowWanted()) return;
   qxApplyFullWindow(true);
 }
@@ -666,6 +753,13 @@ if (!window._qxEgHdrBound) {
     if (id === "egFullBtn") {
       const el = document.querySelector(".eg-test-root") || document.documentElement;
       try { toggleQxImmersiveFullscreen(el); } catch (_) { /* */ }
+      try {
+        var keep = window.qxKeepQuestionVisible;
+        if (typeof keep === "function") {
+          keep(el);
+          setTimeout(function () { try { keep(el); } catch (_) { /* */ } }, 80);
+        }
+      } catch (_) { /* */ }
       return;
     }
     if (id === "egStarBtn" || id === "egQStar") {
@@ -1435,7 +1529,8 @@ const QuantrexTestEngine = (() => {
       if (typeof qxRestoreQuestionContent === "function") qxRestoreQuestionContent(q);
     } catch (_) { /* */ }
     try {
-      if (typeof QuantrexCatalog !== "undefined" && QuantrexCatalog.fillQuestion) {
+      const isTlxQ = !!(q._tallentex || q._bank === "tallentex_2024" || /^tlx10_/i.test(String(q.id || "")));
+      if (!isTlxQ && typeof QuantrexCatalog !== "undefined" && QuantrexCatalog.fillQuestion) {
         const optsOk = (q.options || []).some((o) => {
           const t = String(o || "").replace(/<[^>]+>/g, "").trim();
           return (t && t.length > 0 && !/^[A-D]$/i.test(t)) || /<img\b/i.test(String(o || ""));
@@ -1684,7 +1779,7 @@ const QuantrexTestEngine = (() => {
         }
       } catch (_) { /* */ }
       const secInfoOpen = !(session && session._qzrrSecInfoClosed);
-      if (session && session._qzrrDark == null) session._qzrrDark = getTestTheme() === "dark";
+      try { session._qzrrDark = getTestTheme() === "dark"; } catch (_) { if (session && session._qzrrDark == null) session._qzrrDark = false; }
       const qzrrDark = !!(session && session._qzrrDark);
       return `<div class="mtk-test-root allen-cbt qzrr-cbt${magOn ? " qzrr-mag-on" : ""}${sideCollapsed ? " qzrr-side-collapsed" : ""}${qzrrDark ? " qzrr-dark" : ""}" data-test-theme="${qzrrDark ? "dark" : "light"}" data-font-scale="${fontScale}" data-ui="quizrr">
         <header class="qzrr-black-bar">
@@ -2416,9 +2511,7 @@ const QuantrexTestEngine = (() => {
 
   function bindQuizrrChrome(root) {
     if (!root || !session) return;
-    if (session._qzrrDark == null) {
-      try { session._qzrrDark = (typeof getTestTheme === "function" ? getTestTheme() : "light") === "dark"; } catch (_) { session._qzrrDark = false; }
-    }
+    try { session._qzrrDark = (typeof getTestTheme === "function" ? getTestTheme() : "light") === "dark"; } catch (_) { if (session._qzrrDark == null) session._qzrrDark = false; }
 
     window.qxSetQzrrTheme = function (mode) {
       if (window._qxQzrrThemeLock) return;
@@ -3408,6 +3501,12 @@ const QuantrexTestEngine = (() => {
       if (typeof exitMarksTestMode === "function") exitMarksTestMode();
     } catch (_) { /* */ }
     try {
+      if (testType === "tallentex") {
+        if (typeof go === "function") {
+          go("cpyqb", { step: "tallentexFolder", classSlug: "class_10", exam: "class_10", trackKind: "tallentex" });
+          return;
+        }
+      }
       if (testType === "testseries") {
         if (window.TS_STANDALONE && typeof tsRenderStandalone === "function") {
           tsRenderStandalone();
@@ -3625,12 +3724,43 @@ const QuantrexTestEngine = (() => {
       : (total * (scoring.correct != null ? scoring.correct : 4));
     const durationMin = session.catalogDurationMin
       || (session.durationSec != null ? Math.round(session.durationSec / 60) : 180);
+    const examHint = [
+      session.meta && session.meta.slug,
+      session.meta && session.meta.exam,
+      session.meta && session.meta.track,
+      session.paperFormat,
+      session.title,
+      (typeof STATE !== "undefined" && STATE.exam) || ""
+    ].filter(Boolean).join(" ");
+    let student = null;
+    try {
+      student = (typeof QxReportCard !== "undefined" && QxReportCard.studentWho)
+        ? QxReportCard.studentWho()
+        : null;
+    } catch (_) { student = null; }
+    if (!student) {
+      try {
+        const u = JSON.parse(localStorage.getItem("quantrex_user") || "null") || {};
+        student = {
+          name: String(u.name || u.displayName || "").trim() || "Student",
+          photo: String(u.photoURL || "").trim(),
+          uid: String(u.uid || "").trim(),
+          email: String(u.email || "").trim()
+        };
+      } catch (_) { student = { name: "Student", photo: "", uid: "" }; }
+    }
     return {
       correct, wrong, skipped, notVisited, notAttempted, score, pct, total, rows, breakdown,
       timeUsed, maxScore, durationMin,
       timeCorrect, timeWrong, timeSkip,
       sections: session.sections || null,
-      qTimes: session.qTimes ? { ...session.qTimes } : {}
+      qTimes: session.qTimes ? { ...session.qTimes } : {},
+      examHint,
+      examTitle: session.title || "",
+      startedAt: session.startedAt || Date.now(),
+      scoring: session.scoring || { correct: 4, wrong: -1 },
+      student,
+      tabSwitches: (session && session._qzrrTabCount) || 0
     };
   }
 
@@ -4235,51 +4365,38 @@ const QuantrexTestEngine = (() => {
       </div>`;
   }
 
-  /** Marks website Report Card + Solution view (screenshots 812–815) */
+  /** Quantrex Report Card + Solution view (qxmd321 mockup, real attempt data) */
   function renderQuizrrAnalysis(data, meta) {
-    const title = String(meta.title || "Test").replace(/</g, "&lt;");
+    const title = String((meta && meta.title) || "Test").replace(/</g, "&lt;");
     const durationMin = data.durationMin || 180;
     const subKeys = Object.keys((data.breakdown && data.breakdown.subject) || {});
     const subjectOrder = ["Mathematics", "Physics", "Chemistry", "Biology", "Botany", "Zoology"];
     const orderedSubs = subjectOrder.filter(s => subKeys.includes(s))
       .concat(subKeys.filter(s => !subjectOrder.includes(s)));
 
-    const overallSt = mkScopeStats(data, "overall");
-    const panelsHtml = [
-      `<div class="mk-rc-panel on" data-mk-scope="overall">${renderMarksRcPanel(overallSt, durationMin, true)}</div>`
-    ].concat(orderedSubs.map(sub => {
-      const st = mkScopeStats(data, sub);
-      return `<div class="mk-rc-panel" data-mk-scope="${String(sub).replace(/"/g, "")}">${renderMarksRcPanel(st, durationMin, false)}</div>`;
-    })).join("");
-
-    const tabsHtml = [
-      `<button type="button" class="mk-rc-tab on" data-mk-scope="overall"><span class="mk-rc-tab-ic">✓</span> Overall</button>`
-    ].concat(orderedSubs.map(sub => {
-      return `<button type="button" class="mk-rc-tab" data-mk-scope="${String(sub).replace(/"/g, "")}"><span class="mk-rc-tab-ic">${subjectIcon(sub)}</span> ${sub}</button>`;
-    })).join("");
-
-    const reviewRows = data.rows.map((r, i) => renderReviewRow(r, i)).join("");
+    const reviewRows = (data.rows || []).map((r, i) => renderReviewRow(r, i)).join("");
     const reviewRail = renderMarksReviewRail(data);
 
-    // Section tabs for solution view (global Q numbers)
-    let solSecTabs = "";
-    if (data.sections && data.sections.length) {
-      solSecTabs = data.sections.map((sec, i) => {
-        const lab = sec.label || sec.shortLabel || ("Section " + (i + 1));
-        const start = Number(sec.start) || 0;
-        return `<button type="button" class="mk-sol-sec-tab${i === 0 ? " active" : ""}" data-sec-start="${start}" data-sec-i="${i}">${lab}</button>`;
-      }).join("");
-    } else {
-      solSecTabs = orderedSubs.map((sub, i) => {
-        const first = data.rows.findIndex(r => r.q && (r.q.subject || "Other") === sub);
-        return `<button type="button" class="mk-sol-sec-tab${i === 0 ? " active" : ""}" data-sec-start="${first >= 0 ? first : 0}">${sub}</button>`;
-      }).join("");
-    }
-
-    const theme = "light"; // Marks Report Card is always light white
-    return `<div class="mk-rc-page qz-an-page" id="qzAnPage" data-ui="marks-report-card" data-theme="${theme}">
-      <!-- ── Report Card (default) ── -->
-      <div class="mk-rc-view on" id="mkRcView">
+    let reportView = "";
+    try {
+      if (typeof QxReportCard !== "undefined" && QxReportCard.viewHtml) {
+        reportView = QxReportCard.viewHtml(data, meta || {});
+      }
+    } catch (e) { try { console.warn("qx-report-card", e); } catch (_) {} }
+    if (!reportView) {
+      const overallSt = mkScopeStats(data, "overall");
+      const panelsHtml = [
+        `<div class="mk-rc-panel on" data-mk-scope="overall">${renderMarksRcPanel(overallSt, durationMin, true)}</div>`
+      ].concat(orderedSubs.map(sub => {
+        const st = mkScopeStats(data, sub);
+        return `<div class="mk-rc-panel" data-mk-scope="${String(sub).replace(/"/g, "")}">${renderMarksRcPanel(st, durationMin, false)}</div>`;
+      })).join("");
+      const tabsHtml = [
+        `<button type="button" class="mk-rc-tab on" data-mk-scope="overall"><span class="mk-rc-tab-ic">✓</span> Overall</button>`
+      ].concat(orderedSubs.map(sub => {
+        return `<button type="button" class="mk-rc-tab" data-mk-scope="${String(sub).replace(/"/g, "")}"><span class="mk-rc-tab-ic">${subjectIcon(sub)}</span> ${sub}</button>`;
+      })).join("");
+      reportView = `<div class="mk-rc-view on" id="mkRcView">
         <header class="mk-rc-top">
           <div class="mk-rc-top-left">
             <button type="button" class="mk-rc-back" id="qzAnBack" title="Back">←</button>
@@ -4297,7 +4414,28 @@ const QuantrexTestEngine = (() => {
         </div>
         <nav class="mk-rc-tabs" id="mkRcTabs">${tabsHtml}</nav>
         <div class="mk-rc-body" id="mkRcBody">${panelsHtml}</div>
-      </div>
+        <div id="qxPrSlot"></div>
+      </div>`;
+    }
+
+    // Section tabs for solution view (global Q numbers)
+    let solSecTabs = "";
+    if (data.sections && data.sections.length) {
+      solSecTabs = data.sections.map((sec, i) => {
+        const lab = sec.label || sec.shortLabel || ("Section " + (i + 1));
+        const start = Number(sec.start) || 0;
+        return `<button type="button" class="mk-sol-sec-tab${i === 0 ? " active" : ""}" data-sec-start="${start}" data-sec-i="${i}">${lab}</button>`;
+      }).join("");
+    } else {
+      solSecTabs = orderedSubs.map((sub, i) => {
+        const first = (data.rows || []).findIndex(r => r.q && (r.q.subject || "Other") === sub);
+        return `<button type="button" class="mk-sol-sec-tab${i === 0 ? " active" : ""}" data-sec-start="${first >= 0 ? first : 0}">${sub}</button>`;
+      }).join("");
+    }
+
+    const theme = "light";
+    return `<div class="mk-rc-page qz-an-page qx-rc-v2" id="qzAnPage" data-ui="marks-report-card" data-theme="${theme}">
+      ${reportView}
 
       <!-- ── Solution view (Marks style) ── -->
       <div class="mk-sol-view" id="mkSolView" hidden>
@@ -4342,6 +4480,9 @@ const QuantrexTestEngine = (() => {
         "qz-an-theme-light", "qz-an-theme-dark", "marks-test-active"
       );
       try {
+        if (typeof QxReportCard !== "undefined" && QxReportCard.restoreScroll) QxReportCard.restoreScroll();
+      } catch (_) { /* */ }
+      try {
         const sidebar = document.getElementById("sidebar");
         const topbar = document.querySelector(".topbar");
         const mainEl = document.querySelector(".main");
@@ -4383,6 +4524,8 @@ const QuantrexTestEngine = (() => {
         sol.removeAttribute("hidden");
         sol.hidden = false;
         try { document.body.classList.add("qx-sol-fullscreen-active"); } catch (_) { /* */ }
+        /* qxmd381: start solution at top + make inner list scrollable on phones */
+        try { sol.scrollTop = 0; const mn = sol.querySelector(".mk-sol-main"); if (mn) mn.scrollTop = 0; } catch (_) { /* */ }
       }
       // Bind on full solution shell (section tabs live outside #qxReviewSplit)
       const shell = sol || root.querySelector("#qxReviewSplit") || root;
@@ -4432,7 +4575,7 @@ const QuantrexTestEngine = (() => {
       root._mkRcBound = true;
       root.addEventListener("click", (ev) => {
         const t = ev.target.closest(
-          "#qzAnBack, #mkSolBack, #qzAnViewSol, #mkRcReattempt, #qzAnPrint, #mkSolPrint, .mk-rc-tab, #mkSolSecPrev, #mkSolSecNext, [data-sol-filter], .mk-sol-row, .mk-sol-rail .mk-rv-dot, [data-rv-idx]"
+          "#qzAnBack, #mkSolBack, #qzAnViewSol, #mkRcReattempt, #qzAnPrint, #mkSolPrint, .mk-rc-tab, #mkSolSecPrev, #mkSolSecNext, [data-sol-filter], .mk-sol-row, .mk-sol-rail .mk-rv-dot, [data-rv-idx], [data-qxan-q], [data-qx-rc-goto]"
         );
         if (!t || !root.contains(t)) return;
         if (t.id === "qzAnBack") { ev.preventDefault(); leaveAnalysis(); return; }
@@ -4477,6 +4620,28 @@ const QuantrexTestEngine = (() => {
           row.setAttribute("data-rv-sel", on ? "0" : "1");
           return;
         }
+        if (t.hasAttribute && t.hasAttribute("data-qx-rc-goto")) {
+          ev.preventDefault();
+          const scope = t.getAttribute("data-qx-rc-goto");
+          const tab = root.querySelector('.mk-rc-tab[data-mk-scope="' + scope + '"]');
+          if (tab) tab.click();
+          return;
+        }
+        if (t.hasAttribute && t.hasAttribute("data-qxan-q")) {
+          ev.preventDefault();
+          const idx = parseInt(t.getAttribute("data-qxan-q"), 10) || 0;
+          showSolutions();
+          setTimeout(() => {
+            try {
+              if (root._mkSolShow) root._mkSolShow(idx);
+              else {
+                const sv = root.querySelector("#mkSolView");
+                if (sv && sv._mkSolShow) sv._mkSolShow(idx);
+              }
+            } catch (_) { /* */ }
+          }, 60);
+          return;
+        }
         if (t.classList.contains("mk-rc-tab")) {
           ev.preventDefault();
           const scope = t.getAttribute("data-mk-scope");
@@ -4500,6 +4665,24 @@ const QuantrexTestEngine = (() => {
     // Expose for external hooks
     root._mkShowSolutions = showSolutions;
     root._mkShowReport = showReport;
+    /* qxmd381: View Solution / Back even if report-card header renders outside root */
+    if (!window._qx381SolDeleg) {
+      window._qx381SolDeleg = true;
+      document.addEventListener("click", function (ev) {
+        const t = ev.target && ev.target.closest && ev.target.closest("#qzAnViewSol, #mkSolBack");
+        if (!t) return;
+        const r = document.querySelector("#qzAnPage") || (document.querySelector("#mkSolView") || {}).parentElement;
+        const host = r && (r._mkShowSolutions ? r : (r.closest && r.closest("[id]")));
+        let h = null; let n = t;
+        while (n && !h) { if (n._mkShowSolutions) h = n; n = n.parentElement; }
+        if (h) return; /* root handler will run */
+        const any = Array.from(document.querySelectorAll("*")).find((x) => x._mkShowSolutions);
+        if (!any) return;
+        ev.preventDefault();
+        if (t.id === "qzAnViewSol") any._mkShowSolutions(); else any._mkShowReport();
+      }, false);
+    }
+    root._mkShowReport = showReport;
   }
 
   function renderResults(data) {
@@ -4510,8 +4693,7 @@ const QuantrexTestEngine = (() => {
     const uiMode = session.uiMode || "quantrex";
     const scoring = session.scoring || { correct: 4, wrong: -1 };
     const isPyq = mode === "pyqmock";
-    // Prefer full analysis UI (Marks Report Card) for PYQ + Marks mocks + Quizrr
-    const useFullAnalysis = uiMode === "quizrr" || isPyq || marksReview;
+    const useFullAnalysis = true;
     // Report Card always pure white light (Marks website)
     const theme = "light";
 
@@ -4573,7 +4755,8 @@ const QuantrexTestEngine = (() => {
       scoring,
       returnTo: ret || (isPyq ? "tests" : "dashboard"),
       testType: mode,
-      theme
+      theme,
+      examSlug: (data && data.examHint) || ""
     };
     marksClearSession();
     const standalone = window.TS_STANDALONE;
@@ -4611,12 +4794,11 @@ const QuantrexTestEngine = (() => {
         }
         const appMain = document.getElementById("app-main");
         if (appMain) {
-          appMain.style.position = "";
-          appMain.style.inset = "";
-          appMain.style.overflow = "auto";
-          appMain.style.minHeight = "100vh";
           appMain.style.pointerEvents = "auto";
         }
+        try {
+          if (typeof QxReportCard !== "undefined" && QxReportCard.unlockScroll) QxReportCard.unlockScroll();
+        } catch (_) { /* */ }
       } catch (_) { /* */ }
     }
 
@@ -4684,6 +4866,11 @@ const QuantrexTestEngine = (() => {
     if (typeof session.onComplete === "function") {
       try { session.onComplete(data, snapshot); } catch (e) { console.error(e); }
     }
+    try {
+      if (typeof qxRecordStudentAttempt === "function") {
+        qxRecordStudentAttempt(session, data, snapshot, "completed");
+      }
+    } catch (_rec) { /* dashboard log must never block submit */ }
     const main = getTestMountEl();
     if (main) {
       // Instant Report Card paint — NO full-page MathJax on 75 solutions (was freezing UI)
@@ -4697,6 +4884,7 @@ const QuantrexTestEngine = (() => {
       const an = main.querySelector("#qzAnPage");
       if (an) {
         bindQuizrrAnalysis(an);
+        try { if (typeof QxReportCard !== "undefined" && QxReportCard.bind) QxReportCard.bind(an, data); } catch (_) { /* */ }
       } else {
         bindReviewSplit(main.querySelector("#qxReviewSplit"), data);
       }
@@ -4740,6 +4928,7 @@ const QuantrexTestEngine = (() => {
     let sections = resume ? resume.sections : (config.sections || null);
     const wantQuizrrUi = ((resume && resume.uiMode) || config.uiMode) === "quizrr";
     const isPyqMock = config.testType === "pyqmock";
+    const isTlxPaper = config.testType === "tallentex" || (resume && resume.testType === "tallentex");
     const orgOpts = {
       paperFormat: config.paperFormat || (config.meta && config.meta.slug),
       examSlug: (config.meta && config.meta.slug) || config.paperFormat,
@@ -4749,7 +4938,7 @@ const QuantrexTestEngine = (() => {
       paperNum: config.meta && config.meta.paperNum,
       shuffle: false
     };
-    if (!resume && (isPyqMock || wantQuizrrUi || (config.marksMode && config.organizeJee))) {
+    if (!isTlxPaper && !resume && (isPyqMock || wantQuizrrUi || (config.marksMode && config.organizeJee))) {
       // PYQ Mock → always Marks website paper format (exact exam layout for that year)
       let organized = null;
       if (isPyqMock || config.paperFormat || ids.length >= 20) {
@@ -4766,7 +4955,7 @@ const QuantrexTestEngine = (() => {
     }
     // Resume / stale saves often lose start= or leave Math covering the whole paper
     let fixedSecs = repairSessionSections(ids, sections);
-    if (!fixedSecs && ids.length >= 8) {
+    if (!isTlxPaper && !fixedSecs && ids.length >= 8) {
       try {
         const rebuilt = organizeMarksPaper(ids, orgOpts);
         if (rebuilt && rebuilt.sections && rebuilt.sections.length) {
@@ -4835,7 +5024,8 @@ const QuantrexTestEngine = (() => {
       catalogDurationMin: config.catalogDurationMin || null,
       _sideCollapsed: (function () {
         try {
-          if (window.matchMedia && window.matchMedia("(max-width: 900px)").matches) return true;
+          if (document.documentElement && (document.documentElement.classList.contains("qx-compact") || document.documentElement.classList.contains("qx-app") || document.documentElement.classList.contains("qx-phone") || document.documentElement.getAttribute("data-qx-shell") === "app")) return true;
+          if (typeof window.qxEgIsNarrow === "function" ? window.qxEgIsNarrow() : (window.matchMedia && window.matchMedia("(max-width: 900px)").matches)) return true;
         } catch (_) { /* */ }
         if (resume && (resume._sideCollapsed != null || resume._qzrrSideCollapsed != null)) {
           return !!(resume._sideCollapsed || resume._qzrrSideCollapsed);
@@ -4844,7 +5034,8 @@ const QuantrexTestEngine = (() => {
       })(),
       _qzrrSideCollapsed: (function () {
         try {
-          if (window.matchMedia && window.matchMedia("(max-width: 900px)").matches) return true;
+          if (document.documentElement && (document.documentElement.classList.contains("qx-compact") || document.documentElement.classList.contains("qx-app") || document.documentElement.classList.contains("qx-phone") || document.documentElement.getAttribute("data-qx-shell") === "app")) return true;
+          if (typeof window.qxEgIsNarrow === "function" ? window.qxEgIsNarrow() : (window.matchMedia && window.matchMedia("(max-width: 900px)").matches)) return true;
         } catch (_) { /* */ }
         if (resume && (resume._sideCollapsed != null || resume._qzrrSideCollapsed != null)) {
           return !!(resume._sideCollapsed || resume._qzrrSideCollapsed);
@@ -4925,7 +5116,9 @@ const QuantrexTestEngine = (() => {
       qTimes: sess.qTimes ? { ...sess.qTimes } : {},
       breakdown: data.breakdown || { subject: {} },
       grades,
-      savedAt: Date.now()
+      savedAt: Date.now(),
+      student: data.student || null,
+      tabSwitches: data.tabSwitches || 0
     };
   }
 
@@ -4966,7 +5159,18 @@ const QuantrexTestEngine = (() => {
       rows,
       breakdown: snap.breakdown || { subject: {} },
       sections: snap.sections || null,
-      qTimes: snap.qTimes || {}
+      qTimes: snap.qTimes || {},
+      examHint: [
+        snap.paperFormat,
+        snap.meta && snap.meta.slug,
+        snap.meta && snap.meta.exam,
+        snap.title
+      ].filter(Boolean).join(" "),
+      examTitle: snap.title || "",
+      startedAt: snap.savedAt || Date.now(),
+      scoring: snap.scoring || { correct: 4, wrong: -1 },
+      student: snap.student || null,
+      tabSwitches: snap.tabSwitches || 0
     };
   }
 
@@ -5018,19 +5222,27 @@ const QuantrexTestEngine = (() => {
       if (mainEl) mainEl.style.marginLeft = "0";
       const appMain = document.getElementById("app-main");
       if (appMain) {
-        appMain.style.position = "";
-        appMain.style.inset = "";
-        appMain.style.overflow = "auto";
         appMain.style.pointerEvents = "auto";
-        appMain.style.minHeight = "100vh";
       }
+      try {
+        if (typeof QxReportCard !== "undefined" && QxReportCard.unlockScroll) QxReportCard.unlockScroll();
+      } catch (_) { /* */ }
     } catch (_) { /* */ }
     const main = getTestMountEl();
     if (!main) return false;
-    const meta = { title: snap.title || "Test", scoring: snap.scoring, theme: "light", testType: "pyqmock" };
+    const meta = {
+      title: snap.title || "Test",
+      scoring: snap.scoring,
+      theme: "light",
+      testType: "pyqmock",
+      examSlug: (snap.meta && (snap.meta.slug || snap.meta.exam)) || snap.paperFormat || snap.title || ""
+    };
     main.innerHTML = renderQuizrrAnalysis(data, meta);
     const an = main.querySelector("#qzAnPage");
-    if (an) bindQuizrrAnalysis(an);
+    if (an) {
+      bindQuizrrAnalysis(an);
+      try { if (typeof QxReportCard !== "undefined" && QxReportCard.bind) QxReportCard.bind(an, data); } catch (_) { /* */ }
+    }
     if (typeof showToast === "function") showToast("📊 Saved Report Card opened");
     return true;
   }
@@ -5049,6 +5261,8 @@ const QuantrexTestEngine = (() => {
       const main = getTestMountEl();
       return patchOptionsOnly(main);
     },
+    renderQuizrrAnalysis,
+    bindQuizrrAnalysis,
     buildAttemptSnapshot,
     rebuildAnalysisFromSnapshot,
     openSavedAnalysis,
@@ -6332,7 +6546,7 @@ function marksPersistSession() {
     })(),
     sections: s.sections,
     marksMode: s.marksMode,
-    organizeJee: true,
+    organizeJee: s.organizeJee !== false && s.testType !== "tallentex",
     meta: s.meta,
     paperFormat: s.paperFormat || (s.meta && s.meta.slug) || null,
     shuffle: s.shuffle !== false,
@@ -6356,6 +6570,11 @@ function marksPersistSession() {
     all[s.persistKey] = data;
     localStorage.setItem(MARKS_SESSION_STORE, JSON.stringify(all));
   } catch (e) { /* ignore */ }
+  try {
+    if (typeof qxRecordStudentAttempt === "function") {
+      qxRecordStudentAttempt(s, null, null, "inProgress");
+    }
+  } catch (_) { /* */ }
 }
 
 function marksLoadSession(key) {
@@ -6660,6 +6879,7 @@ async function startTest(questionIds, title, returnTo, options) {
     }
   } catch (_) { /* */ }
   const isTs = opts.testType === "testseries";
+  const isTlx = opts.testType === "tallentex";
   const marksMode = opts.marksMode !== false;
   // Practice / PYQ mock: QUANTREX practice chrome. Timed Test Series + custom: NTA exact by default.
   let uiMode = opts.uiMode || (opts.resumeData && opts.resumeData.uiMode) || null;
@@ -6681,8 +6901,8 @@ async function startTest(questionIds, title, returnTo, options) {
   }
   if (uiMode === "quantrex") uiMode = "examgoal";
   const practiceMode = !!opts.practiceMode;
-  const skipInstr = !!(opts.skipInstructions || practiceMode || !isTs);
-  const skipCd = !!(opts.skipCountdown || practiceMode || opts.testType === "pyqmock" || !isTs);
+  const skipInstr = !!(opts.skipInstructions || practiceMode || (!isTs && !isTlx));
+  const skipCd = !!(opts.skipCountdown || practiceMode || opts.testType === "pyqmock" || (!isTs && !isTlx));
   // Full window for every exam. JEE Main Test Series still shows instructions first.
   if (skipInstr) {
     try { if (typeof enterMarksTestMode === "function") enterMarksTestMode(); } catch (_) { /* */ }
@@ -6766,6 +6986,7 @@ async function startTest(questionIds, title, returnTo, options) {
   const run = async () => {
     try {
       const bookReady = opts.testType === "book"
+        || opts.testType === "tallentex"
         || !!(opts.meta && opts.meta.bookId)
         || (typeof qxBookQsAlreadyLoaded === "function" && qxBookQsAlreadyLoaded(questionIds));
       // Marks-style: hydrate first window only, rest in background (never block splash on full paper)
@@ -6875,9 +7096,843 @@ async function startTest(questionIds, title, returnTo, options) {
   launchMarks();
 }
 
-function renderTest() {
-  return QuantrexTestEngine.render();
+function qxSessionIsOpen(s) {
+  if (!s || !s.persistKey || s.submitted) return false;
+  const ans = s.answers && typeof s.answers === "object" ? Object.keys(s.answers).length : 0;
+  if (s.remainingSec != null && s.remainingSec > 0) return true;
+  return ans > 0;
 }
+
+function qxListResumableTests() {
+  const all = typeof marksLoadAllSessions === "function" ? marksLoadAllSessions() : {};
+  return Object.keys(all).map(function (k) { return all[k]; }).filter(qxSessionIsOpen)
+    .sort(function (a, b) { return (b.savedAt || 0) - (a.savedAt || 0); });
+}
+
+function qxEscResume(s) {
+  return String(s == null ? "" : s)
+    .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
+
+const QX_STUDENT_ATTEMPT_LOG = "quantrex_student_attempts_v1";
+const QX_STUDENT_REPORT_STORE = "quantrex_student_reports_v1";
+
+function qxStudentAttemptLogRead() {
+  try {
+    const raw = JSON.parse(localStorage.getItem(QX_STUDENT_ATTEMPT_LOG) || "[]");
+    return Array.isArray(raw) ? raw : [];
+  } catch (_) { return []; }
+}
+
+function qxStudentReportLoad() {
+  try {
+    const raw = JSON.parse(localStorage.getItem(QX_STUDENT_REPORT_STORE) || "{}");
+    return raw && typeof raw === "object" && !Array.isArray(raw) ? raw : {};
+  } catch (_) { return {}; }
+}
+
+function qxStudentKindLabel(kind) {
+  const k = String(kind || "");
+  if (k === "tallentex") return "TALENTEX";
+  if (k === "testseries") return "Test Series";
+  if (k === "pyqmock") return "PYQ Mock";
+  if (k === "custom") return "Custom Test";
+  if (k === "chapter") return "Chapter Test";
+  return "Test";
+}
+
+function qxStudentAttemptId(session, fallback) {
+  if (session && session.persistKey) return String(session.persistKey);
+  if (session && session.testId) return "tid::" + String(session.testId);
+  if (session && session.meta && session.meta.slug && session.meta.source) {
+    return String(session.meta.slug) + "::" + String(session.meta.source);
+  }
+  return String(fallback || ("qx::" + Date.now()));
+}
+
+function qxStudentAttemptLogWrite(entry) {
+  if (!entry || !entry.id) return;
+  try {
+    const list = qxStudentAttemptLogRead().filter(function (x) { return x && x.id !== entry.id; });
+    list.unshift({
+      id: String(entry.id),
+      kind: entry.kind || "test",
+      title: entry.title || "Test",
+      status: entry.status || "inProgress",
+      persistKey: entry.persistKey || entry.id,
+      testId: entry.testId || "",
+      slug: entry.slug || "",
+      source: entry.source || "",
+      score: entry.score,
+      pct: entry.pct,
+      correct: entry.correct,
+      wrong: entry.wrong,
+      total: entry.total,
+      maxScore: entry.maxScore,
+      updatedAt: entry.updatedAt || Date.now()
+    });
+    localStorage.setItem(QX_STUDENT_ATTEMPT_LOG, JSON.stringify(list.slice(0, 40)));
+  } catch (_) { /* quota */ }
+}
+
+function qxStudentReportSave(id, snapshot, extra) {
+  if (!id || !snapshot) return;
+  const all = qxStudentReportLoad();
+  const slim = {
+    v: snapshot.v || 2,
+    status: "completed",
+    title: snapshot.title,
+    score: snapshot.score,
+    pct: snapshot.pct,
+    correct: snapshot.correct,
+    wrong: snapshot.wrong,
+    skipped: snapshot.skipped,
+    notVisited: snapshot.notVisited,
+    notAttempted: snapshot.notAttempted,
+    total: snapshot.total,
+    maxScore: snapshot.maxScore,
+    durationMin: snapshot.durationMin,
+    timeUsed: snapshot.timeUsed,
+    scoring: snapshot.scoring,
+    sections: snapshot.sections || null,
+    meta: snapshot.meta || null,
+    paperFormat: snapshot.paperFormat || null,
+    uiMode: snapshot.uiMode || "quantrex",
+    marksMode: !!snapshot.marksMode,
+    catalogTotalQs: snapshot.catalogTotalQs,
+    totalMarks: snapshot.totalMarks,
+    catalogDurationMin: snapshot.catalogDurationMin,
+    ids: (snapshot.ids || []).slice(),
+    answers: snapshot.answers || {},
+    review: snapshot.review || [],
+    visited: snapshot.visited || [],
+    qTimes: snapshot.qTimes || {},
+    breakdown: snapshot.breakdown || { subject: {} },
+    grades: snapshot.grades || [],
+    savedAt: Date.now(),
+    kind: (extra && extra.kind) || snapshot.kind || "test",
+    persistKey: (extra && extra.persistKey) || id,
+    testId: (extra && extra.testId) || "",
+    slug: (extra && extra.slug) || "",
+    source: (extra && extra.source) || ""
+  };
+  all[id] = slim;
+  const write = function (map) {
+    localStorage.setItem(QX_STUDENT_REPORT_STORE, JSON.stringify(map));
+  };
+  try {
+    write(all);
+  } catch (_) {
+    try {
+      const keys = Object.keys(all).sort(function (a, b) {
+        return (all[a].savedAt || 0) - (all[b].savedAt || 0);
+      });
+      keys.slice(0, Math.max(4, keys.length - 16)).forEach(function (k) { delete all[k]; });
+      write(all);
+    } catch (_2) { /* */ }
+  }
+}
+
+function qxRecordStudentAttempt(session, data, snapshot, status) {
+  if (!session) return;
+  const id = qxStudentAttemptId(session, snapshot && snapshot.title);
+  const kind = session.testType || (session.meta && session.meta.exam) || "test";
+  const meta = session.meta || {};
+  qxStudentAttemptLogWrite({
+    id: id,
+    kind: kind,
+    title: session.title || (snapshot && snapshot.title) || "Test",
+    status: status || "inProgress",
+    persistKey: session.persistKey || id,
+    testId: session.testId || meta.paperId || "",
+    slug: meta.slug || "",
+    source: meta.source || "",
+    score: data && data.score,
+    pct: data && data.pct,
+    correct: data && data.correct,
+    wrong: data && data.wrong,
+    total: data && data.total,
+    maxScore: data && data.maxScore,
+    updatedAt: Date.now()
+  });
+  if (status === "completed" && snapshot) {
+    qxStudentReportSave(id, snapshot, {
+      kind: kind,
+      persistKey: session.persistKey || id,
+      testId: session.testId || meta.paperId || "",
+      slug: meta.slug || "",
+      source: meta.source || ""
+    });
+  }
+}
+
+function qxCollectStudentAttempts() {
+  const byId = {};
+  const put = function (row) {
+    if (!row || !row.id) return;
+    const prev = byId[row.id];
+    if (!prev || (row.updatedAt || 0) >= (prev.updatedAt || 0)) {
+      byId[row.id] = Object.assign({}, prev || {}, row);
+    }
+  };
+  qxStudentAttemptLogRead().forEach(put);
+
+  const sessions = typeof marksLoadAllSessions === "function" ? marksLoadAllSessions() : {};
+  Object.keys(sessions).forEach(function (k) {
+    const s = sessions[k];
+    if (!s) return;
+    const open = qxSessionIsOpen(s);
+    const ansN = s.answers && typeof s.answers === "object" ? Object.keys(s.answers).length : 0;
+    if (!open && !s.submitted && !ansN) return;
+    put({
+      id: s.persistKey || k,
+      kind: s.testType || "test",
+      title: s.title || "Test",
+      status: open ? "inProgress" : "completed",
+      persistKey: s.persistKey || k,
+      idx: s.idx,
+      total: (s.ids && s.ids.length) || 0,
+      ansN: ansN,
+      updatedAt: s.savedAt || 0
+    });
+  });
+
+  if (typeof pyqLoadAttempts === "function") {
+    const all = pyqLoadAttempts() || {};
+    Object.keys(all).forEach(function (k) {
+      const r = all[k];
+      if (!r || r.status === "notStarted") return;
+      const parts = String(k).split("::");
+      put({
+        id: k,
+        kind: "pyqmock",
+        title: r.title || "PYQ Mock",
+        status: r.status === "completed" ? "completed" : "inProgress",
+        persistKey: k,
+        slug: r.slug || parts[0] || "",
+        source: r.source || parts.slice(1).join("::"),
+        score: r.score,
+        pct: r.pct,
+        correct: r.correct,
+        total: r.total,
+        maxScore: r.maxScore,
+        updatedAt: r.updatedAt || 0
+      });
+    });
+  }
+
+  if (typeof tsLoadAttempts === "function") {
+    const all = tsLoadAttempts() || {};
+    const markKeys = Object.keys(sessions);
+    Object.keys(all).forEach(function (tid) {
+      const r = all[tid];
+      if (!r || r.status === "notStarted") return;
+      const suf = "::" + tid;
+      const persist = markKeys.find(function (k) {
+        return k === tid || k.slice(-suf.length) === suf;
+      }) || ("ts::" + tid);
+      put({
+        id: persist,
+        kind: "testseries",
+        title: r.title || "Test Series",
+        status: r.status === "completed" ? "completed" : "inProgress",
+        persistKey: persist,
+        testId: tid,
+        score: r.score,
+        pct: r.pct,
+        correct: r.correct,
+        total: r.total,
+        maxScore: r.maxScore,
+        updatedAt: r.updatedAt || (r.completedAt ? Date.parse(r.completedAt) : 0) || 0
+      });
+    });
+  }
+
+  if (typeof ctLoadTests === "function") {
+    (ctLoadTests() || []).forEach(function (t) {
+      if (!t || (t.status !== "completed" && t.status !== "inProgress")) return;
+      put({
+        id: "ct::" + t.id,
+        kind: "custom",
+        title: t.title || "Custom Test",
+        status: t.status,
+        persistKey: t.persistKey || ("ct::" + t.id),
+        testId: t.id,
+        score: t.score,
+        pct: t.pct,
+        correct: t.correct,
+        total: t.total,
+        updatedAt: t.completedAt ? Date.parse(t.completedAt) : 0
+      });
+    });
+  }
+
+  return Object.keys(byId).map(function (k) { return byId[k]; })
+    .sort(function (a, b) { return (b.updatedAt || 0) - (a.updatedAt || 0); });
+}
+
+function qxStudentStreakDays(rows) {
+  const days = {};
+  (rows || []).forEach(function (r) {
+    if (!r || !r.updatedAt) return;
+    try { days[new Date(r.updatedAt).toISOString().slice(0, 10)] = true; } catch (_) { /* */ }
+  });
+  const keys = Object.keys(days).sort().reverse();
+  if (!keys.length) return 0;
+  const today = new Date();
+  const pad = function (n) { return (n < 10 ? "0" : "") + n; };
+  let cursor = today.getFullYear() + "-" + pad(today.getMonth() + 1) + "-" + pad(today.getDate());
+  if (!days[cursor]) {
+    const y = new Date(today.getTime() - 86400000);
+    cursor = y.getFullYear() + "-" + pad(y.getMonth() + 1) + "-" + pad(y.getDate());
+    if (!days[cursor]) return 0;
+  }
+  let n = 0;
+  while (days[cursor]) {
+    n += 1;
+    const d = new Date(cursor + "T12:00:00");
+    d.setDate(d.getDate() - 1);
+    cursor = d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate());
+  }
+  return n;
+}
+
+function qxFmtAttemptWhen(ts) {
+  if (!ts) return "";
+  try {
+    return new Date(ts).toLocaleString(undefined, { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" });
+  } catch (_) { return ""; }
+}
+
+function qxStudentResumeHtml() {
+  const open = qxListResumableTests().slice(0, 6);
+  if (!open.length) return "";
+  const cards = open.map(function (s) {
+    const qAt = (s.idx || 0) + 1;
+    const total = (s.ids && s.ids.length) || 0;
+    const ansN = s.answers ? Object.keys(s.answers).length : 0;
+    const when = qxFmtAttemptWhen(s.savedAt);
+    const key = String(s.persistKey || "").replace(/\\/g, "\\\\").replace(/'/g, "\\'");
+    const kind = qxStudentKindLabel(s.testType);
+    return `<button type="button" class="qx-resume-card" onclick="qxResumeSavedTest('${key}')">
+      <em>${qxEscResume(kind)}</em>
+      <strong>${qxEscResume(s.title || "Test")}</strong>
+      <small>Q${qAt}${total ? " / " + total : ""} · ${ansN} answered${when ? " · " + when : ""}</small>
+      <span>Resume →</span>
+    </button>`;
+  }).join("");
+  return `<div class="marks-section qx-resume-home">
+    <div class="marks-sec-head"><h3>Resume</h3>
+      <a href="#" onclick="go('studentdash');return false">Dashboard →</a>
+    </div>
+    <p class="sec-desc">Latest attempted tests — continue from the same question</p>
+    <div class="qx-resume-row">${cards}</div>
+  </div>`;
+}
+
+function qxStudentDashHomeStrip() {
+  /* qxmd349: Dashboard lives only in the left-nav folder, never on Home. */
+  return "";
+}
+
+async function qxPrimeReportQuestions(row, snap) {
+  const kind = (row && row.kind) || (snap && snap.kind) || "";
+  const key = (row && row.persistKey) || (snap && snap.persistKey) || "";
+  try {
+    if (kind === "tallentex" && typeof loadTallentexPaper === "function") {
+      const setId = /set2/i.test(key) ? "set2" : "set1";
+      await loadTallentexPaper(setId);
+    } else if (kind === "pyqmock" && row && row.slug && typeof qxLoadPyqPaper === "function") {
+      await qxLoadPyqPaper(row.slug, row.source);
+    }
+  } catch (err) {
+    console.warn("qxPrimeReportQuestions", err);
+  }
+  try {
+    const ids = (snap && snap.ids) || [];
+    if (ids.length && typeof MarksLive !== "undefined" && MarksLive.prefetchQuestions) {
+      await Promise.race([
+        MarksLive.prefetchQuestions(ids.slice(0, 12)),
+        new Promise(function (resolve) { setTimeout(resolve, 1800); })
+      ]);
+    }
+  } catch (_) { /* */ }
+}
+
+async function qxOpenStudentReport(id) {
+  const key = decodeURIComponent(String(id || ""));
+  if (!key) return;
+  const rows = qxCollectStudentAttempts();
+  const row = rows.find(function (r) { return r.id === key; }) || { id: key, kind: "test", persistKey: key };
+  const reports = qxStudentReportLoad();
+  let snap = reports[key] || null;
+  if (!snap && row.kind === "pyqmock" && typeof pyqGetAttempt === "function") {
+    const rec = pyqGetAttempt(row.slug, row.source);
+    if (rec && rec.snapshot) snap = rec.snapshot;
+  }
+  if (row.kind === "pyqmock" && row.slug && typeof pyqViewSavedAnalysis === "function" && (!snap || !snap.ids)) {
+    return pyqViewSavedAnalysis(row.slug, row.source);
+  }
+  if (!snap || !(snap.ids && snap.ids.length) && !(snap.grades && snap.grades.length)) {
+    if (row.kind === "testseries" && row.testId && typeof tsShowAnalysis === "function") {
+      return tsShowAnalysis(row.testId, { title: row.title, totalQs: row.total });
+    }
+    if (typeof showToast === "function") showToast("Report card will appear after you submit this test.");
+    return;
+  }
+  if (typeof showToast === "function") showToast("Opening report card…");
+  await qxPrimeReportQuestions(row, snap);
+  if (typeof QuantrexTestEngine !== "undefined" && QuantrexTestEngine.openSavedAnalysis) {
+    const ok = QuantrexTestEngine.openSavedAnalysis(snap);
+    if (ok) {
+      try { window._qxReattemptConfig = window._qxReattemptConfig || {}; } catch (_) { /* */ }
+      try {
+        if (window._qxReattemptConfig && window._qxReattemptConfig.opts) {
+          window._qxReattemptConfig.returnTo = "studentdash";
+          window._qxReattemptConfig.opts.testType = row.kind || window._qxReattemptConfig.opts.testType;
+          window._qxReattemptConfig.opts.persistKey = null;
+        }
+      } catch (_) { /* */ }
+      return;
+    }
+  }
+  if (typeof showToast === "function") showToast("Could not open this report card. Try opening the paper again.");
+}
+
+function qxOpenDashAttempt(id) {
+  const key = decodeURIComponent(String(id || ""));
+  if (!key) return;
+  const row = qxCollectStudentAttempts().find(function (r) { return r.id === key; });
+  if (!row) {
+    if (typeof qxResumeSavedTest === "function") return qxResumeSavedTest(key);
+    return;
+  }
+  if (row.status === "completed") return qxOpenStudentReport(key);
+  if (row.persistKey && typeof marksLoadSession === "function" && marksLoadSession(row.persistKey)) {
+    return qxResumeSavedTest(row.persistKey);
+  }
+  if (row.kind === "testseries" && row.testId) {
+    if (typeof tsResumeTest === "function" && typeof _tsManifest !== "undefined" && _tsManifest) {
+      return tsResumeTest(row.testId);
+    }
+    if (typeof go === "function") go("testseries");
+    return;
+  }
+  if (row.kind === "pyqmock" && row.slug && typeof pyqOpenPaper === "function") {
+    return pyqOpenPaper(row.slug, row.source);
+  }
+  if (row.kind === "custom" && row.testId && typeof ctAttemptTest === "function") {
+    return ctAttemptTest(row.testId);
+  }
+  if (row.kind === "tallentex" && typeof startTallentexPaper === "function") {
+    const setId = /set2/i.test(row.persistKey || key) ? "set2" : "set1";
+    return startTallentexPaper(setId);
+  }
+  if (typeof go === "function") go("tests");
+}
+
+async function qxReattemptStudentReport(id) {
+  const key = decodeURIComponent(String(id || ""));
+  if (!key) return;
+  const row = qxCollectStudentAttempts().find(function (r) { return r.id === key; }) || { id: key };
+  const snap = qxStudentReportLoad()[key];
+  try {
+    if (row.persistKey && typeof marksClearSession === "function") marksClearSession(row.persistKey);
+  } catch (_) { /* */ }
+  if (row.kind === "tallentex" && typeof startTallentexPaper === "function") {
+    const setId = /set2/i.test(row.persistKey || key) ? "set2" : "set1";
+    return startTallentexPaper(setId);
+  }
+  if (row.kind === "pyqmock" && row.slug && typeof pyqShowPreview === "function") {
+    return pyqShowPreview(row.slug, row.source);
+  }
+  if (row.kind === "custom" && row.testId && typeof ctAttemptTest === "function") {
+    return ctAttemptTest(row.testId);
+  }
+  if (row.kind === "testseries" && row.testId) {
+    if (typeof tsStartFreshTest === "function" && typeof _tsManifest !== "undefined" && _tsManifest) {
+      return tsStartFreshTest(row.testId);
+    }
+    if (typeof go === "function") go("testseries");
+    if (typeof showToast === "function") showToast("Open this paper in Test Series to attempt again");
+    return;
+  }
+  const ids = (snap && snap.ids) || [];
+  if (ids.length && typeof startTest === "function") {
+    startTest(ids, (snap && snap.title) || row.title || "Test", "studentdash", {
+      testType: row.kind || "test",
+      timed: true,
+      durationSec: ((snap && snap.durationMin) || 180) * 60,
+      shuffle: false,
+      marksMode: true,
+      organizeJee: row.kind !== "tallentex",
+      uiMode: (snap && snap.uiMode) || "examgoal",
+      scoring: snap && snap.scoring,
+      meta: snap && snap.meta,
+      skipCountdown: true,
+      persistKey: row.persistKey || key
+    });
+    return;
+  }
+  if (typeof go === "function") go("tests");
+}
+
+function qxSdSpark(values) {
+  const pts = (values || []).filter(function (v) { return v != null && isFinite(v); }).slice(-7);
+  if (pts.length < 2) return "";
+  const w = 132, h = 36;
+  const d = pts.map(function (v, i) {
+    const x = (i / (pts.length - 1)) * w;
+    const y = h - (Math.max(0, Math.min(100, Number(v))) / 100) * (h - 4) - 2;
+    return (i ? "L" : "M") + x.toFixed(1) + "," + y.toFixed(1);
+  }).join(" ");
+  return `<svg class="qx-sd-spark" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" aria-hidden="true"><path d="${d}" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+}
+
+function qxSdAskDoubt() {
+  try {
+    if (typeof QuantrexSearch !== "undefined" && QuantrexSearch.openOverlay) {
+      QuantrexSearch.openOverlay();
+      return;
+    }
+  } catch (_) { /* */ }
+  if (typeof go === "function") go("search");
+}
+
+function qxSdHydrateLeaderboard(root) {
+  const mount = (root || document).querySelector("#qxSdLbMount");
+  if (!mount) return;
+  const exam = (typeof STATE !== "undefined" && STATE.exam) || "Engineering";
+  const paintEmpty = function (msg) {
+    if (!mount.isConnected) return;
+    mount.innerHTML = '<p class="qx-sd-muted">' + msg + "</p>";
+  };
+  if (typeof QuantrexLeaderboard === "undefined" || typeof QuantrexLeaderboard.fetchTop !== "function") {
+    paintEmpty("Sign in to load the live leaderboard for this exam.");
+    return;
+  }
+  Promise.resolve(QuantrexLeaderboard.fetchTop(exam, 5)).then(function (rows) {
+    if (!mount.isConnected) return;
+    if (!rows || !rows.length) {
+      paintEmpty("No live ranks yet for this exam. Solve after login and you appear here.");
+      return;
+    }
+    const esc = typeof qxEscResume === "function"
+      ? qxEscResume
+      : function (s) { return String(s || "").replace(/[&<>"]/g, function (ch) { return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[ch]; }); };
+    mount.innerHTML = rows.map(function (p) {
+      const medal = p.rank === 1 ? "🥇" : p.rank === 2 ? "🥈" : p.rank === 3 ? "🥉" : String(p.rank);
+      const name = esc(p.name || "Student");
+      const av = esc(p.avatar || "S");
+      const col = String(p.color || "#1589EE").replace(/[^\w#(),.% -]/g, "");
+      const pts = Number(p.points || 0);
+      return '<div class="qx-sd-lb-row">'
+        + '<span class="qx-sd-lb-rank">' + medal + "</span>"
+        + '<span class="qx-sd-lb-av" style="background:' + col + '">' + av + "</span>"
+        + '<span class="qx-sd-lb-name">' + name + "</span>"
+        + '<span class="qx-sd-lb-pts">' + pts + "</span>"
+        + "</div>";
+    }).join("");
+  }).catch(function () {
+    paintEmpty("Leaderboard unavailable right now. Sign in and try again.");
+  });
+}
+
+function viewStudentDash() {
+  const name = typeof dashUserName === "function" ? dashUserName() : "Student";
+  const exam = (typeof STATE !== "undefined" && typeof EXAMS !== "undefined" && EXAMS[STATE.exam])
+    ? EXAMS[STATE.exam].name
+    : "Quantrex Academy";
+  const rows = qxCollectStudentAttempts();
+  const open = rows.filter(function (r) { return r.status !== "completed"; }).slice(0, 6);
+  const done = rows.filter(function (r) { return r.status === "completed"; }).slice(0, 24);
+  const solved = (typeof STATE !== "undefined" && Array.isArray(STATE.solved)) ? STATE.solved.length : 0;
+  const accSolved = (typeof STATE !== "undefined" && Array.isArray(STATE.solved))
+    ? STATE.solved.filter(function (s) { return s && s.correct; }).length
+    : 0;
+  const bookmarks = (typeof STATE !== "undefined" && STATE.bookmarks && STATE.bookmarks.length) || 0;
+  let accSum = 0;
+  let accN = 0;
+  let correctN = 0;
+  let wrongN = 0;
+  let totalN = 0;
+  const pctSeries = [];
+  done.forEach(function (r) {
+    if (r.pct != null && isFinite(r.pct)) { accSum += Number(r.pct); accN += 1; pctSeries.push(Number(r.pct)); }
+    if (r.correct != null) correctN += Number(r.correct) || 0;
+    if (r.wrong != null) wrongN += Number(r.wrong) || 0;
+    if (r.total != null) totalN += Number(r.total) || 0;
+  });
+  const skipN = Math.max(0, totalN - correctN - wrongN);
+  const accuracy = accN ? Math.round(accSum / accN) : (solved ? Math.round(accSolved / solved * 100) : 0);
+  const streak = qxStudentStreakDays(rows);
+  const qPool = totalN || solved || 1;
+  const pC = Math.round((correctN / qPool) * 100);
+  const pW = Math.round((wrongN / qPool) * 100);
+  const pS = Math.max(0, 100 - pC - pW);
+  let rankCard = "";
+  let rankStat = "";
+  try {
+    const latest = done[0];
+    if (latest && typeof QxRankEst !== "undefined" && QxRankEst.estimate) {
+      const est = QxRankEst.estimate({
+        score: latest.score,
+        maxScore: latest.maxScore || ((latest.total || 0) * 4),
+        title: latest.title,
+        exam: latest.kind,
+        slug: latest.slug
+      });
+      if (est && est.applicable) {
+        rankStat = `<article class="qx-sd-stat qx-sd-stat-rank">
+          <em>Estimated rank</em>
+          <strong>${qxEscResume(est.rankFmt || "—")}</strong>
+          <small>${qxEscResume(est.examLabel || "")} · labelled estimate</small>
+        </article>`;
+        rankCard = `<article class="qx-sd-rankbox">
+          <header class="qx-sd-head"><h2>Rank predictor</h2><span>Estimate</span></header>
+          <p class="qx-sd-rank-range">${qxEscResume(est.rankFmt || "—")}</p>
+          <p class="qx-sd-muted">${qxEscResume(est.examLabel || "This paper")} · ${qxEscResume(est.band || "")}${est.percentile != null ? " · P" + est.percentile : ""}</p>
+          <p class="qx-sd-note">From your latest submitted paper. Not an official NTA / IIT result.</p>
+          <button type="button" class="qx-sd-btn gold" onclick="go('analytics')">Open analytics →</button>
+        </article>`;
+      }
+    }
+  } catch (_) { rankCard = ""; rankStat = ""; }
+
+  const spark = qxSdSpark(pctSeries);
+  const streakDots = [0, 1, 2, 3, 4, 5, 6].map(function (i) {
+    return `<i class="${i < Math.min(7, streak) ? "on" : ""}"></i>`;
+  }).join("");
+
+  const resumeCards = open.map(function (r) {
+    const idEnc = encodeURIComponent(r.id);
+    const when = qxFmtAttemptWhen(r.updatedAt);
+    return `<button type="button" class="qx-sd-card qx-sd-resume" onclick="qxOpenDashAttempt(decodeURIComponent('${idEnc}'))">
+      <em>${qxEscResume(qxStudentKindLabel(r.kind))}</em>
+      <strong>${qxEscResume(r.title || "Test")}</strong>
+      <small>${r.ansN ? r.ansN + " answered" : "In progress"}${when ? " · " + when : ""}</small>
+      <span>Resume →</span>
+    </button>`;
+  }).join("");
+
+  const continueBlock = open.length
+    ? `<div class="qx-sd-resume-row">${resumeCards}</div>`
+    : `<div class="qx-sd-empty-mini"><p>No paper in progress. Start a test and it will sit here so you can resume.</p>
+        <button type="button" class="qx-sd-btn gold" onclick="go('tests')">Open Tests</button></div>`;
+
+  const reportCards = done.map(function (r) {
+    const idEnc = encodeURIComponent(r.id);
+    const pct = r.pct != null ? Math.max(0, Math.min(100, Math.round(r.pct))) : 0;
+    const when = qxFmtAttemptWhen(r.updatedAt);
+    const scoreLine = (r.score != null ? r.score : "—")
+      + (r.maxScore ? " / " + r.maxScore : "")
+      + (r.correct != null && r.total ? " · " + r.correct + "/" + r.total + " correct" : "");
+    return `<article class="qx-sd-report">
+      <div class="qx-sd-ring" style="--p:${pct}"><b>${pct}%</b></div>
+      <div class="qx-sd-report-body">
+        <em>${qxEscResume(qxStudentKindLabel(r.kind))}</em>
+        <strong>${qxEscResume(r.title || "Test")}</strong>
+        <small>${qxEscResume(scoreLine)}${when ? " · " + when : ""}</small>
+        <div class="qx-sd-report-actions">
+          <button type="button" class="qx-sd-btn gold" onclick="qxOpenStudentReport(decodeURIComponent('${idEnc}'))">Report card</button>
+          <button type="button" class="qx-sd-btn ghost" onclick="qxReattemptStudentReport(decodeURIComponent('${idEnc}'))">Attempt again</button>
+        </div>
+      </div>
+    </article>`;
+  }).join("");
+
+  const emptyReports = `<div class="qx-sd-empty">
+    <strong>No report card yet</strong>
+    <p>Submit a test and it appears here. Tap any question inside the report card to read the solution, then attempt the paper again.</p>
+    <button type="button" class="btn-primary" onclick="go('tests')">Open Tests</button>
+  </div>`;
+
+  const chapRows = (function () {
+    const reports = typeof qxStudentReportLoad === "function" ? qxStudentReportLoad() : {};
+    const sub = {};
+    Object.keys(reports).forEach(function (k) {
+      const br = reports[k] && reports[k].breakdown && reports[k].breakdown.subject;
+      if (!br) return;
+      Object.keys(br).forEach(function (name) {
+        const v = br[name] || {};
+        if (!sub[name]) sub[name] = { correct: 0, total: 0 };
+        sub[name].correct += Number(v.correct || 0);
+        sub[name].total += Number(v.total || 0);
+      });
+    });
+    return Object.keys(sub).map(function (name) {
+      const t = sub[name].total || 0;
+      const pct = t ? Math.round(sub[name].correct / t * 100) : 0;
+      return { name: name, pct: pct, total: t };
+    }).sort(function (a, b) { return b.pct - a.pct; }).slice(0, 6);
+  })();
+  const chapHtml = chapRows.length
+    ? chapRows.map(function (c) {
+      return `<div class="qx-sd-bar"><span>${qxEscResume(c.name)}</span><b style="--p:${c.pct}"></b><em>${c.pct}%</em></div>`;
+    }).join("")
+    : `<p class="qx-sd-muted">Subject split appears after you submit a paper with sections.</p>`;
+
+  return `<div class="qx-sd">
+    <section class="qx-sd-hero">
+      <div class="qx-sd-hero-copy">
+        <p class="qx-sd-kicker">Student dashboard</p>
+        <h1>Welcome back, ${qxEscResume(name)}</h1>
+        <p class="qx-sd-sub">${qxEscResume(exam)} · consistency today, IIT tomorrow</p>
+      </div>
+      <blockquote class="qx-sd-quote">“Concepts Create Destiny.”</blockquote>
+      <button type="button" class="qx-sd-hero-cta" onclick="go('tests')">Take a test</button>
+    </section>
+    <div class="qx-sd-stats">
+      <article class="qx-sd-stat">
+        <em>Tests attempted</em>
+        <strong>${rows.length}</strong>
+        <small>${done.length} submitted · ${open.length} in progress</small>
+        <span class="qx-sd-meter"><i style="width:${Math.min(100, done.length * 12)}%"></i></span>
+      </article>
+      <article class="qx-sd-stat qx-sd-stat-acc">
+        <em>Average accuracy</em>
+        <strong>${accuracy}%</strong>
+        <small>${accN ? accN + " submitted papers" : (solved ? solved + " practice Qs" : "Submit a test to score")}</small>
+        ${spark}
+      </article>
+      ${rankStat || `<article class="qx-sd-stat"><em>Questions solved</em><strong>${solved}</strong><small>${bookmarks} bookmarks on this device</small></article>`}
+      <article class="qx-sd-stat">
+        <em>Study streak</em>
+        <strong>${streak}</strong>
+        <small>${streak === 1 ? "day" : "days"} with an attempt</small>
+        <span class="qx-sd-dots">${streakDots}</span>
+      </article>
+    </div>
+    <div class="qx-sd-grid">
+      <div class="qx-sd-col">
+        <section class="qx-sd-block">
+          <header class="qx-sd-head"><h2>Continue learning</h2><button type="button" class="qx-sd-link" onclick="go('tests')">All tests →</button></header>
+          ${continueBlock}
+        </section>
+        <section class="qx-sd-block qx-sd-perf">
+          <header class="qx-sd-head"><h2>Performance analytics</h2><button type="button" class="qx-sd-link" onclick="go('analytics')">Details →</button></header>
+          <div class="qx-sd-perf-row">
+            <div class="qx-sd-donut-wrap">
+              <div class="qx-sd-donut" style="background:conic-gradient(#22c55e 0 ${pC}%, #ef4444 ${pC}% ${pC + pW}%, #94a3b8 ${pC + pW}% 100%)">
+                <b>${totalN || solved}</b><small>questions</small>
+              </div>
+              <ul>
+                <li><i class="g"></i> Correct ${correctN} (${pC}%)</li>
+                <li><i class="r"></i> Incorrect ${wrongN} (${pW}%)</li>
+                <li><i class="u"></i> Unattempted ${skipN} (${pS}%)</li>
+              </ul>
+            </div>
+            <div class="qx-sd-chaps">
+              <h3>Subject-wise</h3>
+              ${chapHtml}
+            </div>
+          </div>
+        </section>
+        <section class="qx-sd-block">
+          <header class="qx-sd-head"><h2>Report cards</h2><span>${done.length ? done.length + " submitted" : ""}</span></header>
+          <div class="qx-sd-reports">${reportCards || emptyReports}</div>
+        </section>
+      </div>
+      <aside class="qx-sd-side">
+        <section class="qx-sd-doubt">
+          <h2>Ask a doubt</h2>
+          <p>Search any question, chapter or paper. Paste a stem to jump to that PYQ.</p>
+          <button type="button" class="qx-sd-btn gold" onclick="qxSdAskDoubt()">Ask now →</button>
+        </section>
+        <section class="qx-sd-block">
+          <header class="qx-sd-head"><h2>Leaderboard</h2><button type="button" class="qx-sd-link" onclick="go('leaderboard')">Full board →</button></header>
+          <div id="qxSdLbMount" class="qx-sd-lb"><p class="qx-sd-muted">Loading live ranks…</p></div>
+        </section>
+        ${rankCard}
+        <section class="qx-sd-block">
+          <header class="qx-sd-head"><h2>Quick actions</h2></header>
+          <div class="qx-sd-quick qx-sd-quick-side">
+            <button type="button" class="qa-test" onclick="go('tests')"><strong>Take a test</strong><small>Mocks · series</small></button>
+            <button type="button" class="qa-pyq" onclick="go('cpyqb')"><strong>PYQ Bank</strong><small>Chapter-wise</small></button>
+            <button type="button" class="qa-dpp" onclick="go('dpp')"><strong>DPP</strong><small>Daily set</small></button>
+            <button type="button" class="qa-form" onclick="go('formula')"><strong>Formula</strong><small>Cards</small></button>
+            <button type="button" class="qa-notes" onclick="go('quickconcepts')"><strong>Notes</strong><small>Concept recap</small></button>
+            <button type="button" class="qa-bm" onclick="go('notebook')"><strong>Bookmarks</strong><small>${bookmarks} saved</small></button>
+          </div>
+        </section>
+      </aside>
+    </div>
+  </div>`;
+}
+
+async function qxResumeSavedTest(persistKey) {
+  const key = String(persistKey || "");
+  if (!key) return;
+  const saved = typeof marksLoadSession === "function" ? marksLoadSession(key) : null;
+  if (!saved || !saved.ids || !saved.ids.length) {
+    if (typeof showToast === "function") showToast("No saved attempt to resume");
+    return;
+  }
+  try {
+    if (typeof showToast === "function") showToast("Resuming…");
+  } catch (_) { /* */ }
+  if (saved.testType === "tallentex") {
+    const setId = /set2/i.test(key) ? "set2" : "set1";
+    try {
+      if (typeof loadTallentexPaper === "function") await loadTallentexPaper(setId);
+    } catch (err) {
+      console.error("qxResumeSavedTest tallentex", err);
+      if (typeof showToast === "function") showToast("Could not load TALENTEX paper to resume");
+      return;
+    }
+  }
+  if (typeof startTest !== "function") {
+    if (typeof showToast === "function") showToast("Test player is not ready. Refresh and try again.");
+    return;
+  }
+  startTest(saved.ids, saved.title || "Test", saved.returnTo || "tests", {
+    resumeData: saved,
+    testType: saved.testType,
+    persistKey: saved.persistKey,
+    durationSec: saved.durationSec,
+    timed: saved.durationSec != null,
+    marksMode: saved.marksMode !== false,
+    organizeJee: saved.testType === "tallentex" ? false : saved.organizeJee !== false,
+    shuffle: false,
+    uiMode: saved.uiMode || (saved.testType === "tallentex" ? "examgoal" : null),
+    meta: saved.meta || null,
+    sections: saved.sections || null,
+    questionsReady: saved.testType === "tallentex",
+    skipInstructions: true,
+    skipCountdown: true
+  });
+}
+
+function renderTest() {
+  try {
+    if (typeof QuantrexTestEngine !== "undefined" && QuantrexTestEngine.getSession && QuantrexTestEngine.getSession()) {
+      return QuantrexTestEngine.render();
+    }
+  } catch (_) { /* */ }
+  const latest = qxListResumableTests()[0] || null;
+  if (latest && latest.persistKey) {
+    setTimeout(function () {
+      try { qxResumeSavedTest(latest.persistKey); } catch (e) { console.warn(e); }
+    }, 40);
+    return `<div class="empty" style="padding:40px;text-align:center"><p style="font-weight:800">Restoring your test…</p><p style="color:#64748b;font-size:13px">Refresh keeps you on the same paper.</p></div>`;
+  }
+  return `<div class="empty" style="padding:40px;text-align:center">
+    <p style="font-weight:800;margin-bottom:10px">No live test</p>
+    <button type="button" class="btn-primary" onclick="go('tests')">Open Tests</button>
+  </div>`;
+}
+try { window.qxResumeSavedTest = qxResumeSavedTest; } catch (_) { /* */ }
+try { window.qxStudentResumeHtml = qxStudentResumeHtml; } catch (_) { /* */ }
+try { window.qxListResumableTests = qxListResumableTests; } catch (_) { /* */ }
+try { window.qxStudentDashHomeStrip = qxStudentDashHomeStrip; } catch (_) { /* */ }
+try { window.qxCollectStudentAttempts = qxCollectStudentAttempts; } catch (_) { /* */ }
+try { window.qxRecordStudentAttempt = qxRecordStudentAttempt; } catch (_) { /* */ }
+try { window.qxOpenStudentReport = qxOpenStudentReport; } catch (_) { /* */ }
+try { window.qxOpenDashAttempt = qxOpenDashAttempt; } catch (_) { /* */ }
+try { window.qxReattemptStudentReport = qxReattemptStudentReport; } catch (_) { /* */ }
+try { window.viewStudentDash = viewStudentDash; } catch (_) { /* */ }
+try { window.qxSdAskDoubt = qxSdAskDoubt; } catch (_) { /* */ }
+try { window.qxSdHydrateLeaderboard = qxSdHydrateLeaderboard; } catch (_) { /* */ }
 
 async function startChapterTest(questionIds, meta) {
   if (!questionIds.length) { showToast("⚠️ No questions in this chapter."); return; }
@@ -6976,7 +8031,9 @@ function mtkStopModalHtml(mode) {
     ? "Test Series → same test (Resume)"
     : sess && sess.testType === "pyqmock"
       ? "PYQ Mock Tests → Resume"
-      : "your tests list (Resume)";
+      : sess && sess.testType === "tallentex"
+        ? "Home Resume · Class 10 TALENTEX"
+        : "Home Resume · Tests list";
   const canSave = !!(sess && (sess.persistKey || sess.marksMode));
   const hint = canSave
     ? `Progress will be <strong>saved at Q${qNum}${total ? " / " + total : ""}</strong> with your answers and remaining time. Open the same test again and tap <strong>Resume</strong> to continue from there (${resumeWhere}).`
