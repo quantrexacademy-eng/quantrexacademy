@@ -1,6 +1,6 @@
 # python3 scripts/hosting/test_qxhost.py — offline; no network, no auth
 import json, os, sys, tempfile, gzip, hashlib
-sys.path.insert(0, os.path.dirname(__file__)); import qxhost as Q
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__))); import qxhost as Q
 n = 0
 def t(name, fn):
     global n; fn(); n += 1; print("ok", n, name)
@@ -17,8 +17,8 @@ t("gzip hash deterministic and equals sha256 of the uploaded gz bytes", lambda: 
 def t2():
     p = mk(); assert p["deletions"] == ["/_notes.txt", "/functions/index.js"], p["deletions"]
     assert "/data/banks/x.json" in p["untouched"] and p["untouched"]["/data/banks/x.json"] == "hd"
-    assert set(p["populate"]) == {"/app.html", "/a.js", "/qx-preview-guard.js", "/login.html"}
-    assert p["populate"]["/login.html"]["kind"] == "guard" and "/google.html" not in p["populate"] and p["notes"]
+    assert set(p["populate"]) == {"/app.html", "/a.js", "/qx-preview-guard.js", "/login.html", "/google.html"}
+    assert p["populate"]["/login.html"]["kind"] == "guard" and p["populate"]["/google.html"]["guard"] == "prefix" and p["notes"]
 t("deletions only from audited exclusions; data untouched; guard on every html with <head>", t2)
 def t3():
     p = mk(); assert p["removedRewrites"] == [{"glob": "/api/x", "function": "f"}]
@@ -197,4 +197,54 @@ def t17():
     import types; ex = os.path.join(d, "ex.txt"); open(ex, "w").write("  # comment\n\tfunctions/**\n")
     assert [l.strip() for l in open(ex) if l.strip() and not l.strip().startswith("#")] == ["functions/**"]
 t("raw byte-exact data proof (1 vs 1.0, true vs 1, 2.50, whitespace, other solution); hashes mandatory; config API fields only; guard pin + nav/storage blocks; release uses validated channel", t17)
+G = '<script src="/qx-preview-guard.js?v=qa2"></script>'; GS = "/qx-preview-guard.js?v=qa2"
+def plan_with(files_html, patch_html, fetched_html):
+    dd = tempfile.mkdtemp(); open(os.path.join(dd, "qx-preview-guard.js"), "w").write("//g")
+    for p, c in patch_html.items(): os.makedirs(os.path.dirname(os.path.join(dd, p.lstrip("/"))), exist_ok=True); open(os.path.join(dd, p.lstrip("/")), "w").write(c)
+    bb = {"version": "v", "config": {}, "files": {p: {"hash": "h" + p} for p in files_html}}
+    return Q.build_plan(bb, dd, list(patch_html) + ["/qx-preview-guard.js"], [], [p for p in files_html if Q._is_html(p)], G, lambda p: fetched_html[p].encode(), guard_asset=os.path.join(dd, "qx-preview-guard.js"))
+def body(pl, p): return gzip.decompress(pl["populate"][p]["gz"]).decode()
+def t18():
+    pl = plan_with({"/old.html": 1, "/data/x.json": 1}, {"/new-page.html": "<!DOCTYPE html><html><head><title>n</title></head></html>"}, {"/old.html": "<html><head></head></html>"})
+    assert Q.is_guarded(body(pl, "/new-page.html"), GS) and Q.is_guarded(body(pl, "/old.html"), GS) and pl["finalManifest"]["/data/x.json"] == "h/data/x.json"
+t("NEW patched html (not on live) gets the guard; live html too; data untouched", t18)
+def t19():
+    pl = plan_with({"/app.html": 1}, {"/app.html": "<html><head><script src=app.js></script></head></html>"}, {})
+    b = body(pl, "/app.html"); assert b.index("qx-preview-guard") < b.index("app.js") and pl["populate"]["/app.html"]["kind"] == "patch+guard"
+t("MODIFIED existing html: guard inserted before the page's own scripts", t19)
+def t20():
+    frag = "<div>fragment</div><script>x()</script>"; gv = "google-site-verification: google54d8.html"
+    dt = "<!DOCTYPE html>\n<p>no head</p>"
+    pl = plan_with({"/f.html": 1, "/g.html": 1, "/d.html": 1}, {}, {"/f.html": frag, "/g.html": gv, "/d.html": dt})
+    assert body(pl, "/f.html") == G + "\n" + frag and body(pl, "/g.html") == G + "\n" + gv  # original bytes kept after the prefix
+    assert body(pl, "/d.html").startswith("<!DOCTYPE html>\n" + G) and body(pl, "/d.html").endswith("<p>no head</p>")
+    assert all(pl["populate"][p]["guard"] == "prefix" for p in ("/f.html", "/g.html", "/d.html"))
+t("headless fragment / Google verification / doctype-only: explicit preview-only prefix, original bytes preserved", t20)
+def t21():
+    pl = plan_with({"/UP.HTML": 1, "/x.Htm": 1}, {}, {"/UP.HTML": "<HTML><HEAD></HEAD></HTML>", "/x.Htm": "<html><HEAD lang=en></HEAD></html>"})
+    assert Q.is_guarded(body(pl, "/UP.HTML"), GS) and Q.is_guarded(body(pl, "/x.Htm"), GS)
+t("uppercase .HTML/.Htm and <HEAD> are covered", t21)
+def t22():
+    bb = {"version": "v", "config": {}, "files": {"/a.html": {"hash": "h"}, "/b.html": {"hash": "h2"}}}
+    dd = tempfile.mkdtemp(); open(os.path.join(dd, "qx-preview-guard.js"), "w").write("//g")
+    try: Q.build_plan(bb, dd, ["/qx-preview-guard.js"], [], ["/a.html"], G, lambda p: b"<html><head></head></html>", guard_asset=os.path.join(dd, "qx-preview-guard.js")); raise AssertionError("must refuse")
+    except SystemExit as e: assert "unguarded html" in str(e) and "/b.html" in str(e)
+t("an html left out of the guard list makes the plan REFUSE (fail closed)", t22)
+def t23():
+    g = "<html><head>\n" + G + "<script src=a.js></script></head></html>"
+    out, how = Q.inject_guard(g, G, GS); assert how == "already" and out == g
+    for fake in ['<!-- ' + G + ' --><html><head></head></html>', '<html><head><title>' + G + '</title></head></html>',
+                 '<html><head><script>var s=\'' + G + '\'</script></head></html>', '<html data-x=\'' + G + '\'><head></head></html>',
+                 '<html><head><script src=evil.js></script>' + G + '</head></html>', '<html><head><script src="/qx-preview-guard.js?v=qa2" async></script></head></html>',
+                 '<html><head><template>' + G + '</template></head></html>', '<html><head><textarea>' + G + '</textarea></head></html>', '<html><head><noscript>' + G + '</noscript></head></html>']:
+        assert not Q.is_guarded(fake, GS), fake
+        out, how = Q.inject_guard(fake, G, GS); assert Q.is_guarded(out, GS) and how != "already", fake
+t("idempotent on a correct first guard; quoted/commented/attribute/later/async guard text never counts as guarded", t23)
+def t24():
+    crlf = "<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<title>t</title>\r\n</head>\r\n</html>\r\n"
+    out, how = Q.inject_guard(crlf, G, GS); assert how == "head" and out == crlf.replace("<head>", "<head>\r\n" + G, 1)
+    assert "\n" not in out.replace("\r\n", ""), "no bare LF in a CRLF page"
+    out2, _ = Q.inject_guard("<p>x</p>\r\n<p>y</p>\r\n", G, GS); assert out2 == G + "\r\n<p>x</p>\r\n<p>y</p>\r\n"
+    lf = "<html><head>\n</head></html>\n"; o3, _ = Q.inject_guard(lf, G, GS); assert "\r" not in o3
+t("guard injection keeps the page's dominant line ending (CRLF pages get CRLF, LF pages LF)", t24)
 print("PASS", n)

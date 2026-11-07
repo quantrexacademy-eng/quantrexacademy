@@ -21,7 +21,7 @@ SCOPE = "https://www.googleapis.com/auth/cloud-platform"  # gcloud ADC user logi
 PROTECTED = re.compile(r"^/data/")  # question/solution/answer data: never patched, never deleted
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-GUARD_ASSET = os.path.join(HERE, "preview", "qx-preview-guard.js")  # durable, reviewed; never in the production root
+GUARD_ASSET = os.environ.get("QX_GUARD_ASSET") or os.path.join(HERE, "preview", "qx-preview-guard.js")  # reviewed, sha-pinned below  # durable, reviewed; never in the production root
 GUARD_SHA256 = "2e03fb1b517dfcaa0db8c32e0ce70d08be903a293722ca08b0cf0997f1a7bf4d"  # reviewed guard; any edit must update this pin (and its test) deliberately
 FETCH_CAP = 30 * 1024 * 1024
 CLONE_DEADLINE_S = 900
@@ -61,6 +61,42 @@ def canonical_fetcher(site, known_paths, log, opener=None, cap=FETCH_CAP):
         log[p] = {"url": url.split("?")[0], "rawBytes": len(body), "rawSha256": hashlib.sha256(body).hexdigest()}
         return body
     return fetch
+
+import html.parser as _hp
+class _FirstScript(_hp.HTMLParser):
+    """real tokenizer: comments, attribute values and <script>/<style> bodies cannot fake the first script."""
+    def __init__(self):
+        super().__init__(convert_charrefs=True); self.first = None
+        self.tpl = 0
+    def handle_starttag(self, tag, attrs):
+        if tag == "template": self.tpl += 1; return
+        if tag in ("title", "textarea", "noscript", "xmp", "iframe", "noembed", "noframes"):
+            self.set_cdata_mode(tag); return  # browser raw/RCDATA text: never a real script
+        if self.first is None and tag == "script" and not self.tpl: self.first = dict(attrs)
+    def handle_endtag(self, tag):
+        if tag == "template" and self.tpl: self.tpl -= 1
+def is_guarded(txt, src):
+    p = _FirstScript()
+    try: p.feed(txt); p.close()
+    except Exception: return False
+    a = p.first
+    if not a or a.get("src") != src: return False
+    t = (a.get("type") or "").strip().lower()
+    return t in ("", "text/javascript", "application/javascript") and "async" not in a and "defer" not in a
+_HEAD = re.compile(r"<head(?=[\s>/])[^>]*>", re.I)
+_DOCTYPE = re.compile(r"^(\ufeff?\s*<!doctype[^>]*>)", re.I)
+def inject_guard(txt, tag, src):
+    """guard as the FIRST executable script. Existing correct guard: unchanged (idempotent).
+    <head> present -> right after it; otherwise PREVIEW-ONLY prefix (after <!doctype> if any). Original bytes kept."""
+    if is_guarded(txt, src): return txt, "already"
+    nl = "\r\n" if txt.count("\r\n") * 2 > txt.count("\n") else "\n"  # keep the page's dominant line ending
+    m = _HEAD.search(txt)
+    if m and is_guarded(txt[:m.end()] + nl + tag + txt[m.end():], src): return txt[:m.end()] + nl + tag + txt[m.end():], "head"
+    d = _DOCTYPE.match(txt)
+    out = (txt[:d.end()] + nl + tag + nl + txt[d.end():]) if d else (tag + nl + txt)
+    if not is_guarded(out, src): raise SystemExit("refusing: cannot make guard the first executable script")
+    return out, "prefix"
+def _is_html(p): return p.lower().endswith((".html", ".htm"))
 
 def gz_hash(data: bytes):
     """Hosting hash = SHA256 of the gzipped bytes; the SAME gz bytes must be uploaded (deterministic: mtime=0)."""
@@ -315,20 +351,25 @@ def build_plan(base, patch_dir, patched_paths, exclusion_globs, guard_paths_html
             if errs: raise SystemExit(f"refusing {p}: not a solution-only addition: {errs[:5]}")
         h, gz = gz_hash(data)
         populate[p] = {"hash": h, "gz": gz, "rawBytes": len(data), "was": files.get(p, {}).get("hash"), "kind": "patch"}
-    if guard_tag:  # preview isolation: guard first on every HTML entry point that ends up in the preview
-        for p in sorted(x for x in (guard_paths_html or []) if x.endswith(".html") and x not in deletions):
+    if guard_tag:  # preview isolation: guard first on EVERY html in the final preview (live html  UNION  patched html)
+        gsrc = re.search(r'src="([^"]+)"', guard_tag).group(1)
+        htmls = sorted(set(x for x in (guard_paths_html or []) if _is_html(x)) | set(x for x in patched_paths if _is_html(x)))
+        for p in htmls:
+            if p in deletions: continue
             raw = open(root_join(patch_dir, p), "rb").read() if p in populate else fetch(p)
             txt = raw.decode("utf-8", "surrogateescape")
-            if guard_tag not in txt:
-                txt2, n = re.subn(r"(<head[^>]*>)", lambda m: m.group(1) + "\n" + guard_tag, txt, count=1)
-                if not n: report.append(f"no <head>: {p} (left out of preview isolation; block by CSP only)"); continue
-                txt = txt2
-            h, gz = gz_hash(txt.encode("utf-8", "surrogateescape"))
-            populate[p] = {"hash": h, "gz": gz, "rawBytes": len(txt), "was": files.get(p, {}).get("hash"), "kind": "guard" if p not in populate else "patch+guard"}
+            txt2, how = inject_guard(txt, guard_tag, gsrc)
+            if how == "prefix": report.append(f"guard prefix-injected (no <head>): {p}")
+            data = txt2.encode("utf-8", "surrogateescape")
+            h, gz = gz_hash(data)
+            populate[p] = {"hash": h, "gz": gz, "rawBytes": len(data), "was": files.get(p, {}).get("hash"),
+                           "kind": ("patch+guard" if p in populate else "guard") if how != "already" else populate.get(p, {}).get("kind", "guard-already"), "guard": how}
+        # fail closed: every html in the final preview manifest must carry the guard as first executable script
+        final_html = [x for x in set(files) | set(populate) if _is_html(x) and x not in deletions]
+        unguarded = [x for x in final_html if x not in populate or not is_guarded(gzip.decompress(populate[x]["gz"]).decode("utf-8", "surrogateescape"), gsrc)]
+        if unguarded: raise SystemExit(f"refusing: unguarded html in isolated preview: {sorted(unguarded)[:5]}")
     if guard_tag:
         cfg, removed, dropped = preview_config(base.get("config"), csp); assert_isolated(cfg)
-        unguarded = [p for p in (guard_paths_html or []) if p.endswith(".html") and p not in deletions and p not in populate]
-        report += [f"UNGUARDED html (no <head>): {p}" for p in unguarded]
     else:
         cfg, removed, dropped = production_config(base.get("config")), [], []
     untouched = {p: v["hash"] for p, v in files.items() if p not in populate and p not in deletions}
@@ -345,7 +386,7 @@ def cmd_plan(a):
     if tag and "/qx-preview-guard.js" not in paths: paths.append("/qx-preview-guard.js")
     fetched = {}
     fetch = canonical_fetcher(base["site"], set(base["files"]), fetched)
-    html = [p for p in base["files"] if p.endswith(".html")]
+    html = [p for p in base["files"] if _is_html(p)]
     appr = json.load(open(a.approved_solutions)) if a.approved_solutions else None
     dels = [l.strip() for l in open(a.approved_deletions) if l.strip() and not l.strip().startswith("#")] if a.approved_deletions else []
     plan = build_plan(base, a.patch_dir, paths, ign, html, tag, fetch, approved_data=appr, approved_deletions=dels)
