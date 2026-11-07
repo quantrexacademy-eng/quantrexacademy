@@ -14,13 +14,21 @@ const QuantrexQFormat = (() => {
   }
 
   /** Bare A–D or 1–4 stubs belong in the letter circle, not as option text. */
-  function isStubOptionText(plain, i) {
+  /* qxmd392: a bare "3" in slot C is a REAL answer when the other options are real values
+     (e.g. options 4, 1, 3, 2). It is only a stub when every option is a bare 1–4 / A–D stub. */
+  function isStubOptionText(plain, i, all) {
     const t = String(plain || "").replace(/\s+/g, " ").trim();
     if (!t) return true;
-    if (/^[A-D]$/i.test(t)) return true;
-    if (/^\(?[A-D]\)?\.?$/i.test(t)) return true;
-    if (/^[1-4]$/.test(t) && Number(t) === (i + 1)) return true;
-    return false;
+    const numStub = /^[1-4]$/.test(t) && Number(t) === (i + 1);
+    const letStub = /^[A-D]$/i.test(t) || /^\(?[A-D]\)?\.?$/i.test(t);
+    if (!numStub && !letStub) return false;
+    if (Array.isArray(all) && all.length) {
+      return all.every((o, j) => {
+        const u = String(o == null ? "" : o).replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+        return !u || /^\(?[A-D]\)?\.?$/i.test(u) || (/^[1-4]$/.test(u) && Number(u) === j + 1);
+      });
+    }
+    return true;
   }
 
   /** Convert broken <smiles>…</smiles> text into clean structure images (PubChem + CACTUS fallback) */
@@ -675,7 +683,7 @@ const QuantrexQFormat = (() => {
       const t = s.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
       if (!t) continue;
       if (/^[A-D]$/i.test(t)) continue;
-      if (/^[1-4]$/.test(t)) continue;
+      if (/^[1-4]$/.test(t) && isStubOptionText(t, optsRaw.indexOf(o), optsRaw)) continue;
       real++;
     }
     return real >= 2;
@@ -685,9 +693,9 @@ const QuantrexQFormat = (() => {
   function hasOnlyLetterOrEmptyOptions(q) {
     const optsRaw = (q && q.options) || [];
     if (!optsRaw.length) return true;
-    return optsRaw.every(o => {
+    return optsRaw.every((o, i) => {
       const t = String(o || "").replace(/<[^>]+>/g, " ").trim();
-      return !t || /^[A-D]$/i.test(t) || /^[1-4]$/.test(t);
+      return !t || /^[A-D]$/i.test(t) || (/^[1-4]$/.test(t) && isStubOptionText(t, i, optsRaw));
     });
   }
 
@@ -1454,7 +1462,7 @@ const QuantrexQFormat = (() => {
         } else if (raw && !isFigStubHtml(raw)) optBody = raw;
         else optBody = `<span class="qx-fig-loading" data-qx-fig-wait="${i}"></span>`;
       }
-      if (isStubOptionText(plain, i) && !/<img\b/i.test(String(optBody || raw || ""))) optBody = "";
+      if (isStubOptionText(plain, i, opts) && !/<img\b/i.test(String(optBody || raw || ""))) optBody = "";
       if (!String(optBody || "").trim() && /<img\b/i.test(raw)) optBody = sizeOptionImgs(cleanPoolImgHtml(raw));
       // Marks-style multi: checkbox + letter
       const multiCtrl = multi
@@ -1561,10 +1569,10 @@ const QuantrexQFormat = (() => {
       // Last resort: keep original HTML so options never vanish as "Loading…"
       if (!String(optBody || "").trim() && raw) optBody = sizeOptionImgs(cleanPoolImgHtml(raw));
       if (!String(optBody || "").trim() && /C_\{|\^\{|\\binom|\$/.test(raw)) optBody = htmlContent(raw);
-      if (!String(optBody || "").trim() && plain && !isStubOptionText(plain, i)) {
+      if (!String(optBody || "").trim() && plain && !isStubOptionText(plain, i, optsList)) {
         optBody = `<span class="qx-opt-plain">${plain.replace(/&/g, "&amp;").replace(/</g, "&lt;")}</span>`;
       }
-      if (isStubOptionText(plain, i) && !/<img\b/i.test(String(optBody || raw || ""))) optBody = "";
+      if (isStubOptionText(plain, i, optsList) && !/<img\b/i.test(String(optBody || raw || ""))) optBody = "";
       // Radio circle for Quizrr/NTA CBT; letter badge for Quantrex style (CSS toggles)
       const radio = multi
         ? ""

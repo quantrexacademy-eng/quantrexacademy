@@ -51,3 +51,42 @@ html body #pracViewPanel#pracViewPanel.eg-vs-marks {
     width: min(420px, calc(100vw - 24px)) !important; border-radius: 12px !important;
   }
 }
+
+/* qxmd392: wide formulas never clipped. Math is NOT rewritten: a formula wider than the
+   screen gets its own horizontal scroll (swipe sideways) instead of being cut off.
+   Short formulas are unaffected (max-width only bites when wider than the column). */
+html body #app-main#app-main .eg-test-root .katex-display,
+html body #app-main#app-main .mtk-test-root .katex-display,
+html body #app-main#app-main .qzrr-cbt .katex-display {
+  display: block !important; max-width: 100% !important;
+  overflow-x: auto !important; overflow-y: hidden !important;
+  -webkit-overflow-scrolling: touch !important; touch-action: pan-x pan-y !important;
+  padding: 4px 0 6px !important; margin-left: 0 !important; margin-right: 0 !important;
+}
+html body #app-main#app-main .eg-test-root .katex-display > .katex,
+html body #app-main#app-main .mtk-test-root .katex-display > .katex,
+html body #app-main#app-main .qzrr-cbt .katex-display > .katex {
+  display: inline-block !important; max-width: none !important; overflow: visible !important; white-space: nowrap !important;
+}
+html body #app-main#app-main .eg-test-root :not(.katex-display) > .katex,
+html body #app-main#app-main .mtk-test-root :not(.katex-display) > .katex,
+html body #app-main#app-main .qzrr-cbt :not(.katex-display) > .katex {
+  display: inline-block !important; max-width: 100% !important;
+  overflow-x: auto !important; overflow-y: hidden !important; vertical-align: middle !important;
+  padding: 2px 0 4px !important; -webkit-overflow-scrolling: touch !important; touch-action: pan-x pan-y !important;
+}
+/* containers of math must not hide horizontal overflow of their own children */
+html body #app-main#app-main .eg-test-root .eg-body :is(.eg-q-stem,.eg-sol-panel,.q-text,.eg-q-text,.eg-qtext,.qx-sol,.qx-solution,.eg-sol,.eg-opt-text,.eg-opt,.qx-opt-body) {
+  max-width: 100% !important; min-width: 0 !important; overflow-wrap: anywhere !important;
+}
+@media (prefers-reduced-motion: reduce) { html body #app-main#app-main .eg-test-root * { scroll-behavior: auto !important; } }
+/* same for MathJax output, if math-render falls back to MathJax */
+html body #app-main#app-main .eg-test-root mjx-container,
+html body #app-main#app-main .mtk-test-root mjx-container,
+html body #app-main#app-main .qzrr-cbt mjx-container {
+  display: inline-block !important; max-width: 100% !important;
+  overflow-x: auto !important; overflow-y: hidden !important; vertical-align: middle !important;
+}
+html body #app-main#app-main .eg-test-root mjx-container[display="true"],
+html body #app-main#app-main .mtk-test-root mjx-container[display="true"],
+html body #app-main#app-main .qzrr-cbt mjx-container[display="true"] { display: block !important; }
