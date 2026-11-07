@@ -35,7 +35,7 @@ t("paginated practice: Prev/Next list = full filtered list, same reference (no c
   assert.strictEqual(Q.step(44, 1, 45), 44); assert.strictEqual(Q.step(0, -1, 45), 0);
 });
 t("other list views keep their own visible list (stale full list ignored)", () => { win._qxListQs = [{ id: "x" }]; assert.deepStrictEqual(nav(), [{ id: "x" }]); win._qxListQs = undefined; win._qxListQsAll = [{ id: "y" }]; assert.strictEqual(nav()[0].id, "y"); });
-t("app.js wiring: both open paths use qxNavList; page view sets full ref", () => { assert.strictEqual((AP.match(/const list = qxNavList\(\);/g) || []).length, 2); assert(/window\._qxListQsFull = qs;/.test(AP) && /window\._qxListQsFullFor = pageQs;/.test(AP)); });
+t("app.js wiring: both open paths use qxNavList; page view sets full ref", () => { assert.strictEqual((AP.match(/const list = qxNavList\(\);/g) || []).length, 1); assert((AP.match(/qxListForClicked\((id|openId)\)/g) || []).length >= 3, "both open paths resolve the clicked list via qxListForClicked"); assert(/window\._qxListQsFull = qs;/.test(AP) && /window\._qxListQsFullFor = pageQs;/.test(AP)); });
 // settings panel a11y: run real qx-fit.js against a minimal fake DOM
 t("settings: Escape closes via #egFmtClose, aria-expanded, focus returns", () => {
   const L = { click: [], keydown: [] }, timers = [];

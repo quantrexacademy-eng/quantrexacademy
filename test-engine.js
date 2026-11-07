@@ -26,7 +26,7 @@ function qxEnsureQuantrexQFormat() {
   window.__qxQFormatLoading = new Promise(function (resolve) {
     try {
       var s = document.createElement("script");
-      s.src = "question-format.js?v=qxfast6";
+      s.src = "question-format.js?v=qxmd392c";
       s.async = true;
       s.onload = function () {
         try {
@@ -3675,7 +3675,8 @@ const QuantrexTestEngine = (() => {
       else { skipped++; timeSkip += qSec; if (!visited) notVisited++; }
       if (q) {
         const sub = q.subject || "Other";
-        const diff = q.difficulty || "Medium";
+        /* qxmd392c: never invent a level for an untagged question */
+        const diff = (q.difficulty != null && String(q.difficulty).trim()) ? String(q.difficulty).trim() : "Unrated";
         if (!breakdown.subject[sub]) {
           breakdown.subject[sub] = {
             correct: 0, wrong: 0, total: 0, skipped: 0, notVisited: 0,
@@ -3714,7 +3715,7 @@ const QuantrexTestEngine = (() => {
           if (!visited) breakdown.subject[sub].notVisited = (breakdown.subject[sub].notVisited || 0) + 1;
         }
       }
-      if (chosen !== undefined && q && typeof STATE !== "undefined" && STATE.markSolved) STATE.markSolved(id, isCorrect);
+      if (chosen !== undefined && q && typeof STATE !== "undefined" && STATE.markSolved) STATE.markSolved(id, isCorrect, (award.status === "correct" || award.status === "partial" || award.status === "incorrect") ? { result: award.status } : undefined);
       return { q, chosen, isCorrect, isWrong, isSkip, idx: i, timeSec: qSec, status: award.status, marks: award.marks };
     });
     const total = session.ids.length;
@@ -4775,7 +4776,8 @@ const QuantrexTestEngine = (() => {
           exam: (typeof STATE !== "undefined" && STATE.exam) || "",
           date: Date.now(),
           slug: session.meta && session.meta.slug,
-          source: session.meta && session.meta.source
+          source: session.meta && session.meta.source,
+          testId: session.testId || (session.meta && (session.meta.testId || session.meta.paperId)) || ""
         });
       } catch (e) { console.warn("analytics record", e); }
     }
@@ -5014,7 +5016,8 @@ const QuantrexTestEngine = (() => {
       : (rawDur == null || rawDur <= 0
         ? (timed ? Math.max(600, ids.length * 90) : null)
         : rawDur);
-    const qxStartIdx = (!resume && window.QxStartIndex) ? window.QxStartIndex.resolveStart(qxOrigIds, config.startIdx, ids) : (function () {
+    const qxStartById = (!resume && config.startId != null) ? ids.findIndex(function (x) { return String(x) === String(config.startId); }) : -1;
+    const qxStartIdx = qxStartById >= 0 ? qxStartById : (!resume && window.QxStartIndex) ? window.QxStartIndex.resolveStart(qxOrigIds, config.startIdx, ids) : (function () {
       const fallback = Math.max(0, Math.min(ids.length - 1, Number(config.startIdx) || 0));
       if (qxStartId == null) return fallback;
       const at = ids.findIndex(function (x) { return String(x) === String(qxStartId); });
@@ -6974,6 +6977,9 @@ async function startTest(questionIds, title, returnTo, options) {
     persistKey: opts.persistKey || (marksMode ? marksAutoPersistKey(title, questionIds, opts.meta) : null),
     meta: opts.meta || null,
     resumeData: opts.resumeData || null,
+    /* qxmd392c ROOT CAUSE FIX: opts.startIdx was never copied into config, so every launch began at Q1 */
+    startIdx: opts.startIdx != null ? opts.startIdx : null,
+    startId: opts.startId != null ? opts.startId : null,
     paperFormat: opts.paperFormat || (opts.resumeData && opts.resumeData.paperFormat) || null,
     // Marks instruction banner: year-wise official totals (passed from startPyqPaperMock)
     catalogTotalQs: opts.catalogTotalQs || null,

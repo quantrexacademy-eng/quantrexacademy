@@ -32,7 +32,7 @@ t("engine + app wired to helper", () => {
   assert(/QxStartIndex\.resolveStart\(qxOrigIds, config\.startIdx, ids\)/.test(te));
   assert(/idx: resume \? \(resume\.idx \|\| 0\) : qxStartIdx/.test(te));
   assert(/qxKeepListOrder/.test(te));
-  assert(/QxStartIndex\.findClicked\(ids, list, openId\)/.test(app));
+  assert(/QxStartIndex \? window\.QxStartIndex\.findClicked/.test(app) && /find\(ids, list, id\)/.test(app));
   assert(html.indexOf("qx-start-index.js") < html.indexOf("test-engine.js?v=") && html.indexOf("qx-start-index.js") < html.indexOf("app.js?v="));
 });
 t("qx-fit has no recurring timer", () => assert(!/setInterval/.test(fs.readFileSync(__dirname + "/../qx-fit.js", "utf8"))));

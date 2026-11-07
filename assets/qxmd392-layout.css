@@ -57,7 +57,8 @@ html body #pracViewPanel#pracViewPanel.eg-vs-marks {
    Short formulas are unaffected (max-width only bites when wider than the column). */
 html body #app-main#app-main .eg-test-root .katex-display,
 html body #app-main#app-main .mtk-test-root .katex-display,
-html body #app-main#app-main .qzrr-cbt .katex-display {
+html body #app-main#app-main .qzrr-cbt .katex-display,
+html body #app-main#app-main .qx-practice-page .katex-display {
   display: block !important; max-width: 100% !important;
   overflow-x: auto !important; overflow-y: hidden !important;
   -webkit-overflow-scrolling: touch !important; touch-action: pan-x pan-y !important;
@@ -65,12 +66,14 @@ html body #app-main#app-main .qzrr-cbt .katex-display {
 }
 html body #app-main#app-main .eg-test-root .katex-display > .katex,
 html body #app-main#app-main .mtk-test-root .katex-display > .katex,
-html body #app-main#app-main .qzrr-cbt .katex-display > .katex {
+html body #app-main#app-main .qzrr-cbt .katex-display > .katex,
+html body #app-main#app-main .qx-practice-page .katex-display > .katex {
   display: inline-block !important; max-width: none !important; overflow: visible !important; white-space: nowrap !important;
 }
 html body #app-main#app-main .eg-test-root :not(.katex-display) > .katex,
 html body #app-main#app-main .mtk-test-root :not(.katex-display) > .katex,
-html body #app-main#app-main .qzrr-cbt :not(.katex-display) > .katex {
+html body #app-main#app-main .qzrr-cbt :not(.katex-display) > .katex,
+html body #app-main#app-main .qx-practice-page :not(.katex-display) > .katex {
   display: inline-block !important; max-width: 100% !important;
   overflow-x: auto !important; overflow-y: hidden !important; vertical-align: middle !important;
   padding: 2px 0 4px !important; -webkit-overflow-scrolling: touch !important; touch-action: pan-x pan-y !important;
@@ -83,10 +86,34 @@ html body #app-main#app-main .eg-test-root .eg-body :is(.eg-q-stem,.eg-sol-panel
 /* same for MathJax output, if math-render falls back to MathJax */
 html body #app-main#app-main .eg-test-root mjx-container,
 html body #app-main#app-main .mtk-test-root mjx-container,
-html body #app-main#app-main .qzrr-cbt mjx-container {
+html body #app-main#app-main .qzrr-cbt mjx-container,
+html body #app-main#app-main .qx-practice-page mjx-container {
   display: inline-block !important; max-width: 100% !important;
   overflow-x: auto !important; overflow-y: hidden !important; vertical-align: middle !important;
 }
 html body #app-main#app-main .eg-test-root mjx-container[display="true"],
 html body #app-main#app-main .mtk-test-root mjx-container[display="true"],
-html body #app-main#app-main .qzrr-cbt mjx-container[display="true"] { display: block !important; }
+html body #app-main#app-main .qzrr-cbt mjx-container[display="true"] { display: block !important;,
+html body #app-main#app-main .qx-practice-page mjx-container[display="true"] { display: block !important; },
+
+/* qxmd392c: chapter practice + revealed solution (app.js .qx-practice-page) get the same no-clip rule */
+html body #app-main#app-main .qx-practice-page :is(.qx-prac-q,.qx-prac-opt,.qx-prac-opt-text,.qx-sol-reveal-box,.result-box,.qx-content,.qx-sol,.qx-solution) {
+  max-width: 100% !important; min-width: 0 !important; overflow-wrap: anywhere !important;
+}
+
+/* qxmd392c: test-performance panel (analytics) - plain CSS bars, no chart library */
+.qx-pg .qx-pg-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; margin: 10px 0; }
+.qx-pg .qx-pg-kpis > div { border: 1px solid rgba(127,127,127,.25); border-radius: 10px; padding: 8px 10px; }
+.qx-pg .qx-pg-kpis b { display: block; font-size: 1.15rem; }
+.qx-pg .qx-pg-kpis small { opacity: .75; font-size: .75rem; }
+.qx-pg-bar { display: inline-flex; width: 120px; max-width: 100%; height: 10px; border-radius: 5px; overflow: hidden; background: rgba(127,127,127,.18); vertical-align: middle; }
+.qx-pg-bar i, .qx-pg-legend span i { display: inline-block; height: 100%; }
+.qx-pg-legend span i { width: 10px; height: 10px; border-radius: 2px; margin-right: 4px; vertical-align: -1px; }
+.qx-pg i.c { background: #16a34a; } .qx-pg i.p { background: #f59e0b; } .qx-pg i.i { background: #dc2626; } .qx-pg i.s { background: #94a3b8; }
+.qx-pg-legend { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; font-size: .8rem; }
+.qx-pg-tw { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-top: 10px; }
+.qx-pg-t { width: 100%; border-collapse: collapse; font-size: .8rem; min-width: 560px; }
+.qx-pg-t caption { text-align: left; font-weight: 700; padding: 4px 0; }
+.qx-pg-t th, .qx-pg-t td { padding: 6px 8px; border-bottom: 1px solid rgba(127,127,127,.2); text-align: left; white-space: nowrap; }
+.qx-pg-t th[scope=row] { white-space: normal; font-weight: 600; } .qx-pg-t small { opacity: .7; font-weight: 400; }
+.qx-pg-na { opacity: .6; }

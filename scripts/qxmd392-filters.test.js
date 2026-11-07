@@ -34,7 +34,7 @@ t("marks-features: facet setter filters full list, reset clears all, order kept"
   const MF = R("marks-features.js"); const grab = (name) => { const i = MF.indexOf("function " + name + "("); let d = 0; for (let k = MF.indexOf("{", i); ; k++) { if (MF[k] === "{") d++; else if (MF[k] === "}" && --d === 0) return MF.slice(i, k + 1); } };
   const calls = []; const win = { _qxListQsAll: pool };
   const fn = new Function("window", "document", "QxListFilters", "qxNormDifficulty", "renderQList",
-    'let _qxListDiffFilter="all",_qxListYearFilter="all",_qxListTypeFilter="all",_listPage=1;' + grab("qxSetListDiffFilter") + grab("qxSetListFacet") + grab("qxResetListFilters") +
+    'let _qxListDiffFilter="all",_qxListYearFilter="all",_qxListTypeFilter="all",_qxListAttFilter="all",_listPage=1;' + grab("qxAttemptIndexes") + grab("qxSetListDiffFilter") + grab("qxSetListFacet") + grab("qxResetListFilters") +
     "; return { qxSetListFacet, qxResetListFilters, qxSetListDiffFilter, st: () => [_qxListDiffFilter,_qxListYearFilter,_qxListTypeFilter] };")(win, { getElementById: () => null, querySelector: () => null, createElement: () => ({}) }, F, (d) => d, (qs) => { calls.push(ids(qs)); return ""; });
   try { fn.qxSetListFacet("year", "last10"); } catch (_) {} assert.deepStrictEqual(calls.pop(), ["a", "b", "c", "f", "g"]);
   try { fn.qxSetListFacet("type", "Numerical"); } catch (_) {} assert.deepStrictEqual(calls.pop(), ["b", "c"]);

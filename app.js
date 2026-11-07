@@ -1662,6 +1662,30 @@ function qxNavList() {
   if (vis && window._qxListQsFull && window._qxListQsFullFor === vis) return window._qxListQsFull;
   return vis || window._qxListQsAll || [];
 }
+/* qxmd392c: ids of the question cards actually on screen, in screen order */
+function qxVisibleCardIds() {
+  try {
+    const main = document.getElementById("app-main") || document;
+    return Array.prototype.map.call(main.querySelectorAll(".q-card[data-qid]"), (c) => c.getAttribute("data-qid")).filter(Boolean);
+  } catch (_) { return []; }
+}
+/* qxmd392c: list for a clicked id: remembered list if it holds the id, else the cards on screen
+   (search results etc.), else just that question. Never index 0 of an unrelated list. */
+function qxListForClicked(id) {
+  const list = qxNavList();
+  const ids = list.map((x) => x && x.id).filter((x) => x != null);
+  const find = window.QxStartIndex ? window.QxStartIndex.findClicked : (a, l, c) => a.findIndex((x) => String(x) === String(c));
+  const idx = find(ids, list, id);
+  if (idx >= 0) return { ids, list, idx, from: "list" };
+  const dom = qxVisibleCardIds();
+  const j = dom.findIndex((x) => String(x) === String(id));
+  if (j >= 0) {
+    const dl = dom.map((x) => (typeof getQ === "function" && getQ(x)) || { id: x });
+    return { ids: dl.map((q, k) => (q && q.id != null ? q.id : dom[k])), list: dl, idx: j, from: "screen" };
+  }
+  return { ids: [id], list: [], idx: 0, from: "single" };
+}
+window.qxListForClicked = qxListForClicked;
 function openPracticeQuestion(id) {
   try {
     const ctx = window._qxPracticeCtx || {};
@@ -1680,15 +1704,14 @@ function openPracticeQuestion(id) {
   // Chapter-wise PYQ list → ExamGOAL full-window practice (same chrome as mock)
   try {
     const view = typeof currentView !== "undefined" ? currentView : "";
-    const fromEg = view === "cpyqb" || view === "books" || view === "board"
-      || (typeof _cpyqbPayload !== "undefined" && _cpyqbPayload && _cpyqbPayload.chapter);
-    const list = qxNavList();
-    if (fromEg && list.length && typeof cpyqbLaunchList === "function") {
-      const ids = list.map((x) => x && x.id).filter(Boolean);
-      const openId = id;
-      /* qxmd392: match list stubs by id OR marksId so the clicked question opens, not Q1 */
-      let idx = window.QxStartIndex ? window.QxStartIndex.findClicked(ids, list, openId) : ids.findIndex((x) => String(x) === String(openId));
-      if (idx < 0) idx = 0;
+    const pick = qxListForClicked(id);
+    /* qxmd392c: a stale _cpyqbPayload from an earlier chapter must not hijack a search click */
+    const fromEg = (view === "cpyqb" || view === "books" || view === "board"
+      || (view !== "search" && typeof _cpyqbPayload !== "undefined" && _cpyqbPayload && _cpyqbPayload.chapter))
+      && pick.from === "list";
+    if (fromEg && pick.ids.length && typeof cpyqbLaunchList === "function") {
+      const ids = pick.ids;
+      const idx = pick.idx;
       const keys = typeof cpyqbSessionKeys === "function" ? cpyqbSessionKeys({ returnTo: view }) : {};
       const ch = keys.chapter || (view === "books" ? "Digital Book" : (view === "board" ? "Board PYQ" : "Chapter PYQ"));
       const sub = keys.subject || "";
@@ -1721,9 +1744,10 @@ function openPracticeQuestion(id) {
     if (full) q = full;
   }
   const openId = q && q.id != null ? q.id : id;
-  const list = qxNavList();
-  const ids = list.length ? list.map(x => x.id) : [openId];
-  const idx = Math.max(0, ids.findIndex(x => String(x) === String(openId) || String(x) === String(id)));
+  const pick2 = qxListForClicked(openId);
+  const pick = pick2.from === "single" && String(openId) !== String(id) ? qxListForClicked(id) : pick2;
+  const ids = pick.ids.length ? pick.ids : [openId];
+  const idx = pick.from === "single" ? Math.max(0, ids.findIndex(x => String(x) === String(openId))) : pick.idx;
   window._qxPracticeCtx = {
     ids,
     idx: idx >= 0 ? idx : 0,
@@ -2778,6 +2802,7 @@ async function answerQ(qid, response) {
     }
   } catch (_) { /* */ }
   STATE.markSolved(qid, graded.correct || graded.partial, {
+    result: graded.correct ? "correct" : (graded.partial ? "partial" : "incorrect"),
     subject: q.subject,
     chapter: q.chapter,
     exam: (typeof STATE !== "undefined" && STATE.exam) || q.exam

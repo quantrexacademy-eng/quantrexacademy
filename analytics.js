@@ -18,21 +18,16 @@ const QuantrexAnalytics = (() => {
 
   function recordAttempt(data) {
     const list = load();
+    /* qxmd392c: keep real ids / split outcomes / per-question rows when the session has them */
+    if (typeof QxProgress !== "undefined" && QxProgress.buildRecord) {
+      list.unshift(QxProgress.buildRecord(data, Date.now()));
+      save(QxProgress.trimDetail(list));
+      return;
+    }
     list.unshift({
-      id: Date.now(),
-      title: data.title,
-      mode: data.mode || data.testType || "custom",
-      exam: data.exam,
-      correct: data.correct,
-      wrong: data.wrong,
-      skipped: data.skipped,
-      score: data.score,
-      maxScore: data.maxScore,
-      pct: data.pct,
-      total: data.total,
-      timeUsed: data.timeUsed,
-      breakdown: data.breakdown,
-      date: data.date || Date.now()
+      id: Date.now(), title: data.title, mode: data.mode || data.testType || "custom", exam: data.exam,
+      correct: data.correct, wrong: data.wrong, skipped: data.skipped, score: data.score, maxScore: data.maxScore,
+      pct: data.pct, total: data.total, timeUsed: data.timeUsed, breakdown: data.breakdown, date: data.date || Date.now()
     });
     save(list);
   }
@@ -211,6 +206,17 @@ const QuantrexAnalytics = (() => {
     </svg>`;
   }
 
+  /* qxmd392c: date-range switch re-renders only the progress panel */
+  if (typeof window !== "undefined") {
+    window.qxSetDashRange = function (r) {
+      window._qxDashRange = r || "30d";
+      const el = document.getElementById("qxProgressPanel");
+      if (!el || typeof QxProgress === "undefined") return;
+      const t = document.createElement("div");
+      t.innerHTML = QxProgress.dashboardHtml(load(), window._qxDashRange);
+      if (t.firstElementChild) el.replaceWith(t.firstElementChild);
+    };
+  }
   function viewAnalytics() {
     const list = load();
     const sum = summary();
@@ -340,8 +346,9 @@ const QuantrexAnalytics = (() => {
         <div class="qx-an-hero-ring">${ringSvg(insight.accuracy || sum.avgPct || practiceAcc)}</div>
       </div>
 
+      ${typeof QxProgress !== "undefined" ? QxProgress.dashboardHtml(list, (window._qxDashRange || "30d")) : ""}
       <div class="qx-an-kpis">
-        <div class="qx-an-kpi"><span class="qx-an-kpi-val">${insight.accuracy || practiceAcc}%</span><span class="qx-an-kpi-lbl">Accuracy</span></div>
+        <div class="qx-an-kpi"><span class="qx-an-kpi-val">${insight.accuracy || practiceAcc}%</span><span class="qx-an-kpi-lbl">${insight.accuracy ? "Correct ÷ all test Qs" : "Practice correct rate"}</span></div>
         <div class="qx-an-kpi"><span class="qx-an-kpi-val">${sum.attempts}</span><span class="qx-an-kpi-lbl">Tests</span></div>
         <div class="qx-an-kpi"><span class="qx-an-kpi-val">${sum.bestPct}%</span><span class="qx-an-kpi-lbl">Peak Score</span></div>
         <div class="qx-an-kpi"><span class="qx-an-kpi-val">${insight.avgTimePerQ || 0}s</span><span class="qx-an-kpi-lbl">Avg / Q</span></div>

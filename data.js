@@ -14434,7 +14434,9 @@ const STATE = {
       if (extra.chapter) rec.chapter = extra.chapter;
       if (extra.exam) rec.exam = extra.exam;
       if (extra.ms != null) rec.ms = extra.ms;
+      if (extra.result === "correct" || extra.result === "partial" || extra.result === "incorrect") rec.result = extra.result;
     }
+    if (!rec.result) rec.result = undefined; /* qxmd392c: drop a stale result from an older record */
     const i = s.findIndex(x => String(x.id) === String(id));
     if (i >= 0) s[i] = { ...s[i], ...rec };
     else s.push(rec);

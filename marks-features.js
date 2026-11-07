@@ -692,7 +692,9 @@ function renderQList(qs, page, testMeta, opts) {
   // Apply difficulty filter on real bank difficulty
   let viewQs = qs;
   if (!opts.skipResetAll && _qxListDiffFilter && _qxListDiffFilter !== "all") {
-    viewQs = qs.filter(q => qxNormDifficulty(q.difficulty) === _qxListDiffFilter);
+    viewQs = (typeof QxListFilters !== "undefined" && QxListFilters.diffOk)
+      ? qs.filter(q => QxListFilters.diffOk(q, _qxListDiffFilter))
+      : qs.filter(q => qxNormDifficulty(q.difficulty) === _qxListDiffFilter);
   } else if (opts.skipResetAll) {
     viewQs = qs;
   }
@@ -716,10 +718,14 @@ function renderQList(qs, page, testMeta, opts) {
   const nMed = pool.filter(q => qxNormDifficulty(q.difficulty) === "Medium").length;
   const nHard = pool.filter(q => qxNormDifficulty(q.difficulty) === "Hard").length;
   const cur = _qxListDiffFilter || "all";
-  const qxAnyFilter = cur !== "all" || _qxListYearFilter !== "all" || _qxListTypeFilter !== "all";
+  const qxAnyFilter = cur !== "all" || _qxListYearFilter !== "all" || _qxListTypeFilter !== "all" || _qxListAttFilter !== "all";
   const facetBars = typeof QxListFilters !== "undefined" ? QxListFilters.barsHtml(pool, { year: _qxListYearFilter, type: _qxListTypeFilter }) : "";
   const resetBtn = qxAnyFilter ? `<button type="button" class="qx-diff-chip qx-filter-reset" onclick="qxResetListFilters()" aria-label="Clear all filters">✕ Clear filters</button>` : "";
-  const diffBar = `<div class="qx-diff-filter-bar" id="qxDiffFilterBar" role="group" aria-label="Difficulty filter">
+  /* qxmd392c: difficulty chips show the stored values (no 1/2/3 -> Easy/Medium/Hard guess) + attempt chips */
+  const qxIdx = qxAttemptIndexes();
+  const attBar = typeof QxListFilters !== "undefined" && QxListFilters.attemptBarHtml ? QxListFilters.attemptBarHtml(pool, _qxListAttFilter, qxIdx.att, qxIdx.bm) : "";
+  const rawDiffBar = typeof QxListFilters !== "undefined" && QxListFilters.diffBarHtml ? QxListFilters.diffBarHtml(pool, cur) : null;
+  const diffBar = rawDiffBar != null ? `${rawDiffBar}${resetBtn ? `<div class="qx-diff-filter-bar">${resetBtn}</div>` : ""}${facetBars}${attBar}` : `<div class="qx-diff-filter-bar" id="qxDiffFilterBar" role="group" aria-label="Difficulty filter">
     <button type="button" class="qx-diff-chip${cur === "all" ? " on" : ""}" onclick="qxSetListDiffFilter('all')">All <b>${pool.length}</b></button>
     <button type="button" class="qx-diff-chip diff-easy${cur === "Easy" ? " on" : ""}" onclick="qxSetListDiffFilter('Easy')">Easy <b>${nEasy}</b></button>
     <button type="button" class="qx-diff-chip diff-medium${cur === "Medium" ? " on" : ""}" onclick="qxSetListDiffFilter('Medium')">Medium <b>${nMed}</b></button>
@@ -1384,13 +1390,22 @@ function cpyqbCompareKeys(a, b) {
 let _qxListDiffFilter = "all";
 let _qxListYearFilter = "all";
 let _qxListTypeFilter = "all";
+let _qxListAttFilter = "all";
+function qxAttemptIndexes() {
+  const att = (typeof QxProgress !== "undefined" && typeof STATE !== "undefined") ? QxProgress.practiceIndex(STATE.solved) : {};
+  const bm = {};
+  try { ((typeof STATE !== "undefined" && STATE.bookmarks) || []).forEach(id => { bm[String(id)] = true; }); } catch (_) { /* */ }
+  return { att, bm };
+}
 function qxSetListFacet(kind, val) {
-  if (kind === "year") _qxListYearFilter = val || "all";
+  if (kind === "diff") { qxSetListDiffFilter(val || "all"); return; }
+  if (kind === "att") _qxListAttFilter = val || "all";
+  else if (kind === "year") _qxListYearFilter = val || "all";
   else if (kind === "type") _qxListTypeFilter = val || "all";
   qxSetListDiffFilter(_qxListDiffFilter);
 }
 function qxResetListFilters() {
-  _qxListYearFilter = "all"; _qxListTypeFilter = "all";
+  _qxListYearFilter = "all"; _qxListTypeFilter = "all"; _qxListAttFilter = "all";
   qxSetListDiffFilter("all");
 }
 window.qxSetListFacet = qxSetListFacet;
@@ -1402,7 +1417,8 @@ function qxSetListDiffFilter(diff) {
   const all = window._qxListQsAll || window._qxListQs || [];
   /* qxmd392: difficulty + year + type combined; original list order kept */
   const filtered = typeof QxListFilters !== "undefined"
-    ? QxListFilters.apply(all, { diff: _qxListDiffFilter, year: _qxListYearFilter, type: _qxListTypeFilter }, qxNormDifficulty)
+    ? QxListFilters.apply(all, Object.assign({ diff: _qxListDiffFilter, year: _qxListYearFilter, type: _qxListTypeFilter,
+        rawDiff: !!QxListFilters.diffOk, att: _qxListAttFilter }, (function () { const x = qxAttemptIndexes(); return { attIndex: x.att, bmIndex: x.bm }; })()), qxNormDifficulty)
     : (_qxListDiffFilter === "all" ? all.slice() : all.filter(q => qxNormDifficulty(q.difficulty) === _qxListDiffFilter));
   _listPage = 1;
   const testMeta = window._qxChapterMeta || null;
@@ -7391,6 +7407,7 @@ function qxBookQsAlreadyLoaded(ids) {
 
 async function cpyqbLaunchList(ids, title, startIdx, returnTo) {
   if (!ids || !ids.length) return;
+  const qxStartId = ids[Math.max(0, Math.min(ids.length - 1, Number(startIdx) || 0))];
   try {
     const main = document.getElementById("app-main");
     if (main && typeof qxLoadLogoHtml === "function" && !main.querySelector(".eg-test-root, .mtk-test-root")) {
@@ -7426,6 +7443,7 @@ async function cpyqbLaunchList(ids, title, startIdx, returnTo) {
     uiMode: "examgoal",
     organizeJee: false,
     startIdx: startIdx || 0,
+    startId: qxStartId,
     meta: cpyqbSessionKeys({ returnTo: ret })
   });
 }
@@ -7474,6 +7492,7 @@ function qxAskBookPracticeOrTest(ids, title, startIdx, returnTo) {
         uiMode: "examgoal",
         organizeJee: false,
         startIdx: isPractice ? (startIdx || 0) : 0,
+        startId: isPractice ? ids[Math.max(0, Math.min(n - 1, Number(startIdx) || 0))] : null,
         meta: (typeof cpyqbSessionKeys === "function" ? cpyqbSessionKeys({ returnTo: ret }) : {})
       });
     }

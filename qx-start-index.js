@@ -7,10 +7,11 @@
     if (clickedId == null || clickedId === "") return -1;
     ids = ids || [];
     for (var i = 0; i < ids.length; i++) if (same(ids[i], clickedId)) return i;
+    var bare = /^m_/.test(String(clickedId)) ? String(clickedId).slice(2) : null;
     list = list || [];
     for (var j = 0; j < list.length; j++) {
       var x = list[j];
-      if (x && (same(x._marksId, clickedId) || same(x.marksId, clickedId) || same(x.qid, clickedId))) return j;
+      if (x && (same(x._marksId, clickedId) || same(x.marksId, clickedId) || same(x.qid, clickedId) || (bare && same(x._marksId, bare)))) return j;
     }
     return -1;
   }
