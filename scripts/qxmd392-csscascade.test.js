@@ -1,7 +1,7 @@
 // Real CSS parse (css-tree) + cascade resolution for the solution-formula box, over app.html's actual stylesheet order.
-// NODE_PATH=/tmp/jsd/node_modules node scripts/qxmd392-csscascade.test.js (needs css-tree + jsdom; exits 2 if missing)
+// npm ci --prefix scripts/test-tools && node scripts/qxmd392-csscascade.test.js (needs css-tree + jsdom; exits 2 if missing)
 const assert = require("assert"), fs = require("fs"), path = require("path");
-let csstree, JSDOM; try { csstree = require("css-tree"); ({ JSDOM } = require("jsdom")); } catch (_) { console.error("css-tree/jsdom required - NOT a pass"); process.exit(2); }
+let csstree, JSDOM; try { csstree = require(require("path").join(__dirname, "test-tools/node_modules/css-tree")); ({ JSDOM } = require(require("path").join(__dirname, "test-tools/node_modules/jsdom"))); } catch (_) { console.error("css-tree/jsdom required - NOT a pass"); process.exit(2); }
 const R = path.join(__dirname, ".."); let n = 0; const t = (m, f) => { f(); n++; console.log("ok", n, m); };
 const html = fs.readFileSync(path.join(R, "app.html"), "utf8");
 const sheets = []; html.replace(/assets\/[a-z0-9-]+\.css/g, (m) => { if (!sheets.includes(m)) sheets.push(m); });

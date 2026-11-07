@@ -12,7 +12,7 @@ base = {"version": "sites/s/versions/V1", "config": {"rewrites": [{"glob": "/api
                   "/_notes.txt": {"hash": "hn"}, "/login.html": {"hash": "hl"}, "/google.html": {"hash": "hg"}}}
 fetched = {"/login.html": b"<html><head></head>L</html>", "/google.html": b"google-site-verification: x"}
 tag = '<script src="/qx-preview-guard.js?v=qa2"></script>'
-def mk(): return Q.build_plan(base, d, ["/app.html", "/a.js", "/qx-preview-guard.js"], ["functions/**", "_*.txt"], [p for p in base["files"] if p.endswith(".html")], tag, lambda p: fetched[p])
+def mk(): return Q.build_plan(base, d, ["/app.html", "/a.js", "/qx-preview-guard.js"], ["functions/**", "_*.txt"], [p for p in base["files"] if p.endswith(".html")], tag, lambda p: fetched[p], approved_deletions=["/_notes.txt", "/functions/index.js"], guard_asset=os.path.join(d, "qx-preview-guard.js"))
 t("gzip hash deterministic and equals sha256 of the uploaded gz bytes", lambda: (lambda r: (r[0] == Q.gz_hash(b"abc")[0] and hashlib.sha256(r[1]).hexdigest() == r[0] and gzip.decompress(r[1]) == b"abc") or (_ for _ in ()).throw(AssertionError()))(Q.gz_hash(b"abc")))
 def t2():
     p = mk(); assert p["deletions"] == ["/_notes.txt", "/functions/index.js"], p["deletions"]
@@ -29,7 +29,7 @@ t("preview config: function rewrites removed, CSP+noindex added, exact diff repo
 def t4():
     try: Q.build_plan(base, d, ["/data/banks/x.json"], [], None, None, None); raise AssertionError("should refuse")
     except SystemExit as e: assert "protected" in str(e)
-    try: Q.build_plan(base, d, [], ["data/**"], None, None, None); raise AssertionError("should refuse")
+    try: Q.build_plan(base, d, [], ["data/**"], None, None, None, approved_deletions=["/data/banks/x.json"]); raise AssertionError("should refuse")
     except SystemExit as e: assert "protected" in str(e)
 t("refuses to patch or delete /data/ question files", t4)
 def t5():
@@ -79,4 +79,96 @@ def t9():
         assert r == [], r
         print("   real AP EAMCET Trig patch validated against fresh canonical baseline")
 t("placeholder 'No Solution' fill: exact placeholder only, provenance+non-official+sha gates, dup keys/ids, key order", t9)
+import urllib.error, io as _io
+class _R:
+    def __init__(s, url, body, status=200): s.url, s.body, s.status = url, body, status
+    def geturl(s): return s.url
+    def read(s, n=-1): return s.body[:n] if n and n > 0 else s.body
+class _Op:
+    def __init__(s, fn): s.fn = fn; s.urls = []
+    def open(s, url, timeout=0): s.urls.append(url); return s.fn(url)
+def t10():
+    for bad in ["/../x", "/a/../../x", "/a\\b", "/a\x00", "//evil.com/x", "/a/%2e%2e/x", "/a%2fb", "https://x/y", "x.html", "/a/./b"]:
+        try: Q.safe_path(bad); raise AssertionError(bad)
+        except SystemExit: pass
+    assert Q.safe_path("/assets/a-b.css") == "/assets/a-b.css"
+    os.symlink("/etc", os.path.join(d, "lnk"))
+    try: Q.root_join(d, "/lnk/passwd"); raise AssertionError("symlink escape")
+    except SystemExit as e: assert "escaping" in str(e)
+t("path sanitizer: traversal, backslash, NUL, double slash, encoded separators, scheme, symlink escape", t10)
+def t11():
+    log = {}; op = _Op(lambda u: _R(u, b"hello"))
+    f = Q.canonical_fetcher("quantrexacademy-app", {"/app.html"}, log, opener=op)
+    assert f("/app.html") == b"hello" and op.urls[0].startswith("https://quantrexacademy-app.web.app/app.html?qxcb=")
+    assert log["/app.html"]["rawSha256"] == hashlib.sha256(b"hello").hexdigest()
+    for fn, why in [(lambda: f("/not-in-manifest.html"), "not in live manifest"),
+                    (lambda: Q.canonical_fetcher("quantrexacademy-app", {"/a"}, {}, opener=_Op(lambda u: _R("https://quantrexacademy-app.web.app/app", b"x")))("/a"), "direct 200"),
+                    (lambda: Q.canonical_fetcher("quantrexacademy-app", {"/a"}, {}, opener=_Op(lambda u: (_ for _ in ()).throw(urllib.error.HTTPError(u, 301, "m", {}, None))))("/a"), "HTTP 301"),
+                    (lambda: Q.canonical_fetcher("quantrexacademy-app", {"/a"}, {}, opener=_Op(lambda u: _R(u, b"x" * 11)), cap=10)("/a"), "over")]:
+        try: fn(); raise AssertionError(why)
+        except SystemExit as e: assert why in str(e), (why, str(e))
+t("canonical fetch: site.web.app only, manifest-known paths, direct 200, redirects refused, byte cap, raw sha logged", t11)
+def t12():
+    live = {"rewrites": [{"glob": "/api/**", "function": "api"}, {"glob": "/r/**", "run": {"serviceId": "s"}}, {"glob": "/l/**", "dynamicLinks": True}, {"glob": "**", "destination": "/index.html"}],
+            "headers": [{"glob": "**", "headers": {"content-security-policy": "old", "X-Frame-Options": "DENY"}}, {"glob": "*.html", "headers": {"X-ROBOTS-TAG": "all"}}, {"regex": ".*", "headers": {"Content-Security-Policy-Report-Only": "r"}}]}
+    cfg, removed = Q.preview_config(live, Q.CSP); Q.assert_isolated(cfg)
+    assert len(removed) == 3 and cfg["rewrites"] == [{"glob": "**", "destination": "/index.html"}]
+    keys = [k.lower() for h in cfg["headers"] for k in h["headers"]]
+    assert keys.count("content-security-policy") == 1 and keys.count("x-robots-tag") == 1 and "content-security-policy-report-only" not in keys
+    assert {"glob": "**", "headers": {"X-Frame-Options": "DENY"}} in cfg["headers"]
+    assert Q.production_config(live) == live
+    try: Q.assert_isolated(live); raise AssertionError()
+    except SystemExit: pass
+    assert "'unsafe-inline'" in Q.CSP.split("script-src")[1].split(";")[0]  # real app inline bootstrap/onclick must run
+t("preview headers: CSP/noindex dedup case-insensitive -> one global; Functions/Run/DynamicLinks rewrites removed; production config = live unchanged", t12)
+def t13():
+    for ch in ("LIVE", " live ", "sites/x/channels/live", "Live/"):
+        try: Q.main(["apply", "--plan", "x", "--channel", ch]); raise AssertionError(ch)
+        except SystemExit as e: assert "live" in str(e)
+    p = mk(); [v.pop("gz") for v in p["populate"].values()]; p["isolation"] = False; f = os.path.join(d, "plan2.json"); json.dump(p, open(f, "w"))
+    try: Q.main(["apply", "--plan", f, "--channel", "qx-review-x"]); raise AssertionError()
+    except SystemExit as e: assert "ISOLATED" in str(e)
+t("live refusal: normalized/case/path forms; non-isolated (production-shaped) plan refused by apply", t13)
+def t14():
+    p = mk(); fm = p["finalManifest"]; assert Q.manifest_errors(dict(fm), p) == []
+    assert Q.manifest_errors({**fm, "/extra": "h"}, p) and Q.manifest_errors({k: v for k, v in list(fm.items())[1:]}, p)
+    g = dict(fm); g["/a.js"] = "zz"; assert Q.manifest_errors(g, p)
+    assert "/functions/index.js" not in fm and fm["/data/banks/x.json"] == "hd"
+    gz = os.path.join(d, "gzt"); os.makedirs(gz, exist_ok=True); h, b = Q.gz_hash(b"x"); open(os.path.join(gz, h), "wb").write(b)
+    assert Q.read_blob(gz, h) == b
+    open(os.path.join(gz, h), "wb").write(b + b"!")
+    try: Q.read_blob(gz, h); raise AssertionError()
+    except SystemExit as e: assert "does not hash" in str(e)
+    try: Q.read_blob(gz, "../x"); raise AssertionError()
+    except SystemExit: pass
+t("exact final manifest set+hash; upload blob bytes hash-checked; bad hash names refused", t14)
+def t15():
+    try: Q.build_plan(base, d, ["/app.html"], ["functions/**"], None, None, lambda p: b"", approved_deletions=["/app.html"]); raise AssertionError()
+    except SystemExit as e: assert "not matched" in str(e)
+    p = Q.build_plan(base, d, ["/app.html"], ["functions/**", "_*.txt"], None, None, lambda p: b"")
+    assert p["deletions"] == [] and p["deletionCandidates"] == ["/_notes.txt", "/functions/index.js"]
+    try: Q.build_plan(base, d, ["/app.html", "/qx-preview-guard.js"], [], ["/app.html"], tag, lambda p: b"", guard_asset="/nonexistent/g.js"); raise AssertionError()
+    except SystemExit as e: assert "guard asset missing" in str(e)
+    try: Q.build_plan(base, d, ["/missing.js"], [], None, None, lambda p: b""); raise AssertionError()
+    except SystemExit as e: assert "missing" in str(e)
+    assert os.path.isfile(Q.GUARD_ASSET) and "QA PREVIEW" in open(Q.GUARD_ASSET).read()
+t("deletions only from EXACT reviewed list (wildcards = candidates); missing guard/patch file refused; durable guard asset present", t15)
+def csp_allows(csp, kind, url=None, origin="https://quantrexacademy-app--qx.web.app"):
+    d = {x.split()[0]: x.split()[1:] for x in (y.strip() for y in csp.split(";")) if x}
+    src = d.get(kind, d.get("default-src", []))
+    if url is None: return "'unsafe-inline'" in src  # inline <script> / onclick
+    if "'none'" in src: return False
+    host = url.split("/")[2]; o = "https://" + host
+    return ("'self'" in src and o == origin) or any(s == o or (s.startswith("https://") and s.rstrip("/") == o) for s in src)
+def t16():
+    c = Q.CSP
+    assert csp_allows(c, "script-src")  # app inline bootstrap + onclick handlers
+    assert csp_allows(c, "script-src", "https://www.gstatic.com/firebasejs/x.js") and csp_allows(c, "connect-src", "https://quantrexacademy-app--qx.web.app/data/a.json")
+    for u in ["https://firestore.googleapis.com/v1/x", "https://identitytoolkit.googleapis.com/v1/x", "https://securetoken.googleapis.com/x", "https://us-central1-quantrexacademy-app.cloudfunctions.net/f", "https://api.razorpay.com/x"]:
+        assert not csp_allows(c, "connect-src", u), u
+    assert not csp_allows(c, "worker-src", "https://quantrexacademy-app--qx.web.app/sw.js") and "form-action 'none'" in c and "frame-src 'self'" in c
+    lines = open(os.path.join(os.path.dirname(Q.__file__), "exclusions.txt")).read().split()
+    for need in ["functions/**", "scripts/**", "tools/**", "docs/**", "*.md", "*.py", "*.bat", "*.ps1", ".firebaserc", "*.apk", "hosting-fast/**"]: assert need in lines, need
+    assert not any(l.startswith("data") for l in lines)
+t("CSP policy: inline app bootstrap/onclick allowed, same-origin data ok; Auth/Firestore/Functions/payment connect denied; exclusions cover firebase ignore internals, never data", t16)
 print("PASS", n)

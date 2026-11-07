@@ -33,3 +33,16 @@ Quota project: `quantrexacademy-app` (passed via google-auth `quota_project_id`)
 - Preview isolation: function/run rewrites removed; CSP (`connect-src 'self'`, `form-action 'none'`, `worker-src 'none'`,
   scripts only self+gstatic+jsdelivr) + noindex; preview guard injected first in every HTML with a <head>.
   The plan writes the exact config diff vs live (`configDiff`) for review before any write.
+
+## qxmd392f hardening (offline-tested: `python3 scripts/hosting/test_qxhost.py`)
+- plan fetches ONLY manifest-known paths from `https://<site>.web.app` with a cache-buster; direct 200 only (redirect/clean-URL = abort, no fallback), 30 MB cap, raw SHA-256 of every fetched body in `plan.json["fetched"]`.
+- deletions: `exclusions.txt` globs only PROPOSE `deletionCandidates`; nothing is deleted unless listed exactly in `--approved-deletions` (reviewed against the full baseline manifest). `/data/**` can never be deleted.
+- guard: reviewed asset `scripts/hosting/preview/qx-preview-guard.js` (missing = refuse). It blocks Auth/Firestore/Functions/payment network calls and service workers, but does NOT intercept plain link navigation to the live domain or a payment page; CSP `form-action 'none'` covers forms only. Not a full isolation guarantee.
+- preview config: all Functions/Cloud Run/Dynamic Links rewrites removed; every prior CSP / CSP-Report-Only / X-Robots-Tag (any case) dropped, other live headers kept; one global CSP + noindex. `script-src` keeps `'unsafe-inline'` because the real app boots from inline scripts/onclick.
+- production: `production_config()` = live config unchanged. `apply` refuses non-isolated plans and any live channel form; a production release must be a fresh live-derived version without guard/noindex/CSP, via the normal reviewed release. Never promote a preview version to live.
+- apply: exact final manifest (set + hashes), local gz blob re-hashed before upload, server-requested hashes must be in plan, empty uploadUrl = abort, clone deadline 900 s.
+
+## ADC (not yet run; needs the owner's normal Google sign-in)
+    /home/box/tools/google-cloud-sdk/bin/gcloud auth application-default login --scopes=https://www.googleapis.com/auth/cloud-platform
+    /home/box/tools/google-cloud-sdk/bin/gcloud auth application-default set-quota-project quantrexacademy-app
+    /home/box/tools/qxhost-venv/bin/python scripts/hosting/qxhost.py baseline --out /workspace/qxhost-baseline   # READ-ONLY

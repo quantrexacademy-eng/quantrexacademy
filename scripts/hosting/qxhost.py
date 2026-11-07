@@ -14,11 +14,52 @@ Stages
   plan      OFFLINE.   Gzip+SHA256 of patched files, audited deletions, preview isolation, config diff.
   apply     WRITES.    Dry-run unless --execute. Never targets the live channel. Aborts if live moved.
 """
-import argparse, gzip, hashlib, io, json, os, re, sys, time, copy, urllib.request
+import argparse, gzip, hashlib, io, json, os, re, sys, time, copy, urllib.request, urllib.parse, urllib.error
 
 API = "https://firebasehosting.googleapis.com/v1beta1"
 SCOPE = "https://www.googleapis.com/auth/cloud-platform"  # gcloud ADC user login only grants this family (see README)
 PROTECTED = re.compile(r"^/data/")  # question/solution/answer data: never patched, never deleted
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+GUARD_ASSET = os.path.join(HERE, "preview", "qx-preview-guard.js")  # durable, reviewed; never in the production root
+FETCH_CAP = 30 * 1024 * 1024
+CLONE_DEADLINE_S = 900
+_BAD_PATH = re.compile(r"(^|/)\.\.?(/|$)|\\|\x00|//|%(2e|2f|5c|00)|^[a-z][a-z0-9+.-]*:", re.I)
+
+def safe_path(p):
+    """Hosting manifest/patch path: '/'-rooted, no traversal, no backslash/NUL/encoded separators, no scheme/host."""
+    if not isinstance(p, str) or not p.startswith("/") or _BAD_PATH.search(p) or any(ord(c) < 32 for c in p):
+        raise SystemExit(f"refusing unsafe path: {p!r}")
+    return p
+
+def root_join(root, p):
+    """join a safe hosting path under root and prove the real path stays inside root (symlinks too)."""
+    safe_path(p)
+    r = os.path.realpath(root); f = os.path.realpath(os.path.join(r, p.lstrip("/")))
+    if os.path.commonpath([r, f]) != r: raise SystemExit(f"refusing path escaping root: {p!r}")
+    return f
+
+class _NoRedirect(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, *a, **k): return None
+
+def canonical_fetcher(site, known_paths, log, opener=None, cap=FETCH_CAP):
+    """Fetch ONLY manifest-known paths from https://<site>.web.app (the Firebase-served default host, not the
+    custom www domain/CDN), with a cache-buster. Direct 200 only: any redirect/other status/oversize = abort.
+    Raw byte SHA-256 of every fetched body is recorded in `log` for plan review."""
+    origin = f"https://{site}.web.app"
+    op = opener or urllib.request.build_opener(_NoRedirect)
+    def fetch(p):
+        safe_path(p)
+        if p not in known_paths: raise SystemExit(f"refusing fetch of path not in live manifest: {p}")
+        url = f"{origin}{urllib.parse.quote(p)}?qxcb={int(time.time())}"
+        try: r = op.open(url, timeout=60)
+        except urllib.error.HTTPError as e: raise SystemExit(f"fetch {p}: HTTP {e.code} (redirect/clean-URL or missing; no fallback)")
+        if getattr(r, "status", 200) != 200 or (r.geturl().split("?")[0] != url.split("?")[0]): raise SystemExit(f"fetch {p}: not a direct 200")
+        body = r.read(cap + 1)
+        if len(body) > cap: raise SystemExit(f"fetch {p}: over {cap} bytes")
+        log[p] = {"url": url.split("?")[0], "rawBytes": len(body), "rawSha256": hashlib.sha256(body).hexdigest()}
+        return body
+    return fetch
 
 def gz_hash(data: bytes):
     """Hosting hash = SHA256 of the gzipped bytes; the SAME gz bytes must be uploaded (deterministic: mtime=0)."""
@@ -125,14 +166,44 @@ def verify_solution_only(old_bytes, new_bytes, approved_ids, entry=None):
     if missing: errs.append("approved ids not filled: " + ",".join(sorted(missing)))
     return errs
 
+BACKEND_REWRITE_KEYS = ("function", "functionRegion", "run", "dynamicLinks")
+ISOLATION_HEADERS = ("content-security-policy", "content-security-policy-report-only", "x-robots-tag")
+
 def preview_config(live_cfg, csp):
+    """PREVIEW ONLY. Removes every backend rewrite (Functions, Cloud Run, Dynamic Links), drops every prior
+    CSP / CSP-report-only / X-Robots-Tag header case-insensitively (other live headers kept as-is), then adds ONE
+    global header block. Never used for a production version (see production_config)."""
     cfg = copy.deepcopy(live_cfg or {})
-    removed = [r for r in cfg.get("rewrites", []) if "function" in r or "run" in r or "functionRegion" in r]
+    removed = [r for r in cfg.get("rewrites", []) if any(k in r for k in BACKEND_REWRITE_KEYS)]
     cfg["rewrites"] = [r for r in cfg.get("rewrites", []) if r not in removed]
-    hdr = {"glob": "**", "headers": {"X-Robots-Tag": "noindex, nofollow", "Content-Security-Policy": csp}}
-    cfg["headers"] = list(cfg.get("headers", [])) + [hdr]
+    out, dropped = [], []
+    for h in cfg.get("headers", []):
+        h = copy.deepcopy(h); hs = h.get("headers", {})
+        for k in list(hs):
+            if k.strip().lower() in ISOLATION_HEADERS: dropped.append({"glob": h.get("glob") or h.get("regex"), "header": k}); hs.pop(k)
+        if hs: out.append(h)
+    out.append({"glob": "**", "headers": {"X-Robots-Tag": "noindex, nofollow", "Content-Security-Policy": csp}})
+    cfg["headers"] = out
+    if not cfg["rewrites"]: cfg.pop("rewrites")
+    cfg["_qxDroppedHeaders"] = dropped
     return cfg, removed
 
+def production_config(live_cfg):
+    """Future production version: the live config UNCHANGED (all backend rewrites kept, no noindex/CSP/guard)."""
+    return copy.deepcopy(live_cfg or {})
+
+def assert_isolated(cfg):
+    errs = [r for r in cfg.get("rewrites", []) if any(k in r for k in BACKEND_REWRITE_KEYS)]
+    hs = [(k.lower(), v) for h in cfg.get("headers", []) for k, v in h.get("headers", {}).items()]
+    csp = [v for k, v in hs if k == "content-security-policy"]; xr = [v for k, v in hs if k == "x-robots-tag"]
+    if errs: raise SystemExit(f"not isolated: backend rewrites remain {errs[:3]}")
+    if len(csp) != 1 or len(xr) != 1 or "noindex" not in xr[0]: raise SystemExit("not isolated: need exactly one CSP and one noindex header")
+    for d in ("connect-src 'self'", "form-action 'none'", "worker-src 'none'", "frame-src 'self'"):
+        if d not in csp[0]: raise SystemExit(f"not isolated: CSP lacks {d}")
+
+# script-src keeps 'unsafe-inline' on purpose: the real app boots from inline <script> and onclick handlers.
+# Isolation here = no backend: connect-src 'self' (no Auth/Firestore/Functions hosts), no forms, no workers,
+# same-origin frames only, and NO function/run rewrites. It is not an XSS guarantee.
 CSP = ("default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.gstatic.com https://cdn.jsdelivr.net; "
        "style-src 'self' 'unsafe-inline' https:; font-src 'self' data: https:; img-src 'self' data: blob: https:; media-src 'self' blob: https:; "
        "connect-src 'self'; frame-src 'self'; worker-src 'none'; form-action 'none'; base-uri 'self'; object-src 'none'")
@@ -146,17 +217,30 @@ def config_diff(a, b, path=""):
         out.append({"path": path, "live": a, "preview": b})
     return out
 
-def build_plan(base, patch_dir, patched_paths, exclusion_globs, guard_paths_html=None, guard_tag=None, fetch=None, csp=CSP, approved_data=None):
+def build_plan(base, patch_dir, patched_paths, exclusion_globs, guard_paths_html=None, guard_tag=None, fetch=None, csp=CSP, approved_data=None, approved_deletions=None, guard_asset=GUARD_ASSET):
     files = base["files"]
+    for p in files: safe_path(p)
+    patched_paths = [safe_path(p) for p in patched_paths]
+    if len(set(patched_paths)) != len(patched_paths): raise SystemExit("refusing: duplicate patched paths")
     regs = [re.compile(glob_to_regex(g)) for g in exclusion_globs]
-    deletions = sorted(p for p in files if any(r.match(p) for r in regs))
+    candidates = sorted(p for p in files if any(r.match(p) for r in regs))
+    exact = set(safe_path(p) for p in (approved_deletions or []))
+    stray = sorted(exact - set(candidates))
+    if stray: raise SystemExit(f"refusing: approved deletions not matched by audited exclusion patterns / not in manifest: {stray[:5]}")
+    deletions = sorted(exact)  # ONLY the exact reviewed list; wildcards just propose candidates
     bad = [p for p in deletions if PROTECTED.match(p)]
     if bad: raise SystemExit(f"refusing: exclusions would delete protected data paths: {bad[:5]}")
     populate, report = {}, []
     for p in patched_paths:
         ok_ids = set(str(x) for x in ((approved_data or {}).get(p) or {}).get("ids", []))
         if PROTECTED.match(p) and not ok_ids: raise SystemExit(f"refusing: patch touches protected data path {p} (not in approved solution manifest)")
-        data = open(os.path.join(patch_dir, p.lstrip("/")), "rb").read()
+        if guard_tag and p == "/qx-preview-guard.js":
+            if not os.path.isfile(guard_asset): raise SystemExit(f"refusing: reviewed guard asset missing: {guard_asset}")
+            data = open(guard_asset, "rb").read()
+        else:
+            f = root_join(patch_dir, p)
+            if not os.path.isfile(f): raise SystemExit(f"refusing: patched file missing: {p}")
+            data = open(f, "rb").read()
         if PROTECTED.match(p):
             errs = verify_solution_only(fetch(p), data, ok_ids, (approved_data or {}).get(p))
             if errs: raise SystemExit(f"refusing {p}: not a solution-only addition: {errs[:5]}")
@@ -164,7 +248,7 @@ def build_plan(base, patch_dir, patched_paths, exclusion_globs, guard_paths_html
         populate[p] = {"hash": h, "gz": gz, "rawBytes": len(data), "was": files.get(p, {}).get("hash"), "kind": "patch"}
     if guard_tag:  # preview isolation: guard first on every HTML entry point that ends up in the preview
         for p in sorted(x for x in (guard_paths_html or []) if x.endswith(".html") and x not in deletions):
-            raw = open(os.path.join(patch_dir, p.lstrip("/")), "rb").read() if p in populate else fetch(p)
+            raw = open(root_join(patch_dir, p), "rb").read() if p in populate else fetch(p)
             txt = raw.decode("utf-8", "surrogateescape")
             if guard_tag not in txt:
                 txt2, n = re.subn(r"(<head[^>]*>)", lambda m: m.group(1) + "\n" + guard_tag, txt, count=1)
@@ -172,9 +256,16 @@ def build_plan(base, patch_dir, patched_paths, exclusion_globs, guard_paths_html
                 txt = txt2
             h, gz = gz_hash(txt.encode("utf-8", "surrogateescape"))
             populate[p] = {"hash": h, "gz": gz, "rawBytes": len(txt), "was": files.get(p, {}).get("hash"), "kind": "guard" if p not in populate else "patch+guard"}
-    cfg, removed = preview_config(base.get("config"), csp)
+    if guard_tag:
+        cfg, removed = preview_config(base.get("config"), csp); assert_isolated(cfg)
+        unguarded = [p for p in (guard_paths_html or []) if p.endswith(".html") and p not in deletions and p not in populate]
+        report += [f"UNGUARDED html (no <head>): {p}" for p in unguarded]
+    else:
+        cfg, removed = production_config(base.get("config")), []
     untouched = {p: v["hash"] for p, v in files.items() if p not in populate and p not in deletions}
-    return {"baselineVersion": base["version"], "deletions": deletions, "populate": populate, "untouched": untouched,
+    final = dict(untouched); final.update({p: v["hash"] for p, v in populate.items()})
+    return {"baselineVersion": base["version"], "isolation": bool(guard_tag), "deletions": deletions, "deletionCandidates": candidates,
+            "populate": populate, "untouched": untouched, "finalManifest": final,
             "previewConfig": cfg, "removedRewrites": removed, "configDiff": config_diff(base.get("config", {}), cfg), "notes": report}
 
 def cmd_plan(a):
@@ -183,10 +274,13 @@ def cmd_plan(a):
     paths = ["/" + l.strip().lstrip("/") for l in open(a.patched) if l.strip()]
     tag = f'<script src="/qx-preview-guard.js?v={a.guard_ver}"></script>' if a.preview_isolation else None
     if tag and "/qx-preview-guard.js" not in paths: paths.append("/qx-preview-guard.js")
-    fetch = (lambda p: urllib.request.urlopen(a.public_origin + p, timeout=60).read())
+    fetched = {}
+    fetch = canonical_fetcher(base["site"], set(base["files"]), fetched)
     html = [p for p in base["files"] if p.endswith(".html")]
     appr = json.load(open(a.approved_solutions)) if a.approved_solutions else None
-    plan = build_plan(base, a.patch_dir, paths, ign, html, tag, fetch, approved_data=appr)
+    dels = [l.strip() for l in open(a.approved_deletions) if l.strip() and not l.startswith("#")] if a.approved_deletions else []
+    plan = build_plan(base, a.patch_dir, paths, ign, html, tag, fetch, approved_data=appr, approved_deletions=dels)
+    plan["fetched"] = fetched
     os.makedirs(a.out, exist_ok=True)
     gzdir = os.path.join(a.out, "gz"); os.makedirs(gzdir, exist_ok=True)
     for p, v in plan["populate"].items(): open(os.path.join(gzdir, v["hash"]), "wb").write(v.pop("gz"))
@@ -194,10 +288,27 @@ def cmd_plan(a):
     print(f"plan: patch/guard={len(plan['populate'])} delete={len(plan['deletions'])} untouched={len(plan['untouched'])} "
           f"rewrites removed={len(plan['removedRewrites'])} config changes={len(plan['configDiff'])} notes={len(plan['notes'])}")
 
+def read_blob(gzdir, h):
+    if not re.fullmatch(r"[0-9a-f]{64}", h): raise SystemExit(f"abort: bad hash {h!r}")
+    blob = open(os.path.join(gzdir, h), "rb").read()
+    if hashlib.sha256(blob).hexdigest() != h: raise SystemExit(f"abort: local gz blob {h[:12]} does not hash to its name")
+    return blob
+
+def manifest_errors(got, plan):
+    """EXACT final set: same paths as planned (no extra, none missing) and every hash equal."""
+    want = plan["finalManifest"]
+    errs = [f"missing {p}" for p in want if p not in got] + [f"unexpected {p}" for p in got if p not in want]
+    errs += [f"hash {p}" for p, h in want.items() if p in got and got[p] != h]
+    return errs
+
 # ---------- writes (dry-run default) ----------
 def cmd_apply(a):
-    if a.channel in ("live", "", None): raise SystemExit("refusing: apply never targets the live channel")
+    ch_id = str(a.channel or "").strip().lower()
+    if not ch_id or ch_id == "live" or "/" in ch_id or not re.fullmatch(r"[a-z0-9][a-z0-9-]{0,62}", ch_id):
+        raise SystemExit("refusing: apply never targets the live channel (or an invalid channel id)")
     plan = json.load(open(a.plan)); gzdir = os.path.join(os.path.dirname(a.plan), "gz")
+    if not plan.get("isolation"): raise SystemExit("refusing: apply only releases ISOLATED previews; production needs a fresh live-derived plan and the normal reviewed release")
+    assert_isolated(plan["previewConfig"])
     steps = [f"check live still == {plan['baselineVersion']}",
              f"versions:clone finalize=false exclude={len(plan['deletions'])} audited paths",
              f"populateFiles {len(plan['populate'])} paths (only these change)",
@@ -210,26 +321,32 @@ def cmd_apply(a):
     s = session(a.project)
     cur, _ = live_version(s, a.site)
     if cur != plan["baselineVersion"]: raise SystemExit(f"abort: live moved {plan['baselineVersion']} -> {cur}; re-run baseline+plan")
-    ch = s.get(f"{API}/sites/{a.site}/channels/{a.channel}", timeout=60)
-    if ch.status_code != 200: raise SystemExit(f"abort: preview channel '{a.channel}' must already exist (create it with the CLI first)")
+    ch = s.get(f"{API}/sites/{a.site}/channels/{ch_id}", timeout=60)
+    if ch.status_code != 200: raise SystemExit(f"abort: preview channel '{ch_id}' must already exist (create it with the CLI first)")
+    if str(ch.json().get("name", "")).rstrip("/").endswith("/channels/live"): raise SystemExit("refusing: resolved channel is live")
     body = {"sourceVersion": plan["baselineVersion"], "finalize": False}
     if plan["deletions"]: body["exclude"] = {"regexes": ["^" + re.escape(p) + "$" for p in plan["deletions"]]}
     op = s.post(f"{API}/sites/{a.site}/versions:clone", json=body, timeout=120); op.raise_for_status(); op = op.json()
+    t0 = time.time()
     while not op.get("done"):
+        if time.time() - t0 > CLONE_DEADLINE_S: raise SystemExit(f"abort: clone not done after {CLONE_DEADLINE_S}s ({op.get('name')}); version stays unfinalized")
         time.sleep(2); op = jget(s, f"{API}/{op['name']}")
     if "error" in op: raise SystemExit(f"clone failed: {op['error']}")
     ver = op["response"]["name"]; print("cloned (CREATED, not live):", ver)
     files = {p: v["hash"] for p, v in plan["populate"].items()}
-    need = set()
+    need = set(); url = None
     items = list(files.items())
     for i in range(0, len(items), 1000):
         r = s.post(f"{API}/{ver}:populateFiles", json={"files": dict(items[i:i + 1000])}, timeout=120); r.raise_for_status(); r = r.json()
-        need |= set(r.get("uploadRequiredHashes", [])); url = r.get("uploadUrl")
+        need |= set(r.get("uploadRequiredHashes", [])); url = r.get("uploadUrl") or url
+    if need - set(files.values()): raise SystemExit("abort: server asked for hashes not in plan")
+    if need and not url: raise SystemExit("abort: upload required but no uploadUrl returned")
     for h in sorted(need):
-        u = s.post(f"{url}/{h}", data=open(os.path.join(gzdir, h), "rb").read(), headers={"Content-Type": "application/octet-stream"}, timeout=300); u.raise_for_status()
+        blob = read_blob(gzdir, h)
+        u = s.post(f"{url}/{h}", data=blob, headers={"Content-Type": "application/octet-stream"}, timeout=300); u.raise_for_status()
     r = s.patch(f"{API}/{ver}", params={"updateMask": "config"}, json={"config": plan["previewConfig"]}, timeout=60); r.raise_for_status()
     got = {p: v["hash"] for p, v in list_files(s, ver).items()}
-    errs = [p for p, h in plan["untouched"].items() if got.get(p) != h] + [p for p, h in files.items() if got.get(p) != h] + [p for p in plan["deletions"] if p in got]
+    errs = manifest_errors(got, plan)
     if errs: raise SystemExit(f"verify failed ({len(errs)}), version left unfinalized: {errs[:10]}")
     print("verified manifest:", len(got), "paths")
     if not a.finalize: print("stop: not finalized (pass --finalize)"); return
@@ -244,7 +361,7 @@ def main(argv=None):
     p = sp.add_parser("plan"); p.add_argument("--baseline", required=True); p.add_argument("--patch-dir", required=True); p.add_argument("--patched", required=True)
     p.add_argument("--exclusions", required=True, help="audited deletion globs (exclusions.txt)"); p.add_argument("--out", required=True); p.add_argument("--preview-isolation", action="store_true")
     p.add_argument("--approved-solutions", help='JSON {"/data/...json": {"ids": [...], "provenance": "..."}}');
-    p.add_argument("--guard-ver", default="qa2"); p.add_argument("--public-origin", default="https://www.quantrexacademy.com")
+    p.add_argument("--guard-ver", default="qa3"); p.add_argument("--approved-deletions", help="exact reviewed path list (one per line); without it nothing is deleted")
     x = sp.add_parser("apply"); x.add_argument("--plan", required=True); x.add_argument("--channel", required=True)
     x.add_argument("--site", default="quantrexacademy-app"); x.add_argument("--project", default="quantrexacademy-app")
     x.add_argument("--execute", action="store_true"); x.add_argument("--finalize", action="store_true"); x.add_argument("--release", action="store_true")

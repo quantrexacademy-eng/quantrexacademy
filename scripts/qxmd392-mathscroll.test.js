@@ -1,6 +1,6 @@
-// NODE_PATH=/tmp/jsd/node_modules node scripts/qxmd392-mathscroll.test.js  (needs jsdom; exits 2 if missing)
+// npm ci --prefix scripts/test-tools && node scripts/qxmd392-mathscroll.test.js  (needs jsdom; exits 2 if missing)
 const assert = require("assert"), fs = require("fs"), path = require("path");
-let JSDOM; try { ({ JSDOM } = require("jsdom")); } catch (_) { console.error("jsdom required (npm i jsdom) - NOT a pass"); process.exit(2); }
+let JSDOM; try { ({ JSDOM } = require(require("path").join(__dirname, "test-tools/node_modules/jsdom"))); } catch (_) { console.error("jsdom required (npm i jsdom) - NOT a pass"); process.exit(2); }
 const M = require("../qx-math-scroll.js");
 let n = 0; const t = (name, fn) => { fn(); n++; console.log("ok", n, name); };
 // Screenshot case 38389: card 390px; .qx-hw-paper grew to 520px (its own overflow-x:auto never scrolls); the
