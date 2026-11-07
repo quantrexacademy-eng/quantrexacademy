@@ -1678,8 +1678,7 @@ function openPracticeQuestion(id) {
       const ids = list.map((x) => x && x.id).filter(Boolean);
       const openId = id;
       /* qxmd392: match list stubs by id OR marksId so the clicked question opens, not Q1 */
-      let idx = ids.findIndex((x) => String(x) === String(openId));
-      if (idx < 0) idx = list.findIndex((x) => x && (String(x._marksId) === String(openId) || String(x.marksId) === String(openId) || String(x.qid) === String(openId)));
+      let idx = window.QxStartIndex ? window.QxStartIndex.findClicked(ids, list, openId) : ids.findIndex((x) => String(x) === String(openId));
       if (idx < 0) idx = 0;
       const keys = typeof cpyqbSessionKeys === "function" ? cpyqbSessionKeys({ returnTo: view }) : {};
       const ch = keys.chapter || (view === "books" ? "Digital Book" : (view === "board" ? "Board PYQ" : "Chapter PYQ"));

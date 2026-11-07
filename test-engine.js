@@ -4926,6 +4926,7 @@ const QuantrexTestEngine = (() => {
       return false;
     }
     /* qxmd392: remember the clicked question by id so paper re-ordering below cannot shift it */
+    const qxOrigIds = resume ? null : ids.slice();
     const qxStartId = resume ? null : ids[Math.max(0, Math.min(ids.length - 1, Number(config.startIdx) || 0))];
     let sections = resume ? resume.sections : (config.sections || null);
     const wantQuizrrUi = ((resume && resume.uiMode) || config.uiMode) === "quizrr";
@@ -4977,7 +4978,7 @@ const QuantrexTestEngine = (() => {
       : (rawDur == null || rawDur <= 0
         ? (timed ? Math.max(600, ids.length * 90) : null)
         : rawDur);
-    const qxStartIdx = (function () {
+    const qxStartIdx = (!resume && window.QxStartIndex) ? window.QxStartIndex.resolveStart(qxOrigIds, config.startIdx, ids) : (function () {
       const fallback = Math.max(0, Math.min(ids.length - 1, Number(config.startIdx) || 0));
       if (qxStartId == null) return fallback;
       const at = ids.findIndex(function (x) { return String(x) === String(qxStartId); });
