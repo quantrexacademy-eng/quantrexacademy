@@ -143,3 +143,9 @@ html body :is(.qx-hw-ink, .sol-body, .qx-sol-flow) .katex-display > .katex {
 }
 html body .qx-mscroll.qx-mscroll { max-width: 100%; overflow-x: auto !important; overflow-y: hidden !important; }
 html body .qx-mscroll > .katex-display.katex-display { overflow: visible !important; max-width: none !important; }
+
+/* qxmd392g: display formula box itself is the scroll region when wider than the card (set by qx-math-scroll.js) */
+html body .katex-display.qx-mscroll-on { scrollbar-width: thin; outline-offset: 2px;
+  background: linear-gradient(to left, rgba(59,130,246,.28), transparent 14px) right / 14px 100% no-repeat local,
+              linear-gradient(to left, rgba(59,130,246,.28), transparent 14px) right / 14px 100% no-repeat scroll; }
+html body .katex-display.qx-mscroll-on:focus-visible { outline: 2px solid #3b82f6; }

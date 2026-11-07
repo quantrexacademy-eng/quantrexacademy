@@ -25,25 +25,51 @@ function page(formulaW, opts) {
   };
   return { win, doc };
 }
-t("wide display formula inside a grown auto-scroll paper is wrapped and fitted to the OUTER clip (eg-body)", () => {
-  const { win, doc } = page(600);
-  const before = doc.getElementById("disp").outerHTML;
-  assert.strictEqual(M.process(doc.getElementById("app-main"), win, doc, null), 1);
-  const w = doc.getElementById("disp").parentElement;
-  assert(w.classList.contains("qx-mscroll") && w.classList.contains("qx-mscroll-block") && w.tagName === "DIV");
-  assert.strictEqual(w.getAttribute("tabindex"), "0"); assert.strictEqual(w.getAttribute("role"), "region");
-  assert.strictEqual(parseFloat(w.style.maxWidth), 382 - 70, "max-width = tightest clipper right edge - left");
-  assert.strictEqual(doc.getElementById("disp").outerHTML, before, "math subtree untouched (not re-typeset/rewritten)");
+function dispCase(dispRight, childW, scrollW, clientW) {
+  const { win, doc } = page(0);
+  const D = doc.getElementById("disp"), K = doc.getElementById("inner");
+  Object.defineProperty(D, "scrollWidth", { get: () => scrollW }); Object.defineProperty(D, "clientWidth", { get: () => { const mw = parseFloat(D.style.getPropertyValue("max-width")); return mw ? Math.min(mw, clientW) : clientW; } });
+  const orig = win.HTMLElement.prototype.getBoundingClientRect;
+  win.HTMLElement.prototype.getBoundingClientRect = function () {
+    const rr = (l, r) => ({ left: l, right: r, width: r - l, top: 0, bottom: 20, height: 20 });
+    if (this === D) { const mw = parseFloat(D.style.getPropertyValue("max-width")); return rr(70, mw ? 70 + mw : dispRight); }
+    if (this === K) return rr(70, 70 + childW);
+    return orig.call(this);
+  };
+  return { win, doc, D, K };
+}
+t("ROOT CASE: CSS-limited display box whose rect FITS but child paints past card (scrollWidth>clientWidth) is capped + made a focusable region", () => {
+  // .katex-display limited by max-width:100% of a grown .qx-hw-paper (right 536 > eg-body 382), child 600px wide
+  const { win, doc, D, K } = dispCase(536, 600, 600, 466);
+  const before = D.innerHTML;
+  M.process(doc.getElementById("app-main"), win, doc, null);
+  assert.strictEqual(D.style.getPropertyValue("max-width"), (382 - 70) + "px"); assert.strictEqual(D.style.getPropertyPriority("max-width"), "important");
+  assert(D.classList.contains("qx-mscroll-on")); assert.strictEqual(D.getAttribute("tabindex"), "0"); assert.strictEqual(D.getAttribute("role"), "region");
+  assert(D.clientWidth <= 382 - 70 && D.scrollWidth > D.clientWidth, "region fits card and really scrolls");
+  assert.strictEqual(D.innerHTML, before, "math subtree untouched"); assert.strictEqual(doc.querySelectorAll(".qx-mscroll").length, 0, "display not re-wrapped");
 });
-t("nested .katex inside the display is not double-wrapped; small inline formula untouched", () => {
-  const { win, doc } = page(600); M.process(doc.getElementById("app-main"), win, doc, null);
-  assert.strictEqual(doc.querySelectorAll(".qx-mscroll").length, 1);
-  assert(!doc.getElementById("small").parentElement.classList.contains("qx-mscroll"));
+t("rect fits but scrollWidth>clientWidth inside the card: region marked even without capping", () => {
+  const { win, doc, D } = dispCase(300, 600, 600, 230);
+  M.process(doc.getElementById("app-main"), win, doc, null);
+  assert(D.classList.contains("qx-mscroll-on")); assert.strictEqual(D.style.getPropertyValue("max-width"), "");
 });
-t("formula that fits is never wrapped", () => { const { win, doc } = page(200); assert.strictEqual(M.process(doc.getElementById("app-main"), win, doc, null), 0); });
-t("idempotent: second pass re-fits but does not wrap again", () => {
-  const { win, doc } = page(600); M.process(doc.getElementById("app-main"), win, doc, null);
-  assert.strictEqual(M.process(doc.getElementById("app-main"), win, doc, null), 0); assert.strictEqual(doc.querySelectorAll(".qx-mscroll").length, 1);
+t("display formula that fits (no overflow) untouched", () => {
+  const { win, doc, D } = dispCase(250, 180, 180, 180);
+  assert.strictEqual(M.process(doc.getElementById("app-main"), win, doc, null), 0); assert(!D.classList.contains("qx-mscroll-on")); assert.strictEqual(D.getAttribute("tabindex"), null);
+});
+t("existing inline wrapper IS re-fitted on a later pass (resize branch reachable)", () => {
+  const { win, doc } = page(20); const s = doc.getElementById("small");
+  const orig = win.HTMLElement.prototype.getBoundingClientRect; let wide = 700;
+  win.HTMLElement.prototype.getBoundingClientRect = function () {
+    if (this.id === "small") return { left: 70, right: wide, width: wide - 70, top: 0, bottom: 1, height: 1 };
+    if (this.classList.contains("qx-mscroll")) { const mw = parseFloat(this.style.getPropertyValue("max-width")) || 1e9; return { left: 70, right: 70 + Math.min(mw, wide - 70), width: 0, top: 0, bottom: 1, height: 1 }; }
+    return orig.call(this);
+  };
+  M.process(doc.getElementById("app-main"), win, doc, null); const w = s.parentElement;
+  assert(w.classList.contains("qx-mscroll")); assert.strictEqual(w.style.getPropertyValue("max-width"), "312px");
+  const R = { "eg-body": 300 }; const o2 = win.HTMLElement.prototype.getBoundingClientRect;
+  win.HTMLElement.prototype.getBoundingClientRect = function () { const k = this.className && this.className.split(" ")[0]; if (k === "eg-body") return { left: 8, right: 300, width: 292, top: 0, bottom: 1, height: 1 }; return o2.call(this); };
+  assert.strictEqual(M.process(doc.getElementById("app-main"), win, doc, null), 0); assert.strictEqual(w.style.getPropertyValue("max-width"), "230px", "re-fit to narrower card");
 });
 t("wide INLINE formula (question stem case) gets an inline-block span wrapper", () => {
   const { win, doc } = page(20); const s = doc.getElementById("small"); win.HTMLElement.prototype._g = 1;
@@ -54,7 +80,7 @@ t("wide INLINE formula (question stem case) gets an inline-block span wrapper", 
 });
 t("loaded on every question entry page after math-render; css has the scroll box and no blanket inline .katex scroll", () => {
   ["app.html", "test-series.html", "examgoal-test-series.html", "quantrex-test-series.html", "jee-main-pyq-chapter.html"].forEach((p) => {
-    const h = fs.readFileSync(path.join(__dirname, "..", p), "utf8"); const i = h.search(/math-render\.js/), j = h.indexOf("qx-math-scroll.js?v=qxmd392e");
+    const h = fs.readFileSync(path.join(__dirname, "..", p), "utf8"); const i = h.search(/math-render\.js/), j = h.indexOf("qx-math-scroll.js?v=qxmd392g");
     assert(i > 0 && j > i, p);
   });
   const c = fs.readFileSync(path.join(__dirname, "../assets/qxmd392-layout.css"), "utf8");

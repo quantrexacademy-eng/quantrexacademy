@@ -22,6 +22,7 @@ PROTECTED = re.compile(r"^/data/")  # question/solution/answer data: never patch
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 GUARD_ASSET = os.path.join(HERE, "preview", "qx-preview-guard.js")  # durable, reviewed; never in the production root
+GUARD_SHA256 = "2e03fb1b517dfcaa0db8c32e0ce70d08be903a293722ca08b0cf0997f1a7bf4d"  # reviewed guard; any edit must update this pin (and its test) deliberately
 FETCH_CAP = 30 * 1024 * 1024
 CLONE_DEADLINE_S = 900
 _BAD_PATH = re.compile(r"(^|/)\.\.?(/|$)|\\|\x00|//|%(2e|2f|5c|00)|^[a-z][a-z0-9+.-]*:", re.I)
@@ -126,45 +127,106 @@ def _nodup(pairs):
 def _load_strict(b):
     return json.loads(b, object_pairs_hook=_nodup)
 
+class _Raw:
+    """Minimal JSON parser that keeps byte spans of every value (no reformatting, no number coercion)."""
+    WS = b" \t\r\n"
+    def __init__(self, b): self.b = b; self.i = 0
+    def ws(self):
+        while self.i < len(self.b) and self.b[self.i] in self.WS: self.i += 1
+    def string(self):
+        b, i = self.b, self.i
+        if b[i:i + 1] != b'"': raise ValueError(f"string expected @{i}")
+        i += 1
+        while True:
+            c = b[i:i + 1]
+            if not c: raise ValueError("unterminated string")
+            if c == b"\\": i += 2; continue
+            if c == b'"': i += 1; break
+            i += 1
+        s0 = self.i; self.i = i; return ("str", s0, i, json.loads(b[s0:i]))
+    def value(self):
+        self.ws(); b = self.b; c = b[self.i:self.i + 1]; s0 = self.i
+        if c == b"{":
+            self.i += 1; items = []; keys = set(); self.ws()
+            if b[self.i:self.i + 1] == b"}": self.i += 1; return ("obj", s0, self.i, items)
+            while True:
+                self.ws(); k = self.string()[3]
+                if k in keys: raise ValueError(f"duplicate JSON object key: {k}")
+                keys.add(k); self.ws()
+                if b[self.i:self.i + 1] != b":": raise ValueError(f"':' expected @{self.i}")
+                self.i += 1; items.append((k, self.value())); self.ws()
+                c = b[self.i:self.i + 1]; self.i += 1
+                if c == b"}": return ("obj", s0, self.i, items)
+                if c != b",": raise ValueError(f"',' expected @{self.i - 1}")
+        if c == b"[":
+            self.i += 1; items = []; self.ws()
+            if b[self.i:self.i + 1] == b"]": self.i += 1; return ("arr", s0, self.i, items)
+            while True:
+                items.append(self.value()); self.ws(); c = b[self.i:self.i + 1]; self.i += 1
+                if c == b"]": return ("arr", s0, self.i, items)
+                if c != b",": raise ValueError(f"',' expected @{self.i - 1}")
+        if c == b'"': return self.string()
+        m = re.compile(rb"-?(0|[1-9]\d*)(\.\d+)?([eE][+-]?\d+)?|true|false|null").match(b, self.i)
+        if not m or m.end() == self.i: raise ValueError(f"bad token @{self.i}")
+        self.i = m.end(); return ("lit", s0, self.i, json.loads(b[s0:self.i]))
+    def doc(self):
+        v = self.value(); self.ws()
+        if self.i != len(self.b): raise ValueError("trailing bytes")
+        return v
+
+def _raw_questions(node):
+    if node[0] == "arr": return node[3]
+    if node[0] == "obj":
+        for k, v in node[3]:
+            if k in ("questions", "items") and v[0] == "arr": return v[3]
+    raise ValueError("no question array")
+
 def verify_solution_only(old_bytes, new_bytes, approved_ids, entry=None):
-    """Approved data change = ONLY a solution/explanation that was empty (or EXACTLY one of the manifest's
-    allowed_original_values placeholders, e.g. "No Solution") gets a new non-empty string, for approved ids.
-    Every other field, question order, ids, options and answer keys must be identical; no duplicate keys/ids;
-    baseline/patched sha256 and provenance in the manifest must match when given."""
-    entry = entry or {}
-    errs = []
-    if entry:
-        if not str(entry.get("provenance") or "").strip(): errs.append("manifest provenance empty")
-        if entry.get("official_solution_claim") is not False: errs.append("manifest must state official_solution_claim false")
-        if entry.get("baseline_sha256") and hashlib.sha256(old_bytes).hexdigest() != entry["baseline_sha256"]: errs.append("fresh baseline sha256 differs from manifest")
-        if entry.get("patched_sha256") and hashlib.sha256(new_bytes).hexdigest() != entry["patched_sha256"]: errs.append("patched sha256 differs from manifest")
-    try: old, new = _load_strict(old_bytes), _load_strict(new_bytes)
-    except ValueError as e: return errs + [str(e)]
-    if isinstance(old, dict) != isinstance(new, dict): return errs + ["file structure changed"]
-    if isinstance(old, dict):
-        if list(old.keys()) != list(new.keys()): return errs + ["file-level key order changed"]
-        if {k: v for k, v in old.items() if k not in ("questions", "items")} != {k: v for k, v in new.items() if k not in ("questions", "items")}:
-            return errs + ["file-level fields changed"]
-    a, b = _qs(old), _qs(new)
-    ids = [q.get("id") for q in a]
-    if any(x is None for x in ids): return errs + ["question without id"]
-    if len(set(map(str, ids))) != len(ids): return errs + ["duplicate question ids"]
-    if ids != [q.get("id") for q in b]: return errs + ["question ids/order changed"]
-    placeholders = set(entry.get("allowed_original_values") or [])
-    fields = set(entry.get("allowed_fields") or SOLUTION_FIELDS) & set(SOLUTION_FIELDS)
-    filled = set()
-    for qa, qb in zip(a, b):
-        if list(qa.keys()) != list(qb.keys()): errs.append(f"id {qa.get('id')} key set/order changed"); continue
-        for k in qa:
-            if qa[k] == qb[k]: continue
-            was = qa[k]; now = qb[k]
-            gap = (was is None) or (isinstance(was, str) and (not was.strip() or was in placeholders))
-            if k in fields and gap and str(qa.get("id")) in approved_ids and isinstance(now, str) and now.strip():
-                filled.add(str(qa.get("id"))); continue
-            errs.append(f"id {qa.get('id')} field {k} changed")
-    missing = set(approved_ids) - filled
-    if missing: errs.append("approved ids not filled: " + ",".join(sorted(missing)))
-    return errs
+    """EXACT RAW proof: new bytes == old bytes except the JSON string token of an allowed solution field of each
+    approved id, whose old value was empty or exactly an allowed placeholder, replaced by a valid non-empty JSON
+    string. Everything else (key order, numbers, whitespace, other fields) must be byte-identical. Manifest entry is
+    mandatory: non-empty provenance, official_solution_claim false, valid baseline_sha256 + patched_sha256."""
+    e = entry or {}; errs = []
+    hexok = lambda h: isinstance(h, str) and re.fullmatch(r"[0-9a-f]{64}", h)
+    if not str(e.get("provenance") or "").strip(): errs.append("manifest provenance empty")
+    if e.get("official_solution_claim") is not False: errs.append("manifest must state official_solution_claim false")
+    if not hexok(e.get("baseline_sha256")) or not hexok(e.get("patched_sha256")): errs.append("manifest baseline_sha256/patched_sha256 required")
+    else:
+        if hashlib.sha256(old_bytes).hexdigest() != e["baseline_sha256"]: errs.append("fresh baseline sha256 differs from manifest")
+        if hashlib.sha256(new_bytes).hexdigest() != e["patched_sha256"]: errs.append("patched sha256 differs from manifest")
+    if errs: return errs
+    try: old = _Raw(old_bytes).doc(); _Raw(new_bytes).doc()
+    except ValueError as x: return [str(x)]
+    fields = set(e.get("allowed_fields") or ["solution"]) & set(SOLUTION_FIELDS)
+    placeholders = set(e.get("allowed_original_values") or [])
+    seen, spans = set(), []
+    for q in _raw_questions(old):
+        if q[0] != "obj": return ["non-object question"]
+        d = dict(q[3]); idn = d.get("id")
+        if idn is None or idn[0] == "obj" or idn[0] == "arr": return ["question without id"]
+        k = str(idn[3])
+        if k in seen: return ["duplicate question ids"]
+        seen.add(k)
+        if k in approved_ids:
+            hits = [v for f, v in q[3] if f in fields]
+            if len(hits) != 1 or hits[0][0] != "str": return [f"id {k}: needs exactly one string {sorted(fields)} field"]
+            v = hits[0]
+            if v[3].strip() and v[3] not in placeholders: return [f"id {k}: existing solution is not empty/placeholder; replacement refused"]
+            spans.append((v[1], v[2], k))
+    missing = set(approved_ids) - {k for _, _, k in spans}
+    if missing: return ["approved ids not found: " + ",".join(sorted(missing))]
+    po = pn = 0
+    for s0, s1, k in sorted(spans):
+        seg = old_bytes[po:s0]
+        if new_bytes[pn:pn + len(seg)] != seg: return [f"bytes outside solution tokens changed (before id {k})"]
+        pn += len(seg); r = _Raw(new_bytes); r.i = pn
+        try: tok = r.string()
+        except ValueError: return [f"id {k}: new value is not a JSON string"]
+        if not tok[3].strip(): return [f"id {k}: new solution empty"]
+        if tok[3] == json.loads(old_bytes[s0:s1]): return [f"id {k}: not filled"]
+        po, pn = s1, r.i
+    if old_bytes[po:] != new_bytes[pn:]: return ["bytes outside solution tokens changed (tail)"]
+    return []
 
 BACKEND_REWRITE_KEYS = ("function", "functionRegion", "run", "dynamicLinks")
 ISOLATION_HEADERS = ("content-security-policy", "content-security-policy-report-only", "x-robots-tag")
@@ -185,14 +247,19 @@ def preview_config(live_cfg, csp):
     out.append({"glob": "**", "headers": {"X-Robots-Tag": "noindex, nofollow", "Content-Security-Policy": csp}})
     cfg["headers"] = out
     if not cfg["rewrites"]: cfg.pop("rewrites")
-    cfg["_qxDroppedHeaders"] = dropped
-    return cfg, removed
+    return cfg, removed, dropped
+
+SERVING_CONFIG_FIELDS = {"headers", "redirects", "rewrites", "cleanUrls", "trailingSlashBehavior", "i18n", "appAssociation"}
+def assert_api_config(cfg):
+    extra = set(cfg) - SERVING_CONFIG_FIELDS
+    if extra: raise SystemExit(f"refusing: not Hosting ServingConfig fields: {sorted(extra)}")
 
 def production_config(live_cfg):
     """Future production version: the live config UNCHANGED (all backend rewrites kept, no noindex/CSP/guard)."""
     return copy.deepcopy(live_cfg or {})
 
 def assert_isolated(cfg):
+    assert_api_config(cfg)
     errs = [r for r in cfg.get("rewrites", []) if any(k in r for k in BACKEND_REWRITE_KEYS)]
     hs = [(k.lower(), v) for h in cfg.get("headers", []) for k, v in h.get("headers", {}).items()]
     csp = [v for k, v in hs if k == "content-security-policy"]; xr = [v for k, v in hs if k == "x-robots-tag"]
@@ -232,17 +299,19 @@ def build_plan(base, patch_dir, patched_paths, exclusion_globs, guard_paths_html
     if bad: raise SystemExit(f"refusing: exclusions would delete protected data paths: {bad[:5]}")
     populate, report = {}, []
     for p in patched_paths:
-        ok_ids = set(str(x) for x in ((approved_data or {}).get(p) or {}).get("ids", []))
+        entry = (approved_data or {}).get(p) or {}
+        ok_ids = set(str(x) for x in entry.get("ids", []))
         if PROTECTED.match(p) and not ok_ids: raise SystemExit(f"refusing: patch touches protected data path {p} (not in approved solution manifest)")
         if guard_tag and p == "/qx-preview-guard.js":
             if not os.path.isfile(guard_asset): raise SystemExit(f"refusing: reviewed guard asset missing: {guard_asset}")
             data = open(guard_asset, "rb").read()
+            if guard_asset == GUARD_ASSET and hashlib.sha256(data).hexdigest() != GUARD_SHA256: raise SystemExit("refusing: guard asset differs from reviewed pin")
         else:
             f = root_join(patch_dir, p)
             if not os.path.isfile(f): raise SystemExit(f"refusing: patched file missing: {p}")
             data = open(f, "rb").read()
         if PROTECTED.match(p):
-            errs = verify_solution_only(fetch(p), data, ok_ids, (approved_data or {}).get(p))
+            errs = verify_solution_only(fetch(p), data, ok_ids, entry)
             if errs: raise SystemExit(f"refusing {p}: not a solution-only addition: {errs[:5]}")
         h, gz = gz_hash(data)
         populate[p] = {"hash": h, "gz": gz, "rawBytes": len(data), "was": files.get(p, {}).get("hash"), "kind": "patch"}
@@ -257,28 +326,28 @@ def build_plan(base, patch_dir, patched_paths, exclusion_globs, guard_paths_html
             h, gz = gz_hash(txt.encode("utf-8", "surrogateescape"))
             populate[p] = {"hash": h, "gz": gz, "rawBytes": len(txt), "was": files.get(p, {}).get("hash"), "kind": "guard" if p not in populate else "patch+guard"}
     if guard_tag:
-        cfg, removed = preview_config(base.get("config"), csp); assert_isolated(cfg)
+        cfg, removed, dropped = preview_config(base.get("config"), csp); assert_isolated(cfg)
         unguarded = [p for p in (guard_paths_html or []) if p.endswith(".html") and p not in deletions and p not in populate]
         report += [f"UNGUARDED html (no <head>): {p}" for p in unguarded]
     else:
-        cfg, removed = production_config(base.get("config")), []
+        cfg, removed, dropped = production_config(base.get("config")), [], []
     untouched = {p: v["hash"] for p, v in files.items() if p not in populate and p not in deletions}
     final = dict(untouched); final.update({p: v["hash"] for p, v in populate.items()})
     return {"baselineVersion": base["version"], "isolation": bool(guard_tag), "deletions": deletions, "deletionCandidates": candidates,
-            "populate": populate, "untouched": untouched, "finalManifest": final,
+            "populate": populate, "untouched": untouched, "finalManifest": final, "droppedHeaders": dropped,
             "previewConfig": cfg, "removedRewrites": removed, "configDiff": config_diff(base.get("config", {}), cfg), "notes": report}
 
 def cmd_plan(a):
     base = json.load(open(a.baseline))
-    ign = [l.strip() for l in open(a.exclusions) if l.strip() and not l.startswith("#")]
-    paths = ["/" + l.strip().lstrip("/") for l in open(a.patched) if l.strip()]
+    ign = [l.strip() for l in open(a.exclusions) if l.strip() and not l.strip().startswith("#")]
+    paths = [l.strip() for l in open(a.patched) if l.strip() and not l.strip().startswith("#")]
     tag = f'<script src="/qx-preview-guard.js?v={a.guard_ver}"></script>' if a.preview_isolation else None
     if tag and "/qx-preview-guard.js" not in paths: paths.append("/qx-preview-guard.js")
     fetched = {}
     fetch = canonical_fetcher(base["site"], set(base["files"]), fetched)
     html = [p for p in base["files"] if p.endswith(".html")]
     appr = json.load(open(a.approved_solutions)) if a.approved_solutions else None
-    dels = [l.strip() for l in open(a.approved_deletions) if l.strip() and not l.startswith("#")] if a.approved_deletions else []
+    dels = [l.strip() for l in open(a.approved_deletions) if l.strip() and not l.strip().startswith("#")] if a.approved_deletions else []
     plan = build_plan(base, a.patch_dir, paths, ign, html, tag, fetch, approved_data=appr, approved_deletions=dels)
     plan["fetched"] = fetched
     os.makedirs(a.out, exist_ok=True)
@@ -308,7 +377,7 @@ def cmd_apply(a):
         raise SystemExit("refusing: apply never targets the live channel (or an invalid channel id)")
     plan = json.load(open(a.plan)); gzdir = os.path.join(os.path.dirname(a.plan), "gz")
     if not plan.get("isolation"): raise SystemExit("refusing: apply only releases ISOLATED previews; production needs a fresh live-derived plan and the normal reviewed release")
-    assert_isolated(plan["previewConfig"])
+    assert_isolated(plan["previewConfig"]); assert_api_config(plan["previewConfig"])
     steps = [f"check live still == {plan['baselineVersion']}",
              f"versions:clone finalize=false exclude={len(plan['deletions'])} audited paths",
              f"populateFiles {len(plan['populate'])} paths (only these change)",
@@ -352,8 +421,8 @@ def cmd_apply(a):
     if not a.finalize: print("stop: not finalized (pass --finalize)"); return
     s.patch(f"{API}/{ver}", params={"updateMask": "status"}, json={"status": "FINALIZED"}, timeout=60).raise_for_status()
     if not a.release: print("stop: finalized, not released (pass --release)"); return
-    s.post(f"{API}/sites/{a.site}/channels/{a.channel}/releases", params={"versionName": ver}, json={"message": "qx preview from live baseline"}, timeout=60).raise_for_status()
-    print("released to preview channel", a.channel)
+    s.post(f"{API}/sites/{a.site}/channels/{ch_id}/releases", params={"versionName": ver}, json={"message": "qx preview from live baseline"}, timeout=60).raise_for_status()
+    print("released to preview channel", ch_id)
 
 def main(argv=None):
     ap = argparse.ArgumentParser(); sp = ap.add_subparsers(dest="cmd", required=True)

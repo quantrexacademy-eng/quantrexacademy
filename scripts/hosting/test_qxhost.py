@@ -45,33 +45,38 @@ def t6():
 t("apply defaults to dry run; finalize/release need explicit flags", t6)
 t("glob->regex matches firebase ignore semantics used", lambda: [__import__("re").match(Q.glob_to_regex(g), p) or (_ for _ in ()).throw(AssertionError(g)) for g, p in [("functions/**", "/functions/a/b.js"), ("_*.txt", "/_x.txt"), ("**/node_modules/**", "/a/node_modules/x")]])
 assert not __import__("re").match(Q.glob_to_regex("_*.txt"), "/data/_x.txt")
+E0 = {"provenance": "Quantrex explanation", "official_solution_claim": False, "allowed_fields": ["solution"], "allowed_original_values": ["No Solution"]}
+def V(old, new, ids, e=None):
+    """entry with the CORRECT hashes filled in, so each case fails (or passes) on structure, not on hashes"""
+    e = dict(e or E0); e.setdefault("baseline_sha256", hashlib.sha256(old).hexdigest()); e.setdefault("patched_sha256", hashlib.sha256(new).hexdigest())
+    return Q.verify_solution_only(old, new, ids, e)
 def t8():
     old = json.dumps({"title": "T", "questions": [{"id": 1, "q": "x", "options": ["4","1","3","2"], "answer": 3, "solution": ""}, {"id": 2, "q": "y", "solution": "s"}]}).encode()
     good = json.loads(old); good["questions"][0]["solution"] = "new worked solution"
-    assert Q.verify_solution_only(old, json.dumps(good).encode(), {"1"}) == []
-    assert Q.verify_solution_only(old, json.dumps(good).encode(), {"2"})  # id not approved
-    bad = json.loads(old); bad["questions"][1]["solution"] = "overwrite"; assert Q.verify_solution_only(old, json.dumps(bad).encode(), {"2"})
-    bad2 = json.loads(json.dumps(good)); bad2["questions"][0]["options"][2] = "5"; assert Q.verify_solution_only(old, json.dumps(bad2).encode(), {"1"})
+    assert V(old, json.dumps(good).encode(), {"1"}) == []
+    assert V(old, json.dumps(good).encode(), {"2"})  # id not approved
+    bad = json.loads(old); bad["questions"][1]["solution"] = "overwrite"; assert V(old, json.dumps(bad).encode(), {"2"})
+    bad2 = json.loads(json.dumps(good)); bad2["questions"][0]["options"][2] = "5"; assert V(old, json.dumps(bad2).encode(), {"1"})
     os.makedirs(os.path.join(d, "data/banks"), exist_ok=True); open(os.path.join(d, "data/banks/x.json"), "wb").write(json.dumps(good).encode())
-    p = Q.build_plan(base, d, ["/data/banks/x.json"], [], None, None, lambda _: old, approved_data={"/data/banks/x.json": {"ids": [1], "provenance": "math-verified", "official_solution_claim": False}})
+    p = Q.build_plan(base, d, ["/data/banks/x.json"], [], None, None, lambda _: old, approved_data={"/data/banks/x.json": {"ids": [1], "provenance": "math-verified", "official_solution_claim": False, "baseline_sha256": hashlib.sha256(old).hexdigest(), "patched_sha256": hashlib.sha256(json.dumps(good).encode()).hexdigest()}})
     assert "/data/banks/x.json" in p["populate"]
 t("data patch allowed ONLY as approved fill of an empty solution; options/answer/existing solutions immutable", t8)
 def t9():
     E = {"ids": [1], "provenance": "Quantrex explanation", "official_solution_claim": False, "allowed_fields": ["solution"], "allowed_original_values": ["No Solution"]}
     old = json.dumps({"questions": [{"id": 1, "q": "x", "solution": "No Solution"}, {"id": 2, "q": "y", "solution": "real worked steps"}]}).encode()
     g = json.loads(old); g["questions"][0]["solution"] = "<p><strong>Quantrex Explanation</strong></p>"
-    assert Q.verify_solution_only(old, json.dumps(g).encode(), {"1"}, E) == []
+    assert V(old, json.dumps(g).encode(), {"1"}, E) == []
     # placeholder must match EXACTLY; a legitimate worked solution is never replaceable
-    o2 = old.replace(b'"No Solution"', b'"No solution yet"'); assert Q.verify_solution_only(o2, json.dumps(g).encode(), {"1"}, E)
-    b = json.loads(json.dumps(g)); b["questions"][1]["solution"] = "replaced"; assert Q.verify_solution_only(old, json.dumps(b).encode(), {"1", "2"}, E)
-    assert Q.verify_solution_only(old, json.dumps(g).encode(), {"1"}, dict(E, provenance=""))
-    assert Q.verify_solution_only(old, json.dumps(g).encode(), {"1"}, dict(E, official_solution_claim=True))
+    o2 = old.replace(b'"No Solution"', b'"No solution yet"'); assert V(o2, json.dumps(g).encode(), {"1"}, E)
+    b = json.loads(json.dumps(g)); b["questions"][1]["solution"] = "replaced"; assert V(old, json.dumps(b).encode(), {"1", "2"}, E)
+    assert V(old, json.dumps(g).encode(), {"1"}, dict(E, provenance=""))
+    assert V(old, json.dumps(g).encode(), {"1"}, dict(E, official_solution_claim=True))
     assert Q.verify_solution_only(old, json.dumps(g).encode(), {"1"}, dict(E, baseline_sha256="0"*64))
-    dup = b'{"questions": [{"id": 1, "q": "x", "q": "z", "solution": "No Solution"}]}'; assert any("duplicate JSON" in e for e in Q.verify_solution_only(dup, json.dumps(g).encode(), {"1"}, E))
-    dids = json.dumps({"questions": [{"id": 1, "solution": ""}, {"id": 1, "solution": ""}]}).encode(); assert Q.verify_solution_only(dids, dids, {"1"}, E)
-    e = json.loads(json.dumps(g)); e["questions"][0]["solution"] = "  "; assert Q.verify_solution_only(old, json.dumps(e).encode(), {"1"}, E)
-    assert Q.verify_solution_only(old, old, {"1"}, E)  # approved id not filled
-    k = json.loads(json.dumps(g)); k["questions"][0] = {"solution": k["questions"][0]["solution"], "id": 1, "q": "x"}; assert Q.verify_solution_only(old, json.dumps(k).encode(), {"1"}, E)  # key order
+    dup = b'{"questions": [{"id": 1, "q": "x", "q": "z", "solution": "No Solution"}]}'; assert any("duplicate JSON" in e for e in V(dup, json.dumps(g).encode(), {"1"}, E))
+    dids = json.dumps({"questions": [{"id": 1, "solution": ""}, {"id": 1, "solution": ""}]}).encode(); assert V(dids, dids, {"1"}, E)
+    e = json.loads(json.dumps(g)); e["questions"][0]["solution"] = "  "; assert V(old, json.dumps(e).encode(), {"1"}, E)
+    assert V(old, old, {"1"}, E)  # approved id not filled
+    k = json.loads(json.dumps(g)); k["questions"][0] = {"solution": k["questions"][0]["solution"], "id": 1, "q": "x"}; assert V(old, json.dumps(k).encode(), {"1"}, E)  # key order
     W = "/workspace/qx-solutions-20261107"; P = "/data/banks/chapters/ap_eamcet/mathematics/trigonometric-ratios-and-identities.json"
     if os.path.exists(W + "/patches" + P) and os.path.exists("/tmp/ap-trig-fresh.json"):
         man = json.load(open(W + "/approved-solutions-provenance.json"))[P]
@@ -111,7 +116,7 @@ t("canonical fetch: site.web.app only, manifest-known paths, direct 200, redirec
 def t12():
     live = {"rewrites": [{"glob": "/api/**", "function": "api"}, {"glob": "/r/**", "run": {"serviceId": "s"}}, {"glob": "/l/**", "dynamicLinks": True}, {"glob": "**", "destination": "/index.html"}],
             "headers": [{"glob": "**", "headers": {"content-security-policy": "old", "X-Frame-Options": "DENY"}}, {"glob": "*.html", "headers": {"X-ROBOTS-TAG": "all"}}, {"regex": ".*", "headers": {"Content-Security-Policy-Report-Only": "r"}}]}
-    cfg, removed = Q.preview_config(live, Q.CSP); Q.assert_isolated(cfg)
+    cfg, removed, _dr = Q.preview_config(live, Q.CSP); Q.assert_isolated(cfg)
     assert len(removed) == 3 and cfg["rewrites"] == [{"glob": "**", "destination": "/index.html"}]
     keys = [k.lower() for h in cfg["headers"] for k in h["headers"]]
     assert keys.count("content-security-policy") == 1 and keys.count("x-robots-tag") == 1 and "content-security-policy-report-only" not in keys
@@ -171,4 +176,25 @@ def t16():
     for need in ["functions/**", "scripts/**", "tools/**", "docs/**", "*.md", "*.py", "*.bat", "*.ps1", ".firebaserc", "*.apk", "hosting-fast/**"]: assert need in lines, need
     assert not any(l.startswith("data") for l in lines)
 t("CSP policy: inline app bootstrap/onclick allowed, same-origin data ok; Auth/Firestore/Functions/payment connect denied; exclusions cover firebase ignore internals, never data", t16)
+def t17():
+    old = b'{"questions": [{"id": 1, "n": 1, "f": true, "solution": "No Solution"}, {"id": 2, "n": 2.50, "solution": "x"}]}'
+    ok = old.replace(b'"No Solution"', b'"<p><strong>Quantrex Explanation</strong></p>"', 1)
+    assert V(old, ok, {"1"}) == []
+    for bad in [ok.replace(b'"n": 1,', b'"n": 1.0,'), ok.replace(b'"f": true', b'"f": 1'), ok.replace(b'2.50', b'2.5'), ok.replace(b', "n": 2', b',  "n": 2'), ok.replace(b'"solution": "x"', b'"solution": "y"')]:
+        assert V(old, bad, {"1"}), bad  # type/number/whitespace/other-solution changes are caught byte-exactly
+    assert Q.verify_solution_only(old, ok, {"1"}, E0)  # hashes mandatory
+    assert Q.verify_solution_only(old, ok, {"1"}, dict(E0, baseline_sha256="abc", patched_sha256="def"))
+    assert V(old, ok.replace(b'"<p>', b'1, "z": "<p>', 1), {"1"})  # not a single string token
+    cfg, rm, dropped = Q.preview_config({"headers": [{"glob": "**", "headers": {"x-robots-tag": "all"}}]}, Q.CSP)
+    assert "_qxDroppedHeaders" not in cfg and dropped == [{"glob": "**", "header": "x-robots-tag"}]
+    Q.assert_api_config(cfg)
+    try: Q.assert_api_config(dict(cfg, foo=1)); raise AssertionError()
+    except SystemExit as e: assert "ServingConfig" in str(e)
+    assert hashlib.sha256(open(Q.GUARD_ASSET, "rb").read()).hexdigest() == Q.GUARD_SHA256  # update pin deliberately on reviewed guard edits
+    g = open(Q.GUARD_ASSET).read()
+    for need in ["storage\\.googleapis\\.com", "www\\.googleapis\\.com", "apis\\.google\\.com", "window.open=", "External navigation is not allowed", "CONNECTING", "NOT full isolation"]: assert need in g, need
+    src = open(Q.__file__).read(); assert 'channels/{ch_id}/releases' in src and 'channels/{a.channel}/releases' not in src
+    import types; ex = os.path.join(d, "ex.txt"); open(ex, "w").write("  # comment\n\tfunctions/**\n")
+    assert [l.strip() for l in open(ex) if l.strip() and not l.strip().startswith("#")] == ["functions/**"]
+t("raw byte-exact data proof (1 vs 1.0, true vs 1, 2.50, whitespace, other solution); hashes mandatory; config API fields only; guard pin + nav/storage blocks; release uses validated channel", t17)
 print("PASS", n)
