@@ -80,11 +80,47 @@ t("wide INLINE formula (question stem case) gets an inline-block span wrapper", 
 });
 t("loaded on every question entry page after math-render; css has the scroll box and no blanket inline .katex scroll", () => {
   ["app.html", "test-series.html", "examgoal-test-series.html", "quantrex-test-series.html", "jee-main-pyq-chapter.html"].forEach((p) => {
-    const h = fs.readFileSync(path.join(__dirname, "..", p), "utf8"); const i = h.search(/math-render\.js/), j = h.indexOf("qx-math-scroll.js?v=qxmd392g");
+    const h = fs.readFileSync(path.join(__dirname, "..", p), "utf8"); const i = h.search(/math-render\.js/), j = h.indexOf("qx-math-scroll.js?v=qxmd392h");
     assert(i > 0 && j > i, p);
   });
   const c = fs.readFileSync(path.join(__dirname, "../assets/qxmd392-layout.css"), "utf8");
   assert(/\.qx-mscroll \{[^}]*overflow-x: auto/.test(c)); assert(!/:not\(\.katex-display\) > \.katex,/.test(c));
   assert(/\.qx-hw-paper, \.qx-hw-ink/.test(c));
+});
+t("unchanged cap: fit() does NOT touch style (no remove/re-apply) and scroll position is kept", () => {
+  const { win, doc, D } = dispCase(536, 600, 600, 466);
+  M.process(doc.getElementById("app-main"), win, doc, null);
+  let sl = 120; Object.defineProperty(D, "scrollLeft", { get: () => sl, set: (v) => { sl = v; } });
+  let writes = 0; const sp = D.style.setProperty.bind(D.style), rp = D.style.removeProperty.bind(D.style);
+  D.style.setProperty = (...a) => { writes++; return sp(...a); }; D.style.removeProperty = (...a) => { writes++; return rp(...a); };
+  assert.strictEqual(M.fit(D, M.limitRight(D, win, null)), false); M.process(doc.getElementById("app-main"), win, doc, null);
+  assert.strictEqual(writes, 0, "no style writes on an unchanged cap"); assert.strictEqual(sl, 120, "scrollLeft kept");
+});
+t("changed cap keeps the user's scroll position", () => {
+  const { win, doc, D } = dispCase(536, 600, 600, 466);
+  M.process(doc.getElementById("app-main"), win, doc, null);
+  let sl = 90; Object.defineProperty(D, "scrollLeft", { get: () => sl, set: (v) => { sl = v; } });
+  const sp = D.style.setProperty.bind(D.style); D.style.setProperty = (k, v, pr) => { if (k === "max-width") sl = 0; return sp(k, v, pr); }; // browser clamps on relayout
+  assert.strictEqual(M.fit(D, 300), true); assert.strictEqual(D.style.getPropertyValue("max-width"), "230px"); assert.strictEqual(sl, 90, "restored");
+});
+t("text-only mutation (timer textContent) is ignored; a newly rendered element is processed (real MutationObserver records)", () => {
+  const { win, doc } = page(0); const host = doc.getElementById("app-main");
+  const timer = doc.createElement("span"); timer.id = "egQTime"; timer.textContent = "00:01"; host.appendChild(timer);
+  const mo = new win.MutationObserver(() => {}); mo.observe(host, { childList: true, subtree: true });
+  timer.textContent = "00:02"; let recs = mo.takeRecords();
+  assert(recs.length > 0, "the timer really mutates"); assert.strictEqual(M.wantsProcess(recs), false, "text-only ignored");
+  const sol = doc.createElement("div"); sol.innerHTML = '<span class="katex-display"><span class="katex">x</span></span>'; host.querySelector(".qx-hw-ink").appendChild(sol);
+  recs = mo.takeRecords(); assert.strictEqual(M.wantsProcess(recs), true, "new rendered formula processed");
+  const qa = doc.createElement("pre"); qa.id = "qxMathQA"; host.appendChild(qa); assert.strictEqual(M.wantsProcess(mo.takeRecords()), false, "QA panel itself ignored");
+  mo.disconnect();
+});
+t("region gets inline !important overflow-x:auto / overflow-y:hidden that beats an id-level !important visible rule", () => {
+  const { win, doc, D } = dispCase(536, 600, 600, 466);
+  const st = doc.createElement("style"); st.textContent = "html body #app-main#app-main .eg-body .katex-display{overflow-x:visible!important;overflow-y:visible!important}"; doc.head.appendChild(st);
+  assert.strictEqual(win.getComputedStyle(D).overflowX, "visible", "hostile rule really applies before");
+  M.process(doc.getElementById("app-main"), win, doc, null);
+  assert.strictEqual(D.style.getPropertyPriority("overflow-x"), "important"); assert.strictEqual(win.getComputedStyle(D).overflowX, "auto"); assert.strictEqual(win.getComputedStyle(D).overflowY, "hidden");
+  const { win: w2, doc: d2, D: F } = dispCase(250, 180, 180, 180); M.process(d2.getElementById("app-main"), w2, d2, null);
+  assert.strictEqual(F.style.getPropertyValue("overflow-x"), "", "non-region formula untouched");
 });
 console.log("PASS " + n);

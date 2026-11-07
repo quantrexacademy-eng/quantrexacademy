@@ -35,10 +35,31 @@
     return true;
   }
   /* inline !important: stylesheet `max-width:100% !important` would otherwise beat a plain inline style */
+  /* qxmd392h: never remove+reapply an unchanged cap (that relayouts and can snap scrollLeft to 0);
+     change the cap only when the available width really changed, and keep the user's scroll position. */
   function fit(w, lim) {
-    w.style.removeProperty("max-width");
-    var r = w.getBoundingClientRect(), avail = Math.floor(lim - r.left);
-    if (r.right > lim + 0.5) w.style.setProperty("max-width", Math.max(40, avail) + "px", "important");
+    var r = w.getBoundingClientRect(), avail = Math.max(40, Math.floor(lim - r.left));
+    var cur = w.style.getPropertyValue("max-width"), want = avail + "px";
+    if (cur) { if (cur === want) return false; }
+    else if (!(r.right > lim + 0.5)) return false;
+    var sl = w.scrollLeft;
+    w.style.setProperty("max-width", want, "important");
+    if (sl && w.scrollLeft !== sl) { try { w.scrollLeft = sl; } catch (_) {} }
+    return true;
+  }
+  /* only real scroll regions get inline !important overflow (beats every stylesheet / injected rule) */
+  function forceScroll(el) {
+    if (el.style.getPropertyValue("overflow-x") !== "auto" || el.style.getPropertyPriority("overflow-x") !== "important") el.style.setProperty("overflow-x", "auto", "important");
+    if (el.style.getPropertyValue("overflow-y") !== "hidden" || el.style.getPropertyPriority("overflow-y") !== "important") el.style.setProperty("overflow-y", "hidden", "important");
+  }
+  /* MutationObserver filter: text-only changes (per-question timer textContent) are ignored;
+     newly inserted ELEMENTS (a rendered question/solution/formula) are processed */
+  function wantsProcess(records) {
+    for (var i = 0; i < (records ? records.length : 0); i++) {
+      var a = records[i].addedNodes;
+      for (var j = 0; j < (a ? a.length : 0); j++) if (a[j].nodeType === 1 && !(a[j].id === "qxMathQA")) return true;
+    }
+    return false;
   }
   /* painted right edge of the formula: the box itself OR its intrinsic content (a CSS-limited box can hide
      an oversized child: rect fits, but scrollWidth > clientWidth and the child paints past the card) */
@@ -53,6 +74,7 @@
     el.setAttribute("role", "region");
     if (!el.getAttribute("aria-label")) el.setAttribute("aria-label", "Wide formula, scroll sideways");
     el.classList.add("qx-mscroll-on");
+    forceScroll(el);
   }
   function process(scope, win, doc, stop) {
     var list = scope.querySelectorAll ? scope.querySelectorAll(SEL) : [];
@@ -81,6 +103,7 @@
       w.setAttribute("tabindex", "0");
       w.setAttribute("role", "region");
       w.setAttribute("aria-label", "Wide formula, scroll sideways");
+      forceScroll(w);
       el.parentNode.insertBefore(w, el);
       w.appendChild(el);
       fit(w, limitRight(w, win, stop));
@@ -94,7 +117,12 @@
     var raf = 0;
     function run() { raf = 0; try { process(host, win, doc, null); stats(host, win, doc); } catch (_) { /* never break the page */ } }
     function q() { if (!raf) raf = win.requestAnimationFrame(run); }
-    if (win.MutationObserver) new win.MutationObserver(q).observe(host, { childList: true, subtree: true });
+    if (win.MutationObserver) new win.MutationObserver(function (recs) { if (wantsProcess(recs)) q(); }).observe(host, { childList: true, subtree: true });
+    var sraf = 0;
+    doc.addEventListener("scroll", function (e) {
+      var t = e.target; if (!t || !t.classList || !(t.classList.contains("qx-mscroll-on") || t.classList.contains(WRAP))) return;
+      if (!sraf) sraf = win.requestAnimationFrame(function () { sraf = 0; try { stats(host, win, doc); } catch (_) {} });
+    }, true);
     win.addEventListener("resize", q, { passive: true });
     if (win.visualViewport) win.visualViewport.addEventListener("resize", q, { passive: true });
     if (win.ResizeObserver) new win.ResizeObserver(q).observe(host);
@@ -110,6 +138,7 @@
       var e = list[i]; if (!e.getBoundingClientRect().width) continue;
       var lim = limitRight(e, win, null);
       rows.push((e.classList.contains(WRAP) ? "wrap" : "disp") + (e.classList.contains("qx-mscroll-on") || e.classList.contains(WRAP) ? "+region" : "") +
+        " ox=" + win.getComputedStyle(e).overflowX + " left=" + Math.round(e.scrollLeft) + "/" + Math.max(0, e.scrollWidth - e.clientWidth) +
         " client=" + e.clientWidth + " scroll=" + e.scrollWidth + " right=" + Math.round(e.getBoundingClientRect().right) + " lim=" + Math.round(lim) +
         (e.getBoundingClientRect().right > lim + 0.5 ? " CLIPPED" : " ok"));
     }
@@ -120,7 +149,7 @@
     var txt = "qx-math-scroll QA  viewport=" + win.innerWidth + "  formulas=" + rows.length + "  regions=" + host.querySelectorAll(".qx-mscroll-on, ." + WRAP).length + "\n" + rows.join("\n");
     if (p.textContent !== txt) p.textContent = txt;
   }
-  var api = { process: process, limitRight: limitRight, topLevel: topLevel, WRAP: WRAP };
+  var api = { process: process, fit: fit, wantsProcess: wantsProcess, forceScroll: forceScroll, limitRight: limitRight, topLevel: topLevel, WRAP: WRAP };
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   else {
     root.QxMathScroll = api;
