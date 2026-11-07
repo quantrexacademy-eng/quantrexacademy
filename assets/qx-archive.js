@@ -392,8 +392,10 @@
   function viewHome(lib, p) {
     var q = String((p && p.q) || "").trim().toLowerCase();
     var cls = String((p && p.classLevel) || "all");
+    var sub = String((p && p.subject) || "all");
     var books = booksOf(lib).filter(function (b) {
       if (cls !== "all" && String(b.classLevel) !== cls) return false;
+      if (sub !== "all" && String(b.subject || "") !== sub) return false;
       if (!q) return true;
       var blob = (b.title + " " + b.series + " " + b.group + " " + (b.subject || "") + " " + (b.description || "") + " " + (b.chapters || []).map(fileLabel).join(" ")).toLowerCase();
       return blob.indexOf(q) >= 0;
@@ -405,19 +407,33 @@
         "<small>" + total + " files · Class " + c.classHint + "</small></button>";
     }).join("");
     var keys = books.filter(function (b) { return b.isAnswerKey; });
-    var search = q ? books.slice(0, 60).map(function (b) { return card(b, lib); }).join("") : "";
+    var filtering = !!q || sub !== "all" || cls !== "all";
+    var subs = archSubjects(lib);
+    var search = filtering ? books.slice(0, 60).map(function (b) { return card(b, lib); }).join("") : "";
     return top("Quantrex Archive", "Every title opens in the reader · what’s inside is on the card") +
-      '<input class="qx-arch-search" placeholder="Search books, notes, PYQ, answer keys…" value="' + esc(q) + '" onkeydown="if(event.key===\'Enter\')go(\'archive\',{step:\'home\',q:this.value,classLevel:\'' + esc(cls) + '\'})">' +
+      '<input class="qx-arch-search" placeholder="Search books, notes, PYQ, answer keys…" value="' + esc(q) + '" aria-label="Search the archive" data-cls="' + esc(cls) + '" data-sub="' + esc(sub) + '" onkeydown="if(event.key===\'Enter\')go(\'archive\',{step:\'home\',q:this.value,classLevel:this.getAttribute(\'data-cls\'),subject:this.getAttribute(\'data-sub\')})">' +
       '<div class="qx-arch-chips">' +
-      chip("all", "All classes", cls) + chip("9", "Class 9", cls) + chip("10", "Class 10", cls) + chip("11-12", "Class 11–12", cls) +
+      chip("all", "All classes", cls, sub) + chip("9", "Class 9", cls, sub) + chip("10", "Class 10", cls, sub) + chip("11-12", "Class 11–12", cls, sub) +
       "</div>" +
-      (q ? ('<div class="qx-arch-sec"><h3>Search</h3><small>' + books.length + "</small></div><div class=\"qx-arch-grid\">" + (search || "<p>No match.</p>") + "</div>") :
+      (subs.length >= 2 ? ('<div class="qx-arch-chips" role="group" aria-label="Subject">' + subChip("all", "All subjects", sub, cls, q) +
+        subs.map(function (x) { return subChip(x.s, x.s + " (" + x.n + ")", sub, cls, q); }).join("") + "</div>") : "") +
+      (filtering ? ('<div class="qx-arch-sec"><h3>' + (q ? "Search" : "Filtered") + '</h3><small role="status">' + books.length + (books.length > 60 ? " · first 60 shown" : "") + "</small>" +
+        ' <button type="button" ' + goP({ step: "home" }) + ">✕ Clear</button></div><div class=\"qx-arch-grid\">" + (search || "<p>No match. Try another word or clear filters.</p>") + "</div>") :
         ('<div class="qx-arch-folders">' + folders + "</div>" +
           (keys.length ? ('<div class="qx-arch-sec"><h3>Answer Keys</h3><small>' + keys.length + "</small></div><div class=\"qx-arch-grid\">" + keys.map(function (b) { return card(b, lib); }).join("") + "</div>") : ""))) +
       "</div>";
   }
-  function chip(id, lab, on) {
-    return '<button type="button" class="' + (on === id ? "on" : "") + '" ' + goP({ step: "home", classLevel: id }) + ">" + esc(lab) + "</button>";
+  function chip(id, lab, on, sub) {
+    return '<button type="button" aria-pressed="' + (on === id) + '" class="' + (on === id ? "on" : "") + '" ' + goP({ step: "home", classLevel: id, subject: sub || "all" }) + ">" + esc(lab) + "</button>";
+  }
+  /* qxmd392: subject chips from the catalogue's own subject field (no guessed subjects) */
+  function archSubjects(lib) {
+    var m = {};
+    booksOf(lib).forEach(function (b) { var s = String(b.subject || "").trim(); if (s) m[s] = (m[s] || 0) + 1; });
+    return Object.keys(m).sort().map(function (s) { return { s: s, n: m[s] }; });
+  }
+  function subChip(id, lab, on, cls, q) {
+    return '<button type="button" aria-pressed="' + (on === id) + '" class="' + (on === id ? "on" : "") + '" ' + goP({ step: "home", classLevel: cls, subject: id, q: q || "" }) + ">" + esc(lab) + "</button>";
   }
 
   function viewCat(lib, p) {
@@ -783,4 +799,5 @@
   };
 
   w.viewArchive = viewArchive;
+  w.__qxArchiveTest = { viewHome: viewHome, archSubjects: archSubjects };
 })(window);

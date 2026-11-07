@@ -137,7 +137,8 @@
       var st = r.isCorrect ? "correct" : (r.isSkip ? "skipped" : (r.isWrong ? "wrong" : "partial"));
       var diffRaw = String((q && q.difficulty) || "").trim().toLowerCase();
       var diff = /^e/.test(diffRaw) ? "Easy" : /^m/.test(diffRaw) ? "Moderate" : (/^h|^d/.test(diffRaw) ? "Hard" : "");
-      var pts = st === "correct" ? plus : (st === "skipped" ? 0 : minus);
+      /* qxmd392: use the engine's awarded marks (multi/numerical/partial aware) when present */
+      var pts = (r.marks != null && isFinite(Number(r.marks))) ? Number(r.marks) : (st === "correct" ? plus : (st === "skipped" ? 0 : minus));
       return {
         n: i + 1, idx: i, q: q, st: st,
         t: Math.max(0, Number(r.timeSec) || 0),
@@ -162,13 +163,15 @@
     }
     return { items: items, hasTime: tsum >= 1, tsum: tsum, c: c, data: data, plus: plus, minus: minus };
   }
+  /* qxmd392: "wrong" here includes partially-correct answers; say so when any exist */
+  function wrongLab(c) { var p = (c && c.partial) || 0; return p ? "Incorrect / partial (" + p + " partial)" : "Incorrect"; }
   function groupBy(items, keyFn, plus, minus) {
     var g = {}, order = [];
     items.forEach(function (it) {
       var k = keyFn(it);
       if (!g[k]) { g[k] = { k: k, n: 0, correct: 0, wrong: 0, skipped: 0, t: 0, score: 0, max: 0 }; order.push(k); }
       var x = g[k];
-      x.n++; x[it.st === "partial" ? "wrong" : it.st]++; x.t += it.t;
+      x.n++; x[it.st === "partial" ? "wrong" : it.st]++; if (it.st === "partial") x.partial = (x.partial || 0) + 1; x.t += it.t;
       x.score += it.pts; x.max += plus;
     });
     return order.map(function (k) {
@@ -473,7 +476,7 @@
       '<div class="qx-rc-stat"><div class="ic">📋</div><div class="lab">Questions</div><div class="num">' + total + '</div><div class="pct">Total Questions</div></div>' +
       '<div class="qx-rc-stat"><div class="ic">✅</div><div class="lab">Attempted</div><div class="num">' + att + '</div><div class="pct">(' + pct(att, total) + '%)</div></div>' +
       '<div class="qx-rc-stat"><div class="ic">✅</div><div class="lab">Correct</div><div class="num">' + (m.c.correct || 0) + '</div><div class="pct">(' + pct(m.c.correct, total) + '%)</div></div>' +
-      '<div class="qx-rc-stat"><div class="ic">❌</div><div class="lab">Incorrect</div><div class="num">' + (m.c.wrong || 0) + '</div><div class="pct">(' + pct(m.c.wrong, total) + '%)</div></div>' +
+      '<div class="qx-rc-stat"><div class="ic">❌</div><div class="lab">' + wrongLab(m.c) + '</div><div class="num">' + (m.c.wrong || 0) + '</div><div class="pct">(' + pct(m.c.wrong, total) + '%)</div></div>' +
       '<div class="qx-rc-stat"><div class="ic">➖</div><div class="lab">Unattempted</div><div class="num">' + (m.c.skipped || 0) + '</div><div class="pct">(' + pct(m.c.skipped, total) + '%)</div></div>' +
       "</div>";
 
@@ -489,7 +492,7 @@
       donut(m.c.correct, m.c.wrong, m.c.skipped, total, total) +
       '<ul class="qx-rc-leg">' +
       '<li><i style="background:#22c55e"></i> Correct <b>' + (m.c.correct || 0) + " (" + pct(m.c.correct, total) + "%)</b></li>" +
-      '<li><i style="background:#ef4444"></i> Incorrect <b>' + (m.c.wrong || 0) + " (" + pct(m.c.wrong, total) + "%)</b></li>" +
+      '<li><i style="background:#ef4444"></i> ' + wrongLab(m.c) + ' <b>' + (m.c.wrong || 0) + " (" + pct(m.c.wrong, total) + "%)</b></li>" +
       '<li><i style="background:#cbd5e1"></i> Unattempted <b>' + (m.c.skipped || 0) + " (" + pct(m.c.skipped, total) + "%)</b></li>" +
       "</ul></div></div>";
 
@@ -616,7 +619,7 @@
       var g = subjects.filter(function (x) { return x.k === sub; })[0];
       var rows = m.items.filter(function (i) { return i.sub === sub; });
       var cc = { correct: 0, wrong: 0, skipped: 0 };
-      rows.forEach(function (i) { if (i.st === "correct") cc.correct++; else if (i.st === "skipped") cc.skipped++; else cc.wrong++; });
+      rows.forEach(function (i) { if (i.st === "correct") cc.correct++; else if (i.st === "skipped") cc.skipped++; else { cc.wrong++; if (i.st === "partial") cc.partial = (cc.partial || 0) + 1; } });
       var n = rows.length || (g && g.n) || 0;
       var score = g ? g.score : 0;
       var max = g ? g.max : n * m.plus;
@@ -625,7 +628,7 @@
         '<div class="qx-rc-stat"><div class="lab">Questions</div><div class="num">' + n + "</div></div>" +
         '<div class="qx-rc-stat"><div class="lab">Attempted</div><div class="num">' + att + "</div></div>" +
         '<div class="qx-rc-stat"><div class="lab">Correct</div><div class="num">' + cc.correct + "</div></div>" +
-        '<div class="qx-rc-stat"><div class="lab">Incorrect</div><div class="num">' + cc.wrong + "</div></div>" +
+        '<div class="qx-rc-stat"><div class="lab">' + wrongLab(cc) + '</div><div class="num">' + cc.wrong + "</div></div>" +
         '<div class="qx-rc-stat"><div class="lab">Score</div><div class="num">' + score + "/" + max + "</div></div></div>" +
         questionTable(rows);
     }
