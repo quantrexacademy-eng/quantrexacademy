@@ -3610,11 +3610,35 @@ const QuantrexTestEngine = (() => {
     }
   }
 
+  /* qxmd392-award-begin (pure; unit-tested by scripts/qxmd392-score.test.js) */
+  function qxAwardMarks(o) {
+    const sc = (o && o.scoring) || {};
+    const num = (v, d) => (v != null && isFinite(Number(v)) ? Number(v) : d);
+    if (!o || o.skipped || !o.graded) return { status: "skipped", marks: num(sc.unattempted, 0) };
+    const g = o.graded;
+    if (g.correct) {
+      let m = num(sc.correct, 4);
+      if (o.isMulti && sc.multiCorrect != null) m = num(sc.multiCorrect, m);
+      else if (o.isNum && sc.numericalCorrect != null) m = num(sc.numericalCorrect, m);
+      return { status: "correct", marks: m };
+    }
+    if (g.partial) {
+      let m = sc.partial != null ? num(sc.partial, 0) : Math.round(num(sc.correct, 4) / 2);
+      if (g.partialLevel === 3 || g.partialLevel === 2 || g.partialLevel === 1) m = g.partialLevel;
+      return { status: "partial", marks: m };
+    }
+    let w = num(sc.wrong, -1);
+    if (o.isNum && sc.numericalWrong != null) w = num(sc.numericalWrong, w);
+    else if (o.isMulti && sc.multiWrong != null) w = num(sc.multiWrong, w);
+    return { status: "incorrect", marks: w };
+  }
+  /* qxmd392-award-end */
   function computeResults() {
     // Flush dwell on current question before scoring
     try { recordQTime(session.idx); } catch (_) { /* */ }
     const scoring = session.scoring;
     let correct = 0, wrong = 0, skipped = 0, notVisited = 0, score = 0;
+    let fullyCorrect = 0, partialCount = 0, incorrectCount = 0;
     const breakdown = { subject: {}, difficulty: {} };
     let timeCorrect = 0, timeWrong = 0, timeSkip = 0;
     const rows = session.ids.map((id, i) => {
@@ -3634,43 +3658,21 @@ const QuantrexTestEngine = (() => {
         isPartial = graded.partial;
         isWrong = !isCorrect && !isPartial;
       }
-      // JEE Advanced type-aware marks (SC +3/−1, MC +4/−2 partial, NUM +4/0)
+      // qxmd392: ONE awarded-mark calculation, reused for total and per-subject
       const secType = (q && typeof questionSectionType === "function") ? questionSectionType(q) : "SC";
       const isMulti = secType === "MC" || (q && String(q.questionType || "").toLowerCase().includes("multiple"));
       const isNumQ = secType === "NUM" || (q && (typeof isNumericalQuestion === "function" ? isNumericalQuestion(q) : false));
-      if (isCorrect) {
-        correct++;
-        let add = scoring.correct;
-        if (isMulti && scoring.multiCorrect != null) add = scoring.multiCorrect;
-        else if (isNumQ && scoring.numericalCorrect != null) add = scoring.numericalCorrect;
-        score += add;
-        timeCorrect += qSec;
-      } else if (isPartial) {
-        // Official Adv multi partial: +3/+2/+1 from grade.partialLevel when present
-        wrong++;
-        let pAdd = scoring.partial != null ? scoring.partial : Math.round(scoring.correct / 2);
-        try {
-          const g2 = typeof QuantrexQFormat !== "undefined" ? QuantrexQFormat.grade(q, chosen) : null;
-          if (g2 && g2.partialLevel === 3) pAdd = 3;
-          else if (g2 && g2.partialLevel === 2) pAdd = 2;
-          else if (g2 && g2.partialLevel === 1) pAdd = 1;
-        } catch (_) { /* */ }
-        score += pAdd;
-        timeWrong += qSec;
-      } else if (isWrong) {
-        wrong++;
-        let wrongPts = scoring.wrong;
-        if (isNumQ && scoring.numericalWrong != null) wrongPts = scoring.numericalWrong;
-        else if (isMulti && scoring.multiWrong != null) wrongPts = scoring.multiWrong;
-        score += (wrongPts != null ? wrongPts : -1);
-        timeWrong += qSec;
+      let gradedFull = null;
+      if (!isSkip && q) {
+        try { gradedFull = typeof QuantrexQFormat !== "undefined" ? QuantrexQFormat.grade(q, chosen) : null; } catch (_) { gradedFull = null; }
+        if (!gradedFull) gradedFull = { correct: isCorrect, partial: isPartial };
       }
-      else {
-        skipped++;
-        score += scoring.unattempted;
-        timeSkip += qSec;
-        if (!visited) notVisited++;
-      }
+      const award = qxAwardMarks({ skipped: isSkip || !q, graded: gradedFull, isMulti, isNum: isNumQ, scoring });
+      score += award.marks;
+      if (award.status === "correct") { correct++; fullyCorrect++; timeCorrect += qSec; }
+      else if (award.status === "partial") { wrong++; partialCount++; timeWrong += qSec; }
+      else if (award.status === "incorrect") { wrong++; incorrectCount++; timeWrong += qSec; }
+      else { skipped++; timeSkip += qSec; if (!visited) notVisited++; }
       if (q) {
         const sub = q.subject || "Other";
         const diff = q.difficulty || "Medium";
@@ -3687,17 +3689,15 @@ const QuantrexTestEngine = (() => {
         if (isCorrect) {
           breakdown.subject[sub].correct++;
           breakdown.subject[sub].timeCorrect += qSec;
-          breakdown.subject[sub].score += scoring.correct;
+
           breakdown.difficulty[diff].correct++;
         }
+        breakdown.subject[sub].score += award.marks;
+        if (award.status === "partial") breakdown.subject[sub].partial = (breakdown.subject[sub].partial || 0) + 1;
+        if (award.status === "incorrect") breakdown.subject[sub].incorrect = (breakdown.subject[sub].incorrect || 0) + 1;
         if (isWrong || isPartial) {
           breakdown.subject[sub].wrong++;
           breakdown.subject[sub].timeWrong += qSec;
-          const isNum = q && (typeof isNumericalQuestion === "function" ? isNumericalQuestion(q) : false);
-          const wrongPts = (isNum && scoring.numericalWrong != null) ? scoring.numericalWrong : scoring.wrong;
-          breakdown.subject[sub].score += (isPartial
-            ? (scoring.partial != null ? scoring.partial : Math.round(scoring.correct / 2))
-            : (wrongPts != null ? wrongPts : -1));
           breakdown.difficulty[diff].wrong++;
         }
         if (isSkip) {
@@ -3707,7 +3707,7 @@ const QuantrexTestEngine = (() => {
         }
       }
       if (chosen !== undefined && q && typeof STATE !== "undefined" && STATE.markSolved) STATE.markSolved(id, isCorrect);
-      return { q, chosen, isCorrect, isWrong, isSkip, idx: i, timeSec: qSec };
+      return { q, chosen, isCorrect, isWrong, isSkip, idx: i, timeSec: qSec, status: award.status, marks: award.marks };
     });
     const total = session.ids.length;
     const pct = total ? Math.round(correct / total * 100) : 0;
@@ -3751,6 +3751,12 @@ const QuantrexTestEngine = (() => {
     }
     return {
       correct, wrong, skipped, notVisited, notAttempted, score, pct, total, rows, breakdown,
+      /* qxmd392 explicit metrics. attempted = answered (fully + partial + incorrect).
+         wrong (legacy) = partial + incorrect. accuracyPct = fullyCorrect / attempted;
+         pct (legacy) = correct / total questions. */
+      fullyCorrect, partial: partialCount, incorrect: incorrectCount,
+      attempted: fullyCorrect + partialCount + incorrectCount,
+      accuracyPct: (fullyCorrect + partialCount + incorrectCount) ? Math.round(fullyCorrect / (fullyCorrect + partialCount + incorrectCount) * 1000) / 10 : null,
       timeUsed, maxScore, durationMin,
       timeCorrect, timeWrong, timeSkip,
       sections: session.sections || null,
