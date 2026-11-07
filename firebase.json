@@ -102,7 +102,7 @@
       "serviceAccount*.json",
       "data/marks_config.json",
       "tools/marks_credentials.json",
-      "tools/marks_token.json"],
+      "tools/marks_token.json", "functions/**", "firestore.rules", "firestore.indexes.json", "storage.rules", "package.json", "package-lock.json", "vercel.json", ".gitignore", ".gitattributes", "_*.txt", "_*.json", "body.txt", "JOVI_SETUP.txt", "PROJECT_FULL_BACKUP_DATE.txt", "DOMAIN-SETUP-*.txt"],
     "headers": [
       {
         "source": "**",
@@ -122,7 +122,7 @@
         "headers": [
           {
             "key": "Cache-Control",
-            "value": "public, max-age=31536000, immutable"
+            "value": "public, max-age=0, must-revalidate"
           }
         ]
       },

@@ -217,8 +217,15 @@
         }
       } catch (_) { /* */ }
       try {
-        if (immersive) document.body.style.overflow = on ? "hidden" : "";
-        else document.body.style.overflow = "";
+        if (immersive && on) {
+          document.body.style.overflow = "hidden";
+        } else if (results) {
+          document.body.style.overflow = "auto";
+          try { document.documentElement.style.overflow = "auto"; } catch (_) { /* */ }
+        } else {
+          document.body.style.overflow = "";
+          try { document.documentElement.style.overflow = ""; } catch (_) { /* */ }
+        }
       } catch (_) { /* */ }
     }
     sync();

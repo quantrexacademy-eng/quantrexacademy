@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en"><head>
+<script src="/qx-preview-guard.js?v=qa4"></script>
+<meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>QA preview only: horizontal math check</title>
+<style>body{font:14px system-ui,sans-serif;margin:8px;background:#222;color:#eee}.row{display:flex;gap:16px;flex-wrap:wrap}
+figure{margin:0}figcaption{font-weight:700;margin:4px 0}iframe{border:2px solid #888;background:#fff}code{color:#9cf}</style>
+</head><body>
+<p><b>PREVIEW-ONLY QA page.</b> Each frame is the REAL <code>/app.html</code> (real renderer, all real styles, real data) opened on its own
+route <code>#question/&lt;id&gt;</code> with <code>?qxqa=1</code>, which turns on a read-only metrics panel at the bottom of the frame
+(client/scroll widths, region count, CLIPPED/ok). Nothing is injected. An iframe is not a real phone.
+Change ids: <code>?ids=38383,38389</code>.</p>
+<div class="row" id="frames"></div>
+<script>
+(function(){
+  var q=new URLSearchParams(location.search), ids=(q.get("ids")||"38383,38389").split(",").filter(function(x){return /^[0-9A-Za-z_-]{1,40}$/.test(x);});
+  var box=document.getElementById("frames");
+  ids.forEach(function(id){[360,390].forEach(function(w){
+    var f=document.createElement("figure"), c=document.createElement("figcaption"), i=document.createElement("iframe");
+    c.textContent="id "+id+" @ "+w+"px"; i.width=w; i.height=780; i.title="app question "+id+" at "+w+"px";
+    i.src="/app.html?qxqa=1#question/"+encodeURIComponent(id); f.appendChild(c); f.appendChild(i); box.appendChild(f);
+  });});
+})();
+</script>
+</body></html>

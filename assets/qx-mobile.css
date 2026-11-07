@@ -137,7 +137,7 @@ body.qx-nav-open::before {
   .mtk-q-text,
   .qx-prac-q,
   .qx-question-body {
-    font-size: 16px;
+    font-size: 18px;
     line-height: 1.65;
     overflow-wrap: break-word;
     word-break: normal;
@@ -202,7 +202,7 @@ body.qx-nav-open::before {
     min-height: 40px;
   }
   .mtk-test-root.allen-cbt .mtk-main { padding: 12px 14px 80px; }
-  .mtk-test-root.allen-cbt .mtk-q-text { font-size: 15px; }
+  .mtk-test-root.allen-cbt .mtk-q-text { font-size: 17px; }
   .mtk-test-root.allen-cbt .mtk-options-grid,
   .mtk-test-root.allen-cbt .mtk-options-exam-cols {
     grid-template-columns: 1fr;
@@ -960,4 +960,221 @@ html { -webkit-text-size-adjust: 100%; }
   grid-template-columns: 1fr 1fr !important;
   grid-template-rows: 48px 48px !important;
   flex-direction: unset !important;
+}
+
+
+/* qxmd370 — mobile Q + solution fully visible, readable size (Quantrex Academy) */
+/* Never touch Archives. Outside: no clip of stems/solutions on phones. */
+
+@media (max-width: 860px) {
+  /* Base readable type — avoid sub-14px body text in practice/test */
+  .mtk-q-text,
+  .eg-q-text,
+  .qx-prac-q,
+  .qa-q,
+  .qx-question-body,
+  .mtk-main .mtk-q-text,
+  .eg-test-root .eg-q-card {
+    font-size: 17px !important;
+    line-height: 1.55 !important;
+    word-break: break-word !important;
+    overflow-wrap: anywhere !important;
+    overflow: visible !important;
+    max-height: none !important;
+  }
+
+  .mtk-opt-text,
+  .eg-opt-text,
+  .qx-prac-opt-text,
+  .mtk-opt,
+  .eg-opt,
+  .qx-prac-opt {
+    font-size: 16px !important;
+    line-height: 1.5 !important;
+    overflow: visible !important;
+    max-height: none !important;
+  }
+
+  /* Solutions must scroll/open fully — never clip mid-solution */
+  .sol-body,
+  .qx-sol-body,
+  .eg-sol,
+  .eg-sol-body,
+  .qx-solution,
+  .mk-sol-body,
+  .qx-prac-sol,
+  #qxSolPanel,
+  .qx-sol-panel,
+  .solution-box,
+  .result-box .sol-body {
+    font-size: 16px !important;
+    line-height: 1.55 !important;
+    overflow: visible !important;
+    max-height: none !important;
+    height: auto !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  /* Main scroll areas: allow vertical scroll, never hide question content */
+  .mtk-main,
+  .eg-main,
+  .eg-q-card,
+  .qx-prac-main,
+  .mtk-q-wrap,
+  .eg-test-root .eg-main {
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    max-height: none !important;
+  }
+
+  /* Figures in stem/options/solutions: full width, no tiny max-height */
+  .mtk-q-text img,
+  .eg-q-text img,
+  .qx-question-body img,
+  .sol-body img,
+  .eg-sol img,
+  .qx-sol-body img,
+  .mtk-opt-text img,
+  .eg-opt-text img,
+  .qx-prac-opt-text img,
+  img.qx-pool-fig,
+  img.fc-img,
+  img.qx-rfc-img,
+  #qxFcReaderImg,
+  #qxRfcReaderImg {
+    max-width: 100% !important;
+    width: auto !important;
+    height: auto !important;
+    max-height: none !important;
+    object-fit: contain !important;
+    display: block !important;
+  }
+
+  /* Option cards: comfortable tap targets, text not crushed */
+  .mtk-opt,
+  .eg-opt,
+  .qx-prac-opt {
+    min-height: 52px !important;
+    padding: 12px 14px !important;
+    align-items: flex-start !important;
+  }
+
+  /* KaTeX readable */
+  .mtk-q-text .katex,
+  .sol-body .katex,
+  .eg-q-text .katex,
+  .eg-sol .katex {
+    font-size: 1.08em !important;
+  }
+
+  /* Formula / Revision card chrome — colourful Quantrex Book+Game feel */
+  .fc-card,
+  .qx-rfc-ch,
+  .qx-fc-page,
+  #qxFcReader,
+  #qxRfcReader {
+    border-radius: 16px !important;
+    overflow: visible !important;
+  }
+  .fc-card {
+    border-top: 5px solid #e2620d !important;
+    box-shadow: 0 8px 28px rgba(29, 78, 216, 0.12) !important;
+  }
+  .fc-formula {
+    font-size: 20px !important;
+    padding: 14px 10px !important;
+  }
+
+  /* Content padding so text isn't edge-clipped on narrow phones */
+  .content,
+  .content.marks-wide {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  /* Report card readable on phone */
+  .qx-rc-v2,
+  .mk-rc-page,
+  .qz-an-page {
+    font-size: 15px !important;
+    padding: 12px !important;
+  }
+  .qx-rc-v2 h1,
+  .mk-rc-page h1 {
+    font-size: 22px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .mtk-q-text,
+  .eg-q-text,
+  .qx-prac-q,
+  .qa-q {
+    font-size: 16.5px !important;
+  }
+  .mtk-opt-letter,
+  .eg-opt-letter,
+  .qx-prac-letter {
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+    font-size: 14px !important;
+  }
+  /* Prevent horizontal clip of long math */
+  .katex-display {
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+    max-width: 100% !important;
+  }
+}
+
+/* Kill accidental hide of solution blocks (CSS hide of content ≠ watermark scrub) */
+.sol-body[hidden],
+.qx-sol-body[hidden] {
+  /* attribute hidden still respected; only undo mistaken display:none without [hidden] */
+}
+.eg-sol:not([hidden]),
+.sol-body:not([hidden]),
+.qx-sol-body:not([hidden]),
+.qx-prac-sol:not([hidden]) {
+  display: block !important;
+}
+
+/* qxmd370 — cover residual Marks/ALLEN corner marks on formula/revision card images (outside Archives).
+   Prefer redraw; this is interim safe cover so students never see foreign institute marks. */
+img.fc-img, img.qx-fc-img, img.qx-rfc-img, #qxFcReaderImg, #qxRfcReaderImg,
+.fc-card img, .qx-fc-page img, .qx-rfc-ch img {
+  position: relative;
+}
+.fc-card, .qx-fc-page, .qx-rfc-ch, #qxFcReader, #qxRfcReader {
+  position: relative;
+}
+/* Bottom-right coaching stamp cover */
+.fc-card::after,
+.qx-fc-page::after,
+#qxFcReader::after,
+#qxRfcReader::after,
+.qx-rfc-ch::after {
+  content: "QUANTREX ACADEMY";
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  z-index: 5;
+  font: 800 11px/1 Inter, system-ui, sans-serif;
+  letter-spacing: .12em;
+  color: rgba(29,78,216,.55);
+  background: linear-gradient(90deg, rgba(255,255,255,.92), rgba(238,242,255,.92));
+  padding: 6px 10px;
+  border-radius: 8px;
+  pointer-events: none;
+  box-shadow: 0 2px 10px rgba(15,23,42,.08);
+}
+html[data-theme="dark"] .fc-card::after,
+html[data-theme="dark"] .qx-fc-page::after,
+html[data-theme="dark"] #qxFcReader::after,
+html[data-theme="dark"] #qxRfcReader::after {
+  color: rgba(196,181,253,.75);
+  background: linear-gradient(90deg, rgba(15,23,42,.9), rgba(30,27,75,.9));
 }

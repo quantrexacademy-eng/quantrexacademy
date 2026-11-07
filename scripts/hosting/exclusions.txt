@@ -1,0 +1,38 @@
+# Audited deletions for the preview/release built from the live baseline (qxmd392 hosting hardening, commit fe71914f).
+# Only these paths are removed from the cloned live manifest. /data/** can never match (enforced in code).
+functions/**
+firestore.rules
+firestore.indexes.json
+storage.rules
+package.json
+package-lock.json
+vercel.json
+.gitignore
+.gitattributes
+_*.txt
+_*.json
+body.txt
+JOVI_SETUP.txt
+PROJECT_FULL_BACKUP_DATE.txt
+DOMAIN-SETUP-*.txt
+firebase.json
+firebase.preview.json
+# qxmd392f: internal patterns already in firebase.json "ignore" (candidates only; deletion needs --approved-deletions exact list)
+.firebaserc
+firebase.hosting-*.json
+scripts/**
+tools/**
+docs/**
+hosting-fast/**
+*.md
+*.py
+*.pyc
+*.bat
+*.ps1
+*.apk
+*.log
+*.tgz
+serviceAccount*.json
+.env
+.env.*
+**/node_modules/**

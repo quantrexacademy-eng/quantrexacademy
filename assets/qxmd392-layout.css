@@ -1,0 +1,151 @@
+/* qxmd392: phone + Android app practice/test layout.
+   The root is one flex column sized to the real visible viewport (--qx-vh from qx-fit.js).
+   Top bar and question strip stay pinned at the top; the body is the only scroll box;
+   the Prev/Check/Next footer is IN the column (not position:fixed), so nothing can sit
+   underneath it whatever its height. Layout only - no question/solution content touched.
+   Three ids of specificity beat every older fixed-footer rule (max 1 id). */
+@media (max-width: 900px) {
+  html body #app-main#app-main .eg-test-root.eg-test-root.eg-test-root,
+  html.qx-compact body #app-main#app-main .eg-test-root.eg-test-root.eg-test-root {
+    display: flex !important; flex-direction: column !important;
+    height: var(--qx-vh, 100dvh) !important; max-height: var(--qx-vh, 100dvh) !important;
+    min-height: 0 !important; overflow: hidden !important;
+  }
+  html body #app-main#app-main .eg-test-root.eg-test-root.eg-test-root > .eg-top,
+  html body #app-main#app-main .eg-test-root.eg-test-root.eg-test-root > .eg-qbar {
+    flex: 0 0 auto !important; position: relative !important; top: auto !important; z-index: 5 !important;
+  }
+  html body #app-main#app-main .eg-test-root.eg-test-root.eg-test-root > .eg-body {
+    flex: 1 1 auto !important; min-height: 0 !important; height: auto !important; max-height: none !important;
+    overflow-x: hidden !important; overflow-y: auto !important; -webkit-overflow-scrolling: touch !important;
+    padding-bottom: 24px !important; scroll-padding-bottom: 24px !important;
+  }
+  html body #app-main#app-main .eg-test-root.eg-test-root.eg-test-root > #egFoot#egFoot.eg-foot,
+  html body #app-main#app-main .eg-test-root.eg-test-root.eg-test-root > .eg-foot.eg-foot.eg-foot {
+    flex: 0 0 auto !important; position: relative !important;
+    left: auto !important; right: auto !important; bottom: auto !important; top: auto !important;
+    transform: none !important; width: auto !important;
+    padding-bottom: calc(8px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+}
+
+/* qxmd392: Question View Settings (format/math/font controls) open from the TOP, right under the
+   gear in the top toolbar, instead of a bottom sheet over the footer. Same panel, same controls,
+   same math settings - only its anchor changes. Applies on phones/app and desktop alike. */
+html body #app-main#app-main .eg-test-root #egFmtPop#egFmtPop,
+html body #egFmtPop#egFmtPop.eg-fmt-pop.eg-vs-marks,
+html body #pracViewPanel#pracViewPanel.eg-vs-marks {
+  top: 0 !important; bottom: auto !important;
+  max-height: min(80vh, calc(var(--qx-vh, 100dvh) - 16px)) !important;
+  overflow-y: auto !important; overscroll-behavior: contain !important;
+  border-radius: 0 0 16px 16px !important;
+  padding-top: calc(12px + env(safe-area-inset-top, 0px)) !important;
+  padding-bottom: 16px !important;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, .25) !important;
+}
+@media (min-width: 901px) {
+  html body #app-main#app-main .eg-test-root #egFmtPop#egFmtPop,
+  html body #egFmtPop#egFmtPop.eg-fmt-pop.eg-vs-marks,
+  html body #pracViewPanel#pracViewPanel.eg-vs-marks {
+    top: 56px !important; left: auto !important; right: 12px !important;
+    width: min(420px, calc(100vw - 24px)) !important; border-radius: 12px !important;
+  }
+}
+
+/* qxmd392: wide formulas never clipped. Math is NOT rewritten: a formula wider than the
+   screen gets its own horizontal scroll (swipe sideways) instead of being cut off.
+   Short formulas are unaffected (max-width only bites when wider than the column). */
+html body #app-main#app-main .eg-test-root .katex-display,
+html body #app-main#app-main .mtk-test-root .katex-display,
+html body #app-main#app-main .qzrr-cbt .katex-display,
+html body #app-main#app-main .qx-practice-page .katex-display {
+  display: block !important; max-width: 100% !important;
+  overflow-x: auto !important; overflow-y: hidden !important;
+  -webkit-overflow-scrolling: touch !important; touch-action: pan-x pan-y !important;
+  padding: 4px 0 6px !important; margin-left: 0 !important; margin-right: 0 !important;
+}
+html body #app-main#app-main .eg-test-root .katex-display > .katex,
+html body #app-main#app-main .mtk-test-root .katex-display > .katex,
+html body #app-main#app-main .qzrr-cbt .katex-display > .katex,
+html body #app-main#app-main .qx-practice-page .katex-display > .katex {
+  display: inline-block !important; max-width: none !important; overflow: visible !important; white-space: nowrap !important;
+}
+/* qxmd392e: blanket inline-.katex scroll removed (it could break fractions/min-width boxes);
+   qx-math-scroll.js now wraps ONLY formulas that really overflow in a .qx-mscroll box. */
+/* containers of math must not hide horizontal overflow of their own children */
+html body #app-main#app-main .eg-test-root .eg-body :is(.eg-q-stem,.eg-sol-panel,.q-text,.eg-q-text,.eg-qtext,.qx-sol,.qx-solution,.eg-sol,.eg-opt-text,.eg-opt,.qx-opt-body) {
+  max-width: 100% !important; min-width: 0 !important; overflow-wrap: anywhere !important;
+}
+@media (prefers-reduced-motion: reduce) { html body #app-main#app-main .eg-test-root * { scroll-behavior: auto !important; } }
+/* same for MathJax output, if math-render falls back to MathJax */
+html body #app-main#app-main .eg-test-root mjx-container,
+html body #app-main#app-main .mtk-test-root mjx-container,
+html body #app-main#app-main .qzrr-cbt mjx-container,
+html body #app-main#app-main .qx-practice-page mjx-container {
+  display: inline-block !important; max-width: 100% !important;
+  overflow-x: auto !important; overflow-y: hidden !important; vertical-align: middle !important;
+}
+html body #app-main#app-main .eg-test-root mjx-container[display="true"],
+html body #app-main#app-main .mtk-test-root mjx-container[display="true"],
+html body #app-main#app-main .qzrr-cbt mjx-container[display="true"],
+html body #app-main#app-main .qx-practice-page mjx-container[display="true"] { display: block !important; max-width: 100% !important; overflow-x: auto !important; overflow-y: hidden !important; }
+
+/* qxmd392c: chapter practice + revealed solution (app.js .qx-practice-page) get the same no-clip rule */
+html body #app-main#app-main .qx-practice-page :is(.qx-prac-q,.qx-prac-opt,.qx-prac-opt-text,.qx-sol-reveal-box,.result-box,.qx-content,.qx-sol,.qx-solution) {
+  max-width: 100% !important; min-width: 0 !important; overflow-wrap: anywhere !important;
+}
+
+/* qxmd392c: test-performance panel (analytics) - plain CSS bars, no chart library */
+.qx-pg .qx-pg-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; margin: 10px 0; }
+.qx-pg .qx-pg-kpis > div { border: 1px solid rgba(127,127,127,.25); border-radius: 10px; padding: 8px 10px; }
+.qx-pg .qx-pg-kpis b { display: block; font-size: 1.15rem; }
+.qx-pg .qx-pg-kpis small { opacity: .75; font-size: .75rem; }
+.qx-pg-bar { display: inline-flex; width: 120px; max-width: 100%; height: 10px; border-radius: 5px; overflow: hidden; background: rgba(127,127,127,.18); vertical-align: middle; }
+.qx-pg-bar i, .qx-pg-legend span i { display: inline-block; height: 100%; }
+.qx-pg-legend span i { width: 10px; height: 10px; border-radius: 2px; margin-right: 4px; vertical-align: -1px; }
+.qx-pg i.c { background: #16a34a; } .qx-pg i.p { background: #f59e0b; } .qx-pg i.i { background: #dc2626; } .qx-pg i.s { background: #94a3b8; }
+.qx-pg-legend { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; font-size: .8rem; }
+.qx-pg-tw { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-top: 10px; }
+.qx-pg-t { width: 100%; border-collapse: collapse; font-size: .8rem; min-width: 560px; }
+.qx-pg-t caption { text-align: left; font-weight: 700; padding: 4px 0; }
+.qx-pg-t th, .qx-pg-t td { padding: 6px 8px; border-bottom: 1px solid rgba(127,127,127,.2); text-align: left; white-space: nowrap; }
+.qx-pg-t th[scope=row] { white-space: normal; font-weight: 600; } .qx-pg-t small { opacity: .7; font-weight: 400; }
+.qx-pg-na { opacity: .6; }
+/* qxmd392c: stored numeric difficulty level badge - neutral (no implied Easy/Medium/Hard) */
+.tag.tag-diff.diff-level { background: rgba(100,116,139,.15) !important; color: inherit !important; }
+
+/* qxmd392e: real horizontal scroll box for a formula wider than its card (added by qx-math-scroll.js) */
+.qx-mscroll { display: inline-block; max-width: 100%; overflow-x: auto; overflow-y: hidden; vertical-align: middle;
+  -webkit-overflow-scrolling: touch; touch-action: pan-x pan-y; overscroll-behavior-x: contain; padding: 2px 0 6px;
+  scrollbar-width: thin; outline-offset: 2px;
+  background: linear-gradient(to left, rgba(59,130,246,.28), transparent 14px) right / 14px 100% no-repeat local,
+              linear-gradient(to left, rgba(59,130,246,.28), transparent 14px) right / 14px 100% no-repeat scroll; }
+.qx-mscroll.qx-mscroll-block { display: block; }
+.qx-mscroll > .katex-display, .qx-mscroll > mjx-container { overflow: visible !important; max-width: none !important; margin: 0 !important; }
+.qx-mscroll:focus-visible { outline: 2px solid #3b82f6; }
+/* containers of wide math must be allowed to shrink to the card */
+html body #app-main#app-main :is(.qx-hw-sol, .qx-hw-paper, .qx-hw-ink, .eg-sol-panel, .eg-q-stem, .qx-prac-q) { max-width: 100% !important; min-width: 0 !important; box-sizing: border-box !important; }
+
+/* qxmd392f: LAST, scoped without #app-main so standalone pages match too. Beats qx-hw-sol.css
+   `.qx-hw-ink .katex-display:not(.qx-math-block){display:inline;overflow:visible}` (0,3,0) and
+   qxmd385 notebook overflow:visible, so the display formula itself is a real scroll box. */
+html body :is(.qx-hw-sol, .qx-hw-paper, .qx-hw-ink, .sol-body, .qx-sol-flow, .qx-sol-body-wrap) {
+  min-width: 0 !important; max-width: 100% !important; box-sizing: border-box !important;
+}
+html body .qx-hw-ink .katex-display.katex-display,
+html body .sol-body .katex-display.katex-display,
+html body .qx-sol-flow .katex-display.katex-display {
+  display: block !important; max-width: 100% !important; min-width: 0 !important;
+  overflow-x: auto !important; overflow-y: hidden !important; -webkit-overflow-scrolling: touch;
+}
+html body :is(.qx-hw-ink, .sol-body, .qx-sol-flow) .katex-display > .katex {
+  max-width: none !important; white-space: nowrap !important;
+}
+html body .qx-mscroll.qx-mscroll { max-width: 100%; overflow-x: auto !important; overflow-y: hidden !important; }
+html body .qx-mscroll > .katex-display.katex-display { overflow: visible !important; max-width: none !important; }
+
+/* qxmd392g: display formula box itself is the scroll region when wider than the card (set by qx-math-scroll.js) */
+html body .katex-display.qx-mscroll-on { scrollbar-width: thin; outline-offset: 2px;
+  background: linear-gradient(to left, rgba(59,130,246,.28), transparent 14px) right / 14px 100% no-repeat local,
+              linear-gradient(to left, rgba(59,130,246,.28), transparent 14px) right / 14px 100% no-repeat scroll; }
+html body .katex-display.qx-mscroll-on:focus-visible { outline: 2px solid #3b82f6; }

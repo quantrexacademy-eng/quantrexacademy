@@ -141,6 +141,15 @@ html[data-qx-shell="web"] .qzrr-cbt #qzrrQArea {
   background: #fff !important;
   scroll-padding-bottom: 28px !important;
 }
+html[data-theme="dark"][data-qx-shell="web"] .qzrr-cbt .qzrr-q-area,
+html[data-theme="dark"][data-qx-shell="web"] .qzrr-cbt #qzrrQArea,
+html[data-qx-shell="web"] .qzrr-cbt.qzrr-dark .qzrr-q-area,
+html[data-qx-shell="web"] .qzrr-cbt.qzrr-dark #qzrrQArea,
+html[data-qx-shell="web"] .qzrr-cbt[data-test-theme="dark"] .qzrr-q-area,
+html[data-qx-shell="web"] .qzrr-cbt[data-test-theme="dark"] #qzrrQArea {
+  background: #0b1220 !important;
+  color: #f8fafc !important;
+}
 html[data-qx-shell="web"] .qzrr-cbt .qzrr-q-area .qx-content,
 html[data-qx-shell="web"] .qzrr-cbt .qzrr-q-area .mtk-q-text,
 html[data-qx-shell="web"] .qzrr-cbt .qzrr-q-area .qx-question-body,
@@ -229,6 +238,32 @@ html[data-qx-shell="web"] .qzrr-cbt .qzrr-opts .mtk-opt-text {
   color: #111 !important;
   font-size: 15px !important;
   line-height: 1.5 !important;
+}
+html[data-theme="dark"][data-qx-shell="web"] .qzrr-cbt .qzrr-opts .mtk-opt,
+html[data-qx-shell="web"] .qzrr-cbt.qzrr-dark .qzrr-opts .mtk-opt,
+html[data-qx-shell="web"] .qzrr-cbt[data-test-theme="dark"] .qzrr-opts .mtk-opt {
+  background: #1e293b !important;
+  border-color: #475569 !important;
+  color: #f8fafc !important;
+}
+html[data-theme="dark"][data-qx-shell="web"] .qzrr-cbt .qzrr-opts .mtk-opt:hover,
+html[data-qx-shell="web"] .qzrr-cbt.qzrr-dark .qzrr-opts .mtk-opt:hover {
+  background: #243044 !important;
+  border-color: #64748b !important;
+}
+html[data-theme="dark"][data-qx-shell="web"] .qzrr-cbt .qzrr-opts .mtk-opt.selected,
+html[data-qx-shell="web"] .qzrr-cbt.qzrr-dark .qzrr-opts .mtk-opt.selected {
+  background: #1e3a5f !important;
+  border-color: #1565C0 !important;
+}
+html[data-theme="dark"][data-qx-shell="web"] .qzrr-cbt .qzrr-opts .mtk-opt-text,
+html[data-qx-shell="web"] .qzrr-cbt.qzrr-dark .qzrr-opts .mtk-opt-text,
+html[data-theme="dark"][data-qx-shell="web"] .qzrr-cbt .qzrr-q-area .qx-content,
+html[data-theme="dark"][data-qx-shell="web"] .qzrr-cbt .qzrr-q-area .mtk-q-text,
+html[data-qx-shell="web"] .qzrr-cbt.qzrr-dark .qzrr-q-area .qx-content,
+html[data-qx-shell="web"] .qzrr-cbt.qzrr-dark .qzrr-q-area .mtk-q-text {
+  color: #f8fafc !important;
+  -webkit-text-fill-color: #f8fafc !important;
 }
 
 html[data-qx-shell="web"] .qzrr-cbt .qzrr-footer-actions {

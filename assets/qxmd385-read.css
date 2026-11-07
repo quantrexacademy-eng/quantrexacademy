@@ -1,0 +1,417 @@
+/* qxmd385 — standard readable Q + solution site-wide (app + mobile web + desktop).
+   Loaded LAST. Keep qxmd381 noclip, qxmd382 compact, qxmd383 hang-safe, qxmd384 light-tap.
+   Typography: normal Quantrex/system stack, ~16–18px mobile stems (not tiny, not novelty-huge). */
+
+/* ---- Font stack: inherit Quantrex / system, never weird novelty ---- */
+html.qx-phone .eg-test-root,
+html.qx-compact .eg-test-root,
+html.qx-app .eg-test-root,
+html.qx-phone .mtk-test-root,
+html.qx-compact .mtk-test-root,
+html.qx-app .mtk-test-root,
+html.qx-phone .allen-practice,
+html.qx-compact .allen-practice,
+html.qx-app .allen-practice,
+html.qx-phone .qx-practice-page,
+html.qx-compact .qx-practice-page,
+html.qx-app .qx-practice-page,
+html.qx-phone #app-main,
+html.qx-compact #app-main,
+html.qx-app #app-main {
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+}
+
+/* ---- Mobile / app / phone: standard readable stems + options + solutions ---- */
+html.qx-phone .eg-test-root .eg-q-stem,
+html.qx-compact .eg-test-root .eg-q-stem,
+html.qx-app .eg-test-root .eg-q-stem,
+html.qx-phone .eg-test-root .eg-q-text,
+html.qx-compact .eg-test-root .eg-q-text,
+html.qx-app .eg-test-root .eg-q-text,
+html.qx-phone .eg-test-root #egQArea,
+html.qx-compact .eg-test-root #egQArea,
+html.qx-app .eg-test-root #egQArea,
+html.qx-phone .mtk-q-text,
+html.qx-compact .mtk-q-text,
+html.qx-app .mtk-q-text,
+html.qx-phone .qx-prac-q,
+html.qx-compact .qx-prac-q,
+html.qx-app .qx-prac-q,
+html.qx-phone .mq-stem,
+html.qx-compact .mq-stem,
+html.qx-app .mq-stem,
+html.qx-phone .qx-q-seg-text,
+html.qx-compact .qx-q-seg-text,
+html.qx-app .qx-q-seg-text,
+html.qx-phone .qx-marks-native-q,
+html.qx-compact .qx-marks-native-q,
+html.qx-app .qx-marks-native-q,
+html.qx-phone .allen-q-body,
+html.qx-compact .allen-q-body,
+html.qx-app .allen-q-body {
+  font-size: 17px !important;
+  line-height: 1.55 !important;
+  overflow: visible !important;
+  max-height: none !important;
+  color: inherit !important;
+  -webkit-text-fill-color: inherit !important;
+}
+
+html.qx-phone .eg-opt,
+html.qx-compact .eg-opt,
+html.qx-app .eg-opt,
+html.qx-phone .mtk-opt,
+html.qx-compact .mtk-opt,
+html.qx-app .mtk-opt,
+html.qx-phone .mtk-opt-text,
+html.qx-compact .mtk-opt-text,
+html.qx-app .mtk-opt-text,
+html.qx-phone .qx-prac-opts .qx-opt,
+html.qx-compact .qx-prac-opts .qx-opt,
+html.qx-app .qx-prac-opts .qx-opt,
+html.qx-phone .qx-prac-opt-text,
+html.qx-compact .qx-prac-opt-text,
+html.qx-app .qx-prac-opt-text {
+  font-size: 16px !important;
+  line-height: 1.5 !important;
+  padding: 12px 14px !important;
+  min-height: 48px !important;
+}
+
+/* Solutions — same readable body as stems */
+html.qx-phone #egSol,
+html.qx-compact #egSol,
+html.qx-app #egSol,
+html.qx-phone .eg-sol,
+html.qx-compact .eg-sol,
+html.qx-app .eg-sol,
+html.qx-phone .sol-body,
+html.qx-compact .sol-body,
+html.qx-app .sol-body,
+html.qx-phone .qx-sol-flow,
+html.qx-compact .qx-sol-flow,
+html.qx-app .qx-sol-flow,
+html.qx-phone .qx-sol-body,
+html.qx-compact .qx-sol-body,
+html.qx-app .qx-sol-body,
+html.qx-phone .qx-sol-card,
+html.qx-compact .qx-sol-card,
+html.qx-app .qx-sol-card,
+html.qx-phone #qaSolReveal,
+html.qx-compact #qaSolReveal,
+html.qx-app #qaSolReveal,
+html.qx-phone .mk-sol-body,
+html.qx-compact .mk-sol-body,
+html.qx-app .mk-sol-body,
+html.qx-phone .qx-hw-ink,
+html.qx-compact .qx-hw-ink,
+html.qx-app .qx-hw-ink {
+  font-size: 16.5px !important;
+  line-height: 1.55 !important;
+  overflow: visible !important;
+  max-height: none !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  display: block !important;
+}
+
+/* KaTeX scales with host text — unbroken, not clipped */
+html.qx-phone .eg-q-stem .katex,
+html.qx-compact .eg-q-stem .katex,
+html.qx-app .eg-q-stem .katex,
+html.qx-phone #egQArea .katex,
+html.qx-compact #egQArea .katex,
+html.qx-app #egQArea .katex,
+html.qx-phone .mtk-q-text .katex,
+html.qx-compact .mtk-q-text .katex,
+html.qx-app .mtk-q-text .katex,
+html.qx-phone .eg-opt .katex,
+html.qx-compact .eg-opt .katex,
+html.qx-app .eg-opt .katex,
+html.qx-phone .mtk-opt-text .katex,
+html.qx-compact .mtk-opt-text .katex,
+html.qx-app .mtk-opt-text .katex,
+html.qx-phone .eg-sol .katex,
+html.qx-compact .eg-sol .katex,
+html.qx-app .eg-sol .katex,
+html.qx-phone #egSol .katex,
+html.qx-compact #egSol .katex,
+html.qx-app #egSol .katex,
+html.qx-phone .sol-body .katex,
+html.qx-compact .sol-body .katex,
+html.qx-app .sol-body .katex,
+html.qx-phone .qx-sol-flow .katex,
+html.qx-compact .qx-sol-flow .katex,
+html.qx-app .qx-sol-flow .katex {
+  font-size: 1.12em !important;
+}
+
+/* ---- Desktop denser but not microscopic ---- */
+@media (min-width: 901px) {
+  html:not(.qx-phone):not(.qx-app) .eg-test-root .eg-q-stem,
+  html:not(.qx-phone):not(.qx-app) .eg-test-root #egQArea,
+  html:not(.qx-phone):not(.qx-app) .mtk-q-text {
+    font-size: 16px !important;
+    line-height: 1.5 !important;
+  }
+  html:not(.qx-phone):not(.qx-app) .eg-opt,
+  html:not(.qx-phone):not(.qx-app) .mtk-opt-text {
+    font-size: 15.5px !important;
+  }
+  html:not(.qx-phone):not(.qx-app) #egSol,
+  html:not(.qx-phone):not(.qx-app) .eg-sol,
+  html:not(.qx-phone):not(.qx-app) .sol-body,
+  html:not(.qx-phone):not(.qx-app) .qx-sol-flow {
+    font-size: 15.5px !important;
+    line-height: 1.5 !important;
+  }
+}
+
+/* ---- List / chapter / premium / report cards — readable ---- */
+html.qx-phone .q-card .q-text,
+html.qx-compact .q-card .q-text,
+html.qx-app .q-card .q-text,
+html.qx-phone .marks-q-row,
+html.qx-compact .marks-q-row,
+html.qx-app .marks-q-row,
+html.qx-phone .qx-bm-q,
+html.qx-compact .qx-bm-q,
+html.qx-app .qx-bm-q,
+html.qx-phone .qc-ex-q,
+html.qx-compact .qc-ex-q,
+html.qx-app .qc-ex-q,
+html.qx-phone .qx-sum-card,
+html.qx-compact .qx-sum-card,
+html.qx-app .qx-sum-card,
+html.qx-phone .qzrr-qp-snip,
+html.qx-compact .qzrr-qp-snip,
+html.qx-app .qzrr-qp-snip {
+  font-size: 15.5px !important;
+  line-height: 1.45 !important;
+}
+
+/* ---- Full detailed solutions: images must show (not collapsed) ---- */
+html body #egSol img,
+html body .eg-sol img,
+html body .sol-body img,
+html body .qx-sol-flow img,
+html body .qx-sol-card img,
+html body #qaSolReveal img,
+html body .mk-sol-body img,
+html body .qx-hw-ink img,
+html body .qx-sol-reveal-box img {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  max-width: 100% !important;
+  width: auto !important;
+  height: auto !important;
+  min-height: 64px !important;
+  object-fit: contain !important;
+  margin: 10px auto !important;
+  background: #fff !important;
+}
+
+/* Solution panels never clipped / never zero-height */
+html body #egSolPanel,
+html body .eg-sol-panel,
+html body #egSol,
+html body .eg-sol,
+html body .sol-body,
+html body .qx-sol-flow,
+html body #qaSolReveal,
+html body .qx-sol-reveal-box {
+  overflow: visible !important;
+  max-height: none !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* When solution open, keep scrollable body (qxmd381 noclip kept) */
+html body .eg-test-root.eg-sol-showing .eg-body,
+html body .eg-test-root.qx-sol-showing .eg-body,
+html body .mtk-test-root.qx-sol-showing .mtk-body {
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+
+/* ---- KaTeX √ / fraction insides must not collapse (blank √ fix) ---- */
+html body .katex .vlist-t {
+  table-layout: auto !important;
+  width: auto !important;
+  max-width: none !important;
+}
+html body .katex .vlist-t .vlist-r,
+html body .katex .vlist-t .vlist {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+html body .katex .msqrt,
+html body .katex .mfrac,
+html body .katex .mord,
+html body .katex .mbin,
+html body .katex .mrel,
+html body .katex .minner {
+  visibility: visible !important;
+  opacity: 1 !important;
+  color: inherit !important;
+  -webkit-text-fill-color: inherit !important;
+}
+/* Do not hide failed math entirely in solutions — show annotation fallback via JS;
+   keep error glyph out of the way but leave host text readable */
+html body #egSol .katex-error,
+html body .eg-sol .katex-error,
+html body .sol-body .katex-error,
+html body .qx-sol-flow .katex-error {
+  display: inline !important;
+  visibility: visible !important;
+  height: auto !important;
+  overflow: visible !important;
+  font-size: 0.95em !important;
+  color: inherit !important;
+  background: transparent !important;
+}
+
+/* Matrices / wide math: side-scroll, never clip (noclip reinforce) */
+html body #egQArea .katex-display,
+html body .eg-q-stem .katex-display,
+html body .eg-sol .katex-display,
+html body #egSol .katex-display,
+html body .sol-body .katex-display {
+  overflow-x: auto !important;
+  overflow-y: visible !important;
+  max-width: 100% !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+html body .katex .mtable {
+  overflow: visible !important;
+}
+
+/* Premium / report-card solution snippets */
+html.qx-phone .qx-report-card .sol-body,
+html.qx-app .qx-report-card .sol-body,
+html.qx-compact .qx-report-card .sol-body,
+html.qx-phone .mk-sol-view,
+html.qx-app .mk-sol-view,
+html.qx-compact .mk-sol-view {
+  font-size: 16px !important;
+  line-height: 1.5 !important;
+}
+
+
+/* ---- qxmd385: continuous unlimited +/- read zoom (multiplies base sizes) ---- */
+html, body, .eg-test-root, .mtk-test-root, .qx-practice-page, .qx-font-host {
+  --qx-read-zoom: var(--qx-read-zoom, 1);
+}
+html.qx-phone .eg-test-root .eg-q-stem,
+html.qx-compact .eg-test-root .eg-q-stem,
+html.qx-app .eg-test-root .eg-q-stem,
+html.qx-phone .eg-test-root #egQArea,
+html.qx-compact .eg-test-root #egQArea,
+html.qx-app .eg-test-root #egQArea,
+html.qx-phone .mtk-q-text,
+html.qx-compact .mtk-q-text,
+html.qx-app .mtk-q-text {
+  font-size: calc(17px * var(--qx-read-zoom, 1)) !important;
+}
+html.qx-phone .eg-opt,
+html.qx-compact .eg-opt,
+html.qx-app .eg-opt,
+html.qx-phone .mtk-opt-text,
+html.qx-compact .mtk-opt-text,
+html.qx-app .mtk-opt-text {
+  font-size: calc(16px * var(--qx-read-zoom, 1)) !important;
+}
+html.qx-phone #egSol,
+html.qx-compact #egSol,
+html.qx-app #egSol,
+html.qx-phone .eg-sol,
+html.qx-compact .eg-sol,
+html.qx-app .eg-sol,
+html.qx-phone .sol-body,
+html.qx-compact .sol-body,
+html.qx-app .sol-body,
+html.qx-phone .qx-sol-flow,
+html.qx-compact .qx-sol-flow,
+html.qx-app .qx-sol-flow,
+html.qx-phone .qx-hw-ink,
+html.qx-compact .qx-hw-ink,
+html.qx-app .qx-hw-ink {
+  font-size: calc(16.5px * var(--qx-read-zoom, 1)) !important;
+}
+/* Override novelty serif from qx-font-scale — standard Quantrex/system stack */
+html body .eg-q-stem,
+html body #egQArea,
+html body .mtk-q-text,
+html body .eg-opt,
+html body .mtk-opt-text,
+html body #egSol,
+html body .eg-sol,
+html body .sol-body,
+html body .qx-sol-flow,
+html body .qx-hw-ink,
+html body .qx-hw-sol {
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+}
+
+/* Detailed solution paper — paragraph readable, never collapsed stub */
+html body .qx-hw-sol,
+html body .qx-hw-paper,
+html body .qx-hw-ink,
+html body .qx-sol-body-wrap,
+html body .qx-sol-step-body {
+  overflow: visible !important;
+  max-height: none !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  height: auto !important;
+}
+html body .qx-hw-sol-title { font-size: calc(13px * var(--qx-read-zoom, 1)) !important; font-weight: 800 !important; letter-spacing: .04em; text-transform: uppercase; }
+html body .qx-hw-sol-sub { font-size: calc(12px * var(--qx-read-zoom, 1)) !important; opacity: .75; }
+/* Never hide full steps behind easy-collapse */
+html body .qx-easy-more { display: none !important; }
+html body .qx-easy-sol .qx-easy-head,
+html body .qx-easy-sol .qx-easy-idea,
+html body .qx-easy-sol .qx-easy-steps { display: none !important; }
+
+/* Quantrex-only branding — hide other-coaching marks in Q/sol surfaces */
+html body .eg-q-stem [data-brand],
+html body .eg-sol [data-brand],
+html body #egSol [data-brand],
+html body .sol-body [data-brand],
+html body .qx-sol-flow [data-brand],
+html body .eg-q-stem .marks-brand,
+html body .eg-sol .marks-brand,
+html body .eg-q-stem .getmarks-brand,
+html body .eg-sol .getmarks-brand,
+html body img[alt*="Get Marks" i],
+html body img[alt*="Unacademy" i],
+html body img[alt*="Vedantu" i],
+html body img[alt*="Aakash" i],
+html body img[alt*="FIITJEE" i],
+html body img[src*="getmarks-brand"],
+html body img[src*="marks_selected"],
+html body img[src*="marks-premium"],
+html body img[src*="ic_marks"],
+html body img[src*="web_assets"][src*="logo"] {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  width: 0 !important;
+  overflow: hidden !important;
+}
+/* Question-pool figures MUST stay visible (not branding) */
+html body #egSol img.qx-pool-fig,
+html body .eg-sol img.qx-pool-fig,
+html body .sol-body img.qx-pool-fig,
+html body .qx-hw-ink img,
+html body .qx-sol-flow img,
+html body #egQArea img:not([src*="getmarks-brand"]):not([src*="marks_selected"]):not([src*="marks-premium"]),
+html body .eg-q-stem img:not([src*="getmarks-brand"]):not([src*="marks_selected"]):not([src*="marks-premium"]) {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  max-width: 100% !important;
+  height: auto !important;
+  min-height: 48px !important;
+}

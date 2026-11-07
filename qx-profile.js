@@ -392,6 +392,7 @@
         (contact ? "<span>" + esc(contact) + "</span>" : "") +
         "<span>" + esc(serial) + "</span>" +
         '<a href="#" data-qx-go="profile">Open Academy ID</a>' +
+        '<a href="/delete-account.html" class="qx-del-acc-link">Request account deletion</a>' +
         '<button type="button" id="qxUserLogout">Sign out</button>' +
         "</div>";
       const lo = document.getElementById("qxUserLogout");

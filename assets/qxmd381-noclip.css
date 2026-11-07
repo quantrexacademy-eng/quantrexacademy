@@ -1,0 +1,118 @@
+/* qxmd381 — full question visible (app + mobile web, portrait + landscape), solution view scroll. Loaded LAST. */
+@media (max-width: 1024px), (pointer: coarse), (orientation: landscape) and (max-height: 600px) {
+  html body #app-main .eg-test-root #egQArea,
+  html body #app-main .eg-test-root .eg-q-stem,
+  html body #app-main .eg-test-root .eg-q-card,
+  html body #app-main .eg-test-root #qxOpts,
+  html body #app-main .eg-test-root .eg-opts,
+  html body #app-main .qzrr-cbt #qzrrQArea,
+  html body #app-main .qzrr-cbt .qzrr-q-area,
+  html body .mtk-test-root .mtk-main .mtk-q-text,
+  html body .mtk-test-root .mtk-main .qx-question-body,
+  html body .allen-practice .allen-q-body,
+  html body .qx-prac-q, html body .mq-stem, html body .qx-marks-native-q {
+    max-height: none !important;
+    height: auto !important;
+    overflow: visible !important;
+    -webkit-line-clamp: unset !important;
+    line-clamp: unset !important;
+    text-overflow: clip !important;
+    white-space: normal !important;
+    word-break: normal !important;
+    overflow-wrap: anywhere !important;
+  }
+  /* the scroll owner: question pane scrolls, footers never cover last line */
+  html body #app-main .eg-test-root .eg-main,
+  html body #app-main .qzrr-cbt .qzrr-main,
+  html body .mtk-test-root .mtk-main {
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+    min-height: 0 !important;
+    padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+  /* stem figures: never cropped, fit width */
+  html body #app-main .eg-q-stem img:not(.qx-exam-logo),
+  html body #app-main #egQArea img:not(.qx-exam-logo),
+  html body .mtk-test-root .mtk-main .mtk-q-text img:not(.qx-exam-logo):not(.qx-opt-fig-img),
+  html body .mtk-test-root .mtk-main .qx-question-body img:not(.qx-exam-logo):not(.qx-opt-fig-img),
+  html body .qzrr-q-area img {
+    max-width: 100% !important;
+    max-height: none !important;
+    height: auto !important;
+    object-fit: contain !important;
+  }
+  /* option figures: contained, readable */
+  html body #qxOpts img, html body .mtk-opt img, html body .eg-opt img, html body img.qx-opt-fig-img {
+    max-width: 100% !important;
+    max-height: min(60vh, 320px) !important;
+    height: auto !important;
+    object-fit: contain !important;
+  }
+  /* wide maths / tables / matrices scroll sideways instead of being cut */
+  html body #app-main .katex-display,
+  html body #app-main .qx-content table,
+  html body #app-main #egQArea table,
+  html body #app-main .mk-sol-view table,
+  html body .mtk-q-text table {
+    display: block !important;
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch;
+  }
+  html body #app-main .katex { white-space: nowrap; max-width: 100%; }
+}
+/* landscape phones: thin header/footer, more room for the question */
+@media (orientation: landscape) and (max-height: 600px) {
+  html body #app-main .eg-test-root .eg-main,
+  html body .mtk-test-root .mtk-main {
+    padding-bottom: calc(64px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+  html body .eg-test-root .eg-foot, html body .qx-prac-foot, html body #egFoot {
+    min-height: 0 !important; padding-top: 4px !important; padding-bottom: calc(4px + env(safe-area-inset-bottom,0px)) !important;
+  }
+}
+/* app shell (WebView ~980px) treated like phone */
+html[data-qx-shell="app"] body #app-main .eg-test-root #egQArea,
+html[data-qx-shell="app"] body #app-main .eg-test-root .eg-q-stem,
+html[data-qx-shell="app"] body .mtk-test-root .mtk-main .mtk-q-text {
+  max-height: none !important; overflow: visible !important; height: auto !important;
+}
+
+/* ===== Solution view after Submit (t205u) ===== */
+html body .mk-sol-view.on, html body #mkSolView.on {
+  height: 100vh !important; height: 100dvh !important;
+  max-height: 100dvh !important; min-height: 0 !important;
+}
+html body #mkSolView.on .mk-sol-top,
+html body #mkSolView.on .mk-sol-filters { flex: none !important; }
+html body #mkSolView.on .mk-sol-filters { overflow-x: auto !important; flex-wrap: nowrap !important; white-space: nowrap; }
+html body #mkSolView.on .mk-sol-body {
+  flex: 1 1 auto !important; min-height: 0 !important; overflow: hidden !important; display: flex !important;
+}
+html body #mkSolView.on .mk-sol-main {
+  flex: 1 1 auto !important; min-height: 0 !important; min-width: 0 !important;
+  overflow-y: auto !important; -webkit-overflow-scrolling: touch;
+  padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px)) !important;
+}
+html body #mkSolView.on .mk-sol-footer {
+  position: sticky !important; bottom: 0 !important; z-index: 3 !important;
+  padding-bottom: calc(8px + env(safe-area-inset-bottom, 0px)) !important;
+}
+html body #mkSolView.on .qx-sol-card, html body #mkSolView.on .qx-sol-flow,
+html body #mkSolView.on .mtk-q-text, html body #mkSolView.on .qx-content {
+  max-height: none !important; overflow: visible !important; height: auto !important;
+}
+html body #mkSolView.on img { max-width: 100% !important; height: auto !important; max-height: none !important; object-fit: contain !important; }
+@media (max-width: 900px), (orientation: landscape) and (max-height: 600px) {
+  html body #mkSolView.on .mk-sol-body { flex-direction: column !important; }
+  html body #mkSolView.on .mk-sol-rail {
+    order: -1; flex: none !important; max-height: 64px !important; width: 100% !important;
+    overflow-x: auto !important; overflow-y: hidden !important; white-space: nowrap;
+  }
+}
+/* Report card itself scrolls on phones (after Submit) */
+html body.marks-results-active #app-main, html body.marks-results-active #qzAnPage {
+  overflow-y: auto !important; -webkit-overflow-scrolling: touch; max-height: none !important;
+}
+html body.marks-results-active .qx-rc-brand-acts { flex-wrap: wrap !important; }

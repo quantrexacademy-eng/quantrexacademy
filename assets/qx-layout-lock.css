@@ -94,8 +94,8 @@ html body #app-main#app-main .eg-test-root .eg-opt .katex, html body #app-main#a
 html body #egSolPanel#egSolPanel .katex, html body #qaSolReveal#qaSolReveal .katex, html body #app-main#app-main .qx-sol-card .katex { font-size: 1.08em !important; }
 @media (max-width: 600px) {
   html body #app-main#app-main .eg-test-root .eg-q-stem, html body #app-main#app-main .mtk-test-root .mtk-q-text,
-  html body #app-main#app-main .eg-test-root .eg-opt, html body #app-main#app-main .mtk-test-root .mtk-opt { font-size: 17px !important; }
-  html body #egSolPanel#egSolPanel .qx-sol-flow, html body #qaSolReveal#qaSolReveal .qx-sol-flow, html body #app-main#app-main .qx-sol-card .qx-sol-flow { font-size: 16.5px !important; }
+  html body #app-main#app-main .eg-test-root .eg-opt, html body #app-main#app-main .mtk-test-root .mtk-opt { font-size: 18px !important; }
+  html body #egSolPanel#egSolPanel .qx-sol-flow, html body #qaSolReveal#qaSolReveal .qx-sol-flow, html body #app-main#app-main .qx-sol-card .qx-sol-flow { font-size: 17.5px !important; }
 }
 
 /* 5) Solution: full text visible. Paragraphs were overflow-x:auto -> also vertical scrollers that clipped tall math
@@ -234,4 +234,32 @@ html body .eg-test-root mjx-container, html body .mtk-test-root mjx-container { 
 html body .eg-test-root > #egFoot, html body .eg-test-root #egFoot, html body .mtk-test-root .qx-prac-foot {
   left: 0 !important; right: 0 !important; max-width: 100% !important; transform: none !important; translate: none !important; box-sizing: border-box !important;
   padding-left: max(12px, env(safe-area-inset-left, 0px)) !important; padding-right: max(12px, env(safe-area-inset-right, 0px)) !important;
+}
+
+/* qxmd327: report card must scroll. Do not inherit CBT overflow:hidden + overflow:visible trap. */
+html body.qzrr-analysis-active #app-main#app-main,
+html body.marks-results-active #app-main#app-main,
+html body.qx-q-fullscreen #app-main#app-main:has(#qzAnPage),
+html body.qx-cbt-session #app-main#app-main:has(#qzAnPage) {
+  overflow-x: hidden !important;
+  overflow-y: scroll !important;
+  height: 100dvh !important;
+  max-height: 100dvh !important;
+  min-height: 0 !important;
+  position: fixed !important;
+  inset: 0 !important;
+}
+html body.qzrr-analysis-active #egFoot,
+html body.marks-results-active #egFoot,
+html body #app-main:has(#qzAnPage) #egFoot {
+  display: none !important;
+}
+
+/* qxmd372 update banner: no login overlap */
+.qx-update-banner, #qxUpdateBanner, .qx-app-update, [data-qx-update-banner] {
+  position: relative !important; z-index: 40 !important; top: auto !important;
+  margin: 0 0 12px !important; max-width: 100% !important;
+}
+.login-page .qx-update-banner, .auth-wrap .qx-update-banner, #loginView .qx-update-banner, .qx-login .qx-update-banner {
+  position: static !important; margin-bottom: 16px !important;
 }

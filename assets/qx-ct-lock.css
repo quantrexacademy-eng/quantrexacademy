@@ -63,6 +63,14 @@ html body .ct-wiz-set-chip {
   visibility: visible !important;
   opacity: 1 !important;
 }
+html body .ct-wiz-set-chip.on,
+html[data-theme="light"] body .ct-wiz-set-chip.on,
+html[data-theme="dark"] body .ct-wiz-set-chip.on {
+  background: #2563eb !important;
+  border-color: #1d4ed8 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
 html body .ct-wiz-back-btn,
 html body .ct-wiz-next-btn {
   min-height: 44px !important;

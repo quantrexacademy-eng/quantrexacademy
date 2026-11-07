@@ -1,0 +1,6 @@
+{
+  "name": "qx-test-tools",
+  "private": true,
+  "description": "Dev-only test deps for scripts/qxmd392-*.test.js (not shipped, not a project dependency). Install: npm ci --prefix scripts/test-tools",
+  "dependencies": { "css-tree": "2.3.1", "jsdom": "24.1.3" }
+}

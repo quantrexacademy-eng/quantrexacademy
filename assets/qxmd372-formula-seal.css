@@ -1,0 +1,88 @@
+/* qxmd372 Formula/Revision — Quantrex-only seal (CSS hide foreign watermarks; no Archives) */
+.qx-fc-reader img, .qx-rfc-img, img.fc-img, #qxFcReaderImg, .formula-sheet img, .revision-card img {
+  /* keep figures fully visible */
+  max-width: 100% !important; height: auto !important;
+}
+/* Soft-hide corner watermarks that are not Quantrex (common bottom-right seals) */
+.qx-fc-reader .wm-foreign,
+.qx-rfc-wrap [class*="watermark"]:not([class*="quantrex"]),
+.formula-sheet .alien-wm {
+  opacity: 0 !important; pointer-events: none !important;
+}
+
+/* ===== qxmd375 Quantrex navy/gold Formula + Notes polish ===== */
+.qx-fc-reader {
+  background: radial-gradient(1200px 700px at 18% -10%, #1e3a5f 0%, #071428 48%, #040b16 100%) !important;
+}
+.qx-fc-reader-bar {
+  background: linear-gradient(90deg, rgba(7,20,40,.95), rgba(11,31,58,.92)) !important;
+  border-bottom: 1px solid rgba(212,175,55,.42) !important;
+  color: #f5e6b8 !important;
+}
+.qx-fc-reader-bar button {
+  border: 1px solid rgba(212,175,55,.55) !important;
+  background: linear-gradient(180deg, #1a3358, #0d213d) !important;
+  color: #f0d78c !important;
+  box-shadow: 0 4px 14px rgba(0,0,0,.25);
+}
+.qx-fc-reader-bar button:hover {
+  background: linear-gradient(135deg, #d4af37, #f0d78c) !important;
+  color: #071428 !important;
+}
+.qx-fc-nav-btn {
+  background: linear-gradient(135deg, #0b1f3a, #1e3a5f) !important;
+  border: 1px solid rgba(212,175,55,.4) !important;
+  color: #f5e6b8 !important;
+}
+.qx-fc-nav-next {
+  background: linear-gradient(90deg, #b8962e, #d4af37 45%, #f0d78c) !important;
+  color: #071428 !important;
+  border: 0 !important;
+}
+.qx-fc-reader-page {
+  border: 1px solid rgba(212,175,55,.28) !important;
+  box-shadow: 0 24px 70px rgba(0,0,0,.45), 0 0 0 1px rgba(212,175,55,.12) !important;
+}
+.qx-fc-folder:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 22px 48px rgba(212,175,55,.22) !important;
+}
+.qx-rfc-reader {
+  background: radial-gradient(1000px 600px at 15% 0%, #1e3a5f, #071428 55%) !important;
+}
+.qx-rfc-reader-bar {
+  background: linear-gradient(90deg, #071428, #0b1f3a) !important;
+  border-bottom: 1px solid rgba(212,175,55,.4) !important;
+  color: #f5e6b8 !important;
+}
+.qx-rfc-reader-bar > button {
+  border: 1px solid rgba(212,175,55,.5) !important;
+  background: #0d213d !important;
+  color: #f0d78c !important;
+  border-radius: 8px !important;
+  font-weight: 800 !important;
+}
+.qx-rfc-reader-bar > button:hover {
+  background: linear-gradient(135deg, #d4af37, #f0d78c) !important;
+  color: #071428 !important;
+}
+.qx-rfc-new {
+  background: linear-gradient(135deg, #d4af37, #f0d78c) !important;
+  color: #071428 !important;
+  font-weight: 900 !important;
+  border-radius: 999px !important;
+  padding: 3px 10px !important;
+}
+.qx-rfc-ch-rich {
+  border: 1px solid rgba(212,175,55,.28) !important;
+  box-shadow: 0 10px 28px rgba(7,20,40,.12) !important;
+  transition: transform .18s ease, box-shadow .18s ease !important;
+}
+.qx-rfc-ch-rich:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 16px 36px rgba(212,175,55,.18) !important;
+  border-color: rgba(212,175,55,.55) !important;
+}
+.qx-module-card {
+  border: 1px solid rgba(212,175,55,.22) !important;
+}

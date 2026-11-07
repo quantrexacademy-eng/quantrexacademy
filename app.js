@@ -1,3 +1,56 @@
+
+/* qxmd372 dash polish + chapter katex — qxmd383: no MO↔KaTeX storm; qxmd384: observe #app-main (faster taps/nav) */
+(function(){
+  if (window.__qxmd372Dash) return; window.__qxmd372Dash = true;
+  var _t = 0, _busy = false, _mo = null;
+  function inPractice() {
+    try {
+      var m = document.getElementById("app-main");
+      if (!m) return false;
+      if (m.querySelector(".eg-test-root, .mtk-test-root, .qx-practice-page, .allen-practice, #egFoot, #egQBar")) return true;
+      var v = (typeof currentView !== "undefined") ? currentView : "";
+      return v === "question" || v === "test" || v === "mock" || v === "custom";
+    } catch (_) { return false; }
+  }
+  function paint(){
+    if (_busy || inPractice()) return;
+    _busy = true;
+    try {
+      try { if (_mo) _mo.disconnect(); } catch (_) {}
+      if (window.qxTypesetChapterCards) qxTypesetChapterCards(document.getElementById("app-main"));
+    } catch(_){}
+    finally {
+      _busy = false;
+      try { if (_mo) { var __r=document.getElementById('app-main')||document.body; if(__r) _mo.observe(__r,{childList:true,subtree:true}); } } catch (_) {}
+    }
+  }
+  function schedule(){
+    if (_busy || inPractice()) return;
+    clearTimeout(_t);
+    _t = setTimeout(paint, 220);
+  }
+  document.addEventListener("DOMContentLoaded", function(){ setTimeout(paint, 50); setTimeout(paint, 400); });
+  function qxObsRoot(){ return document.getElementById("app-main") || document.body; }
+  function qxReobserve(){
+    try {
+      if (!_mo) return;
+      var r = qxObsRoot();
+      if (!r) return;
+      _mo.disconnect();
+      _mo.observe(r, { childList:true, subtree:true });
+    } catch(_){}
+  }
+  try {
+    _mo = new MutationObserver(schedule);
+    if (document.body) qxReobserve();
+    else document.addEventListener("DOMContentLoaded", function(){ try { qxReobserve(); } catch(_){} });
+    /* qxmd384: when app-main mounts later, stop watching whole body */
+    document.addEventListener("DOMContentLoaded", function(){
+      setTimeout(qxReobserve, 0);
+      setTimeout(qxReobserve, 500);
+    });
+  } catch(_){}
+})();
 // ============================================================
 //  Quantrex App Clone — Application Logic (SPA)
 // ============================================================
@@ -171,22 +224,13 @@ function qxBuildHash(view, payload) {
     if (payload.module) parts.push(String(payload.module));
     return "#" + parts.map(x => encodeURIComponent(x)).join("/");
   }
-  if (v === "flashcards" && payload && typeof payload === "object") {
+  if (payload && typeof payload === "object") {
     try {
-      return "#flashcards/" + encodeURIComponent(JSON.stringify(payload));
-    } catch (_) {
-      return "#flashcards";
-    }
+      return "#" + encodeURIComponent(v) + "/" + encodeURIComponent(JSON.stringify(payload));
+    } catch (_) { /* fall through */ }
   }
-  if (v === "books" && payload != null && payload !== "") {
-    if (typeof payload === "object") {
-      try {
-        return "#books/" + encodeURIComponent(JSON.stringify(payload));
-      } catch (_) {
-        return "#books";
-      }
-    }
-    return "#books/" + encodeURIComponent(String(payload));
+  if (payload != null && payload !== "" && typeof payload !== "object") {
+    return "#" + encodeURIComponent(v) + "/" + encodeURIComponent(String(payload));
   }
   return "#" + encodeURIComponent(v);
 }
@@ -336,13 +380,13 @@ function qxParseRouteFromLocation() {
     if (parts[4]) pl.module = parts[4];
     return { view: "pyqmock", payload: pl };
   }
-  if (head === "flashcards") {
+  if (head === "flashcards" || head === "qxsheets") {
     let fp = { step: "subjects" };
     if (parts[1]) {
       try { fp = JSON.parse(parts[1]); } catch (_) { fp = { step: "subjects" }; }
     }
     if (!fp || typeof fp !== "object") fp = { step: "subjects" };
-    return { view: "flashcards", payload: fp };
+    return { view: head, payload: fp };
   }
   if (head === "books") {
     let bp = parts[1] || null;
@@ -358,9 +402,21 @@ function qxParseRouteFromLocation() {
     "dashboard", "allqs", "ncert", "board", "cpyqb", "books", "tests", "custom",
     "testseries", "pyqmock", "analytics", "search", "quickconcepts", "premium",
     "assignments", "teacher", "question", "test", "bookmarks", "wrong", "profile", "settings",
-    "flashcards", "formula", "dpp", "revision"
+    "flashcards", "formula", "dpp", "revision", "qxsheets", "archive", "notebook", "rfc"
   ]);
-  if (known.has(head)) return { view: head, payload: parts[1] || null };
+  if (known.has(head)) {
+    let payload = parts[1] || null;
+    if (payload && (payload.charAt(0) === "{" || payload.charAt(0) === "[")) {
+      try { payload = JSON.parse(payload); } catch (_) { /* keep string */ }
+    }
+    if (payload == null) {
+      try {
+        const s = JSON.parse(sessionStorage.getItem("qx_route_v1") || "null");
+        if (s && s.view === head && s.payload != null) payload = s.payload;
+      } catch (_) { /* */ }
+    }
+    return { view: head, payload: payload };
+  }
   return { view: "dashboard", payload: null };
 }
 
@@ -401,15 +457,23 @@ function go(view, payload) {
   document.querySelectorAll(".nav-item").forEach(n => n.classList.remove("active"));
   const navEl = document.querySelector(`.nav-item[data-view="${view}"]`);
   if (navEl) navEl.classList.add("active");
-  qxPushHistory(view, payload);
+  // Android TWA fires hashchange on pushState; ignore it so #qxsheets/{json} is not
+  // treated as an unknown view ("Page not found").
+  const keepIgnore = !!_qxHistoryIgnore;
+  _qxHistoryIgnore = true;
+  try { qxPushHistory(view, payload); } catch (_) { /* */ }
   render(view, payload);
+  if (!keepIgnore) {
+    setTimeout(function () { _qxHistoryIgnore = false; }, 80);
+  }
 }
 
 window.addEventListener("popstate", (ev) => {
   const st = ev.state;
   if (currentView === "test" && document.body.classList.contains("marks-test-active")) {
-    // Stay in test — push state back
+    // Keep the test URL, then open Save & Exit (Back must work)
     try { history.pushState({ view: "test" }, "", "#test"); } catch (_) { /* */ }
+    try { if (typeof window.qxExitTest === "function") window.qxExitTest(); } catch (_) { /* */ }
     return;
   }
   if (currentView === "question" && window._qxPracticeCtx) {
@@ -422,8 +486,17 @@ window.addEventListener("popstate", (ev) => {
     }
     return;
   }
-  const view = (st && st.view) || ((location.hash || "").replace(/^#/, "") || "dashboard");
-  const payload = st && st.payload;
+  let view = st && st.view;
+  let payload = st && st.payload;
+  if (!view || String(view).indexOf("/") !== -1 || String(view).indexOf("%") !== -1 || String(view).length > 40) {
+    try {
+      const route = qxParseRouteFromLocation();
+      view = (route && route.view) || "dashboard";
+      if (payload == null) payload = route && route.payload;
+    } catch (_) {
+      view = "dashboard";
+    }
+  }
   _qxHistoryIgnore = true;
   try {
     currentView = view;
@@ -455,6 +528,7 @@ function finishRender(html) {
   if (typeof bindMarksGo === "function") bindMarksGo(main);
   if (typeof bindCpyqbFilters === "function") bindCpyqbFilters(main);
   if (typeof bindMarksInfiniteScroll === "function") bindMarksInfiniteScroll(main);
+  if (typeof qxRestoreListReturn === "function") { try { qxRestoreListReturn(main); } catch (_) { /* */ } }
   if (typeof bindBooksOpen === "function") bindBooksOpen(main);
   if (typeof bindQcExamples === "function") bindQcExamples(main);
   if (typeof bindDashHome === "function") bindDashHome(main);
@@ -490,20 +564,18 @@ function finishRender(html) {
   }
   const contentEl = document.querySelector(".content");
   if (contentEl) contentEl.classList.toggle("marks-wide", !!main.querySelector(".marks-split-layout"));
-  // Skip heavy MathJax on big question lists — typeset first few only
+  // qxmd376: typeset ALL visible list cards (broken raw LaTeX on phone was from skip+strip)
   if (typeof Mx !== "undefined") {
     const list = main.querySelector("#marksQList, .q-list");
-    const listCount = list ? list.querySelectorAll(".q-card, .q-text").length : 0;
-    if (listCount > 12) {
+    const listCount = list ? list.querySelectorAll(".q-card .q-text, .q-text").length : 0;
+    if (listCount > 0) {
       setTimeout(() => {
         try {
           const cards = main.querySelectorAll(".q-card .q-text, .q-text.qx-content");
-          const slice = Array.prototype.slice.call(cards, 0, 6);
-          slice.forEach(el => { try { Mx.afterRender(el); } catch (_) { /* */ } });
+          Array.prototype.forEach.call(cards, el => { try { Mx.afterRender(el); } catch (_) { /* */ } });
         } catch (_) { /* */ }
-      }, 80);
-    } else if (listCount > 0 || main.querySelector(".mtk-q-text, .qx-content, .qa-wrap")) {
-      // Yield before full typeset so UI remains interactive
+      }, 50);
+    } else if (main.querySelector(".mtk-q-text, .qx-content, .qa-wrap")) {
       setTimeout(() => {
         try { Mx.afterRender(main); } catch (_) { /* */ }
       }, 16);
@@ -512,9 +584,18 @@ function finishRender(html) {
 }
 
 function render(view, payload) {
+  if (typeof view === "string" && (view.indexOf("/") !== -1 || view.indexOf("%") !== -1 || view.length > 40)) {
+    try {
+      const route = qxParseRouteFromLocation();
+      if (route && route.view) {
+        view = route.view;
+        if (payload == null) payload = route.payload;
+      }
+    } catch (_) { /* */ }
+  }
   if (qxIsSharedCustomTake(view, payload) && typeof viewCustomTests !== "function") {
     finishRender(typeof qxLoadLogoHtml === "function" ? qxLoadLogoHtml("Opening shared test…") : '<div class="empty">Opening shared test…</div>');
-    const src = "custom-test.js?v=qxmd255";
+    const src = "custom-test.js?v=" + (window.QX_BUILD || "qxmd357");
     const done = function () {
       if (typeof viewCustomTests === "function") render(view, payload);
       else finishRender('<div class="empty">Could not open this shared test. <button class="btn-primary sm" onclick="location.reload()">Retry</button></div>');
@@ -533,10 +614,22 @@ function render(view, payload) {
     allqs: viewAllQs,
     ncert: viewNcert,
     dpp: viewDppMarks,
-    formula: typeof viewFormulaMarks === "function" ? viewFormulaMarks : null,
-    flashcards: typeof viewRfcMarks === "function" ? viewRfcMarks : null,
-    revision: typeof viewRevisionMarks === "function" ? viewRevisionMarks : null,
+    formula: typeof viewFormulaMarks === "function" ? viewFormulaMarks : function () {
+      return '<div class="empty">Formula sheets loading… <button type="button" class="btn-primary sm" onclick="location.reload()">Retry</button></div>';
+    },
+    qxsheets: typeof viewQxSheets === "function" ? viewQxSheets : function () {
+      return '<div class="empty">Notes loading… <button type="button" class="btn-primary sm" onclick="location.reload()">Retry</button></div>';
+    },
+    flashcards: typeof viewRfcMarks === "function" ? viewRfcMarks : function () {
+      return '<div class="empty">Flash cards loading… <button type="button" class="btn-primary sm" onclick="location.reload()">Retry</button></div>';
+    },
+    revision: typeof viewRevisionMarks === "function" ? viewRevisionMarks : function () {
+      return '<div class="empty">Revision notes loading… <button type="button" class="btn-primary sm" onclick="location.reload()">Retry</button></div>';
+    },
     books: viewBooks,
+    archive: typeof viewArchive === "function" ? viewArchive : function () {
+      return '<div class="empty">Quantrex Archive loading… <button type="button" class="btn-primary sm" onclick="location.reload()">Retry</button></div>';
+    },
     custom: typeof viewCustomTests === "function" ? viewCustomTests : null,
     pyqmock: typeof viewPyqMock === "function" ? viewPyqMock : null,
     testseries: typeof viewTestSeries === "function" ? viewTestSeries : null,
@@ -627,7 +720,10 @@ function render(view, payload) {
     settings: (typeof viewSettings === 'function' ? viewSettings : (typeof QxSettings !== 'undefined' ? QxSettings.view : function () { return '<div class="empty">Settings loading…</div>'; })),
     analytics: () => typeof QuantrexAnalytics !== "undefined" ? QuantrexAnalytics.viewAnalytics() : '<div class="empty">Analytics loading…</div>',
     search: () => typeof QuantrexSearch !== "undefined" ? QuantrexSearch.viewSearch() : '<div class="empty">Search unavailable</div>',
-    premium: viewPremium
+    premium: viewPremium,
+    studentdash: typeof viewStudentDash === "function" ? viewStudentDash : function () {
+      return '<div class="empty">Dashboard loading… <button type="button" class="btn-primary sm" onclick="location.reload()">Retry</button></div>';
+    }
   };
   if (view === "leaderboard" && typeof QuantrexLeaderboard !== "undefined") {
     finishRender(qxLoadLogoHtml("Loading leaderboard…"));
@@ -636,7 +732,18 @@ function render(view, payload) {
     )).catch(() => finishRender(topbar("Leaderboard", "") + '<div class="empty">Leaderboard unavailable. Login required.</div>'));
     return;
   }
-  finishRender(map[view] ? map[view](payload) : `<div class="empty">Page not found.</div>`);
+  if (map[view]) {
+    finishRender(map[view](payload));
+    return;
+  }
+  try {
+    const route = qxParseRouteFromLocation();
+    if (route && route.view && route.view !== view && (asyncMap[route.view] || map[route.view])) {
+      render(route.view, route.payload);
+      return;
+    }
+  } catch (_) { /* */ }
+  finishRender(`<div class="empty">This page could not open. <button type="button" class="btn-primary sm" onclick="go('dashboard')">Home</button></div>`);
 }
 
 async function viewPremium() {
@@ -728,15 +835,7 @@ async function viewDashboard() {
 
   const guestBanner = typeof QuantrexGuestTrial !== "undefined" ? QuantrexGuestTrial.bannerHtml() : "";
 
-  const homeExamRow = `<div class="qx-home-exams" id="qxHomeExams" role="tablist" aria-label="Exam tracks">
-      <button type="button" class="qx-top-exam qx-home-exam" data-exam="Engineering" data-short="Eng" title="JEE Main & Advanced" aria-label="Engineering"><span class="qx-exam-long">Engineering</span><span class="qx-exam-short" aria-hidden="true">Eng</span></button>
-      <button type="button" class="qx-top-exam qx-home-exam" data-exam="Medical" data-short="Med" title="NEET UG" aria-label="Medical"><span class="qx-exam-long">Medical</span><span class="qx-exam-short" aria-hidden="true">Med</span></button>
-      <button type="button" class="qx-top-exam qx-home-exam" data-exam="Defence" data-short="Def" title="Defence (NDA)" aria-label="Defence (NDA)"><span class="qx-exam-long">Defence</span><span class="qx-exam-short" aria-hidden="true">Def</span></button>
-      <button type="button" class="qx-top-exam qx-home-exam" data-exam="Academic" data-short="Acad" title="Class 7–12" aria-label="Academic"><span class="qx-exam-long">Academic</span><span class="qx-exam-short" aria-hidden="true">Acad</span></button>
-    </div>`;
-
   return `<div class="dash-marks-wrap qx-home">
-    ${homeExamRow}
     ${guestBanner}
     <div class="dash-greet-bar qx-hero">
       <div class="dash-greet-left">
@@ -852,6 +951,9 @@ function viewPractice() {
   if (practicePage > totalPages) practicePage = totalPages;
   const pageQs = qs.slice((practicePage - 1) * PRACTICE_PAGE_SIZE, practicePage * PRACTICE_PAGE_SIZE);
   window._qxListQs = pageQs;
+  /* qxmd392: remember the full filtered list (same array reference, no copy) so Prev/Next cross page edges */
+  window._qxListQsFull = qs;
+  window._qxListQsFullFor = pageQs;
   setTimeout(() => qxBackgroundPrefetch(pageQs.map(q => q.id)), 0);
 
   const subjects = ["all", ...EXAMS[STATE.exam].subjects];
@@ -1095,6 +1197,7 @@ function qxStemLooksGutted(s) {
 
 function qxRestoreQuestionContent(q) {
   if (!q) return q;
+  if (q._tallentex || q._bank === "tallentex_2024" || /^tlx10_/i.test(String(q.id || ""))) return q;
   try {
     const master = q._qxBankOptions;
     if (master && master.length) {
@@ -1554,6 +1657,36 @@ function exitAllenPracticeMode() {
   if (typeof qxClearMountInlineStyles === "function") qxClearMountInlineStyles(document.getElementById("app-main"));
 }
 
+/* qxmd392: list used for Prev/Next. Paginated practice page -> its full filtered list; otherwise the visible list. */
+function qxNavList() {
+  const vis = window._qxListQs;
+  if (vis && window._qxListQsFull && window._qxListQsFullFor === vis) return window._qxListQsFull;
+  return vis || window._qxListQsAll || [];
+}
+/* qxmd392c: ids of the question cards actually on screen, in screen order */
+function qxVisibleCardIds() {
+  try {
+    const main = document.getElementById("app-main") || document;
+    return Array.prototype.map.call(main.querySelectorAll(".q-card[data-qid]"), (c) => c.getAttribute("data-qid")).filter(Boolean);
+  } catch (_) { return []; }
+}
+/* qxmd392c: list for a clicked id: remembered list if it holds the id, else the cards on screen
+   (search results etc.), else just that question. Never index 0 of an unrelated list. */
+function qxListForClicked(id) {
+  const list = qxNavList();
+  const ids = list.map((x) => x && x.id).filter((x) => x != null);
+  const find = window.QxStartIndex ? window.QxStartIndex.findClicked : (a, l, c) => a.findIndex((x) => String(x) === String(c));
+  const idx = find(ids, list, id);
+  if (idx >= 0) return { ids, list, idx, from: "list" };
+  const dom = qxVisibleCardIds();
+  const j = dom.findIndex((x) => String(x) === String(id));
+  if (j >= 0) {
+    const dl = dom.map((x) => (typeof getQ === "function" && getQ(x)) || { id: x });
+    return { ids: dl.map((q, k) => (q && q.id != null ? q.id : dom[k])), list: dl, idx: j, from: "screen" };
+  }
+  return { ids: [id], list: [], idx: 0, from: "single" };
+}
+window.qxListForClicked = qxListForClicked;
 function openPracticeQuestion(id) {
   try {
     const ctx = window._qxPracticeCtx || {};
@@ -1572,13 +1705,15 @@ function openPracticeQuestion(id) {
   // Chapter-wise PYQ list → ExamGOAL full-window practice (same chrome as mock)
   try {
     const view = typeof currentView !== "undefined" ? currentView : "";
-    const fromEg = view === "cpyqb" || view === "books" || view === "board"
-      || (typeof _cpyqbPayload !== "undefined" && _cpyqbPayload && _cpyqbPayload.chapter);
-    const list = window._qxListQs || window._qxListQsAll || [];
-    if (fromEg && list.length && typeof cpyqbLaunchList === "function") {
-      const ids = list.map((x) => x && x.id).filter(Boolean);
-      const openId = id;
-      const idx = Math.max(0, ids.findIndex((x) => String(x) === String(openId)));
+    const pick = qxListForClicked(id);
+    if (pick.from === "list") qxCaptureListReturn(id);
+    /* qxmd392c: a stale _cpyqbPayload from an earlier chapter must not hijack a search click */
+    const fromEg = (view === "cpyqb" || view === "books" || view === "board"
+      || (view !== "search" && typeof _cpyqbPayload !== "undefined" && _cpyqbPayload && _cpyqbPayload.chapter))
+      && pick.from === "list";
+    if (fromEg && pick.ids.length && typeof cpyqbLaunchList === "function") {
+      const ids = pick.ids;
+      const idx = pick.idx;
       const keys = typeof cpyqbSessionKeys === "function" ? cpyqbSessionKeys({ returnTo: view }) : {};
       const ch = keys.chapter || (view === "books" ? "Digital Book" : (view === "board" ? "Board PYQ" : "Chapter PYQ"));
       const sub = keys.subject || "";
@@ -1611,9 +1746,10 @@ function openPracticeQuestion(id) {
     if (full) q = full;
   }
   const openId = q && q.id != null ? q.id : id;
-  const list = window._qxListQs || window._qxListQsAll || [];
-  const ids = list.length ? list.map(x => x.id) : [openId];
-  const idx = Math.max(0, ids.findIndex(x => String(x) === String(openId) || String(x) === String(id)));
+  const pick2 = qxListForClicked(openId);
+  const pick = pick2.from === "single" && String(openId) !== String(id) ? qxListForClicked(id) : pick2;
+  const ids = pick.ids.length ? pick.ids : [openId];
+  const idx = pick.from === "single" ? Math.max(0, ids.findIndex(x => String(x) === String(openId))) : pick.idx;
   window._qxPracticeCtx = {
     ids,
     idx: idx >= 0 ? idx : 0,
@@ -1918,6 +2054,66 @@ function qxPracticeBack() {
   if (typeof history !== "undefined" && history.length > 1) history.back();
 }
 window.qxPracticeBack = qxPracticeBack;
+
+/* qxmd392j: list return position. go() zeroes #app-main and resets the page, and on phones the
+   element that really scrolls is often the document, so returning from practice (Save & Exit / Back)
+   landed at the top. Remember the clicked card + its offset inside the ACTUAL scroller, restore once
+   when the same list (same scope) is painted again; a few bounded re-anchors cover async typeset. */
+let _qxListReturn = null;
+function qxScrollerOf(el) {
+  for (let n = el && el.parentElement; n && n !== document.body && n !== document.documentElement; n = n.parentElement) {
+    const cs = getComputedStyle(n);
+    if (/(auto|scroll)/.test(cs.overflowY) && n.scrollHeight > n.clientHeight + 1) return n;
+  }
+  return document.scrollingElement || document.documentElement;
+}
+function qxCardFor(root, qid) {
+  const list = root && root.querySelector ? root.querySelector("#marksQList") : null;
+  if (!list) return null;
+  const want = String(qid);
+  return Array.prototype.find.call(list.querySelectorAll(".q-card[data-qid]"), (c) => c.getAttribute("data-qid") === want) || null;
+}
+function qxTopIn(scroller, el) {
+  const top = (scroller === document.scrollingElement || scroller === document.documentElement) ? 0 : scroller.getBoundingClientRect().top;
+  return el.getBoundingClientRect().top - top;
+}
+function qxCaptureListReturn(qid) {
+  try {
+    const card = qxCardFor(document, qid);
+    if (!card) { _qxListReturn = null; return; }
+    const sc = qxScrollerOf(card);
+    _qxListReturn = { view: currentView, scope: typeof qxListScopeKey === "function" ? qxListScopeKey() : "",
+      qid: String(qid), page: typeof _listPage !== "undefined" ? _listPage : 1, offset: qxTopIn(sc, card), scrollTop: sc.scrollTop };
+  } catch (_) { _qxListReturn = null; }
+}
+function qxListReturnPage() {
+  const r = _qxListReturn;
+  return r && r.view === currentView && typeof qxListScopeKey === "function" && r.scope === qxListScopeKey() ? r.page : 0;
+}
+function qxRestoreListReturn(root) {
+  const r = _qxListReturn;
+  if (!r || r.view !== currentView || !root || !root.querySelector("#marksQList")) return false;
+  _qxListReturn = null;
+  if (typeof qxListScopeKey === "function" && r.scope !== qxListScopeKey()) return false;
+  if (!qxCardFor(root, r.qid)) return false;
+  let stop = false;
+  const quit = () => { stop = true; };
+  const evs = ["wheel", "touchstart", "keydown", "mousedown"];
+  evs.forEach((e) => window.addEventListener(e, quit, { passive: true, once: true }));
+  const anchor = () => {
+    if (stop) return;
+    const card = qxCardFor(root, r.qid);
+    if (!card) return;
+    const sc = qxScrollerOf(card);
+    const d = qxTopIn(sc, card) - r.offset;
+    if (Math.abs(d) > 1) sc.scrollTop += d;
+  };
+  anchor();
+  if (typeof requestAnimationFrame === "function") requestAnimationFrame(anchor);
+  setTimeout(anchor, 120);
+  setTimeout(() => { anchor(); evs.forEach((e) => window.removeEventListener(e, quit)); }, 400);
+  return true;
+}
 
 function qxPracticeNav(delta) {
   const ctx = window._qxPracticeCtx;
@@ -2668,6 +2864,7 @@ async function answerQ(qid, response) {
     }
   } catch (_) { /* */ }
   STATE.markSolved(qid, graded.correct || graded.partial, {
+    result: graded.correct ? "correct" : (graded.partial ? "partial" : "incorrect"),
     subject: q.subject,
     chapter: q.chapter,
     exam: (typeof STATE !== "undefined" && STATE.exam) || q.exam
@@ -2768,6 +2965,10 @@ async function createCustomTest() {
     pool = pool.filter(q =>
       (typeof qxNormDifficulty === "function" ? qxNormDifficulty(q.difficulty) : q.difficulty) === diff
     );
+  }
+    /* qxmd372: exclude empty-sol / boardWritten from custom test */
+  if (typeof qxEligibleForAutoPick === "function") {
+    pool = pool.filter(q => qxEligibleForAutoPick(q));
   }
   if (!pool.length) { showToast("⚠️ No questions match. Try wider filters."); return; }
   // shuffle & take count
@@ -3104,7 +3305,8 @@ function qxBindTopExamBar() {
       e.stopPropagation();
       const key = btn.getAttribute("data-exam");
       if (!key) return;
-      if (typeof switchExam === "function") switchExam(key, { open: "dashboard" });
+      const stay = (typeof currentView !== "undefined" && (currentView === "cpyqb" || currentView === "allqs" || currentView === "pyqmock" || currentView === "tests" || currentView === "testseries" || currentView === "studentdash"));
+      if (typeof switchExam === "function") switchExam(key, { open: stay ? currentView : "dashboard" });
     };
   });
   const bar = document.getElementById("qxTopExams");
@@ -3137,9 +3339,8 @@ function switchExam(key, opts) {
   practicePage = 1;
   try {
     if (key === "Academic") {
-      // Product: Class folders → 11/12 use JEE (filterClass); 7–10 Coming Soon
-      localStorage.setItem("quantrex_bank", "class_11");
-      if (typeof _currentBankSlug !== "undefined") _currentBankSlug = "class_11";
+      localStorage.setItem("quantrex_bank", "class_9");
+      if (typeof _currentBankSlug !== "undefined") _currentBankSlug = "class_9";
     } else if (key === "Defence") {
       localStorage.setItem("quantrex_bank", "nda");
       if (typeof _currentBankSlug !== "undefined") _currentBankSlug = "nda";
@@ -3158,13 +3359,14 @@ function switchExam(key, opts) {
     if (sb) sb.classList.remove("open");
   } catch (_) { /* */ }
   showToast(`✅ ${EXAMS[key].name}`);
-  // Top bar / sidebar: open that track's home desk.
   const dest = opts.open || "dashboard";
-  if (dest === "cpyqb" && typeof go === "function") {
-    go("cpyqb", { step: "exams", forceExamList: true });
-  } else if (typeof go === "function") {
-    go(dest === "dashboard" ? "dashboard" : dest);
-  }
+  if (typeof go !== "function") return;
+  if (dest === "cpyqb") go("cpyqb", { step: "exams", forceExamList: true });
+  else if (dest === "allqs") go("allqs", { step: "subjects" });
+  else if (dest === "pyqmock") go("pyqmock", { step: "exams" });
+  else if (dest === "testseries") go("testseries");
+  else if (dest === "tests") go("tests");
+  else go("dashboard");
 }
 
 function resetData() {
@@ -3646,7 +3848,7 @@ go = function(view, payload) {
   if (main) main.scrollTop = 0;
   _listPage = 1;
   document.querySelectorAll(".nav-item").forEach(n => n.classList.remove("active"));
-  const navMap = { allqs: "allqs", ncert: "allqs", board: "allqs", cpyqb: "cpyqb", books: "books", tests: "tests", custom: "tests", testseries: "tests", pyqmock: "tests", analytics: "analytics", search: "search", quickconcepts: "quickconcepts", premium: "premium", assignments: "dashboard", teacher: "dashboard" };
+  const navMap = { allqs: "allqs", ncert: "allqs", board: "allqs", cpyqb: "cpyqb", books: "books", archive: "archive", tests: "tests", custom: "tests", testseries: "tests", pyqmock: "tests", analytics: "analytics", search: "search", quickconcepts: "quickconcepts", premium: "premium", assignments: "dashboard", teacher: "dashboard" };
   const navView = navMap[view] || view;
   const navEl = document.querySelector(`.nav-item[data-view="${navView}"]`);
   if (navEl) navEl.classList.add("active");

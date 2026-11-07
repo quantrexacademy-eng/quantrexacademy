@@ -7,15 +7,17 @@
 
   /**
    * PRODUCT RULE:
-   *  7–10 → Coming Soon (no packs yet)
-   *  11   → JEE Main + JEE Advanced
-   *  12   → CBSE Board + JEE Main + JEE Advanced
+   *  7–8 → Coming Soon
+   *  9   → CBSE Board · Number System
+   *  10  → TALENTEX folder (official 2024 PYP)
+   *  11  → JEE Main + JEE Advanced
+   *  12  → CBSE Board + JEE Main + JEE Advanced
    */
   const CLASS_EXAMS = {
     "7": ["coming_soon"],
     "8": ["coming_soon"],
-    "9": ["coming_soon"],
-    "10": ["coming_soon"],
+    "9": ["cbse_board_9"],
+    "10": ["tallentex"],
     "11": ["jee_main", "jee_advanced"],
     "12": ["cbse_board", "jee_main", "jee_advanced"]
   };
@@ -50,6 +52,20 @@
       icon: "📚",
       track: "Academic",
       sub: "Class 12 Board PYQs"
+    },
+    cbse_board_9: {
+      id: "cbse_board_9",
+      label: "CBSE Board",
+      icon: "📚",
+      track: "Academic",
+      sub: "Mathematics · Number System"
+    },
+    tallentex: {
+      id: "tallentex",
+      label: "TALENTEX",
+      icon: "📘",
+      track: "Academic",
+      sub: "Class 10 · TALLENTEX 2024 PYP · 2 papers"
     },
     coming_soon: {
       id: "coming_soon",
@@ -179,7 +195,7 @@
     const cards = examIds.map(id => {
       const m = EXAM_META[id];
       if (!m) return "";
-      const soon = !!m.soon || id === "coming_soon" || n <= 10;
+      const soon = !!m.soon || id === "coming_soon" || n <= 8;
       const attrs = soon
         ? `onclick="typeof showToast==='function'&&showToast('📚 Class ${cls} — Coming Soon')"`
         : `onclick="typeof QxRedesign!=='undefined'&&QxRedesign.openExam('${id}')"`;
@@ -194,11 +210,13 @@
       });
     }).join("");
 
-    const rule = n <= 10
+    const rule = n <= 8
       ? "Coming Soon (questions not added yet)"
-      : (cls === "11" ? "JEE Main · JEE Advanced chapters" : "CBSE Board · JEE Main · JEE Advanced");
+      : (cls === "9" ? "CBSE Board · Number System"
+        : (cls === "10" ? "TALENTEX · 2024 PYP"
+          : (cls === "11" ? "JEE Main · JEE Advanced chapters" : "CBSE Board · JEE Main · JEE Advanced")));
 
-    return `${topbar("Explore by Class", "7–10 Soon · 11 JEE · 12 Board + JEE")}
+    return `${topbar("Explore by Class", "7–8 Soon · 9 CBSE · 10 TALENTEX · 11–12 JEE")}
       ${classChips(cls)}
       <h2 class="cpyqb-exam-sec-title" style="margin:8px 0 12px">Class ${esc(cls)} · ${esc(rule)}</h2>
       <div class="qx-folder-grid">${cards}</div>`;
@@ -211,7 +229,7 @@
     const classSlug = "class_" + cls;
     const n = Number(cls);
 
-    if (n >= 7 && n <= 10) {
+    if (n >= 7 && n <= 8) {
       if (typeof showToast === "function") showToast("📚 Class " + cls + " — Coming Soon (questions not added yet)");
       return;
     }
@@ -225,6 +243,15 @@
       localStorage.setItem("quantrex_exam", "Academic");
       if (typeof STATE !== "undefined") STATE.exam = "Academic";
     } catch (_) { /* */ }
+
+    if (examId === "tallentex" || n === 10) {
+      go("cpyqb", { step: "tallentexFolder", classSlug: "class_10", exam: "class_10", trackKind: "tallentex" });
+      return;
+    }
+    if (examId === "cbse_board_9" || (examId === "cbse_board" && n === 9)) {
+      go("cpyqb", { step: "subjects", exam: "class_9", classSlug: "class_9", trackKind: "cbse_board" });
+      return;
+    }
 
     // Class 12 CBSE Board
     if (examId === "cbse_board" || (examId === "academy" && cls === "12")) {
@@ -299,15 +326,7 @@
         soon: !practicePayload,
         payload: practicePayload
       },
-      {
-        id: "revision",
-        icon: "⚡",
-        title: "Revision Notes / Quick Revision",
-        sub: "Condensed last-minute revision",
-        soon: !revisionPayload,
-        payload: revisionPayload
-      },
-      {
+{
         id: "flash",
         icon: "🃏",
         title: "Flash Cards",
@@ -386,7 +405,7 @@
     const cards = examIds.map(id => {
       const m = EXAM_META[id];
       if (!m) return "";
-      const soon = !!m.soon || id === "coming_soon" || n <= 10;
+      const soon = !!m.soon || id === "coming_soon" || n <= 8;
       return folderCard({
         title: m.label,
         sub: m.sub,
@@ -403,7 +422,7 @@
       <div class="marks-sec-head"><h3>Explore by Class (7–12)</h3>
         <a href="#" ${mg("cpyqb", { step: "exams", forceExamList: true })} onclick="try{localStorage.setItem('quantrex_exam','Academic');if(window.STATE)STATE.exam='Academic';}catch(e){}">All classes →</a>
       </div>
-      <p class="sec-desc" style="margin:0 0 10px">7–10 Coming Soon · 11: JEE Main + Advanced · 12: CBSE Board + JEE Main + Advanced</p>
+      <p class="sec-desc" style="margin:0 0 10px">7–8 Soon · 9: CBSE · 10: TALENTEX · 11: JEE Main + Advanced · 12: CBSE + JEE</p>
       ${classChips(cls)}
       <div class="qx-folder-grid">${cards}</div>
     </div>`;

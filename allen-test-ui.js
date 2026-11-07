@@ -210,6 +210,7 @@ const AllenTestUI = (() => {
       if (fmt && fmt.title) return fmt.title;
     }
     const e = (ctx && ctx.exam) || "";
+    if (e === "tallentex") return "TALLENTEX";
     if (e === "jee_advanced" || (ctx && ctx.slug === "jee_advanced")) return "JEE (Advanced)";
     if (e === "neet") return "NEET (UG)";
     if (e === "bitsat") return "BITSAT";
@@ -268,8 +269,102 @@ const AllenTestUI = (() => {
     return { n, mins, totalMarks, loaded, expected, pat, patternLabel: pm.label };
   }
 
+  function isTallentexCtx(ctx, config) {
+    const c = ctx || {};
+    const cfg = config || {};
+    const meta = cfg.meta || c || {};
+    if (c.exam === "tallentex" || cfg.testType === "tallentex") return true;
+    if (String(meta.exam || "").toLowerCase() === "tallentex") return true;
+    if (String(c.slug || meta.slug || "").toLowerCase() === "tallentex") return true;
+    return false;
+  }
+
+  function tallentexInstructionHtml(config, ctx) {
+    const title = esc(config.title || "TALLENTEX 2024 Class 10");
+    const code = esc((config.meta && config.meta.paperCode) || "");
+    const codeBit = code ? ` · Paper Code ${code}` : "";
+    return `<div id="marksInstrOverlay" class="allen-instr-fullpage qx-tlx-instr" role="dialog" aria-modal="true">
+      <header class="allen-instr-top">
+        <div class="allen-instr-brand">${LOGO_SVG}<div>
+          <strong>${BRAND_NAME}</strong>
+          <small>TALLENTEX 2024 · Class 10 · Official paper instructions</small>
+        </div></div>
+        <button type="button" class="allen-instr-exit" id="allenInstrExitBtn">✕ Exit</button>
+      </header>
+      <div class="allen-instr-scroll">
+        <div class="allen-instr-inner">
+          <div class="allen-instr-banner">
+            <h1 class="allen-instr-title">${title}</h1>
+            <p class="allen-instr-desc">Official TALLENTEX Class 10 booklet · CBT mock${codeBit}</p>
+          </div>
+          <div class="allen-instr-stats">
+            <div><span>Total Questions</span><strong>80</strong></div>
+            <div><span>Duration</span><strong>120 min</strong></div>
+            <div><span>Max Marks</span><strong>320</strong></div>
+          </div>
+          <div class="allen-instr-block">
+            <h3>Official marking scheme</h3>
+            <p>All 80 questions are <strong>MCQ (single correct)</strong> with four choices <strong>(1) (2) (3) (4)</strong>.</p>
+            <p>Correct: <strong>+4</strong> · Incorrect: <strong>−1</strong> · Unattempted: <strong>0</strong>.</p>
+            <p class="allen-instr-note">On screen, option buttons A B C D match booklet bubbles (1) (2) (3) (4).</p>
+          </div>
+          <div class="allen-instr-block">
+            <h3>Official paper pattern</h3>
+            <table class="allen-instr-table">
+              <thead><tr><th>Subject</th><th>Questions</th></tr></thead>
+              <tbody>
+                <tr><td>Physics</td><td>15</td></tr>
+                <tr><td>Chemistry</td><td>15</td></tr>
+                <tr><td>Biology</td><td>15</td></tr>
+                <tr><td>Mathematics</td><td>15</td></tr>
+                <tr><td>Mental Ability (IQ)</td><td>20</td></tr>
+              </tbody>
+            </table>
+            <p class="allen-instr-note">80 MCQ · 320 marks · 2 hours. Source: Quantrex Academy mock · TALLENTEX-style Class 10</p>
+          </div>
+          <div class="allen-instr-block">
+            <h3>Things NOT ALLOWED in exam hall</h3>
+            <p>Blank paper, clipboard, log table, slide rule, calculator, camera, mobile and any electronic or electrical gadget. If you are carrying any of these, keep them at a place specified by the invigilator at your own responsibility.</p>
+          </div>
+          <div class="allen-instr-block">
+            <h3>Official booklet instructions</h3>
+            <p class="allen-instr-note">You are allotted <strong>5 minutes</strong> specifically to read these instructions.</p>
+            <ol class="allen-instr-list">
+              <li>This Booklet is your Question Paper. DO NOT break seal of Booklet until the invigilator instructs to do so.</li>
+              <li>Fill your TALLENTEX Roll No. &amp; Answer Sheet No. in the space provided on the cover page.</li>
+              <li>Carefully fill your PAPER CODE and present CLASS in space provided (Serial No. 6 &amp; 12) of Optical Response Sheet (ORS).</li>
+              <li>Please make sure that paper you received is of your class only.</li>
+              <li>Please make sure that the Paper Code Printed on the Test Booklet Cover Page and Inner Pages are the same. In case of discrepancy, the candidate should immediately report the matter to the Invigilator for replacement of Test Booklet.</li>
+              <li>The Answer Sheet is provided to you separately which is a machine readable Optical Response Sheet (ORS). You have to mark your answers in the ORS by darkening bubble, as per your answer choice, by using black or blue ball point pen. <strong>On this CBT mock, tap one option on screen instead of darkening a bubble.</strong></li>
+              <li>After breaking the Question Paper seal, check there are 20 pages in the booklet. This Question Paper contains <strong>80 MCQs</strong> with 4 choices (Subjects: Physics: 15, Chemistry: 15, Biology: 15, Maths: 15 &amp; Mental ability (IQ): 20).</li>
+              <li>Think wisely before darkening bubble as there is negative marking for wrong answer. Answer once marked by pen cannot be cancelled. <strong>On this CBT mock you may change your answer before Submit.</strong></li>
+              <li>Marking Scheme: (a) If darkened bubble is RIGHT answer: <strong>4 Marks</strong>. (b) If darkened bubble is WRONG answer: <strong>−1 Mark</strong> (Negative Marking). (c) If no bubble is darkened in any question: <strong>No Mark</strong>.</li>
+              <li>If you are found involved in cheating or disturbing others, then your ORS will be cancelled.</li>
+              <li>Do not put any stain on ORS and hand it over back properly to the invigilator.</li>
+              <li>You can take along the question paper after the test is over.</li>
+            </ol>
+          </div>
+          ${legendBlock()}
+          <label class="allen-instr-check"><input type="checkbox" id="qzInstrAgree"/> I have read and understood the official TALLENTEX instructions.</label>
+        </div>
+      </div>
+      <footer class="allen-instr-foot">
+        <button type="button" class="allen-instr-cancel" id="allenInstrBackBtn">Go Back</button>
+        <button type="button" class="allen-instr-proceed" id="qzInstrProceed" disabled>Proceed to Test →</button>
+      </footer>
+    </div>`;
+  }
+
   /** Official marking scheme ONLY for this paper's year pattern (Marks / NTA) */
   function markingBlock(ctx) {
+    if (isTallentexCtx(ctx)) {
+      return `<div class="allen-instr-block">
+        <h3>Official Marking Scheme — TALLENTEX 2024</h3>
+        <p>All questions are <strong>Multiple Choice (Single Correct)</strong> — 4 options (1)(2)(3)(4).</p>
+        <p>Correct: <strong>+4</strong> · Incorrect: <strong>−1</strong> · Unattempted: <strong>0</strong>.</p>
+        <p class="allen-instr-note"><strong>Official pattern:</strong> 80 questions · 320 marks · 2 hours. Physics 15 · Chemistry 15 · Biology 15 · Maths 15 · Mental Ability 20.</p>
+      </div>`;
+    }
     const y = ctx.year || "—";
     const pat = ctx.pattern || resolveOfficialPattern(ctx.exam, ctx.year, 0, { meta: ctx });
     const title = examTitle(ctx);
@@ -381,6 +476,17 @@ const AllenTestUI = (() => {
    * ONLY official paper pattern table for this year (no "this shift" / second instructions).
    */
   function paperStructureBlock(ctx, config) {
+    if (isTallentexCtx(ctx, config)) {
+      return `<div class="allen-instr-block"><h3>Official Paper Pattern — TALLENTEX 2024</h3>
+        <table class="allen-instr-table"><thead><tr><th>Subject</th><th>MCQ</th></tr></thead><tbody>
+          <tr><td>Physics</td><td>15</td></tr>
+          <tr><td>Chemistry</td><td>15</td></tr>
+          <tr><td>Biology</td><td>15</td></tr>
+          <tr><td>Mathematics</td><td>15</td></tr>
+          <tr><td>Mental Ability (IQ)</td><td>20</td></tr>
+        </tbody></table>
+        <p class="allen-instr-note">80 MCQ · 320 marks · 2 hours.</p></div>`;
+    }
     const y = ctx.year || "—";
     const pat = ctx.pattern || resolveOfficialPattern(ctx.exam, ctx.year, (config.questionIds || []).length, config);
 
@@ -484,6 +590,15 @@ const AllenTestUI = (() => {
 
   /** Minimal NTA rules only — pattern-specific, no extra fluff */
   function generalRules(ctx, stats) {
+    if (isTallentexCtx(ctx)) {
+      return [
+        `This is <strong>TALLENTEX Class 10</strong> (ALLEN) — 80 MCQ, 320 marks, 2 hours.`,
+        `Each question has four options <strong>(1) (2) (3) (4)</strong>, of which only one is correct.`,
+        `Correct <strong>+4</strong>, wrong <strong>−1</strong>, unattempted <strong>0</strong>.`,
+        `On this CBT mock you may change an answer before final submit.`,
+        `Mock paper practice on <strong>Quantrex Academy</strong>.`
+      ].map((r) => `<li>${r}</li>`).join("");
+    }
     const mins = stats.mins;
     const pat = ctx.pattern || stats.pat;
     if (ctx.exam === "jee_advanced" || /^adv_/.test(String(pat || ""))) {
@@ -529,6 +644,9 @@ const AllenTestUI = (() => {
    */
   function instructionHtml(config) {
     const ctx = detectContext(config);
+    if (isTallentexCtx(ctx, config)) {
+      return tallentexInstructionHtml(config, ctx);
+    }
     const stats = paperStats(config, ctx);
     const title = esc(config.title || examTitle(ctx));
     const examLbl = examTitle(ctx);
@@ -622,7 +740,9 @@ const AllenTestUI = (() => {
       try { if (localStorage.getItem("qx_force_app_ui") === "1") return true; } catch (_) {}
       // Phone WebView / narrow Android Chrome used as the Play app shell
       var ua = String(navigator.userAgent || "");
-      var narrow = window.matchMedia && window.matchMedia("(max-width: 900px)").matches;
+      var el = document.documentElement;
+      if (el && (el.classList.contains("qx-compact") || el.classList.contains("qx-app") || el.classList.contains("qx-phone") || el.getAttribute("data-qx-shell") === "app")) return true;
+      var narrow = (typeof global.qxEgIsNarrow === "function") ? global.qxEgIsNarrow() : (window.matchMedia && window.matchMedia("(max-width: 900px)").matches);
       if (narrow && /Android|iPhone|iPad|Mobile/i.test(ua)) return true;
     } catch (_) { /* */ }
     return false;
@@ -975,10 +1095,10 @@ const AllenTestUI = (() => {
       });
     });
     root.querySelector("#pracZoomOut")?.addEventListener("click", () => {
-      if (typeof bumpTestZoom === "function") bumpTestZoom(-1);
+      if (typeof bumpTestFont === "function") bumpTestFont(-1);
     });
     root.querySelector("#pracZoomIn")?.addEventListener("click", () => {
-      if (typeof bumpTestZoom === "function") bumpTestZoom(1);
+      if (typeof bumpTestFont === "function") bumpTestFont(1);
     });
     root.querySelector("#pracZoomReset")?.addEventListener("click", () => {
       if (typeof setTestZoom === "function") setTestZoom(1);

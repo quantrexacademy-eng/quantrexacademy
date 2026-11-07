@@ -3,7 +3,7 @@
   /* qxmd328: the site build is THIS constant (bumped every release), not the page's QX_BUILD.
      login.html / index.html carry old page tags (qxlogin1, qxfix106) which never matched
      version.json and wiped every cache + reloaded on every new session. */
-  var SITE_BUILD = "qxmd328";
+  var SITE_BUILD = "qxmd387";
   var pageBuild = (typeof window.QX_BUILD === "string" && /^qxmd\d+$/.test(window.QX_BUILD)) ? window.QX_BUILD : "";
   var bust = SITE_BUILD;
   if (pageBuild && Number(pageBuild.slice(4)) > Number(SITE_BUILD.slice(4))) bust = pageBuild;

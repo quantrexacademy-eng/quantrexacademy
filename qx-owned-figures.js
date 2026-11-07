@@ -24,7 +24,7 @@
     return m;
   })();
   const UI_KEEP = /ic_content_exam_|cpyqb\/subjects|ncert_toolbox|app_assets\/img\/exams\//i;
-  const FIG_VER = "qxmd265";
+  const FIG_VER = "qxmd359";
   const POOL_RX = /cdn-question-pool\.getmarks|cdn\.quizrr|watermarked_images|\/pyq\/|AKCR2_|2026_modules/i;
   let LOCAL_FIG_MAP = {};
   try {
@@ -157,9 +157,9 @@
     if (/qx-irodov-|\/irodov\/|qx-org-|qx-book-|\/assets\/diagrams\/qx-(?:book|org|irodov)-|pubchem\.ncbi|cactus\.nci/i.test(s)) {
       return false;
     }
-    if (/firebasestorage/i.test(s) && /questions(%2F|\/)figs/i.test(s)) return true;
-    if (/\/assets\/diagrams\/qx-self-/i.test(s)) return true;
-    if (isForeignHost(s)) return true;
+    // Question figures: never pixel-wipe (eats text, slows every item).
+    // RFC / formula cards still clean tiled MARKS via fc=1 in displaySrc.
+    if (isCardArt(s)) return true;
     return false;
   }
 
@@ -181,6 +181,7 @@
     const raw = unwrap(src);
     if (!raw) return "";
     if (/^data:/i.test(raw)) return raw;
+    if (/data\/tests\/tallentex\/figures/i.test(raw)) return raw;
     if (UI_KEEP.test(raw) && !FOREIGN.test(raw) && !isCardArt(raw)) return raw;
     const irodovDisp = irodovStorageUrl(raw);
     if (irodovDisp) return irodovDisp;
@@ -206,39 +207,27 @@
       const mapped = localDiagramRemote(raw) || ownedFigureUrl(raw) || qxBookStorageSrc(raw);
       if (mapped) return mapped;
     }
+    const card = isCardArt(raw);
+    if (card) {
+      return "/api/proxy-image?clean=1&fc=1&v=qxmd351&url=" + encodeURIComponent(raw);
+    }
+    // Question / PYQ figures: same-origin proxy bleaches the pale MARKS logo.
+    // Dark ink stays. The versioned URL is cached for a year after the first wipe.
+    if (FOREIGN.test(raw) || POOL_RX.test(raw)) {
+      const bare = raw.split("#")[0];
+      return "/api/proxy-image?clean=1&v=" + FIG_VER + "&url=" + encodeURIComponent(bare);
+    }
     const owned = ownedFigureUrl(raw) || raw;
-    const inner = (isForeignHost(owned) ? ownedFigureUrl(owned) : "") || owned;
-    const card = isCardArt(raw) || isCardArt(inner);
-    const pool = POOL_RX.test(raw) || POOL_RX.test(inner);
-    if (/firebasestorage/i.test(inner) && !card) {
-      // qxmd264: raw Storage 404s when the copy was never uploaded (solution figures).
-      // Without ?alt=media Storage returns JSON and the img stays a broken icon.
-      // /api/proxy-image?clean=1 falls back to the original CDN and returns a PNG.
+    const inner = owned;
+    if (/firebasestorage/i.test(inner)) {
       let direct = inner.split("#")[0];
       if (!/[?&]alt=media(?:&|$)/i.test(direct)) {
         direct += (direct.indexOf("?") >= 0 ? "&" : "?") + "alt=media";
       }
-      if (needsWipe(direct) || pool || POOL_RX.test(direct)) {
-        return "/api/proxy-image?url=" + encodeURIComponent(direct) + "&clean=1&v=" + FIG_VER;
+      if (isPoolCopySrc(direct)) {
+        return "/api/proxy-image?clean=1&v=" + FIG_VER + "&url=" + encodeURIComponent(direct);
       }
       return direct;
-    }
-    if (needsWipe(inner) || needsWipe(raw) || card) {
-      let fetchUrl = isForeignHost(inner) ? (ownedFigureUrl(inner) || inner) : inner;
-      if (isForeignHost(fetchUrl)) {
-        const mapped = ownedFigureUrl(fetchUrl);
-        if (mapped) fetchUrl = mapped;
-        else if (card || pool) fetchUrl = raw;
-        else {
-          const proxyInner = ownedFigureUrl(raw) || raw;
-          return "/api/proxy-image?url=" + encodeURIComponent(proxyInner) + "&clean=1&v=" + FIG_VER;
-        }
-      }
-      if (!fetchUrl) {
-        return "/api/proxy-image?url=" + encodeURIComponent(raw) + "&clean=1&v=" + FIG_VER;
-      }
-      const fc = card || isCardArt(fetchUrl) ? "&fc=1" : "";
-      return "/api/proxy-image?url=" + encodeURIComponent(fetchUrl) + "&clean=1" + fc + "&v=" + FIG_VER;
     }
     if (/\/assets\/diagrams\//i.test(inner)) {
       const fb = qxBookStorageSrc(inner) || localDiagramRemote(inner);
@@ -254,16 +243,35 @@
     } catch (_) { /* */ }
   }
 
+  function isCleanProxySrc(s) {
+    return /\/api\/proxy-image/i.test(String(s || "")) && /(?:\?|&)clean=1(?:&|$)/i.test(String(s || ""));
+  }
+
+  function isPoolCopySrc(s) {
+    return /pyq|watermark|getmarks|quizrr|examgoal/i.test(String(s || ""))
+      && !/qx-(?:org|book|self|irodov)-|app_assets\/img\/(?:exams|ui)|ic_content_exam_|getmarks-brand|marks-premium/i.test(String(s || ""));
+  }
+
   function isStableFigSrc(src) {
     const raw = String(src || "");
     if (/\\text\{\s*and\s*\}|\sand\s+(?:clean|v|alt)=/i.test(raw)) return false;
     const s = healFigureUrl(raw);
     if (!s) return false;
-    if (/getmarks\.app|quizrr\.in/i.test(s) && !/\/api\/proxy-image/i.test(s)) return false;
-    if (/\/assets\/diagrams\//i.test(s)) return false;
-    if (/firebasestorage/i.test(s) && !/[?&]alt=media(?:&|$)/i.test(s) && !/%3Falt%3Dmedia/i.test(s)) return false;
-    if (/\/api\/proxy-image/i.test(s) && !/[?&](?:url|u)=/i.test(s)) return false;
-    return /firebasestorage|\/api\/proxy-image/i.test(s);
+    if (isCardArt(s) || isCardArt(unwrap(s))) {
+      return /\/api\/proxy-image/i.test(s) && /fc=1/i.test(s) && /v=qxmd343/i.test(s);
+    }
+    if (/^data:/i.test(s)) return true;
+    if (/data\/tests\/tallentex\/figures/i.test(s)) return true;
+    /* Clean proxy is finished even when url= still contains getmarks.app. */
+    if (isCleanProxySrc(s)) return true;
+    /* Raw Marks / Quizrr / ExamGoal CDN still carries the pale logo. */
+    if (/getmarks\.app|quizrr\.in|examgoal\.net/i.test(s)) return false;
+    if (/firebasestorage/i.test(s) && (/[?&]alt=media(?:&|$)/i.test(s) || /%3Falt%3Dmedia/i.test(s))) {
+      if (isPoolCopySrc(s)) return false;
+      return true;
+    }
+    if (/\/assets\/(?:diagrams|book-covers|folder-icons|exam-logos)\//i.test(s)) return true;
+    return false;
   }
 
   function sameFig(a, b) {
@@ -295,10 +303,18 @@
         return;
       }
     }
-    const inner = orig || unwrap(el.getAttribute("data-qx-storage-src") || cur);
-    if (inner && !/\/api\/proxy-image/i.test(cur)) {
-      const proxyInner = (/firebasestorage/i.test(inner) && orig && !/firebasestorage/i.test(orig)) ? orig : inner;
-      el.src = "/api/proxy-image?url=" + encodeURIComponent(proxyInner) + "&clean=1&v=" + FIG_VER;
+    if (orig && !sameFig(orig, cur) && !/\/api\/proxy-image/i.test(orig)) {
+      /* Never fall back to the raw Marks CDN — that paints the logo again. */
+      if (/getmarks\.app|quizrr\.in|examgoal\.net/i.test(orig)) {
+        const again = displaySrc(orig);
+        if (again && /\/api\/proxy-image/i.test(again) && !sameFig(again, cur)) {
+          el.src = again;
+          return;
+        }
+        stopFigRetry(el);
+        return;
+      }
+      el.src = orig;
       return;
     }
     stopFigRetry(el);
@@ -322,9 +338,7 @@
       if (/^data:/i.test(src)) return full;
       if (UI_KEEP.test(src) && !FOREIGN.test(src)) return full;
       const hint = (origM && origM[2]) || src;
-      const disp = displaySrc(hint) || displaySrc(src) || (
-        src ? "/api/proxy-image?url=" + encodeURIComponent(src) + "&clean=1&v=" + FIG_VER : ""
-      );
+      const disp = displaySrc(hint) || displaySrc(src) || src;
       if (!disp) return "<img" + a + ">";
       const stored = qxBookStorageSrc(hint) || qxBookStorageSrc(src) || ownedFigureUrl(hint) || ownedFigureUrl(src) || disp;
       const dispEsc = escAttr(disp);
@@ -408,10 +422,10 @@
       for (let i = 0; i < imgs.length; i++) {
         const img = imgs[i];
         if (!img || isUiImg(img)) continue;
-        if (img.naturalWidth > 0) continue;
         try { img.removeAttribute("crossorigin"); } catch (_) { /* */ }
         const src = img.getAttribute("src") || "";
         if (isStableFigSrc(src)) continue;
+        if (img.naturalWidth > 0 && !isPoolCopySrc(src) && !/getmarks\.app|quizrr\.in|examgoal\.net/i.test(src)) continue;
         const orig = img.getAttribute("data-qx-orig-src") || src;
         const disp = displaySrc(orig) || displaySrc(src);
         if (!disp || sameFig(disp, src)) continue;

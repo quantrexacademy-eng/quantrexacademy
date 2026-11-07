@@ -1,3 +1,4 @@
+/* qxmd377 formula card fast CDN */
 /* Formula cards — full written-page reader, page-turn, no double-open blank. */
 (function () {
   const FC_SEL = ".fc-card img.fc-img, .fc-card img.qx-fc-img, .fc-formula img";
@@ -17,17 +18,11 @@
       try { u = new URL(u, location.origin).searchParams.get("url") || u; } catch (_) { /* */ }
     }
     if (!u) return "";
-    if (typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.displaySrc) {
-      const d = QxOwnedFigs.displaySrc(u);
-      if (d) return d;
-    }
+    if (/qx_sheets\//i.test(u) || (/^data\//i.test(u) && !/^https?:/i.test(u))) return u;
+    /* qxmd377: local sheets pass-through; external CDN direct (proxy cold is slow) */
+    if (/cdn-assets\.getmarks\.app|firebasestorage\.googleapis\.com|googleusercontent\.com/i.test(u)) return u;
     if (!/getmarks\.app|formula_cards|another_formula_card|revision_flash_cards|firebasestorage/i.test(u)) return "";
-    if (/getmarks\.app|quizrr\.in/i.test(u) && typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.ownedFigureUrl) {
-      const owned = QxOwnedFigs.ownedFigureUrl(u);
-      if (owned && /firebasestorage/i.test(owned)) u = owned;
-      else if (/getmarks\.app|quizrr\.in/i.test(u)) return "/api/proxy-image?clean=1&fc=1&v=qxfig110&url=" + encodeURIComponent(u);
-    }
-    return "/api/proxy-image?clean=1&fc=1&v=qxfig110&url=" + encodeURIComponent(u);
+    return "/api/proxy-image?clean=1&fc=1&v=qxmd377&url=" + encodeURIComponent(u);
   }
 
   function forceProxy(img) {
@@ -220,7 +215,7 @@
           var html = String(it.html || "");
           var src = fcProxyUrl(it.src) || it.src || "";
           var showHtml = html && (!src || (!/<img\b/i.test(html) && /[A-Za-z]{8,}/.test(html.replace(/<[^>]+>/g, " "))));
-          return { src: src, raw: it.src || "", html: showHtml ? html : (!src && /<img\b/i.test(html) ? html : ""), meaning: it.meaning || "", title: it.topic || "Formula", sub: (trail && trail.subject ? trail.subject + " \u00b7 " : "") + "Formula Cards" };
+          return { src: src, raw: it.src || "", html: showHtml ? html : (!src && /<img\b/i.test(html) ? html : ""), meaning: it.meaning || "", title: it.topic || "Formula", sub: (trail && trail.subject ? trail.subject + " \u00b7 " : "") + "Quantrex Academy" };
         }),
         onError: function (img, it) {
           if (img.dataset.qxFcTriedRaw !== "1") {
@@ -365,7 +360,7 @@
       link.rel = "stylesheet";
       document.head.appendChild(link);
     }
-    if (!/qxfix110/.test(link.href || "")) link.href = "assets/qx-formula-cards.css?v=qxmd99";
+    if (!/qxmd351/.test(link.href || "")) link.href = "assets/qx-formula-cards.css?v=qxmd351";
   }
 
   window.QxFormulaCards = { enhance: schedule, open: openReader, go: go };

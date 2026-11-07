@@ -187,6 +187,7 @@ const QuantrexAccess = (() => {
       if ((step === "chapters" || !step) && !p.chapterId && !p.chapter) return true;
       return false;
     }
+    if (view === "archive") return true;
     if (view === "revision") {
       if (!p.subject || step === "subjects" || step === "zones" || !p.zone) return true;
       return false;

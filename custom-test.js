@@ -82,7 +82,7 @@ function ctB64urlDecode(s) {
   return decodeURIComponent(escape(atob(t)));
 }
 function ctSharePayload(test) {
-  return {
+  const p = {
     v: 1,
     id: test.id,
     title: test.title,
@@ -94,6 +94,12 @@ function ctSharePayload(test) {
     modeLabel: test.modeLabel || "Custom Test",
     ids: test.questionIds || []
   };
+  if (test.gameMode === "quizshow") {
+    p.gameMode = "quizshow";
+    p.qsRules = test.qsRules || null;
+    p.switchPool = (test.switchPool || []).slice(0, 40);
+  }
+  return p;
 }
 function ctShareUrl(test) {
   const token = ctB64urlEncode(JSON.stringify(ctSharePayload(test)));
@@ -193,10 +199,17 @@ async function ctOpenSharedTest(token) {
     timed: data.timed !== false,
     modeLabel: data.modeLabel || "Custom Test",
     questionIds: data.ids,
-    status: "notStarted"
+    status: "notStarted",
+    gameMode: data.gameMode || "off",
+    qsRules: data.qsRules || null,
+    switchPool: data.switchPool || []
   };
   ctRememberShared(test);
   setTimeout(() => {
+    if (test.gameMode === "quizshow") {
+      ctLaunchQuizShow(test);
+      return;
+    }
     startTest(test.questionIds, test.title, "custom", {
       testType: "custom",
       timed: test.timed,
@@ -334,7 +347,9 @@ function ctNewDraft(exam) {
     durationSec: CT_DEFAULT_QS * 120,
     durationManual: false,
     difficulty: new Set(),
-    scoringId: "4_-1"
+    scoringId: "4_-1",
+    gameMode: "off",
+    qsRules: null
   };
   ctApplyExamDefaults(draft, exam);
   return draft;
@@ -591,6 +606,27 @@ function ctPreviewBadges(draft) {
   return `<span class="ct-wiz-prev-badge exam">📝 ${exam}</span>${subBadges}`;
 }
 
+function ctGoWizardStep(id) {
+  if (!_ctDraft) return;
+  const order = ["pick", "chapters", "years"];
+  const want = order.indexOf(id);
+  if (want < 0) return;
+  if (want >= 1) {
+    ctEnsureSubjectIds(_ctDraft);
+    if (!_ctDraft.examId || !ctSelectedSubjects(_ctDraft).length) {
+      if (typeof showToast === "function") showToast("Pehle exam aur subject choose karo");
+      return;
+    }
+  }
+  if (want >= 2) {
+    if (!ctSelectedChapters(_ctDraft).length) {
+      if (typeof showToast === "function") showToast("Pehle kam se kam ek chapter select karo");
+      return;
+    }
+  }
+  _ctDraft.wizardStep = id;
+  ctRender(ctWizPayload());
+}
 function ctWizardProgress(step) {
   const steps = [
     { id: "pick", n: "1", lab: "Exam" },
@@ -600,10 +636,10 @@ function ctWizardProgress(step) {
   const idx = steps.findIndex(s => s.id === step);
   const pills = steps.map((s, i) => {
     const st = i < idx ? "done" : (i === idx ? "on" : "");
-    return `<span class="ct-wiz-step ${st}"><i>${s.n}</i>${s.lab}</span>`;
+    return `<button type="button" class="ct-wiz-step ${st}" onclick="ctGoWizardStep('${s.id}')"><i>${s.n}</i>${s.lab}</button>`;
   }).join('<span class="ct-wiz-step-line" aria-hidden="true"></span>');
   const pct = idx < 0 ? 10 : Math.round(((idx + 1) / steps.length) * 100);
-  return `<div class="ct-wiz-steps">${pills}</div><div class="ct-wiz-progress"><span style="width:${pct}%"></span></div>`;
+  return `<div class="ct-wiz-steps" role="toolbar" aria-label="Test creation steps">${pills}</div><div class="ct-wiz-progress"><span style="width:${pct}%"></span></div>`;
 }
 
 function ctWizardPreviewBar(draft, nextLabel, nextFn, nextDisabled) {
@@ -629,6 +665,7 @@ function ctSummaryLine(draft, mins) {
   try { nch = ctSelectedChapters(draft).length; } catch (_) { nch = (draft.chapterIds && draft.chapterIds.size) || 0; }
   if (draft.wizardStep !== "pick") parts.push(nch + " ch");
   if (draft.wizardStep === "years") { parts.push(draft.totalQs + " Qs"); parts.push(mins + " min"); }
+  if (draft.gameMode === "quizshow") parts.push("Quiz Show");
   return parts.map(x => String(x).replace(/[<>&"]/g, "")).join(" · ");
 }
 
@@ -660,6 +697,327 @@ function ctSetScoring(id) {
   _ctDraft.scoringId = ctScoringFor(id).id;
   ctRender(ctWizPayload());
 }
+
+/* qxmd354 — Quiz Crorepati (KBC-style) rules on Create Own Test. Default off. */
+const CT_QS_CLASSIC_PRIZES = [1000, 2000, 3000, 5000, 10000, 20000, 40000, 80000, 160000, 320000, 640000, 1250000, 2500000, 5000000, 10000000];
+const CT_QS_TIME_PRESETS = [
+  { sec: 30, label: "30s" },
+  { sec: 45, label: "45s" },
+  { sec: 60, label: "60s" },
+  { sec: 90, label: "90s" },
+  { sec: 120, label: "2 min" },
+  { sec: 0, label: "Off" }
+];
+const CT_QS_Q_PRESETS = [5, 7, 10, 12, 15, 18, 20];
+
+function ctQsScalePrizes(n) {
+  n = Math.max(1, Math.min(30, Number(n) || 15));
+  if (n === 15) return CT_QS_CLASSIC_PRIZES.slice();
+  const out = [];
+  for (let i = 0; i < n; i++) {
+    const t = n === 1 ? 1 : i / (n - 1);
+    out.push(Math.max(1000, Math.round((1000 * Math.pow(10000, t)) / 100) * 100));
+  }
+  out[out.length - 1] = 10000000;
+  return out;
+}
+function ctQsClassicRules(n) {
+  n = Math.max(1, Math.min(30, Number(n) || 15));
+  const prizes = ctQsScalePrizes(n);
+  const a = Math.max(0, Math.floor(n / 3) - 1);
+  const b = Math.max(a + 1, Math.floor((2 * n) / 3) - 1);
+  const slots = prizes.map((p, i) => ({
+    prize: p,
+    diff: i < Math.floor(n / 3) ? "Easy" : (i < Math.floor((2 * n) / 3) ? "Medium" : "Hard"),
+    safe: n >= 8 && (i === a || i === b)
+  }));
+  return {
+    nQ: n,
+    timePerQ: 60,
+    timerOn: true,
+    hostVoice: true,
+    readQuestion: false,
+    hostSfx: true,
+    hostLang: "hinglish",
+    lockConfirm: true,
+    walkAway: true,
+    lifelines: { fifty: true, audience: true, expert: true, switchQ: true },
+    slots
+  };
+}
+const CT_QS_PREFS_KEY = "qx_quizshow_prefs";
+function ctQsLoadPrefs() {
+  try {
+    const raw = localStorage.getItem(CT_QS_PREFS_KEY);
+    if (!raw) return null;
+    const p = JSON.parse(raw);
+    return p && typeof p === "object" ? p : null;
+  } catch (_) { return null; }
+}
+function ctQsSavePrefs(rules) {
+  if (!rules) return;
+  try {
+    localStorage.setItem(CT_QS_PREFS_KEY, JSON.stringify({
+      nQ: rules.nQ,
+      timePerQ: rules.timePerQ,
+      timerOn: rules.timerOn !== false,
+      hostVoice: rules.hostVoice !== false,
+      readQuestion: !!rules.readQuestion,
+      hostSfx: rules.hostSfx !== false,
+      hostLang: rules.hostLang || "hinglish",
+      lockConfirm: rules.lockConfirm !== false,
+      walkAway: rules.walkAway !== false,
+      lifelines: rules.lifelines || { fifty: true, audience: true, expert: true, switchQ: true },
+      slots: rules.slots
+    }));
+  } catch (_) { /* */ }
+}
+function ctQsApplySavedOrClassic(n) {
+  const saved = ctQsLoadPrefs();
+  const base = ctQsClassicRules(n || (saved && saved.nQ) || 15);
+  if (!saved) return base;
+  if (saved.nQ) base.nQ = Math.max(1, Math.min(30, Number(saved.nQ) || 15));
+  if (saved.timePerQ != null) base.timePerQ = Number(saved.timePerQ) || 0;
+  if (saved.timerOn === false || saved.timePerQ === 0) {
+    base.timerOn = false;
+    base.timePerQ = 0;
+  }
+  if (saved.hostVoice === false) base.hostVoice = false;
+  base.readQuestion = !!saved.readQuestion;
+  if (saved.hostSfx === false) base.hostSfx = false;
+  if (saved.hostLang) base.hostLang = saved.hostLang;
+  if (saved.lockConfirm === false) base.lockConfirm = false;
+  if (saved.walkAway === false) base.walkAway = false;
+  if (saved.lifelines && typeof saved.lifelines === "object") {
+    base.lifelines = Object.assign(base.lifelines, saved.lifelines);
+  }
+  if (Array.isArray(saved.slots) && saved.slots.length) {
+    const prizes = ctQsScalePrizes(base.nQ);
+    const a = Math.max(0, Math.floor(base.nQ / 3) - 1);
+    const b = Math.max(a + 1, Math.floor((2 * base.nQ) / 3) - 1);
+    base.slots = prizes.map((p, i) => {
+      const old = saved.slots[i];
+      return {
+        prize: old && old.prize != null ? Number(old.prize) : p,
+        diff: old && old.diff != null ? old.diff : (i < Math.floor(base.nQ / 3) ? "Easy" : (i < Math.floor((2 * base.nQ) / 3) ? "Medium" : "Hard")),
+        safe: old && i < saved.slots.length ? !!old.safe : (base.nQ >= 8 && (i === a || i === b))
+      };
+    });
+  }
+  return base;
+}
+function ctQsEnsure(draft) {
+  const d = draft || _ctDraft;
+  if (!d) return null;
+  if (d.gameMode !== "quizshow") return d.qsRules || null;
+  if (!d.qsRules || !Array.isArray(d.qsRules.slots)) d.qsRules = ctQsApplySavedOrClassic(d.totalQs || 15);
+  if (d.qsRules.readQuestion == null) d.qsRules.readQuestion = false;
+  if (d.qsRules.hostSfx == null) d.qsRules.hostSfx = true;
+  if (d.qsRules.walkAway == null) d.qsRules.walkAway = true;
+  return d.qsRules;
+}
+function ctQsResizeSlots(draft) {
+  const d = draft || _ctDraft;
+  if (!d || d.gameMode !== "quizshow") return;
+  const n = Math.max(1, Math.min(30, Number(d.totalQs) || 15));
+  const prev = (d.qsRules && d.qsRules.slots) || [];
+  const prizes = ctQsScalePrizes(n);
+  const a = Math.max(0, Math.floor(n / 3) - 1);
+  const b = Math.max(a + 1, Math.floor((2 * n) / 3) - 1);
+  d.qsRules = d.qsRules || ctQsClassicRules(n);
+  d.qsRules.nQ = n;
+  d.qsRules.slots = prizes.map((p, i) => {
+    const old = prev[i];
+    return {
+      prize: old && old.prize != null ? Number(old.prize) : p,
+      diff: old && old.diff != null ? old.diff : (i < Math.floor(n / 3) ? "Easy" : (i < Math.floor((2 * n) / 3) ? "Medium" : "Hard")),
+      safe: old && i < prev.length ? !!old.safe : (n >= 8 && (i === a || i === b))
+    };
+  });
+  ctQsSavePrefs(d.qsRules);
+}
+function ctSetGameMode(mode) {
+  if (!_ctDraft) return;
+  _ctDraft.gameMode = mode === "quizshow" ? "quizshow" : "off";
+  if (_ctDraft.gameMode === "quizshow") {
+    _ctDraft.qsRules = ctQsApplySavedOrClassic(15);
+    _ctDraft.totalQs = _ctDraft.qsRules.nQ || 15;
+    _ctDraft.timePerQ = _ctDraft.qsRules.timerOn === false ? 60 : (_ctDraft.qsRules.timePerQ || 60);
+    _ctDraft.durationManual = false;
+    ctSyncDuration(_ctDraft, true);
+    ctQsSavePrefs(_ctDraft.qsRules);
+  } else {
+    _ctDraft.qsRules = null;
+    const exam = (_ctExamsCache || []).find(e => e._id === _ctDraft.examId);
+    ctApplyExamDefaults(_ctDraft, exam || { slug: _ctDraft.examSlug });
+  }
+  ctRender(ctWizPayload());
+}
+function ctQsApplyClassic() {
+  if (!_ctDraft) return;
+  _ctDraft.gameMode = "quizshow";
+  _ctDraft.qsRules = ctQsClassicRules(15);
+  _ctDraft.totalQs = 15;
+  _ctDraft.timePerQ = 60;
+  _ctDraft.durationManual = false;
+  ctSyncDuration(_ctDraft, true);
+  ctQsSavePrefs(_ctDraft.qsRules);
+  ctRender(ctWizPayload());
+}
+function ctQsSetTime(sec) {
+  if (!_ctDraft) return;
+  ctQsEnsure();
+  sec = Math.max(0, Number(sec) || 0);
+  if (!_ctDraft.qsRules) return;
+  if (sec <= 0) {
+    _ctDraft.qsRules.timerOn = false;
+    _ctDraft.qsRules.timePerQ = 60;
+    _ctDraft.timePerQ = 60;
+  } else {
+    _ctDraft.qsRules.timerOn = true;
+    _ctDraft.qsRules.timePerQ = sec;
+    _ctDraft.timePerQ = sec;
+  }
+  _ctDraft.durationManual = false;
+  ctSyncDuration(_ctDraft);
+  ctQsSavePrefs(_ctDraft.qsRules);
+  ctRender(ctWizPayload());
+}
+function ctQsSetFlag(key, on) {
+  if (!_ctDraft) return;
+  ctQsEnsure();
+  if (!_ctDraft.qsRules) return;
+  _ctDraft.qsRules[key] = !!on;
+  ctQsSavePrefs(_ctDraft.qsRules);
+  ctRender(ctWizPayload());
+}
+function ctQsSetHostLang(lang) {
+  if (!_ctDraft) return;
+  ctQsEnsure();
+  if (!_ctDraft.qsRules) return;
+  _ctDraft.qsRules.hostLang = (lang === "en" || lang === "hi") ? lang : "hinglish";
+  ctQsSavePrefs(_ctDraft.qsRules);
+  ctRender(ctWizPayload());
+}
+function ctQsToggleLife(key) {
+  if (!_ctDraft) return;
+  ctQsEnsure();
+  if (!_ctDraft.qsRules) return;
+  if (!_ctDraft.qsRules.lifelines) _ctDraft.qsRules.lifelines = { fifty: true, audience: true, expert: true, switchQ: true };
+  _ctDraft.qsRules.lifelines[key] = !_ctDraft.qsRules.lifelines[key];
+  ctQsSavePrefs(_ctDraft.qsRules);
+  ctRender(ctWizPayload());
+}
+function ctQsSetSlotDiff(i, d) {
+  if (!_ctDraft) return;
+  ctQsEnsure();
+  const slot = _ctDraft.qsRules && _ctDraft.qsRules.slots && _ctDraft.qsRules.slots[i];
+  if (!slot) return;
+  slot.diff = (d === "Easy" || d === "Medium" || d === "Hard") ? d : "";
+  ctQsSavePrefs(_ctDraft.qsRules);
+}
+function ctQsSetSlotPrize(i, v) {
+  if (!_ctDraft) return;
+  ctQsEnsure();
+  const slot = _ctDraft.qsRules && _ctDraft.qsRules.slots && _ctDraft.qsRules.slots[i];
+  if (!slot) return;
+  slot.prize = Math.max(0, Math.round(Number(v) || 0));
+  ctQsSavePrefs(_ctDraft.qsRules);
+}
+function ctQsSetSlotSafe(i, on) {
+  if (!_ctDraft) return;
+  ctQsEnsure();
+  const slot = _ctDraft.qsRules && _ctDraft.qsRules.slots && _ctDraft.qsRules.slots[i];
+  if (!slot) return;
+  slot.safe = !!on;
+  ctQsSavePrefs(_ctDraft.qsRules);
+}
+function ctHasFourOpts(q) {
+  const o = (q && q.options) || [];
+  return Array.isArray(o) && o.length >= 4;
+}
+function ctQsPanelHtml(draft) {
+  const on = draft.gameMode === "quizshow";
+  const rules = on ? ctQsEnsure(draft) : null;
+  const L = (rules && rules.lifelines) || {};
+  const slots = (rules && rules.slots) || [];
+  const mode = `<div class="ct-qs-mode">
+    <button type="button" class="ct-wiz-set-chip ${on ? "" : "on"}" onclick="ctSetGameMode('off')">Standard CBT</button>
+    <button type="button" class="ct-wiz-set-chip ${on ? "on" : ""}" onclick="ctSetGameMode('quizshow')">Quiz Crorepati</button>
+  </div>
+  <p class="ct-wiz-est-time">Quiz Crorepati is a Quantrex quiz-show mode (virtual ₹, original host). Standard CBT is unchanged.</p>`;
+  if (!on) {
+    return `<section class="ct-wiz-section ct-qs-section">
+      <h4>Game mode</h4>${mode}
+    </section>`;
+  }
+  const qChips = CT_QS_Q_PRESETS.map(n =>
+    `<button type="button" class="ct-wiz-set-chip ${draft.totalQs === n ? "on" : ""}" onclick="ctSetTotalQs(${n})">${n}</button>`
+  ).join("");
+  const tChips = CT_QS_TIME_PRESETS.map(t => {
+    const sel = rules.timerOn === false ? t.sec === 0 : (Number(rules.timePerQ) === t.sec);
+    return `<button type="button" class="ct-wiz-set-chip ${sel ? "on" : ""}" onclick="ctQsSetTime(${t.sec})">${t.label}</button>`;
+  }).join("");
+  const life = [
+    ["fifty", "50:50"],
+    ["audience", "Audience poll"],
+    ["expert", "Ask expert"],
+    ["switchQ", "Change question"]
+  ].map(([k, lab]) =>
+    `<button type="button" class="ct-wiz-set-chip ${L[k] ? "on" : ""}" onclick="ctQsToggleLife('${k}')">${lab}</button>`
+  ).join("");
+  const rows = slots.map((s, i) => {
+    const d = s.diff || "";
+    return `<div class="ct-qs-slot-row">
+      <span>Q${i + 1}</span>
+      <label class="ct-qs-prize">₹ <input type="number" min="0" step="1000" value="${Number(s.prize) || 0}" onchange="ctQsSetSlotPrize(${i}, this.value)"></label>
+      <select onchange="ctQsSetSlotDiff(${i}, this.value)">
+        <option value="" ${d === "" ? "selected" : ""}>Any</option>
+        <option value="Easy" ${d === "Easy" ? "selected" : ""}>Easy</option>
+        <option value="Medium" ${d === "Medium" ? "selected" : ""}>Medium</option>
+        <option value="Hard" ${d === "Hard" ? "selected" : ""}>Hard</option>
+      </select>
+      <label class="ct-qs-safe"><input type="checkbox" ${s.safe ? "checked" : ""} onchange="ctQsSetSlotSafe(${i}, this.checked)"> Safe</label>
+    </div>`;
+  }).join("");
+  return `<section class="ct-wiz-section ct-qs-section">
+    <h4>Game mode</h4>${mode}
+    <button type="button" class="ct-wiz-link-btn" onclick="ctQsApplyClassic()">Use classic 15-question Quiz Show defaults</button>
+    <h4 style="margin-top:14px">Number of questions</h4>
+    <div class="ct-wiz-set-chips">${qChips}
+      <label class="ct-qs-custom-n">Custom <input type="number" min="1" max="30" value="${draft.totalQs}" onchange="ctSetTotalQs(Math.max(1,Math.min(30,+this.value||15)))"></label>
+    </div>
+    <h4 style="margin-top:14px">Time limit per question</h4>
+    <div class="ct-wiz-set-chips">${tChips}</div>
+    <h4 style="margin-top:14px">Host · sound · language</h4>
+    <p class="ct-wiz-est-time">Host announces prize, timer and result. Question text is not read unless you turn that on.</p>
+    <div class="ct-wiz-set-chips">
+      <button type="button" class="ct-wiz-set-chip ${rules.hostVoice !== false ? "on" : ""}" onclick="ctQsSetFlag('hostVoice', ${rules.hostVoice === false})">${rules.hostVoice === false ? "Host voice off" : "Host voice on"}</button>
+      <button type="button" class="ct-wiz-set-chip ${rules.readQuestion ? "on" : ""}" onclick="ctQsSetFlag('readQuestion', ${!rules.readQuestion})">${rules.readQuestion ? "Read question on" : "Read question off"}</button>
+      <button type="button" class="ct-wiz-set-chip ${rules.hostSfx !== false ? "on" : ""}" onclick="ctQsSetFlag('hostSfx', ${rules.hostSfx === false})">${rules.hostSfx === false ? "Sound off" : "Sound on"}</button>
+      <button type="button" class="ct-wiz-set-chip ${rules.hostLang === "hinglish" ? "on" : ""}" onclick="ctQsSetHostLang('hinglish')">Hinglish</button>
+      <button type="button" class="ct-wiz-set-chip ${rules.hostLang === "en" ? "on" : ""}" onclick="ctQsSetHostLang('en')">English</button>
+      <button type="button" class="ct-wiz-set-chip ${rules.hostLang === "hi" ? "on" : ""}" onclick="ctQsSetHostLang('hi')">हिन्दी</button>
+      <button type="button" class="ct-wiz-set-chip ${rules.lockConfirm !== false ? "on" : ""}" onclick="ctQsSetFlag('lockConfirm', ${rules.lockConfirm === false})">${rules.lockConfirm === false ? "Lock confirm off" : "Lock confirm on"}</button>
+      <button type="button" class="ct-wiz-set-chip ${rules.walkAway !== false ? "on" : ""}" onclick="ctQsSetFlag('walkAway', ${rules.walkAway === false})">${rules.walkAway === false ? "Walk away off" : "Walk away on"}</button>
+    </div>
+    <h4 style="margin-top:14px">Lifelines</h4>
+    <div class="ct-wiz-set-chips">${life}</div>
+    <h4 style="margin-top:14px">Prize ladder · difficulty per question</h4>
+    <p class="ct-wiz-est-time">Virtual ₹ only — practice points, not real money. Tick difficulty for each prize slot. Safe levels keep that prize if a later answer is wrong.</p>
+    <div class="ct-qs-slots">${rows}</div>
+  </section>`;
+}
+window.ctGoWizardStep = ctGoWizardStep;
+window.ctSetGameMode = ctSetGameMode;
+window.ctQsApplyClassic = ctQsApplyClassic;
+window.ctQsSetTime = ctQsSetTime;
+window.ctQsSetFlag = ctQsSetFlag;
+window.ctQsSetHostLang = ctQsSetHostLang;
+window.ctQsToggleLife = ctQsToggleLife;
+window.ctQsSetSlotDiff = ctQsSetSlotDiff;
+window.ctQsSetSlotPrize = ctQsSetSlotPrize;
+window.ctQsSetSlotSafe = ctQsSetSlotSafe;
 
 function ctPickStepHtml(draft, exams) {
   const examCards = exams.map(ex => {
@@ -853,7 +1211,8 @@ function ctYearsStepHtml(draft) {
       <button type="button" class="ct-wiz-close" onclick="ctCloseWizard()">✕</button>
     </div>
     ${ctWizardProgress("years")}
-    <section class="ct-wiz-section ct-wiz-settings">
+    ${ctQsPanelHtml(draft)}
+    ${draft.gameMode === "quizshow" ? "" : `<section class="ct-wiz-section ct-wiz-settings">
       <h4>Number of Questions</h4>
       <div class="ct-wiz-set-chips">${qChips}</div>
       <h4 style="margin-top:14px">Time per Question</h4>
@@ -875,7 +1234,7 @@ function ctYearsStepHtml(draft) {
       <h4 style="margin-top:14px">Marking scheme</h4>
       <div class="ct-wiz-set-chips ct-wiz-mark-chips">${CT_SCORING.map(m => `<button type="button" class="ct-wiz-set-chip ${(draft.scoringId || "4_-1") === m.id ? "on" : ""}" title="${m.sub}" onclick="ctSetScoring('${m.id}')">${m.label}</button>`).join("")}</div>
       <p class="ct-wiz-est-time">${ctScoringFor(draft.scoringId).sub}${draft.difficulty instanceof Set && draft.difficulty.size ? " · " + [...draft.difficulty].join(" + ") + " only" : " · all difficulty levels"}</p>
-    </section>
+    </section>`}
     <section class="ct-wiz-section">
       <h4>Select Year of Paper You Want to Include</h4>
       <p class="ct-wiz-hint">The test will be created from All PYQs</p>
@@ -897,8 +1256,9 @@ function ctYearsStepHtml(draft) {
       <div class="ct-wiz-sum-card"><small>Subjects</small><strong>${subjLine}</strong></div>
       <div class="ct-wiz-sum-card"><small>Chapters</small><strong>${chapters.length} selected</strong><p>${chNames || "—"}${extra}</p></div>
       <div class="ct-wiz-sum-card"><small>Paper</small><strong>${draft.totalQs} questions · ${mins} min</strong></div>
+      ${draft.gameMode === "quizshow" ? `<div class="ct-wiz-sum-card"><small>Game</small><strong>Quiz Crorepati · virtual prize ladder</strong></div>` : ""}
       <div class="ct-wiz-sum-card"><small>Years</small><strong>${presetLabels[draft.yearPreset] || "All Years"}</strong></div>
-      <div class="ct-wiz-sum-card"><small>Difficulty · Marking</small><strong>${draft.difficulty instanceof Set && draft.difficulty.size ? [...draft.difficulty].join(" + ") : "All levels"} · ${ctScoringFor(draft.scoringId).label}</strong></div>
+      <div class="ct-wiz-sum-card"><small>Difficulty · Marking</small><strong>${draft.gameMode === "quizshow" ? "Per-question ladder" : (draft.difficulty instanceof Set && draft.difficulty.size ? [...draft.difficulty].join(" + ") : "All levels")} · ${draft.gameMode === "quizshow" ? "virtual ₹" : ctScoringFor(draft.scoringId).label}</strong></div>
     </div>
   </div>`;
 }
@@ -972,7 +1332,7 @@ function ctLandingHtml(tests, forTeacher) {
     return `<div class="ct-landing-row ${cls}" onclick="ctShowPreview('${t.id}', ${teacher})">
       <div class="ct-landing-row-main">
         <strong>${t.title}</strong>
-        <small>${t.examTitle || "JEE Main"} · ${date}</small>
+        <small>${t.examTitle || "JEE Main"} · ${date}${t.gameMode === "quizshow" ? " · Quiz Show" : ""}</small>
         ${extra}
       </div>
       <div class="ct-landing-share">
@@ -1060,7 +1420,7 @@ function ctPreviewModalHtml(test, forTeacher) {
   const actions = teacher
     ? `<button type="button" class="marks-preview-attempt" onclick="ctClosePreview();ctAssignTeacherTest('${test.id}')">${test.assigned ? "Assign Again →" : "Assign to Batch →"}</button>
         <button type="button" class="marks-preview-later" onclick="ctClosePreview()">Close</button>`
-    : `<button type="button" class="marks-preview-attempt" onclick="ctClosePreview();ctAttemptTest('${test.id}')">Attempt test now →</button>
+    : `<button type="button" class="marks-preview-attempt" onclick="ctClosePreview();ctAttemptTest('${test.id}')">${test.gameMode === "quizshow" ? "Start Quiz Show →" : "Attempt test now →"}</button>
         <button type="button" class="marks-preview-later" onclick="ctClosePreview()">Attempt Later</button>`;
 
   return `<div class="marks-modal-overlay" id="ctPreviewModal" onclick="if(event.target===this)ctClosePreview()">
@@ -1078,8 +1438,9 @@ function ctPreviewModalHtml(test, forTeacher) {
         <div class="marks-preview-stats">
           <div class="marks-preview-stat"><strong>${test.totalQs}</strong><small>Questions</small></div>
           <div class="marks-preview-stat"><strong>${mins} Mins</strong><small>Duration</small></div>
-          <div class="marks-preview-stat"><strong>${test.scoring ? ctScoringFor(test.scoringId).label : "+4 / \u22121"}</strong><small>Marking</small></div>
+          <div class="marks-preview-stat"><strong>${test.gameMode === "quizshow" ? "Quiz Show" : (test.scoring ? ctScoringFor(test.scoringId).label : "+4 / \u22121")}</strong><small>${test.gameMode === "quizshow" ? "Mode" : "Marking"}</small></div>
         </div>
+        ${test.gameMode === "quizshow" ? `<p class="ct-preview-years"><strong>Quiz Crorepati</strong><br>Virtual prize ladder · original host voice · ${test.totalQs} questions</p>` : ""}
         ${test.difficulty && test.difficulty.length ? `<p class="ct-preview-years"><strong>Difficulty</strong><br>${test.difficulty.join(" + ")}</p>` : ""}
         ${yearLines ? `<p class="ct-preview-years"><strong>Previous year (${yearMeta})</strong><br>${yearLines}</p>` : ""}
         ${sub ? `<p class="ct-preview-subj"><strong>${sub}</strong><br>${chList}</p>` : (chList ? `<p class="marks-preview-chapters">${chList}</p>` : "")}
@@ -1378,6 +1739,7 @@ function ctSetTotalQs(n) {
   _ctDraft.totalQs = n;
   _ctDraft.durationManual = false;
   ctSyncDuration(_ctDraft);
+  if (_ctDraft.gameMode === "quizshow") ctQsResizeSlots(_ctDraft);
   ctRender(ctWizPayload());
 }
 
@@ -1612,6 +1974,13 @@ async function ctGenerateTest() {
     let filtered = pool.filter(q => {
       try { return ctYearFilterOk(q && q.source, _ctDraft); } catch (_) { return true; }
     });
+    /* qxmd372: drop empty-sol DPP + Class9 boardWritten / unscored subjective from COT */
+    filtered = filtered.filter(q => {
+      try {
+        if (typeof qxEligibleForAutoPick === "function") return qxEligibleForAutoPick(q);
+      } catch (_) { /* */ }
+      return true;
+    });
     if (_ctDraft.hideOutOfSyllabus) {
       const trimmed = filtered.filter(q => q && q._syllabusCategory !== "outOfSyllabus");
       if (trimmed.length) filtered = trimmed;
@@ -1625,7 +1994,7 @@ async function ctGenerateTest() {
     }
     /* qxmd312: difficulty filter uses each question's own difficulty tag; never guessed */
     const diffSel = _ctDraft.difficulty instanceof Set ? _ctDraft.difficulty : new Set();
-    if (diffSel.size) {
+    if (diffSel.size && _ctDraft.gameMode !== "quizshow") {
       const byDiff = filtered.filter(q => diffSel.has(ctNormDiff(q && q.difficulty)));
       if (!byDiff.length) {
         showToast("⚠️ No " + [...diffSel].join(" / ") + " questions in these chapters. Choose another level.");
@@ -1641,10 +2010,65 @@ async function ctGenerateTest() {
 
     await new Promise(r => setTimeout(r, 400));
 
-    const shuffled = filtered.sort(() => Math.random() - 0.5);
-    const take = Math.min(_ctDraft.totalQs || shuffled.length, shuffled.length);
-    const ids = shuffled.slice(0, take).map(q => q.id);
-    const title = ctAutoTitle(_ctDraft, chapters);
+    const quizShow = _ctDraft.gameMode === "quizshow";
+    let qsRules = null;
+    let switchPool = [];
+    let ids = [];
+    let take = 0;
+    if (quizShow) {
+      qsRules = ctQsEnsure(_ctDraft);
+      const mcq = filtered.filter(ctHasFourOpts);
+      if (!mcq.length) {
+        showToast("⚠️ Quiz Crorepati needs 4-option questions. Add more chapters.");
+        _ctDraft.wizardStep = "years";
+        ctRender(ctWizPayload());
+        return;
+      }
+      const used = new Set();
+      const byDiff = { Easy: [], Medium: [], Hard: [], "": [] };
+      mcq.forEach(q => {
+        const d = ctNormDiff(q && q.difficulty) || "";
+        (byDiff[d] != null ? byDiff[d] : byDiff[""]).push(q);
+      });
+      Object.keys(byDiff).forEach(k => byDiff[k].sort(() => Math.random() - 0.5));
+      const takeOne = function (arr) {
+        if (!arr) return null;
+        for (let i = 0; i < arr.length; i++) {
+          const id = String(arr[i].id);
+          if (used.has(id)) continue;
+          used.add(id);
+          return arr[i];
+        }
+        return null;
+      };
+      const slots = (qsRules && qsRules.slots) || [];
+      const wantN = Math.min(_ctDraft.totalQs || slots.length || 15, mcq.length);
+      const picked = [];
+      for (let i = 0; i < wantN; i++) {
+        const want = (slots[i] && slots[i].diff) || "";
+        const q = (want && takeOne(byDiff[want])) || takeOne(byDiff[""]) || takeOne(byDiff.Easy) || takeOne(byDiff.Medium) || takeOne(byDiff.Hard) || takeOne(mcq);
+        if (q) picked.push(q);
+      }
+      if (!picked.length) {
+        showToast("⚠️ Not enough 4-option questions for Quiz Show.");
+        _ctDraft.wizardStep = "years";
+        ctRender(ctWizPayload());
+        return;
+      }
+      if (picked.length < wantN && typeof showToast === "function") {
+        showToast("Only " + picked.length + " MCQ questions available for this Quiz Show.");
+      }
+      ids = picked.map(q => q.id);
+      take = picked.length;
+      switchPool = mcq.filter(q => !used.has(String(q.id))).slice(0, 40).map(q => q.id);
+      qsRules = Object.assign({}, qsRules, { nQ: take, slots: (qsRules.slots || []).slice(0, take) });
+    } else {
+      const shuffled = filtered.sort(() => Math.random() - 0.5);
+      take = Math.min(_ctDraft.totalQs || shuffled.length, shuffled.length);
+      ids = shuffled.slice(0, take).map(q => q.id);
+    }
+    let title = ctAutoTitle(_ctDraft, chapters);
+    if (quizShow) title = "Quiz Show · " + title;
     const testId = "ct_" + Date.now();
     const yearLabels = ctYearLabelsForDraft(_ctDraft);
     const presetLabels = { all: "All Years", last3: "Last 3 Years", last5: "Last 5 Years", last10: "Last 10 Years", custom: "Custom Years" };
@@ -1678,6 +2102,15 @@ async function ctGenerateTest() {
       scoringId: ctScoringFor(_ctDraft.scoringId).id,
       scoring: Object.assign({}, ctScoringFor(_ctDraft.scoringId).sc)
     };
+    if (quizShow) {
+      record.gameMode = "quizshow";
+      record.qsRules = qsRules;
+      ctQsSavePrefs(qsRules);
+      record.switchPool = switchPool;
+      record.modeLabel = "Quiz Crorepati · virtual ₹";
+      record.timed = true;
+      record.durationSec = Math.max(60, take * (qsRules.timePerQ || _ctDraft.timePerQ || 60));
+    }
 
     if (teacherGen) {
       const tlist = ctLoadTests(true);
@@ -1744,6 +2177,28 @@ function ctOnCompleteHook(testId) {
   };
 }
 
+function ctLaunchQuizShow(test) {
+  if (!test) return;
+  test._onComplete = ctOnCompleteHook(test.id);
+  function goShow() {
+    if (window.QxQuizShow && typeof QxQuizShow.start === "function") {
+      QxQuizShow.start(test);
+      return true;
+    }
+    return false;
+  }
+  if (goShow()) return;
+  var s = document.createElement("script");
+  s.src = "assets/qx-quiz-show.js?v=" + encodeURIComponent(window.QX_BUILD || "qxmd356");
+  s.onload = function () {
+    if (!goShow() && typeof showToast === "function") showToast("Quiz Show failed to load");
+  };
+  s.onerror = function () {
+    if (typeof showToast === "function") showToast("Quiz Show failed to load");
+  };
+  document.head.appendChild(s);
+}
+
 function ctAttemptTest(id) {
   const t = ctLoadTests().find(x => x.id === id);
   if (!t) return;
@@ -1752,6 +2207,10 @@ function ctAttemptTest(id) {
   if (item && item.status !== "completed") {
     item.status = "inProgress";
     ctSaveTests(list);
+  }
+  if (t.gameMode === "quizshow") {
+    ctLaunchQuizShow(t);
+    return;
   }
   var ui = "examgoal";
   var fmt = "quantrex";
@@ -1794,6 +2253,7 @@ window.ctShareWhatsApp = ctShareWhatsApp;
 window.ctNativeShare = ctNativeShare;
 window.ctGenerateTest = ctGenerateTest;
 window.ctAttemptTest = ctAttemptTest;
+window.ctLaunchQuizShow = ctLaunchQuizShow;
 window.ctShowPreview = ctShowPreview;
 window.ctClosePreview = ctClosePreview;
 window.ctWizardBack = ctWizardBack;

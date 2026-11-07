@@ -1,4 +1,4 @@
-/* Quantrex Academy — AI Proctor v2 (qxmd318)
+/* Quantrex Academy — AI Proctor v2 (qxmd372)
  * Opt-in per test (choice shown once at test start). 100% on-device:
  * - Face AI: TF.js BlazeFace, lazy-loaded from our own hosting only when the student picks AI Proctor.
  * - Video frames are analysed in memory and never uploaded. Optional tiny thumbnails stay in this tab only.
@@ -11,7 +11,7 @@
  */
 (function (global) {
   "use strict";
-  var VER = "qxmd318";
+  var VER = "qxmd372";
   var VENDOR = "vendor/proctor/";
   var LOG_KEY = "qx_ai_proctor_log";
   var PIP_POS_KEY = "qx_pr_pip_pos_tr";
@@ -842,17 +842,30 @@
       setTimeout(off, 1200);
     };
   }
+  function offHtml() {
+    return '<section class="qx-rc-card qx-rc-proctor-off" id="qxPrReport">' +
+      "<h3>AI Proctor Report</h3>" +
+      "<p>AI Proctor was off for this attempt. Turn it on in Settings before a future test to record an on-device integrity report. Flags are review indicators, never automatic proof of cheating.</p>" +
+      "</section>";
+  }
   function mountReport(host) {
-    if (!host || !_state || !_state.proctored) return; // only when this attempt was proctored
+    if (!host) return;
     ensureCss();
     if (document.getElementById("qxPrReport")) return;
+    var html = (_state && _state.proctored) ? reportHtml() : offHtml();
+    if (!html) html = offHtml();
     var w = document.createElement("div");
-    w.innerHTML = reportHtml();
+    w.innerHTML = html;
     var node = w.firstChild;
     if (!node) return;
-    var anchor = host.querySelector("#qxAnalysis") || host.querySelector("#mkRcBody") || host.querySelector("#mkRcView") || host.querySelector(".result-stats");
-    if (anchor && anchor.parentNode) anchor.parentNode.insertBefore(node, anchor.nextSibling);
-    else host.insertAdjacentElement("afterbegin", node);
+    var slot = host.querySelector("#qxPrSlot");
+    if (slot) {
+      slot.appendChild(node);
+    } else {
+      var anchor = host.querySelector("#qxAnalysis") || host.querySelector("#mkRcBody") || host.querySelector("#mkRcView") || host.querySelector(".result-stats");
+      if (anchor && anchor.parentNode) anchor.parentNode.insertBefore(node, anchor.nextSibling);
+      else host.insertAdjacentElement("afterbegin", node);
+    }
     bindReport(node);
     // keep the report directly after the analysis section once it mounts
     try {
@@ -906,7 +919,10 @@
     version: VER,
     choose: choose,
     begin: begin,
-    shouldGate: function () { return false; },
+    shouldGate: function () {
+      /* qxmd372: prefer choose() path; gate() only if user previously enabled */
+      try { return localStorage.getItem("qx_pref_ai_proctor") === "1"; } catch (_) { return false; }
+    },
     enabled: function () { return active(); },
     setEnabled: function (on) {
       try { localStorage.setItem("qx_pref_ai_proctor", on ? "1" : "0"); } catch (_) { /* */ }

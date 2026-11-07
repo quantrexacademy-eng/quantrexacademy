@@ -1,0 +1,137 @@
+/* qxmd384 — snappy light-tap + smooth toolbar (keep qxmd382/383 behavior) */
+/* Root cause of "hard press": parents use touch-action:pan-x pan-y so the
+   browser waits to decide pan vs tap. Buttons must force manipulation. */
+
+html {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(21, 101, 192, 0.18);
+}
+
+/* Interactive controls: instant tap, no 300ms / pan-vs-tap wait */
+button, a, [role="button"], input[type="button"], input[type="submit"],
+.eg-tool-btn, .eg-ico, .eg-btn, .eg-opt, .mtk-opt, .qx-opt, .qx-prac-opts .qx-opt,
+.qx-module-card, .dash-card, .fc-card, .q-card, .marks-q-row, .nav-item,
+.menu-btn, .sidebar a, .topbar button, .eg-chip, .qx-chip, .cat, .stage .cat,
+#qxFullToolbarBtn, [data-qx-full-toolbar], #pracFullBtn, #egFullBtn,
+#qxPrevBtn, #qxNextBtn, #egCheckBtn, #qxSubmitTop, #qxSubmitBtn, #egMarksExitBtn,
+.eg-top-tools button, .mtk-header-tools button, .qx-prac-tools button,
+.eg-foot button, #egFoot button, .marks-modal-overlay button {
+  touch-action: manipulation !important;
+  -webkit-tap-highlight-color: rgba(21, 101, 192, 0.22);
+  cursor: pointer;
+}
+
+/* Override pan-x pan-y on chrome that stole light taps */
+html body .eg-test-root .eg-top,
+html body .eg-test-root .eg-top-tools,
+html body .eg-test-root .eg-top-tools .eg-tool-btn,
+html body .eg-test-root .eg-foot,
+html body .eg-test-root #egFoot,
+html body .eg-test-root #egFoot button,
+html body .eg-test-root .eg-opt,
+html body .mtk-test-root .eg-tool-btn,
+html body .mtk-test-root .mtk-opt,
+html body .allen-practice .eg-tool-btn,
+html.qx-test-zoom .eg-tool-btn,
+html.qx-test-zoom .eg-btn,
+html.qx-test-zoom button,
+html body.marks-test-active .eg-tool-btn,
+html body.marks-test-active .eg-btn,
+html body.marks-test-active button.eg-tool-btn {
+  touch-action: manipulation !important;
+  pointer-events: auto !important;
+}
+
+/* Keep pan ONLY on the question scroll surface, not buttons */
+html body .eg-test-root .eg-body,
+html body .eg-test-root.eg-qxmd182 .eg-body,
+html body .qzrr-cbt #qzrrQArea,
+html body .qzrr-cbt .qzrr-q-area,
+html body .mtk-main {
+  touch-action: pan-x pan-y !important;
+}
+html body .eg-test-root .eg-body button,
+html body .eg-test-root .eg-body .eg-opt,
+html body .eg-test-root .eg-body a,
+html body .mtk-main button,
+html body .mtk-main .mtk-opt {
+  touch-action: manipulation !important;
+}
+
+/* Hit targets ≥44px — toolbar / Full / foot */
+html body .eg-test-root .eg-top-tools .eg-tool-btn,
+html body .eg-test-root .eg-top-tools .eg-ico,
+html body #qxFullToolbarBtn,
+html body [data-qx-full-toolbar],
+html body #pracFullBtn,
+html body .mtk-header-tools .eg-tool-btn,
+html body .qx-prac-tools .eg-tool-btn {
+  min-width: 44px !important;
+  min-height: 44px !important;
+  pointer-events: auto !important;
+  z-index: 5;
+}
+
+html body #egFoot button,
+html body .eg-foot button,
+html body #qxPrevBtn,
+html body #qxNextBtn,
+html body #egCheckBtn {
+  min-height: 48px !important;
+  touch-action: manipulation !important;
+  pointer-events: auto !important;
+}
+
+/* No invisible overlay stealing taps while practice is open */
+body.allen-practice-active #app-main,
+body.marks-test-active #app-main,
+body.allen-practice-active .eg-test-root,
+body.marks-test-active .eg-test-root {
+  pointer-events: auto !important;
+}
+/* Decorative / empty shimmer must never block taps */
+#app-main:empty::before,
+body.allen-practice-active #app-main:empty::before,
+body.marks-test-active #app-main:empty::before {
+  pointer-events: none !important;
+}
+
+/* Smooth toolbar: cheap GPU transforms, no layout thrash on toggle */
+html body .eg-test-root .eg-top-tools,
+html body .eg-test-root .eg-side,
+html body .eg-test-root .eg-body {
+  transition: none; /* JS class churn — avoid fighting CSS transitions */
+}
+html body.qx-full-toolbar .eg-test-root .eg-side {
+  will-change: auto;
+}
+#qxFullToolbarBtn,
+.qx-full-toolbar-btn {
+  transition: background-color 80ms linear, opacity 80ms linear;
+  -webkit-user-select: none;
+  user-select: none;
+}
+#qxFullToolbarBtn:active,
+.eg-tool-btn:active,
+.eg-btn:active,
+button:active {
+  opacity: 0.88;
+  transform: scale(0.98);
+}
+
+/* Faster perceived nav: content containment on dash cards */
+html.qx-compact .dash-grid > *,
+html.qx-app .dash-grid > *,
+html.qx-phone .dash-grid > *,
+html.qx-compact .qx-module-grid > *,
+html.qx-app .qx-module-grid > * {
+  contain: layout style;
+}
+
+/* Sidebar open overlay shouldn't block menu-btn / close */
+.sidebar-backdrop,
+.qx-sidebar-scrim,
+.menu-scrim {
+  pointer-events: auto;
+  touch-action: manipulation !important;
+}

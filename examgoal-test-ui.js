@@ -2,6 +2,23 @@
 (function (global) {
   "use strict";
 
+  /* qxmd382: WebView/Desktop-site ~980 CSS px still must use mobile Q chrome */
+  function qxEgIsNarrow() {
+    try {
+      var el = document.documentElement;
+      var compact = el.classList.contains("qx-compact")
+        || el.classList.contains("qx-app")
+        || el.classList.contains("qx-phone")
+        || el.getAttribute("data-qx-shell") === "app";
+      if (compact) {
+        /* Full toolbar = desktop-style chrome; default stays mobile-close */
+        if (document.body && document.body.classList.contains("qx-full-toolbar")) return false;
+        return true;
+      }
+    } catch (_) {}
+    try { return !!(window.matchMedia && window.matchMedia("(max-width: 900px)").matches); } catch (_) { return false; }
+  }
+
   function ensureCss() {
     let l = document.getElementById("egTestUiCss");
     if (!l) l = document.querySelector('link[href*="examgoal-test-ui.css"]');
@@ -232,6 +249,8 @@
             if (st305) document.head.appendChild(st305);
             var shEl = document.getElementById("qxShellLockCss");
             if (shEl) document.head.appendChild(shEl);
+            var tlEl = document.getElementById("qxThemeLockCss");
+            if (tlEl && document.body) document.body.appendChild(tlEl);
         });
       }
     } catch (_) {}
@@ -427,8 +446,24 @@
     [
       "qxFootLockCss", "qxKatexLockCss", "qxChromeLockCss", "qxMarksPlayerCss",
       "qxQuizrrWebCss", "qxQfmtLockCss", "qxCtLockCss", "qxShellLockCss",
-      "qxmd294EgCss", "qxmd303EgCss", "qxmd304EgCss", "qxmd305EgCss", "qxmd306EgCss"
+      "qxmd294EgCss", "qxmd303EgCss", "qxmd304EgCss", "qxmd305EgCss", "qxmd306EgCss",
+      "qxQReadLockCss", "qxThemeLockCss", "qxmd387ScrollCss"
     ].forEach(function (id) { pinCssLast(document.getElementById(id)); });
+    try {
+      var ver = encodeURIComponent(global.QX_BUILD || "qxmd353");
+      [
+        ["qxQuizrrWebCss", "assets/qx-quizrr-web.css?v="],
+        ["qxThemeLockCss", "assets/qx-theme-lock.css?v="],
+        ["qxReportCardCss", "assets/qx-report-card.css?v="]
+      ].forEach(function (pair) {
+        var el = document.getElementById(pair[0]);
+        if (!el || el.tagName !== "LINK") return;
+        var href = pair[1] + ver;
+        if (el.getAttribute("href") !== href) el.setAttribute("href", href);
+        pinCssLast(el);
+      });
+      pinCssLast(document.getElementById("qxmd387ScrollCss"));
+    } catch (_) { /* */ }
   }
 
   /** Play TWA / installed PWA only. Desktop + phone browser stay "web". */
@@ -693,6 +728,15 @@
     var reportIco = ico('<path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/>');
     var gearIco = ico('<circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>');
     var similarBtn = "";
+    var hintBtn = "";
+    if (opts.practice && opts.hintOn) {
+      var hintIco = ico('<circle cx="12" cy="12" r="9"/><path d="M12 16v-1M12 8h.01"/>');
+      hintBtn = '<button type="button" class="eg-ico eg-tool-btn eg-tool-pri qx-hint-btn" id="qxPracHint"' +
+        (opts.hintText ? "" : " disabled") +
+        ' data-tip="Hint" title="Hint" aria-label="Hint">' +
+        hintIco +
+        '<span class="eg-tip" style="display:block!important;position:static!important;opacity:1!important;visibility:visible!important;color:#ffffff!important;-webkit-text-fill-color:#ffffff!important;font-size:11px!important;font-weight:800!important;line-height:1.15!important;background:transparent!important;transform:none!important">Hint</span></button>';
+    }
     return (
       '<button type="button" class="eg-ico mtk-theme-btn eg-tool-btn eg-tool-pri' + (theme === "light" ? " eg-moon" : "") + '" id="mtkThemeBtn" data-tip="Theme" title="Light / dark" aria-label="Light / dark">' +
         themeIco + '<span class="eg-tip" style="display:block!important;position:static!important;opacity:1!important;visibility:visible!important;color:#ffffff!important;-webkit-text-fill-color:#ffffff!important;font-size:11px!important;font-weight:800!important;line-height:1.15!important;background:transparent!important;transform:none!important">Theme</span></button>' +
@@ -708,6 +752,7 @@
         fullIco + '<span class="eg-tip" style="display:block!important;position:static!important;opacity:1!important;visibility:visible!important;color:#ffffff!important;-webkit-text-fill-color:#ffffff!important;font-size:11px!important;font-weight:800!important;line-height:1.15!important;background:transparent!important;transform:none!important">Full</span></button>' +
       '<button type="button" class="eg-ico warn eg-tool-btn eg-tool-pri" id="mtkReportBtn" data-tip="Report" title="Report question" aria-label="Report">' +
         reportIco + '<span class="eg-tip" style="display:block!important;position:static!important;opacity:1!important;visibility:visible!important;color:#ffffff!important;-webkit-text-fill-color:#ffffff!important;font-size:11px!important;font-weight:800!important;line-height:1.15!important;background:transparent!important;transform:none!important">Report</span></button>' +
+      hintBtn +
       similarBtn +
       '<button type="button" class="eg-ico eg-tool-btn eg-tool-pri eg-settings-gear" id="egFmtBtn" data-tip="Settings" title="Question View Settings" aria-label="Question View Settings">' +
         gearIco + '<span class="eg-tip" style="display:block!important;position:static!important;opacity:1!important;visibility:visible!important;color:#ffffff!important;-webkit-text-fill-color:#ffffff!important;font-size:11px!important;font-weight:800!important;line-height:1.15!important;background:transparent!important;transform:none!important">Settings</span></button>'
@@ -880,6 +925,44 @@
     return false;
   }
 
+  function hintTextOf(q) {
+    if (!q) return "";
+    var h = q.hint || q.hints || q.hintText || "";
+    if (Array.isArray(h)) return String(h.filter(Boolean).join("\n")).replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+    return String(h || "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+  }
+
+  function showHintPopup(root, q) {
+    var text = hintTextOf(q);
+    if (!text) {
+      if (typeof showToast === "function") showToast("No hint for this question");
+      return;
+    }
+    var qs = {};
+    try {
+      if (typeof QxSettings !== "undefined" && QxSettings.getQuestionSettings) qs = QxSettings.getQuestionSettings() || {};
+    } catch (_) { qs = {}; }
+    if (qs.showHintFeedbackPopup === false) {
+      if (typeof showToast === "function") showToast(text);
+      return;
+    }
+    try {
+      var old = document.getElementById("qxHintPop");
+      if (old) old.remove();
+      var pop = document.createElement("div");
+      pop.id = "qxHintPop";
+      pop.className = "eg-note-pop";
+      pop.innerHTML = '<div class="eg-note-pop-h">Hint</div><p style="margin:0;padding:12px 14px;line-height:1.5">' +
+        text.replace(/&/g, "&amp;").replace(/</g, "&lt;") +
+        '</p><div class="eg-note-pop-act"><button type="button" class="eg-btn eg-btn-next" id="qxHintOk">OK</button></div>';
+      (root || document.body).appendChild(pop);
+      var ok = pop.querySelector("#qxHintOk");
+      if (ok) ok.onclick = function () { pop.remove(); };
+    } catch (_) {
+      if (typeof showToast === "function") showToast(text);
+    }
+  }
+
   function egQsetOn(key, defVal) {
     try {
       if (typeof QxSettings !== "undefined" && QxSettings.getQuestionSettings) {
@@ -940,10 +1023,12 @@
         '<div class="eg-vs-row eg-vs-sizes"><div class="eg-vs-lab"><span class="eg-vs-lab-t">Text Size</span>' +
         '<span class="eg-vs-hint">Question &amp; solution font</span></div>' +
         '<div class="eg-fmt-row eg-vs-size-row">' +
+        '<button type="button" data-eg-zoom="-1" aria-label="Zoom out">−</button>' +
         '<button type="button" data-eg-scale="small"' + (fontScale === "small" ? ' class="on"' : "") + ">S</button>" +
         '<button type="button" data-eg-scale="medium"' + (fontScale === "medium" ? ' class="on"' : "") + ">M</button>" +
         '<button type="button" data-eg-scale="large"' + (fontScale === "large" ? ' class="on"' : "") + ">L</button>" +
         '<button type="button" data-eg-scale="xlarge"' + (fontScale === "xlarge" ? ' class="on"' : "") + ">XL</button>" +
+        '<button type="button" data-eg-zoom="1" aria-label="Zoom in">+</button>' +
         '</div></div></section>' +
         (function () {
           try {
@@ -954,6 +1039,7 @@
             '<span class="eg-vs-hint">God, Hero, Demon, Villain, Mirzapur \u2014 off until you turn it on.</span></div>' +
             '<button type="button" class="eg-vs-tog" data-eg-pref="qx_pref_practice_voice" aria-pressed="false" role="switch"><span class="eg-vs-knob"></span></button></div></section>';
         })() +
+        (function () { try { if (typeof QxSfx !== "undefined" && QxSfx.settingsHtml) return QxSfx.settingsHtml(); } catch (_) { /* */ } return ""; })() +
         '<section class="eg-vs-sec"><h5 class="eg-vs-h">Peer Insights</h5>' +
         egToggleRow("showAttemptInsight", "Show attempt insight", "Time taken after Check Answer", true) +
         '</section>' +
@@ -1262,7 +1348,7 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
     const lastQ = session.idx >= session.ids.length - 1;
     const firstQ = session.idx <= 0;
     const mode = practice ? "PRACTICE" : "TEST";
-    const isMobileEg = !!(window.matchMedia && window.matchMedia("(max-width: 900px)").matches);
+    const isMobileEg = qxEgIsNarrow();
 
     /* qxeg1: DEFAULT both hidden; All-Q opens both; ✕ closes strip/side INDEPENDENTLY */
     normalizeSessionSets(session);
@@ -1393,7 +1479,7 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
         '<button type="button" class="eg-back" id="mtkExitBtn" data-qx-exit="1" title="Exit" aria-label="Exit">‹</button>' +
         '<div class="eg-top-title">' + titleEsc + ' <span class="eg-mode-pill">' + mode + "</span></div>" +
         '<div class="eg-top-tools qx-prac-tools" role="toolbar" aria-label="Question tools">' +
-        sharedToolsHtml({ theme: theme, allQOn: allQOn, allQTitle: allQTitle, sideOpen: sideOpen, sideTitle: sideTitle, bmOn: bmOn, practice: practice }) +
+        sharedToolsHtml({ theme: theme, allQOn: allQOn, allQTitle: allQTitle, sideOpen: sideOpen, sideTitle: sideTitle, bmOn: bmOn, practice: practice, hintOn: practice && egQsetOn("showHint", false), hintText: hintTextOf(q) }) +
         "</div>" + fmt + "</header>")
       : ('<header class="eg-top eg-marks-top">' +
         '<button type="button" class="eg-marks-x" id="egMarksExitBtn" title="Exit Test" aria-label="Exit Test">✕</button>' +
@@ -1702,6 +1788,34 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
     }
     try { setTimeout(apply, 40); setTimeout(apply, 120); setTimeout(apply, 280); } catch (_) { /* */ }
   }
+  function egScrollParent(el) {
+    var n = el && el.parentElement;
+    while (n && n !== document.documentElement) {
+      try {
+        var oy = window.getComputedStyle(n).overflowY;
+        if ((oy === "auto" || oy === "scroll") && n.scrollHeight > n.clientHeight + 8) return n;
+      } catch (_) { /* */ }
+      n = n.parentElement;
+    }
+    return null;
+  }
+  function egKeepQuestionVisible(root) {
+    try {
+      if (!root || !root.querySelector) return;
+      var qEl = root.querySelector("#egQArea");
+      if (!qEl) return;
+      var guard = 0;
+      while (guard++ < 5) {
+        var sc = egScrollParent(qEl) || root.querySelector(".eg-body") || root.querySelector(".eg-q-card");
+        if (!sc) return;
+        var c = sc.getBoundingClientRect();
+        var q = qEl.getBoundingClientRect();
+        if (q.top >= c.top - 2 && q.bottom > c.top + 24 && q.top < c.bottom - 20) return;
+        sc.scrollTop = Math.max(0, sc.scrollTop + (q.top - c.top) - 8);
+      }
+    } catch (_) { /* */ }
+  }
+  try { global.qxKeepQuestionVisible = egKeepQuestionVisible; } catch (_) { /* */ }
   function egLockScrollJump(root, on) {
     try {
       if (!root || !root.classList) return;
@@ -1883,20 +1997,9 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
     } catch (_) { /* */ }
     try { egLockScrollJump(root, false); } catch (_) { /* */ }
     try {
-      requestAnimationFrame(function () {
-        var panelLive = root.querySelector("#egSolPanel");
-        if (!panelLive) return;
-        try {
-          panelLive.style.scrollMarginTop = "8px";
-          panelLive.style.scrollMarginBottom = "96px";
-          panelLive.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "nearest" });
-        } catch (_) {
-          var card = root.querySelector(".eg-q-card");
-          if (card && panelLive) {
-            try { card.scrollTop = Math.max(0, panelLive.offsetTop - 12); } catch (_2) { /* */ }
-          }
-        }
-      });
+      /* Do not scroll the solution to the top. That pushed the question
+         out of the card, so the stem looked blank under the info strip. */
+      requestAnimationFrame(function () { egKeepQuestionVisible(root); });
     } catch (_) { /* */ }
 
     try {
@@ -2029,8 +2132,12 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
         try {
           egRestoreScroll(_egScrollSnap);
           egLockScrollJump(root, false);
+          egKeepQuestionVisible(root);
         } catch (_) { /* */ }
       }, 160);
+      setTimeout(function () {
+        try { egKeepQuestionVisible(root); } catch (_) { /* */ }
+      }, 320);
     } catch (_) { /* */ }
     return !!panel;
   }
@@ -2158,7 +2265,10 @@ const checkRow = ""; /* qxmd217: Note moved into View Settings */
       try {
         if (ok && session.practiceMode) {
           var right = !!(session._egCorrect && (session._egCorrect[session.idx] || session._egCorrect[String(session.idx)]));
-          if (typeof QxPracticeVoice !== "undefined" && QxPracticeVoice.enabled && QxPracticeVoice.enabled()) {
+          var _qxSfxOn = false; try { _qxSfxOn = typeof QxSfx !== "undefined" && QxSfx.enabled && QxSfx.enabled(); } catch (_s) { _qxSfxOn = false; }
+          if (_qxSfxOn) {
+            try { QxSfx.unlock(); QxSfx.play(right); } catch (_s2) { /* */ }
+          } else if (typeof QxPracticeVoice !== "undefined" && QxPracticeVoice.enabled && QxPracticeVoice.enabled()) {
             try { if (QxPracticeVoice.unlock) QxPracticeVoice.unlock(); } catch (_u) { /* */ }
             QxPracticeVoice.play(right);
           } else if (typeof QxSettings !== "undefined" && QxSettings.playAnswerSound) {
@@ -2498,7 +2608,7 @@ function forceFootVisible(force) {
         root.classList.toggle("eg-side-open", sideOpen);
         root.classList.toggle("eg-strip-collapsed", !stripOpen);
         root.classList.toggle("eg-strip-open", stripOpen);
-        var _egNarrow = !!(window.matchMedia && window.matchMedia("(max-width: 900px)").matches);
+        var _egNarrow = qxEgIsNarrow();
         root.classList.toggle("eg-desktop-mode", !_egNarrow || anyOpen);
         root.classList.toggle("eg-mobile", _egNarrow && !anyOpen);
         root.classList.toggle("eg-preview-open", previewOpen);
@@ -3007,6 +3117,7 @@ function forceFootVisible(force) {
           }
         };
       });
+      try { if (typeof QxSfx !== "undefined" && QxSfx.bindSettings) QxSfx.bindSettings(document.getElementById("egFmtPop") || root); } catch (_) { /* */ }
       try {
         if (typeof QxPracticeVoice !== "undefined" && QxPracticeVoice.bindSettings) {
           QxPracticeVoice.bindSettings(document.getElementById("egFmtPop") || root);
@@ -3023,6 +3134,16 @@ function forceFootVisible(force) {
           if (typeof setTestFontScale === "function") setTestFontScale(b.getAttribute("data-eg-scale"));
           (document.getElementById("egFmtPop") || root).querySelectorAll("[data-eg-scale]").forEach(function (x) {
             x.classList.toggle("on", x.getAttribute("data-eg-scale") === b.getAttribute("data-eg-scale"));
+          });
+        };
+      });
+      (document.getElementById("egFmtPop") || root).querySelectorAll("[data-eg-zoom]").forEach(function (b) {
+        b.onclick = function (e) {
+          if (e) { e.preventDefault(); e.stopPropagation(); }
+          var next = (typeof bumpTestFont === "function") ? bumpTestFont(Number(b.getAttribute("data-eg-zoom")) || 0) : null;
+          if (!next) return;
+          (document.getElementById("egFmtPop") || root).querySelectorAll("[data-eg-scale]").forEach(function (x) {
+            x.classList.toggle("on", x.getAttribute("data-eg-scale") === next);
           });
         };
       });
@@ -3046,7 +3167,7 @@ function forceFootVisible(force) {
         b.onclick = function (e) {
           if (e) { e.preventDefault(); e.stopPropagation(); }
           var act = b.getAttribute("data-eg-fmt-act");
-          var map = { star: "#egStarBtn", plus: "#egPlusBtn", full: "#egFullBtn", report: "#mtkReportBtn", theme: "#mtkThemeBtn", allq: "#egAllQBtn", palette: "#egMenuBtn", note: "#egNoteBtn", similar: "#egSimilarBtn" };
+          var map = { star: "#egStarBtn", plus: "#egPlusBtn", full: "#egFullBtn", report: "#mtkReportBtn", theme: "#mtkThemeBtn", allq: "#egAllQBtn", palette: "#egMenuBtn", note: "#egNoteBtn", similar: "#egSimilarBtn", hint: "#qxPracHint" };
           var tgt = map[act] && root.querySelector(map[act]);
           closeFmtPop();
           if (tgt) {
@@ -3114,6 +3235,12 @@ function forceFootVisible(force) {
         if (typeof setTestFontScale === "function") setTestFontScale(b.getAttribute("data-eg-scale"));
       };
     });
+    (document.getElementById("egFmtPop") || root).querySelectorAll("[data-eg-zoom]").forEach(function (b) {
+      b.onclick = function (e) {
+        if (e) { e.preventDefault(); e.stopPropagation(); }
+        if (typeof bumpTestFont === "function") bumpTestFont(Number(b.getAttribute("data-eg-zoom")) || 0);
+      };
+    });
     (document.getElementById("egFmtPop") || root).querySelectorAll("[data-eg-pal]").forEach(function (b) {
       b.onclick = function (e) {
         if (e) { e.preventDefault(); e.stopPropagation(); }
@@ -3147,7 +3274,7 @@ function forceFootVisible(force) {
       b.onclick = function (e) {
         if (e) { e.preventDefault(); e.stopPropagation(); }
         var act = b.getAttribute("data-eg-fmt-act");
-        var map = { star: "#egStarBtn", plus: "#egPlusBtn", full: "#egFullBtn", report: "#mtkReportBtn", theme: "#mtkThemeBtn", allq: "#egAllQBtn", palette: "#egMenuBtn", note: "#egNoteBtn", similar: "#egSimilarBtn" };
+        var map = { star: "#egStarBtn", plus: "#egPlusBtn", full: "#egFullBtn", report: "#mtkReportBtn", theme: "#mtkThemeBtn", allq: "#egAllQBtn", palette: "#egMenuBtn", note: "#egNoteBtn", similar: "#egSimilarBtn", hint: "#qxPracHint" };
         var sel = map[act];
         var tgt = sel && root.querySelector(sel);
         session._egFmtOpen = false;
@@ -3259,7 +3386,7 @@ function forceFootVisible(force) {
               rootEl.classList.toggle("eg-side-open", !!cf2.sideOpen);
               rootEl.classList.toggle("eg-side-collapsed", !cf2.sideOpen);
               rootEl.classList.toggle("eg-preview-open", !!cf2.previewOpen);
-              var _egNarrow2 = !!(window.matchMedia && window.matchMedia("(max-width: 900px)").matches);
+              var _egNarrow2 = qxEgIsNarrow();
               rootEl.classList.toggle("eg-desktop-mode", !_egNarrow2 || !!cf2.anyOpen);
               rootEl.classList.toggle("eg-mobile", _egNarrow2 && !cf2.anyOpen);
             } catch (_) {}
@@ -3479,6 +3606,19 @@ function forceFootVisible(force) {
         if (typeof QxSimilarPractice !== "undefined" && QxSimilarPractice.clickSimilar) QxSimilarPractice.clickSimilar();
       } catch (_) { /* */ }
     };
+    const hintBtnEl = root.querySelector("#qxPracHint");
+    if (hintBtnEl) {
+      hintBtnEl.style.setProperty("pointer-events", "auto", "important");
+      hintBtnEl.style.setProperty("z-index", "14050", "important");
+      hintBtnEl.onclick = function (e) {
+        if (e) { e.preventDefault(); e.stopPropagation(); }
+        if (hintBtnEl.disabled) {
+          if (typeof showToast === "function") showToast("No hint for this question");
+          return;
+        }
+        showHintPopup(root, ctx && ctx.q);
+      };
+    }
     const flagBtn = root.querySelector("#egFlagBtn");
     if (flagBtn) flagBtn.onclick = function (e) {
       if (e) { e.preventDefault(); e.stopPropagation(); }
@@ -3544,7 +3684,8 @@ function forceFootVisible(force) {
     function zoomDelta(d) {
       return function (e) {
         if (e) { e.preventDefault(); e.stopPropagation(); }
-        if (typeof applyTestZoomToDom === "function") applyTestZoomToDom(1);
+        /* Paper zoom stays at 1 so the question can scroll. These buttons change text size. */
+        if (typeof bumpTestFont === "function") bumpTestFont(d < 0 ? -1 : 1);
       };
     }
     if (zoomOut) zoomOut.onclick = zoomDelta(-1);
@@ -3606,7 +3747,7 @@ function forceFootVisible(force) {
       document.documentElement.setAttribute("data-theme", m);
       if (typeof QuantrexTheme !== "undefined" && QuantrexTheme.apply) QuantrexTheme.apply(m);
     } catch (_) { /* */ }
-    document.querySelectorAll(".eg-test-root, .mtk-test-root").forEach(function (root) {
+    document.querySelectorAll(".eg-test-root, .mtk-test-root, .qzrr-cbt").forEach(function (root) {
       try {
         root.setAttribute("data-test-theme", m);
         root.classList.toggle("qzrr-dark", m === "dark");
@@ -3621,6 +3762,7 @@ function forceFootVisible(force) {
     });
   }
 
+  global.qxEgIsNarrow = qxEgIsNarrow;
   global.ExamgoalTestUI = {
     isExamgoalUi: isExamgoalUi,
     isQxAppShell: isQxAppShell,

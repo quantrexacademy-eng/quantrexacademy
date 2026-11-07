@@ -315,7 +315,7 @@ const CPYQB_EXAM_ORDER = {
   ],
   Medical: ["neet", "aiims", "nta_abhyas_neet", "jipmer", "mht_cet_medical"],
   Defence: ["nda"],
-  // PRODUCT RULE: Class 7–12 folders (7–10 Soon · 11 JEE Main+Adv · 12 CBSE+JEE Main+Adv)
+  // PRODUCT RULE: Class 7–12 folders (7–8 Soon · 9 CBSE · 10 TALENTEX · 11 JEE Main+Adv · 12 CBSE+JEE)
   Academic: ["class_7", "class_8", "class_9", "class_10", "class_11", "class_12"]
 };
 
@@ -323,7 +323,7 @@ const CPYQB_YEAR_RANGE = {
   class_7: "Coming Soon",
   class_8: "Coming Soon",
   class_9: "CBSE · Number System",
-  class_10: "Coming Soon",
+  class_10: "TALENTEX · 2024 PYP",
   class_11: "JEE Main · JEE Advanced",
   class_12: "CBSE Board · JEE Main · JEE Advanced",
   jee_main: "2026 - 2012", jee_advanced: "2026 - 2006", nta_abhyas_jee_main: "2020",
@@ -361,6 +361,7 @@ const MODULES = [
   { id:"allqs", icon:"📋", name:"All Question Bank", desc:"Chapter-wise questions by subject", color:"#dbeafe", target:"allqs" },
   { id:"ncert", icon:"📘", name:"NCERT Qs Bank", desc:"Syllabus-aligned NCERT questions", color:"#eaf4fd", target:"ncert" },
   { id:"books", icon:"📚", name:"Digital Books", desc:"Expert PYQ books & curated sets", color:"#fce7f3", target:"books" },
+  { id:"archive", icon:"🗂️", name:"Quantrex Archive", desc:"Class-wise PDFs, notes, PYQ and answer keys", color:"#fef3c7", target:"archive" },
   { id:"cpyqb", icon:"🎯", name:"Chapter-wise PYQ Bank", desc:"Previous year questions by exam", color:"#dbeafe", target:"cpyqb" },
   { id:"dpp", icon:"📝", name:"Daily DPP Packs", desc:"Starter, Core and Challenge packs by chapter", color:"#e6f9f0", target:"dpp" },
   { id:"tests", icon:"🧪", name:"Assessment Center", desc:"Mocks, chapter tests & custom", color:"#fef9c3", target:"tests" },
@@ -14433,7 +14434,9 @@ const STATE = {
       if (extra.chapter) rec.chapter = extra.chapter;
       if (extra.exam) rec.exam = extra.exam;
       if (extra.ms != null) rec.ms = extra.ms;
+      if (extra.result === "correct" || extra.result === "partial" || extra.result === "incorrect") rec.result = extra.result;
     }
+    if (!rec.result) rec.result = undefined; /* qxmd392c: drop a stale result from an older record */
     const i = s.findIndex(x => String(x.id) === String(id));
     if (i >= 0) s[i] = { ...s[i], ...rec };
     else s.push(rec);
@@ -14523,7 +14526,7 @@ function qxPatchOrganicFigUrl(s) {
         const local = (_qxOrganicFigMap && (_qxOrganicFigMap.get(url) || _qxOrganicFigMap.get(url.split("?")[0]) || _qxOrganicFigMap.get(url.split("/").pop().split("?")[0]))) || "";
         const src = local || ((typeof QxOwnedFigs !== "undefined" && QxOwnedFigs.displaySrc)
           ? QxOwnedFigs.displaySrc(url)
-          : ("/api/proxy-image?url=" + encodeURIComponent(url) + "&clean=1&v=qxfig110"));
+          : url);
         return `src=${qq}${src}${qq} data-qx-orig-src=${qq}${url}${qq}`;
       });
     }

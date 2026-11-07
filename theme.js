@@ -28,24 +28,16 @@ const QuantrexTheme = (() => {
     updateButtons(m);
     const meta = document.querySelector('meta[name="theme-color"]');
     if (meta) meta.content = m === "dark" ? "#2a2a2c" : "#f0f4f9";
-    // qxmd110: while CBT is active, View Settings / setTestTheme owns shell theme.
-    // Do not force website theme onto .qzrr-cbt (caused mixed light-meta / dark-body).
-    if (!document.body.classList.contains("marks-test-active") &&
-        !document.body.classList.contains("allen-cbt-active") &&
-        !document.documentElement.classList.contains("qx-cbt-on")) {
-      document.querySelectorAll(".mtk-test-root").forEach(el => {
-        el.setAttribute("data-test-theme", m);
-        el.classList.toggle("qzrr-dark", m === "dark");
-      });
-    } else if (typeof getTestTheme === "function") {
-      try {
-        const tm = getTestTheme();
-        document.querySelectorAll(".mtk-test-root, .qzrr-cbt").forEach(el => {
-          el.setAttribute("data-test-theme", tm);
-          el.classList.toggle("qzrr-dark", tm === "dark");
-        });
-      } catch (_) { /* */ }
-    }
+    /* qxmd352: site toggle and paper theme stay in lockstep so dark ink
+       cannot sit on a dark paper (or pale ink on white paper). */
+    try { localStorage.setItem("quantrex_test_theme", m); } catch (_) { /* */ }
+    try { document.documentElement.setAttribute("data-test-theme", m); } catch (_) { /* */ }
+    document.querySelectorAll(".mtk-test-root, .eg-test-root, .qzrr-cbt, .allen-practice").forEach(el => {
+      el.setAttribute("data-test-theme", m);
+      el.classList.toggle("qzrr-dark", m === "dark");
+      el.classList.toggle("qx-theme-dark", m === "dark");
+      el.classList.toggle("qx-theme-light", m === "light");
+    });
     if (typeof AllenTestUI !== "undefined" && AllenTestUI.syncPracticeTheme) {
       AllenTestUI.syncPracticeTheme(document.getElementById("app-main"), m);
     }

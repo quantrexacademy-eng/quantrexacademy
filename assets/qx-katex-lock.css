@@ -1,6 +1,7 @@
 /* qxmd245 — KaTeX engine lock (load last).
    Restore display + box-sizing only. Never set height/top/margin/padding
    !important on .vlist / .pstrut / .sizing — those inline metrics raise x^2 / x^3.
+   .vlist > span keeps KaTeX height:0 (the row, not the strut).
    Size1–4 fonts must beat Inter on #egQArea so \left\{ \left( stay visible. */
 
 @font-face{font-family:KaTeX_Main;font-style:normal;font-weight:400;src:url(katex/fonts/KaTeX_Main-Regular.woff2) format("woff2");font-display:swap}
@@ -39,8 +40,13 @@ html body .katex .katex-html {
 
 html body .katex .vlist-t {
   display: inline-table !important;
-  table-layout: fixed !important;
+  /* qxmd385: auto so radicands/fraction numerators don't collapse blank */
+  table-layout: auto !important;
   border-collapse: collapse !important;
+  /* No width here. max-content + a 100% fraction bar stretches the bar
+     and drops the denominator under a parent with overflow-y:hidden. */
+  width: auto !important;
+  max-width: none !important;
 }
 
 html body .katex .vlist-r {
@@ -50,12 +56,17 @@ html body .katex .vlist-r {
 html body .katex .vlist {
   display: table-cell !important;
   vertical-align: bottom !important;
-  position: relative !important;
+  /* Chrome clips a position:relative table-cell. A fraction denominator
+     is drawn under that cell, so the bar was left as a bare underline.
+     The row offsets are position:relative on the child spans, so the
+     cell itself can stay static and the denominator stays visible. */
+  position: static !important;
 }
 
 html body .katex .vlist > span {
   display: block !important;
   position: relative !important;
+  height: 0 !important;
 }
 
 html body .katex .vlist > span > span {
@@ -81,10 +92,24 @@ html body .katex .msupsub {
   text-align: left !important;
 }
 
+html body .katex .mfrac {
+  text-align: center !important;
+}
 html body .katex .mfrac .frac-line {
   display: inline-block !important;
   width: 100% !important;
   border-bottom-style: solid !important;
+  border-bottom-width: 0.04em !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+html body .katex,
+html body .eg-q-stem .katex,
+html body .mtk-q-text .katex,
+html body .mtk-opt-text .katex,
+html body .qx-sol-flow .katex,
+html body #egQArea .katex {
+  line-height: 1.2 !important;
 }
 
 html body .katex .sizing,
@@ -227,4 +252,21 @@ html body #egQArea,
 html body .qzrr-q-area {
   overflow-wrap: break-word !important;
   word-break: normal !important;
+}
+
+/* qxmd359: prose line-height must not enter KaTeX. height:0 is only the
+   vlist row (KaTeX's own rule). Do not set it on .pstrut / .sizing — those
+   use inline heights for superscripts. */
+html body .mtk-q-text .katex,
+html body .eg-q-stem .katex,
+html body #egQArea .katex,
+html body .qx-question-body .katex,
+html body .mtk-opt-text .katex,
+html body .qx-sol-flow .katex,
+html body .qx-sol-card .katex,
+html body .sol-body .katex,
+html body #egSol .katex,
+html body .eg-sol .katex,
+html body .katex-display > .katex {
+  line-height: 1.2 !important;
 }

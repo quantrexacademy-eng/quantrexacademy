@@ -295,6 +295,7 @@
   function mount(root, data) {
     data = data || window._qxLastAnalysis;
     if (!root || !data || !data.rows || !data.rows.length) return null;
+    if (root.querySelector("#qxRcHero")) return null;
     if (root.querySelector("#qxAnalysis")) return root.querySelector("#qxAnalysis");
     ensureCss();
     var wrap = document.createElement("div");
@@ -312,7 +313,7 @@
     var data = window._qxLastAnalysis;
     if (!data || !data.rows) return;
     var root = document.getElementById("qzAnPage") || document.querySelector(".result-screen.marks-result");
-    if (!root || root.querySelector("#qxAnalysis")) return;
+    if (!root || root.querySelector("#qxAnalysis") || root.querySelector("#qxRcHero")) return;
     if (done && done.has(root)) return;
     if (done) done.add(root);
     mount(root, data);

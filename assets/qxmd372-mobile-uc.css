@@ -1,0 +1,247 @@
+/* qxmd372 — Quantrex mobile Q UI: match/beat Universal Coach clarity
+   Branding: Quantrex only. Never touch Archives. */
+
+/* Beautiful default type — never tiny shrunk mobile text */
+@media (max-width: 860px) {
+  html body .mtk-q-text,
+  html body .eg-q-text,
+  html body .qx-prac-q,
+  html body .qa-q,
+  html body .qx-question-body,
+  html body .mtk-main .mtk-q-text,
+  html body .eg-test-root .eg-q-card,
+  html body .mtk-test-root.allen-cbt .mtk-q-text {
+    font-size: 18px !important;
+    line-height: 1.65 !important;
+    letter-spacing: 0.01em !important;
+    word-break: break-word !important;
+    overflow-wrap: anywhere !important;
+    overflow: visible !important;
+    max-height: none !important;
+    color: inherit !important;
+  }
+
+  /* Option cards — each A–D on its own row, never smashed into one paragraph */
+  html body .mtk-options-grid,
+  html body .mtk-options-exam-cols,
+  html body .eg-options,
+  html body .eg-opts,
+  html body .qx-prac-opts,
+  html body .mtk-opt-list {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    width: 100% !important;
+  }
+  html body .mtk-opt,
+  html body .eg-opt,
+  html body .qx-prac-opt,
+  html body .mtk-options-grid > *,
+  html body .eg-options > * {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    gap: 10px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 12px 14px !important;
+    margin: 0 !important;
+    border-radius: 12px !important;
+    border: 1.5px solid rgba(29, 78, 216, 0.18) !important;
+    background: #fff !important;
+    min-height: 48px !important;
+    float: none !important;
+  }
+  html body .mtk-test-root[data-test-theme="dark"] .mtk-opt,
+  html body .eg-test-root[data-test-theme="dark"] .eg-opt {
+    background: #1e293b !important;
+    border-color: rgba(148, 163, 184, 0.25) !important;
+  }
+  html body .mtk-opt-text,
+  html body .eg-opt-text,
+  html body .qx-prac-opt-text {
+    display: block !important;
+    flex: 1 1 auto !important;
+    font-size: 16px !important;
+    line-height: 1.55 !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    max-height: none !important;
+  }
+  /* Letter badge stays left, content wraps beside it */
+  html body .mtk-opt-letter,
+  html body .eg-opt-letter,
+  html body .qx-prac-opt-letter,
+  html body .mtk-opt .opt-key,
+  html body .eg-opt .opt-key {
+    flex: 0 0 auto !important;
+    width: 28px !important;
+    height: 28px !important;
+    border-radius: 50% !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-weight: 700 !important;
+    font-size: 14px !important;
+  }
+
+  /* Stem / solution cards with UC-like breathing room */
+  html body .mtk-q-wrap,
+  html body .eg-q-card,
+  html body .qx-prac-main {
+    padding: 14px 12px 20px !important;
+  }
+
+  /* Figures: full readable size, placeholder space while loading */
+  html body .mtk-q-text img,
+  html body .eg-q-text img,
+  html body .qx-question-body img,
+  html body .sol-body img,
+  html body .eg-sol img,
+  html body .mtk-opt-text img {
+    max-height: none !important;
+    max-width: 100% !important;
+    height: auto !important;
+    width: auto !important;
+    min-height: 48px !important;
+    background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%) !important;
+    background-size: 200% 100% !important;
+    border-radius: 8px !important;
+  }
+  html body .mtk-q-text img[complete],
+  html body .mtk-q-text img.qx-img-ready,
+  html body .eg-q-text img.qx-img-ready {
+    background: transparent !important;
+    min-height: 0 !important;
+  }
+}
+
+/* Full toolbar mode — show designed full toolbar when body has qx-full-toolbar */
+html body.qx-full-toolbar .eg-top-tools #egPlusBtn,
+html body.qx-full-toolbar .eg-top-tools #egFullBtn,
+html body.qx-full-toolbar .eg-top-tools #mtkReportBtn,
+html body.qx-full-toolbar .eg-top-tools #egAllQBtn,
+html body.qx-full-toolbar .eg-qx-extras #egPrintBtn,
+html body.qx-full-toolbar .eg-qx-extras #qzrrProctorBtn,
+html body.qx-full-toolbar .eg-qx-extras #qzrrInstrBtn,
+html body.qx-full-toolbar .eg-qx-extras #qzrrPaperBtn,
+html body.qx-full-toolbar .mtk-header-tools #pracGroupBtn,
+html body.qx-full-toolbar .mtk-header-tools #pracFullBtn,
+html body.qx-full-toolbar .mtk-header-tools #pracReportBtn,
+html body.qx-full-toolbar .mtk-header-tools #pracAllQBtn {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+html body.qx-full-toolbar .eg-top-tools,
+html body.qx-full-toolbar .mtk-header-tools,
+html body.qx-full-toolbar .eg-qx-extras > .eg-top-tools {
+  flex-wrap: wrap !important;
+  overflow-x: auto !important;
+  max-width: 100% !important;
+  gap: 6px !important;
+}
+
+/* Keep Full toolbar control itself visible on phones so student can toggle */
+@media (max-width: 440px) {
+  html body #app-main .eg-test-root .eg-top-tools #egFullBtn,
+  html body #app-main .mtk-test-root .mtk-header-tools #pracFullBtn,
+  html body #app-main .eg-test-root .eg-top-tools #qxFullToolbarBtn,
+  html body #app-main .mtk-test-root .mtk-header-tools #qxFullToolbarBtn {
+    display: inline-flex !important;
+    visibility: visible !important;
+  }
+}
+
+/* COT wizard — fix black-on-black section chips / subject dots / empty right pane */
+.ct-wizard-right-empty {
+  background: #0f172a !important;
+  background-image: radial-gradient(ellipse at 30% 20%, rgba(45, 212, 191, 0.08), transparent 55%),
+    radial-gradient(ellipse at 80% 70%, rgba(124, 58, 237, 0.08), transparent 50%) !important;
+  min-height: 100vh !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #94a3b8 !important;
+}
+.ct-wiz-set-chip,
+.ct-wiz-section .ct-wiz-set-chip,
+button.ct-wiz-set-chip {
+  background: #1e293b !important;
+  color: #e2e8f0 !important;
+  border: 1px solid #334155 !important;
+}
+.ct-wiz-set-chip.on,
+button.ct-wiz-set-chip.on {
+  background: #0d9488 !important;
+  color: #fff !important;
+  border-color: #2dd4bf !important;
+}
+.ct-subject-card,
+.ct-wiz-subject-card,
+.ct-subj-card {
+  background: #1e293b !important;
+  color: #f1f5f9 !important;
+  border: 1px solid #334155 !important;
+}
+.ct-subject-card .dot,
+.ct-subj-card .dot,
+.ct-wiz-subject-card::before,
+.ct-subject-dot {
+  background: #2dd4bf !important;
+  border-color: #2dd4bf !important;
+  opacity: 1 !important;
+}
+
+/* Report card logo — real Quantrex mark, proper size */
+.qx-rc-logo {
+  height: 48px !important;
+  width: 48px !important;
+  object-fit: contain !important;
+  flex-shrink: 0 !important;
+}
+@media (min-width: 641px) {
+  .qx-rc-logo {
+    height: 56px !important;
+    width: 56px !important;
+  }
+}
+.qx-rc-word {
+  font-size: 17px !important;
+  letter-spacing: 0.12em !important;
+}
+
+/* Update banner — do not overlap login form */
+.qx-update-banner,
+#qxUpdateBanner,
+.qx-app-update,
+[data-qx-update-banner] {
+  position: relative !important;
+  z-index: 50 !important;
+  margin: 0 0 12px !important;
+  top: auto !important;
+}
+.login-page .qx-update-banner,
+.auth-wrap .qx-update-banner,
+#loginView .qx-update-banner,
+.qx-login .qx-update-banner {
+  position: static !important;
+  margin-bottom: 16px !important;
+  max-width: 100% !important;
+}
+
+/* Dashboard first paint — avoid blank flash */
+#app-main:empty::before,
+.dash-root:empty::before {
+  content: "Loading Quantrex…";
+  display: block;
+  padding: 28px 18px;
+  color: #64748b;
+  font-size: 15px;
+  text-align: center;
+}
+.dash-greet-bar,
+.dash-stats {
+  min-height: 48px;
+}

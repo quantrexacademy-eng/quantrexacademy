@@ -750,7 +750,14 @@ function tsFormatChooserHtml(config) {
   const n = config.catalogTotalQs || (config.questionIds || []).length;
   const mins = config.catalogDurationMin || (config.durationSec ? Math.floor(config.durationSec / 60) : 180);
   let last = "quizrr";
-  try { last = localStorage.getItem("ts_last_ui_mode") || "quizrr"; } catch (_) { /* */ }
+  try {
+    const fmt = localStorage.getItem("qx_cbt_format_pref") || "";
+    const ui = localStorage.getItem("ts_last_ui_mode") || "";
+    if (fmt === "quantrex" || fmt === "examgoal") last = "examgoal";
+    else if (fmt === "nta" || fmt === "quizrr") last = "quizrr";
+    else if (ui === "examgoal" || ui === "quantrex") last = "examgoal";
+    else if (ui === "quizrr") last = "quizrr";
+  } catch (_) { /* */ }
   if (last !== "quizrr" && last !== "examgoal" && last !== "quantrex") last = "quizrr";
   const ntaOn = last === "quizrr";
   return `<div id="tsFormatChooser" class="ts-fmt-chooser" role="dialog" aria-modal="true" aria-label="Choose test layout">
@@ -1347,7 +1354,7 @@ function tsPremiumCategoryHtml(cat, tests, manifest) {
 
 function tsPremiumFreshnessBanner(manifest) {
   const seen = tsSeenQuestionCount();
-  const pool = manifest.totalTests || 458;
+  const pool = manifest.totalTests || 828;
   return `<div class="ts-premium-freshness" title="Your attempts track question IDs locally. Retakes prioritize unseen items from the Quantrex Ultimate Series bank.">
     <span>🔒</span><span>Question Pool: <strong>${pool} unique</strong> non-repeating tests · <strong>${seen}</strong> questions marked in your sessions</span>
   </div>`;
@@ -2530,11 +2537,42 @@ function tsShowAnalysis(testId, meta) {
         const tsRoot = document.getElementById("ts-root");
         if (tsRoot && mount.id !== "ts-root") tsRoot.style.display = "none";
       }
+      const title = tsEscHtml(meta.title || "Test");
+      if (typeof QuantrexTestEngine !== "undefined" && QuantrexTestEngine.renderQuizrrAnalysis && QuantrexTestEngine.bindQuizrrAnalysis) {
+        data.examHint = [
+          (window.TS_CFG && (window.TS_CFG.seriesId || window.TS_CFG.title)) || "",
+          meta.title || "",
+          "jee main"
+        ].join(" ");
+        data.examTitle = meta.title || "Test";
+        data.startedAt = att.updatedAt || att.savedAt || Date.now();
+        data.durationMin = data.durationMin || meta.durationMin || att.durationMin || 180;
+        try {
+          if (!data.student && typeof QxReportCard !== "undefined" && QxReportCard.studentWho) {
+            data.student = QxReportCard.studentWho();
+          }
+        } catch (_) { /* */ }
+        mount.innerHTML = QuantrexTestEngine.renderQuizrrAnalysis(data, {
+          title: meta.title || "Test",
+          scoring: att.scoring || { correct: 4, wrong: -1 },
+          theme: "light",
+          testType: "testseries",
+          examSlug: data.examHint
+        });
+        const anNew = mount.querySelector("#qzAnPage");
+        if (anNew) {
+          QuantrexTestEngine.bindQuizrrAnalysis(anNew);
+          try { if (typeof QxReportCard !== "undefined" && QxReportCard.bind) QxReportCard.bind(anNew, data); } catch (_) { /* */ }
+        }
+        try {
+          if (typeof QxAiProctor !== "undefined" && QxAiProctor.mountReport) QxAiProctor.mountReport(mount, data);
+        } catch (_) { /* */ }
+        return;
+      }
       const maxScore = data.maxScore;
       const attempted = data.correct + data.wrong;
       const acc = data.total ? ((data.correct / data.total) * 100) : 0;
       const timeMin = Math.max(1, Math.round((data.timeUsed || 0) / 60));
-      const title = tsEscHtml(meta.title || "Test");
       mount.innerHTML = `<div class="qz-an-page" id="qzAnPage">
         <aside class="qz-an-side">
           <button type="button" class="qz-an-back" id="qzAnBack">←</button>
@@ -2585,8 +2623,6 @@ function tsShowAnalysis(testId, meta) {
                     <td>${Math.max(0, data.score)} / ${maxScore}</td>
                     <td>${Math.round(acc)}%</td>
                   </tr>
-                  <tr class="qz-an-cmp"><td>Top 10%ile</td><td>${Math.round(maxScore * 0.67)} / ${maxScore}</td><td>84%</td></tr>
-                  <tr class="qz-an-cmp"><td>Top 25%ile</td><td>${Math.round(maxScore * 0.5)} / ${maxScore}</td><td>78%</td></tr>
                 </tbody>
               </table>
             </div>
